@@ -67,7 +67,7 @@ export default function IllustrativeOne() {
           <motion.div 
             className="absolute inset-0 bg-gradient-to-br from-[#F1F1F2] via-[#A1D6E2] to-[#1995AD] transition-opacity duration-300"
             style={{ 
-              scale: smoothScale,
+              transform: `scale(${smoothScale.get()})`,
               opacity: smoothOpacity.get()
             } as React.CSSProperties}
           >
