@@ -1,16 +1,86 @@
 'use client';
 
-import { useRef, useState, useEffect, useCallback } from 'react';
+import { useRef, useState, useEffect, useCallback, useMemo } from 'react';
 import Image from 'next/image';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import ClientLogoStrip from '@/components/common/ClientLogoStrip';
 import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardContent } from '@/components/ui/card';
-import { ArrowRight, TrendingUp, Shield, Zap, DollarSign, BarChart2, Globe, Play, Pause } from 'lucide-react';
+import { ArrowRight, TrendingUp, Shield, Zap, DollarSign, BarChart2, Globe, Play, Pause, ChevronLeft, ChevronRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
+
+interface Testimonial {
+  id: number;
+  name: string;
+  role: string;
+  image: string;
+  content: string;
+  stats: string;
+  company: string;
+  logo: string;
+  rating: number;
+}
 
 export default function IllustrativeTwo() {
   const [isPlaying, setIsPlaying] = useState(true);
+  const [testimonials] = useState<Testimonial[]>([
+    {
+      id: 1,
+      name: 'David Kim',
+      role: 'Head of Treasury, NexGen Tech',
+      image: '/avatars/man2.jpg',
+      content: 'The platform\'s predictive analytics helped us optimize our cash positions, resulting in a 28% improvement in working capital efficiency.',
+      stats: '28% Improvement in Working Capital',
+      company: 'NexGen Tech',
+      logo: '/company-logos/tech-company.svg',
+      rating: 5
+    },
+    {
+      id: 2,
+      name: 'Elena Rodriguez',
+      role: 'CFO, Solaris Energy',
+      image: '/avatars/woman3.jpg',
+      content: 'Implementation was flawless, and the team provided exceptional support throughout our transition. We\'ve reduced manual processes by over 60%.',
+      stats: '60% Reduction in Manual Processes',
+      company: 'Solaris Energy',
+      logo: '/company-logos/energy-company.svg',
+      rating: 5
+    },
+    {
+      id: 3,
+      name: 'James Wilson',
+      role: 'Treasury Director, Atlas Global',
+      image: '/avatars/man3.jpg',
+      content: 'The risk management capabilities are second to none. We\'ve significantly reduced our exposure while maintaining competitive returns.',
+      stats: '40% Risk Reduction',
+      company: 'Atlas Global',
+      logo: '/company-logos/global-company.svg',
+      rating: 4
+    },
+    {
+      id: 4,
+      name: 'Sarah Chen',
+      role: 'Finance Director, Urban Retail',
+      image: '/avatars/woman1.jpg',
+      content: 'The automated reporting has saved us countless hours. Our team can now focus on strategic initiatives rather than manual data compilation.',
+      stats: '45 Hours Saved Monthly',
+      company: 'Urban Retail',
+      logo: '/company-logos/retail-company.svg',
+      rating: 5
+    },
+    {
+      id: 5,
+      name: 'Michael Okafor',
+      role: 'CTO, FinTech Innovations',
+      image: '/avatars/man4.jpg',
+      content: 'The API integration was seamless with our existing systems. We were up and running in days, not weeks.',
+      stats: '80% Faster Integration',
+      company: 'FinTech Innovations',
+      logo: '/company-logos/fintech-company.svg',
+      rating: 4
+    }
+  ]);
+  const [activeIndex, setActiveIndex] = useState(0);
   const videoRef = useRef<HTMLVideoElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -21,6 +91,39 @@ export default function IllustrativeTwo() {
   // Parallax effect for content
   const y = useTransform(scrollYProgress, [0, 1], ['0%', '30%']);
   const opacity = useTransform(scrollYProgress, [0, 0.7, 1], [1, 0.7, 0.3]);
+
+  // Auto-rotate testimonials
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % testimonials.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [testimonials.length]);
+
+  // Get visible testimonials (current, prev, next)
+  const visibleTestimonials = useMemo(() => {
+    const lastIndex = testimonials.length - 1;
+    const prevIndex = activeIndex === 0 ? lastIndex : activeIndex - 1;
+    const nextIndex = activeIndex === lastIndex ? 0 : activeIndex + 1;
+    
+    return [
+      { ...testimonials[prevIndex], position: 'left' },
+      { ...testimonials[activeIndex], position: 'center' },
+      { ...testimonials[nextIndex], position: 'right' },
+    ];
+  }, [testimonials, activeIndex]);
+
+  const goToPrev = () => {
+    setActiveIndex(prev => (prev === 0 ? testimonials.length - 1 : prev - 1));
+  };
+
+  const goToNext = () => {
+    setActiveIndex(prev => (prev === testimonials.length - 1 ? 0 : prev + 1));
+  };
+
+  const goToSlide = (index: number) => {
+    setActiveIndex(index);
+  };
 
   const togglePlayPause = useCallback(() => {
     if (videoRef.current) {
@@ -311,82 +414,132 @@ export default function IllustrativeTwo() {
             <div className="inline-block px-4 py-1.5 rounded-full bg-blue-100 text-blue-800 text-sm font-medium mb-4">
               Trusted by Industry Leaders
             </div>
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Voices of Success</h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Voices of Success</h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               Discover how forward-thinking companies are transforming their treasury operations
             </p>
           </motion.div>
 
           <div className="relative">
-            <div className="flex overflow-x-auto pb-8 -mx-4 px-4 snap-x snap-mandatory scrollbar-hide">
-              {[
-                {
-                  name: 'David Kim',
-                  role: 'Head of Treasury, NexGen Tech',
-                  image: '/avatars/man2.jpg',
-                  content: 'The platform\'s predictive analytics helped us optimize our cash positions, resulting in a 28% improvement in working capital efficiency.',
-                  stats: '28% Improvement in Working Capital'
-                },
-                {
-                  name: 'Elena Rodriguez',
-                  role: 'CFO, Solaris Energy',
-                  image: '/avatars/woman3.jpg',
-                  content: 'Implementation was flawless, and the team provided exceptional support throughout our transition. We\'ve reduced manual processes by over 60%.',
-                  stats: '60% Reduction in Manual Processes'
-                },
-                {
-                  name: 'James Wilson',
-                  role: 'Treasury Director, Atlas Global',
-                  image: '/avatars/man3.jpg',
-                  content: 'The risk management capabilities are second to none. We\'ve significantly reduced our exposure while maintaining competitive returns.',
-                  stats: '40% Risk Reduction'
-                }
-              ].map((testimonial, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, x: 50 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.15 }}
-                  viewport={{ once: true, margin: "-100px" }}
-                  className="flex-none w-full sm:w-2/3 md:w-1/2 lg:w-1/3 px-4 snap-center"
-                >
-                  <div className="h-full bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100 hover:shadow-xl transition-all">
-                    <div className="p-8">
-                      <div className="flex items-center mb-6">
-                        <div className="relative w-14 h-14 rounded-full overflow-hidden mr-4">
-                          <Image
-                            src={testimonial.image}
-                            alt={testimonial.name}
-                            fill
-                            className="object-cover"
-                          />
+            <div className="relative overflow-hidden">
+              <div className="relative h-[500px] w-full">
+                <AnimatePresence mode="wait">
+                  {visibleTestimonials.map((testimonial: Testimonial & { position: string }) => {
+                    const position = testimonial.position;
+                    const isCenter = position === 'center';
+                    const isLeft = position === 'left';
+                    const isRight = position === 'right';
+                  
+                    return (
+                      <motion.div
+                        key={`${testimonial.id}-${position}`}
+                        className={`absolute w-full max-w-2xl mx-auto left-0 right-0 transition-all duration-500 ${
+                          isCenter ? 'z-10' : 'z-0 pointer-events-none'
+                        }`}
+                        initial={{
+                          x: isLeft ? '-100%' : isRight ? '100%' : '0%',
+                          scale: isCenter ? 1 : 0.9,
+                          opacity: isCenter ? 1 : 0.8,
+                        }}
+                        animate={{
+                          x: isLeft ? '-100%' : isRight ? '100%' : '0%',
+                          scale: isCenter ? 1 : 0.9,
+                          opacity: isCenter ? 1 : 0.8,
+                        }}
+                        exit={{
+                          x: isLeft ? '-150%' : isRight ? '150%' : '0%',
+                          opacity: 0,
+                          scale: 0.8,
+                        }}
+                        transition={{
+                          type: 'spring',
+                          stiffness: 300,
+                          damping: 30,
+                        }}
+                      >
+                        <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100 mx-4">
+                          <div className="p-8">
+                            <div className="flex items-start justify-between mb-6">
+                              <div className="flex items-center">
+                                <div className="relative w-16 h-16 rounded-full overflow-hidden mr-4 border-2 border-blue-100">
+                                  <Image
+                                    src={testimonial.image}
+                                    alt={testimonial.name}
+                                    fill
+                                    className="object-cover"
+                                  />
+                                </div>
+                                <div>
+                                  <h4 className="font-bold text-gray-900 text-lg">{testimonial.name}</h4>
+                                  <p className="text-sm text-gray-600">{testimonial.role}</p>
+                                  <div className="flex mt-1">
+                                    {[...Array(5)].map((_, i) => (
+                                      <svg
+                                        key={i}
+                                        className={`w-4 h-4 ${
+                                          i < testimonial.rating ? 'text-yellow-400' : 'text-gray-300'
+                                        }`}
+                                        fill="currentColor"
+                                        viewBox="0 0 20 20"
+                                      >
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                      </svg>
+                                    ))}
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="bg-gray-50 p-3 rounded-lg">
+                                <div className="w-20 h-8 bg-gray-200 rounded flex items-center justify-center text-xs text-gray-500">
+                                  {testimonial.company}
+                                </div>
+                              </div>
+                            </div>
+                            <p className="text-gray-700 text-lg italic mb-6 leading-relaxed">"{testimonial.content}"</p>
+                            <div className="px-5 py-3 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg border border-blue-100">
+                              <p className="text-sm font-medium text-blue-800 flex items-center">
+                                <svg className="w-4 h-4 mr-2 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                                  <path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.881 2.924c0 .414-.336.75-.75.75s-.75-.336-.75-.75 0-.529-.21-1.032a1.5 1.5 0 00-.54-.54 1.5 1.5 0 00-1.06-.44 1.5 1.5 0 01-1.14-.44 1.5 1.5 0 00-1.06-.44 1.5 1.5 0 00-1.14.44 1.5 1.5 0 01-1.06.44 1.5 1.5 0 00-1.06.44 1.5 1.5 0 00-.44 1.06c0 .414-.336.75-.75.75s-.75-.336-.75-.75 0-.75.75-.75h.01c.953 0 1.833-.472 2.36-1.26a3.066 3.066 0 012.88-2.924z" clipRule="evenodd" />
+                                </svg>
+                                {testimonial.stats}
+                              </p>
+                            </div>
+                          </div>
                         </div>
-                        <div>
-                          <h4 className="font-bold text-gray-900">{testimonial.name}</h4>
-                          <p className="text-sm text-gray-600">{testimonial.role}</p>
-                        </div>
-                      </div>
-                      <p className="text-gray-700 mb-6 italic">"{testimonial.content}"</p>
-                      <div className="px-4 py-3 bg-blue-50 rounded-lg">
-                        <p className="text-sm font-medium text-blue-800">{testimonial.stats}</p>
-                      </div>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-            <div className="absolute right-4 top-1/2 -translate-y-1/2 hidden md:block">
-              <div className="flex space-x 2">
-                <button className="w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center text-blue-600 hover:bg-blue-50 transition-colors">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                    <path fillRule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clipRule="evenodd" />
-                  </svg>
-                </button>
-                <button className="w-10 h-10 rounded-full bg-blue-600 text-white shadow-md flex items-center justify-center hover:bg-blue-700 transition-colors">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                    <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
-                  </svg>
-                </button>
+                      </motion.div>
+                    );
+                  })}
+                </AnimatePresence>
+              </div>
+              
+              {/* Navigation Arrows */}
+              <button 
+                onClick={goToPrev}
+                className="absolute left-0 top-1/2 -translate-y-1/2 -ml-4 z-20 w-12 h-12 rounded-full bg-white shadow-lg flex items-center justify-center text-blue-600 hover:bg-blue-50 transition-colors hover:scale-110 transform"
+                aria-label="Previous testimonial"
+              >
+                <ChevronLeft className="w-6 h-6" />
+              </button>
+              
+              <button 
+                onClick={goToNext}
+                className="absolute right-0 top-1/2 -translate-y-1/2 -mr-4 z-20 w-12 h-12 rounded-full bg-white shadow-lg flex items-center justify-center text-blue-600 hover:bg-blue-50 transition-colors hover:scale-110 transform"
+                aria-label="Next testimonial"
+              >
+                <ChevronRight className="w-6 h-6" />
+              </button>
+              
+              {/* Dots Navigation */}
+              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 flex space-x-2 z-20">
+                {testimonials.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => goToSlide(index)}
+                    className={`w-2.5 h-2.5 rounded-full transition-all ${
+                      index === activeIndex ? 'bg-blue-600 w-6' : 'bg-gray-300'
+                    }`}
+                    aria-label={`Go to testimonial ${index + 1}`}
+                  />
+                ))}
               </div>
             </div>
           </div>

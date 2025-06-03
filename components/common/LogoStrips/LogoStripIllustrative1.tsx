@@ -1,8 +1,9 @@
 'use client';
 
 import { useRef, useEffect, useState } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform, useAnimation } from 'framer-motion';
 import Image from 'next/image';
+import { Play } from 'lucide-react';
 
 import { Client } from '../ClientLogoStrip';
 
@@ -15,7 +16,38 @@ export function LogoStripIllustrative1({ clients }: LogoStripIllustrative1Props)
   const scrollRef = useRef<HTMLDivElement>(null);
   const firstRowRef = useRef<HTMLDivElement>(null);
   const variantClients = [...clients, ...clients];
-  const [scrollY, setScrollY] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
+  const controls = useAnimation();
+
+  // Smooth left-to-right animation
+  useEffect(() => {
+    const firstRow = firstRowRef.current;
+    if (!firstRow) return;
+
+    const duration = 40; // seconds for one full cycle
+    const endPosition = firstRow.scrollWidth / 2;
+
+    const animate = () => {
+      controls.start({
+        x: [0, -endPosition],
+        transition: {
+          x: {
+            repeat: Infinity,
+            duration: duration,
+            ease: 'linear',
+          },
+        },
+      });
+    };
+
+    if (!isHovered) {
+      animate();
+    } else {
+      controls.stop();
+    }
+
+    return () => controls.stop();
+  }, [isHovered, controls]);
 
   // Parallax effect for the background
   const { scrollYProgress } = useScroll({
@@ -23,57 +55,19 @@ export function LogoStripIllustrative1({ clients }: LogoStripIllustrative1Props)
     offset: ["start end", "end start"]
   });
 
-  const y1 = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
-  const y2 = useTransform(scrollYProgress, [0, 1], ["0%", "-15%"]);
-  const opacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [1, 0.8, 0.8, 0.5]);
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
-
-  // Auto-scroll effect for the client logos
-  useEffect(() => {
-    const scrollContainer = scrollRef.current;
-    const firstRow = firstRowRef.current;
-    if (!scrollContainer || !firstRow) return;
-
-    let animationId: number;
-    let scrollPosition = 0;
-
-    const animate = () => {
-      scrollPosition = (scrollPosition + 0.5) % (firstRow.offsetWidth / 2);
-      scrollContainer.scrollLeft = Math.sin(scrollPosition * 0.1) * 20 + scrollPosition;
-      animationId = requestAnimationFrame(animate);
-    };
-
-    animationId = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(animationId);
-  }, []);
-
-  // Track scroll position for additional effects
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  // Calculate rotation based on scroll
-  const rotate = scrollY * 0.02;
-  const rotate2 = -scrollY * 0.01;
+  const y1 = useTransform(scrollYProgress, [0, 1], ["0%", "10%"]);
+  const opacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [1, 0.9, 0.9, 0.7]);
 
   return (
     <div 
       ref={containerRef}
-      className="relative py-20 overflow-hidden bg-gradient-to-br from-blue-50 via-cyan-50 to-indigo-50"
+      className="relative py-16 overflow-hidden bg-gradient-to-br from-blue-50 via-cyan-50 to-indigo-50"
     >
       {/* Decorative background elements with parallax */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <motion.div 
           className="absolute inset-0 opacity-20"
-          style={{ 
-            y: y1, 
-            scale
-          }}
+          style={{ y: y1 }}
         >
           <Image
             src="/images/background-pattern.png"
@@ -85,79 +79,55 @@ export function LogoStripIllustrative1({ clients }: LogoStripIllustrative1Props)
         </motion.div>
       </div>
 
-      {/* Floating decorative elements */}
-      <motion.div 
-        className="absolute top-1/4 -left-20 w-64 h-64 rounded-full bg-blue-200 opacity-30 blur-3xl"
-        style={{ y: y2, rotate: rotate2 }}
-      />
-      <motion.div 
-        className="absolute bottom-1/4 -right-20 w-72 h-72 rounded-full bg-cyan-200 opacity-30 blur-3xl"
-        style={{ y: y1, rotate }}
-      />
-
       {/* Main content */}
       <div className="relative z-10 container mx-auto px-4">
         <motion.div 
           className="text-center mb-12"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
         >
-          <motion.h3 
-            className="text-xl font-medium mb-3 text-blue-700"
-            whileHover={{ scale: 1.03 }}
-            transition={{ type: 'spring', stiffness: 400, damping: 10 }}
-          >
-            TRUSTED BY INNOVATIVE COMPANIES WORLDWIDE
-          </motion.h3>
-          <motion.div 
-            className="w-20 h-1 bg-gradient-to-r from-blue-400 via-cyan-400 to-indigo-400 mx-auto rounded-full"
-            initial={{ width: 0, opacity: 0 }}
-            whileInView={{ width: 80, opacity: 1 }}
-            transition={{ duration: 1, delay: 0.5 }}
-            viewport={{ once: true }}
-          />
+          <h3 className="text-2xl font-semibold mb-3 text-blue-900">Trusted by Industry Leaders</h3>
+          <p className="text-blue-700 max-w-2xl mx-auto">Join thousands of businesses that trust our solutions to power their success</p>
         </motion.div>
-        
-        <motion.div 
+
+        <div 
           ref={scrollRef}
-          className="relative w-full overflow-hidden h-32 backdrop-blur-sm bg-white/30 rounded-2xl shadow-xl border border-white/20"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          viewport={{ once: true, margin: "-50px" }}
+          className="relative w-full overflow-hidden py-4"
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
         >
-          <div 
+          <motion.div 
             ref={firstRowRef}
-            className="flex items-center absolute top-0 left-0 h-full will-change-transform gap-8 px-4"
+            className="flex items-center gap-8 w-max"
+            animate={controls}
           >
             {variantClients.map((client, index) => (
               <motion.div
                 key={`${client.id}-${index}`}
-                className="flex-shrink-0 flex items-center justify-center px-8 py-4 rounded-xl transition-all duration-500 bg-white/80 backdrop-blur-sm shadow-lg hover:shadow-2xl hover:-translate-y-1.5 h-20 min-w-[180px] relative overflow-hidden group hover:shadow-xl"
-                whileHover={{
-                  scale: 1.05,
+                className="flex-shrink-0 px-8 py-4 bg-white/90 backdrop-blur-sm rounded-xl shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105 relative group"
+                whileHover={{ 
+                  y: -5,
                 }}
-                transition={{
-                  type: 'spring', 
-                  stiffness: 300, 
-                  damping: 20 
-                }}
+                style={{
+                  boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)'
+                } as React.CSSProperties}
               >
-                <span className="font-medium text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-600 text-lg">
-                  {client.name}
-                </span>
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-100/30 to-cyan-100/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="relative w-40 h-16 flex items-center justify-center">
+                  <span className="text-lg font-medium text-blue-900 whitespace-nowrap">
+                    {client.name}
+                  </span>
+                </div>
                 {client.hasVideo && (
                   <div className="absolute -top-2 -right-2 w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center shadow-md">
-                    <div className="w-2 h-2 bg-white rounded-full" />
+                    <Play className="w-3 h-3 text-white" />
                   </div>
                 )}
               </motion.div>
             ))}
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
 
         {/* Decorative elements */}
         <motion.div 
@@ -169,7 +139,7 @@ export function LogoStripIllustrative1({ clients }: LogoStripIllustrative1Props)
           transition={{
             duration: 15,
             repeat: Infinity,
-            repeatType: 'reverse',
+            repeatType: 'reverse' as const,
             ease: 'easeInOut',
           }}
         />
