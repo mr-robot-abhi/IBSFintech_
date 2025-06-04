@@ -6,7 +6,7 @@ import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
 import ClientLogoStrip from '@/components/common/ClientLogoStrip';
 import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardContent } from '@/components/ui/card';
-import { ArrowRight, TrendingUp, Shield, Zap, DollarSign, BarChart2, Globe, Play, Pause, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ArrowRight, TrendingUp, Shield, Zap, DollarSign, BarChart2, Globe, Play, Pause, ChevronLeft, ChevronRight, Users, Building, Factory, Truck, Newspaper, Handshake } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 interface Testimonial {
@@ -89,8 +89,8 @@ export default function IllustrativeTwo() {
   });
 
   // Parallax effect for content
-  const y = useTransform(scrollYProgress, [0, 1], ['0%', '30%']);
-  const opacity = useTransform(scrollYProgress, [0, 0.7, 1], [1, 0.7, 0.3]);
+  const y = useTransform(scrollYProgress, [0, 1], ['0%', '20%']);
+  const opacity = useTransform(scrollYProgress, [0, 0.7, 1], [1, 0.8, 0.5]);
 
   // Auto-rotate testimonials
   useEffect(() => {
@@ -147,10 +147,9 @@ export default function IllustrativeTwo() {
   }, []);
 
   return (
-    <div className="relative">
-      {/* Video Background Section */}
-      <div className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black">
-        {/* Video Background */}
+    <div className="relative bg-gray-50" ref={containerRef}>
+      {/* Main Banner with Video Background */}
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black">
         <div className="absolute inset-0 z-0">
           <motion.div 
             className="absolute inset-0"
@@ -168,80 +167,65 @@ export default function IllustrativeTwo() {
               <source src="/video1.mp4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
-            <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/40 to-black/80" />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/30 to-black/70" />
           </motion.div>
         </div>
-
-        {/* Play/Pause Button */}
         <button 
           onClick={togglePlayPause}
           className="absolute bottom-8 right-8 z-20 p-3 rounded-full bg-black/50 backdrop-blur-sm text-white hover:bg-black/70 transition-colors"
           aria-label={isPlaying ? 'Pause video' : 'Play video'}
         >
-          {isPlaying ? (
-            <Pause className="w-6 h-6" />
-          ) : (
-            <Play className="w-6 h-6" />
-          )}
+          {isPlaying ? <Pause className="w-6 h-6" /> : <Play className="w-6 h-6" />}
         </button>
-        
-        {/* Content Overlay */}
         <div className="container mx-auto px-4 relative z-10 pt-32 pb-20">
-          <div className="max-w-3xl mx-auto text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
+          <motion.div
+            className="max-w-3xl mx-auto text-center"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            <motion.h1 
+              className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-white"
+              style={{ y }}
             >
-              <motion.h1 
-                className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight"
-                style={{ y }}
+              Transform Your <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500">Financial Future</span>
+            </motion.h1>
+            <motion.p 
+              className="text-lg md:text-xl text-gray-200 mb-8"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+            >
+              Our end-to-end Treasury Management Platform empowers organizations with cutting-edge solutions for treasury, risk, trade finance, and supply chain finance.
+            </motion.p>
+            <motion.div 
+              className="flex flex-wrap gap-4 justify-center"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+            >
+              <Button 
+                size="lg" 
+                className="bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 group"
               >
-                <span className="text-white">Modern Treasury</span>{' '}
-                <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-                  Solutions
-                </span>
-              </motion.h1>
-              
-              <motion.p 
-                className="text-lg md:text-xl text-gray-200 mb-8"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
+                Get Started <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+              </Button>
+              <Button 
+                size="lg" 
+                variant="outline"
+                className="text-white border-white/60 hover:bg-white/10 hover:border-white/80 backdrop-blur-sm"
               >
-                Revolutionize your financial operations with our end-to-end treasury management platform powered by cutting-edge technology.
-              </motion.p>
-              
-              <motion.div 
-                className="flex flex-wrap gap-4 justify-center"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.6 }}
-              >
-                <Button 
-                  size="lg" 
-                  className="bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 group"
-                >
-                  Explore Solutions
-                  <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                </Button>
-                <Button 
-                  size="lg" 
-                  variant="outline"
-                  className="text-white border-white/60 hover:bg-white/10 hover:border-white/80 backdrop-blur-sm"
-                >
-                  Schedule a Demo
-                </Button>
-              </motion.div>
+                Schedule a Demo
+              </Button>
             </motion.div>
-          </div>
+          </motion.div>
         </div>
-      </div>
+      </section>
 
-      {/* Client Logo Strip */}
+      {/* Client Logo Strip (Unchanged) */}
       <ClientLogoStrip variant="illustrative2" />
 
-      {/* Winning Together Section */}
+      {/* Winning Together */}
       <section className="py-20 bg-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-5">
           <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
@@ -253,14 +237,13 @@ export default function IllustrativeTwo() {
             <rect width="100%" height="100%" fill="url(#grid3d)" />
           </svg>
         </div>
-        
         <div className="container mx-auto px-4 relative">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-center max-w-3xl mx-auto"
+            className="text-center max-w-3xl mx-auto mb-16"
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-800">
               <span className="relative">
@@ -268,17 +251,15 @@ export default function IllustrativeTwo() {
                 <span className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-blue-600 to-indigo-600"></span>
               </span>
             </h2>
-            <p className="text-lg text-gray-600 mb-8">
-              Leading organisations trust our comprehensive Treasury Management Platform for end-to-end digitization,
-              unlocking new levels of efficiency and financial control.
+            <p className="text-lg text-gray-600">
+              Leading organizations trust our comprehensive Treasury Management Platform for end-to-end digitization, unlocking agility, insights, and productivity.
             </p>
           </motion.div>
-
-          <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { title: "40%", description: "Reduced operational costs", icon: DollarSign },
-              { title: "70%", description: "Faster processing time", icon: Zap },
-              { title: "90%", description: "Higher accuracy in financial reporting", icon: TrendingUp }
+              { title: "40%", description: "Reduced operational costs", icon: DollarSign, color: "from-blue-600 to-indigo-600" },
+              { title: "70%", description: "Faster processing time", icon: Zap, color: "from-cyan-600 to-blue-600" },
+              { title: "90%", description: "Higher accuracy in financial reporting", icon: TrendingUp, color: "from-indigo-600 to-purple-600" }
             ].map((stat, index) => (
               <motion.div
                 key={index}
@@ -286,9 +267,10 @@ export default function IllustrativeTwo() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="text-center p-8 rounded-xl bg-gradient-to-br from-gray-50 to-gray-100 shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+                whileHover={{ y: -5 }}
+                className="text-center p-8 rounded-xl bg-gradient-to-br from-gray-50 to-gray-100 shadow-md hover:shadow-xl transition-all duration-300"
               >
-                <div className="inline-flex items-center justify-center bg-gradient-to-r from-blue-600 to-indigo-600 text-white p-4 rounded-xl mb-6 shadow-lg">
+                <div className={cn("inline-flex items-center justify-center p-4 rounded-xl mb-6 text-white bg-gradient-to-r", stat.color)}>
                   <stat.icon size={28} />
                 </div>
                 <h3 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 mb-3">{stat.title}</h3>
@@ -299,60 +281,29 @@ export default function IllustrativeTwo() {
         </div>
       </section>
 
-      {/* Our Offerings Section */}
+      {/* Our Offerings */}
       <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
         <div className="container mx-auto px-4">
           <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
             className="text-center max-w-3xl mx-auto mb-16"
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-800">Our Offerings</h2>
             <p className="text-lg text-gray-600">
-              Comprehensive suite of treasury management solutions designed to meet the most demanding financial challenges
+              A comprehensive suite of solutions designed to streamline your financial operations.
             </p>
           </motion.div>
-
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
-              {
-                title: "Trade Finance",
-                description: "Simplify letter of credit management, guarantees, and trade documentation",
-                icon: Globe,
-                color: "from-blue-600 to-blue-400"
-              },
-              {
-                title: "Cash Management",
-                description: "Real-time visibility into cash positions across multiple banks and accounts",
-                icon: DollarSign,
-                color: "from-indigo-600 to-indigo-400"
-              },
-              {
-                title: "Risk Management",
-                description: "Identify, measure, and mitigate financial risks effectively",
-                icon: Shield,
-                color: "from-purple-600 to-purple-400"
-              },
-              {
-                title: "Debt Management",
-                description: "Streamline loan processing and repayment tracking",
-                icon: BarChart2,
-                color: "from-cyan-600 to-cyan-400"
-              },
-              {
-                title: "Treasury Analytics",
-                description: "Data-driven insights to optimize treasury operations",
-                icon: TrendingUp,
-                color: "from-blue-600 to-indigo-600"
-              },
-              {
-                title: "Payment Solutions",
-                description: "Secure and efficient payment processing across currencies",
-                icon: Zap,
-                color: "from-indigo-600 to-purple-600"
-              }
+              { title: "Treasury Management", description: "Centralize and automate treasury processes for maximum efficiency.", icon: DollarSign, color: "from-blue-600 to-blue-400" },
+              { title: "Risk Management", description: "Proactively identify and mitigate financial risks.", icon: Shield, color: "from-indigo-600 to-indigo-400" },
+              { title: "Trade Finance", description: "Streamline trade documentation and financing.", icon: Globe, color: "from-purple-600 to-purple-400" },
+              { title: "Supply Chain Finance", description: "Optimize working capital and supplier relationships.", icon: Truck, color: "from-cyan-600 to-cyan-400" },
+              { title: "Debt Management", description: "Efficiently manage loans and repayments.", icon: BarChart2, color: "from-blue-600 to-indigo-600" },
+              { title: "Analytics & Insights", description: "Leverage data for strategic decision-making.", icon: TrendingUp, color: "from-indigo-600 to-purple-600" }
             ].map((offering, index) => (
               <motion.div
                 key={index}
@@ -360,33 +311,22 @@ export default function IllustrativeTwo() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                whileHover={{ 
-                  y: -8,
-                  transition: { type: 'spring', stiffness: 300 }
-                }}
+                whileHover={{ y: -8, transition: { type: 'spring', stiffness: 300 } }}
                 className="bg-white rounded-xl overflow-hidden shadow-lg relative group"
               >
-                <div className={cn(
-                  "h-2 w-full bg-gradient-to-r",
-                  offering.color
-                )} />
+                <div className={cn("h-2 w-full bg-gradient-to-r", offering.color)} />
                 <div className="p-8">
                   <div className="relative z-10">
-                    <div className={cn(
-                      "inline-flex items-center justify-center p-3 rounded-lg text-white mb-6 bg-gradient-to-r",
-                      offering.color
-                    )}>
+                    <div className={cn("inline-flex items-center justify-center p-3 rounded-lg text-white mb-6 bg-gradient-to-r", offering.color)}>
                       <offering.icon size={28} />
                     </div>
                     <h3 className="text-xl font-bold mb-3 text-gray-800 group-hover:text-blue-600 transition-colors">{offering.title}</h3>
                     <p className="text-gray-600 mb-6">{offering.description}</p>
                     <Button variant="ghost" className="text-blue-600 p-0 hover:bg-transparent hover:text-blue-800">
-                      Learn more <ArrowRight size={16} className="ml-1" />
+                      Learn More <ArrowRight size={16} className="ml-1" />
                     </Button>
                   </div>
                 </div>
-                
-                {/* 3D decorative elements */}
                 <div className="absolute bottom-0 right-0 w-24 h-24 opacity-10 transition-opacity group-hover:opacity-20">
                   <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
                     <circle cx="50" cy="50" r="40" fill="none" stroke="currentColor" strokeWidth="2" />
@@ -400,14 +340,297 @@ export default function IllustrativeTwo() {
         </div>
       </section>
 
-      {/* Testimonials Section */}
+      {/* Why Choose Us */}
+      <section className="py-20 bg-white relative overflow-hidden">
+        <div className="absolute inset-0 opacity-5">
+          <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern id="grid3d" width="40" height="40" patternUnits="userSpaceOnUse">
+                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#4338CA" strokeWidth="0.5" />
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#grid3d)" />
+          </svg>
+        </div>
+        <div className="container mx-auto px-4 relative">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center max-w-3xl mx-auto mb-16"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-800">
+              <span className="relative">
+                Why Choose Us
+                <span className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-blue-600 to-indigo-600"></span>
+              </span>
+            </h2>
+            <p className="text-lg text-gray-600">
+              Our platform delivers unmatched value through innovative features and tailored solutions.
+            </p>
+          </motion.div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              { title: "Integrated Platform", description: "Seamless end-to-end digitization across all financial operations.", icon: Globe, color: "from-blue-600 to-indigo-600" },
+              { title: "Advanced Analytics", description: "Real-time insights to drive strategic decisions.", icon: BarChart2, color: "from-cyan-600 to-blue-600" },
+              { title: "Scalable Solutions", description: "Flexible tools that grow with your business needs.", icon: TrendingUp, color: "from-indigo-600 to-purple-600" }
+            ].map((diff, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                whileHover={{ y: -5 }}
+                className="text-center p-8 rounded-xl bg-gradient-to-br from-gray-50 to-gray-100 shadow-md hover:shadow-xl transition-all duration-300"
+              >
+                <div className={cn("inline-flex items-center justify-center p-4 rounded-xl mb-6 text-white bg-gradient-to-r", diff.color)}>
+                  <diff.icon size={28} />
+                </div>
+                <h3 className="text-xl font-bold mb-3 text-gray-800">{diff.title}</h3>
+                <p className="text-gray-600">{diff.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Featured Industries */}
+      <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center max-w-3xl mx-auto mb-16"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-800">Featured Industries</h2>
+            <p className="text-lg text-gray-600">
+              Our Treasury Management System is tailored to meet the diverse needs of businesses across all industries.
+            </p>
+          </motion.div>
+          <div className="flex overflow-x-auto gap-6 pb-4">
+            {[
+              { name: "Automotive", icon: Truck },
+              { name: "Manufacturing", icon: Factory },
+              { name: "Financial Services", icon: DollarSign },
+              { name: "Healthcare", icon: Users },
+              { name: "Retail", icon: Building }
+            ].map((industry, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                whileHover={{ scale: 1.05 }}
+                className="flex-shrink-0 w-48 bg-white p-6 rounded-xl shadow-md text-center"
+              >
+                <div className="text-blue-600 mb-4">
+                  <industry.icon size={28} className="mx-auto" />
+                </div>
+                <p className="text-gray-800 font-medium">{industry.name}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Innovation in Action */}
+      <section className="py-20 bg-white relative overflow-hidden">
+        <div className="absolute inset-0 opacity-5">
+          <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern id="grid3d" width="40" height="40" patternUnits="userSpaceOnUse">
+                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#4338CA" strokeWidth="0.5" />
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#grid3d)" />
+          </svg>
+        </div>
+        <div className="container mx-auto px-4 relative">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center max-w-3xl mx-auto mb-16"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-800">
+              <span className="relative">
+                Innovation in Action
+                <span className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-blue-600 to-indigo-600"></span>
+              </span>
+            </h2>
+            <p className="text-lg text-gray-600">
+              Discover how our clients have transformed their operations with our platform.
+            </p>
+          </motion.div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              {
+                title: "Global Bank Success",
+                description: "Reduced processing time by 50% with automated treasury workflows.",
+                image: "/case-study-1.jpg"
+              },
+              {
+                title: "Manufacturing Efficiency",
+                description: "Improved cash flow management across 20+ global subsidiaries.",
+                image: "/case-study-2.jpg"
+              },
+              {
+                title: "Retail Optimization",
+                description: "Enhanced supply chain finance, saving $2M annually.",
+                image: "/case-study-3.jpg"
+              }
+            ].map((caseStudy, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                whileHover={{ y: -8, transition: { type: 'spring', stiffness: 300 } }}
+                className="bg-white rounded-xl overflow-hidden shadow-lg"
+              >
+                <Image
+                  src={caseStudy.image}
+                  alt={caseStudy.title}
+                  width={400}
+                  height={200}
+                  className="w-full h-48 object-cover"
+                />
+                <div className="p-6">
+                  <h3 className="text-xl font-bold mb-3 text-gray-800">{caseStudy.title}</h3>
+                  <p className="text-gray-600 mb-6">{caseStudy.description}</p>
+                  <Button variant="ghost" className="text-blue-600 p-0 hover:bg-transparent hover:text-blue-800">
+                    Read More <ArrowRight size={16} className="ml-1" />
+                  </Button>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Strategic Partnerships */}
+      <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center max-w-3xl mx-auto mb-16"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-800">Strategic Partnerships</h2>
+            <p className="text-lg text-gray-600">
+              We collaborate with industry leaders to deliver cutting-edge solutions.
+            </p>
+          </motion.div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {['Partner A', 'Partner B', 'Partner C', 'Partner D'].map((partner, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                whileHover={{ scale: 1.05 }}
+                className="bg-white p-6 rounded-xl shadow-md flex items-center justify-center"
+              >
+                <Handshake size={24} className="text-blue-600 mr-2" />
+                <p className="text-gray-800 font-medium">{partner}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Latest News */}
+      <section className="py-20 bg-white relative overflow-hidden">
+        <div className="absolute inset-0 opacity-5">
+          <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern id="grid3d" width="40" height="40" patternUnits="userSpaceOnUse">
+                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#4338CA" strokeWidth="0.5" />
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#grid3d)" />
+          </svg>
+        </div>
+        <div className="container mx-auto px-4 relative">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center max-w-3xl mx-auto mb-16"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-800">
+              <span className="relative">
+                Latest News
+                <span className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-blue-600 to-indigo-600"></span>
+              </span>
+            </h2>
+            <p className="text-lg text-gray-600">
+              Stay updated with the latest developments and achievements from our platform.
+            </p>
+          </motion.div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              {
+                title: "New Feature Release",
+                date: "May 2025",
+                description: "Introducing advanced analytics for real-time treasury insights."
+              },
+              {
+                title: "Global Expansion",
+                date: "April 2025",
+                description: "Now serving clients in 30+ countries with localized solutions."
+              },
+              {
+                title: "Award Recognition",
+                date: "March 2025",
+                description: "Named top treasury platform by Financial Tech Awards."
+              }
+            ].map((news, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                whileHover={{ y: -8, transition: { type: 'spring', stiffness: 300 } }}
+                className="bg-white rounded-xl shadow-md"
+              >
+                <div className="p-6">
+                  <div className="flex items-center mb-4">
+                    <Newspaper size={24} className="text-blue-600 mr-2" />
+                    <p className="text-sm text-gray-500">{news.date}</p>
+                  </div>
+                  <h3 className="text-xl font-bold mb-3 text-gray-800">{news.title}</h3>
+                  <p className="text-gray-600 mb-6">{news.description}</p>
+                  <Button variant="ghost" className="text-blue-600 p-0 hover:bg-transparent hover:text-blue-800">
+                    Read More <ArrowRight size={16} className="ml-1" />
+                  </Button>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials (Moved from Original) */}
       <section className="py-24 bg-gray-50 relative overflow-hidden">
         <div className="absolute inset-0 bg-grid-slate-100 [mask-image:linear-gradient(0deg,#fff,rgba(255,255,255,0.6))]"></div>
         <div className="container mx-auto px-4 relative">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.8 }}
             viewport={{ once: true }}
             className="text-center mb-16"
           >
@@ -419,7 +642,6 @@ export default function IllustrativeTwo() {
               Discover how forward-thinking companies are transforming their treasury operations
             </p>
           </motion.div>
-
           <div className="relative">
             <div className="relative overflow-hidden">
               <div className="relative h-[500px] w-full">
@@ -429,7 +651,6 @@ export default function IllustrativeTwo() {
                     const isCenter = position === 'center';
                     const isLeft = position === 'left';
                     const isRight = position === 'right';
-                  
                     return (
                       <motion.div
                         key={`${testimonial.id}-${position}`}
@@ -510,8 +731,6 @@ export default function IllustrativeTwo() {
                   })}
                 </AnimatePresence>
               </div>
-              
-              {/* Navigation Arrows */}
               <button 
                 onClick={goToPrev}
                 className="absolute left-0 top-1/2 -translate-y-1/2 -ml-4 z-20 w-12 h-12 rounded-full bg-white shadow-lg flex items-center justify-center text-blue-600 hover:bg-blue-50 transition-colors hover:scale-110 transform"
@@ -519,7 +738,6 @@ export default function IllustrativeTwo() {
               >
                 <ChevronLeft className="w-6 h-6" />
               </button>
-              
               <button 
                 onClick={goToNext}
                 className="absolute right-0 top-1/2 -translate-y-1/2 -mr-4 z-20 w-12 h-12 rounded-full bg-white shadow-lg flex items-center justify-center text-blue-600 hover:bg-blue-50 transition-colors hover:scale-110 transform"
@@ -527,8 +745,6 @@ export default function IllustrativeTwo() {
               >
                 <ChevronRight className="w-6 h-6" />
               </button>
-              
-              {/* Dots Navigation */}
               <div className="absolute bottom-0 left-1/2 -translate-x-1/2 flex space-x-2 z-20">
                 {testimonials.map((_, index) => (
                   <button
@@ -546,39 +762,46 @@ export default function IllustrativeTwo() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-blue-900 to-indigo-900 text-white">
-        <div className="container mx-auto px-4">
+      {/* Let's Connect (Footer) */}
+      <footer className="py-20 bg-gradient-to-r from-blue-900 to-indigo-900 text-white relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <svg width="100%" height="100%" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="50" r="45" fill="none" stroke="white" strokeWidth="0.5" />
+            <circle cx="50" cy="50" r="30" fill="none" stroke="white" strokeWidth="0.5" />
+            <circle cx="50" cy="50" r="15" fill="none" stroke="white" strokeWidth="0.5" />
+          </svg>
+        </div>
+        <div className="container mx-auto px-4 relative">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="max-w-3xl mx-auto text-center relative"
+            className="max-w-3xl mx-auto text-center"
           >
-            <div className="absolute inset-0 -z-10 opacity-10">
-              <svg width="100%" height="100%" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="50" cy="50" r="45" fill="none" stroke="white" strokeWidth="0.5" />
-                <circle cx="50" cy="50" r="30" fill="none" stroke="white" strokeWidth="0.5" />
-                <circle cx="50" cy="50" r="15" fill="none" stroke="white" strokeWidth="0.5" />
-              </svg>
-            </div>
-            
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Transform Your Treasury Operations?</h2>
-            <p className="text-xl mb-8 text-blue-100">
-              Join hundreds of businesses already optimizing their financial operations with IBS Fintech
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">Let's Connect</h2>
+            <p className="text-lg mb-8 text-blue-100">
+              Ready to transform your financial operations? Get in touch with our team today.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Button size="lg" className="bg-white text-blue-900 hover:bg-blue-50">
-                Request a Demo
+                Contact Us
               </Button>
               <Button size="lg" variant="outline" className="text-white border-white hover:bg-white/10">
-                Contact Sales
+                Request a Demo
               </Button>
+            </div>
+            <div className="mt-8">
+              <p className="text-sm">© 2025 Treasury Management Platform. All rights reserved.</p>
+              <div className="flex justify-center gap-4 mt-4">
+                <a href="#" className="text-blue-200 hover:text-white">Privacy Policy</a>
+                <a href="#" className="text-blue-200 hover:text-white">Terms of Service</a>
+                <a href="#" className="text-blue-200 hover:text-white">Support</a>
+              </div>
             </div>
           </motion.div>
         </div>
-      </section>
+      </footer>
     </div>
   );
 }

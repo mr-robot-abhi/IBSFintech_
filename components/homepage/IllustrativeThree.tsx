@@ -1,291 +1,611 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
-import ClientLogoStrip from '@/components/common/ClientLogoStrip';
-import { Button } from '@/components/ui/button';
-import { Card, CardHeader, CardContent } from '@/components/ui/card';
-import { ArrowRight, TrendingUp, Shield, Zap, DollarSign, BarChart2, Globe } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import Tilt from 'react-parallax-tilt';
+import {
+  ArrowRight,
+  DollarSign,
+  Zap,
+  Shield,
+  BarChart2,
+  Globe,
+  Car,
+  Factory,
+  Building,
+  Handshake,
+  Newspaper,
+  Users,
+} from 'lucide-react';
 
 export default function IllustrativeThree() {
-  const [isVisible, setIsVisible] = useState(false);
+  const [clientIndex, setClientIndex] = useState(0);
+  const [industryIndex, setIndustryIndex] = useState(0);
+  const clientRef = useRef<NodeJS.Timeout | null>(null);
+  const industryRef = useRef<NodeJS.Timeout | null>(null);
+
+  const clients = ['BankCorp', 'TechFin', 'GlobalTrade', 'RetailPay', 'AutoFinance', 'ManuBank'];
+  const industries = [
+    { name: 'Automotive', icon: Car, description: 'Streamlined supply chain finance.', metric: '30% Cost Reduction' },
+    { name: 'Manufacturing', icon: Factory, description: 'Optimized cash flows.', metric: '40% Efficiency Gain' },
+    { name: 'Financial Services', icon: Building, description: 'Enhanced risk analytics.', metric: '50% Risk Reduction' },
+    { name: 'Retail', icon: Users, description: 'Improved payment processing.', metric: '25% Savings' },
+  ];
 
   useEffect(() => {
-    setIsVisible(true);
+    clientRef.current = setInterval(() => {
+      setClientIndex((prev) => (prev + 1) % clients.length);
+    }, 3000);
+    industryRef.current = setInterval(() => {
+      setIndustryIndex((prev) => (prev + 1) % industries.length);
+    }, 4000);
+    return () => {
+      if (clientRef.current) clearInterval(clientRef.current);
+      if (industryRef.current) clearInterval(industryRef.current);
+    };
   }, []);
 
   const containerVariants = {
     hidden: { opacity: 0 },
-    visible: { 
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2
-      }
-    }
+    visible: { opacity: 1, transition: { staggerChildren: 0.2 } },
   };
 
   const itemVariants = {
     hidden: { y: 20, opacity: 0 },
-    visible: { 
-      y: 0, 
-      opacity: 1,
-      transition: {
-        type: 'spring',
-        stiffness: 100
-      }
+    visible: { y: 0, opacity: 1, transition: { type: 'spring', stiffness: 100 } },
+  };
+
+  const scrollVariants = {
+    hidden: { x: 50, opacity: 0 },
+    visible: { x: 0, opacity: 1, transition: { duration: 0.5 } },
+    exit: { x: -50, opacity: 0, transition: { duration: 0.5 } },
+  };
+
+  const handleScrollHover = (type: 'client' | 'industry', isHovering: boolean) => {
+    const ref = type === 'client' ? clientRef : industryRef;
+    if (isHovering && ref.current) {
+      clearInterval(ref.current);
+    } else if (!isHovering) {
+      ref.current = setInterval(() => {
+        if (type === 'client') {
+          setClientIndex((prev) => (prev + 1) % clients.length);
+        } else {
+          setIndustryIndex((prev) => (prev + 1) % industries.length);
+        }
+      }, type === 'client' ? 3000 : 4000);
     }
   };
 
   return (
-    <div className="overflow-x-hidden">
+    <div className="bg-gray-50 overflow-x-hidden">
       {/* Main Banner */}
-      <section className="pt-28 pb-16 px-4 bg-gradient-to-b from-[#6AB187] to-white">
-        <div className="container mx-auto max-w-6xl">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-            >
-              <div className="inline-block px-4 py-1 rounded-full bg-[#20948B] text-white text-sm font-medium mb-4">
-                Modern Treasury Solutions
-              </div>
-              <h1 className="text-4xl md:text-5xl font-bold mb-4 text-gray-800 leading-tight">
-                Smarter <span className="text-[#20948B]">Treasury</span> Management
-              </h1>
-              <p className="text-lg text-gray-600 mb-8">
-                Optimize your financial operations with our AI-powered treasury management platform. 
-                Reduce costs, improve efficiency, and gain real-time insights.
-              </p>
-              <div className="flex flex-wrap gap-4">
-                <Button className="bg-[#20948B] hover:bg-[#1a7a72] text-white">
-                  Get Started
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-                <Button variant="outline" className="border-[#20948B] text-[#20948B] hover:bg-[#6AB187]/20">
-                  Learn More
-                </Button>
-              </div>
-            </motion.div>
-            
-            <motion.div 
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="relative"
-            >
-              <div className="relative z-10 bg-white p-6 rounded-xl shadow-lg">
-                <div className="grid grid-cols-2 gap-4">
-                  <Card className="border-[#A1D6E2] hover:border-[#1995AD] transition-colors">
-                    <CardHeader className="pb-2">
-                      <div className="h-10 w-10 rounded-full bg-[#E6F3F6] flex items-center justify-center mb-2">
-                        <DollarSign className="h-5 w-5 text-[#1995AD]" />
-                      </div>
-                      <h3 className="font-semibold">Cost Savings</h3>
-                    </CardHeader>
-                    <CardContent>
-                      <p className="text-2xl font-bold text-[#20948B]">40%</p>
-                      <p className="text-sm text-gray-500">Reduction in operational costs</p>
-                    </CardContent>
-                  </Card>
-                  
-                  <Card className="border-[#A1D6E2] hover:border-[#1995AD] transition-colors">
-                    <CardHeader className="pb-2">
-                      <div className="h-10 w-10 rounded-full bg-[#E6F3F6] flex items-center justify-center mb-2">
-                        <TrendingUp className="h-5 w-5 text-[#1995AD]" />
-                      </div>
-                      <h3 className="font-semibold">Efficiency</h3>
-                    </CardHeader>
-                    <CardContent>
-                      <p className="text-2xl font-bold text-[#1995AD]">70%</p>
-                      <p className="text-sm text-gray-500">Faster processes</p>
-                    </CardContent>
-                  </Card>
-                </div>
-              </div>
-              
-              <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-[#1995AD] rounded-full opacity-20"></div>
-              <div className="absolute -top-4 -left-4 w-24 h-24 bg-[#A1D6E2] rounded-full opacity-40"></div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Client Logo Strip */}
-      <ClientLogoStrip variant="illustrative3" />
-
-      {/* Features Section */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
-            className="text-center max-w-3xl mx-auto mb-16"
-          >
-            <h2 className="text-3xl font-bold mb-4 text-gray-800">Comprehensive Treasury Solutions</h2>
-            <p className="text-lg text-gray-600">
-              Our platform offers everything you need to manage your treasury operations efficiently and effectively.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                icon: <DollarSign className="h-8 w-8 text-[#1995AD]" />,
-                title: "Cash Management",
-                description: "Real-time cash positioning and forecasting for better liquidity management."
-              },
-              {
-                icon: <Shield className="h-8 w-8 text-[#1995AD]" />,
-                title: "Risk Management",
-                description: "Identify, assess, and mitigate financial risks with advanced analytics."
-              },
-              {
-                icon: <Zap className="h-8 w-8 text-[#1995AD]" />,
-                title: "Automation",
-                description: "Streamline repetitive tasks and reduce manual errors with intelligent automation."
-              },
-              {
-                icon: <BarChart2 className="h-8 w-8 text-[#1995AD]" />,
-                title: "Analytics",
-                description: "Gain valuable insights with powerful data visualization and reporting tools."
-              },
-              {
-                icon: <Globe className="h-8 w-8 text-[#1995AD]" />,
-                title: "Global Support",
-                description: "24/7 support for your global treasury operations across multiple currencies."
-              },
-              {
-                icon: <TrendingUp className="h-8 w-8 text-[#1995AD]" />,
-                title: "Growth",
-                description: "Scalable solutions that grow with your business needs."
-              }
-            ].map((feature, index) => (
-              <motion.div
-                key={index}
-                variants={itemVariants}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                className="bg-white p-6 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow"
-              >
-                <div className="h-16 w-16 rounded-full bg-[#E6F3F6] flex items-center justify-center mb-4">
-                  {feature.icon}
-                </div>
-                <h3 className="text-xl font-semibold mb-2 text-gray-800">{feature.title}</h3>
-                <p className="text-gray-600">{feature.description}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials Section */}
-      <section className="py-24 px-4 bg-gray-50 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-30">
-          <div 
-            className="absolute inset-0"
-            style={{
-              backgroundImage: "url(" + "data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%2320948B' fill-opacity='0.2' fill-rule='evenodd'%3E%3Ccircle cx='5' cy='5' r='3'/%3E%3Ccircle cx='20' cy='5' r='3'/%3E%3Ccircle cx='35' cy='5' r='3'/%3E%3Ccircle cx='50' cy='5' r='3'/%3E%3Ccircle cx='65' cy='5' r='3'/%3E%3Ccircle cx='5' cy='20' r='3'/%3E%3Ccircle cx='20' cy='20' r='3'/%3E%3Ccircle cx='35' cy='20' r='3'/%3E%3Ccircle cx='50' cy='20' r='3'/%3E%3Ccircle cx='65' cy='20' r='3'/%3E%3Ccircle cx='5' cy='35' r='3'/%3E%3Ccircle cx='20' cy='35' r='3'/%3E%3Ccircle cx='35' cy='35' r='3'/%3E%3Ccircle cx='50' cy='35' r='3'/%3E%3Ccircle cx='65' cy='35' r='3'/%3E%3Ccircle cx='5' cy='50' r='3'/%3E%3Ccircle cx='20' cy='50' r='3'/%3E%3Ccircle cx='35' cy='50' r='3'/%3E%3Ccircle cx='50' cy='50' r='3'/%3E%3Ccircle cx='65' cy='50' r='3'/%3E%3Ccircle cx='5' cy='65' r='3'/%3E%3Ccircle cx='20' cy='65' r='3'/%3E%3Ccircle cx='35' cy='65' r='3'/%3E%3Ccircle cx='50' cy='65' r='3'/%3E%3Ccircle cx='65' cy='65' r='3'/%3E%3C/g%3E%3C/svg%3E" + ")"
-            }}
+      <section className="relative pt-28 pb-16 px-4 bg-gradient-to-b from-teal-700 to-teal-300">
+        <div className="absolute inset-0 opacity-20">
+          <Image
+            src="https://images.unsplash.com/photo-1551288049-b11560792b00?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80"
+            alt="Financial dashboard"
+            fill
+            className="object-cover"
           />
         </div>
-        
-        <div className="container mx-auto max-w-6xl relative">
+        <div className="container mx-auto max-w-6xl relative z-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              <div className="inline-block px-4 py-2 rounded-full bg-teal-800 text-white text-sm font-semibold mb-4">
+                Next-Gen Treasury Solutions
+              </div>
+              <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 leading-tight">
+                Empower Your <span className="text-teal-200">Financial Future</span>
+              </h1>
+              <p className="text-lg text-teal-100 mb-8">
+                Transform treasury operations with AI-driven insights, seamless automation, and global scalability.
+              </p>
+              <div className="flex gap-4">
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                  <button className="px-4 py-2 bg-teal-200 text-teal-900 rounded-md hover:bg-teal-300 flex items-center">
+                    Start Now <ArrowRight className="ml-2 h-4 w-4" />
+                  </button>
+                </motion.div>
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                  <button className="px-4 py-2 border border-teal-200 text-teal-200 rounded-md hover:bg-teal-200/20">
+                    Explore Features
+                  </button>
+                </motion.div>
+              </div>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              <Tilt tiltMaxAngleX={10} tiltMaxAngleY={10}>
+                <div className="bg-white/20 backdrop-blur-lg p-6 rounded-xl border border-teal-200 shadow-lg">
+                  <Image
+                    src="https://images.unsplash.com/photo-1551288049-b11560792b00?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                    alt="Treasury dashboard"
+                    width={600}
+                    height={400}
+                    className="rounded-lg"
+                  />
+                </div>
+              </Tilt>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Winning Together */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4 max-w-6xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            transition={{ duration: 0.6 }}
+            className="text-center mb-12"
           >
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Voices of Trust</h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Join thousands of businesses that trust us with their treasury operations
+            <h2 className="text-3xl font-bold text-gray-800 mb-4">Winning Together</h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              Leading organizations leverage our platform for end-to-end digitization of treasury, risk, trade finance,
+              and supply chain operations, achieving agility, insights, and productivity.
             </p>
           </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
-            {[
-              {
-                name: 'Sophia Martinez',
-                role: 'CFO, GreenFuture Inc.',
-                image: '/avatars/woman4.jpg',
-                content: 'The automation features saved us countless hours. Our team can now focus on strategic initiatives rather than manual processes.',
-                delay: 0.1
-              },
-              {
-                name: 'Raj Patel',
-                role: 'Treasury Manager, TechNova',
-                image: '/avatars/man4.jpg',
-                content: 'The risk management tools are exceptional. We\'ve reduced our exposure by 40% while improving our returns.',
-                delay: 0.2
-              },
-              {
-                name: 'Olivia Chen',
-                role: 'Finance Director, GlobalRetail',
-                image: '/avatars/woman5.jpg',
-                content: 'The implementation was seamless, and the support team has been outstanding. A true partner in our financial transformation.',
-                delay: 0.3
-              }
-            ].map((testimonial, index) => (
+          {/* Client Scroll */}
+          <div
+            className="relative bg-teal-50 p-6 rounded-xl mb-12"
+            onMouseEnter={() => handleScrollHover('client', true)}
+            onMouseLeave={() => handleScrollHover('client', false)}
+          >
+            <AnimatePresence mode="wait">
               <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30, rotate: index % 2 === 0 ? -2 : 2 }}
-                whileInView={{ opacity: 1, y: 0, rotate: 0 }}
-                transition={{ duration: 0.6, delay: testimonial.delay }}
-                viewport={{ once: true, margin: "-50px" }}
-                whileHover={{ 
-                  y: -10, 
-                  boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)' 
-                } as any}
-                className={`bg-white rounded-2xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-all relative z-10 ${
-                  index === 1 ? 'md:transform md:scale-105 md:z-20' : ''
-                }`}
+                key={clientIndex}
+                variants={scrollVariants}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+                className="flex items-center justify-center"
               >
-                <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 w-12 h-12 rounded-full bg-[#20948B] flex items-center justify-center text-white">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
-                  </svg>
-                </div>
-                <div className="flex flex-col items-center text-center">
-                  <div className="relative w-20 h-20 rounded-full overflow-hidden mb-4 border-4 border-[#20948B] border-opacity-20">
-                    <Image
-                      src={testimonial.image}
-                      alt={testimonial.name}
-                      fill
-                      className="object-cover"
-                    />
+                <Tilt tiltMaxAngleX={5} tiltMaxAngleY={5}>
+                  <div className="bg-white p-4 rounded-lg shadow-md flex items-center gap-4">
+                    <DollarSign className="h-8 w-8 text-teal-600" />
+                    <span className="text-lg font-semibold text-gray-800">{clients[clientIndex]}</span>
                   </div>
-                  <h4 className="text-lg font-bold text-gray-900">{testimonial.name}</h4>
-                  <p className="text-sm text-[#20948B] font-medium mb-4">{testimonial.role}</p>
-                  <div className="relative">
-                    <svg className="h-8 w-8 text-[#20948B] opacity-20 absolute -top-8 -left-2" fill="currentColor" viewBox="0 0 32 32">
-                      <path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.224 6.24 8.224 3.168 0 5.28-2.336 5.28-5.28 0-2.88-2.016-4.992-4.8-4.992-0.832 0-1.6 0.192-2.304 0.544 0.256-3.2 2.24-6.72 5.152-9.12l-0.192 0.032zM22.112 4c-4.896 3.456-8.352 9.12-8.352 15.36 0 5.088 3.072 8.224 6.24 8.224 3.168 0 5.28-2.336 5.28-5.28 0-2.88-2.016-4.992-4.8-4.992-0.832 0-1.6 0.192-2.304 0.544 0.256-3.2 2.24-6.72 5.12-9.12l-0.192 0.032z" />
-                    </svg>
-                    <p className="text-gray-700 italic relative z-10">"{testimonial.content}"</p>
-                    <svg className="h-8 w-8 text-[#20948B] opacity-20 absolute -bottom-4 -right-2 transform rotate-180" fill="currentColor" viewBox="0 0 32 32">
-                      <path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.224 6.24 8.224 3.168 0 5.28-2.336 5.28-5.28 0-2.88-2.016-4.992-4.8-4.992-0.832 0-1.6 0.192-2.304 0.544 0.256-3.2 2.24-6.72 5.152-9.12l-0.192 0.032zM22.112 4c-4.896 3.456-8.352 9.12-8.352 15.36 0 5.088 3.072 8.224 6.24 8.224 3.168 0 5.28-2.336 5.28-5.28 0-2.88-2.016-4.992-4.8-4.992-0.832 0-1.6 0.192-2.304 0.544 0.256-3.2 2.24-6.72 5.12-9.12l-0.192 0.032z" />
-                    </svg>
-                  </div>
-                </div>
+                </Tilt>
               </motion.div>
-            ))}
-          </div>
-          
-          <div className="mt-16 text-center">
-            <div className="inline-flex items-center space-x-2 bg-white px-6 py-3 rounded-full shadow-md">
-              {[1, 2, 3, 4, 5].map((star) => (
-                <svg key={star} className="w-6 h-6 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                </svg>
+            </AnimatePresence>
+            <div className="flex justify-center gap-2 mt-4 items-center">
+              {clients.map((_, index) => (
+                <button
+                  key={index}
+                  className={`h-2 w-2 rounded-full ${index === clientIndex ? 'bg-teal-600' : 'bg-gray-300'}`}
+                  onClick={() => setClientIndex(index)}
+                  aria-label={`Go to client ${index + 1}`}
+                />
               ))}
-              <span className="ml-2 text-gray-800 font-medium">Rated 4.9/5 by 500+ companies</span>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Our Offerings */}
+      <section className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4 max-w-6xl">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl font-bold text-gray-800 mb-4">Our Offerings</h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              Comprehensive modules to streamline every aspect of your treasury operations.
+            </p>
+          </motion.div>
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+          >
+            {[
+              {
+                icon: DollarSign,
+                title: 'Treasury Management',
+                description: 'Optimize cash flow and liquidity with real-time insights.',
+              },
+              {
+                icon: Shield,
+                title: 'Risk Management',
+                description: 'Mitigate financial risks with advanced analytics.',
+              },
+              {
+                icon: BarChart2,
+                title: 'Trade Finance',
+                description: 'Streamline trade operations with integrated tools.',
+              },
+              {
+                icon: Globe,
+                title: 'Supply Chain Finance',
+                description: 'Enhance supply chain efficiency with flexible financing.',
+              },
+            ].map((offering, index) => (
+              <motion.div key={index} variants={itemVariants}>
+                <Tilt tiltMaxAngleX={10} tiltMaxAngleY={10}>
+                  <div className="bg-white/80 backdrop-blur-md p-6 rounded-xl border border-teal-200 hover:shadow-xl transition-shadow">
+                    <div className="h-12 w-12 bg-teal-100 rounded-full flex items-center justify-center mb-4">
+                      <offering.icon className="h-6 w-6 text-teal-600" />
+                    </div>
+                    <h3 className="text-xl font-semibold text-gray-800 mb-2">{offering.title}</h3>
+                    <p className="text-gray-600 text-sm">{offering.description}</p>
+                    <motion.div whileHover={{ x: 5 }} className="mt-4">
+                      <button className="w-full px-4 py-2 border border-teal-600 text-teal-600 rounded-md hover:bg-teal-100 flex items-center justify-center">
+                        Learn More <ArrowRight className="ml-2 h-4 w-4" />
+                      </button>
+                    </motion.div>
+                  </div>
+                </Tilt>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Why Choose Us */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4 max-w-6xl">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl font-bold text-gray-800 mb-4">Why Choose Us</h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              Unparalleled features and benefits that set our platform apart.
+            </p>
+          </motion.div>
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="grid grid-cols-1 md:grid-cols-3 gap-6"
+          >
+            {[
+              {
+                icon: Zap,
+                title: 'Innovative AI',
+                description: 'AI-driven insights for smarter financial decisions.',
+                stat: '80% Automation',
+              },
+              {
+                icon: Shield,
+                title: 'Trusted Reliability',
+                description: '99.9% uptime with robust security.',
+                stat: '99.9% Uptime',
+              },
+              {
+                icon: Globe,
+                title: 'Global Reach',
+                description: 'Support for multi-currency operations worldwide.',
+                stat: '50+ Countries',
+              },
+            ].map((diff, index) => (
+              <motion.div key={index} variants={itemVariants}>
+                <Tilt tiltMaxAngleX={10} tiltMaxAngleY={10}>
+                  <div className="bg-white/80 backdrop-blur-md p-6 rounded-xl border border-teal-200 hover:shadow-xl transition-shadow">
+                    <div className="h-12 w-12 bg-teal-100 rounded-full flex items-center justify-center mb-4">
+                      <diff.icon className="h-6 w-6 text-teal-600" />
+                    </div>
+                    <h3 className="text-xl font-semibold text-gray-800 mb-2">{diff.title}</h3>
+                    <p className="text-gray-600 text-sm">{diff.description}</p>
+                    <span className="mt-4 inline-block px-4 py-1 bg-teal-100 text-teal-600 text-sm font-medium rounded-full">
+                      {diff.stat}
+                    </span>
+                  </div>
+                </Tilt>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Featured Industries */}
+      <section className="py-16 bg-gray-50 relative">
+        <div className="absolute inset-0 opacity-10">
+          <Image
+            src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80"
+            alt="Global finance"
+            fill
+            className="object-cover"
+          />
+        </div>
+        <div className="container mx-auto px-4 max-w-6xl relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl font-bold text-gray-800 mb-4">Featured Industries</h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              Tailored solutions for diverse industries, delivering agility and integration.
+            </p>
+          </motion.div>
+          <div
+            className="max-w-2xl mx-auto"
+            onMouseEnter={() => handleScrollHover('industry', true)}
+            onMouseLeave={() => handleScrollHover('industry', false)}
+          >
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={industryIndex}
+                variants={scrollVariants}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+              >
+                <Tilt tiltMaxAngleX={10} tiltMaxAngleY={10}>
+                  <div className="bg-white/80 backdrop-blur-md p-6 rounded-xl border border-teal-200 shadow-lg">
+                    <div className="flex items-center gap-4">
+                      <div className="h-12 w-12 bg-teal-100 rounded-full flex items-center justify-center">
+                        {(() => {
+                          const Icon = industries[industryIndex].icon;
+                          return <Icon className="h-6 w-6 text-teal-600" />;
+                        })()}
+                      </div>
+                      <div>
+                        <h3 className="text-xl font-semibold text-gray-800">{industries[industryIndex].name}</h3>
+                        <p className="text-sm text-gray-600">{industries[industryIndex].description}</p>
+                        <p className="text-teal-600 font-medium text-sm mt-1">
+                          {industries[industryIndex].metric}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </Tilt>
+              </motion.div>
+            </AnimatePresence>
+            <div className="flex justify-center gap-2 mt-4">
+              {industries.map((_, index) => (
+                <button
+                  key={index}
+                  className={`h-2 w-2 rounded-full ${index === industryIndex ? 'bg-teal-600' : 'bg-gray-300'}`}
+                  onClick={() => setIndustryIndex(index)}
+                  aria-label={`Go to industry ${index + 1}`}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Innovation in Action */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4 max-w-6xl">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl font-bold text-gray-800 mb-4">Innovation in Action</h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              Real-world success stories showcasing the impact of our platform.
+            </p>
+          </motion.div>
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="grid grid-cols-1 md:grid-cols-3 gap-6"
+          >
+            {[
+              {
+                title: 'Global Bank Transformation',
+                description: 'Reduced processing time by 50% with automated workflows.',
+                image: 'https://images.unsplash.com/photo-1556740738-b6a63e27c4df?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+                stat: '50% Time Saved',
+              },
+              {
+                title: 'Retail Optimization',
+                description: 'Saved $2M annually through streamlined payments.',
+                image: 'https://images.unsplash.com/photo-1556740738-b6a63e27c4df?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+                stat: '$2M Savings',
+              },
+              {
+                title: 'Manufacturing Efficiency',
+                description: 'Improved cash flow by 40% across subsidiaries.',
+                image: 'https://images.unsplash.com/photo-1556740738-b6a63e27c4df?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+                stat: '40% Growth',
+              },
+            ].map((caseStudy, index) => (
+              <motion.div key={index} variants={itemVariants}>
+                <Tilt tiltMaxAngleX={10} tiltMaxAngleY={10}>
+                  <div className="bg-white/80 backdrop-blur-md rounded-xl border border-teal-200 overflow-hidden hover:shadow-xl transition-shadow">
+                    <Image
+                      src={caseStudy.image}
+                      alt={caseStudy.title}
+                      width={600}
+                      height={300}
+                      className="w-full h-48 object-cover"
+                    />
+                    <div className="p-6">
+                      <h3 className="text-xl font-semibold text-gray-800 mb-2">{caseStudy.title}</h3>
+                      <p className="text-gray-600 text-sm mb-4">{caseStudy.description}</p>
+                      <span className="inline-block px-4 py-1 bg-teal-100 text-teal-600 text-sm font-medium rounded-full mb-4">
+                        {caseStudy.stat}
+                      </span>
+                      <motion.div whileHover={{ x: 5 }}>
+                        <button className="w-full px-4 py-2 border border-teal-600 text-teal-600 rounded-md hover:bg-teal-100 flex items-center justify-center">
+                          Read More <ArrowRight className="ml-2 h-4 w-4" />
+                        </button>
+                      </motion.div>
+                    </div>
+                  </div>
+                </Tilt>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Strategic Partnerships */}
+      <section className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4 max-w-6xl">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl font-bold text-gray-800 mb-4">Strategic Partnerships</h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              Collaborations with industry leaders to enhance our platform’s capabilities.
+            </p>
+          </motion.div>
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="grid grid-cols-2 md:grid-cols-4 gap-6"
+          >
+            {['FinTech Solutions', 'Global Bank', 'TradeNet', 'PaySys'].map((partner, index) => (
+              <motion.div key={index} variants={itemVariants}>
+                <Tilt tiltMaxAngleX={10} tiltMaxAngleY={10}>
+                  <div className="bg-white/80 backdrop-blur-md p-6 rounded-xl border border-teal-200 flex items-center gap-4 hover:shadow-xl transition-shadow">
+                    <Handshake className="h-6 w-6 text-teal-600" />
+                    <span className="text-gray-800 font-medium">{partner}</span>
+                  </div>
+                </Tilt>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Latest News */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4 max-w-6xl">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl font-bold text-gray-800 mb-4">Latest News</h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              Stay updated with our latest achievements and insights.
+            </p>
+          </motion.div>
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="grid grid-cols-1 md:grid-cols-3 gap-6"
+          >
+            {[
+              {
+                title: 'AI Dashboard Launch',
+                date: 'May 2025',
+                description: 'New real-time analytics for treasury insights.',
+                stat: '40% Faster',
+              },
+              {
+                title: 'Global Expansion',
+                date: 'April 2025',
+                description: 'Now serving 30+ countries.',
+                stat: '30+ Countries',
+              },
+              {
+                title: 'FinTech Award',
+                date: 'March 2025',
+                description: 'Named Top Treasury Platform 2025.',
+                stat: 'Award Winner',
+              },
+            ].map((news, index) => (
+              <motion.div key={index} variants={itemVariants}>
+                <Tilt tiltMaxAngleX={10} tiltMaxAngleY={10}>
+                  <div className="bg-white/80 backdrop-blur-md p-6 rounded-xl border border-teal-200 hover:shadow-xl transition-shadow">
+                    <div className="flex items-center mb-4">
+                      <Newspaper className="h-5 w-5 text-teal-600 mr-2" />
+                      <span className="text-sm text-gray-500">{news.date}</span>
+                    </div>
+                    <h3 className="text-xl font-semibold text-gray-800 mb-2">{news.title}</h3>
+                    <p className="text-gray-600 text-sm mb-4">{news.description}</p>
+                    <span className="inline-block px-4 py-1 bg-teal-100 text-teal-600 text-sm font-medium rounded-full mb-4">
+                      {news.stat}
+                    </span>
+                    <motion.div whileHover={{ x: 5 }}>
+                      <button className="w-full px-4 py-2 border border-teal-600 text-teal-600 rounded-md hover:bg-teal-100 flex items-center justify-center">
+                        Read More <ArrowRight className="ml-2 h-4 w-4" />
+                      </button>
+                    </motion.div>
+                  </div>
+                </Tilt>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Let’s Connect */}
+      <section className="py-16 bg-gradient-to-r from-teal-700 to-teal-500 text-white">
+        <div className="container mx-auto px-4 max-w-6xl">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center"
+          >
+            <h2 className="text-3xl font-bold mb-4">Let’s Connect</h2>
+            <p className="text-lg mb-8 max-w-3xl mx-auto">
+              Ready to revolutionize your treasury operations? Contact us to explore our solutions.
+            </p>
+            <div className="flex flex-wrap justify-center gap-4">
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <button className="px-4 py-2 bg-white text-teal-700 rounded-md hover:bg-gray-100 flex items-center">
+                  Contact Us <ArrowRight className="ml-2 h-4 w-4" />
+                </button>
+              </motion.div>
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <button className="px-4 py-2 border border-white text-white rounded-md hover:bg-white/20">
+                  Request Demo
+                </button>
+              </motion.div>
+            </div>
+            <div className="mt-12">
+              <div className="flex justify-center gap-6 mb-4">
+                {['Twitter', 'LinkedIn', 'Email'].map((social) => (
+                  <a
+                    key={social}
+                    href="#"
+                    className="text-teal-200 hover:text-white transition-colors"
+                    aria-label={social}
+                  >
+                    {social}
+                  </a>
+                ))}
+              </div>
+              <p className="text-sm">© 2025 Treasury Management Platform. All Rights Reserved.</p>
+            </div>
+          </motion.div>
         </div>
       </section>
     </div>

@@ -6,7 +6,7 @@ import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 import ClientLogoStrip from '@/components/common/ClientLogoStrip';
 import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardContent } from '@/components/ui/card';
-import { ArrowRight, TrendingUp, Shield, Zap, DollarSign, BarChart2, Globe } from 'lucide-react';
+import { ArrowRight, TrendingUp, Shield, Zap, DollarSign, BarChart2, Globe, Users, Building, Factory, Truck, Newspaper, Handshake } from 'lucide-react';
 
 export default function IllustrativeOne() {
   const [isVisible, setIsVisible] = useState(false);
@@ -17,16 +17,14 @@ export default function IllustrativeOne() {
   });
 
   // Parallax effects
-  const y1 = useTransform(scrollYProgress, [0, 1], ['0%', '30%']);
-  const y2 = useTransform(scrollYProgress, [0, 1], ['0%', '-20%']);
-  const y3 = useTransform(scrollYProgress, [0, 1], ['0%', '15%']);
-  const opacity = useTransform(scrollYProgress, [0, 0.8, 1], [1, 0.8, 0.5]);
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
+  const y1 = useTransform(scrollYProgress, [0, 1], ['0%', '20%']);
+  const y2 = useTransform(scrollYProgress, [0, 1], ['0%', '-15%']);
+  const opacity = useTransform(scrollYProgress, [0, 0.8, 1], [1, 0.9, 0.7]);
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.05]);
 
   // Smooth the scroll values
   const smoothY1 = useSpring(y1, { stiffness: 100, damping: 30 });
   const smoothY2 = useSpring(y2, { stiffness: 100, damping: 30 });
-  const smoothY3 = useSpring(y3, { stiffness: 100, damping: 30 });
   const smoothOpacity = useSpring(opacity, { stiffness: 100, damping: 30 });
   const smoothScale = useSpring(scale, { stiffness: 100, damping: 30 });
 
@@ -59,233 +57,111 @@ export default function IllustrativeOne() {
   };
 
   return (
-    <div className="overflow-x-hidden" ref={containerRef}>
-      {/* Main Banner with Parallax */}
-      <section className="relative pt-28 pb-16 px-4 min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Background Layers */}
-        <div className="absolute inset-0 z-0 overflow-hidden">
+    <div className="overflow-x-hidden bg-gray-50" ref={containerRef}>
+      {/* Main Banner */}
+      <section className="relative pt-32 pb-20 px-4 min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-900 via-blue-700 to-blue-500 text-white overflow-hidden">
+        <div className="absolute inset-0 z-0">
           <motion.div 
-            className="absolute inset-0 bg-gradient-to-br from-[#F1F1F2] via-[#A1D6E2] to-[#1995AD] transition-opacity duration-300"
-            style={{ 
-              transform: `scale(${smoothScale.get()})`,
-              opacity: smoothOpacity.get()
-            } as React.CSSProperties}
+            className="absolute inset-0"
+            style={{
+              y: smoothY1 as unknown as number, 
+              scale: smoothScale as unknown as number
+            }}
+            animate={{ opacity: 0.2 }}
           >
-          <div className="absolute inset-0 opacity-10">
-            <svg width="100%" height="100%" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse">
-                  <path d="M 10 0 L 0 0 0 10" fill="none" stroke="blue" strokeWidth="0.5" />
-                </pattern>
-                <pattern id="circles" width="20" height="20" patternUnits="userSpaceOnUse">
-                  <circle cx="10" cy="10" r="2" fill="orange" />
-                </pattern>
-                <pattern id="squares" width="30" height="30" patternUnits="userSpaceOnUse">
-                  <rect x="5" y="5" width="20" height="20" rx="2" fill="none" stroke="teal" strokeWidth="0.5" />
-                </pattern>
-              </defs>
-              <rect width="100%" height="100%" fill="url(#grid)" />
-              <rect width="100%" height="100%" fill="url(#circles)" />
-              <rect width="100%" height="100%" fill="url(#squares)" />
-            </svg>
-          </div>
+            <Image
+              src="/bg_1.jpg"
+              alt="Background 1"
+              fill
+              className="object-cover mix-blend-overlay"
+              priority
+            />
           </motion.div>
-        </div>
-
-        {/* Parallax Background Images */}
-        <div className="absolute inset-0 z-0 overflow-hidden">
           <motion.div 
-            className="absolute inset-0 opacity-30"
-            style={{ y: smoothY1 }}
-          >
-          <Image
-            src="/bg_1.jpg"
-            alt="Background 1"
-            fill
-            className="object-cover mix-blend-overlay"
-            priority
-          />
-          </motion.div>
-        </div>
-
-        <div className="absolute inset-0 z-0 overflow-hidden">
-          <motion.div 
-            className="absolute inset-0 opacity-20"
+            className="absolute inset-0 opacity-10"
             style={{ y: smoothY2 }}
           >
-          <Image
-            src="/bg_6.jpg"
-            alt="Background 2"
-            fill
-            className="object-cover mix-blend-overlay"
-            priority
-          />
+            <Image
+              src="/bg_6.jpg"
+              alt="Background 2"
+              fill
+              className="object-cover mix-blend-overlay"
+              priority
+            />
           </motion.div>
         </div>
-        
-        <div className="container mx-auto max-w-6xl relative z-10">
+        <div className="container mx-auto max-w-7xl relative z-10">
           <motion.div 
-            className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center min-h-[80vh]"
+            className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
             initial="hidden"
             animate={isVisible ? "visible" : "hidden"}
             variants={containerVariants}
           >
-            <motion.div 
-              variants={itemVariants}
-              className="relative z-10"
-            >
-              <motion.h1 
-                className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-gray-800 leading-tight"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-              >
-                <span className="bg-gradient-to-r from-[#147a8f] to-[#1995AD] bg-clip-text text-transparent">
-                  Overwhelmed
-                </span>{' '}
-                by Treasury Operations?
-              </motion.h1>
-              
-              <motion.p 
-                className="text-lg md:text-xl text-gray-600 mb-8 max-w-lg"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 0.4 }}
-              >
-                Streamline your treasury management with our intelligent platform designed for modern enterprises.
-              </motion.p>
-              
-              <motion.div 
-                className="flex flex-wrap gap-4"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 0.6 }}
-              >
+            <motion.div variants={itemVariants}>
+              <h1 className="text-4xl lg:text-6xl font-bold mb-6 leading-tight">
+                Empower Your <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-200 to-blue-100">Treasury Operations</span>
+              </h1>
+              <p className="text-lg lg:text-xl mb-8 max-w-md">
+                Transform your treasury, risk, trade finance, and supply chain finance with our integrated platform for unparalleled efficiency and insights.
+              </p>
+              <div className="flex gap-4">
                 <Button 
                   size="lg" 
-                  className="bg-gradient-to-r from-[#147a8f] to-[#1995AD] hover:from-[#10687a] hover:to-[#147a8f] text-white shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5"
+                  className="bg-white text-blue-900 hover:bg-blue-100 font-semibold"
                 >
-                  Get Started
-                  <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                  Get Started <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
                 <Button 
                   size="lg" 
                   variant="outline"
-                  className="border-2 border-gray-300 hover:border-[#1995AD] hover:text-[#1995AD] bg-white/80 backdrop-blur-sm"
+                  className="border-white text-white hover:bg-blue-800 hover:border-blue-800"
                 >
                   Book a Demo
                 </Button>
-              </motion.div>
+              </div>
             </motion.div>
-            
-            <motion.div
-              className="relative"
+            <motion.div 
               variants={itemVariants}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ 
-                duration: 0.8,
-                delay: 0.4,
-                type: 'spring',
-                stiffness: 100,
-                damping: 20
-              }}
+              className="relative"
             >
-              <motion.div 
-                className="relative w-full aspect-square"
-                animate={{ 
-                  y: [0, -15, 0],
-                }}
-                transition={{ 
-                  repeat: Infinity, 
-                  duration: 6,
-                  ease: 'easeInOut'
-                }}
-              >
-                <motion.div 
-                  className="absolute inset-0 rounded-2xl overflow-hidden shadow-2xl border-4 border-white/20"
-                  style={{ y: smoothY3 }}
-                >
-                  <Image
-                    src="https://images.pexels.com/photos/3183165/pexels-photo-3183165.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-                    fill
-                    alt="Treasury Management"
-                    className="object-cover"
-                    priority
-                  />
-                </motion.div>
-                
-                {/* Floating elements */}
-                <motion.div 
-                  className="absolute -bottom-10 -left-10 w-28 h-28 text-blue-400 opacity-70"
-                  animate={{
-                    rotate: [0, 10, -5, 0],
-                  }}
-                  transition={{
-                    duration: 8,
-                    repeat: Infinity,
-                    repeatType: 'reverse',
-                    ease: 'easeInOut'
-                  }}
-                >
-                  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M10,50 Q25,25 50,50 T90,50" fill="none" stroke="currentColor" strokeWidth="2" />
-                    <circle cx="50" cy="50" r="20" fill="none" stroke="currentColor" strokeWidth="2" strokeDasharray="5,5" />
-                    <rect x="15" y="15" width="70" height="70" rx="10" fill="none" stroke="currentColor" strokeWidth="2" strokeDasharray="10,5" />
-                  </svg>
-                </motion.div>
-                
-                <motion.div 
-                  className="absolute -top-5 -right-5 w-24 h-24 text-orange-400 opacity-70"
-                  animate={{
-                    rotate: [0, -10, 5, 0],
-                  }}
-                  transition={{
-                    duration: 10,
-                    repeat: Infinity,
-                    repeatType: 'reverse',
-                    ease: 'easeInOut'
-                  }}
-                >
-                  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M20,20 C40,0 60,0 80,20 S100,60 80,80 S40,100 20,80 S0,40 20,20 Z" fill="none" stroke="currentColor" strokeWidth="2" />
-                  </svg>
-                </motion.div>
-              </motion.div>
+              <div className="relative w-full max-w-md mx-auto">
+                <Image
+                  src="https://images.pexels.com/photos/3183165/pexels-photo-3183165.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                  alt="Treasury Management"
+                  width={500}
+                  height={500}
+                  className="rounded-xl shadow-2xl"
+                  priority
+                />
+              </div>
             </motion.div>
           </motion.div>
         </div>
       </section>
 
-      {/* Client Logo Strip */}
+      {/* Client Logo Strip (Unchanged) */}
       <ClientLogoStrip variant="illustrative1" />
 
-      {/* Winning Together Section */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
+      {/* Winning Together */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto max-w-7xl px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-center max-w-3xl mx-auto"
+            className="text-center max-w-3xl mx-auto mb-12"
           >
-            <h2 className="text-3xl font-bold mb-6 text-gray-800">Winning Together</h2>
-            <p className="text-lg text-gray-600 mb-8">
-              Leading organisations use our comprehensive Treasury Management Platform for end-to-end digitization,
-              empowering financial teams to make better decisions and optimize operations.
+            <h2 className="text-4xl font-bold text-gray-800 mb-6">Winning Together</h2>
+            <p className="text-lg text-gray-600">
+              Leading organizations leverage our comprehensive Treasury Management Platform for end-to-end digitization of Treasury, Risk, Trade Finance, and Supply Chain Finance operations, achieving sustainable advantages, agility, and productivity.
             </p>
           </motion.div>
-
-          <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { title: "40%", description: "Reduced operational costs", icon: DollarSign },
-              { title: "70%", description: "Faster processing time", icon: Zap },
-              { title: "90%", description: "Higher accuracy in financial reporting", icon: TrendingUp }
+              { title: "40%", description: "Reduction in operational costs", icon: DollarSign },
+              { title: "70%", description: "Increase in processing speed", icon: Zap },
+              { title: "90%", description: "Improved financial reporting accuracy", icon: TrendingUp }
             ].map((stat, index) => (
               <motion.div
                 key={index}
@@ -293,12 +169,12 @@ export default function IllustrativeOne() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="text-center p-6 rounded-lg border-2 border-dashed border-blue-200 hover:border-blue-400 transition-colors"
+                className="p-6 bg-gray-50 rounded-lg shadow-sm hover:shadow-md transition-shadow"
               >
-                <div className="inline-flex items-center justify-center bg-blue-100 text-blue-600 p-3 rounded-full mb-4">
+                <div className="flex items-center justify-center bg-blue-100 text-blue-600 p-3 rounded-full mb-4">
                   <stat.icon size={24} />
                 </div>
-                <h3 className="text-3xl font-bold text-blue-600 mb-2">{stat.title}</h3>
+                <h3 className="text-2xl font-bold text-blue-900 mb-2">{stat.title}</h3>
                 <p className="text-gray-600">{stat.description}</p>
               </motion.div>
             ))}
@@ -306,54 +182,29 @@ export default function IllustrativeOne() {
         </div>
       </section>
 
-      {/* Our Offerings Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
+      {/* Our Offerings */}
+      <section className="py-20 bg-gray-100">
+        <div className="container mx-auto max-w-7xl px-4">
           <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
             viewport={{ once: true }}
             className="text-center max-w-3xl mx-auto mb-12"
           >
-            <h2 className="text-3xl font-bold mb-6 text-gray-800">Our Offerings</h2>
+            <h2 className="text-4xl font-bold text-gray-800 mb-6">Our Offerings</h2>
             <p className="text-lg text-gray-600">
-              Comprehensive suite of treasury management solutions designed to meet diverse financial needs
+              A comprehensive suite of solutions tailored to optimize your financial operations.
             </p>
           </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
-              {
-                title: "Trade Finance",
-                description: "Simplify letter of credit management, guarantees, and trade documentation",
-                icon: Globe
-              },
-              {
-                title: "Cash Management",
-                description: "Real-time visibility into cash positions across multiple banks and accounts",
-                icon: DollarSign
-              },
-              {
-                title: "Risk Management",
-                description: "Identify, measure, and mitigate financial risks effectively",
-                icon: Shield
-              },
-              {
-                title: "Debt Management",
-                description: "Streamline loan processing and repayment tracking",
-                icon: BarChart2
-              },
-              {
-                title: "Treasury Analytics",
-                description: "Data-driven insights to optimize treasury operations",
-                icon: TrendingUp
-              },
-              {
-                title: "Payment Solutions",
-                description: "Secure and efficient payment processing across currencies",
-                icon: Zap
-              }
+              { title: "Treasury Management", description: "Centralize and automate treasury processes for maximum efficiency.", icon: DollarSign },
+              { title: "Risk Management", description: "Proactively identify and mitigate financial risks.", icon: Shield },
+              { title: "Trade Finance", description: "Streamline trade documentation and financing.", icon: Globe },
+              { title: "Supply Chain Finance", description: "Optimize working capital and supplier relationships.", icon: Truck },
+              { title: "Debt Management", description: "Efficiently manage loans and repayments.", icon: BarChart2 },
+              { title: "Analytics & Insights", description: "Leverage data for strategic decision-making.", icon: TrendingUp }
             ].map((offering, index) => (
               <motion.div
                 key={index}
@@ -362,15 +213,15 @@ export default function IllustrativeOne() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
                 whileHover={{ scale: 1.03 }}
-                className="bg-white rounded-lg p-6 shadow-sm hover:shadow-md transition-all border-2 border-transparent hover:border-dashed hover:border-blue-300"
+                className="bg-white p-6 rounded-lg shadow-sm hover:shadow-lg transition-all"
               >
-                <div className="text-blue-500 mb-4">
-                  <offering.icon size={36} className="mx-auto" />
+                <div className="text-blue-600 mb-4">
+                  <offering.icon size={32} className="mx-auto" />
                 </div>
-                <h3 className="text-xl font-bold mb-2 text-gray-800">{offering.title}</h3>
+                <h3 className="text-xl font-semibold text-gray-800 mb-2">{offering.title}</h3>
                 <p className="text-gray-600">{offering.description}</p>
-                <Button variant="ghost" className="mt-4 text-blue-600">
-                  Learn more <ArrowRight size={16} className="ml-1" />
+                <Button variant="ghost" className="mt-4 text-blue-600 hover:text-blue-800">
+                  Learn More <ArrowRight size={16} className="ml-1" />
                 </Button>
               </motion.div>
             ))}
@@ -378,76 +229,142 @@ export default function IllustrativeOne() {
         </div>
       </section>
 
-      {/* Testimonials Section */}
-      <section className="py-20 px-4 bg-white">
-        <div className="container mx-auto max-w-6xl">
+      {/* Why Choose Us */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto max-w-7xl px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="text-center max-w-3xl mx-auto mb-12"
           >
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">What Our Clients Say</h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Hear from businesses that transformed their treasury operations with our platform
+            <h2 className="text-4xl font-bold text-gray-800 mb-6">Why Choose Us</h2>
+            <p className="text-lg text-gray-600">
+              Our platform stands out with unmatched features and benefits tailored for your success.
             </p>
           </motion.div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              { title: "Integrated Platform", description: "Seamless end-to-end digitization across all financial operations.", icon: Globe },
+              { title: "Advanced Analytics", description: "Real-time insights to drive strategic decisions.", icon: BarChart2 },
+              { title: "Scalable Solutions", description: "Flexible tools that grow with your business needs.", icon: TrendingUp }
+            ].map((diff, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="p-6 bg-gray-50 rounded-lg shadow-sm hover:shadow-lg transition-shadow"
+              >
+                <div className="text-blue-600 mb-4">
+                  <diff.icon size={32} className="mx-auto" />
+                </div>
+                <h3 className="text-xl font-semibold text-gray-800 mb-2">{diff.title}</h3>
+                <p className="text-gray-600">{diff.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
 
+      {/* Featured Industries */}
+      <section className="py-20 bg-gray-100">
+        <div className="container mx-auto max-w-7xl px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center max-w-3xl mx-auto mb-12"
+          >
+            <h2 className="text-4xl font-bold text-gray-800 mb-6">Featured Industries</h2>
+            <p className="text-lg text-gray-600">
+              Our Treasury Management System is tailored to meet the diverse needs of businesses across all industries, providing agile and integrated solutions.
+            </p>
+          </motion.div>
+          <div className="flex overflow-x-auto gap-6 pb-4">
+            {[
+              { name: "Automotive", icon: Truck },
+              { name: "Manufacturing", icon: Factory },
+              { name: "Financial Services", icon: DollarSign },
+              { name: "Healthcare", icon: Users },
+              { name: "Retail", icon: Building }
+            ].map((industry, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="flex-shrink-0 w-48 bg-white p-4 rounded-lg shadow-sm text-center"
+              >
+                <div className="text-blue-600 mb-2">
+                  <industry.icon size={28} className="mx-auto" />
+                </div>
+                <p className="text-gray-800 font-medium">{industry.name}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Innovation in Action */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto max-w-7xl px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center max-w-3xl mx-auto mb-12"
+          >
+            <h2 className="text-4xl font-bold text-gray-800 mb-6">Innovation in Action</h2>
+            <p className="text-lg text-gray-600">
+              Explore how our clients have transformed their operations with our platform.
+            </p>
+          </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
-                name: 'Sarah Chen',
-                role: 'CFO, TechNova',
-                image: '/avatars/woman1.jpg',
-                content: 'IBS Fintech revolutionized how we manage our treasury. The automation features saved us 20+ hours per month in manual work.',
-                rating: 5
+                title: "Global Bank Success",
+                description: "Reduced processing time by 50% with automated treasury workflows.",
+                image: "/case-study-1.jpg"
               },
               {
-                name: 'Michael Rodriguez',
-                role: 'Treasury Director, GlobalCorp',
-                image: '/avatars/man1.jpg',
-                content: 'The risk management tools are exceptional. We\'ve reduced our exposure by 35% while improving returns.',
-                rating: 5
+                title: "Manufacturing Efficiency",
+                description: "Improved cash flow management across 20+ global subsidiaries.",
+                image: "/case-study-2.jpg"
               },
               {
-                name: 'Priya Patel',
-                role: 'Finance Lead, GreenEnergy',
-                image: '/avatars/woman2.jpg',
-                content: 'Implementation was seamless, and the support team is outstanding. A true partner in our financial transformation.',
-                rating: 5
+                title: "Retail Optimization",
+                description: "Enhanced supply chain finance, saving $2M annually.",
+                image: "/case-study-3.jpg"
               }
-            ].map((testimonial, index) => (
+            ].map((caseStudy, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.2 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                whileHover={{ y: -10 }}
-                className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all border border-gray-100"
+                whileHover={{ scale: 1.03 }}
+                className="bg-gray-50 rounded-lg shadow-sm overflow-hidden"
               >
-                <div className="flex items-center mb-6">
-                  <div className="relative w-16 h-16 rounded-full overflow-hidden mr-4">
-                    <Image
-                      src={testimonial.image}
-                      alt={testimonial.name}
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-lg">{testimonial.name}</h4>
-                    <p className="text-gray-600">{testimonial.role}</p>
-                  </div>
-                </div>
-                <p className="text-gray-700 mb-4 italic">"{testimonial.content}"</p>
-                <div className="flex text-yellow-400">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <svg key={i} className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                    </svg>
-                  ))}
+                <Image
+                  src={caseStudy.image}
+                  alt={caseStudy.title}
+                  width={400}
+                  height={200}
+                  className="w-full h-48 object-cover"
+                />
+                <div className="p-6">
+                  <h3 className="text-xl font-semibold text-gray-800 mb-2">{caseStudy.title}</h3>
+                  <p className="text-gray-600">{caseStudy.description}</p>
+                  <Button variant="ghost" className="mt-4 text-blue-600 hover:text-blue-800">
+                    Read More <ArrowRight size={16} className="ml-1" />
+                  </Button>
                 </div>
               </motion.div>
             ))}
@@ -455,31 +372,128 @@ export default function IllustrativeOne() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-16 bg-blue-600 text-white">
-        <div className="container mx-auto px-4 text-center">
+      {/* Strategic Partnerships */}
+      <section className="py-20 bg-gray-100">
+        <div className="container mx-auto max-w-7xl px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="max-w-3xl mx-auto"
+            className="text-center max-w-3xl mx-auto mb-12"
           >
-            <h2 className="text-3xl font-bold mb-6">Ready to Transform Your Treasury Operations?</h2>
-            <p className="text-xl mb-8 text-blue-100">
-              Join hundreds of businesses already optimizing their financial operations with IBS Fintech
+            <h2 className="text-4xl font-bold text-gray-800 mb-6">Strategic Partnerships</h2>
+            <p className="text-lg text-gray-600">
+              We collaborate with industry leaders to deliver cutting-edge solutions.
+            </p>
+          </motion.div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {['Partner A', 'Partner B', 'Partner C', 'Partner D'].map((partner, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="bg-white p-4 rounded-lg shadow-sm flex items-center justify-center"
+              >
+                <Handshake size={24} className="text-blue-600 mr-2" />
+                <p className="text-gray-800 font-medium">{partner}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Latest News */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto max-w-7xl px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center max-w-3xl mx-auto mb-12"
+          >
+            <h2 className="text-4xl font-bold text-gray-800 mb-6">Latest News</h2>
+            <p className="text-lg text-gray-600">
+              Stay updated with the latest developments and achievements from our platform.
+            </p>
+          </motion.div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              {
+                title: "New Feature Release",
+                date: "May 2025",
+                description: "Introducing advanced analytics for real-time treasury insights."
+              },
+              {
+                title: "Global Expansion",
+                date: "April 2025",
+                description: "Now serving clients in 30+ countries with localized solutions."
+              },
+              {
+                title: "Award Recognition",
+                date: "March 2025",
+                description: "Named top treasury platform by Financial Tech Awards."
+              }
+            ].map((news, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="bg-gray-50 p-6 rounded-lg shadow-sm"
+              >
+                <div className="flex items-center mb-4">
+                  <Newspaper size={24} className="text-blue-600 mr-2" />
+                  <p className="text-sm text-gray-500">{news.date}</p>
+                </div>
+                <h3 className="text-xl font-semibold text-gray-800 mb-2">{news.title}</h3>
+                <p className="text-gray-600">{news.description}</p>
+                <Button variant="ghost" className="mt-4 text-blue-600 hover:text-blue-800">
+                  Read More <ArrowRight size={16} className="ml-1" />
+                </Button>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Let's Connect (Footer) */}
+      <footer className="py-16 bg-blue-900 text-white">
+        <div className="container mx-auto max-w-7xl px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center max-w-3xl mx-auto"
+          >
+            <h2 className="text-4xl font-bold mb-6">Let's Connect</h2>
+            <p className="text-lg mb-8">
+              Ready to transform your financial operations? Get in touch with our team today.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <Button size="lg" className="bg-white text-blue-600 hover:bg-blue-50">
+              <Button size="lg" className="bg-white text-blue-900 hover:bg-blue-100">
+                Contact Us
+              </Button>
+              <Button size="lg" variant="outline" className="border-white text-white hover:bg-blue-800">
                 Request a Demo
               </Button>
-              <Button size="lg" variant="outline" className="text-white border-white hover:bg-blue-700">
-                Contact Sales
-              </Button>
+            </div>
+            <div className="mt-8">
+              <p className="text-sm">© 2025 Treasury Management Platform. All rights reserved.</p>
+              <div className="flex justify-center gap-4 mt-4">
+                <a href="#" className="text-blue-200 hover:text-white">Privacy Policy</a>
+                <a href="#" className="text-blue-200 hover:text-white">Terms of Service</a>
+                <a href="#" className="text-blue-200 hover:text-white">Support</a>
+              </div>
             </div>
           </motion.div>
         </div>
-      </section>
+      </footer>
     </div>
   );
 }
