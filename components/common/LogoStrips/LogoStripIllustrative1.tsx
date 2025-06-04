@@ -71,7 +71,7 @@ export function LogoStripIllustrative1({ clients }: LogoStripIllustrative1Props)
         >
           <Image
             src="/images/background-pattern.png"
-            alt="Background pattern"
+            alt=""
             fill
             className="object-cover mix-blend-multiply"
             priority

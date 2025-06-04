@@ -83,7 +83,7 @@ export default function IllustrativeThree() {
       <section className="relative pt-28 pb-16 px-4 bg-gradient-to-b from-teal-700 to-teal-300">
         <div className="absolute inset-0 opacity-20">
           <Image
-            src="https://images.unsplash.com/photo-1551288049-b11560792b00?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80"
+            src="/bg_6.jpg"
             alt="Financial dashboard"
             fill
             className="object-cover"
@@ -126,7 +126,7 @@ export default function IllustrativeThree() {
               <Tilt tiltMaxAngleX={10} tiltMaxAngleY={10}>
                 <div className="bg-white/20 backdrop-blur-lg p-6 rounded-xl border border-teal-200 shadow-lg">
                   <Image
-                    src="https://images.unsplash.com/photo-1551288049-b11560792b00?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                    src="/bg_1.jpg"
                     alt="Treasury dashboard"
                     width={600}
                     height={400}

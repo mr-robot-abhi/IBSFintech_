@@ -82,7 +82,7 @@ export default function IllustrativeOne() {
             style={{ y: smoothY2 }}
           >
             <Image
-              src="/bg_6.jpg"
+              src="/bg_1.jpg"
               alt="Background 2"
               fill
               className="object-cover mix-blend-overlay"

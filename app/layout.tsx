@@ -1,9 +1,12 @@
 import './globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import Navbar from '@/components/layout/Navbar';
+import dynamic from 'next/dynamic';
 import Footer from '@/components/layout/Footer';
 import { ThemeProvider } from '@/components/ThemeProvider';
+
+// Import the NavbarWrapper component
+const NavbarWrapper = dynamic(() => import('@/components/layout/NavbarWrapper'), { ssr: false });
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -27,8 +30,9 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <div className="flex min-h-screen flex-col">
-            <Navbar />
-            <main className="flex-grow">{children}</main>
+            <NavbarWrapper>
+              {children}
+            </NavbarWrapper>
             <Footer />
           </div>
         </ThemeProvider>

@@ -205,17 +205,18 @@ export default function IllustrativeTwo() {
               transition={{ duration: 0.8, delay: 0.6 }}
             >
               <Button 
-                size="lg" 
-                className="bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 group"
+                variant="gradient" 
+                size="lg"
+                className="bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 transition-all duration-300 transform hover:-translate-y-0.5 group"
               >
                 Get Started <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
               </Button>
               <Button 
-                size="lg" 
-                variant="outline"
-                className="text-white border-white/60 hover:bg-white/10 hover:border-white/80 backdrop-blur-sm"
+                variant="gradient"
+                size="lg"
+                className="bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 transition-all duration-300 transform hover:-translate-y-0.5 group"
               >
-                Schedule a Demo
+                Schedule a Demo <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
               </Button>
             </motion.div>
           </motion.div>
