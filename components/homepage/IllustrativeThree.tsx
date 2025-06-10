@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import Tilt from 'react-parallax-tilt';
+import { ThemeToggle } from '@/components/ui/theme-toggle';
 import {
   ArrowRight,
   DollarSign,
@@ -78,9 +79,11 @@ export default function IllustrativeThree() {
   };
 
   return (
-    <div className="bg-gray-50 overflow-x-hidden">
+    <div className="bg-gray-50 dark:bg-gray-900 overflow-x-hidden transition-colors duration-200">
+      <ThemeToggle />
+      
       {/* Main Banner */}
-      <section className="relative pt-28 pb-16 px-4 bg-gradient-to-b from-teal-700 to-teal-300">
+      <section className="relative pt-28 pb-16 px-4 bg-gradient-to-b from-teal-700 to-teal-300 dark:from-teal-900 dark:to-teal-700">
         <div className="absolute inset-0 opacity-20">
           <Image
             src="/bg_6.jpg"
@@ -140,7 +143,7 @@ export default function IllustrativeThree() {
       </section>
 
       {/* Winning Together */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-white dark:bg-gray-800 transition-colors duration-200">
         <div className="container mx-auto px-4 max-w-6xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -149,15 +152,15 @@ export default function IllustrativeThree() {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl font-bold text-gray-800 mb-4">Winning Together</h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+            <h2 className="text-3xl font-bold text-gray-800 dark:text-white mb-4">Winning Together</h2>
+            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
               Leading organizations leverage our platform for end-to-end digitization of treasury, risk, trade finance,
               and supply chain operations, achieving agility, insights, and productivity.
             </p>
           </motion.div>
           {/* Client Scroll */}
           <div
-            className="relative bg-teal-50 p-6 rounded-xl mb-12"
+            className="relative bg-teal-50 dark:bg-teal-900/30 p-6 rounded-xl mb-12 transition-colors duration-200"
             onMouseEnter={() => handleScrollHover('client', true)}
             onMouseLeave={() => handleScrollHover('client', false)}
           >
@@ -171,9 +174,9 @@ export default function IllustrativeThree() {
                 className="flex items-center justify-center"
               >
                 <Tilt tiltMaxAngleX={5} tiltMaxAngleY={5}>
-                  <div className="bg-white p-4 rounded-lg shadow-md flex items-center gap-4">
-                    <DollarSign className="h-8 w-8 text-teal-600" />
-                    <span className="text-lg font-semibold text-gray-800">{clients[clientIndex]}</span>
+                  <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md flex items-center gap-4 transition-colors duration-200">
+                    <DollarSign className="h-8 w-8 text-teal-600 dark:text-teal-400" />
+                    <span className="text-lg font-semibold text-gray-800 dark:text-white">{clients[clientIndex]}</span>
                   </div>
                 </Tilt>
               </motion.div>
@@ -182,7 +185,9 @@ export default function IllustrativeThree() {
               {clients.map((_, index) => (
                 <button
                   key={index}
-                  className={`h-2 w-2 rounded-full ${index === clientIndex ? 'bg-teal-600' : 'bg-gray-300'}`}
+                  className={`h-2 w-2 rounded-full transition-colors duration-200 ${
+                    index === clientIndex ? 'bg-teal-600 dark:bg-teal-400' : 'bg-gray-300 dark:bg-gray-600'
+                  }`}
                   onClick={() => setClientIndex(index)}
                   aria-label={`Go to client ${index + 1}`}
                 />
@@ -193,7 +198,7 @@ export default function IllustrativeThree() {
       </section>
 
       {/* Our Offerings */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-gray-50 dark:bg-gray-900 transition-colors duration-200">
         <div className="container mx-auto px-4 max-w-6xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -202,8 +207,8 @@ export default function IllustrativeThree() {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl font-bold text-gray-800 mb-4">Our Offerings</h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+            <h2 className="text-3xl font-bold text-gray-800 dark:text-white mb-4">Our Offerings</h2>
+            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
               Comprehensive modules to streamline every aspect of your treasury operations.
             </p>
           </motion.div>
@@ -238,14 +243,14 @@ export default function IllustrativeThree() {
             ].map((offering, index) => (
               <motion.div key={index} variants={itemVariants}>
                 <Tilt tiltMaxAngleX={10} tiltMaxAngleY={10}>
-                  <div className="bg-white/80 backdrop-blur-md p-6 rounded-xl border border-teal-200 hover:shadow-xl transition-shadow">
-                    <div className="h-12 w-12 bg-teal-100 rounded-full flex items-center justify-center mb-4">
-                      <offering.icon className="h-6 w-6 text-teal-600" />
+                  <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-md p-6 rounded-xl border border-teal-200 dark:border-teal-700 hover:shadow-xl transition-all duration-200">
+                    <div className="h-12 w-12 bg-teal-100 dark:bg-teal-900 rounded-full flex items-center justify-center mb-4">
+                      <offering.icon className="h-6 w-6 text-teal-600 dark:text-teal-400" />
                     </div>
-                    <h3 className="text-xl font-semibold text-gray-800 mb-2">{offering.title}</h3>
-                    <p className="text-gray-600 text-sm">{offering.description}</p>
+                    <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-2">{offering.title}</h3>
+                    <p className="text-gray-600 dark:text-gray-300 text-sm">{offering.description}</p>
                     <motion.div whileHover={{ x: 5 }} className="mt-4">
-                      <button className="w-full px-4 py-2 border border-teal-600 text-teal-600 rounded-md hover:bg-teal-100 flex items-center justify-center">
+                      <button className="w-full px-4 py-2 border border-teal-600 dark:border-teal-400 text-teal-600 dark:text-teal-400 rounded-md hover:bg-teal-100 dark:hover:bg-teal-900/50 flex items-center justify-center transition-colors duration-200">
                         Learn More <ArrowRight className="ml-2 h-4 w-4" />
                       </button>
                     </motion.div>
@@ -473,7 +478,7 @@ export default function IllustrativeThree() {
           >
             <h2 className="text-3xl font-bold text-gray-800 mb-4">Strategic Partnerships</h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Collaborations with industry leaders to enhance our platform’s capabilities.
+              Collaborations with industry leaders to enhance our platform's capabilities.
             </p>
           </motion.div>
           <motion.div
@@ -564,7 +569,7 @@ export default function IllustrativeThree() {
         </div>
       </section>
 
-      {/* Let’s Connect */}
+      {/* Let's Connect */}
       <section className="py-16 bg-gradient-to-r from-teal-700 to-teal-500 text-white">
         <div className="container mx-auto px-4 max-w-6xl">
           <motion.div
@@ -574,7 +579,7 @@ export default function IllustrativeThree() {
             transition={{ duration: 0.6 }}
             className="text-center"
           >
-            <h2 className="text-3xl font-bold mb-4">Let’s Connect</h2>
+            <h2 className="text-3xl font-bold mb-4">Let's Connect</h2>
             <p className="text-lg mb-8 max-w-3xl mx-auto">
               Ready to revolutionize your treasury operations? Contact us to explore our solutions.
             </p>
