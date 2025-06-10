@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import dynamic from 'next/dynamic';
 import Footer from '@/components/layout/Footer';
-import { ThemeProvider } from '@/components/ThemeProvider';
+import { ThemeProvider } from '@/context/ThemeContext';
 
 // Import the NavbarWrapper component
 const NavbarWrapper = dynamic(() => import('@/components/layout/NavbarWrapper'), { ssr: false });
@@ -11,8 +11,8 @@ const NavbarWrapper = dynamic(() => import('@/components/layout/NavbarWrapper'),
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'IBS Fintech | Treasury Management Solutions',
-  description: 'Comprehensive treasury management solutions for enterprise businesses',
+  title: 'IBSFINtech - Treasury Management Solutions',
+  description: 'Transform your treasury operations with AI-driven insights and seamless automation.',
 };
 
 export default function RootLayout({
@@ -23,12 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="light"
-          enableSystem={false}
-          disableTransitionOnChange
-        >
+        <ThemeProvider>
           <div className="flex min-h-screen flex-col">
             <NavbarWrapper>
               {children}
