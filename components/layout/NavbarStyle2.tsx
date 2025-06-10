@@ -1,10 +1,12 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import Image from 'next/image';
 import { cn } from '@/lib/utils';
 import { Menu, X, ChevronDown, Palette, Lightbulb, BarChart } from 'lucide-react';
+import { motion, AnimatePresence, useAnimation } from 'framer-motion';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -13,10 +15,110 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { Button } from '@/components/ui/button';
 
+interface NavItemProps {
+  href?: string;
+  children: React.ReactNode;
+  className?: string;
+  hasDropdown?: boolean;
+  onMouseEnter?: () => void;
+  onMouseLeave?: () => void;
+}
+
+const NavItem = ({
+  href = '#',
+  children,
+  className = '',
+  hasDropdown = false,
+  onMouseEnter,
+  onMouseLeave
+}: NavItemProps) => {
+  const pathname = usePathname();
+  const isActive = pathname === href;
+  const controls = useAnimation();
+
+  const handleHoverStart = () => {
+    controls.start({
+      width: '100%',
+      opacity: 1,
+      transition: { duration: 0.3, ease: 'easeOut' }
+    });
+  };
+
+  const handleHoverEnd = () => {
+    if (!isActive) {
+      controls.start({
+        width: '0%',
+        opacity: 0,
+        transition: { duration: 0.2, ease: 'easeIn' }
+      });
+    }
+  };
+
+  return (
+    <div
+      className={`relative group ${className}`}
+      onMouseEnter={() => {
+        handleHoverStart();
+        onMouseEnter?.();
+      }}
+      onMouseLeave={() => {
+        handleHoverEnd();
+        onMouseLeave?.();
+      }}
+    >
+      <Link
+        href={href}
+        className="relative inline-flex items-center px-4 py-3 text-gray-300 hover:text-white transition-colors duration-200"
+      >
+        <span className="relative z-10">{children}</span>
+        <motion.span
+          className="absolute bottom-0 left-0 h-0.5 bg-blue-400"
+          initial={{ width: 0, opacity: 0 }}
+          animate={controls}
+          onAnimationComplete={() => {
+            if (isActive) {
+              controls.set({ width: '100%', opacity: 1 });
+            }
+          }}
+        />
+      </Link>
+      {hasDropdown && (
+        <motion.div
+          className="absolute top-0 right-0 w-2 h-2 rounded-full bg-blue-400 opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+          animate={{
+            y: [0, -2, 0],
+            opacity: [0, 1, 0.7]
+          }}
+          transition={{
+            duration: 2,
+            repeat: Infinity,
+            ease: 'easeInOut'
+          }}
+        />
+      )}
+    </div>
+  );
+};
+
 export default function NavbarStyle2() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const pathname = usePathname();
+  const dropdownTimeout = useRef<NodeJS.Timeout>();
+
+  const handleMouseEnter = (dropdown: string) => {
+    if (dropdownTimeout.current) {
+      clearTimeout(dropdownTimeout.current);
+    }
+    setOpenDropdown(dropdown);
+  };
+
+  const handleMouseLeave = () => {
+    dropdownTimeout.current = setTimeout(() => {
+      setOpenDropdown(null);
+    }, 200);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -28,64 +130,425 @@ export default function NavbarStyle2() {
   }, []);
 
   return (
-    <nav
-      className={cn(
-        'fixed top-0 z-50 w-full transition-all duration-500',
-        isScrolled
-          ? 'bg-gray-900/95 shadow-lg backdrop-blur-md border-b border-gray-800'
-          : 'bg-transparent'
-      )}
-    >
-      <div className="container mx-auto px-4 py-3">
-        <div className="flex items-center justify-between">
-          <Link href="/?variant=illustrative2" className="flex items-center group">
-            <span className="text-2xl font-bold text-white group-hover:text-blue-400 transition-colors duration-300">
-              IBS Fintech
-            </span>
-          </Link>
+    <nav className="fixed w-full z-50">
+      <div className={cn(
+        'bg-gray-900/80 backdrop-blur-md border-b border-gray-800/50 transition-all duration-300',
+        isScrolled ? 'py-2' : 'py-4'
+      )}>
+        <div className="max-w-7xl mx-auto px-6 py-3">
+          <div className="flex items-center justify-between">
+            <Link href="/?variant=illustrative2" className="group flex items-center">
+              <motion.div
+                className="relative h-10 w-auto"
+                initial={{ opacity: 0, x: -10 }}
+                animate={{ opacity: 1, x: 0 }}
+                whileHover={{ scale: 1.03 }}
+                transition={{ duration: 0.5, type: 'spring', stiffness: 400, damping: 10 }}
+              >
+                <div className="flex items-center">
+                  <Image
+                    src="/ibs_logo_sample.png"
+                    alt="IBS Fintech"
+                    width={160}
+                    height={40}
+                    className="h-full w-auto object-contain"
+                    priority
+                  />
+                  <motion.div
+                    className="ml-2 w-1.5 h-1.5 rounded-full bg-blue-400"
+                    animate={{
+                      scale: [1, 1.5, 1],
+                      opacity: [0.7, 1, 0.7],
+                      boxShadow: ['0 0 0 0 rgba(96, 165, 250, 0.7)', '0 0 0 6px rgba(96, 165, 250, 0)']
+                    }}
+                    transition={{
+                      duration: 3,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }}
+                  />
+                </div>
+                <motion.div
+                  className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-400 to-blue-300 rounded-full"
+                  initial={{ width: 0 }}
+                  whileHover={{ width: '100%' }}
+                  transition={{ duration: 0.3 }}
+                />
+              </motion.div>
+            </Link>
 
-          {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-1">
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="ghost" className="group flex items-center gap-1 text-gray-300 hover:text-white hover:bg-gray-800/50 transition-colors duration-300 px-3 py-2 rounded-md">
+            {/* Desktop Menu */}
+            <div className="hidden md:flex items-center space-x-1">
+              <div
+                className="relative"
+                onMouseEnter={() => handleMouseEnter('home')}
+                onMouseLeave={handleMouseLeave}
+              >
+                <NavItem hasDropdown>
                   Home
-                  <ChevronDown size={16} className="transition-transform group-data-[state=open]:rotate-180 text-gray-400" />
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="center" className="bg-gray-800/95 backdrop-blur-sm border border-gray-700 shadow-2xl rounded-lg overflow-hidden">
-                <DropdownMenuItem asChild>
-                  <Link href="/?variant=illustrative1" className="flex items-center gap-2 hover:bg-gray-700/50 text-gray-100 rounded-md m-1">
-                    <Palette size={16} className="text-blue-400" /> Illustrative Style 1
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link href="/?variant=illustrative2" className="flex items-center gap-2 hover:bg-gray-700/50 text-gray-100 rounded-md m-1">
-                    <Lightbulb size={16} className="text-blue-400" /> Illustrative Style 2
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link href="/?variant=datadriven" className="flex items-center gap-2 hover:bg-gray-700/50 text-gray-100 rounded-md m-1">
-                    <BarChart size={16} className="text-blue-400" /> Data-Driven Style
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link href="/?variant=illustrative3" className="flex items-center gap-2 hover:bg-gray-700/50 text-gray-100 rounded-md m-1">
-                    <Palette size={16} className="text-blue-400 rotate-180" /> Illustrative Style 3
-                  </Link>
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
+                </NavItem>
+                <AnimatePresence>
+                  {openDropdown === 'home' && (
+                    <motion.div
+                      className="absolute left-0 mt-2 w-56 rounded-xl bg-white/95 backdrop-blur-xl shadow-xl border-0 overflow-hidden z-50"
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 10 }}
+                      transition={{ duration: 0.2, ease: 'easeOut' }}
+                    >
+                      <div className="px-1 py-2">
+                        <Link
+                          href="/?variant=illustrative1"
+                          className="flex items-center gap-2 px-4 py-2.5 text-sm text-gray-800 hover:bg-blue-50 rounded-lg mx-1 transition-colors duration-200"
+                        >
+                          <Palette size={16} className="text-blue-600" />
+                          Illustrative Style 1
+                        </Link>
+                        <Link
+                          href="/?variant=illustrative2"
+                          className="flex items-center gap-2 px-4 py-2.5 text-sm text-gray-800 hover:bg-blue-50 rounded-lg mx-1 transition-colors duration-200"
+                        >
+                          <Lightbulb size={16} className="text-blue-600" />
+                          Illustrative Style 2
+                        </Link>
+                        <Link
+                          href="/?variant=datadriven"
+                          className="flex items-center gap-2 px-4 py-2.5 text-sm text-gray-800 hover:bg-blue-50 rounded-lg mx-1 transition-colors duration-200"
+                        >
+                          <BarChart size={16} className="text-blue-600" />
+                          Data-Driven Style
+                        </Link>
+                        <Link
+                          href="/?variant=illustrative3"
+                          className="flex items-center gap-2 px-4 py-2.5 text-sm text-gray-800 hover:bg-blue-50 rounded-lg mx-1 transition-colors duration-200"
+                        >
+                          <Palette size={16} className="text-blue-600 rotate-180" />
+                          Illustrative Style 3
+                        </Link>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
 
-            {/* Enterprise TMS */}
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="ghost" className="group flex items-center gap-1 text-gray-300 hover:text-white hover:bg-gray-800/50 transition-colors duration-300 px-3 py-2 rounded-md">
-                  Enterprise TMS
-                  <ChevronDown size={16} className="transition-transform group-data-[state=open]:rotate-180 text-gray-400" />
+              {/* Products Dropdown */}
+              <div
+                className="relative"
+                onMouseEnter={() => handleMouseEnter('products')}
+                onMouseLeave={handleMouseLeave}
+              >
+                <NavItem hasDropdown>
+                  Products
+                </NavItem>
+                <AnimatePresence>
+                  {openDropdown === 'products' && (
+                    <motion.div
+                      className="absolute left-0 mt-2 w-56 rounded-xl bg-gray-800/95 backdrop-blur-xl shadow-2xl border border-gray-700 overflow-hidden z-50"
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 10 }}
+                      transition={{ duration: 0.2, ease: 'easeOut' }}
+                    >
+                      <div className="px-1 py-2">
+                        <span className="px-4 py-2 text-xs font-medium text-gray-400 uppercase tracking-wider">
+                          Enterprise TMS
+                        </span>
+                        <Link
+                          href="/enterprise/cashflow-liquidity"
+                          className="block px-4 py-2.5 text-sm text-gray-300 hover:bg-gray-700/50 rounded-lg mx-1 hover:text-white transition-colors duration-200"
+                        >
+                          Cashflow & Liquidity
+                        </Link>
+                        <Link
+                          href="/enterprise/currency-fx-risk"
+                          className="block px-4 py-2.5 text-sm text-gray-300 hover:bg-gray-700/50 rounded-lg mx-1 hover:text-white transition-colors duration-200"
+                        >
+                          Currency (FX) Risk
+                        </Link>
+                        <span className="px-4 py-2 text-xs font-medium text-gray-400 uppercase tracking-wider block mt-2">
+                          SME – TMS
+                        </span>
+                        <Link
+                          href="/sme/innottm"
+                          className="block px-4 py-2.5 text-sm text-gray-300 hover:bg-gray-700/50 rounded-lg mx-1 hover:text-white transition-colors duration-200"
+                        >
+                          InnoTTM
+                        </Link>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+
+              <div
+                className="relative"
+                onMouseEnter={() => handleMouseEnter('solutions')}
+                onMouseLeave={handleMouseLeave}
+              >
+                <NavItem hasDropdown>
+                  Solutions
+                </NavItem>
+                <AnimatePresence>
+                  {openDropdown === 'solutions' && (
+                    <motion.div
+                      className="absolute left-0 mt-2 w-80 rounded-xl bg-white/95 backdrop-blur-xl shadow-xl border-0 overflow-hidden z-50"
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 10 }}
+                      transition={{ duration: 0.2, ease: 'easeOut' }}
+                    >
+                      <div className="px-1 py-2">
+                        {[
+                          { href: "/solutions/cash-visibility-forecasting", label: "Cash Visibility & Forecasting" },
+                          { href: "/solutions/foreign-exchange-risk", label: "Navigate Foreign Exchange Risk" },
+                          { href: "/solutions/money-market", label: "Manage end-to-end money market instruments" },
+                          { href: "/solutions/trade-finance", label: "Optimize Trade Finance Operations" },
+                          { href: "/solutions/manage-debt", label: "Manage Debt" },
+                          { href: "/solutions/commodity-risk", label: "Mitigate Commodity Risk" },
+                          { href: "/solutions/treasury-payments", label: "Automate Treasury Payment Processes" },
+                          { href: "/solutions/supply-chain-finance", label: "Supply Chain Finance Platform" },
+                        ].map((item) => (
+                          <Link
+                            key={item.href}
+                            href={item.href}
+                            className="block px-4 py-2.5 text-sm text-gray-800 hover:bg-blue-50 rounded-lg mx-1 transition-colors duration-200"
+                          >
+                            {item.label}
+                          </Link>
+                        ))}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+
+              {/* Resources Dropdown */}
+              <div
+                className="relative"
+                onMouseEnter={() => handleMouseEnter('resources')}
+                onMouseLeave={handleMouseLeave}
+              >
+                <NavItem hasDropdown>
+                  Resources
+                </NavItem>
+                <AnimatePresence>
+                  {openDropdown === 'resources' && (
+                    <motion.div
+                      className="absolute left-0 mt-2 w-96 rounded-xl bg-gray-800/95 backdrop-blur-xl shadow-2xl border border-gray-700 overflow-hidden z-50 p-4"
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 10 }}
+                      transition={{ duration: 0.2, ease: 'easeOut' }}
+                    >
+                      <div className="grid grid-cols-2 gap-4">
+                        <div className="space-y-2">
+                          <h4 className="text-sm font-semibold text-gray-300">Menu Links</h4>
+                          <div className="space-y-1">
+                            {[
+                              { href: "/resources/our-clients", label: "Our Clients" },
+                              { href: "/resources/success-stories", label: "Success Stories" },
+                              { href: "/resources/why-choose-us", label: "Why Choose Us" },
+                              { href: "/resources/integration", label: "Integration" },
+                              { href: "/resources/security", label: "Security" },
+                              { href: "/resources/fact-sheet", label: "Fact Sheet" },
+                              { href: "/resources/faqs", label: "FAQs" },
+                            ].map((item) => (
+                              <Link
+                                key={item.href}
+                                href={item.href}
+                                className="block w-full px-3 py-2 text-sm text-gray-200 hover:bg-gray-700/50 hover:text-white rounded-lg transition-colors duration-200"
+                              >
+                                {item.label}
+                              </Link>
+                            ))}
+                          </div>
+                        </div>
+                        <div className="space-y-2">
+                          <h4 className="text-sm font-semibold text-gray-300">Resources</h4>
+                          <div className="space-y-1">
+                            {[
+                              { href: "/resources/blog", label: "Blog" },
+                              { href: "/resources/whitepapers", label: "Whitepapers" },
+                              { href: "/resources/case-studies", label: "Case Studies" },
+                              { href: "/resources/webinars", label: "Webinars" },
+                              { href: "/resources/videos", label: "Videos" },
+                              { href: "/resources/glossary", label: "Glossary" },
+                              { href: "/resources/help-center", label: "Help Center" },
+                            ].map((item) => (
+                              <Link
+                                key={item.href}
+                                href={item.href}
+                                className="block w-full px-3 py-2 text-sm text-gray-200 hover:bg-gray-700/50 hover:text-white rounded-lg transition-colors duration-200"
+                              >
+                                {item.label}
+                              </Link>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+
+              {/* Company Dropdown */}
+              <div
+                className="relative"
+                onMouseEnter={() => handleMouseEnter('company')}
+                onMouseLeave={handleMouseLeave}
+              >
+                <NavItem hasDropdown>
+                  Company
+                </NavItem>
+                <AnimatePresence>
+                  {openDropdown === 'company' && (
+                    <motion.div
+                      className="absolute left-0 mt-2 w-56 rounded-xl bg-gray-800/95 backdrop-blur-xl shadow-2xl border border-gray-700 overflow-hidden z-50 p-4"
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 10 }}
+                      transition={{ duration: 0.2, ease: 'easeOut' }}
+                    >
+                      <div className="space-y-2">
+                        <h4 className="text-sm font-semibold text-gray-300">Company Information</h4>
+                        <div className="space-y-1">
+                          {[
+                            { href: "/about", label: "About Us" },
+                            { href: "/leadership", label: "Leadership" },
+                            { href: "/careers", label: "Careers" },
+                            { href: "/newsroom", label: "Newsroom" },
+                            { href: "/contact", label: "Contact Us" },
+                            { href: "/partners", label: "Partners" },
+                          ].map((item) => (
+                            <Link
+                              key={item.href}
+                              href={item.href}
+                              className="block w-full px-3 py-2 text-sm text-gray-200 hover:bg-gray-700/50 hover:text-white rounded-lg transition-colors duration-200"
+                            >
+                              {item.label}
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            </div>
+
+            <div className="hidden md:flex items-center ml-4">
+              <motion.div
+                className="relative group"
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <motion.div
+                  className="absolute -inset-0.5 bg-gradient-to-r from-blue-500 to-blue-300 rounded-full blur opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                  initial={{ opacity: 0 }}
+                  animate={{
+                    opacity: [0, 0.5, 0],
+                    scale: [1, 1.2, 1.4]
+                  }}
+                  transition={{
+                    duration: 3,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                ></motion.div>
+                <Button className="relative bg-gradient-to-r from-blue-600 to-blue-500 text-white font-medium rounded-full px-6 py-2.5 transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/30">
+                  <motion.span
+                    className="relative z-10 flex items-center"
+                    whileHover={{ x: 2 }}
+                    transition={{ type: 'spring', stiffness: 400, damping: 10 }}
+                  >
+                    Contact Us
+                    <motion.span
+                      className="ml-2"
+                      animate={{
+                        x: [0, 4, 0],
+                        rotate: [0, 5, 0, -5, 0]
+                      }}
+                      transition={{
+                        duration: 2,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                      }}
+                    >
+                      →
+                    </motion.span>
+                  </motion.span>
                 </Button>
+              </motion.div>
+            </div>
+
+            {/* Mobile menu button */}
+            <div className="md:hidden">
+              <button
+                onClick={() => setIsOpen(!isOpen)}
+                className="inline-flex items-center justify-center p-2 rounded-md text-gray-300 hover:text-white hover:bg-gray-800/50 focus:outline-none"
+                aria-expanded="false"
+              >
+                <span className="sr-only">Open main menu</span>
+                {isOpen ? (
+                  <X className="block h-6 w-6" aria-hidden="true" />
+                ) : (
+                  <Menu className="block h-6 w-6" aria-hidden="true" />
+                )}
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile menu */}
+        <div
+          className={cn(
+            'md:hidden bg-gray-900/95 backdrop-blur-md transition-all duration-300 ease-in-out overflow-hidden border-b border-gray-800',
+            isOpen ? 'max-h-screen py-4' : 'max-h-0 py-0'
+          )}
+        >
+          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <div className="relative group">
+              <button
+                className="w-full text-left px-3 py-2 rounded-md text-gray-300 hover:bg-gray-800/50 hover:text-white flex items-center justify-between"
+                onClick={() => { }}
+              >
+                Home
+                <ChevronDown size={16} className="ml-2 text-gray-400 transition-transform group-hover:rotate-180" />
+              </button>
+              <div className="mt-1 rounded-lg bg-gray-800/95 backdrop-blur-sm border border-gray-700 shadow-2xl overflow-hidden">
+                <Link
+                  href="/?variant=illustrative1"
+                  className="flex items-center gap-2 px-4 py-2 hover:bg-gray-700/50 text-gray-100 rounded-md m-1"
+                >
+                  <Palette size={16} className="text-blue-400" /> Illustrative Style 1
+                </Link>
+                <Link
+                  href="/?variant=illustrative2"
+                  className="flex items-center gap-2 px-4 py-2 hover:bg-gray-700/50 text-gray-100 rounded-md m-1"
+                >
+                  <Lightbulb size={16} className="text-blue-400" /> Illustrative Style 2
+                </Link>
+                <Link
+                  href="/?variant=datadriven"
+                  className="flex items-center gap-2 px-4 py-2 hover:bg-gray-700/50 text-gray-100 rounded-md m-1"
+                >
+                  <BarChart size={16} className="text-blue-400" /> Data-Driven Style
+                </Link>
+                <Link
+                  href="/?variant=illustrative3"
+                  className="flex items-center gap-2 px-4 py-2 hover:bg-gray-700/50 text-gray-100 rounded-md m-1"
+                >
+                  <Palette size={16} className="text-blue-400 rotate-180" /> Illustrative Style 3
+                </Link>
+              </div>
+            </div>
+
+            <DropdownMenu>
+              <DropdownMenuTrigger className="w-full text-left px-3 py-2 rounded-md text-gray-300 hover:bg-gray-800/50 hover:text-white flex items-center justify-between">
+                Enterprise TMS
+                <ChevronDown size={16} className="ml-2 text-gray-400" />
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="start" className="w-72 bg-gray-800/95 backdrop-blur-sm border border-gray-700 shadow-2xl rounded-lg overflow-hidden">
+              <DropdownMenuContent className="w-full bg-gray-800/95 backdrop-blur-sm border border-gray-700 shadow-2xl rounded-lg overflow-hidden">
                 {[
                   { href: "/enterprise/cashflow-liquidity", label: "Cashflow & Liquidity" },
                   { href: "/enterprise/currency-fx-risk", label: "Currency (FX) Risk" },
@@ -105,15 +568,12 @@ export default function NavbarStyle2() {
               </DropdownMenuContent>
             </DropdownMenu>
 
-            {/* SME – TMS */}
             <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="ghost" className="group flex items-center gap-1 text-gray-300 hover:text-white hover:bg-gray-800/50 transition-colors duration-300 px-3 py-2 rounded-md">
-                  SME – TMS
-                  <ChevronDown size={16} className="transition-transform group-data-[state=open]:rotate-180 text-gray-400" />
-                </Button>
+              <DropdownMenuTrigger className="w-full text-left px-3 py-2 rounded-md text-gray-300 hover:bg-gray-800/50 hover:text-white flex items-center justify-between">
+                SME – TMS
+                <ChevronDown size={16} className="ml-2 text-gray-400" />
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="start" className="w-48 bg-gray-800/95 backdrop-blur-sm border border-gray-700 shadow-2xl rounded-lg overflow-hidden">
+              <DropdownMenuContent className="w-full bg-gray-800/95 backdrop-blur-sm border border-gray-700 shadow-2xl rounded-lg overflow-hidden">
                 {[
                   { href: "/sme/innottm", label: "InnoTTM" },
                   { href: "/sme/innovest", label: "InnoInvest" },
@@ -127,15 +587,12 @@ export default function NavbarStyle2() {
               </DropdownMenuContent>
             </DropdownMenu>
 
-            {/* Solutions */}
             <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="ghost" className="group flex items-center gap-1 text-gray-300 hover:text-white hover:bg-gray-800/50 transition-colors duration-300 px-3 py-2 rounded-md">
-                  Solutions
-                  <ChevronDown size={16} className="transition-transform group-data-[state=open]:rotate-180 text-gray-400" />
-                </Button>
+              <DropdownMenuTrigger className="w-full text-left px-3 py-2 rounded-md text-gray-300 hover:bg-gray-800/50 hover:text-white flex items-center justify-between">
+                Solutions
+                <ChevronDown size={16} className="ml-2 text-gray-400" />
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="start" className="w-80 bg-gray-800/95 backdrop-blur-sm border border-gray-700 shadow-2xl rounded-lg overflow-hidden">
+              <DropdownMenuContent className="w-full bg-gray-800/95 backdrop-blur-sm border border-gray-700 shadow-2xl rounded-lg overflow-hidden">
                 {[
                   { href: "/solutions/cash-visibility-forecasting", label: "Cash Visibility & Forecasting" },
                   { href: "/solutions/foreign-exchange-risk", label: "Navigate Foreign Exchange Risk" },
@@ -155,18 +612,15 @@ export default function NavbarStyle2() {
               </DropdownMenuContent>
             </DropdownMenu>
 
-            {/* Resources */}
             <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="ghost" className="group flex items-center gap-1 text-gray-300 hover:text-white hover:bg-gray-800/50 transition-colors duration-300 px-3 py-2 rounded-md">
-                  Resources
-                  <ChevronDown size={16} className="transition-transform group-data-[state=open]:rotate-180 text-gray-400" />
-                </Button>
+              <DropdownMenuTrigger className="w-full text-left px-3 py-2 rounded-md text-gray-300 hover:bg-gray-800/50 hover:text-white flex items-center justify-between">
+                Resources
+                <ChevronDown size={16} className="ml-2 text-gray-400" />
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="start" className="w-96 p-4 bg-gray-800/95 backdrop-blur-sm border border-gray-700 shadow-2xl rounded-lg overflow-hidden">
-                <div className="grid grid-cols-2 gap-4">
+              <DropdownMenuContent className="w-full bg-gray-800/95 backdrop-blur-sm border border-gray-700 shadow-2xl rounded-lg overflow-hidden">
+                <div className="p-2 space-y-2">
                   <div className="space-y-2">
-                    <h4 className="text-sm font-semibold text-gray-300">Menu Links</h4>
+                    <h4 className="text-sm font-semibold text-gray-300 px-2">Menu Links</h4>
                     <div className="space-y-1">
                       {[
                         { href: "/resources/our-clients", label: "Our Clients" },
@@ -178,7 +632,7 @@ export default function NavbarStyle2() {
                         { href: "/resources/faqs", label: "FAQs" },
                       ].map((item) => (
                         <DropdownMenuItem key={item.href} asChild className="p-0">
-                          <Link href={item.href} className="w-full px-2 py-1.5 text-sm hover:bg-gray-700/50 text-gray-200 rounded-md">
+                          <Link href={item.href} className="w-full px-2 py-1.5 text-sm hover:bg-gray-700/50 text-gray-200 rounded-md block">
                             {item.label}
                           </Link>
                         </DropdownMenuItem>
@@ -186,7 +640,7 @@ export default function NavbarStyle2() {
                     </div>
                   </div>
                   <div className="space-y-2">
-                    <h4 className="text-sm font-semibold text-gray-300">Resources</h4>
+                    <h4 className="text-sm font-semibold text-gray-300 px-2 mt-4">Resources</h4>
                     <div className="space-y-1">
                       {[
                         { href: "/resources/blog", label: "Blog" },
@@ -198,7 +652,7 @@ export default function NavbarStyle2() {
                         { href: "/resources/help-center", label: "Help Center" },
                       ].map((item) => (
                         <DropdownMenuItem key={item.href} asChild className="p-0">
-                          <Link href={item.href} className="w-full px-2 py-1.5 text-sm hover:bg-gray-700/50 text-gray-200 rounded-md">
+                          <Link href={item.href} className="w-full px-2 py-1.5 text-sm hover:bg-gray-700/50 text-gray-200 rounded-md block">
                             {item.label}
                           </Link>
                         </DropdownMenuItem>
@@ -209,261 +663,31 @@ export default function NavbarStyle2() {
               </DropdownMenuContent>
             </DropdownMenu>
 
-            {/* Company */}
             <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="ghost" className="group flex items-center gap-1 text-gray-300 hover:text-white hover:bg-gray-800/50 transition-colors duration-300 px-3 py-2 rounded-md">
-                  Company
-                  <ChevronDown size={16} className="transition group-data-[state=open]:rotate-180 text-gray-400" />
-                </Button>
+              <DropdownMenuTrigger className="w-full text-left px-3 py-2 rounded-md text-gray-300 hover:bg-gray-800/50 hover:text-white flex items-center justify-between">
+                Company
+                <ChevronDown size={16} className="ml-2 text-gray-400" />
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="start" className="w-96 p-4 bg-gray-800/95 backdrop-blur-sm border border-gray-700 shadow-2xl rounded-lg">
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <h4 className="text-sm font-semibold text-gray-300">Company Information</h4>
-                    <div className="space-y-1">
-                      <DropdownMenuItem asChild className="p-0">
-                        <Link href="/company/about" className="w-full px-2 py-1.5 text-sm hover:bg-gray-700/50 text-gray-200 rounded-md">About Us</Link>
-                      </DropdownMenuItem>
-                      <DropdownMenuItem asChild className="p-0">
-                        <Link href="/company/leadership" className="w-full px-2 py-1.5 text-sm hover:bg-gray-700/50 text-gray-200 rounded-md">Leadership Team</Link>
-                      </DropdownMenuItem>
-                      <DropdownMenuItem asChild className="p-0">
-                        <Link href="/company/us-leadership" className="w-full px-2 py-1.5 text-sm hover:bg-gray-700/50 text-gray-200 rounded-md">US Leadership Team</Link>
-                      </DropdownMenuItem>
-                      <DropdownMenuItem asChild className="p-0">
-                        <Link href="/company/partners" className="w-full px-2 py-1.5 text-sm hover:bg-gray-700/50 text-gray-200 rounded-md">Global Partners</Link>
-                      </DropdownMenuItem>
-                      <DropdownMenuItem asChild className="p-0">
-                        <Link href="/company/careers" className="w-full px-2 py-1.5 text-sm hover:bg-gray-700/50 text-gray-200 rounded-md">Career</Link>
-                      </DropdownMenuItem>
-                    </div>
-                  </div>
-                  <div className="space-y-2">
-                    <h4 className="text-sm font-semibold text-gray-300">Culture & Recognition</h4>
-                    <div className="space-y-1">
-                      <DropdownMenuItem asChild className="p-0">
-                        <Link href="/company/awards" className="w-full px-2 py-1.5 text-sm hover:bg-gray-700/50 text-gray-200 rounded-md">Awards & Recognitions</Link>
-                      </DropdownMenuItem>
-                      <DropdownMenuItem asChild className="p-0">
-                        <Link href="/company/life" className="w-full px-2 py-1.5 text-sm hover:bg-gray-700/50 text-gray-200 rounded-md">Life at IBSFINtech</Link>
-                      </DropdownMenuItem>
-                    </div>
-                    <div className="pt-4">
-                      <div className="h-20 bg-gray-700/50 rounded flex items-center justify-center text-gray-400 text-xs">
-                        Company Culture Photo
-                      </div>
-                      <div className="mt-2">
-                        <Link href="/contact" className="text-blue-400 hover:text-blue-300 text-sm font-medium">
-                          Contact Us →
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+              <DropdownMenuContent className="w-full bg-gray-800/95 backdrop-blur-sm border border-gray-700 shadow-2xl rounded-lg overflow-hidden">
+                {[
+                  { href: "/company/about-us", label: "About Us" },
+                  { href: "/company/leadership", label: "Leadership" },
+                  { href: "/company/careers", label: "Careers" },
+                  { href: "/company/contact-us", label: "Contact Us" },
+                ].map((item) => (
+                  <DropdownMenuItem key={item.href} asChild>
+                    <Link href={item.href} className="w-full hover:bg-gray-700/50 text-gray-100 rounded-md m-1">
+                      {item.label}
+                    </Link>
+                  </DropdownMenuItem>
+                ))}
               </DropdownMenuContent>
             </DropdownMenu>
+
+            <Button asChild className="w-full mt-2 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-md px-6 py-2 transition-all duration-300 shadow-lg hover:shadow-xl">
+              <Link href="/contact">Contact Sales</Link>
+            </Button>
           </div>
-
-          {/* Mobile menu button */}
-          <div className="md:hidden">
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-gray-300 hover:text-white hover:bg-gray-800/50 focus:outline-none"
-              aria-expanded="false"
-            >
-              <span className="sr-only">Open main menu</span>
-              {isOpen ? (
-                <X className="block h-6 w-6" aria-hidden="true" />
-              ) : (
-                <Menu className="block h-6 w-6" aria-hidden="true" />
-              )}
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {/* Mobile menu */}
-      <div
-        className={cn(
-          'md:hidden bg-gray-900/95 backdrop-blur-md transition-all duration-300 ease-in-out overflow-hidden border-b border-gray-800',
-          isOpen ? 'max-h-screen py-4' : 'max-h-0 py-0'
-        )}
-      >
-        <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-          <DropdownMenu>
-            <DropdownMenuTrigger className="w-full text-left px-3 py-2 rounded-md text-gray-300 hover:bg-gray-800/50 hover:text-white flex items-center justify-between">
-              Home
-              <ChevronDown size={16} className="ml-2 text-gray-400" />
-            </DropdownMenuTrigger>
-            <DropdownMenuContent className="w-full bg-gray-800/95 backdrop-blur-sm border border-gray-700 shadow-2xl rounded-lg overflow-hidden">
-              <DropdownMenuItem asChild>
-                <Link href="/?variant=illustrative1" className="flex items-center gap-2 hover:bg-gray-700/50 text-gray-100 rounded-md m-1">
-                  <Palette size={16} className="text-blue-400" /> Illustrative Style 1
-                </Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem asChild>
-                <Link href="/?variant=illustrative2" className="flex items-center gap-2 hover:bg-gray-700/50 text-gray-100 rounded-md m-1">
-                  <Lightbulb size={16} className="text-blue-400" /> Illustrative Style 2
-                </Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem asChild>
-                <Link href="/?variant=datadriven" className="flex items-center gap-2 hover:bg-gray-700/50 text-gray-100 rounded-md m-1">
-                  <BarChart size={16} className="text-blue-400" /> Data-Driven Style
-                </Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem asChild>
-                <Link href="/?variant=illustrative3" className="flex items-center gap-2 hover:bg-gray-700/50 text-gray-100 rounded-md m-1">
-                  <Palette size={16} className="text-blue-400 rotate-180" /> Illustrative Style 3
-                </Link>
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
-
-          <DropdownMenu>
-            <DropdownMenuTrigger className="w-full text-left px-3 py-2 rounded-md text-gray-300 hover:bg-gray-800/50 hover:text-white flex items-center justify-between">
-              Enterprise TMS
-              <ChevronDown size={16} className="ml-2 text-gray-400" />
-            </DropdownMenuTrigger>
-            <DropdownMenuContent className="w-full bg-gray-800/95 backdrop-blur-sm border border-gray-700 shadow-2xl rounded-lg overflow-hidden">
-              {[
-                { href: "/enterprise/cashflow-liquidity", label: "Cashflow & Liquidity" },
-                { href: "/enterprise/currency-fx-risk", label: "Currency (FX) Risk" },
-                { href: "/enterprise/investment-money-market", label: "Investment (Money Market)" },
-                { href: "/enterprise/trade-finance", label: "Trade Finance – Import Export & Banking" },
-                { href: "/enterprise/debt-borrowings", label: "Debt (Borrowings)" },
-                { href: "/enterprise/commodity-risk", label: "Commodity Risk" },
-                { href: "/enterprise/payments", label: "Payments" },
-                { href: "/enterprise/supply-chain-finance", label: "Supply Chain Finance – VNDZY®" },
-              ].map((item) => (
-                <DropdownMenuItem key={item.href} asChild>
-                  <Link href={item.href} className="w-full hover:bg-gray-700/50 text-gray-100 rounded-md m-1">
-                    {item.label}
-                  </Link>
-                </DropdownMenuItem>
-              ))}
-            </DropdownMenuContent>
-          </DropdownMenu>
-
-          <DropdownMenu>
-            <DropdownMenuTrigger className="w-full text-left px-3 py-2 rounded-md text-gray-300 hover:bg-gray-800/50 hover:text-white flex items-center justify-between">
-              SME – TMS
-              <ChevronDown size={16} className="ml-2 text-gray-400" />
-            </DropdownMenuTrigger>
-            <DropdownMenuContent className="w-full bg-gray-800/95 backdrop-blur-sm border border-gray-700 shadow-2xl rounded-lg overflow-hidden">
-              {[
-                { href: "/sme/innottm", label: "InnoTTM" },
-                { href: "/sme/innovest", label: "InnoInvest" },
-              ].map((item) => (
-                <DropdownMenuItem key={item.href} asChild>
-                  <Link href={item.href} className="w-full hover:bg-gray-700/50 text-gray-100 rounded-md m-1">
-                    {item.label}
-                  </Link>
-                </DropdownMenuItem>
-              ))}
-            </DropdownMenuContent>
-          </DropdownMenu>
-
-          <DropdownMenu>
-            <DropdownMenuTrigger className="w-full text-left px-3 py-2 rounded-md text-gray-300 hover:bg-gray-800/50 hover:text-white flex items-center justify-between">
-              Solutions
-              <ChevronDown size={16} className="ml-2 text-gray-400" />
-            </DropdownMenuTrigger>
-            <DropdownMenuContent className="w-full bg-gray-800/95 backdrop-blur-sm border border-gray-700 shadow-2xl rounded-lg overflow-hidden">
-              {[
-                { href: "/solutions/cash-visibility-forecasting", label: "Cash Visibility & Forecasting" },
-                { href: "/solutions/foreign-exchange-risk", label: "Navigate Foreign Exchange Risk" },
-                { href: "/solutions/money-market", label: "Manage end-to-end money market instruments" },
-                { href: "/solutions/trade-finance", label: "Optimize Trade Finance Operations" },
-                { href: "/solutions/manage-debt", label: "Manage Debt" },
-                { href: "/solutions/commodity-risk", label: "Mitigate Commodity Risk" },
-                { href: "/solutions/treasury-payments", label: "Automate Treasury Payment Processes" },
-                { href: "/solutions/supply-chain-finance", label: "Supply Chain Finance Platform" },
-              ].map((item) => (
-                <DropdownMenuItem key={item.href} asChild>
-                  <Link href={item.href} className="w-full hover:bg-gray-700/50 text-gray-100 rounded-md m-1">
-                    {item.label}
-                  </Link>
-                </DropdownMenuItem>
-              ))}
-            </DropdownMenuContent>
-          </DropdownMenu>
-
-          <DropdownMenu>
-            <DropdownMenuTrigger className="w-full text-left px-3 py-2 rounded-md text-gray-300 hover:bg-gray-800/50 hover:text-white flex items-center justify-between">
-              Resources
-              <ChevronDown size={16} className="ml-2 text-gray-400" />
-            </DropdownMenuTrigger>
-            <DropdownMenuContent className="w-full bg-gray-800/95 backdrop-blur-sm border border-gray-700 shadow-2xl rounded-lg overflow-hidden">
-              <div className="p-2 space-y-2">
-                <div className="space-y-2">
-                  <h4 className="text-sm font-semibold text-gray-300 px-2">Menu Links</h4>
-                  <div className="space-y-1">
-                    {[
-                      { href: "/resources/our-clients", label: "Our Clients" },
-                      { href: "/resources/success-stories", label: "Success Stories" },
-                      { href: "/resources/why-choose-us", label: "Why Choose Us" },
-                      { href: "/resources/integration", label: "Integration Capabilities" },
-                      { href: "/resources/security", label: "Security" },
-                      { href: "/resources/fact-sheet", label: "Fact Sheet" },
-                      { href: "/resources/faqs", label: "FAQs" },
-                    ].map((item) => (
-                      <DropdownMenuItem key={item.href} asChild className="p-0">
-                        <Link href={item.href} className="w-full px-2 py-1.5 text-sm hover:bg-gray-700/50 text-gray-200 rounded-md block">
-                          {item.label}
-                        </Link>
-                      </DropdownMenuItem>
-                    ))}
-                  </div>
-                </div>
-                <div className="space-y-2">
-                  <h4 className="text-sm font-semibold text-gray-300 px-2 mt-4">Resources</h4>
-                  <div className="space-y-1">
-                    {[
-                      { href: "/resources/blog", label: "Blog" },
-                      { href: "/resources/whitepapers", label: "Whitepapers" },
-                      { href: "/resources/case-studies", label: "Case Studies" },
-                      { href: "/resources/webinars", label: "Webinars" },
-                      { href: "/resources/videos", label: "Videos" },
-                      { href: "/resources/glossary", label: "Glossary" },
-                      { href: "/resources/help-center", label: "Help Center" },
-                    ].map((item) => (
-                      <DropdownMenuItem key={item.href} asChild className="p-0">
-                        <Link href={item.href} className="w-full px-2 py-1.5 text-sm hover:bg-gray-700/50 text-gray-200 rounded-md block">
-                          {item.label}
-                        </Link>
-                      </DropdownMenuItem>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </DropdownMenuContent>
-          </DropdownMenu>
-
-          <DropdownMenu>
-            <DropdownMenuTrigger className="w-full text-left px-3 py-2 rounded-md text-gray-300 hover:bg-gray-800/50 hover:text-white flex items-center justify-between">
-              Company
-              <ChevronDown size={16} className="ml-2 text-gray-400" />
-            </DropdownMenuTrigger>
-            <DropdownMenuContent className="w-full bg-gray-800/95 backdrop-blur-sm border border-gray-700 shadow-2xl rounded-lg overflow-hidden">
-              {[
-                { href: "/company/about-us", label: "About Us" },
-                { href: "/company/leadership", label: "Leadership" },
-                { href: "/company/careers", label: "Careers" },
-                { href: "/company/contact-us", label: "Contact Us" },
-              ].map((item) => (
-                <DropdownMenuItem key={item.href} asChild>
-                  <Link href={item.href} className="w-full hover:bg-gray-700/50 text-gray-100 rounded-md m-1">
-                    {item.label}
-                  </Link>
-                </DropdownMenuItem>
-              ))}
-            </DropdownMenuContent>
-          </DropdownMenu>
-
-          <Button asChild className="w-full mt-2 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-md px-6 py-2 transition-all duration-300 shadow-lg hover:shadow-xl">
-            <Link href="/contact">Contact Sales</Link>
-          </Button>
         </div>
       </div>
     </nav>
