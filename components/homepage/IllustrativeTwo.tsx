@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardContent } from '@/components/ui/card';
 import { ArrowRight, TrendingUp, Shield, Zap, DollarSign, BarChart2, Globe, Play, Pause, ChevronLeft, ChevronRight, Users, Building, Factory, Truck, Newspaper, Handshake } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import IBSServiceNetworkTwo from './ibs_network_two';
 
 interface Testimonial {
   id: number;
@@ -105,7 +106,7 @@ export default function IllustrativeTwo() {
     const lastIndex = testimonials.length - 1;
     const prevIndex = activeIndex === 0 ? lastIndex : activeIndex - 1;
     const nextIndex = activeIndex === lastIndex ? 0 : activeIndex + 1;
-    
+
     return [
       { ...testimonials[prevIndex], position: 'left' },
       { ...testimonials[activeIndex], position: 'center' },
@@ -151,7 +152,7 @@ export default function IllustrativeTwo() {
       {/* Main Banner with Video Background */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black">
         <div className="absolute inset-0 z-0">
-          <motion.div 
+          <motion.div
             className="absolute inset-0"
             style={{ opacity: opacity.get() } as React.CSSProperties}
           >
@@ -170,7 +171,7 @@ export default function IllustrativeTwo() {
             <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/30 to-black/70" />
           </motion.div>
         </div>
-        <button 
+        <button
           onClick={togglePlayPause}
           className="absolute bottom-8 right-8 z-20 p-3 rounded-full bg-black/50 backdrop-blur-sm text-white hover:bg-black/70 transition-colors"
           aria-label={isPlaying ? 'Pause video' : 'Play video'}
@@ -184,13 +185,13 @@ export default function IllustrativeTwo() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <motion.h1 
+            <motion.h1
               className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-white"
               style={{ y }}
             >
               Transform Your <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500">Financial Future</span>
             </motion.h1>
-            <motion.p 
+            <motion.p
               className="text-lg md:text-xl text-gray-200 mb-8"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -198,20 +199,20 @@ export default function IllustrativeTwo() {
             >
               Our end-to-end Treasury Management Platform empowers organizations with cutting-edge solutions for treasury, risk, trade finance, and supply chain finance.
             </motion.p>
-            <motion.div 
+            <motion.div
               className="flex flex-wrap gap-4 justify-center"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
             >
-              <Button 
-                variant="gradient" 
+              <Button
+                variant="gradient"
                 size="lg"
                 className="bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 transition-all duration-300 transform hover:-translate-y-0.5 group"
               >
                 Get Started <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
               </Button>
-              <Button 
+              <Button
                 variant="gradient"
                 size="lg"
                 className="bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 transition-all duration-300 transform hover:-translate-y-0.5 group"
@@ -225,6 +226,9 @@ export default function IllustrativeTwo() {
 
       {/* Client Logo Strip (Unchanged) */}
       <ClientLogoStrip variant="illustrative2" />
+      <section>
+        <IBSServiceNetworkTwo />
+      </section>
 
       {/* Winning Together */}
       <section className="py-20 bg-white relative overflow-hidden">
@@ -655,9 +659,8 @@ export default function IllustrativeTwo() {
                     return (
                       <motion.div
                         key={`${testimonial.id}-${position}`}
-                        className={`absolute w-full max-w-2xl mx-auto left-0 right-0 transition-all duration-500 ${
-                          isCenter ? 'z-10' : 'z-0 pointer-events-none'
-                        }`}
+                        className={`absolute w-full max-w-2xl mx-auto left-0 right-0 transition-all duration-500 ${isCenter ? 'z-10' : 'z-0 pointer-events-none'
+                          }`}
                         initial={{
                           x: isLeft ? '-100%' : isRight ? '100%' : '0%',
                           scale: isCenter ? 1 : 0.9,
@@ -698,9 +701,8 @@ export default function IllustrativeTwo() {
                                     {[...Array(5)].map((_, i) => (
                                       <svg
                                         key={i}
-                                        className={`w-4 h-4 ${
-                                          i < testimonial.rating ? 'text-yellow-400' : 'text-gray-300'
-                                        }`}
+                                        className={`w-4 h-4 ${i < testimonial.rating ? 'text-yellow-400' : 'text-gray-300'
+                                          }`}
                                         fill="currentColor"
                                         viewBox="0 0 20 20"
                                       >
@@ -732,14 +734,14 @@ export default function IllustrativeTwo() {
                   })}
                 </AnimatePresence>
               </div>
-              <button 
+              <button
                 onClick={goToPrev}
                 className="absolute left-0 top-1/2 -translate-y-1/2 -ml-4 z-20 w-12 h-12 rounded-full bg-white shadow-lg flex items-center justify-center text-blue-600 hover:bg-blue-50 transition-colors hover:scale-110 transform"
                 aria-label="Previous testimonial"
               >
                 <ChevronLeft className="w-6 h-6" />
               </button>
-              <button 
+              <button
                 onClick={goToNext}
                 className="absolute right-0 top-1/2 -translate-y-1/2 -mr-4 z-20 w-12 h-12 rounded-full bg-white shadow-lg flex items-center justify-center text-blue-600 hover:bg-blue-50 transition-colors hover:scale-110 transform"
                 aria-label="Next testimonial"
@@ -751,9 +753,8 @@ export default function IllustrativeTwo() {
                   <button
                     key={index}
                     onClick={() => goToSlide(index)}
-                    className={`w-2.5 h-2.5 rounded-full transition-all ${
-                      index === activeIndex ? 'bg-blue-600 w-6' : 'bg-gray-300'
-                    }`}
+                    className={`w-2.5 h-2.5 rounded-full transition-all ${index === activeIndex ? 'bg-blue-600 w-6' : 'bg-gray-300'
+                      }`}
                     aria-label={`Go to testimonial ${index + 1}`}
                   />
                 ))}

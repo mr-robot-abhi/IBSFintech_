@@ -2,9 +2,11 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
-import { Menu, X, ChevronDown, Palette, Lightbulb, BarChart } from 'lucide-react';
+import { Menu, X, ChevronDown, ChevronRight, Palette, Lightbulb, BarChart } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -12,6 +14,39 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { Button } from '@/components/ui/button';
+
+// Custom NavLink component with underline animation
+interface NavLinkProps {
+  href: string;
+  children: React.ReactNode;
+  className?: string;
+}
+
+const NavLink = ({ href, children, className = '' }: NavLinkProps) => {
+  const pathname = usePathname();
+  const isActive = pathname === href;
+  
+  return (
+    <Link href={href} className={`relative group ${className}`}>
+      <span className="relative">
+        {children}
+        <AnimatePresence>
+          {isActive && (
+            <motion.span
+              layoutId="nav-underline"
+              className="absolute left-0 -bottom-1 w-full h-0.5 bg-blue-600"
+              initial={{ scaleX: 0 }}
+              animate={{ scaleX: 1 }}
+              exit={{ scaleX: 0 }}
+              transition={{ duration: 0.3 }}
+            />
+          )}
+        </AnimatePresence>
+      </span>
+      <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-blue-400 group-hover:w-full transition-all duration-300 ease-out" />
+    </Link>
+  );
+};
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -31,25 +66,57 @@ export default function Navbar() {
   return (
     <nav
       className={cn(
-        'fixed top-0 z-50 w-full transition-all duration-300',
+        'fixed top-0 z-50 w-full transition-all duration-500',
         isScrolled
-          ? 'bg-white/95 shadow-md backdrop-blur-sm dark:bg-gray-900/95'
-          : 'bg-transparent'
+          ? 'bg-white/95 shadow-sm backdrop-blur-md border-b border-gray-100'
+          : 'bg-white/90 backdrop-blur-sm'
       )}
     >
-      <div className="container mx-auto px-4 py-3">
+      <div className="max-w-7xl mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          <Link href="/?variant=illustrative1" className="flex items-center">
-            <span className="text-2xl font-bold text-blue-600">IBS Fintech</span>
+          <Link href="/?variant=illustrative1" className="group flex items-center">
+            <motion.div 
+              className="relative h-10 w-auto"
+              initial={{ opacity: 0, x: -10 }}
+              animate={{ opacity: 1, x: 0 }}
+              whileHover={{ scale: 1.03 }}
+              transition={{ type: 'spring', stiffness: 400, damping: 10 }}
+            >
+              <Image
+                src="/ibs_logo_sample.png"
+                alt="IBS Fintech"
+                width={160}
+                height={40}
+                className="h-full w-auto object-contain"
+                priority
+              />
+            </motion.div>
+            <motion.div 
+              className="w-2 h-2 rounded-full bg-blue-500 ml-2"
+              animate={{ 
+                scale: [1, 1.2, 1],
+                opacity: [0.6, 1, 0.6],
+              }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+            />
           </Link>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-1">
+          <div className="hidden md:flex items-center space-x-6">
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="ghost" className="group flex items-center gap-1">
-                  Home
-                  <ChevronDown size={16} className="transition group-data-[state=open]:rotate-180" />
+                <Button variant="ghost" className="group flex items-center gap-1 px-3 py-2 text-gray-700 hover:text-blue-600 hover:bg-transparent">
+                  <span className="relative">
+                    <span className="group-hover:opacity-0 transition-opacity">Home</span>
+                    <span className="absolute inset-0 opacity-0 group-hover:opacity-100 bg-gradient-to-r from-blue-600 to-blue-400 bg-clip-text text-transparent font-medium">
+                      Home
+                    </span>
+                  </span>
+                  <ChevronDown size={16} className="text-gray-400 group-hover:text-blue-500 transition-transform group-data-[state=open]:rotate-180" />
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="center">
@@ -76,56 +143,47 @@ export default function Navbar() {
               </DropdownMenuContent>
             </DropdownMenu>
 
-            {/* Enterprise Treasury Management System */}
+            {/* Products Dropdown */}
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" className="group flex items-center gap-1">
-                  Enterprise TMS
+                  Products
                   <ChevronDown size={16} className="transition group-data-[state=open]:rotate-180" />
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="start" className="w-64">
+              <DropdownMenuContent align="start" className="w-72">
+                <div className="px-2 py-1.5 text-sm font-medium text-gray-500">Enterprise TMS</div>
                 <DropdownMenuItem asChild>
-                  <Link href="/enterprise/cashflow-liquidity" className="w-full">Cashflow & Liquidity</Link>
+                  <Link href="/enterprise/cashflow-liquidity" className="w-full pl-4">Cashflow & Liquidity</Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                  <Link href="/enterprise/currency-fx-risk" className="w-full">Currency (FX) Risk</Link>
+                  <Link href="/enterprise/currency-fx-risk" className="w-full pl-4">Currency (FX) Risk</Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                  <Link href="/enterprise/investment-money-market" className="w-full">Investment (Money Market)</Link>
+                  <Link href="/enterprise/investment-money-market" className="w-full pl-4">Investment (Money Market)</Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                  <Link href="/enterprise/trade-finance" className="w-full">Trade Finance – Import Export & Banking</Link>
+                  <Link href="/enterprise/trade-finance" className="w-full pl-4">Trade Finance – Import Export & Banking</Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                  <Link href="/enterprise/debt-borrowings" className="w-full">Debt (Borrowings)</Link>
+                  <Link href="/enterprise/debt-borrowings" className="w-full pl-4">Debt (Borrowings)</Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                  <Link href="/enterprise/commodity-risk" className="w-full">Commodity Risk</Link>
+                  <Link href="/enterprise/commodity-risk" className="w-full pl-4">Commodity Risk</Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                  <Link href="/enterprise/payments" className="w-full">Payments</Link>
+                  <Link href="/enterprise/payments" className="w-full pl-4">Payments</Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                  <Link href="/enterprise/supply-chain-finance" className="w-full">Supply Chain Finance – VNDZY®</Link>
+                  <Link href="/enterprise/supply-chain-finance" className="w-full pl-4">Supply Chain Finance – VNDZY®</Link>
                 </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-
-            {/* SME – Treasury Management System */}
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="ghost" className="group flex items-center gap-1">
-                  SME – TMS
-                  <ChevronDown size={16} className="transition group-data-[state=open]:rotate-180" />
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="start" className="w-48">
+                
+                <div className="px-2 py-1.5 mt-2 text-sm font-medium text-gray-500">SME – TMS</div>
                 <DropdownMenuItem asChild>
-                  <Link href="/sme/innottm" className="w-full">InnoTTM</Link>
+                  <Link href="/sme/innottm" className="w-full pl-4">InnoTTM</Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                  <Link href="/sme/innovest" className="w-full">InnoInvest</Link>
+                  <Link href="/sme/innovest" className="w-full pl-4">InnoInvest</Link>
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
@@ -284,6 +342,30 @@ export default function Navbar() {
                 </div>
               </DropdownMenuContent>
             </DropdownMenu>
+          </div>
+
+          <div className="hidden md:flex items-center ml-6">
+            <motion.div
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.98 }}
+              className="relative group"
+            >
+              <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-500 to-blue-300 rounded-full blur opacity-0 group-hover:opacity-100 transition duration-300" />
+              <Button className="relative bg-gradient-to-r from-blue-600 to-blue-500 text-white rounded-full px-6 py-2.5 font-medium hover:shadow-lg hover:shadow-blue-100 transition-all duration-300">
+                Contact Us
+                <motion.span 
+                  className="ml-2"
+                  animate={{ x: [0, 4, 0] }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                >
+                  →
+                </motion.span>
+              </Button>
+            </motion.div>
           </div>
 
           {/* Mobile menu button */}
