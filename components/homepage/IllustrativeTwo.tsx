@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardContent } from '@/components/ui/card';
 import { ArrowRight, TrendingUp, Shield, Zap, DollarSign, BarChart2, Globe, Play, Pause, ChevronLeft, ChevronRight, Users, Building, Factory, Truck, Newspaper, Handshake } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import IBSServiceNetworkTwo from './ibs_network_two';
+import IBSNetworkTwo from './ibs_network_two';
 
 interface Testimonial {
   id: number;
@@ -227,7 +227,7 @@ export default function IllustrativeTwo() {
       {/* Client Logo Strip (Unchanged) */}
       <ClientLogoStrip variant="illustrative2" />
       <section>
-        <IBSServiceNetworkTwo />
+        <IBSNetworkTwo />
       </section>
 
       {/* Winning Together */}
@@ -400,6 +400,7 @@ export default function IllustrativeTwo() {
           </div>
         </div>
       </section>
+      <IBSNetworkTwo />
 
       {/* Featured Industries */}
       <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
@@ -416,27 +417,30 @@ export default function IllustrativeTwo() {
               Our Treasury Management System is tailored to meet the diverse needs of businesses across all industries.
             </p>
           </motion.div>
-          <div className="flex overflow-x-auto gap-6 pb-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
             {[
-              { name: "Automotive", icon: Truck },
-              { name: "Manufacturing", icon: Factory },
-              { name: "Financial Services", icon: DollarSign },
-              { name: "Healthcare", icon: Users },
-              { name: "Retail", icon: Building }
+              { name: "Automotive", icon: Truck, desc: "Streamlined supply chain and payments for OEMs and suppliers.", metric: "30% Cost Reduction" },
+              { name: "Manufacturing", icon: Factory, desc: "Optimized cash flows and risk management for global plants.", metric: "40% Efficiency Gain" },
+              { name: "Financial Services", icon: DollarSign, desc: "Advanced analytics and compliance for banks and NBFCs.", metric: "50% Risk Mitigation" },
+              { name: "Healthcare", icon: Users, desc: "Automated treasury for hospitals and pharma companies.", metric: "35% Cash Flow Improvement" },
+              { name: "Retail", icon: Building, desc: "Centralized payments and liquidity for multi-store chains.", metric: "25% Transaction Savings" },
+              { name: "Energy", icon: Globe, desc: "Hedging and commodity management for energy firms.", metric: "20% Volatility Reduction" },
             ].map((industry, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, x: 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                whileHover={{ scale: 1.05 }}
-                className="flex-shrink-0 w-48 bg-white p-6 rounded-xl shadow-md text-center"
+                whileHover={{ scale: 1.07, boxShadow: '0 8px 32px 0 rgba(59,130,246,0.13)' }}
+                className="bg-white rounded-2xl shadow-lg border border-blue-100 p-8 flex flex-col items-center text-center transition-all"
               >
-                <div className="text-blue-600 mb-4">
-                  <industry.icon size={28} className="mx-auto" />
+                <div className="mb-4 w-14 h-14 flex items-center justify-center rounded-full bg-gradient-to-br from-blue-400 to-blue-600 text-white shadow-lg">
+                  <industry.icon size={28} />
                 </div>
-                <p className="text-gray-800 font-medium">{industry.name}</p>
+                <h4 className="font-semibold text-gray-800 text-lg mb-1">{industry.name}</h4>
+                <p className="text-gray-500 text-sm mb-3">{industry.desc}</p>
+                <span className="inline-block px-4 py-1 bg-blue-50 text-blue-700 text-xs font-medium rounded-full mt-auto shadow-sm">{industry.metric}</span>
               </motion.div>
             ))}
           </div>

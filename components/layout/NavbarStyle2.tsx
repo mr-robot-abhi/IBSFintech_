@@ -199,31 +199,21 @@ export default function NavbarStyle2() {
                       <div className="px-1 py-2">
                         <Link
                           href="/?variant=illustrative1"
-                          className="flex items-center gap-2 px-4 py-2.5 text-sm text-gray-800 hover:bg-blue-50 rounded-lg mx-1 transition-colors duration-200"
+                          className="flex items-center gap-2 px-4 py-2 hover:bg-gray-700/50 text-gray-100 rounded-md m-1"
                         >
-                          <Palette size={16} className="text-blue-600" />
-                          Illustrative Style 1
+                          <Palette size={16} className="text-blue-400" /> Illustrative Style 1
                         </Link>
                         <Link
                           href="/?variant=illustrative2"
-                          className="flex items-center gap-2 px-4 py-2.5 text-sm text-gray-800 hover:bg-blue-50 rounded-lg mx-1 transition-colors duration-200"
+                          className="flex items-center gap-2 px-4 py-2 hover:bg-gray-700/50 text-gray-100 rounded-md m-1"
                         >
-                          <Lightbulb size={16} className="text-blue-600" />
-                          Illustrative Style 2
-                        </Link>
-                        <Link
-                          href="/?variant=datadriven"
-                          className="flex items-center gap-2 px-4 py-2.5 text-sm text-gray-800 hover:bg-blue-50 rounded-lg mx-1 transition-colors duration-200"
-                        >
-                          <BarChart size={16} className="text-blue-600" />
-                          Data-Driven Style
+                          <Lightbulb size={16} className="text-blue-400" /> Illustrative Style 2
                         </Link>
                         <Link
                           href="/?variant=illustrative3"
-                          className="flex items-center gap-2 px-4 py-2.5 text-sm text-gray-800 hover:bg-blue-50 rounded-lg mx-1 transition-colors duration-200"
+                          className="flex items-center gap-2 px-4 py-2 hover:bg-gray-700/50 text-gray-100 rounded-md m-1"
                         >
-                          <Palette size={16} className="text-blue-600 rotate-180" />
-                          Illustrative Style 3
+                          <Palette size={16} className="text-blue-400 rotate-180" /> Illustrative Style 3
                         </Link>
                       </div>
                     </motion.div>
@@ -527,12 +517,6 @@ export default function NavbarStyle2() {
                   className="flex items-center gap-2 px-4 py-2 hover:bg-gray-700/50 text-gray-100 rounded-md m-1"
                 >
                   <Lightbulb size={16} className="text-blue-400" /> Illustrative Style 2
-                </Link>
-                <Link
-                  href="/?variant=datadriven"
-                  className="flex items-center gap-2 px-4 py-2 hover:bg-gray-700/50 text-gray-100 rounded-md m-1"
-                >
-                  <BarChart size={16} className="text-blue-400" /> Data-Driven Style
                 </Link>
                 <Link
                   href="/?variant=illustrative3"

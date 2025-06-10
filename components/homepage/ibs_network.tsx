@@ -78,7 +78,7 @@ export default function IBSServiceNetwork() {
   const ibsLogoSize = size * 0.32; // main logo size
   const ibsLogoRing = size * 0.42; // ring size
   const serviceRadius = size * 0.39; // slightly increased from 0.34
-  const clientRadius = size * 0.86; // slightly increased from 0.79
+  const clientRadius = size * 0.86 - size * 0.13; // bring logos closer by one logo size
   const serviceBoxSize = size * 0.22; // slightly increased from 0.19
   const clientLogoSize = size * 0.13; // slightly increased from 0.11
 
