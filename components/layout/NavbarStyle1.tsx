@@ -132,11 +132,6 @@ export default function NavbarStyle1() {
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                  <Link href="/?variant=datadriven" className="flex items-center gap-2">
-                    <BarChart size={16} /> Data-Driven Style
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
                   <Link href="/?variant=illustrative3" className="flex items-center gap-2">
                     <Palette size={16} className="rotate-180" /> Illustrative Style 3
                   </Link>

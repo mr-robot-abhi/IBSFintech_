@@ -131,11 +131,6 @@ export default function Navbar() {
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                  <Link href="/?variant=datadriven" className="flex items-center gap-2">
-                    <BarChart size={16} /> Data-Driven Style
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
                   <Link href="/?variant=illustrative3" className="flex items-center gap-2">
                     <Palette size={16} className="rotate-180" /> Illustrative Style 3
                   </Link>
@@ -387,7 +382,6 @@ export default function Navbar() {
                   <div className="space-y-1 mt-1">
                     <Link href="/?variant=illustrative1" className="block px-2 py-1.5 text-sm text-gray-700 hover:bg-gray-100 rounded" onClick={() => setIsOpen(false)}>Illustrative Style 1</Link>
                     <Link href="/?variant=illustrative2" className="block px-2 py-1.5 text-sm text-gray-700 hover:bg-gray-100 rounded" onClick={() => setIsOpen(false)}>Illustrative Style 2</Link>
-                    <Link href="/?variant=datadriven" className="block px-2 py-1.5 text-sm text-gray-700 hover:bg-gray-100 rounded" onClick={() => setIsOpen(false)}>Data-Driven Style</Link>
                     <Link href="/?variant=illustrative3" className="block px-2 py-1.5 text-sm text-gray-700 hover:bg-gray-100 rounded" onClick={() => setIsOpen(false)}>Illustrative Style 3</Link>
                   </div>
                 </div>
