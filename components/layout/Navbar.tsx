@@ -14,6 +14,7 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { Button } from '@/components/ui/button';
+import { useTheme } from '@/context/ThemeContext';
 
 // Custom NavLink component with underline animation
 interface NavLinkProps {
@@ -52,6 +53,7 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
+  const { theme } = useTheme();
   const isIllustrativeTwo = pathname.includes('variant=illustrative2');
 
   useEffect(() => {
@@ -67,12 +69,19 @@ export default function Navbar() {
     <nav
       className={cn(
         'fixed top-0 z-50 w-full transition-all duration-500',
-        isScrolled
-          ? 'bg-white/95 shadow-sm backdrop-blur-md border-b border-gray-100'
-          : 'bg-white/90 backdrop-blur-sm'
+        theme === 'dark'
+          ? isScrolled
+            ? 'bg-gray-900/95 shadow-sm backdrop-blur-md border-b border-gray-800'
+            : 'bg-gray-900/90 backdrop-blur-sm'
+          : isScrolled
+            ? 'bg-white/95 shadow-sm backdrop-blur-md border-b border-gray-100'
+            : 'bg-white/90 backdrop-blur-sm'
       )}
     >
-      <div className="max-w-7xl mx-auto px-6 py-4">
+      <div className={cn(
+        'max-w-7xl mx-auto px-6 py-4 transition-colors duration-300',
+        theme === 'dark' ? 'text-gray-100' : 'text-gray-900'
+      )}>
         <div className="flex items-center justify-between">
           <Link href="/?variant=illustrative1" className="group flex items-center">
             <motion.div 
@@ -92,7 +101,10 @@ export default function Navbar() {
               />
             </motion.div>
             <motion.div 
-              className="w-2 h-2 rounded-full bg-blue-500 ml-2"
+              className={cn(
+                'w-2 h-2 rounded-full ml-2',
+                theme === 'dark' ? 'bg-teal-400' : 'bg-blue-500'
+              )}
               animate={{ 
                 scale: [1, 1.2, 1],
                 opacity: [0.6, 1, 0.6],
@@ -109,17 +121,28 @@ export default function Navbar() {
           <div className="hidden md:flex items-center space-x-6">
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="ghost" className="group flex items-center gap-1 px-3 py-2 text-gray-700 hover:text-blue-600 hover:bg-transparent">
+                <Button variant="ghost" className={cn(
+                  'group flex items-center gap-1 px-3 py-2 hover:bg-transparent',
+                  theme === 'dark' ? 'text-gray-100 hover:text-teal-300' : 'text-gray-700 hover:text-blue-600'
+                )}>
                   <span className="relative">
                     <span className="group-hover:opacity-0 transition-opacity">Home</span>
-                    <span className="absolute inset-0 opacity-0 group-hover:opacity-100 bg-gradient-to-r from-blue-600 to-blue-400 bg-clip-text text-transparent font-medium">
+                    <span className={cn(
+                      'absolute inset-0 opacity-0 group-hover:opacity-100 font-medium',
+                      theme === 'dark' ? 'bg-gradient-to-r from-teal-400 to-teal-200 bg-clip-text text-transparent' : 'bg-gradient-to-r from-blue-600 to-blue-400 bg-clip-text text-transparent'
+                    )}>
                       Home
                     </span>
                   </span>
-                  <ChevronDown size={16} className="text-gray-400 group-hover:text-blue-500 transition-transform group-data-[state=open]:rotate-180" />
+                  <ChevronDown size={16} className={cn(
+                    'transition-transform group-data-[state=open]:rotate-180',
+                    theme === 'dark' ? 'text-teal-200 group-hover:text-teal-300' : 'text-gray-400 group-hover:text-blue-500'
+                  )} />
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="center">
+              <DropdownMenuContent align="center" className={cn(
+                theme === 'dark' ? 'bg-gray-900 border-gray-800 text-gray-100' : ''
+              )}>
                 <DropdownMenuItem asChild>
                   <Link href="/?variant=illustrative1" className="flex items-center gap-2">
                     <Palette size={16} /> Illustrative Style 1
@@ -366,7 +389,10 @@ export default function Navbar() {
           {/* Mobile menu button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden rounded-md p-2 text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-800"
+            className={cn(
+              'md:hidden rounded-md p-2',
+              theme === 'dark' ? 'text-gray-100 hover:bg-gray-800' : 'text-gray-700 hover:bg-gray-100'
+            )}
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>

@@ -73,23 +73,24 @@ export default function IBSNetworkTwo() {
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
           <div className="w-4/5 h-4/5 rounded-full bg-blue-100 blur-3xl opacity-50" />
         </div>
-        {/* SVG lines and animated particles */}
-        <svg className="absolute top-0 left-0 w-full h-full pointer-events-none z-0" width={size} height={size}>
+        {/* SVG lines and animated particles (static) */}
+        <svg 
+          className="absolute top-0 left-0 w-full h-full pointer-events-none z-0" 
+          width={size} 
+          height={size}
+        >
           {allNodes.map((node, i) => {
             const { x, y } = getCirclePos(i, allNodes.length, nodeRadius, center);
             return (
               <g key={i}>
                 {/* Connector line */}
-                <motion.line
+                <line
                   x1={center}
                   y1={center}
                   x2={x}
                   y2={y}
                   stroke="#dbeafe"
                   strokeWidth={2}
-                  initial={{ pathLength: 0 }}
-                  animate={{ pathLength: 1 }}
-                  transition={{ duration: 1, delay: i * 0.05 }}
                 />
                 {/* Animated particle */}
                 <motion.circle
