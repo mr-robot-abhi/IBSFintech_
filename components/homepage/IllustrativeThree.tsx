@@ -19,6 +19,7 @@ import {
   Newspaper,
   Users,
 } from 'lucide-react';
+import EcosystemEnabler from './ecosystem_enabler';
 
 export default function IllustrativeThree() {
   const [clientIndex, setClientIndex] = useState(0);
@@ -83,7 +84,7 @@ export default function IllustrativeThree() {
       <ThemeToggle />
       
       {/* Main Banner */}
-      <section className="relative pt-28 pb-16 px-4 bg-gradient-to-b from-teal-700 to-teal-300 dark:from-teal-900 dark:to-teal-700">
+      <section className="relative pt-28 pb-16 px-4 bg-gradient-to-b from-teal-700 to-teal-300 dark:from-teal-900 dark:to-teal-700 transition-colors duration-200">
         <div className="absolute inset-0 opacity-20">
           <Image
             src="/bg_6.jpg"
@@ -99,7 +100,7 @@ export default function IllustrativeThree() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <div className="inline-block px-4 py-2 rounded-full bg-teal-800 text-white text-sm font-semibold mb-4">
+              <div className="inline-block px-4 py-2 rounded-full bg-teal-800 text-white text-sm font-semibold mb-4 dark:bg-teal-900 transition-colors duration-200">
                 Next-Gen Treasury Solutions
               </div>
               <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 leading-tight">
@@ -110,12 +111,12 @@ export default function IllustrativeThree() {
               </p>
               <div className="flex gap-4">
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                  <button className="px-4 py-2 bg-teal-200 text-teal-900 rounded-md hover:bg-teal-300 flex items-center">
+                  <button className="px-4 py-2 bg-teal-200 text-teal-900 rounded-md hover:bg-teal-300 flex items-center transition-colors duration-200 dark:bg-teal-400 dark:text-teal-900 dark:hover:bg-teal-300">
                     Start Now <ArrowRight className="ml-2 h-4 w-4" />
                   </button>
                 </motion.div>
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                  <button className="px-4 py-2 border border-teal-200 text-teal-200 rounded-md hover:bg-teal-200/20">
+                  <button className="px-4 py-2 border border-teal-200 text-teal-200 rounded-md hover:bg-teal-200/20 transition-colors duration-200 dark:border-teal-400 dark:text-teal-100 dark:hover:bg-teal-400/10">
                     Explore Features
                   </button>
                 </motion.div>
@@ -143,7 +144,7 @@ export default function IllustrativeThree() {
       </section>
 
       {/* Winning Together */}
-      <section className="py-16 bg-white dark:bg-gray-800 transition-colors duration-200">
+      <section className="py-16 bg-white dark:bg-gray-950 transition-colors duration-200">
         <div className="container mx-auto px-4 max-w-6xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -263,7 +264,7 @@ export default function IllustrativeThree() {
       </section>
 
       {/* Why Choose Us */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-white dark:bg-gray-950 transition-colors duration-200">
         <div className="container mx-auto px-4 max-w-6xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -272,8 +273,8 @@ export default function IllustrativeThree() {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl font-bold text-gray-800 mb-4">Why Choose Us</h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+            <h2 className="text-3xl font-bold text-gray-800 dark:text-white mb-4">Why Choose Us</h2>
+            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
               Unparalleled features and benefits that set our platform apart.
             </p>
           </motion.div>
@@ -306,13 +307,13 @@ export default function IllustrativeThree() {
             ].map((diff, index) => (
               <motion.div key={index} variants={itemVariants}>
                 <Tilt tiltMaxAngleX={10} tiltMaxAngleY={10}>
-                  <div className="bg-white/80 backdrop-blur-md p-6 rounded-xl border border-teal-200 hover:shadow-xl transition-shadow">
-                    <div className="h-12 w-12 bg-teal-100 rounded-full flex items-center justify-center mb-4">
-                      <diff.icon className="h-6 w-6 text-teal-600" />
+                  <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-md p-6 rounded-xl border border-teal-200 dark:border-teal-700 hover:shadow-xl transition-shadow">
+                    <div className="h-12 w-12 bg-teal-100 dark:bg-teal-900 rounded-full flex items-center justify-center mb-4">
+                      <diff.icon className="h-6 w-6 text-teal-600 dark:text-teal-400" />
                     </div>
-                    <h3 className="text-xl font-semibold text-gray-800 mb-2">{diff.title}</h3>
-                    <p className="text-gray-600 text-sm">{diff.description}</p>
-                    <span className="mt-4 inline-block px-4 py-1 bg-teal-100 text-teal-600 text-sm font-medium rounded-full">
+                    <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-2">{diff.title}</h3>
+                    <p className="text-gray-600 dark:text-gray-300 text-sm">{diff.description}</p>
+                    <span className="mt-4 inline-block px-4 py-1 bg-teal-100 dark:bg-teal-900 text-teal-600 dark:text-teal-300 text-sm font-medium rounded-full">
                       {diff.stat}
                     </span>
                   </div>
@@ -324,7 +325,7 @@ export default function IllustrativeThree() {
       </section>
 
       {/* Featured Industries */}
-      <section className="py-16 bg-gray-50 relative">
+      <section className="py-16 bg-gray-50 dark:bg-gray-900 relative transition-colors duration-200">
         <div className="absolute inset-0 opacity-10">
           <Image
             src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80"
@@ -341,8 +342,8 @@ export default function IllustrativeThree() {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl font-bold text-gray-800 mb-4">Featured Industries</h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+            <h2 className="text-3xl font-bold text-gray-800 dark:text-white mb-4">Featured Industries</h2>
+            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
               Tailored solutions for diverse industries, delivering agility and integration.
             </p>
           </motion.div>
@@ -395,7 +396,7 @@ export default function IllustrativeThree() {
       </section>
 
       {/* Innovation in Action */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-white dark:bg-gray-950 transition-colors duration-200">
         <div className="container mx-auto px-4 max-w-6xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -404,8 +405,8 @@ export default function IllustrativeThree() {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl font-bold text-gray-800 mb-4">Innovation in Action</h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+            <h2 className="text-3xl font-bold text-gray-800 dark:text-white mb-4">Innovation in Action</h2>
+            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
               Real-world success stories showcasing the impact of our platform.
             </p>
           </motion.div>
@@ -438,7 +439,7 @@ export default function IllustrativeThree() {
             ].map((caseStudy, index) => (
               <motion.div key={index} variants={itemVariants}>
                 <Tilt tiltMaxAngleX={10} tiltMaxAngleY={10}>
-                  <div className="bg-white/80 backdrop-blur-md rounded-xl border border-teal-200 overflow-hidden hover:shadow-xl transition-shadow">
+                  <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-md rounded-xl border border-teal-200 dark:border-teal-700 overflow-hidden hover:shadow-xl transition-shadow">
                     <Image
                       src={caseStudy.image}
                       alt={caseStudy.title}
@@ -447,13 +448,13 @@ export default function IllustrativeThree() {
                       className="w-full h-48 object-cover"
                     />
                     <div className="p-6">
-                      <h3 className="text-xl font-semibold text-gray-800 mb-2">{caseStudy.title}</h3>
-                      <p className="text-gray-600 text-sm mb-4">{caseStudy.description}</p>
-                      <span className="inline-block px-4 py-1 bg-teal-100 text-teal-600 text-sm font-medium rounded-full mb-4">
+                      <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-2">{caseStudy.title}</h3>
+                      <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">{caseStudy.description}</p>
+                      <span className="inline-block px-4 py-1 bg-teal-100 dark:bg-teal-900 text-teal-600 dark:text-teal-300 text-sm font-medium rounded-full mb-4">
                         {caseStudy.stat}
                       </span>
                       <motion.div whileHover={{ x: 5 }}>
-                        <button className="w-full px-4 py-2 border border-teal-600 text-teal-600 rounded-md hover:bg-teal-100 flex items-center justify-center">
+                        <button className="w-full px-4 py-2 border border-teal-600 dark:border-teal-400 text-teal-600 dark:text-teal-400 rounded-md hover:bg-teal-100 dark:hover:bg-teal-900/50 flex items-center justify-center">
                           Read More <ArrowRight className="ml-2 h-4 w-4" />
                         </button>
                       </motion.div>
@@ -467,7 +468,7 @@ export default function IllustrativeThree() {
       </section>
 
       {/* Strategic Partnerships */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-gray-50 dark:bg-gray-900 transition-colors duration-200">
         <div className="container mx-auto px-4 max-w-6xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -476,8 +477,8 @@ export default function IllustrativeThree() {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl font-bold text-gray-800 mb-4">Strategic Partnerships</h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+            <h2 className="text-3xl font-bold text-gray-800 dark:text-white mb-4">Strategic Partnerships</h2>
+            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
               Collaborations with industry leaders to enhance our platform's capabilities.
             </p>
           </motion.div>
@@ -491,9 +492,9 @@ export default function IllustrativeThree() {
             {['FinTech Solutions', 'Global Bank', 'TradeNet', 'PaySys'].map((partner, index) => (
               <motion.div key={index} variants={itemVariants}>
                 <Tilt tiltMaxAngleX={10} tiltMaxAngleY={10}>
-                  <div className="bg-white/80 backdrop-blur-md p-6 rounded-xl border border-teal-200 flex items-center gap-4 hover:shadow-xl transition-shadow">
-                    <Handshake className="h-6 w-6 text-teal-600" />
-                    <span className="text-gray-800 font-medium">{partner}</span>
+                  <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-md p-6 rounded-xl border border-teal-200 dark:border-teal-700 flex items-center gap-4 hover:shadow-xl transition-shadow">
+                    <Handshake className="h-6 w-6 text-teal-600 dark:text-teal-400" />
+                    <span className="text-gray-800 dark:text-white font-medium">{partner}</span>
                   </div>
                 </Tilt>
               </motion.div>
@@ -503,7 +504,7 @@ export default function IllustrativeThree() {
       </section>
 
       {/* Latest News */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-white dark:bg-gray-950 transition-colors duration-200">
         <div className="container mx-auto px-4 max-w-6xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -512,8 +513,8 @@ export default function IllustrativeThree() {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl font-bold text-gray-800 mb-4">Latest News</h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+            <h2 className="text-3xl font-bold text-gray-800 dark:text-white mb-4">Latest News</h2>
+            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
               Stay updated with our latest achievements and insights.
             </p>
           </motion.div>
@@ -546,18 +547,18 @@ export default function IllustrativeThree() {
             ].map((news, index) => (
               <motion.div key={index} variants={itemVariants}>
                 <Tilt tiltMaxAngleX={10} tiltMaxAngleY={10}>
-                  <div className="bg-white/80 backdrop-blur-md p-6 rounded-xl border border-teal-200 hover:shadow-xl transition-shadow">
+                  <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-md p-6 rounded-xl border border-teal-200 dark:border-teal-700 hover:shadow-xl transition-shadow">
                     <div className="flex items-center mb-4">
-                      <Newspaper className="h-5 w-5 text-teal-600 mr-2" />
-                      <span className="text-sm text-gray-500">{news.date}</span>
+                      <Newspaper className="h-5 w-5 text-teal-600 dark:text-teal-400 mr-2" />
+                      <span className="text-sm text-gray-500 dark:text-gray-300">{news.date}</span>
                     </div>
-                    <h3 className="text-xl font-semibold text-gray-800 mb-2">{news.title}</h3>
-                    <p className="text-gray-600 text-sm mb-4">{news.description}</p>
-                    <span className="inline-block px-4 py-1 bg-teal-100 text-teal-600 text-sm font-medium rounded-full mb-4">
+                    <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-2">{news.title}</h3>
+                    <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">{news.description}</p>
+                    <span className="inline-block px-4 py-1 bg-teal-100 dark:bg-teal-900 text-teal-600 dark:text-teal-300 text-sm font-medium rounded-full mb-4">
                       {news.stat}
                     </span>
                     <motion.div whileHover={{ x: 5 }}>
-                      <button className="w-full px-4 py-2 border border-teal-600 text-teal-600 rounded-md hover:bg-teal-100 flex items-center justify-center">
+                      <button className="w-full px-4 py-2 border border-teal-600 dark:border-teal-400 text-teal-600 dark:text-teal-400 rounded-md hover:bg-teal-100 dark:hover:bg-teal-900/50 flex items-center justify-center">
                         Read More <ArrowRight className="ml-2 h-4 w-4" />
                       </button>
                     </motion.div>
@@ -569,8 +570,11 @@ export default function IllustrativeThree() {
         </div>
       </section>
 
+      {/* Ecosystem Enabler */}
+      <EcosystemEnabler />
+
       {/* Let's Connect */}
-      <section className="py-16 bg-gradient-to-r from-teal-700 to-teal-500 text-white">
+      <section className="py-16 bg-gradient-to-r from-teal-700 to-teal-500 dark:from-teal-900 dark:to-teal-700 text-white transition-colors duration-200">
         <div className="container mx-auto px-4 max-w-6xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -585,12 +589,12 @@ export default function IllustrativeThree() {
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <button className="px-4 py-2 bg-white text-teal-700 rounded-md hover:bg-gray-100 flex items-center">
+                <button className="px-4 py-2 bg-white text-teal-700 rounded-md hover:bg-gray-100 flex items-center transition-colors duration-200 dark:bg-gray-900 dark:text-teal-200 dark:hover:bg-gray-800">
                   Contact Us <ArrowRight className="ml-2 h-4 w-4" />
                 </button>
               </motion.div>
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <button className="px-4 py-2 border border-white text-white rounded-md hover:bg-white/20">
+                <button className="px-4 py-2 border border-white text-white rounded-md hover:bg-white/20 dark:hover:bg-gray-900/20">
                   Request Demo
                 </button>
               </motion.div>

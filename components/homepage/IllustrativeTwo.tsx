@@ -226,9 +226,63 @@ export default function IllustrativeTwo() {
 
       {/* Client Logo Strip (Unchanged) */}
       <ClientLogoStrip variant="illustrative2" />
-      <section>
-        <IBSNetworkTwo />
+
+      {/* Why Choose Us */}
+      <section className="py-20 bg-white relative overflow-hidden">
+        <div className="absolute inset-0 opacity-5">
+          <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern id="grid3d" width="40" height="40" patternUnits="userSpaceOnUse">
+                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#4338CA" strokeWidth="0.5" />
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#grid3d)" />
+          </svg>
+        </div>
+        <div className="container mx-auto px-4 relative">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center max-w-3xl mx-auto mb-16"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-800">
+              <span className="relative">
+                Why Choose Us
+                <span className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-blue-600 to-indigo-600"></span>
+              </span>
+            </h2>
+            <p className="text-lg text-gray-600">
+              Our platform delivers unmatched value through innovative features and tailored solutions.
+            </p>
+          </motion.div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              { title: "Integrated Platform", description: "Seamless end-to-end digitization across all financial operations.", icon: Globe, color: "from-blue-600 to-indigo-600" },
+              { title: "Advanced Analytics", description: "Real-time insights to drive strategic decisions.", icon: BarChart2, color: "from-cyan-600 to-blue-600" },
+              { title: "Scalable Solutions", description: "Flexible tools that grow with your business needs.", icon: TrendingUp, color: "from-indigo-600 to-purple-600" }
+            ].map((diff, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                whileHover={{ y: -5 }}
+                className="text-center p-8 rounded-xl bg-gradient-to-br from-gray-50 to-gray-100 shadow-md hover:shadow-xl transition-all duration-300"
+              >
+                <div className={cn("inline-flex items-center justify-center p-4 rounded-xl mb-6 text-white bg-gradient-to-r", diff.color)}>
+                  <diff.icon size={28} />
+                </div>
+                <h3 className="text-xl font-bold mb-3 text-gray-800">{diff.title}</h3>
+                <p className="text-gray-600">{diff.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
       </section>
+      <IBSNetworkTwo />
 
       {/* Winning Together */}
       <section className="py-20 bg-white relative overflow-hidden">
@@ -344,63 +398,6 @@ export default function IllustrativeTwo() {
           </div>
         </div>
       </section>
-
-      {/* Why Choose Us */}
-      <section className="py-20 bg-white relative overflow-hidden">
-        <div className="absolute inset-0 opacity-5">
-          <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <pattern id="grid3d" width="40" height="40" patternUnits="userSpaceOnUse">
-                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#4338CA" strokeWidth="0.5" />
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#grid3d)" />
-          </svg>
-        </div>
-        <div className="container mx-auto px-4 relative">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center max-w-3xl mx-auto mb-16"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-800">
-              <span className="relative">
-                Why Choose Us
-                <span className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-blue-600 to-indigo-600"></span>
-              </span>
-            </h2>
-            <p className="text-lg text-gray-600">
-              Our platform delivers unmatched value through innovative features and tailored solutions.
-            </p>
-          </motion.div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              { title: "Integrated Platform", description: "Seamless end-to-end digitization across all financial operations.", icon: Globe, color: "from-blue-600 to-indigo-600" },
-              { title: "Advanced Analytics", description: "Real-time insights to drive strategic decisions.", icon: BarChart2, color: "from-cyan-600 to-blue-600" },
-              { title: "Scalable Solutions", description: "Flexible tools that grow with your business needs.", icon: TrendingUp, color: "from-indigo-600 to-purple-600" }
-            ].map((diff, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -5 }}
-                className="text-center p-8 rounded-xl bg-gradient-to-br from-gray-50 to-gray-100 shadow-md hover:shadow-xl transition-all duration-300"
-              >
-                <div className={cn("inline-flex items-center justify-center p-4 rounded-xl mb-6 text-white bg-gradient-to-r", diff.color)}>
-                  <diff.icon size={28} />
-                </div>
-                <h3 className="text-xl font-bold mb-3 text-gray-800">{diff.title}</h3>
-                <p className="text-gray-600">{diff.description}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-      <IBSNetworkTwo />
 
       {/* Featured Industries */}
       <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
