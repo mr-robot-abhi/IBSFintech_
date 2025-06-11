@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
-import { Menu, X, ChevronDown, Palette, Lightbulb, BarChart } from 'lucide-react';
+import { Menu, X, ChevronDown, Palette, Lightbulb, BarChart, Globe } from 'lucide-react';
 import { motion, AnimatePresence, useAnimation } from 'framer-motion';
 import {
   DropdownMenu,
@@ -82,20 +82,6 @@ const NavItem = ({
           }}
         />
       </Link>
-      {hasDropdown && (
-        <motion.div
-          className="absolute top-0 right-0 w-2 h-2 rounded-full bg-blue-400 opacity-0 group-hover:opacity-100 transition-opacity duration-200"
-          animate={{
-            y: [0, -2, 0],
-            opacity: [0, 1, 0.7]
-          }}
-          transition={{
-            duration: 2,
-            repeat: Infinity,
-            ease: 'easeInOut'
-          }}
-        />
-      )}
     </div>
   );
 };
@@ -154,19 +140,6 @@ export default function NavbarStyle2() {
                     className="h-full w-auto object-contain"
                     priority
                   />
-                  <motion.div
-                    className="ml-2 w-1.5 h-1.5 rounded-full bg-blue-400"
-                    animate={{
-                      scale: [1, 1.5, 1],
-                      opacity: [0.7, 1, 0.7],
-                      boxShadow: ['0 0 0 0 rgba(96, 165, 250, 0.7)', '0 0 0 6px rgba(96, 165, 250, 0)']
-                    }}
-                    transition={{
-                      duration: 3,
-                      repeat: Infinity,
-                      ease: "easeInOut"
-                    }}
-                  />
                 </div>
                 <motion.div
                   className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-400 to-blue-300 rounded-full"
@@ -190,7 +163,7 @@ export default function NavbarStyle2() {
                 <AnimatePresence>
                   {openDropdown === 'home' && (
                     <motion.div
-                      className="absolute left-0 mt-2 w-56 rounded-xl bg-white/95 backdrop-blur-xl shadow-xl border-0 overflow-hidden z-50"
+                      className="absolute left-0 mt-2 w-56 rounded-xl bg-gray-800/95 backdrop-blur-xl shadow-xl border-0 overflow-hidden z-50"
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: 10 }}
@@ -281,7 +254,7 @@ export default function NavbarStyle2() {
                 <AnimatePresence>
                   {openDropdown === 'solutions' && (
                     <motion.div
-                      className="absolute left-0 mt-2 w-80 rounded-xl bg-white/95 backdrop-blur-xl shadow-xl border-0 overflow-hidden z-50"
+                      className="absolute left-0 mt-2 w-80 rounded-xl bg-gray-800/95 backdrop-blur-xl shadow-xl border-0 overflow-hidden z-50"
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: 10 }}
@@ -301,7 +274,7 @@ export default function NavbarStyle2() {
                           <Link
                             key={item.href}
                             href={item.href}
-                            className="block px-4 py-2.5 text-sm text-gray-800 hover:bg-blue-50 rounded-lg mx-1 transition-colors duration-200"
+                            className="block px-4 py-2.5 text-sm text-gray-100 hover:bg-teal-600/30 rounded-lg mx-1 transition-colors duration-200"
                           >
                             {item.label}
                           </Link>
@@ -469,6 +442,25 @@ export default function NavbarStyle2() {
                   </motion.span>
                 </Button>
               </motion.div>
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="ghost" className="ml-2 p-2 rounded-full text-gray-300 hover:text-white hover:bg-gray-800/60 transition-colors flex items-center">
+                    <Globe size={22} />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end" className="w-32 mt-2 rounded-xl bg-gray-800/95 text-gray-100 shadow-2xl border-0 backdrop-blur-xl p-2">
+                  <DropdownMenuItem asChild>
+                    <button className="w-full flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-teal-600/30 transition-colors">
+                      <span role="img" aria-label="India">🇮🇳</span> India
+                    </button>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild>
+                    <button className="w-full flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-teal-600/30 transition-colors">
+                      <span role="img" aria-label="US">🇺🇸</span> US
+                    </button>
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
             </div>
 
             {/* Mobile menu button */}
