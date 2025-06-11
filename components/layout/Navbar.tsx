@@ -15,6 +15,7 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { Button } from '@/components/ui/button';
 import { useTheme } from '@/context/ThemeContext';
+import { forwardRef, PropsWithChildren, ButtonHTMLAttributes } from 'react';
 
 // Custom NavLink component with underline animation
 interface NavLinkProps {
@@ -28,26 +29,35 @@ const NavLink = ({ href, children, className = '' }: NavLinkProps) => {
   const isActive = pathname === href;
   
   return (
-    <Link href={href} className={`relative group ${className}`}>
-      <span className="relative">
-        {children}
-        <AnimatePresence>
-          {isActive && (
-            <motion.span
-              layoutId="nav-underline"
-              className="absolute left-0 -bottom-1 w-full h-0.5 bg-blue-600"
-              initial={{ scaleX: 0 }}
-              animate={{ scaleX: 1 }}
-              exit={{ scaleX: 0 }}
-              transition={{ duration: 0.3 }}
-            />
-          )}
-        </AnimatePresence>
-      </span>
-      <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-blue-400 group-hover:w-full transition-all duration-300 ease-out" />
+    <Link href={href} className={`relative group px-4 py-2.5 rounded-xl font-medium transition-all duration-300 hover:scale-105 hover:bg-teal-50/60 dark:hover:bg-gray-800/60 ${className}`}>
+      <span className="relative z-10 text-inherit">{children}</span>
+      {/* Animated underline for hover and active */}
+      <span className="absolute left-4 right-4 -bottom-1 h-0.5 bg-gradient-to-r from-teal-400 to-teal-600 rounded-full scale-x-0 group-hover:scale-x-100 group-focus:scale-x-100 transition-transform duration-300 origin-left" style={{transform: isActive ? 'scaleX(1)' : undefined}} />
     </Link>
   );
 };
+
+// --- Modern menu button with underline for dropdown triggers ---
+const MenuButton = forwardRef<HTMLButtonElement, PropsWithChildren<ButtonHTMLAttributes<HTMLButtonElement>>>(
+  function MenuButton({ children, className = '', ...props }, ref) {
+    return (
+      <Button
+        ref={ref}
+        variant="ghost"
+        className={cn(
+          'group flex items-center gap-1 px-4 py-2.5 rounded-xl font-medium transition-all duration-300',
+          'hover:scale-105 hover:bg-teal-50/60 dark:hover:bg-gray-800/60',
+          'relative',
+          className
+        )}
+        {...props}
+      >
+        <span className="relative z-10 text-inherit">{children}</span>
+        <span className="absolute left-4 right-4 -bottom-1 h-0.5 bg-gradient-to-r from-teal-400 to-teal-600 rounded-full scale-x-0 group-hover:scale-x-100 group-focus:scale-x-100 transition-transform duration-300 origin-left" />
+      </Button>
+    );
+  }
+);
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -69,13 +79,10 @@ export default function Navbar() {
     <nav
       className={cn(
         'fixed top-0 z-50 w-full transition-all duration-500',
+        'backdrop-blur-xl border-b',
         theme === 'dark'
-          ? isScrolled
-            ? 'bg-gray-900/95 shadow-sm backdrop-blur-md border-b border-gray-800'
-            : 'bg-gray-900/90 backdrop-blur-sm'
-          : isScrolled
-            ? 'bg-white/95 shadow-sm backdrop-blur-md border-b border-gray-100'
-            : 'bg-white/90 backdrop-blur-sm'
+          ? 'bg-gray-900/80 border-gray-800/70 shadow-lg'
+          : 'bg-white/80 border-gray-200 shadow-lg'
       )}
     >
       <div className={cn(
@@ -85,293 +92,152 @@ export default function Navbar() {
         <div className="flex items-center justify-between">
           <Link href="/?variant=illustrative1" className="group flex items-center">
             <motion.div 
-              className="relative h-10 w-auto"
+              className="relative h-10 w-auto flex items-center"
               initial={{ opacity: 0, x: -10 }}
               animate={{ opacity: 1, x: 0 }}
-              whileHover={{ scale: 1.03 }}
+              whileHover={{ scale: 1.05 }}
               transition={{ type: 'spring', stiffness: 400, damping: 10 }}
             >
-              <Image
-                src="/ibs_logo_sample.png"
-                alt="IBS Fintech"
-                width={160}
-                height={40}
-                className="h-full w-auto object-contain"
-                priority
-              />
+              <span className={cn(
+                'inline-flex items-center justify-center rounded-lg',
+                theme === 'dark'
+                  ? 'bg-gray-900/90'
+                  : 'bg-white shadow-sm ring-1 ring-gray-200',
+                'px-2 py-1'
+              )}>
+                <Image
+                  src="/ibs_logo_sample.png"
+                  alt="IBS Fintech"
+                  width={140}
+                  height={36}
+                  className="h-9 w-auto object-contain drop-shadow-md"
+                  priority
+                />
+              </span>
             </motion.div>
-            <motion.div 
-              className={cn(
-                'w-2 h-2 rounded-full ml-2',
-                theme === 'dark' ? 'bg-teal-400' : 'bg-blue-500'
-              )}
-              animate={{ 
-                scale: [1, 1.2, 1],
-                opacity: [0.6, 1, 0.6],
-              }}
-              transition={{
-                duration: 2,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-            />
           </Link>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-6">
+          <div className="hidden md:flex items-center space-x-2">
+            {/* Home Dropdown */}
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="ghost" className={cn(
-                  'group flex items-center gap-1 px-3 py-2 hover:bg-transparent',
-                  theme === 'dark' ? 'text-gray-100 hover:text-teal-300' : 'text-gray-700 hover:text-blue-600'
-                )}>
-                  <span className="relative">
-                    <span className="group-hover:opacity-0 transition-opacity">Home</span>
-                    <span className={cn(
-                      'absolute inset-0 opacity-0 group-hover:opacity-100 font-medium',
-                      theme === 'dark' ? 'bg-gradient-to-r from-teal-400 to-teal-200 bg-clip-text text-transparent' : 'bg-gradient-to-r from-blue-600 to-blue-400 bg-clip-text text-transparent'
-                    )}>
-                      Home
-                    </span>
-                  </span>
-                  <ChevronDown size={16} className={cn(
-                    'transition-transform group-data-[state=open]:rotate-180',
-                    theme === 'dark' ? 'text-teal-200 group-hover:text-teal-300' : 'text-gray-400 group-hover:text-blue-500'
-                  )} />
-                </Button>
+                <MenuButton>Home <ChevronDown size={16} className="ml-1 inline" /></MenuButton>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="center" className={cn(
-                theme === 'dark' ? 'bg-gray-900 border-gray-800 text-gray-100' : ''
-              )}>
-                <DropdownMenuItem asChild>
-                  <Link href="/?variant=illustrative1" className="flex items-center gap-2">
-                    <Palette size={16} /> Illustrative Style 1
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link href="/?variant=illustrative2" className="flex items-center gap-2">
-                    <Lightbulb size={16} /> Illustrative Style 2
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link href="/?variant=illustrative3" className="flex items-center gap-2">
-                    <Palette size={16} className="rotate-180" /> Illustrative Style 3
-                  </Link>
-                </DropdownMenuItem>
+              <DropdownMenuContent align="center" className={cn('rounded-xl shadow-2xl border-0 mt-2 backdrop-blur-xl', theme === 'dark' ? 'bg-gray-900/95 text-gray-100' : 'bg-white/95 text-gray-900')}>
+                <DropdownMenuItem asChild><Link href="/?variant=illustrative1" className="flex items-center gap-2">Illustrative Style 1</Link></DropdownMenuItem>
+                <DropdownMenuItem asChild><Link href="/?variant=illustrative2" className="flex items-center gap-2">Illustrative Style 2</Link></DropdownMenuItem>
+                <DropdownMenuItem asChild><Link href="/?variant=illustrative3" className="flex items-center gap-2">Illustrative Style 3</Link></DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
-
             {/* Products Dropdown */}
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="ghost" className="group flex items-center gap-1">
-                  Products
-                  <ChevronDown size={16} className="transition group-data-[state=open]:rotate-180" />
-                </Button>
+                <MenuButton>Products <ChevronDown size={16} className="ml-1 inline" /></MenuButton>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="start" className="w-72">
+              <DropdownMenuContent align="start" className="w-72 rounded-xl shadow-2xl border-0 mt-2 backdrop-blur-xl bg-white/95 dark:bg-gray-900/95">
                 <div className="px-2 py-1.5 text-sm font-medium text-gray-500">Enterprise TMS</div>
-                <DropdownMenuItem asChild>
-                  <Link href="/enterprise/cashflow-liquidity" className="w-full pl-4">Cashflow & Liquidity</Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link href="/enterprise/currency-fx-risk" className="w-full pl-4">Currency (FX) Risk</Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link href="/enterprise/investment-money-market" className="w-full pl-4">Investment (Money Market)</Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link href="/enterprise/trade-finance" className="w-full pl-4">Trade Finance – Import Export & Banking</Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link href="/enterprise/debt-borrowings" className="w-full pl-4">Debt (Borrowings)</Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link href="/enterprise/commodity-risk" className="w-full pl-4">Commodity Risk</Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link href="/enterprise/payments" className="w-full pl-4">Payments</Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link href="/enterprise/supply-chain-finance" className="w-full pl-4">Supply Chain Finance – VNDZY®</Link>
-                </DropdownMenuItem>
-                
+                <DropdownMenuItem asChild><Link href="/enterprise/cashflow-liquidity" className="w-full pl-4">Cashflow & Liquidity</Link></DropdownMenuItem>
+                <DropdownMenuItem asChild><Link href="/enterprise/currency-fx-risk" className="w-full pl-4">Currency (FX) Risk</Link></DropdownMenuItem>
+                <DropdownMenuItem asChild><Link href="/enterprise/investment-money-market" className="w-full pl-4">Investment (Money Market)</Link></DropdownMenuItem>
+                <DropdownMenuItem asChild><Link href="/enterprise/trade-finance" className="w-full pl-4">Trade Finance</Link></DropdownMenuItem>
+                <DropdownMenuItem asChild><Link href="/enterprise/debt-borrowings" className="w-full pl-4">Debt (Borrowings)</Link></DropdownMenuItem>
+                <DropdownMenuItem asChild><Link href="/enterprise/commodity-risk" className="w-full pl-4">Commodity Risk</Link></DropdownMenuItem>
+                <DropdownMenuItem asChild><Link href="/enterprise/payments" className="w-full pl-4">Payments</Link></DropdownMenuItem>
+                <DropdownMenuItem asChild><Link href="/enterprise/supply-chain-finance" className="w-full pl-4">Supply Chain Finance – VNDZY®</Link></DropdownMenuItem>
                 <div className="px-2 py-1.5 mt-2 text-sm font-medium text-gray-500">SME – TMS</div>
-                <DropdownMenuItem asChild>
-                  <Link href="/sme/innottm" className="w-full pl-4">InnoTTM</Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link href="/sme/innovest" className="w-full pl-4">InnoInvest</Link>
-                </DropdownMenuItem>
+                <DropdownMenuItem asChild><Link href="/sme/innottm" className="w-full pl-4">InnoTTM</Link></DropdownMenuItem>
+                <DropdownMenuItem asChild><Link href="/sme/innovest" className="w-full pl-4">InnoInvest</Link></DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
-            {/* Solutions */}
+            {/* Solutions Dropdown */}
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="ghost" className="group flex items-center gap-1">
-                  Solutions
-                  <ChevronDown size={16} className="transition group-data-[state=open]:rotate-180" />
-                </Button>
+                <MenuButton>Solutions <ChevronDown size={16} className="ml-1 inline" /></MenuButton>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="start" className="w-72">
-                <DropdownMenuItem asChild>
-                  <Link href="/solutions/cash-visibility-forecasting" className="w-full">Cash Visibility & Forecasting</Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link href="/solutions/foreign-exchange-risk" className="w-full">Navigate Foreign Exchange Risk</Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link href="/solutions/money-market" className="w-full">Manage end-to-end money market instruments</Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link href="/solutions/trade-finance" className="w-full">Optimize Trade Finance Operations</Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link href="/solutions/manage-debt" className="w-full">Manage Debt</Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link href="/solutions/commodity-risk" className="w-full">Mitigate Commodity Risk</Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link href="/solutions/treasury-payments" className="w-full">Automate Treasury Payment Processes</Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link href="/solutions/supply-chain-finance" className="w-full">Supply Chain Finance Platform</Link>
-                </DropdownMenuItem>
+              <DropdownMenuContent align="start" className="w-72 rounded-xl shadow-2xl border-0 mt-2 backdrop-blur-xl bg-white/95 dark:bg-gray-900/95">
+                <DropdownMenuItem asChild><Link href="/solutions/cash-visibility-forecasting" className="w-full">Cash Visibility & Forecasting</Link></DropdownMenuItem>
+                <DropdownMenuItem asChild><Link href="/solutions/foreign-exchange-risk" className="w-full">Navigate Foreign Exchange Risk</Link></DropdownMenuItem>
+                <DropdownMenuItem asChild><Link href="/solutions/money-market" className="w-full">Money Market Instruments</Link></DropdownMenuItem>
+                <DropdownMenuItem asChild><Link href="/solutions/trade-finance" className="w-full">Trade Finance Operations</Link></DropdownMenuItem>
+                <DropdownMenuItem asChild><Link href="/solutions/manage-debt" className="w-full">Manage Debt</Link></DropdownMenuItem>
+                <DropdownMenuItem asChild><Link href="/solutions/commodity-risk" className="w-full">Mitigate Commodity Risk</Link></DropdownMenuItem>
+                <DropdownMenuItem asChild><Link href="/solutions/treasury-payments" className="w-full">Payment Automation</Link></DropdownMenuItem>
+                <DropdownMenuItem asChild><Link href="/solutions/supply-chain-finance" className="w-full">Supply Chain Finance</Link></DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
-
-            {/* Resources */}
+            {/* Resources Dropdown */}
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="ghost" className="group flex items-center gap-1">
-                  Resources
-                  <ChevronDown size={16} className="transition group-data-[state=open]:rotate-180" />
-                </Button>
+                <MenuButton>Resources <ChevronDown size={16} className="ml-1 inline" /></MenuButton>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="start" className="w-96 p-4">
+              <DropdownMenuContent align="start" className="w-96 p-4 rounded-xl shadow-2xl border-0 mt-2 backdrop-blur-xl bg-white/95 dark:bg-gray-900/95">
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <h4 className="text-sm font-semibold text-gray-700">Menu Links</h4>
+                    <h4 className="text-sm font-semibold text-gray-700 dark:text-gray-200">Menu Links</h4>
                     <div className="space-y-1">
-                      <DropdownMenuItem asChild className="p-0">
-                        <Link href="/resources/our-clients" className="w-full px-2 py-1.5 text-sm">Our Clients</Link>
-                      </DropdownMenuItem>
-                      <DropdownMenuItem asChild className="p-0">
-                        <Link href="/resources/success-stories" className="w-full px-2 py-1.5 text-sm">Success Stories</Link>
-                      </DropdownMenuItem>
-                      <DropdownMenuItem asChild className="p-0">
-                        <Link href="/resources/why-choose-us" className="w-full px-2 py-1.5 text-sm">Why Choose Us</Link>
-                      </DropdownMenuItem>
-                      <DropdownMenuItem asChild className="p-0">
-                        <Link href="/resources/integration" className="w-full px-2 py-1.5 text-sm">Integration Capabilities</Link>
-                      </DropdownMenuItem>
-                      <DropdownMenuItem asChild className="p-0">
-                        <Link href="/resources/security" className="w-full px-2 py-1.5 text-sm">Security</Link>
-                      </DropdownMenuItem>
-                      <DropdownMenuItem asChild className="p-0">
-                        <Link href="/resources/fact-sheet" className="w-full px-2 py-1.5 text-sm">Fact Sheet</Link>
-                      </DropdownMenuItem>
-                      <DropdownMenuItem asChild className="p-0">
-                        <Link href="/resources/faqs" className="w-full px-2 py-1.5 text-sm">FAQs</Link>
-                      </DropdownMenuItem>
+                      <DropdownMenuItem asChild className="p-0"><Link href="/resources/our-clients" className="w-full px-2 py-1.5 text-sm">Our Clients</Link></DropdownMenuItem>
+                      <DropdownMenuItem asChild className="p-0"><Link href="/resources/success-stories" className="w-full px-2 py-1.5 text-sm">Success Stories</Link></DropdownMenuItem>
+                      <DropdownMenuItem asChild className="p-0"><Link href="/resources/why-choose-us" className="w-full px-2 py-1.5 text-sm">Why Choose Us</Link></DropdownMenuItem>
+                      <DropdownMenuItem asChild className="p-0"><Link href="/resources/integration" className="w-full px-2 py-1.5 text-sm">Integration Capabilities</Link></DropdownMenuItem>
+                      <DropdownMenuItem asChild className="p-0"><Link href="/resources/security" className="w-full px-2 py-1.5 text-sm">Security</Link></DropdownMenuItem>
+                      <DropdownMenuItem asChild className="p-0"><Link href="/resources/fact-sheet" className="w-full px-2 py-1.5 text-sm">Fact Sheet</Link></DropdownMenuItem>
+                      <DropdownMenuItem asChild className="p-0"><Link href="/resources/faqs" className="w-full px-2 py-1.5 text-sm">FAQs</Link></DropdownMenuItem>
                     </div>
                   </div>
                   <div className="space-y-2">
-                    <h4 className="text-sm font-semibold text-gray-700">Media & Updates</h4>
+                    <h4 className="text-sm font-semibold text-gray-700 dark:text-gray-200">Media & Updates</h4>
                     <div className="space-y-1">
-                      <DropdownMenuItem asChild className="p-0">
-                        <Link href="/resources/news" className="w-full px-2 py-1.5 text-sm">Latest News</Link>
-                      </DropdownMenuItem>
-                      <DropdownMenuItem asChild className="p-0">
-                        <Link href="/resources/blogs" className="w-full px-2 py-1.5 text-sm">Blogs</Link>
-                      </DropdownMenuItem>
-                      <DropdownMenuItem asChild className="p-0">
-                        <Link href="/resources/videos" className="w-full px-2 py-1.5 text-sm">Videos</Link>
-                      </DropdownMenuItem>
-                      <DropdownMenuItem asChild className="p-0">
-                        <Link href="/resources/webinars" className="w-full px-2 py-1.5 text-sm">Webinars</Link>
-                      </DropdownMenuItem>
-                      <DropdownMenuItem asChild className="p-0">
-                        <Link href="/resources/events" className="w-full px-2 py-1.5 text-sm">Events</Link>
-                      </DropdownMenuItem>
+                      <DropdownMenuItem asChild className="p-0"><Link href="/resources/news" className="w-full px-2 py-1.5 text-sm">Latest News</Link></DropdownMenuItem>
+                      <DropdownMenuItem asChild className="p-0"><Link href="/resources/blogs" className="w-full px-2 py-1.5 text-sm">Blogs</Link></DropdownMenuItem>
+                      <DropdownMenuItem asChild className="p-0"><Link href="/resources/videos" className="w-full px-2 py-1.5 text-sm">Videos</Link></DropdownMenuItem>
+                      <DropdownMenuItem asChild className="p-0"><Link href="/resources/webinars" className="w-full px-2 py-1.5 text-sm">Webinars</Link></DropdownMenuItem>
+                      <DropdownMenuItem asChild className="p-0"><Link href="/resources/events" className="w-full px-2 py-1.5 text-sm">Events</Link></DropdownMenuItem>
+                    </div>
+                  </div>
+                </div>
+              </DropdownMenuContent>
+            </DropdownMenu>
+            {/* Company Dropdown */}
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <MenuButton>Company <ChevronDown size={16} className="ml-1 inline" /></MenuButton>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="start" className="w-96 p-4 rounded-xl shadow-2xl border-0 mt-2 backdrop-blur-xl bg-white/95 dark:bg-gray-900/95">
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="space-y-2">
+                    <h4 className="text-sm font-semibold text-gray-700 dark:text-gray-200">Company Information</h4>
+                    <div className="space-y-1">
+                      <DropdownMenuItem asChild className="p-0"><Link href="/company/about" className="w-full px-2 py-1.5 text-sm">About Us</Link></DropdownMenuItem>
+                      <DropdownMenuItem asChild className="p-0"><Link href="/company/leadership" className="w-full px-2 py-1.5 text-sm">Leadership Team</Link></DropdownMenuItem>
+                      <DropdownMenuItem asChild className="p-0"><Link href="/company/us-leadership" className="w-full px-2 py-1.5 text-sm">US Leadership Team</Link></DropdownMenuItem>
+                      <DropdownMenuItem asChild className="p-0"><Link href="/company/partners" className="w-full px-2 py-1.5 text-sm">Global Partners</Link></DropdownMenuItem>
+                      <DropdownMenuItem asChild className="p-0"><Link href="/company/careers" className="w-full px-2 py-1.5 text-sm">Career</Link></DropdownMenuItem>
+                    </div>
+                  </div>
+                  <div className="space-y-2">
+                    <h4 className="text-sm font-semibold text-gray-700 dark:text-gray-200">Culture & Recognition</h4>
+                    <div className="space-y-1">
+                      <DropdownMenuItem asChild className="p-0"><Link href="/company/awards" className="w-full px-2 py-1.5 text-sm">Awards & Recognitions</Link></DropdownMenuItem>
+                      <DropdownMenuItem asChild className="p-0"><Link href="/company/life" className="w-full px-2 py-1.5 text-sm">Life at IBSFINtech</Link></DropdownMenuItem>
                     </div>
                     <div className="pt-2">
-                      <div className="h-24 bg-gray-100 rounded flex items-center justify-center text-gray-400 text-xs">
-                        Latest Event Photo
-                      </div>
+                      <DropdownMenuItem asChild className="p-0"><Link href="/contact" className="block px-2 py-2 text-sm font-medium text-teal-600 hover:bg-teal-50 dark:hover:bg-gray-800 rounded">Contact Us →</Link></DropdownMenuItem>
                     </div>
                   </div>
                 </div>
               </DropdownMenuContent>
             </DropdownMenu>
-
-            {/* Company */}
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="ghost" className="group flex items-center gap-1">
-                  Company
-                  <ChevronDown size={16} className="transition group-data-[state=open]:rotate-180" />
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="start" className="w-96 p-4">
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <h4 className="text-sm font-semibold text-gray-700">Company Information</h4>
-                    <div className="space-y-1">
-                      <DropdownMenuItem asChild className="p-0">
-                        <Link href="/company/about" className="w-full px-2 py-1.5 text-sm">About Us</Link>
-                      </DropdownMenuItem>
-                      <DropdownMenuItem asChild className="p-0">
-                        <Link href="/company/leadership" className="w-full px-2 py-1.5 text-sm">Leadership Team</Link>
-                      </DropdownMenuItem>
-                      <DropdownMenuItem asChild className="p-0">
-                        <Link href="/company/us-leadership" className="w-full px-2 py-1.5 text-sm">US Leadership Team</Link>
-                      </DropdownMenuItem>
-                      <DropdownMenuItem asChild className="p-0">
-                        <Link href="/company/partners" className="w-full px-2 py-1.5 text-sm">Global Partners</Link>
-                      </DropdownMenuItem>
-                      <DropdownMenuItem asChild className="p-0">
-                        <Link href="/company/careers" className="w-full px-2 py-1.5 text-sm">Career</Link>
-                      </DropdownMenuItem>
-                    </div>
-                  </div>
-                  <div className="space-y-2">
-                    <h4 className="text-sm font-semibold text-gray-700">Culture & Recognition</h4>
-                    <div className="space-y-1">
-                      <DropdownMenuItem asChild className="p-0">
-                        <Link href="/company/awards" className="w-full px-2 py-1.5 text-sm">Awards & Recognitions</Link>
-                      </DropdownMenuItem>
-                      <DropdownMenuItem asChild className="p-0">
-                        <Link href="/company/life" className="w-full px-2 py-1.5 text-sm">Life at IBSFINtech</Link>
-                      </DropdownMenuItem>
-                    </div>
-                    <div className="pt-4">
-                      <div className="h-20 bg-gray-100 rounded flex items-center justify-center text-gray-400 text-xs">
-                        Company Culture Photo
-                      </div>
-                      <div className="mt-2">
-                        <Link href="/contact" className="text-blue-600 hover:text-blue-700 text-sm font-medium">
-                          Contact Us →
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </DropdownMenuContent>
-            </DropdownMenu>
-          </div>
-
-          <div className="hidden md:flex items-center ml-6">
+            {/* Contact Us Button */}
             <motion.div
-              whileHover={{ scale: 1.03 }}
+              whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.98 }}
-              className="relative group"
+              className="relative group ml-2"
             >
-              <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-500 to-blue-300 rounded-full blur opacity-0 group-hover:opacity-100 transition duration-300" />
-              <Button className="relative bg-gradient-to-r from-blue-600 to-blue-500 text-white rounded-full px-6 py-2.5 font-medium hover:shadow-lg hover:shadow-blue-100 transition-all duration-300">
-                Contact Us
-                <motion.span 
+              <div className="absolute -inset-1 bg-gradient-to-r from-teal-400 to-teal-600 rounded-full blur opacity-60 group-hover:opacity-90 transition duration-300 pointer-events-none" />
+              <Button className="relative z-10 bg-gradient-to-r from-teal-500 to-teal-600 text-white font-semibold rounded-full px-7 py-2.5 shadow-lg hover:shadow-xl hover:from-teal-400 hover:to-teal-500 transition-all duration-300 border-0 focus:ring-2 focus:ring-teal-300 focus:outline-none">
+                Contact Sales
+                <motion.span
                   className="ml-2"
                   animate={{ x: [0, 4, 0] }}
                   transition={{

@@ -3,6 +3,7 @@
 import { useRef, useEffect, useState } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Play } from 'lucide-react';
+import Image from 'next/image';
 
 import { Client } from '../ClientLogoStrip';
 
@@ -110,9 +111,14 @@ export function LogoStripIllustrative2({ clients }: LogoStripIllustrative2Props)
                   } as any}
                 >
                   <div className="relative w-40 h-16 flex items-center justify-center">
-                    <span className="text-lg font-medium text-indigo-900 whitespace-nowrap">
-                      {client.name}
-                    </span>
+                    <Image
+                      src={`/clients/${client.logo}`}
+                      alt={client.name}
+                      width={120}
+                      height={56}
+                      className="object-contain max-h-14 w-auto mx-auto"
+                      style={{ maxWidth: '100%' }}
+                    />
                   </div>
                   {client.hasVideo && (
                     <div className="absolute -top-2 -right-2 w-6 h-6 bg-indigo-500 rounded-full flex items-center justify-center shadow-md">

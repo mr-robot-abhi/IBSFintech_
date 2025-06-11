@@ -144,8 +144,8 @@ export default function IllustrativeThree() {
       </section>
 
       {/* Winning Together */}
-      <section className="py-16 bg-white dark:bg-gray-950 transition-colors duration-200">
-        <div className="container mx-auto px-4 max-w-6xl">
+      <section className="py-16 relative transition-colors duration-200">
+        <div className="container mx-auto px-4 max-w-6xl relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -159,41 +159,74 @@ export default function IllustrativeThree() {
               and supply chain operations, achieving agility, insights, and productivity.
             </p>
           </motion.div>
-          {/* Client Scroll */}
-          <div
-            className="relative bg-teal-50 dark:bg-teal-900/30 p-6 rounded-xl mb-12 transition-colors duration-200"
-            onMouseEnter={() => handleScrollHover('client', true)}
-            onMouseLeave={() => handleScrollHover('client', false)}
-          >
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={clientIndex}
-                variants={scrollVariants}
-                initial="hidden"
-                animate="visible"
-                exit="exit"
-                className="flex items-center justify-center"
-              >
-                <Tilt tiltMaxAngleX={5} tiltMaxAngleY={5}>
-                  <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md flex items-center gap-4 transition-colors duration-200">
-                    <DollarSign className="h-8 w-8 text-teal-600 dark:text-teal-400" />
-                    <span className="text-lg font-semibold text-gray-800 dark:text-white">{clients[clientIndex]}</span>
-                  </div>
-                </Tilt>
-              </motion.div>
-            </AnimatePresence>
-            <div className="flex justify-center gap-2 mt-4 items-center">
-              {clients.map((_, index) => (
-                <button
-                  key={index}
-                  className={`h-2 w-2 rounded-full transition-colors duration-200 ${
-                    index === clientIndex ? 'bg-teal-600 dark:bg-teal-400' : 'bg-gray-300 dark:bg-gray-600'
-                  }`}
-                  onClick={() => setClientIndex(index)}
-                  aria-label={`Go to client ${index + 1}`}
-                />
+
+          {/* Client Logo Carousel */}
+          <div className="relative overflow-hidden rounded-xl bg-teal-50 dark:bg-gray-900/80 shadow-inner py-4">
+            <motion.div
+              className="flex space-x-12"
+              animate={{
+                x: [0, -1040],
+              }}
+              transition={{
+                x: {
+                  repeat: Infinity,
+                  repeatType: "loop",
+                  duration: 24,
+                  ease: "linear",
+                },
+              }}
+            >
+              {/* First set of logos */}
+              {[
+                { src: '/clients/client1.png', alt: 'Botanic Healthcare' },
+                { src: '/clients/client2.jpg', alt: 'Client 2' },
+                { src: '/clients/client3.jpg', alt: 'Frumar Marketing' },
+                { src: '/clients/client4.jpg', alt: 'GX' },
+                { src: '/clients/client5.png', alt: 'Infra Engineers India' },
+                { src: '/clients/client6.png', alt: 'SIDVIN' },
+                { src: '/clients/client7.png', alt: 'Mittal' },
+                { src: '/clients/client8.png', alt: 'Client 8' },
+              ].map((logo, idx) => (
+                <motion.div
+                  key={`logo-1-${idx}`}
+                  className="flex-shrink-0 flex items-center justify-center bg-white/80 dark:bg-gray-800/80 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 p-4 h-28 w-48"
+                  whileHover={{ scale: 1.07 }}
+                >
+                  <Image
+                    src={logo.src}
+                    alt={logo.alt}
+                    width={160}
+                    height={56}
+                    className="object-contain max-h-14 w-auto mx-auto"
+                  />
+                </motion.div>
               ))}
-            </div>
+              {/* Duplicate set for seamless loop */}
+              {[
+                { src: '/clients/client1.png', alt: 'Botanic Healthcare' },
+                { src: '/clients/client2.jpg', alt: 'Client 2' },
+                { src: '/clients/client3.jpg', alt: 'Frumar Marketing' },
+                { src: '/clients/client4.jpg', alt: 'GX' },
+                { src: '/clients/client5.png', alt: 'Infra Engineers India' },
+                { src: '/clients/client6.png', alt: 'SIDVIN' },
+                { src: '/clients/client7.png', alt: 'Mittal' },
+                { src: '/clients/client8.png', alt: 'Client 8' },
+              ].map((logo, idx) => (
+                <motion.div
+                  key={`logo-2-${idx}`}
+                  className="flex-shrink-0 flex items-center justify-center bg-white/80 dark:bg-gray-800/80 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 p-4 h-28 w-48"
+                  whileHover={{ scale: 1.07 }}
+                >
+                  <Image
+                    src={logo.src}
+                    alt={logo.alt}
+                    width={160}
+                    height={56}
+                    className="object-contain max-h-14 w-auto mx-auto"
+                  />
+                </motion.div>
+              ))}
+            </motion.div>
           </div>
         </div>
       </section>

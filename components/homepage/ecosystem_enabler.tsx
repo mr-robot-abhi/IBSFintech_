@@ -74,11 +74,11 @@ export default function EcosystemEnabler() {
   }, [rotateClients, serviceControls]);
 
   const center = size / 2;
-  const ibsLogoSize = size * 0.32;
-  const ibsLogoRing = size * 0.42;
+  const ibsLogoSize = size * 0.28;
+  const ibsLogoRing = size * 0.38;
   const serviceRadius = size * 0.39;
-  const clientRadius = size * 0.86 - size * 0.13;
-  const serviceBoxSize = size * 0.22;
+  const clientRadius = size * 0.82 - size * 0.13;
+  const serviceBoxSize = size * 0.19;
   const clientLogoSize = size * 0.13;
 
   return (
