@@ -171,12 +171,6 @@ export default function NavbarStyle2() {
                     >
                       <div className="px-1 py-2">
                         <Link
-                          href="/?variant=illustrative1"
-                          className="flex items-center gap-2 px-4 py-2 hover:bg-gray-700/50 text-gray-100 rounded-md m-1"
-                        >
-                          <Palette size={16} className="text-blue-400" /> Illustrative Style 1
-                        </Link>
-                        <Link
                           href="/?variant=illustrative2"
                           className="flex items-center gap-2 px-4 py-2 hover:bg-gray-700/50 text-gray-100 rounded-md m-1"
                         >
@@ -498,12 +492,6 @@ export default function NavbarStyle2() {
                 <ChevronDown size={16} className="ml-2 text-gray-400 transition-transform group-hover:rotate-180" />
               </button>
               <div className="mt-1 rounded-lg bg-gray-800/95 backdrop-blur-sm border border-gray-700 shadow-2xl overflow-hidden">
-                <Link
-                  href="/?variant=illustrative1"
-                  className="flex items-center gap-2 px-4 py-2 hover:bg-gray-700/50 text-gray-100 rounded-md m-1"
-                >
-                  <Palette size={16} className="text-blue-400" /> Illustrative Style 1
-                </Link>
                 <Link
                   href="/?variant=illustrative2"
                   className="flex items-center gap-2 px-4 py-2 hover:bg-gray-700/50 text-gray-100 rounded-md m-1"
