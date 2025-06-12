@@ -291,7 +291,6 @@ export default function IllustrativeTwo() {
           </div>
         </div>
       </section>
-      <IBSNetworkTwo />
 
       {/* Winning Together */}
       <section className="py-20 bg-white relative overflow-hidden">
@@ -818,6 +817,22 @@ export default function IllustrativeTwo() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Our Ecosystem section */}
+      <section className="py-20 bg-gradient-to-b from-white to-blue-50">
+        <div className="container mx-auto px-4">
+          <motion.h2
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-3xl md:text-4xl font-bold mb-12 text-center text-blue-900"
+          >
+            Our Ecosystem
+          </motion.h2>
+          <IBSNetworkTwo />
         </div>
       </section>
 
