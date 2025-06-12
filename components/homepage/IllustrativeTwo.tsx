@@ -229,15 +229,24 @@ export default function IllustrativeTwo() {
 
       {/* Why Choose Us */}
       <section className="py-20 bg-white relative overflow-hidden">
-        <div className="absolute inset-0 opacity-5">
-          <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <pattern id="grid3d" width="40" height="40" patternUnits="userSpaceOnUse">
-                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#4338CA" strokeWidth="0.5" />
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#grid3d)" />
-          </svg>
+        <div className="absolute inset-0">
+          <motion.div
+            className="absolute inset-0"
+            style={{ opacity: 0.25 }}
+            initial={{ scale: 1.1, rotate: -1 }}
+            animate={{ scale: 1, rotate: 1 }}
+            transition={{ duration: 30, repeat: Infinity, repeatType: "reverse" }}
+          >
+            <Image
+              src="/bg_2.jpg"
+              alt="Background"
+              fill
+              className="object-cover"
+              priority
+            />
+          </motion.div>
+          <div className="absolute inset-0 bg-gradient-to-b from-blue-900/20 via-blue-800/10 to-blue-900/20" />
+          <div className="absolute inset-0 bg-gradient-to-r from-white/80 via-transparent to-white/80" />
         </div>
         <div className="container mx-auto px-4 relative">
           <motion.div
@@ -341,8 +350,27 @@ export default function IllustrativeTwo() {
       </section>
 
       {/* Our Offerings */}
-      <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
-        <div className="container mx-auto px-4">
+      <section className="py-20 bg-gradient-to-br from-blue-50 to-white relative overflow-hidden">
+        <div className="absolute inset-0">
+          <motion.div
+            className="absolute inset-0"
+            style={{ opacity: 0.3 }}
+            initial={{ scale: 1, rotate: 1 }}
+            animate={{ scale: 1.1, rotate: -1 }}
+            transition={{ duration: 30, repeat: Infinity, repeatType: "reverse" }}
+          >
+            <Image
+              src="/bg_3.jpg"
+              alt="Background"
+              fill
+              className="object-cover"
+              priority
+            />
+          </motion.div>
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-900/30 via-blue-800/20 to-blue-900/30" />
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-50/90 via-transparent to-white/90" />
+        </div>
+        <div className="container mx-auto px-4 relative">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -400,8 +428,27 @@ export default function IllustrativeTwo() {
       </section>
 
       {/* Featured Industries */}
-      <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
-        <div className="container mx-auto px-4">
+      <section className="py-20 bg-white relative overflow-hidden">
+        <div className="absolute inset-0">
+          <motion.div
+            className="absolute inset-0"
+            style={{ opacity: 0.25 }}
+            initial={{ scale: 1.1, rotate: -1 }}
+            animate={{ scale: 1, rotate: 1 }}
+            transition={{ duration: 30, repeat: Infinity, repeatType: "reverse" }}
+          >
+            <Image
+              src="/bg_2.jpg"
+              alt="Background"
+              fill
+              className="object-cover"
+              priority
+            />
+          </motion.div>
+          <div className="absolute inset-0 bg-gradient-to-b from-blue-900/20 via-blue-800/10 to-blue-900/20" />
+          <div className="absolute inset-0 bg-gradient-to-r from-white/80 via-transparent to-white/80" />
+        </div>
+        <div className="container mx-auto px-4 relative">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -522,7 +569,7 @@ export default function IllustrativeTwo() {
       </section>
 
       {/* Strategic Partnerships */}
-      <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
+      <section className="py-20 bg-gradient-to-br from-blue-50 to-white">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -556,16 +603,25 @@ export default function IllustrativeTwo() {
       </section>
 
       {/* Latest News */}
-      <section className="py-20 bg-white relative overflow-hidden">
-        <div className="absolute inset-0 opacity-5">
-          <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <pattern id="grid3d" width="40" height="40" patternUnits="userSpaceOnUse">
-                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#4338CA" strokeWidth="0.5" />
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#grid3d)" />
-          </svg>
+      <section className="py-20 bg-gradient-to-br from-blue-900/5 to-white relative overflow-hidden">
+        <div className="absolute inset-0">
+          <motion.div
+            className="absolute inset-0"
+            style={{ opacity: 0.25 }}
+            initial={{ scale: 1.1, rotate: -1 }}
+            animate={{ scale: 1, rotate: 1 }}
+            transition={{ duration: 30, repeat: Infinity, repeatType: "reverse" }}
+          >
+            <Image
+              src="/bg_2.jpg"
+              alt="Background"
+              fill
+              className="object-cover"
+              priority
+            />
+          </motion.div>
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 via-blue-800/10 to-blue-900/20" />
+          <div className="absolute inset-0 bg-gradient-to-br from-white/90 via-transparent to-white/90" />
         </div>
         <div className="container mx-auto px-4 relative">
           <motion.div

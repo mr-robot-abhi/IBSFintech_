@@ -90,7 +90,7 @@ export default function Navbar() {
         theme === 'dark' ? 'text-gray-100' : 'text-gray-900'
       )}>
         <div className="flex items-center justify-between">
-          <Link href="/?variant=illustrative1" className="group flex items-center">
+          <Link href="/?variant=illustrative2" className="group flex items-center">
             <motion.div 
               className="relative h-10 w-auto flex items-center"
               initial={{ opacity: 0, x: -10 }}
@@ -125,7 +125,6 @@ export default function Navbar() {
                 <MenuButton>Home <ChevronDown size={16} className="ml-1 inline" /></MenuButton>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="center" className={cn('rounded-xl shadow-2xl border-0 mt-2 backdrop-blur-xl', theme === 'dark' ? 'bg-gray-900/95 text-gray-100' : 'bg-white/95 text-gray-900')}>
-                <DropdownMenuItem asChild><Link href="/?variant=illustrative1" className="flex items-center gap-2">Illustrative Style 1</Link></DropdownMenuItem>
                 <DropdownMenuItem asChild><Link href="/?variant=illustrative2" className="flex items-center gap-2">Illustrative Style 2</Link></DropdownMenuItem>
                 <DropdownMenuItem asChild><Link href="/?variant=illustrative3" className="flex items-center gap-2">Illustrative Style 3</Link></DropdownMenuItem>
               </DropdownMenuContent>
@@ -272,7 +271,6 @@ export default function Navbar() {
                 <div className="pl-3 border-l-2 border-gray-200">
                   <h3 className="text-sm font-semibold text-gray-500 mb-1">Home Styles</h3>
                   <div className="space-y-1 mt-1">
-                    <Link href="/?variant=illustrative1" className="block px-2 py-1.5 text-sm text-gray-700 hover:bg-gray-100 rounded" onClick={() => setIsOpen(false)}>Illustrative Style 1</Link>
                     <Link href="/?variant=illustrative2" className="block px-2 py-1.5 text-sm text-gray-700 hover:bg-gray-100 rounded" onClick={() => setIsOpen(false)}>Illustrative Style 2</Link>
                     <Link href="/?variant=illustrative3" className="block px-2 py-1.5 text-sm text-gray-700 hover:bg-gray-100 rounded" onClick={() => setIsOpen(false)}>Illustrative Style 3</Link>
                   </div>

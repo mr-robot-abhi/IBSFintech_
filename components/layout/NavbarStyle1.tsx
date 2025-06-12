@@ -122,18 +122,13 @@ export default function NavbarStyle1() {
               </DropdownMenuTrigger>
               <DropdownMenuContent align="center" className="bg-white/95 backdrop-blur-sm border-0 shadow-xl">
                 <DropdownMenuItem asChild>
-                  <Link href="/?variant=illustrative1" className="flex items-center gap-2">
-                    <Palette size={16} /> Illustrative Style 1
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
                   <Link href="/?variant=illustrative2" className="flex items-center gap-2">
                     <Lightbulb size={16} /> Illustrative Style 2
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
                   <Link href="/?variant=illustrative3" className="flex items-center gap-2">
-                    <Palette size={16} className="rotate-180" /> Illustrative Style 3
+                    <Palette size={16} /> Illustrative Style 3
                   </Link>
                 </DropdownMenuItem>
               </DropdownMenuContent>
@@ -398,23 +393,13 @@ export default function NavbarStyle1() {
             </DropdownMenuTrigger>
             <DropdownMenuContent className="w-full bg-white/95 backdrop-blur-sm border-0 shadow-xl rounded-xl overflow-hidden">
               <DropdownMenuItem asChild>
-                <Link href="/?variant=illustrative1" className="flex items-center gap-2 hover:bg-blue-50 rounded-lg m-1">
-                  <Palette size={16} className="text-blue-600" /> Illustrative Style 1
-                </Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem asChild>
                 <Link href="/?variant=illustrative2" className="flex items-center gap-2 hover:bg-blue-50 rounded-lg m-1">
                   <Lightbulb size={16} className="text-blue-600" /> Illustrative Style 2
                 </Link>
               </DropdownMenuItem>
               <DropdownMenuItem asChild>
-                <Link href="/?variant=datadriven" className="flex items-center gap-2 hover:bg-blue-50 rounded-lg m-1">
-                  <BarChart size={16} className="text-blue-600" /> Data-Driven Style
-                </Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem asChild>
                 <Link href="/?variant=illustrative3" className="flex items-center gap-2 hover:bg-blue-50 rounded-lg m-1">
-                  <Palette size={16} className="text-blue-600 rotate-180" /> Illustrative Style 3
+                  <Palette size={16} className="text-blue-600" /> Illustrative Style 3
                 </Link>
               </DropdownMenuItem>
             </DropdownMenuContent>
