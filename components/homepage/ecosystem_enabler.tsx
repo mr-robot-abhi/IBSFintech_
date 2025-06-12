@@ -40,7 +40,7 @@ export default function EcosystemEnabler() {
   const rotateClients = useAnimation();
   const serviceControls = useAnimation();
   const containerRef = useRef<HTMLDivElement>(null);
-  const [size, setSize] = useState(700);
+  const [size, setSize] = useState(560);
 
   useEffect(() => {
     const updateSize = () => {
@@ -74,12 +74,12 @@ export default function EcosystemEnabler() {
   }, [rotateClients, serviceControls]);
 
   const center = size / 2;
-  const ibsLogoSize = size * 0.28;
-  const ibsLogoRing = size * 0.38;
-  const serviceRadius = size * 0.39;
-  const clientRadius = size * 0.82 - size * 0.13;
-  const serviceBoxSize = size * 0.19;
-  const clientLogoSize = size * 0.13;
+  const ibsLogoSize = size * 0.22;
+  const ibsLogoRing = size * 0.30;
+  const serviceRadius = size * 0.31;
+  const clientRadius = size * 0.66 - size * 0.10;
+  const serviceBoxSize = size * 0.15;
+  const clientLogoSize = size * 0.10;
 
   return (
     <section className="relative bg-white dark:bg-gray-950 py-24 overflow-hidden transition-colors duration-200">

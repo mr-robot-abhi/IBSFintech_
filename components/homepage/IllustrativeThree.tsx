@@ -130,11 +130,11 @@ export default function IllustrativeThree() {
               <Tilt tiltMaxAngleX={10} tiltMaxAngleY={10}>
                 <div className="bg-white/20 backdrop-blur-lg p-6 rounded-xl border border-teal-200 shadow-lg">
                   <Image
-                    src="/bg_1.jpg"
+                    src="/bg_4.jpg"
                     alt="Treasury dashboard"
                     width={600}
                     height={400}
-                    className="rounded-lg"
+                    className="rounded-lg saturate-150 contrast-110"
                   />
                 </div>
               </Tilt>
@@ -145,6 +145,17 @@ export default function IllustrativeThree() {
 
       {/* Winning Together */}
       <section className="py-16 relative transition-colors duration-200">
+        <div className="absolute inset-0 pointer-events-none select-none">
+          <Image
+            src="/bg_5.jpg"
+            alt="Fintech background"
+            fill
+            className="object-cover"
+            style={{ opacity: 0.13 }}
+            priority={false}
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-white/80 via-transparent to-white/90 dark:from-gray-900/90 dark:via-transparent dark:to-gray-900/95" />
+        </div>
         <div className="container mx-auto px-4 max-w-6xl relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -501,8 +512,19 @@ export default function IllustrativeThree() {
       </section>
 
       {/* Strategic Partnerships */}
-      <section className="py-16 bg-gray-50 dark:bg-gray-900 transition-colors duration-200">
-        <div className="container mx-auto px-4 max-w-6xl">
+      <section className="py-16 bg-gray-50 dark:bg-gray-900 relative transition-colors duration-200">
+        <div className="absolute inset-0 pointer-events-none select-none">
+          <Image
+            src="/bg_5.jpg"
+            alt="Fintech background"
+            fill
+            className="object-cover"
+            style={{ opacity: 0.10 }}
+            priority={false}
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-white/90 via-transparent to-white/95 dark:from-gray-900/95 dark:via-transparent dark:to-gray-900/98" />
+        </div>
+        <div className="container mx-auto px-4 max-w-6xl relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
