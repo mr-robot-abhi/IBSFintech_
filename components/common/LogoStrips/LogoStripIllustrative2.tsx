@@ -19,12 +19,15 @@ export function LogoStripIllustrative2({ clients }: LogoStripIllustrative2Props)
   const [isHovered, setIsHovered] = useState(false);
   const controls = useAnimation();
 
-  // Smooth right-to-left animation (slightly faster than Illustrative1)
+  // Smooth right-to-left animation with optimized speed for more logos
   useEffect(() => {
     const firstRow = firstRowRef.current;
     if (!firstRow) return;
 
-    const duration = 30; // seconds for one full cycle (faster than Illustrative1)
+    // Calculate duration based on number of logos for consistent speed
+    const baseDuration = 60; // Base duration for a full cycle
+    const duration = Math.max(30, Math.min(120, baseDuration * (clients.length / 16))); // Adjust speed based on number of logos
+    
     const endPosition = firstRow.scrollWidth / 2;
 
     const animate = () => {
@@ -47,7 +50,7 @@ export function LogoStripIllustrative2({ clients }: LogoStripIllustrative2Props)
     }
 
     return () => controls.stop();
-  }, [isHovered, controls]);
+  }, [isHovered, controls, clients.length]);
 
   // Manual scroll handlers
   const scrollLeft = () => {
@@ -63,8 +66,8 @@ export function LogoStripIllustrative2({ clients }: LogoStripIllustrative2Props)
   };
 
   return (
-    <div className="py-16 bg-gradient-to-r from-indigo-50 to-purple-50 relative">
-      <div className="container mx-auto px-4">
+    <div className="py-16 bg-gradient-to-r from-indigo-50 to-purple-50 relative w-full overflow-hidden">
+      <div className="w-full px-0">
         <motion.div 
           className="text-center mb-12"
           initial={{ opacity: 0, y: 20 }}
@@ -72,10 +75,10 @@ export function LogoStripIllustrative2({ clients }: LogoStripIllustrative2Props)
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
         >
-          <h3 className="text-2xl font-semibold mb-3 text-indigo-900">
+          <h3 className="text-2xl md:text-3xl font-semibold mb-3 text-indigo-900">
             Our Valued Partners
           </h3>
-          <p className="text-indigo-700 max-w-2xl mx-auto">
+          <p className="text-indigo-700 max-w-2xl mx-auto px-4">
             Trusted by leading companies across various industries
           </p>
         </motion.div>
@@ -84,45 +87,46 @@ export function LogoStripIllustrative2({ clients }: LogoStripIllustrative2Props)
           {/* Scroll buttons */}
           <button 
             onClick={scrollLeft}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -ml-4 z-10 w-10 h-10 rounded-full bg-white shadow-lg flex items-center justify-center text-indigo-600 hover:bg-indigo-50 transition-colors duration-200"
+            className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 -ml-2 z-10 w-10 h-10 rounded-full bg-white shadow-lg items-center justify-center text-indigo-600 hover:bg-indigo-50 transition-colors duration-200"
             aria-label="Scroll left"
           >
-            <ChevronLeft className="w-6 h-6" />
+            <ChevronLeft className="w-5 h-5" />
           </button>
           
           <div 
             ref={scrollRef}
-            className="relative w-full overflow-hidden py-4"
+            className="relative w-full overflow-hidden py-6 px-2"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
           >
             <motion.div 
               ref={firstRowRef}
-              className="flex items-center gap-8 w-max"
+              className="flex items-center w-max"
               animate={controls}
             >
               {variantClients.map((client, index) => (
                 <motion.div
                   key={`${client.id}-${index}`}
-                  className="flex-shrink-0 px-8 py-4 bg-white/90 backdrop-blur-sm rounded-xl shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105 relative group"
+                  className="flex-shrink-0 px-6 py-3 mx-2 bg-white/90 backdrop-blur-sm rounded-lg shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105 relative group"
                   whileHover={{ 
                     y: -5,
-                    boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)'
+                    boxShadow: '0 8px 12px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)'
                   } as any}
                 >
-                  <div className="relative w-40 h-16 flex items-center justify-center">
+                  <div className="relative w-32 h-16 flex items-center justify-center p-2">
                     <Image
                       src={`/clients/${client.logo}`}
                       alt={client.name}
                       width={120}
                       height={56}
-                      className="object-contain max-h-14 w-auto mx-auto"
+                      className="object-contain max-h-12 w-auto mx-auto opacity-90 group-hover:opacity-100 transition-opacity duration-300"
                       style={{ maxWidth: '100%' }}
+                      priority={index < 8} // Only prioritize loading first few images
                     />
                   </div>
                   {client.hasVideo && (
-                    <div className="absolute -top-2 -right-2 w-6 h-6 bg-indigo-500 rounded-full flex items-center justify-center shadow-md">
-                      <Play className="w-3 h-3 text-white" />
+                    <div className="absolute -top-1 -right-1 w-5 h-5 bg-indigo-500 rounded-full flex items-center justify-center shadow-md">
+                      <Play className="w-2.5 h-2.5 text-white" />
                     </div>
                   )}
                 </motion.div>
@@ -132,10 +136,10 @@ export function LogoStripIllustrative2({ clients }: LogoStripIllustrative2Props)
           
           <button 
             onClick={scrollRight}
-            className="absolute right-0 top-1/2 -translate-y-1/2 -mr-4 z-10 w-10 h-10 rounded-full bg-white shadow-lg flex items-center justify-center text-indigo-600 hover:bg-indigo-50 transition-colors duration-200"
+            className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 -mr-2 z-10 w-10 h-10 rounded-full bg-white shadow-lg items-center justify-center text-indigo-600 hover:bg-indigo-50 transition-colors duration-200"
             aria-label="Scroll right"
           >
-            <ChevronRight className="w-6 h-6" />
+            <ChevronRight className="w-5 h-5" />
           </button>
         </div>
       </div>

@@ -20,31 +20,54 @@ import {
   Users,
 } from 'lucide-react';
 import EcosystemEnabler from './ecosystem_enabler';
+import ClientLogoStrip from '../common/ClientLogoStrip';
 
 export default function IllustrativeThree() {
   const [clientIndex, setClientIndex] = useState(0);
-  const [industryIndex, setIndustryIndex] = useState(0);
   const clientRef = useRef<NodeJS.Timeout | null>(null);
-  const industryRef = useRef<NodeJS.Timeout | null>(null);
 
   const clients = ['BankCorp', 'TechFin', 'GlobalTrade', 'RetailPay', 'AutoFinance', 'ManuBank'];
   const industries = [
-    { name: 'Automotive', icon: Car, description: 'Streamlined supply chain finance.', metric: '30% Cost Reduction' },
-    { name: 'Manufacturing', icon: Factory, description: 'Optimized cash flows.', metric: '40% Efficiency Gain' },
-    { name: 'Financial Services', icon: Building, description: 'Enhanced risk analytics.', metric: '50% Risk Reduction' },
-    { name: 'Retail', icon: Users, description: 'Improved payment processing.', metric: '25% Savings' },
+    { 
+      name: 'Automotive', 
+      icon: Car, 
+      description: 'Streamlined supply chain finance solutions for the automotive industry.', 
+      metric: '30% Cost Reduction',
+      color: 'from-blue-500 to-blue-600',
+      darkColor: 'from-blue-600 to-blue-700'
+    },
+    { 
+      name: 'Manufacturing', 
+      icon: Factory, 
+      description: 'End-to-end financial solutions for manufacturing operations.', 
+      metric: '40% Efficiency Gain',
+      color: 'from-emerald-500 to-emerald-600',
+      darkColor: 'from-emerald-600 to-emerald-700'
+    },
+    { 
+      name: 'Financial Services', 
+      icon: Building, 
+      description: 'Advanced analytics and risk management for financial institutions.', 
+      metric: '50% Risk Reduction',
+      color: 'from-violet-500 to-violet-600',
+      darkColor: 'from-violet-600 to-violet-700'
+    },
+    { 
+      name: 'Retail & E-commerce', 
+      icon: Users, 
+      description: 'Seamless payment processing and financial operations for retail.', 
+      metric: '25% Savings',
+      color: 'from-amber-500 to-amber-600',
+      darkColor: 'from-amber-600 to-amber-700'
+    },
   ];
 
   useEffect(() => {
     clientRef.current = setInterval(() => {
       setClientIndex((prev) => (prev + 1) % clients.length);
     }, 3000);
-    industryRef.current = setInterval(() => {
-      setIndustryIndex((prev) => (prev + 1) % industries.length);
-    }, 4000);
     return () => {
       if (clientRef.current) clearInterval(clientRef.current);
-      if (industryRef.current) clearInterval(industryRef.current);
     };
   }, []);
 
@@ -64,18 +87,13 @@ export default function IllustrativeThree() {
     exit: { x: -50, opacity: 0, transition: { duration: 0.5 } },
   };
 
-  const handleScrollHover = (type: 'client' | 'industry', isHovering: boolean) => {
-    const ref = type === 'client' ? clientRef : industryRef;
-    if (isHovering && ref.current) {
-      clearInterval(ref.current);
+  const handleClientHover = (isHovering: boolean) => {
+    if (isHovering && clientRef.current) {
+      clearInterval(clientRef.current);
     } else if (!isHovering) {
-      ref.current = setInterval(() => {
-        if (type === 'client') {
-          setClientIndex((prev) => (prev + 1) % clients.length);
-        } else {
-          setIndustryIndex((prev) => (prev + 1) % industries.length);
-        }
-      }, type === 'client' ? 3000 : 4000);
+      clientRef.current = setInterval(() => {
+        setClientIndex((prev) => (prev + 1) % clients.length);
+      }, 3000);
     }
   };
 
@@ -93,6 +111,7 @@ export default function IllustrativeThree() {
             className="object-cover"
           />
         </div>
+        <div className="absolute inset-0 bg-gradient-to-b from-teal-700/90 via-teal-700/50 to-teal-700/90 dark:from-teal-900/90 dark:via-teal-900/50 dark:to-teal-900/90" />
         <div className="container mx-auto max-w-6xl relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
             <motion.div
@@ -100,9 +119,14 @@ export default function IllustrativeThree() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <div className="inline-block px-4 py-2 rounded-full bg-teal-800 text-white text-sm font-semibold mb-4 dark:bg-teal-900 transition-colors duration-200">
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="inline-block px-4 py-2 rounded-full bg-teal-800 text-white text-sm font-semibold mb-4 dark:bg-teal-900 transition-colors duration-200"
+              >
                 Next-Gen Treasury Solutions
-              </div>
+              </motion.div>
               <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 leading-tight">
                 Empower Your <span className="text-teal-200">Financial Future</span>
               </h1>
@@ -130,7 +154,7 @@ export default function IllustrativeThree() {
               <Tilt tiltMaxAngleX={10} tiltMaxAngleY={10}>
                 <div className="bg-white/20 backdrop-blur-lg p-6 rounded-xl border border-teal-200 shadow-lg">
                   <Image
-                    src="/bg_4.jpg"
+                    src="/bg_7.jpg"
                     alt="Treasury dashboard"
                     width={600}
                     height={400}
@@ -150,11 +174,19 @@ export default function IllustrativeThree() {
             src="/bg_5.jpg"
             alt="Fintech background"
             fill
-            className="object-cover"
-            style={{ opacity: 0.13 }}
+            className="object-cover dark:hidden"
+            style={{ opacity: 0.3 }}
             priority={false}
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-white/80 via-transparent to-white/90 dark:from-gray-900/90 dark:via-transparent dark:to-gray-900/95" />
+          <Image
+            src="/bg_dark_1.jpg"
+            alt="Dark mode background"
+            fill
+            className="object-cover hidden dark:block"
+            style={{ opacity: 0.3 }}
+            priority={false}
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-white/95 via-transparent to-white/98 dark:from-gray-900/95 dark:via-gray-900/80 dark:to-gray-900/98" />
         </div>
         <div className="container mx-auto px-4 max-w-6xl relative z-10">
           <motion.div
@@ -172,73 +204,7 @@ export default function IllustrativeThree() {
           </motion.div>
 
           {/* Client Logo Carousel */}
-          <div className="relative overflow-hidden rounded-xl bg-teal-50 dark:bg-gray-900/80 shadow-inner py-4">
-            <motion.div
-              className="flex space-x-12"
-              animate={{
-                x: [0, -1040],
-              }}
-              transition={{
-                x: {
-                  repeat: Infinity,
-                  repeatType: "loop",
-                  duration: 24,
-                  ease: "linear",
-                },
-              }}
-            >
-              {/* First set of logos */}
-              {[
-                { src: '/clients/client1.png', alt: 'Botanic Healthcare' },
-                { src: '/clients/client2.jpg', alt: 'Client 2' },
-                { src: '/clients/client3.jpg', alt: 'Frumar Marketing' },
-                { src: '/clients/client4.jpg', alt: 'GX' },
-                { src: '/clients/client5.png', alt: 'Infra Engineers India' },
-                { src: '/clients/client6.png', alt: 'SIDVIN' },
-                { src: '/clients/client7.png', alt: 'Mittal' },
-                { src: '/clients/client8.png', alt: 'Client 8' },
-              ].map((logo, idx) => (
-                <motion.div
-                  key={`logo-1-${idx}`}
-                  className="flex-shrink-0 flex items-center justify-center bg-white/80 dark:bg-gray-800/80 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 p-4 h-28 w-48"
-                  whileHover={{ scale: 1.07 }}
-                >
-                  <Image
-                    src={logo.src}
-                    alt={logo.alt}
-                    width={160}
-                    height={56}
-                    className="object-contain max-h-14 w-auto mx-auto"
-                  />
-                </motion.div>
-              ))}
-              {/* Duplicate set for seamless loop */}
-              {[
-                { src: '/clients/client1.png', alt: 'Botanic Healthcare' },
-                { src: '/clients/client2.jpg', alt: 'Client 2' },
-                { src: '/clients/client3.jpg', alt: 'Frumar Marketing' },
-                { src: '/clients/client4.jpg', alt: 'GX' },
-                { src: '/clients/client5.png', alt: 'Infra Engineers India' },
-                { src: '/clients/client6.png', alt: 'SIDVIN' },
-                { src: '/clients/client7.png', alt: 'Mittal' },
-                { src: '/clients/client8.png', alt: 'Client 8' },
-              ].map((logo, idx) => (
-                <motion.div
-                  key={`logo-2-${idx}`}
-                  className="flex-shrink-0 flex items-center justify-center bg-white/80 dark:bg-gray-800/80 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 p-4 h-28 w-48"
-                  whileHover={{ scale: 1.07 }}
-                >
-                  <Image
-                    src={logo.src}
-                    alt={logo.alt}
-                    width={160}
-                    height={56}
-                    className="object-contain max-h-14 w-auto mx-auto"
-                  />
-                </motion.div>
-              ))}
-            </motion.div>
-          </div>
+          <ClientLogoStrip variant="illustrative3" />
         </div>
       </section>
 
@@ -299,6 +265,129 @@ export default function IllustrativeThree() {
                         Learn More <ArrowRight className="ml-2 h-4 w-4" />
                       </button>
                     </motion.div>
+                  </div>
+                </Tilt>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+      {/* Ecosystem Enabler */}
+      <EcosystemEnabler />
+      {/* Featured Industries */}
+      <section className="py-16 bg-gradient-to-br from-gray-50 to-white dark:from-gray-800 dark:to-gray-900 relative transition-colors duration-200">
+        <div className="absolute inset-0 pointer-events-none select-none">
+          <Image
+            src="/bg_11.jpg"
+            alt="Fintech background"
+            fill
+            className="object-cover dark:hidden"
+            style={{ opacity: 0.7 }}
+            priority={false}
+          />
+          <Image
+            src="/bg_dark_2.jpg"
+            alt="Dark mode background"
+            fill
+            className="object-cover hidden dark:block"
+            style={{ opacity: 0.3 }}
+            priority={false}
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-white/95 via-transparent to-white/98 dark:from-gray-900/95 dark:via-gray-900/80 dark:to-gray-900/98" />
+        </div>
+        <div className="container mx-auto px-4 max-w-6xl relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl font-bold text-gray-800 dark:text-white mb-4">Featured Industries</h2>
+            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+              Tailored solutions for diverse industry needs, driving efficiency and growth across sectors.
+            </p>
+          </motion.div>
+
+          <div className="mt-20">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {industries.map((industry, index) => (
+                <motion.div
+                  key={industry.name}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: index * 0.1 }}
+                  className="group"
+                >
+                  <Tilt
+                    tiltMaxAngleX={5}
+                    tiltMaxAngleY={5}
+                    scale={1.02}
+                    transitionSpeed={300}
+                    className="h-full transition-transform duration-300 hover:scale-[1.02]"
+                  >
+                    <div className="h-full bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden border border-gray-100 dark:border-gray-700 hover:shadow-xl transition-all duration-300 flex flex-col">
+                      <div 
+                        className={`h-2 bg-gradient-to-r ${industry.color} dark:${industry.darkColor} transition-all duration-300`}
+                      />
+                      <div className="p-6 flex-grow flex flex-col">
+                        <div className="mb-4 p-3 rounded-lg w-12 h-12 flex items-center justify-center bg-gradient-to-br from-gray-100 to-gray-50 dark:from-gray-700 dark:to-gray-800 group-hover:scale-110 transition-transform duration-300">
+                          <industry.icon className={`h-6 w-6 text-${industry.color.split('-')[1]}-600 dark:text-${industry.darkColor.split('-')[1]}-400`} />
+                        </div>
+                        <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-2 group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors duration-300">
+                          {industry.name}
+                        </h3>
+                        <p className="text-gray-600 dark:text-gray-300 mb-4 flex-grow">
+                          {industry.description}
+                        </p>
+                        <div className="mt-auto">
+                          <span className="inline-block px-3 py-1.5 text-sm font-medium rounded-full bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-700 text-gray-700 dark:text-gray-200 group-hover:translate-x-1 transition-transform duration-300">
+                            {industry.metric}
+                            <ArrowRight className="inline-block ml-1 h-3 w-3 opacity-0 group-hover:opacity-100 group-hover:ml-2 transition-all duration-300" />
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </Tilt>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Strategic Partnerships */}
+      <section className="py-16 bg-gradient-to-br from-white to-gray-50 dark:from-gray-900 dark:to-gray-800 relative transition-colors duration-200">
+        <div className="absolute inset-0 pointer-events-none select-none">
+          <div className="absolute inset-0 bg-gradient-to-b from-white/95 via-transparent to-white/98 dark:from-gray-900/95 dark:via-gray-900/80 dark:to-gray-900/98" />
+        </div>
+        <div className="container mx-auto px-4 max-w-6xl relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl font-bold text-gray-800 dark:text-white mb-4">Strategic Partnerships</h2>
+            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+              Collaborations with industry leaders to enhance our platform's capabilities.
+            </p>
+          </motion.div>
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="grid grid-cols-2 md:grid-cols-4 gap-6"
+          >
+            {['FinTech Solutions', 'Global Bank', 'TradeNet', 'PaySys'].map((partner, index) => (
+              <motion.div key={index} variants={itemVariants}>
+                <Tilt tiltMaxAngleX={10} tiltMaxAngleY={10}>
+                  <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-md p-6 rounded-xl border border-teal-200 dark:border-teal-700 flex items-center gap-4 hover:shadow-xl transition-shadow">
+                    <Handshake className="h-6 w-6 text-teal-600 dark:text-teal-400" />
+                    <span className="text-gray-800 dark:text-white font-medium">{partner}</span>
                   </div>
                 </Tilt>
               </motion.div>
@@ -367,16 +456,26 @@ export default function IllustrativeThree() {
           </motion.div>
         </div>
       </section>
-
-      {/* Featured Industries */}
-      <section className="py-16 bg-gray-50 dark:bg-gray-900 relative transition-colors duration-200">
-        <div className="absolute inset-0 opacity-10">
+      {/* Innovation in Action */}
+      <section className="py-16 bg-gradient-to-br from-gray-50 to-white dark:from-gray-800 dark:to-gray-900 relative transition-colors duration-200">
+        <div className="absolute inset-0 pointer-events-none select-none">
           <Image
-            src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80"
-            alt="Global finance"
+            src="/bg_11.jpg"
+            alt="Fintech background"
             fill
-            className="object-cover"
+            className="object-cover dark:hidden"
+            style={{ opacity: 0.7 }}
+            priority={false}
           />
+          <Image
+            src="/bg_dark_2.jpg"
+            alt="Dark mode background"
+            fill
+            className="object-cover hidden dark:block"
+            style={{ opacity: 0.3 }}
+            priority={false}
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-white/95 via-transparent to-white/98 dark:from-gray-900/95 dark:via-gray-900/80 dark:to-gray-900/98" />
         </div>
         <div className="container mx-auto px-4 max-w-6xl relative z-10">
           <motion.div
@@ -386,71 +485,8 @@ export default function IllustrativeThree() {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl font-bold text-gray-800 dark:text-white mb-4">Featured Industries</h2>
-            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-              Tailored solutions for diverse industries, delivering agility and integration.
-            </p>
-          </motion.div>
-          <div
-            className="max-w-2xl mx-auto"
-            onMouseEnter={() => handleScrollHover('industry', true)}
-            onMouseLeave={() => handleScrollHover('industry', false)}
-          >
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={industryIndex}
-                variants={scrollVariants}
-                initial="hidden"
-                animate="visible"
-                exit="exit"
-              >
-                <Tilt tiltMaxAngleX={10} tiltMaxAngleY={10}>
-                  <div className="bg-white/80 backdrop-blur-md p-6 rounded-xl border border-teal-200 shadow-lg">
-                    <div className="flex items-center gap-4">
-                      <div className="h-12 w-12 bg-teal-100 rounded-full flex items-center justify-center">
-                        {(() => {
-                          const Icon = industries[industryIndex].icon;
-                          return <Icon className="h-6 w-6 text-teal-600" />;
-                        })()}
-                      </div>
-                      <div>
-                        <h3 className="text-xl font-semibold text-gray-800">{industries[industryIndex].name}</h3>
-                        <p className="text-sm text-gray-600">{industries[industryIndex].description}</p>
-                        <p className="text-teal-600 font-medium text-sm mt-1">
-                          {industries[industryIndex].metric}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </Tilt>
-              </motion.div>
-            </AnimatePresence>
-            <div className="flex justify-center gap-2 mt-4">
-              {industries.map((_, index) => (
-                <button
-                  key={index}
-                  className={`h-2 w-2 rounded-full ${index === industryIndex ? 'bg-teal-600' : 'bg-gray-300'}`}
-                  onClick={() => setIndustryIndex(index)}
-                  aria-label={`Go to industry ${index + 1}`}
-                />
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Innovation in Action */}
-      <section className="py-16 bg-white dark:bg-gray-950 transition-colors duration-200">
-        <div className="container mx-auto px-4 max-w-6xl">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-12"
-          >
             <h2 className="text-3xl font-bold text-gray-800 dark:text-white mb-4">Innovation in Action</h2>
-            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+            <p className="text-lg text-gray-600 dark:text-gray-200 max-w-3xl mx-auto">
               Real-world success stories showcasing the impact of our platform.
             </p>
           </motion.div>
@@ -503,53 +539,6 @@ export default function IllustrativeThree() {
                         </button>
                       </motion.div>
                     </div>
-                  </div>
-                </Tilt>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Strategic Partnerships */}
-      <section className="py-16 bg-gray-50 dark:bg-gray-900 relative transition-colors duration-200">
-        <div className="absolute inset-0 pointer-events-none select-none">
-          <Image
-            src="/bg_5.jpg"
-            alt="Fintech background"
-            fill
-            className="object-cover"
-            style={{ opacity: 0.10 }}
-            priority={false}
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-white/90 via-transparent to-white/95 dark:from-gray-900/95 dark:via-transparent dark:to-gray-900/98" />
-        </div>
-        <div className="container mx-auto px-4 max-w-6xl relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-3xl font-bold text-gray-800 dark:text-white mb-4">Strategic Partnerships</h2>
-            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-              Collaborations with industry leaders to enhance our platform's capabilities.
-            </p>
-          </motion.div>
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-6"
-          >
-            {['FinTech Solutions', 'Global Bank', 'TradeNet', 'PaySys'].map((partner, index) => (
-              <motion.div key={index} variants={itemVariants}>
-                <Tilt tiltMaxAngleX={10} tiltMaxAngleY={10}>
-                  <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-md p-6 rounded-xl border border-teal-200 dark:border-teal-700 flex items-center gap-4 hover:shadow-xl transition-shadow">
-                    <Handshake className="h-6 w-6 text-teal-600 dark:text-teal-400" />
-                    <span className="text-gray-800 dark:text-white font-medium">{partner}</span>
                   </div>
                 </Tilt>
               </motion.div>
@@ -624,10 +613,6 @@ export default function IllustrativeThree() {
           </motion.div>
         </div>
       </section>
-
-      {/* Ecosystem Enabler */}
-      <EcosystemEnabler />
-
       {/* Let's Connect */}
       <section className="py-16 bg-gradient-to-r from-teal-700 to-teal-500 dark:from-teal-900 dark:to-teal-700 text-white transition-colors duration-200">
         <div className="container mx-auto px-4 max-w-6xl">
