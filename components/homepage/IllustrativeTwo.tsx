@@ -6,7 +6,7 @@ import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
 import ClientLogoStrip from '@/components/common/ClientLogoStrip';
 import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardContent } from '@/components/ui/card';
-import { ArrowRight, TrendingUp, Shield, Zap, DollarSign, BarChart2, Globe, Play, Pause, ChevronLeft, ChevronRight, Users, Building, Factory, Truck, Newspaper, Handshake } from 'lucide-react';
+import { ArrowRight, TrendingUp, Shield, ShieldCheck, Zap, DollarSign, BarChart2, Globe, Play, Pause, ChevronLeft, ChevronRight, Users, Building, Factory, Truck, Newspaper, Handshake, ShoppingBag } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import IBSNetworkTwo from './ibs_network_two';
 
@@ -186,10 +186,10 @@ export default function IllustrativeTwo() {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <motion.h1
-              className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-white"
-              style={{ y }}
+              className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500"
+              style={{ textShadow: '0 2px 12px rgba(0,207,255,0.12)', transform: `translateY(${y})` }}
             >
-              Transform Your <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500">Financial Future</span>
+              Transform Your <span className="font-bold">Financial Future</span>
             </motion.h1>
             <motion.p
               className="text-lg md:text-xl text-gray-200 mb-8"
@@ -208,14 +208,14 @@ export default function IllustrativeTwo() {
               <Button
                 variant="gradient"
                 size="lg"
-                className="bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 transition-all duration-300 transform hover:-translate-y-0.5 group"
+                className="bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 transition-all duration-300 transform hover:-translate-y-0.5 group neon-bg"
               >
                 Get Started <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
               </Button>
               <Button
                 variant="gradient"
                 size="lg"
-                className="bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 transition-all duration-300 transform hover:-translate-y-0.5 group"
+                className="bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 transition-all duration-300 transform hover:-translate-y-0.5 group neon-bg"
               >
                 Schedule a Demo <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
               </Button>
@@ -226,128 +226,6 @@ export default function IllustrativeTwo() {
 
       {/* Client Logo Strip (Unchanged) */}
       <ClientLogoStrip variant="illustrative2" />
-
-      {/* Why Choose Us */}
-      <section className="py-20 bg-white relative overflow-hidden">
-        <div className="absolute inset-0">
-          <motion.div
-            className="absolute inset-0"
-            style={{ opacity: 0.25 }}
-            initial={{ scale: 1.1, rotate: -1 }}
-            animate={{ scale: 1, rotate: 1 }}
-            transition={{ duration: 30, repeat: Infinity, repeatType: "reverse" }}
-          >
-            <Image
-              src="/bg_2.jpg"
-              alt="Background"
-              fill
-              className="object-cover"
-              priority
-            />
-          </motion.div>
-          <div className="absolute inset-0 bg-gradient-to-b from-blue-900/20 via-blue-800/10 to-blue-900/20" />
-          <div className="absolute inset-0 bg-gradient-to-r from-white/80 via-transparent to-white/80" />
-        </div>
-        <div className="container mx-auto px-4 relative">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center max-w-3xl mx-auto mb-16"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-800">
-              <span className="relative">
-                Why Choose Us
-                <span className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-blue-600 to-indigo-600"></span>
-              </span>
-            </h2>
-            <p className="text-lg text-gray-600">
-              Our platform delivers unmatched value through innovative features and tailored solutions.
-            </p>
-          </motion.div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              { title: "Integrated Platform", description: "Seamless end-to-end digitization across all financial operations.", icon: Globe, color: "from-blue-600 to-indigo-600" },
-              { title: "Advanced Analytics", description: "Real-time insights to drive strategic decisions.", icon: BarChart2, color: "from-cyan-600 to-blue-600" },
-              { title: "Scalable Solutions", description: "Flexible tools that grow with your business needs.", icon: TrendingUp, color: "from-indigo-600 to-purple-600" }
-            ].map((diff, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -5 }}
-                className="text-center p-8 rounded-xl bg-gradient-to-br from-gray-50 to-gray-100 shadow-md hover:shadow-xl transition-all duration-300"
-              >
-                <div className={cn("inline-flex items-center justify-center p-4 rounded-xl mb-6 text-white bg-gradient-to-r", diff.color)}>
-                  <diff.icon size={28} />
-                </div>
-                <h3 className="text-xl font-bold mb-3 text-gray-800">{diff.title}</h3>
-                <p className="text-gray-600">{diff.description}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Winning Together */}
-      <section className="py-20 bg-white relative overflow-hidden">
-        <div className="absolute inset-0 opacity-5">
-          <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <pattern id="grid3d" width="40" height="40" patternUnits="userSpaceOnUse">
-                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#4338CA" strokeWidth="0.5" />
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#grid3d)" />
-          </svg>
-        </div>
-        <div className="container mx-auto px-4 relative">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center max-w-3xl mx-auto mb-16"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-800">
-              <span className="relative">
-                Winning Together
-                <span className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-blue-600 to-indigo-600"></span>
-              </span>
-            </h2>
-            <p className="text-lg text-gray-600">
-              Leading organizations trust our comprehensive Treasury Management Platform for end-to-end digitization, unlocking agility, insights, and productivity.
-            </p>
-          </motion.div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              { title: "40%", description: "Reduced operational costs", icon: DollarSign, color: "from-blue-600 to-indigo-600" },
-              { title: "70%", description: "Faster processing time", icon: Zap, color: "from-cyan-600 to-blue-600" },
-              { title: "90%", description: "Higher accuracy in financial reporting", icon: TrendingUp, color: "from-indigo-600 to-purple-600" }
-            ].map((stat, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -5 }}
-                className="text-center p-8 rounded-xl bg-gradient-to-br from-gray-50 to-gray-100 shadow-md hover:shadow-xl transition-all duration-300"
-              >
-                <div className={cn("inline-flex items-center justify-center p-4 rounded-xl mb-6 text-white bg-gradient-to-r", stat.color)}>
-                  <stat.icon size={28} />
-                </div>
-                <h3 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 mb-3">{stat.title}</h3>
-                <p className="text-gray-600">{stat.description}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Our Offerings */}
       <section className="py-20 bg-gradient-to-br from-blue-50 to-white relative overflow-hidden">
         <div className="absolute inset-0">
@@ -425,27 +303,45 @@ export default function IllustrativeTwo() {
           </div>
         </div>
       </section>
-
+      {/* Our Ecosystem section */}
+      <section className="py-12 bg-gradient-to-b from-white to-blue-50">
+        <div className="w-full flex justify-center flex-col items-center">
+          <motion.h2
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-3xl md:text-4xl font-bold mb-4 text-center bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500"
+            style={{ textShadow: '0 2px 12px rgba(0,207,255,0.12)' }}
+          >
+            Our Ecosystem
+          </motion.h2>
+          <p className="text-lg text-center text-blue-700 dark:text-cyan-300 mb-10 max-w-2xl mx-auto">
+            A vibrant network of services and clients driving treasury innovation.
+          </p>
+          <IBSNetworkTwo />
+        </div>
+      </section>
       {/* Featured Industries */}
-      <section className="py-20 bg-white relative overflow-hidden">
+      <section className="py-20 bg-gradient-to-br from-white to-blue-50 relative overflow-hidden">
         <div className="absolute inset-0">
           <motion.div
             className="absolute inset-0"
-            style={{ opacity: 0.25 }}
+            style={{ opacity: 0.15 }}
             initial={{ scale: 1.1, rotate: -1 }}
             animate={{ scale: 1, rotate: 1 }}
             transition={{ duration: 30, repeat: Infinity, repeatType: "reverse" }}
           >
             <Image
-              src="/bg_2.jpg"
+              src="/bg_10.jpg"
               alt="Background"
               fill
               className="object-cover"
               priority
             />
           </motion.div>
-          <div className="absolute inset-0 bg-gradient-to-b from-blue-900/20 via-blue-800/10 to-blue-900/20" />
-          <div className="absolute inset-0 bg-gradient-to-r from-white/80 via-transparent to-white/80" />
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-900/10 via-blue-800/5 to-blue-900/10" />
+          <div className="absolute inset-0 bg-gradient-to-br from-white/90 via-transparent to-white/90" />
         </div>
         <div className="container mx-auto px-4 relative">
           <motion.div
@@ -484,6 +380,299 @@ export default function IllustrativeTwo() {
                 <h4 className="font-semibold text-gray-800 text-lg mb-1">{industry.name}</h4>
                 <p className="text-gray-500 text-sm mb-3">{industry.desc}</p>
                 <span className="inline-block px-4 py-1 bg-blue-50 text-blue-700 text-xs font-medium rounded-full mt-auto shadow-sm">{industry.metric}</span>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+      {/* Strategic Partnerships */}
+      <section className="py-20 bg-gradient-to-br from-blue-50 to-white relative overflow-hidden">
+        <div className="absolute inset-0">
+          <motion.div
+            className="absolute inset-0"
+            style={{ opacity: 0.2 }}
+            initial={{ scale: 1, rotate: 1 }}
+            animate={{ scale: 1.1, rotate: -1 }}
+            transition={{ duration: 30, repeat: Infinity, repeatType: "reverse" }}
+          >
+            <Image
+              src="/bg_11.jpg"
+              alt="Background"
+              fill
+              className="object-cover"
+              priority
+            />
+          </motion.div>
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-900/15 via-blue-800/10 to-blue-900/15" />
+          <div className="absolute inset-0 bg-gradient-to-br from-white/85 via-transparent to-white/85" />
+        </div>
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center max-w-3xl mx-auto mb-16"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-800">Strategic Partnerships</h2>
+            <p className="text-lg text-gray-600">
+              We collaborate with industry leaders to deliver cutting-edge solutions.
+            </p>
+          </motion.div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {['Partner A', 'Partner B', 'Partner C', 'Partner D'].map((partner, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                whileHover={{ scale: 1.05 }}
+                className="bg-white p-6 rounded-xl shadow-md flex items-center justify-center"
+              >
+                <Handshake size={24} className="text-blue-600 mr-2" />
+                <p className="text-gray-800 font-medium">{partner}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+      
+      {/* Case Studies */}
+      <section className="py-20 bg-gradient-to-br from-white to-blue-50 relative overflow-hidden">
+        <div className="absolute inset-0">
+          <motion.div
+            className="absolute inset-0"
+            style={{ opacity: 0.1 }}
+            initial={{ scale: 1, rotate: 1 }}
+            animate={{ scale: 1.05, rotate: -1 }}
+            transition={{ duration: 30, repeat: Infinity, repeatType: "reverse" }}
+          >
+            <Image
+              src="/bg_12.jpg"
+              alt="Background"
+              fill
+              className="object-cover"
+              priority
+            />
+          </motion.div>
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-900/10 via-blue-800/5 to-blue-900/10" />
+        </div>
+        <div className="container mx-auto px-4 relative">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center max-w-3xl mx-auto mb-16"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-800">
+              <span className="relative">
+                Success Stories
+                <span className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-blue-600 to-indigo-600"></span>
+              </span>
+            </h2>
+            <p className="text-lg text-gray-600">
+              Discover how leading enterprises are transforming their financial operations with our solutions.
+            </p>
+          </motion.div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              {
+                title: "Global Retail Chain",
+                description: "Reduced payment processing time by 65% and improved cash flow visibility.",
+                stats: "65% Faster Processing",
+                icon: ShoppingBag,
+                color: "from-blue-600 to-indigo-600"
+              },
+              {
+                title: "Manufacturing Giant",
+                description: "Achieved 40% cost savings in supply chain financing with automated workflows.",
+                stats: "40% Cost Reduction",
+                icon: Factory,
+                color: "from-cyan-600 to-blue-600"
+              },
+              {
+                title: "Financial Services Leader",
+                description: "Enhanced risk management and compliance with real-time analytics.",
+                stats: "90% Risk Mitigation",
+                icon: ShieldCheck,
+                color: "from-indigo-600 to-purple-600"
+              }
+            ].map((caseStudy, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                whileHover={{ y: -10, boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)' }}
+                className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300"
+              >
+                <div className="h-48 bg-gradient-to-r relative overflow-hidden">
+                  <div className={`absolute inset-0 bg-gradient-to-r ${caseStudy.color} opacity-90`}></div>
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <caseStudy.icon className="w-16 h-16 text-white" />
+                  </div>
+                </div>
+                <div className="p-6">
+                  <div className="flex items-center mb-4">
+                    <div className={`h-2 w-2 rounded-full bg-gradient-to-r ${caseStudy.color} mr-2`}></div>
+                    <span className="text-sm font-medium text-blue-600">{caseStudy.stats}</span>
+                  </div>
+                  <h3 className="text-xl font-bold mb-3 text-gray-800">{caseStudy.title}</h3>
+                  <p className="text-gray-600 mb-6">{caseStudy.description}</p>
+                  <motion.button 
+                    whileHover={{ x: 5 }}
+                    className="flex items-center text-blue-600 font-medium"
+                  >
+                    Read Case Study
+                    <ArrowRight className="ml-2 w-4 h-4" />
+                  </motion.button>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+          
+          <motion.div 
+            className="text-center mt-12"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+            viewport={{ once: true }}
+          >
+            <button className="px-8 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-full font-medium hover:opacity-90 transition-opacity shadow-lg hover:shadow-xl">
+              View All Case Studies
+            </button>
+          </motion.div>
+        </div>
+      </section>
+      
+      {/* Winning Together */}
+      <section className="py-20 bg-gradient-to-br from-blue-50 to-white relative overflow-hidden">
+        <div className="absolute inset-0">
+          <motion.div
+            className="absolute inset-0"
+            style={{ opacity: 0.2 }}
+            initial={{ scale: 1, rotate: 1 }}
+            animate={{ scale: 1.1, rotate: -1 }}
+            transition={{ duration: 30, repeat: Infinity, repeatType: "reverse" }}
+          >
+            <Image
+              src="/bg_9.jpg"
+              alt="Background"
+              fill
+              className="object-cover"
+              priority
+            />
+          </motion.div>
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-900/15 via-blue-800/10 to-blue-900/15" />
+          <div className="absolute inset-0 bg-gradient-to-br from-white/85 via-transparent to-white/85" />
+        </div>
+        <div className="container mx-auto px-4 relative">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center max-w-3xl mx-auto mb-16"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-800">
+              <span className="relative">
+                Winning Together
+                <span className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-blue-600 to-indigo-600"></span>
+              </span>
+            </h2>
+            <p className="text-lg text-gray-600">
+              Leading organizations trust our comprehensive Treasury Management Platform for end-to-end digitization, unlocking agility, insights, and productivity.
+            </p>
+          </motion.div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              { title: "40%", description: "Reduced operational costs", icon: DollarSign, color: "from-blue-600 to-indigo-600" },
+              { title: "70%", description: "Faster processing time", icon: Zap, color: "from-cyan-600 to-blue-600" },
+              { title: "90%", description: "Higher accuracy in financial reporting", icon: TrendingUp, color: "from-indigo-600 to-purple-600" }
+            ].map((stat, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                whileHover={{ y: -5 }}
+                className="text-center p-8 rounded-xl bg-gradient-to-br from-gray-50 to-gray-100 shadow-md hover:shadow-xl transition-all duration-300"
+              >
+                <div className={cn("inline-flex items-center justify-center p-4 rounded-xl mb-6 text-white bg-gradient-to-r", stat.color)}>
+                  <stat.icon size={28} />
+                </div>
+                <h3 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 mb-3">{stat.title}</h3>
+                <p className="text-gray-600">{stat.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+            {/* Why Choose Us */}
+      <section className="py-20 bg-gradient-to-br from-blue-50 via-white to-blue-50 relative overflow-hidden">
+        <div className="absolute inset-0">
+          <motion.div
+            className="absolute inset-0"
+            style={{ opacity: 0.15 }}
+            initial={{ scale: 1.1, rotate: -1 }}
+            animate={{ scale: 1, rotate: 1 }}
+            transition={{ duration: 30, repeat: Infinity, repeatType: "reverse" }}
+          >
+            <Image
+              src="/bg_8.jpg"
+              alt="Background"
+              fill
+              className="object-cover"
+              priority
+            />
+          </motion.div>
+          <div className="absolute inset-0 bg-gradient-to-b from-blue-900/10 via-blue-800/5 to-blue-900/10" />
+          <div className="absolute inset-0 bg-gradient-to-r from-white/90 via-transparent to-white/90" />
+        </div>
+        <div className="container mx-auto px-4 relative">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center max-w-3xl mx-auto mb-16"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-800">
+              <span className="relative">
+                Why Choose Us
+                <span className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-blue-600 to-indigo-600"></span>
+              </span>
+            </h2>
+            <p className="text-lg text-gray-600">
+              Our platform delivers unmatched value through innovative features and tailored solutions.
+            </p>
+          </motion.div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              { title: "Integrated Platform", description: "Seamless end-to-end digitization across all financial operations.", icon: Globe, color: "from-blue-600 to-indigo-600" },
+              { title: "Advanced Analytics", description: "Real-time insights to drive strategic decisions.", icon: BarChart2, color: "from-cyan-600 to-blue-600" },
+              { title: "Scalable Solutions", description: "Flexible tools that grow with your business needs.", icon: TrendingUp, color: "from-indigo-600 to-purple-600" }
+            ].map((diff, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                whileHover={{ y: -5 }}
+                className="text-center p-8 rounded-xl bg-gradient-to-br from-gray-50 to-gray-100 shadow-md hover:shadow-xl transition-all duration-300"
+              >
+                <div className={cn("inline-flex items-center justify-center p-4 rounded-xl mb-6 text-white bg-gradient-to-r", diff.color)}>
+                  <diff.icon size={28} />
+                </div>
+                <h3 className="text-xl font-bold mb-3 text-gray-800">{diff.title}</h3>
+                <p className="text-gray-600">{diff.description}</p>
               </motion.div>
             ))}
           </div>
@@ -566,60 +755,25 @@ export default function IllustrativeTwo() {
           </div>
         </div>
       </section>
-
-      {/* Strategic Partnerships */}
-      <section className="py-20 bg-gradient-to-br from-blue-50 to-white">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center max-w-3xl mx-auto mb-16"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-800">Strategic Partnerships</h2>
-            <p className="text-lg text-gray-600">
-              We collaborate with industry leaders to deliver cutting-edge solutions.
-            </p>
-          </motion.div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {['Partner A', 'Partner B', 'Partner C', 'Partner D'].map((partner, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                whileHover={{ scale: 1.05 }}
-                className="bg-white p-6 rounded-xl shadow-md flex items-center justify-center"
-              >
-                <Handshake size={24} className="text-blue-600 mr-2" />
-                <p className="text-gray-800 font-medium">{partner}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Latest News */}
-      <section className="py-20 bg-gradient-to-br from-blue-900/5 to-white relative overflow-hidden">
+      <section className="py-20 bg-gradient-to-br from-white to-blue-50 relative overflow-hidden">
         <div className="absolute inset-0">
           <motion.div
             className="absolute inset-0"
-            style={{ opacity: 0.25 }}
+            style={{ opacity: 0.15 }}
             initial={{ scale: 1.1, rotate: -1 }}
             animate={{ scale: 1, rotate: 1 }}
             transition={{ duration: 30, repeat: Infinity, repeatType: "reverse" }}
           >
             <Image
-              src="/bg_2.jpg"
+              src="/bg_12.jpg"
               alt="Background"
               fill
               className="object-cover"
               priority
             />
           </motion.div>
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 via-blue-800/10 to-blue-900/20" />
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-900/10 via-blue-800/5 to-blue-900/10" />
           <div className="absolute inset-0 bg-gradient-to-br from-white/90 via-transparent to-white/90" />
         </div>
         <div className="container mx-auto px-4 relative">
@@ -698,7 +852,7 @@ export default function IllustrativeTwo() {
             <div className="inline-block px-4 py-1.5 rounded-full bg-blue-100 text-blue-800 text-sm font-medium mb-4">
               Trusted by Industry Leaders
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Voices of Success</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500" style={{ textShadow: '0 2px 12px rgba(0,207,255,0.12)' }}>Voices of Success</h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               Discover how forward-thinking companies are transforming their treasury operations
             </p>
@@ -817,22 +971,6 @@ export default function IllustrativeTwo() {
               </div>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* Our Ecosystem section */}
-      <section className="py-20 bg-gradient-to-b from-white to-blue-50">
-        <div className="container mx-auto px-4">
-          <motion.h2
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-3xl md:text-4xl font-bold mb-12 text-center text-blue-900"
-          >
-            Our Ecosystem
-          </motion.h2>
-          <IBSNetworkTwo />
         </div>
       </section>
 

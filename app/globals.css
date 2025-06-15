@@ -80,3 +80,17 @@
     @apply bg-background text-foreground;
   }
 }
+
+.neon-text {
+  color: #00cfff !important;
+  text-shadow: 0 0 5px #00cfff, 0 0 10px #00cfff, 0 0 20px #00cfff;
+}
+.dark .neon-text {
+  color: #00cfff !important;
+  text-shadow: 0 0 8px #00cfff, 0 0 16px #00cfff, 0 0 32px #00cfff;
+}
+.neon-bg {
+  background-color: #00cfff !important;
+  box-shadow: 0 0 10px #00cfff, 0 0 20px #00cfff;
+  color: #fff !important;
+}

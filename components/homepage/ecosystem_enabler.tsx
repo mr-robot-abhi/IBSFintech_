@@ -17,17 +17,6 @@ const services = [
   { name: "Debt Mgmt", icon: BarChart2, desc: "Borrowings, loans, intercompany" },
 ];
 
-const clients = [
-  { name: "Client 1", logo: "client1.png" },
-  { name: "Client 2", logo: "client2.jpg" },
-  { name: "Client 3", logo: "client3.jpg" },
-  { name: "Client 4", logo: "client4.jpg" },
-  { name: "Client 5", logo: "client5.png" },
-  { name: "Client 6", logo: "client6.png" },
-  { name: "Client 7", logo: "client7.png" },
-  { name: "Client 8", logo: "client8.png" },
-];
-
 const circlePosition = (i: number, total: number, radius: number, center: number, offsetAngle = -Math.PI / 2) => {
   const angle = (i / total) * 2 * Math.PI + offsetAngle;
   return {
@@ -37,7 +26,6 @@ const circlePosition = (i: number, total: number, radius: number, center: number
 };
 
 export default function EcosystemEnabler() {
-  const rotateClients = useAnimation();
   const serviceControls = useAnimation();
   const containerRef = useRef<HTMLDivElement>(null);
   const [size, setSize] = useState(560);
@@ -55,41 +43,39 @@ export default function EcosystemEnabler() {
   }, []);
 
   useEffect(() => {
-    const sequence = async () => {
-      await serviceControls.start({
-        scale: [0.85, 1.05, 1],
-        opacity: 1,
-        transition: { duration: 0.5 }
-      });
-      rotateClients.start({
-        rotate: 360,
-        transition: {
-          repeat: Infinity,
-          ease: "linear",
-          duration: 60,
-        },
-      });
-    };
-    sequence();
-  }, [rotateClients, serviceControls]);
+    serviceControls.start({
+      scale: [0.85, 1.05, 1],
+      opacity: 1,
+      transition: { duration: 0.5 }
+    });
+  }, [serviceControls]);
 
   const center = size / 2;
   const ibsLogoSize = size * 0.22;
   const ibsLogoRing = size * 0.30;
   const serviceRadius = size * 0.31;
-  const clientRadius = size * 0.66 - size * 0.10;
   const serviceBoxSize = size * 0.15;
-  const clientLogoSize = size * 0.10;
 
   return (
     <section className="relative bg-white dark:bg-gray-950 py-24 overflow-hidden transition-colors duration-200">
+      <div className="absolute inset-0 pointer-events-none select-none">
+        <Image
+          src="/bg_12.jpg"
+          alt="Ecosystem background"
+          fill
+          className="object-cover dark:hidden"
+          style={{ opacity: 0.7 }}
+          priority={false}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-white/95 via-transparent to-white/98 dark:from-gray-900/95 dark:via-gray-900/80 dark:to-gray-900/98" />
+      </div>
       <div ref={containerRef} className="relative mx-auto w-full max-w-5xl aspect-square min-h-[400px]">
         {/* Background Blur Circle */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <div className="w-4/5 h-4/5 rounded-full bg-teal-50 dark:bg-teal-950/30 blur-3xl opacity-60" />
+          <div className="w-4/5 h-4/5 rounded-full bg-teal-50/60 dark:bg-teal-950/20 blur-3xl opacity-40" />
         </div>
 
-        {/* IBS Center Logo with ring */}
+        {/* IBS Center Logo with outer circle */}
         <motion.div
           initial={{ scale: 0.8, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
@@ -103,20 +89,18 @@ export default function EcosystemEnabler() {
           }}
         >
           <div className="absolute inset-0 rounded-full border-8 border-teal-100 dark:border-teal-800 shadow-2xl" />
-          <div className="flex items-center justify-center w-full h-full">
-            <div
-              className="bg-gray-100 dark:bg-gray-800 border-4 border-teal-200 dark:border-teal-700 shadow-xl rounded-full flex items-center justify-center mx-auto"
-              style={{ width: ibsLogoSize, height: ibsLogoSize }}
-            >
-              <div className="relative" style={{ width: ibsLogoSize * 0.7, height: ibsLogoSize * 0.7 }}>
-                <Image
-                  src="/ibs_network.png"
-                  alt="IBS Network Logo"
-                  fill
-                  className="object-contain p-2"
-                  priority
-                />
-              </div>
+          <div className="flex flex-col items-center justify-center">
+            <div className="relative" style={{ width: ibsLogoSize * 0.7, height: ibsLogoSize * 0.7 }}>
+              <Image
+                src="/Ibs_logo_1.png"
+                alt="IBS Logo"
+                fill
+                className="object-contain"
+                priority
+              />
+            </div>
+            <div className="mt-2 text-center">
+              <span className="font-semibold text-gray-800 dark:text-white leading-tight" style={{ fontSize: serviceBoxSize * 0.12 }}>IBSFintech Platform</span>
             </div>
           </div>
         </motion.div>
@@ -128,8 +112,8 @@ export default function EcosystemEnabler() {
             return (
               <g key={`line-group-${i}`}>
                 <motion.line
-                  x1={center}
-                  y1={center}
+                  x1={center + (x - center) * (ibsLogoRing / 2) / serviceRadius}
+                  y1={center + (y - center) * (ibsLogoRing / 2) / serviceRadius}
                   x2={x}
                   y2={y}
                   stroke="#99f6e4"
@@ -147,8 +131,8 @@ export default function EcosystemEnabler() {
                   fill="#2dd4bf"
                   initial={{ cx: center, cy: center, opacity: 0 }}
                   animate={{
-                    cx: [center, x],
-                    cy: [center, y],
+                    cx: [center + (x - center) * (ibsLogoRing / 2) / serviceRadius, x],
+                    cy: [center + (y - center) * (ibsLogoRing / 2) / serviceRadius, y],
                     opacity: [0.7, 1, 0.7],
                   }}
                   transition={{
@@ -194,43 +178,6 @@ export default function EcosystemEnabler() {
             </motion.div>
           );
         })}
-
-        {/* Rotating Client Logos */}
-        <motion.div
-          animate={rotateClients}
-          className="absolute top-0 left-0 w-full h-full z-10"
-          style={{ transformOrigin: "center center" }}
-        >
-          {clients.map((client, i) => {
-            const { x, y } = circlePosition(i, clients.length, clientRadius, center);
-            return (
-              <motion.div
-                key={`client-${i}`}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.5 + (i * 0.1) }}
-                className="absolute flex items-center justify-center bg-white dark:bg-gray-800 rounded-full border-2 border-teal-100 dark:border-teal-700 shadow-md hover:shadow-xl hover:scale-110 transition-all"
-                style={{
-                  width: clientLogoSize,
-                  height: clientLogoSize,
-                  top: y - clientLogoSize / 2,
-                  left: x - clientLogoSize / 2,
-                  zIndex: 10 - i
-                }}
-              >
-                <div className="relative" style={{ width: clientLogoSize * 0.7, height: clientLogoSize * 0.7 }}>
-                  <Image
-                    src={`/clients/${client.logo}`}
-                    alt={client.name}
-                    fill
-                    className="object-contain p-1 rounded-full"
-                    sizes="64px"
-                  />
-                </div>
-              </motion.div>
-            );
-          })}
-        </motion.div>
       </div>
     </section>
   );
