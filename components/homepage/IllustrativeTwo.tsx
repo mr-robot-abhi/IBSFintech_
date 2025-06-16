@@ -5,7 +5,6 @@ import Image from 'next/image';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import ClientLogoStrip from '@/components/common/ClientLogoStrip';
 import { Button } from '@/components/ui/button';
-import { Card, CardHeader, CardContent } from '@/components/ui/card';
 import { ArrowRight, TrendingUp, Shield, ShieldCheck, Zap, DollarSign, BarChart2, Globe, Play, Pause, ChevronLeft, ChevronRight, Users, Building, Factory, Truck, Newspaper, Handshake, ShoppingBag } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import IBSNetworkTwo from './ibs_network_two';
@@ -22,7 +21,7 @@ interface Testimonial {
   rating: number;
 }
 
-export default function IllustrativeTwo() {
+export default function IllustrativeTwoV2() {
   const [isPlaying, setIsPlaying] = useState(true);
   const [testimonials] = useState<Testimonial[]>([
     {
@@ -86,14 +85,12 @@ export default function IllustrativeTwo() {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ['start start', 'end start']
+    offset: ['start start', 'end end']
   });
 
-  // Parallax effect for content
-  const y = useTransform(scrollYProgress, [0, 1], ['0%', '20%']);
-  const opacity = useTransform(scrollYProgress, [0, 0.7, 1], [1, 0.8, 0.5]);
+  const bgOpacity1 = useTransform(scrollYProgress, [0, 0.3, 0.6, 1], [1, 0, 1, 0]);
+  const bgOpacity2 = useTransform(scrollYProgress, [0, 0.3, 0.6, 1], [0, 1, 0, 1]);
 
-  // Auto-rotate testimonials
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % testimonials.length);
@@ -101,7 +98,6 @@ export default function IllustrativeTwo() {
     return () => clearInterval(interval);
   }, [testimonials.length]);
 
-  // Get visible testimonials (current, prev, next)
   const visibleTestimonials = useMemo(() => {
     const lastIndex = testimonials.length - 1;
     const prevIndex = activeIndex === 0 ? lastIndex : activeIndex - 1;
@@ -137,7 +133,6 @@ export default function IllustrativeTwo() {
     }
   }, [isPlaying]);
 
-  // Auto-play video when component mounts
   useEffect(() => {
     const video = videoRef.current;
     if (video) {
@@ -148,14 +143,57 @@ export default function IllustrativeTwo() {
   }, []);
 
   return (
-    <div className="relative bg-gray-50" ref={containerRef}>
-      {/* Main Banner with Video Background */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black">
-        <div className="absolute inset-0 z-0">
+    <div className="relative" ref={containerRef}>
+      {/* Alternating Backgrounds */}
+      <div className="fixed inset-0 -z-10">
+        <motion.div style={{ opacity: bgOpacity1 }}>
+          <Image
+            src="/bg_14.jpeg"
+            alt="Background 1"
+            fill
+            className="object-cover"
+            style={{ opacity: 0.55 }}
+            priority
+          />
+        </motion.div>
+        <motion.div style={{ opacity: bgOpacity2 }}>
+          <Image
+            src="/bg_13.jpeg"
+            alt="Background 2"
+            fill
+            className="object-cover"
+            style={{ opacity: 0.55 }}
+            priority
+          />
+        </motion.div>
+        <div className="absolute inset-0 bg-black/40" />
+      </div>
+
+      {/* Floating Particles */}
+      <div className="fixed inset-0 pointer-events-none -z-5">
+        {[...Array(20)].map((_, i) => (
           <motion.div
-            className="absolute inset-0"
-            style={{ opacity: opacity.get() } as React.CSSProperties}
-          >
+            key={i}
+            className="absolute w-2 h-2 rounded-full bg-gradient-to-r from-pink-500 to-blue-500 opacity-50"
+            initial={{ x: Math.random() * 100 + 'vw', y: Math.random() * 100 + 'vh' }}
+            animate={{
+              y: [Math.random() * 100 + 'vh', Math.random() * 100 + 'vh'],
+              opacity: [0.3, 0.7, 0.3],
+            }}
+            transition={{
+              duration: Math.random() * 10 + 5,
+              repeat: Infinity,
+              repeatType: 'reverse',
+              delay: Math.random() * 5,
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Main Banner with Video Background */}
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-32 pb-20">
+        <div className="absolute inset-0 z-0">
+          <motion.div className="absolute inset-0">
             <video
               ref={videoRef}
               className="w-full h-full object-cover"
@@ -178,7 +216,7 @@ export default function IllustrativeTwo() {
         >
           {isPlaying ? <Pause className="w-6 h-6" /> : <Play className="w-6 h-6" />}
         </button>
-        <div className="container mx-auto px-4 relative z-10 pt-32 pb-20">
+        <div className="container mx-auto px-4 relative z-10">
           <motion.div
             className="max-w-3xl mx-auto text-center"
             initial={{ opacity: 0, y: 30 }}
@@ -187,7 +225,7 @@ export default function IllustrativeTwo() {
           >
             <motion.h1
               className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500"
-              style={{ textShadow: '0 2px 12px rgba(0,207,255,0.12)', transform: `translateY(${y})` }}
+              style={{ textShadow: '0 2px 12px rgba(0,207,255,0.12)' }}
             >
               Transform Your <span className="font-bold">Financial Future</span>
             </motion.h1>
@@ -224,29 +262,13 @@ export default function IllustrativeTwo() {
         </div>
       </section>
 
-      {/* Client Logo Strip (Unchanged) */}
-      <ClientLogoStrip variant="illustrative2" />
+      {/* Client Logo Strip */}
+      <div className="relative z-10">
+        <ClientLogoStrip variant="illustrative2" />
+      </div>
+
       {/* Our Offerings */}
-      <section className="py-20 bg-gradient-to-br from-blue-50 to-white relative overflow-hidden">
-        <div className="absolute inset-0">
-          <motion.div
-            className="absolute inset-0"
-            style={{ opacity: 0.3 }}
-            initial={{ scale: 1, rotate: 1 }}
-            animate={{ scale: 1.1, rotate: -1 }}
-            transition={{ duration: 30, repeat: Infinity, repeatType: "reverse" }}
-          >
-            <Image
-              src="/bg_3.jpg"
-              alt="Background"
-              fill
-              className="object-cover"
-              priority
-            />
-          </motion.div>
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-900/30 via-blue-800/20 to-blue-900/30" />
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-50/90 via-transparent to-white/90" />
-        </div>
+      <section className="py-20 relative overflow-hidden">
         <div className="container mx-auto px-4 relative">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -255,8 +277,8 @@ export default function IllustrativeTwo() {
             viewport={{ once: true }}
             className="text-center max-w-3xl mx-auto mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-800">Our Offerings</h2>
-            <p className="text-lg text-gray-600">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">Our Offerings</h2>
+            <p className="text-lg text-gray-200">
               A comprehensive suite of solutions designed to streamline your financial operations.
             </p>
           </motion.div>
@@ -303,46 +325,14 @@ export default function IllustrativeTwo() {
           </div>
         </div>
       </section>
+
       {/* Our Ecosystem section */}
-      <section className="py-12 bg-gradient-to-b from-white to-blue-50">
-        <div className="w-full flex justify-center flex-col items-center">
-          <motion.h2
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-3xl md:text-4xl font-bold mb-4 text-center bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500"
-            style={{ textShadow: '0 2px 12px rgba(0,207,255,0.12)' }}
-          >
-            Our Ecosystem
-          </motion.h2>
-          <p className="text-lg text-center text-blue-700 dark:text-cyan-300 mb-10 max-w-2xl mx-auto">
-            A vibrant network of services and clients driving treasury innovation.
-          </p>
-          <IBSNetworkTwo />
-        </div>
+      <section className="relative py-20">
+        <IBSNetworkTwo />
       </section>
+
       {/* Featured Industries */}
-      <section className="py-20 bg-gradient-to-br from-white to-blue-50 relative overflow-hidden">
-        <div className="absolute inset-0">
-          <motion.div
-            className="absolute inset-0"
-            style={{ opacity: 0.15 }}
-            initial={{ scale: 1.1, rotate: -1 }}
-            animate={{ scale: 1, rotate: 1 }}
-            transition={{ duration: 30, repeat: Infinity, repeatType: "reverse" }}
-          >
-            <Image
-              src="/bg_10.jpg"
-              alt="Background"
-              fill
-              className="object-cover"
-              priority
-            />
-          </motion.div>
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-900/10 via-blue-800/5 to-blue-900/10" />
-          <div className="absolute inset-0 bg-gradient-to-br from-white/90 via-transparent to-white/90" />
-        </div>
+      <section className="py-20 relative overflow-hidden">
         <div className="container mx-auto px-4 relative">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -351,8 +341,8 @@ export default function IllustrativeTwo() {
             viewport={{ once: true }}
             className="text-center max-w-3xl mx-auto mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-800">Featured Industries</h2>
-            <p className="text-lg text-gray-600">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">Featured Industries</h2>
+            <p className="text-lg text-gray-200">
               Our Treasury Management System is tailored to meet the diverse needs of businesses across all industries.
             </p>
           </motion.div>
@@ -385,27 +375,9 @@ export default function IllustrativeTwo() {
           </div>
         </div>
       </section>
+
       {/* Strategic Partnerships */}
-      <section className="py-20 bg-gradient-to-br from-blue-50 to-white relative overflow-hidden">
-        <div className="absolute inset-0">
-          <motion.div
-            className="absolute inset-0"
-            style={{ opacity: 0.2 }}
-            initial={{ scale: 1, rotate: 1 }}
-            animate={{ scale: 1.1, rotate: -1 }}
-            transition={{ duration: 30, repeat: Infinity, repeatType: "reverse" }}
-          >
-            <Image
-              src="/bg_11.jpg"
-              alt="Background"
-              fill
-              className="object-cover"
-              priority
-            />
-          </motion.div>
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-900/15 via-blue-800/10 to-blue-900/15" />
-          <div className="absolute inset-0 bg-gradient-to-br from-white/85 via-transparent to-white/85" />
-        </div>
+      <section className="py-20 relative overflow-hidden">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -414,8 +386,8 @@ export default function IllustrativeTwo() {
             viewport={{ once: true }}
             className="text-center max-w-3xl mx-auto mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-800">Strategic Partnerships</h2>
-            <p className="text-lg text-gray-600">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">Strategic Partnerships</h2>
+            <p className="text-lg text-gray-200">
               We collaborate with industry leaders to deliver cutting-edge solutions.
             </p>
           </motion.div>
@@ -437,27 +409,9 @@ export default function IllustrativeTwo() {
           </div>
         </div>
       </section>
-      
+
       {/* Case Studies */}
-      <section className="py-20 bg-gradient-to-br from-white to-blue-50 relative overflow-hidden">
-        <div className="absolute inset-0">
-          <motion.div
-            className="absolute inset-0"
-            style={{ opacity: 0.1 }}
-            initial={{ scale: 1, rotate: 1 }}
-            animate={{ scale: 1.05, rotate: -1 }}
-            transition={{ duration: 30, repeat: Infinity, repeatType: "reverse" }}
-          >
-            <Image
-              src="/bg_12.jpg"
-              alt="Background"
-              fill
-              className="object-cover"
-              priority
-            />
-          </motion.div>
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-900/10 via-blue-800/5 to-blue-900/10" />
-        </div>
+      <section className="py-20 relative overflow-hidden">
         <div className="container mx-auto px-4 relative">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -466,17 +420,16 @@ export default function IllustrativeTwo() {
             viewport={{ once: true }}
             className="text-center max-w-3xl mx-auto mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-800">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">
               <span className="relative">
                 Success Stories
                 <span className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-blue-600 to-indigo-600"></span>
               </span>
             </h2>
-            <p className="text-lg text-gray-600">
+            <p className="text-lg text-gray-200">
               Discover how leading enterprises are transforming their financial operations with our solutions.
             </p>
           </motion.div>
-          
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
@@ -534,7 +487,6 @@ export default function IllustrativeTwo() {
               </motion.div>
             ))}
           </div>
-          
           <motion.div 
             className="text-center mt-12"
             initial={{ opacity: 0, y: 20 }}
@@ -548,28 +500,9 @@ export default function IllustrativeTwo() {
           </motion.div>
         </div>
       </section>
-      
+
       {/* Winning Together */}
-      <section className="py-20 bg-gradient-to-br from-blue-50 to-white relative overflow-hidden">
-        <div className="absolute inset-0">
-          <motion.div
-            className="absolute inset-0"
-            style={{ opacity: 0.2 }}
-            initial={{ scale: 1, rotate: 1 }}
-            animate={{ scale: 1.1, rotate: -1 }}
-            transition={{ duration: 30, repeat: Infinity, repeatType: "reverse" }}
-          >
-            <Image
-              src="/bg_9.jpg"
-              alt="Background"
-              fill
-              className="object-cover"
-              priority
-            />
-          </motion.div>
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-900/15 via-blue-800/10 to-blue-900/15" />
-          <div className="absolute inset-0 bg-gradient-to-br from-white/85 via-transparent to-white/85" />
-        </div>
+      <section className="py-20 relative overflow-hidden">
         <div className="container mx-auto px-4 relative">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -578,13 +511,13 @@ export default function IllustrativeTwo() {
             viewport={{ once: true }}
             className="text-center max-w-3xl mx-auto mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-800">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">
               <span className="relative">
                 Winning Together
-                <span className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-blue-600 to-indigo-600"></span>
+                <span className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-blue-400 to-cyan-400"></span>
               </span>
             </h2>
-            <p className="text-lg text-gray-600">
+            <p className="text-lg text-gray-200">
               Leading organizations trust our comprehensive Treasury Management Platform for end-to-end digitization, unlocking agility, insights, and productivity.
             </p>
           </motion.div>
@@ -614,27 +547,8 @@ export default function IllustrativeTwo() {
         </div>
       </section>
 
-            {/* Why Choose Us */}
-      <section className="py-20 bg-gradient-to-br from-blue-50 via-white to-blue-50 relative overflow-hidden">
-        <div className="absolute inset-0">
-          <motion.div
-            className="absolute inset-0"
-            style={{ opacity: 0.15 }}
-            initial={{ scale: 1.1, rotate: -1 }}
-            animate={{ scale: 1, rotate: 1 }}
-            transition={{ duration: 30, repeat: Infinity, repeatType: "reverse" }}
-          >
-            <Image
-              src="/bg_8.jpg"
-              alt="Background"
-              fill
-              className="object-cover"
-              priority
-            />
-          </motion.div>
-          <div className="absolute inset-0 bg-gradient-to-b from-blue-900/10 via-blue-800/5 to-blue-900/10" />
-          <div className="absolute inset-0 bg-gradient-to-r from-white/90 via-transparent to-white/90" />
-        </div>
+      {/* Why Choose Us */}
+      <section className="py-20 relative overflow-hidden">
         <div className="container mx-auto px-4 relative">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -643,13 +557,13 @@ export default function IllustrativeTwo() {
             viewport={{ once: true }}
             className="text-center max-w-3xl mx-auto mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-800">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">
               <span className="relative">
                 Why Choose Us
-                <span className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-blue-600 to-indigo-600"></span>
+                <span className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-blue-400 to-cyan-400"></span>
               </span>
             </h2>
-            <p className="text-lg text-gray-600">
+            <p className="text-lg text-gray-200">
               Our platform delivers unmatched value through innovative features and tailored solutions.
             </p>
           </motion.div>
@@ -680,17 +594,7 @@ export default function IllustrativeTwo() {
       </section>
 
       {/* Innovation in Action */}
-      <section className="py-20 bg-white relative overflow-hidden">
-        <div className="absolute inset-0 opacity-5">
-          <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <pattern id="grid3d" width="40" height="40" patternUnits="userSpaceOnUse">
-                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#4338CA" strokeWidth="0.5" />
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#grid3d)" />
-          </svg>
-        </div>
+      <section className="py-20 relative overflow-hidden">
         <div className="container mx-auto px-4 relative">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -699,13 +603,13 @@ export default function IllustrativeTwo() {
             viewport={{ once: true }}
             className="text-center max-w-3xl mx-auto mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-800">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">
               <span className="relative">
                 Innovation in Action
                 <span className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-blue-600 to-indigo-600"></span>
               </span>
             </h2>
-            <p className="text-lg text-gray-600">
+            <p className="text-lg text-gray-200">
               Discover how our clients have transformed their operations with our platform.
             </p>
           </motion.div>
@@ -755,27 +659,9 @@ export default function IllustrativeTwo() {
           </div>
         </div>
       </section>
+
       {/* Latest News */}
-      <section className="py-20 bg-gradient-to-br from-white to-blue-50 relative overflow-hidden">
-        <div className="absolute inset-0">
-          <motion.div
-            className="absolute inset-0"
-            style={{ opacity: 0.15 }}
-            initial={{ scale: 1.1, rotate: -1 }}
-            animate={{ scale: 1, rotate: 1 }}
-            transition={{ duration: 30, repeat: Infinity, repeatType: "reverse" }}
-          >
-            <Image
-              src="/bg_12.jpg"
-              alt="Background"
-              fill
-              className="object-cover"
-              priority
-            />
-          </motion.div>
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-900/10 via-blue-800/5 to-blue-900/10" />
-          <div className="absolute inset-0 bg-gradient-to-br from-white/90 via-transparent to-white/90" />
-        </div>
+      <section className="py-20 relative overflow-hidden">
         <div className="container mx-auto px-4 relative">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -784,13 +670,13 @@ export default function IllustrativeTwo() {
             viewport={{ once: true }}
             className="text-center max-w-3xl mx-auto mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-800">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">
               <span className="relative">
                 Latest News
-                <span className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-blue-600 to-indigo-600"></span>
+                <span className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-blue-400 to-cyan-400"></span>
               </span>
             </h2>
-            <p className="text-lg text-gray-600">
+            <p className="text-lg text-gray-200">
               Stay updated with the latest developments and achievements from our platform.
             </p>
           </motion.div>
@@ -838,9 +724,8 @@ export default function IllustrativeTwo() {
         </div>
       </section>
 
-      {/* Testimonials (Moved from Original) */}
-      <section className="py-24 bg-gray-50 relative overflow-hidden">
-        <div className="absolute inset-0 bg-grid-slate-100 [mask-image:linear-gradient(0deg,#fff,rgba(255,255,255,0.6))]"></div>
+      {/* Testimonials */}
+      <section className="py-24 relative overflow-hidden">
         <div className="container mx-auto px-4 relative">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -853,7 +738,7 @@ export default function IllustrativeTwo() {
               Trusted by Industry Leaders
             </div>
             <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500" style={{ textShadow: '0 2px 12px rgba(0,207,255,0.12)' }}>Voices of Success</h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-200 max-w-2xl mx-auto">
               Discover how forward-thinking companies are transforming their treasury operations
             </p>
           </motion.div>
@@ -975,14 +860,7 @@ export default function IllustrativeTwo() {
       </section>
 
       {/* Let's Connect (Footer) */}
-      <footer className="py-20 bg-gradient-to-r from-blue-900 to-indigo-900 text-white relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <svg width="100%" height="100%" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="50" cy="50" r="45" fill="none" stroke="white" strokeWidth="0.5" />
-            <circle cx="50" cy="50" r="30" fill="none" stroke="white" strokeWidth="0.5" />
-            <circle cx="50" cy="50" r="15" fill="none" stroke="white" strokeWidth="0.5" />
-          </svg>
-        </div>
+      <footer className="py-20 relative overflow-hidden">
         <div className="container mx-auto px-4 relative">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -991,7 +869,7 @@ export default function IllustrativeTwo() {
             viewport={{ once: true }}
             className="max-w-3xl mx-auto text-center"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">Let's Connect</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">Let's Connect</h2>
             <p className="text-lg mb-8 text-blue-100">
               Ready to transform your financial operations? Get in touch with our team today.
             </p>
@@ -1004,7 +882,7 @@ export default function IllustrativeTwo() {
               </Button>
             </div>
             <div className="mt-8">
-              <p className="text-sm">© 2025 Treasury Management Platform. All rights reserved.</p>
+              <p className="text-sm text-gray-300">© 2025 Treasury Management Platform. All rights reserved.</p>
               <div className="flex justify-center gap-4 mt-4">
                 <a href="#" className="text-blue-200 hover:text-white">Privacy Policy</a>
                 <a href="#" className="text-blue-200 hover:text-white">Terms of Service</a>

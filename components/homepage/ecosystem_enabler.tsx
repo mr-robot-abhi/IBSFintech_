@@ -67,7 +67,15 @@ export default function EcosystemEnabler() {
           style={{ opacity: 0.7 }}
           priority={false}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-white/95 via-transparent to-white/98 dark:from-gray-900/95 dark:via-gray-900/80 dark:to-gray-900/98" />
+        <Image
+          src="/bg_dark_1.jpg"
+          alt="Dark mode background"
+          fill
+          className="object-cover hidden dark:block"
+          style={{ opacity: 0.5 }}
+          priority={false}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-white/95 via-transparent to-white/98 dark:from-gray-900/50 dark:via-gray-900/30 dark:to-gray-900/50" />
       </div>
       <div ref={containerRef} className="relative mx-auto w-full max-w-5xl aspect-square min-h-[400px]">
         {/* Background Blur Circle */}
