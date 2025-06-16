@@ -98,12 +98,24 @@ export default function IllustrativeThree() {
   };
 
   return (
-    <div className="bg-gray-50 dark:bg-gray-900 overflow-x-hidden transition-colors duration-200">
+    <div className="relative overflow-x-hidden transition-colors duration-200">
       <ThemeToggle />
       
+      {/* Background Image */}
+      <div className="fixed inset-0 -z-10">
+        <Image
+          src="/bg_11.jpg"
+          alt="Background"
+          fill
+          className="object-cover"
+          priority
+        />
+        <div className="absolute inset-0 bg-white/80 dark:bg-gray-900/95" />
+      </div>
+      
       {/* Main Banner */}
-      <section className="relative pt-28 pb-16 px-4 bg-gradient-to-b from-teal-700 to-teal-300 dark:from-teal-900 dark:to-teal-700 transition-colors duration-200">
-        <div className="absolute inset-0 opacity-20">
+      <section className="relative pt-28 pb-16 px-4 bg-gradient-to-b from-teal-700 to-teal-300 dark:from-gray-900/80 dark:to-gray-900 transition-colors duration-200">
+        <div className="absolute inset-0 opacity-20 dark:opacity-30">
           <Image
             src="/bg_6.jpg"
             alt="Financial dashboard"
@@ -111,7 +123,7 @@ export default function IllustrativeThree() {
             className="object-cover"
           />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-b from-teal-700/90 via-teal-700/50 to-teal-700/90 dark:from-teal-900/90 dark:via-teal-900/50 dark:to-teal-900/90" />
+        <div className="absolute inset-0 bg-gradient-to-b from-teal-700/90 via-teal-700/50 to-teal-700/90 dark:from-gray-900/80 dark:via-gray-900/60 dark:to-gray-900/90" />
         <div className="container mx-auto max-w-6xl relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
             <motion.div
@@ -170,23 +182,7 @@ export default function IllustrativeThree() {
       {/* Winning Together */}
       <section className="py-16 relative transition-colors duration-200">
         <div className="absolute inset-0 pointer-events-none select-none">
-          <Image
-            src="/bg_5.jpg"
-            alt="Fintech background"
-            fill
-            className="object-cover dark:hidden"
-            style={{ opacity: 0.3 }}
-            priority={false}
-          />
-          <Image
-            src="/bg_dark_1.jpg"
-            alt="Dark mode background"
-            fill
-            className="object-cover hidden dark:block"
-            style={{ opacity: 0.3 }}
-            priority={false}
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-white/95 via-transparent to-white/98 dark:from-gray-900/95 dark:via-gray-900/80 dark:to-gray-900/98" />
+          <div className="absolute inset-0 bg-gradient-to-b from-white/95 via-transparent to-white/98 dark:from-gray-900/95 dark:via-gray-900/90 dark:to-gray-900/98" />
         </div>
         <div className="container mx-auto px-4 max-w-6xl relative z-10">
           <motion.div
@@ -209,7 +205,7 @@ export default function IllustrativeThree() {
       </section>
 
       {/* Our Offerings */}
-      <section className="py-16 bg-gray-50 dark:bg-gray-900 transition-colors duration-200">
+      <section className="py-16 relative transition-colors duration-200">
         <div className="container mx-auto px-4 max-w-6xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -275,25 +271,9 @@ export default function IllustrativeThree() {
       {/* Ecosystem Enabler */}
       <EcosystemEnabler />
       {/* Featured Industries */}
-      <section className="py-16 bg-gradient-to-br from-gray-50 to-white dark:from-gray-800 dark:to-gray-900 relative transition-colors duration-200">
+      <section className="py-16 relative transition-colors duration-200">
         <div className="absolute inset-0 pointer-events-none select-none">
-          <Image
-            src="/bg_11.jpg"
-            alt="Fintech background"
-            fill
-            className="object-cover dark:hidden"
-            style={{ opacity: 0.7 }}
-            priority={false}
-          />
-          <Image
-            src="/bg_dark_2.jpg"
-            alt="Dark mode background"
-            fill
-            className="object-cover hidden dark:block"
-            style={{ opacity: 0.3 }}
-            priority={false}
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-white/95 via-transparent to-white/98 dark:from-gray-900/95 dark:via-gray-900/80 dark:to-gray-900/98" />
+          <div className="absolute inset-0 bg-gradient-to-b from-white/95 via-transparent to-white/98 dark:from-gray-900/95 dark:via-gray-900/90 dark:to-gray-900/98" />
         </div>
         <div className="container mx-auto px-4 max-w-6xl relative z-10">
           <motion.div
