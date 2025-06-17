@@ -88,8 +88,10 @@ export default function IllustrativeTwoV2() {
     offset: ['start start', 'end end']
   });
 
-  const bgOpacity1 = useTransform(scrollYProgress, [0, 0.3, 0.6, 1], [1, 0, 1, 0]);
-  const bgOpacity2 = useTransform(scrollYProgress, [0, 0.3, 0.6, 1], [0, 1, 0, 1]);
+  // Background opacity transitions for smooth scrolling effect
+  const bgOpacity1 = useTransform(scrollYProgress, [0, 0.2, 0.4, 0.6, 0.8, 1], [1, 0.5, 0, 0, 0.5, 1]);
+  const bgOpacity2 = useTransform(scrollYProgress, [0, 0.2, 0.4, 0.6, 0.8, 1], [0, 0.5, 1, 0.5, 0, 0]);
+  const bgOpacity3 = useTransform(scrollYProgress, [0, 0.4, 0.6, 0.8, 1], [0, 0, 0.5, 1, 0.5]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -146,48 +148,77 @@ export default function IllustrativeTwoV2() {
     <div className="relative" ref={containerRef}>
       {/* Alternating Backgrounds */}
       <div className="fixed inset-0 -z-10">
-        <motion.div style={{ opacity: bgOpacity1 }}>
+        <motion.div style={{ opacity: bgOpacity1 }} className="transition-opacity duration-1000">
           <Image
             src="/bg_14.jpeg"
             alt="Background 1"
             fill
             className="object-cover"
-            style={{ opacity: 0.55 }}
+            style={{ opacity: 0.6 }}
             priority
           />
         </motion.div>
-        <motion.div style={{ opacity: bgOpacity2 }}>
+        <motion.div style={{ opacity: bgOpacity2 }} className="transition-opacity duration-1000">
           <Image
             src="/bg_13.jpeg"
             alt="Background 2"
             fill
             className="object-cover"
-            style={{ opacity: 0.55 }}
+            style={{ opacity: 0.6 }}
+            priority
+          />
+        </motion.div>
+        <motion.div style={{ opacity: bgOpacity3 }} className="transition-opacity duration-1000">
+          <Image
+            src="/bg_15.jpeg"
+            alt="Background 3"
+            fill
+            className="object-cover"
+            style={{ opacity: 0.6 }}
             priority
           />
         </motion.div>
         <div className="absolute inset-0 bg-black/40" />
       </div>
 
-      {/* Floating Particles */}
-      <div className="fixed inset-0 pointer-events-none -z-5">
-        {[...Array(20)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-2 h-2 rounded-full bg-gradient-to-r from-pink-500 to-blue-500 opacity-50"
-            initial={{ x: Math.random() * 100 + 'vw', y: Math.random() * 100 + 'vh' }}
-            animate={{
-              y: [Math.random() * 100 + 'vh', Math.random() * 100 + 'vh'],
-              opacity: [0.3, 0.7, 0.3],
-            }}
-            transition={{
-              duration: Math.random() * 10 + 5,
-              repeat: Infinity,
-              repeatType: 'reverse',
-              delay: Math.random() * 5,
-            }}
-          />
-        ))}
+      {/* Enhanced Floating Particles */}
+      <div className="fixed inset-0 pointer-events-none -z-5 overflow-hidden">
+        {[...Array(30)].map((_, i) => {
+          const size = Math.random() * 4 + 2; // 2-6px
+          const duration = Math.random() * 8 + 4; // 4-12s
+          const delay = Math.random() * 5; // 0-5s
+          const startX = Math.random() * 100;
+          const startY = Math.random() * 100;
+          
+          return (
+            <motion.div
+              key={i}
+              className="absolute rounded-full bg-gradient-to-r from-cyan-400 to-blue-500"
+              style={{
+                width: `${size}px`,
+                height: `${size}px`,
+                boxShadow: '0 0 15px 2px rgba(56, 189, 248, 0.7)'
+              }}
+              initial={{
+                x: `${startX}vw`,
+                y: `${startY}vh`,
+                opacity: 0.2
+              }}
+              animate={{
+                x: `${startX + (Math.random() * 20 - 10)}vw`,
+                y: `${startY + (Math.random() * 20 - 10)}vh`,
+                opacity: [0.2, 0.8, 0.2],
+              }}
+              transition={{
+                duration: duration,
+                repeat: Infinity,
+                repeatType: 'reverse',
+                ease: 'easeInOut',
+                delay: delay,
+              }}
+            />
+          );
+        })}
       </div>
 
       {/* Main Banner with Video Background */}
@@ -376,7 +407,7 @@ export default function IllustrativeTwoV2() {
         </div>
       </section>
 
-      {/* Strategic Partnerships */}
+      {/* Partnership Ecosystem */}
       <section className="py-20 relative overflow-hidden">
         <div className="container mx-auto px-4">
           <motion.div
@@ -386,7 +417,7 @@ export default function IllustrativeTwoV2() {
             viewport={{ once: true }}
             className="text-center max-w-3xl mx-auto mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">Strategic Partnerships</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">Partnership Ecosystem</h2>
             <p className="text-lg text-gray-200">
               We collaborate with industry leaders to deliver cutting-edge solutions.
             </p>
