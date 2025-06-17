@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from "react";
-import { motion, useAnimation } from "framer-motion";
+import { motion, useAnimation, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import {
   DollarSign, CreditCard, Layers, PieChart, RefreshCcw,
-  TrendingUp, Globe, BarChart2
+  TrendingUp, Globe, BarChart2, Landmark, Puzzle, Repeat, Database
 } from "lucide-react";
 
 const services = [
@@ -15,6 +15,13 @@ const services = [
   { name: "Investment", icon: TrendingUp, desc: "Mutual funds, FDs, PMS, bonds" },
   { name: "Trade Finance", icon: Globe, desc: "LCs, BCs, shipment finance" },
   { name: "Debt Mgmt", icon: BarChart2, desc: "Borrowings, loans, intercompany" },
+];
+
+const interfaces = [
+    { name: "Banks", icon: Landmark },
+    { name: "Marketing Data Providers", icon: Database },
+    { name: "ERP & 3rd Party", icon: Puzzle },
+    { name: "Dealing Platforms", icon: Repeat },
 ];
 
 const circlePosition = (i: number, total: number, radius: number, center: number, offsetAngle = -Math.PI / 2) => {
@@ -29,6 +36,7 @@ export default function EcosystemEnabler() {
   const serviceControls = useAnimation();
   const containerRef = useRef<HTMLDivElement>(null);
   const [size, setSize] = useState(560);
+  const [interfacePositions, setInterfacePositions] = useState([0, 2, 4, 6]);
 
   useEffect(() => {
     const updateSize = () => {
@@ -40,6 +48,13 @@ export default function EcosystemEnabler() {
     updateSize();
     window.addEventListener('resize', updateSize);
     return () => window.removeEventListener('resize', updateSize);
+  }, []);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setInterfacePositions(prev => prev.map(p => (p + 1) % services.length));
+    }, 5500); // Slower rotation
+    return () => clearInterval(interval);
   }, []);
 
   useEffect(() => {
@@ -55,6 +70,8 @@ export default function EcosystemEnabler() {
   const ibsLogoRing = size * 0.30;
   const serviceRadius = size * 0.31;
   const serviceBoxSize = size * 0.15;
+  const interfaceRadius = size * 0.48; // Adjusted radius for larger boxes
+  const interfaceBoxSize = size * 0.15; // Same size as service boxes
 
   return (
     <section className="relative bg-white dark:bg-gray-950 py-24 overflow-hidden transition-colors duration-200">
@@ -96,7 +113,7 @@ export default function EcosystemEnabler() {
             left: center - ibsLogoRing / 2,
           }}
         >
-          <div className="absolute inset-0 rounded-full border-8 border-teal-100 dark:border-teal-800 shadow-2xl" />
+          <div className="absolute inset-0 rounded-full border-8 border-teal-100 dark:border-white shadow-2xl" />
           <div className="flex flex-col items-center justify-center">
             <div className="relative" style={{ width: ibsLogoSize * 0.7, height: ibsLogoSize * 0.7 }}>
               <Image
@@ -186,6 +203,36 @@ export default function EcosystemEnabler() {
             </motion.div>
           );
         })}
+
+        {/* Floating Interface Icons */}
+        <AnimatePresence>
+            {interfacePositions.map((pos, i) => {
+                const { x, y } = circlePosition(pos, services.length, interfaceRadius, center, -Math.PI / 2 + (Math.PI / services.length));
+                const iface = interfaces[i];
+                return (
+                    <motion.div
+                        key={`${iface.name}-${pos}`}
+                        initial={{ opacity: 0, scale: 0.5 }}
+                        animate={{ opacity: 1, scale: 1, transition: { type: 'spring', stiffness: 120, damping: 20 } }} // Smoother animation
+                        exit={{ opacity: 0, scale: 0.5, transition: { duration: 0.4 } }} // Slower fade out
+                        className="absolute z-20 flex flex-col items-center justify-center text-center bg-white/90 dark:bg-gray-800/90 backdrop-blur-md border border-teal-100 dark:border-teal-700 shadow-lg rounded-2xl hover:shadow-2xl hover:scale-105 transition-all duration-300"
+                        style={{
+                            width: interfaceBoxSize,
+                            height: interfaceBoxSize,
+                            top: y - interfaceBoxSize / 2,
+                            left: x - interfaceBoxSize / 2,
+                        }}
+                        title={iface.name}
+                    >
+                        <div className="mb-2 bg-teal-50 dark:bg-teal-900/50 text-teal-600 dark:text-teal-400 rounded-full flex items-center justify-center shadow"
+                            style={{ width: interfaceBoxSize * 0.32, height: interfaceBoxSize * 0.32 }}>
+                            <iface.icon size={Math.round(interfaceBoxSize * 0.2)} strokeWidth={2} />
+                        </div>
+                        <h4 className="font-semibold text-gray-800 dark:text-white leading-tight px-2" style={{ fontSize: interfaceBoxSize * 0.11 }}>{iface.name}</h4>
+                    </motion.div>
+                );
+            })}
+        </AnimatePresence>
       </div>
     </section>
   );

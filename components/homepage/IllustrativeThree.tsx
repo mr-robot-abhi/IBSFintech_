@@ -337,7 +337,7 @@ export default function IllustrativeThree() {
         </div>
       </section>
 
-      {/* Strategic Partnerships */}
+      {/* Partnership Ecosystem */}
       <section className="py-16 bg-gradient-to-br from-white to-gray-50 dark:from-gray-900 dark:to-gray-800 relative transition-colors duration-200">
         <div className="absolute inset-0 pointer-events-none select-none">
           <div className="absolute inset-0 bg-gradient-to-b from-white/95 via-transparent to-white/98 dark:from-gray-900/95 dark:via-gray-900/80 dark:to-gray-900/98" />
@@ -350,7 +350,7 @@ export default function IllustrativeThree() {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl font-bold text-gray-800 dark:text-white mb-4">Strategic Partnerships</h2>
+            <h2 className="text-3xl font-bold text-gray-800 dark:text-white mb-4">Partnership Ecosystem</h2>
             <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
               Collaborations with industry leaders to enhance our platform's capabilities.
             </p>
