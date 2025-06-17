@@ -57,18 +57,9 @@ export default function EcosystemEnablerBlue() {
   const serviceBoxSize = size * 0.15;
 
   return (
-    <section className="relative bg-white py-12 overflow-hidden transition-colors duration-200">
-      <div className="absolute inset-0 pointer-events-none select-none">
-        <Image
-          src="/bg_12.jpg"
-          alt="Ecosystem background"
-          fill
-          className="object-cover"
-          style={{ opacity: 0.7 }}
-          priority={false}
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-white/95 via-transparent to-blue-50" />
-      </div>
+    <section className="relative py-12 overflow-hidden">
+
+
       <div ref={containerRef} className="relative mx-auto" style={{ width: 1200, height: 1200, minWidth: 1200, minHeight: 1200 }}>
         {/* Background Blur Circle */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
@@ -163,7 +154,7 @@ export default function EcosystemEnablerBlue() {
                 stiffness: 100,
                 damping: 15
               }}
-              className="absolute z-20 flex flex-col items-center justify-center text-center bg-white border border-blue-100 shadow-lg rounded-2xl hover:shadow-2xl hover:scale-105 transition-all duration-300 backdrop-blur-sm"
+              className="absolute z-20 flex flex-col items-center justify-center text-center bg-white/90 backdrop-blur-lg border border-blue-100 shadow-lg rounded-2xl hover:shadow-2xl hover:scale-105 transition-all duration-300"
               style={{
                 width: serviceBoxSize,
                 height: serviceBoxSize,

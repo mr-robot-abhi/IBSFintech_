@@ -1,5 +1,9 @@
+'use client';
+
+import { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import Image from 'next/image';
 import { LogoStripIllustrative1 } from './LogoStrips/LogoStripIllustrative1';
-import { LogoStripIllustrative2 } from './LogoStrips/LogoStripIllustrative2';
 import { LogoStripIllustrative3 } from './LogoStrips/LogoStripIllustrative3';
 
 // Client type definition
@@ -114,8 +118,6 @@ type ClientLogoStripProps = {
   variant: ClientVariant;
 };
 
-
-
 // Helper function to create a mutable copy of the clients array
 function createMutableClients(clients: readonly Client[]): Client[] {
   return clients.map(client => ({
@@ -127,19 +129,77 @@ function createMutableClients(clients: readonly Client[]): Client[] {
 }
 
 export default function ClientLogoStrip({ variant }: ClientLogoStripProps) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ['start end', 'end start']
+  });
+
+  const bgOpacity1 = useTransform(scrollYProgress, [0, 0.5, 1], [1, 0, 1]);
+  const bgOpacity2 = useTransform(scrollYProgress, [0, 0.5, 1], [0, 1, 0]);
+
   // Get the appropriate clients array based on the variant
   const variantClients = clients[variant];
   
   // Create a mutable copy of the clients array
   const mutableClients = createMutableClients(variantClients);
 
+  // Double the clients for infinite scroll effect in illustrative2
+  const doubledClients = [...mutableClients, ...mutableClients];
+
   // Render the appropriate logo strip component based on the variant
+  let logoStripComponent;
   switch (variant) {
     case 'illustrative1':
-      return <LogoStripIllustrative1 clients={mutableClients} />;
+      logoStripComponent = <LogoStripIllustrative1 clients={mutableClients} />;
+      break;
     case 'illustrative2':
-      return <LogoStripIllustrative2 clients={mutableClients} />;
+      logoStripComponent = (
+        <div className="py-12">
+          <div className="overflow-hidden">
+            <motion.div
+              className="flex"
+              animate={{
+                x: ['0%', '-50%'],
+                transition: {
+                  x: {
+                    repeat: Infinity,
+                    repeatType: 'loop',
+                    duration: 20,
+                    ease: 'linear',
+                  },
+                },
+              }}
+            >
+              {doubledClients.map((client, index) => (
+                <div key={`${client.id}-${index}`} className="flex-shrink-0 mx-8">
+                  <div className="relative w-40 h-20">
+                    <Image
+                      src={`/clients/${client.logo}`}
+                      alt={client.name}
+                      fill
+                      className="object-contain drop-shadow-md hover:drop-shadow-lg transition-all duration-300 opacity-90 hover:opacity-100"
+                      style={{ display: 'block' }} // Ensure the image is displayed
+
+                    />
+                  </div>
+                </div>
+              ))}
+            </motion.div>
+          </div>
+        </div>
+      );
+      break;
     case 'illustrative3':
-      return <LogoStripIllustrative3 clients={mutableClients} />;
+      logoStripComponent = <LogoStripIllustrative3 clients={mutableClients} />;
+      break;
+    default:
+      return null;
   }
+
+  return (
+    <div ref={containerRef}>
+      {logoStripComponent}
+    </div>
+  );
 }

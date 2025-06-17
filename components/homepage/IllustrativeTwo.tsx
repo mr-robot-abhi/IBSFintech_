@@ -224,10 +224,10 @@ export default function IllustrativeTwoV2() {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <motion.h1
-              className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500"
+              className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-white"
               style={{ textShadow: '0 2px 12px rgba(0,207,255,0.12)' }}
             >
-              Transform Your <span className="font-bold">Financial Future</span>
+              <span className="text-white">Transform Your</span> <span className="font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500" style={{ textShadow: '0 2px 12px rgba(0,207,255,0.12)' }}>Financial Future</span>
             </motion.h1>
             <motion.p
               className="text-lg md:text-xl text-gray-200 mb-8"
