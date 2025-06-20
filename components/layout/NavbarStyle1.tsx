@@ -122,6 +122,11 @@ export default function NavbarStyle1() {
               </DropdownMenuTrigger>
               <DropdownMenuContent align="center" className="bg-white/95 backdrop-blur-sm border-0 shadow-xl">
                 <DropdownMenuItem asChild>
+                  <Link href="/?variant=illustrative1" className="flex items-center gap-2">
+                    <BarChart size={16} /> Illystrative Style 1
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
                   <Link href="/?variant=illustrative2" className="flex items-center gap-2">
                     <Lightbulb size={16} /> Illustrative Style 2
                   </Link>

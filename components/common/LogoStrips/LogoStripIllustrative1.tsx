@@ -115,9 +115,13 @@ export function LogoStripIllustrative1({ clients }: LogoStripIllustrative1Props)
                 } as React.CSSProperties}
               >
                 <div className="relative w-40 h-16 flex items-center justify-center">
-                  <span className="text-lg font-medium text-blue-900 whitespace-nowrap">
-                    {client.name}
-                  </span>
+                  <Image
+                    src={`/clients/${client.logo}`}
+                    alt={client.name}
+                    fill
+                    className="object-contain max-h-16 w-full transition-transform duration-300 hover:scale-105"
+                    style={{ background: 'white' }}
+                  />
                 </div>
                 {client.hasVideo && (
                   <div className="absolute -top-2 -right-2 w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center shadow-md">
