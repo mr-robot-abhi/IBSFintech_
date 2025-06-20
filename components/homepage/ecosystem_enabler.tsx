@@ -116,6 +116,30 @@ export default function EcosystemEnabler() {
             );
           })}
           
+          {/* Interface Connector Lines & Particles */}
+          {interfaces.map((_, i) => {
+            const angle = (i / interfaces.length) * 2 * Math.PI - Math.PI / 4 + (i % 2 === 0 ? Math.PI / 8 : -Math.PI / 8);
+            const x = center + interfaceBoxRadius * Math.cos(angle);
+            const y = center + interfaceBoxRadius * Math.sin(angle);
+            return (
+              <g key={`interface-line-group-${i}`}>
+                <motion.line
+                  x1={center} y1={center} x2={x} y2={y} stroke="#38b2ac" strokeWidth={size * 0.002}
+                  initial={{ pathLength: 0, opacity: 0 }} animate={{ pathLength: 1, opacity: 0.7 }}
+                  transition={{ duration: 0.9, delay: 0.5 + i * 0.15, ease: [0.22, 1, 0.36, 1] }}
+                />
+                <motion.circle
+                  r={size * 0.004}
+                  fill="#38b2ac"
+                  initial={{ cx: center, cy: center, opacity: 0 }}
+                  animate={{ cx: [center, x], cy: [center, y], opacity: [0.6, 1, 0.6] }}
+                  transition={{ repeat: Infinity, duration: 6, delay: 0.8 + i * 0.4, ease: "easeInOut" }}
+                  style={{ filter: 'drop-shadow(0 0 2px #38b2ac)' }}
+                />
+              </g>
+            );
+          })}
+
           {/* Interface Ring */}
           <defs>
             <path id="interfaceRingPath" d={`M ${center}, ${center - interfaceRingRadius} A ${interfaceRingRadius},${interfaceRingRadius} 0 1,1 ${center-0.01},${center - interfaceRingRadius}`} fill="none" />
@@ -126,8 +150,8 @@ export default function EcosystemEnabler() {
             initial={{ rotate: 0 }} animate={{ rotate: 360 }}
             transition={{ duration: 120, repeat: Infinity, ease: "linear" }}
           />
-          <text className="fill-current text-teal-500 dark:text-teal-400 uppercase tracking-widest" style={{ fontSize: size * 0.02 }}>
-            <textPath href="#interfaceRingPath" startOffset="25%" textAnchor="middle">Interfaces</textPath>
+          <text className="fill-current text-teal-500 dark:text-teal-400 uppercase tracking-widest font-bold" style={{ fontSize: size * 0.02 }}>
+            <textPath href="#interfaceRingPath" startOffset="25%" textAnchor="middle" dy={-size * 0.015}>Interfaces</textPath>
           </text>
         </svg>
 
@@ -152,7 +176,9 @@ export default function EcosystemEnabler() {
         })}
 
         {interfaces.map((iface, i) => {
-          const { x, y } = circlePosition(i, interfaces.length, interfaceBoxRadius, center, -Math.PI / 4);
+          const angle = (i / interfaces.length) * 2 * Math.PI - Math.PI / 4 + (i % 2 === 0 ? Math.PI / 8 : -Math.PI / 8);
+          const x = center + interfaceBoxRadius * Math.cos(angle);
+          const y = center + interfaceBoxRadius * Math.sin(angle);
           return (
             <motion.div
               key={`interface-${i}`}

@@ -172,16 +172,17 @@ export default function ClientLogoStrip({ variant }: ClientLogoStripProps) {
               }}
             >
               {doubledClients.map((client, index) => (
-                <div key={`${client.id}-${index}`} className="flex-shrink-0 mx-8">
-                  <div className="relative w-40 h-20">
-                    <Image
-                      src={`/clients/${client.logo}`}
-                      alt={client.name}
-                      fill
-                      className="object-contain drop-shadow-md hover:drop-shadow-lg transition-all duration-300 opacity-90 hover:opacity-100"
-                      style={{ display: 'block' }} // Ensure the image is displayed
-
-                    />
+                <div key={`${client.id}-${index}`} className="flex-shrink-0 mx-8 flex items-center justify-center">
+                  <div className="w-48 h-24 bg-white/10 backdrop-blur-md rounded-2xl p-4 flex items-center justify-center transition-all duration-300 hover:bg-white/20 hover:shadow-lg">
+                    <div className="relative w-full h-full">
+                      <Image
+                        src={`/clients/${client.logo}`}
+                        alt={client.name}
+                        fill
+                        className="object-contain drop-shadow-md transition-all duration-300"
+                        style={{ filter: 'brightness(0) invert(1)' }}
+                      />
+                    </div>
                   </div>
                 </div>
               ))}

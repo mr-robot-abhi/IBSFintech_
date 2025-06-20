@@ -9,6 +9,7 @@ import EcosystemEnabler from './ecosystem_enabler';
 import ClientLogoStrip from '../common/ClientLogoStrip';
 import MegaNavbar from '../layout/MegaNavbar';
 import BannerSlideshow from './BannerSlideshow';
+import PartnershipEcosystem from './PartnershipEcosystem';
 
 import CaseStudies from './CaseStudies';
 
@@ -69,7 +70,6 @@ export default function IllustrativeOne() {
 
       {/* Mega Navigation Menu */}
       <MegaNavbar />
-
 
 
       {/* Main Banner - Modern, Animated, Visually Stunning */}
@@ -266,6 +266,30 @@ export default function IllustrativeOne() {
                     </g>
                   );
                 })}
+                {/* Interface Connector Lines & Particles */}
+                {interfaces.map((_, i) => {
+                  const angle = (i / interfaces.length) * 2 * Math.PI - Math.PI / 4 + (i % 2 === 0 ? Math.PI / 8 : -Math.PI / 8);
+                  const x = center + interfaceBoxRadius * Math.cos(angle);
+                  const y = center + interfaceBoxRadius * Math.sin(angle);
+                  return (
+                    <g key={`interface-line-group-${i}`}>
+                      <motion.line
+                        x1={center} y1={center} x2={x} y2={y} stroke="#3b82f6" strokeWidth={size * 0.002}
+                        initial={{ pathLength: 0, opacity: 0 }} animate={{ pathLength: 1, opacity: 0.7 }}
+                        transition={{ duration: 0.9, delay: 0.5 + i * 0.15, ease: [0.22, 1, 0.36, 1] }}
+                      />
+                      <motion.circle
+                        r={size * 0.004}
+                        fill="#fff"
+                        initial={{ cx: center, cy: center, opacity: 0 }}
+                        animate={{ cx: [center, x], cy: [center, y], opacity: [0.6, 1, 0.6] }}
+                        transition={{ repeat: Infinity, duration: 6, delay: 0.8 + i * 0.4, ease: "easeInOut" }}
+                        style={{ filter: 'drop-shadow(0 0 4px #fff)' }}
+                      />
+                    </g>
+                  );
+                })}
+
                 {/* Interface Ring */}
                 <defs>
                   <path id="interfaceRingPath" d={`M ${center}, ${center - interfaceRingRadius} A ${interfaceRingRadius},${interfaceRingRadius} 0 1,1 ${center-0.01},${center - interfaceRingRadius}`} fill="none" />
@@ -276,8 +300,8 @@ export default function IllustrativeOne() {
                   initial={{ rotate: 0 }} animate={{ rotate: 360 }}
                   transition={{ duration: 120, repeat: Infinity, ease: "linear" }}
                 />
-                <text className="fill-current text-white uppercase tracking-widest" style={{ fontSize: size * 0.02 }}>
-                  <textPath href="#interfaceRingPath" startOffset="25%" textAnchor="middle">Interfaces</textPath>
+                <text className="fill-current text-white uppercase tracking-widest font-bold" style={{ fontSize: size * 0.02 }}>
+                  <textPath href="#interfaceRingPath" startOffset="25%" textAnchor="middle" dy={-size * 0.015}>Interfaces</textPath>
                 </text>
               </svg>
               {services.map((service, i) => {
@@ -300,7 +324,9 @@ export default function IllustrativeOne() {
                 );
               })}
               {interfaces.map((iface, i) => {
-                const { x, y } = circlePosition(i, interfaces.length, interfaceBoxRadius, center, -Math.PI / 4);
+                const angle = (i / interfaces.length) * 2 * Math.PI - Math.PI / 4 + (i % 2 === 0 ? Math.PI / 8 : -Math.PI / 8);
+                const x = center + interfaceBoxRadius * Math.cos(angle);
+                const y = center + interfaceBoxRadius * Math.sin(angle);
                 return (
                   <motion.div
                     key={`interface-${i}`}
@@ -324,6 +350,9 @@ export default function IllustrativeOne() {
           // --- End EcosystemEnablerContent ---
         })()}
       </div>
+
+      {/* Partnership Ecosystem Section */}
+      <PartnershipEcosystem variant="illustrative1" />
 
       {/* Why Choose Us */}
       <section className="py-16">
@@ -353,14 +382,15 @@ export default function IllustrativeOne() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: index * 0.1 }}
               >
-                <Tilt tiltMaxAngleX={10} tiltMaxAngleY={10}>
-                  <div className="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition-shadow border border-gray-200">
+                <Tilt tiltMaxAngleX={10} tiltMaxAngleY={10} className="h-full">
+                  <div className="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition-shadow border border-gray-200 h-full flex flex-col">
                     <div className="h-12 w-12 bg-white rounded-full flex items-center justify-center mb-4">
                       <diff.icon className="h-6 w-6 text-blue-600" />
                     </div>
                     <h3 className="text-xl font-semibold text-blue-900 mb-2">{diff.title}</h3>
                     <p className="text-blue-500 text-sm">{diff.description}</p>
-                    <span className="mt-4 inline-block px-4 py-1 bg-blue-500/80 text-white text-sm font-medium rounded-full">
+                    <div className="flex-grow"></div>
+                    <span className="mt-4 inline-block px-4 py-1 bg-blue-500/80 text-white text-sm font-medium rounded-full self-start">
                       {diff.stat}
                     </span>
                   </div>
@@ -482,42 +512,34 @@ export default function IllustrativeOne() {
             className="text-center mb-12"
           >
             <h2 className="text-3xl font-bold text-white drop-shadow-lg mb-4">Latest News</h2>
-            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+            <p className="text-lg text-white/90 max-w-3xl mx-auto">
               Stay updated with our latest achievements and insights.
             </p>
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
-              { title: 'AI Dashboard Launch', date: 'May 2025', description: 'New real-time analytics for treasury insights.', stat: '40% Faster' },
-              { title: 'Global Expansion', date: 'April 2025', description: 'Now serving 30+ countries.', stat: '30+ Countries' },
-              { title: 'FinTech Award', date: 'March 2025', description: 'Named Top Treasury Platform 2025.', stat: 'Award Winner' },
+              { title: 'AI Dashboard Launch', date: 'May 2025', description: 'New real-time analytics for treasury insights.' },
+              { title: 'Global Expansion', date: 'April 2025', description: 'Now serving 30+ countries.' },
+              { title: 'FinTech Award', date: 'March 2025', description: 'Named Top Treasury Platform 2025.' },
             ].map((news, index) => (
               <motion.div
                 key={index}
-                className="h-full"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: index * 0.1 }}
               >
                 <Tilt tiltMaxAngleX={10} tiltMaxAngleY={10} className="h-full">
-                  <div className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm p-6 rounded-2xl shadow-lg hover:shadow-xl transition-shadow border border-gray-200/50 dark:border-gray-700/50 h-full flex flex-col">
-                    <div className="flex items-center mb-4">
-                      <Newspaper className="h-5 w-5 text-blue-600 dark:text-blue-400 mr-2" />
-                      <span className="text-sm text-gray-500 dark:text-gray-400">{news.date}</span>
+                  <div className="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition-shadow border border-gray-200 h-full flex flex-col">
+                    <div className="h-12 w-12 bg-white rounded-full flex items-center justify-center mb-4">
+                      <Newspaper className="h-6 w-6 text-blue-600" />
                     </div>
-                    <h3 className="text-xl font-semibold text-blue-900 dark:text-white mb-2">{news.title}</h3>
-                    <p className="text-gray-600 dark:text-gray-300 text-sm mb-4 flex-grow">{news.description}</p>
-                    <span className="inline-block px-4 py-1 bg-blue-100 text-blue-800 text-sm font-medium rounded-full mb-4 dark:bg-blue-900/50 dark:text-blue-200">
-                      {news.stat}
+                    <h3 className="text-xl font-semibold text-blue-900 mb-2">{news.title}</h3>
+                    <p className="text-blue-500 text-sm">{news.description}</p>
+                    <div className="flex-grow"></div>
+                    <span className="mt-4 inline-block px-4 py-1 bg-blue-500/80 text-white text-sm font-medium rounded-full self-start">
+                      {news.date}
                     </span>
-                    <motion.button
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.98 }}
-                      className="w-full px-4 py-2 border border-blue-500 text-blue-600 rounded-lg hover:bg-blue-500 hover:text-white dark:border-blue-400 dark:text-blue-300 dark:hover:bg-blue-400 dark:hover:text-black flex items-center justify-center transition-colors"
-                    >
-                      Read More <ArrowRight className="ml-2 h-4 w-4" />
-                    </motion.button>
                   </div>
                 </Tilt>
               </motion.div>
