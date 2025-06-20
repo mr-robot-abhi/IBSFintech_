@@ -82,13 +82,13 @@ export default function EcosystemEnabler() {
           className="absolute z-30 flex items-center justify-center"
           style={{ width: ibsLogoRing, height: ibsLogoRing, top: center - ibsLogoRing / 2, left: center - ibsLogoRing / 2 }}
         >
-          <div className="absolute inset-0 rounded-full border-8 border-white shadow-2xl" />
-          <div className="flex flex-col items-center justify-center">
+          <div className="absolute inset-0 rounded-full border-8 border-white shadow-2xl bg-white" />
+          <div className="relative z-10 flex flex-col items-center justify-center">
             <div className="relative" style={{ width: ibsLogoRing * 0.5, height: ibsLogoRing * 0.5 }}>
               <Image src="/Ibs_logo_1.png" alt="IBS Logo" fill className="object-contain" priority />
             </div>
             <div className="mt-2 text-center">
-              <span className="font-semibold text-blue-700 dark:text-blue-300 leading-tight" style={{ fontSize: serviceBoxSize * 0.11 }}>IBSFintech Services</span>
+              <span className="font-semibold text-teal-700 dark:text-teal-300 leading-tight" style={{ fontSize: serviceBoxSize * 0.13 }}>IBSFintech Services</span>
             </div>
           </div>
         </motion.div>
