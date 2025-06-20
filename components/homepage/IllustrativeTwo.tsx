@@ -237,7 +237,7 @@ export default function IllustrativeTwoV2() {
               <source src="/video1.mp4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
-            <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/30 to-black/70" />
+            
           </motion.div>
         </div>
         <button

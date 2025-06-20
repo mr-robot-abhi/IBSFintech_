@@ -21,6 +21,7 @@ import {
 } from 'lucide-react';
 import EcosystemEnabler from './ecosystem_enabler';
 import ClientLogoStrip from '../common/ClientLogoStrip';
+import CaseStudiesStyleThree from './CaseStudiesStyleThree';
 
 export default function IllustrativeThree() {
   const [clientIndex, setClientIndex] = useState(0);
@@ -360,6 +361,9 @@ export default function IllustrativeThree() {
           </div>
         </div>
       </section>
+
+      {/* Case Studies Section */}
+      <CaseStudiesStyleThree />
 
       {/* Latest News */}
       <section className="py-16 bg-gray-50 dark:bg-transparent transition-colors duration-200">

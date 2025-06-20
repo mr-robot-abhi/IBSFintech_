@@ -9,7 +9,7 @@ import EcosystemEnabler from './ecosystem_enabler';
 import ClientLogoStrip from '../common/ClientLogoStrip';
 import MegaNavbar from '../layout/MegaNavbar';
 import BannerSlideshow from './BannerSlideshow';
-import TypewriterCaption from './TypewriterCaption';
+
 import CaseStudies from './CaseStudies';
 
 // Animated floating shapes for visual interest
@@ -95,8 +95,22 @@ export default function IllustrativeOne() {
               >
                 Welcome to the Future of Treasury
               </motion.div>
-              <TypewriterCaption text="Elevate Your Finance" className="text-5xl md:text-6xl" />
-              <TypewriterCaption text="AI-powered, globally connected, and beautifully simple. Experience treasury management like never before." className="text-2xl md:text-3xl font-semibold mt-2 mb-8" />
+              <motion.h1
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+                className="text-5xl md:text-6xl font-bold text-white drop-shadow-md"
+              >
+                Elevate Your Finance
+              </motion.h1>
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.6 }}
+                className="text-2xl md:text-3xl font-semibold text-white/90 mt-2 mb-8 drop-shadow"
+              >
+                AI-powered, globally connected, and beautifully simple. Experience treasury management like never before.
+              </motion.p>
               <div className="flex flex-wrap gap-4">
                 <motion.button
                   whileHover={{ scale: 1.07, boxShadow: '0 8px 32px 0 rgba(0, 255, 255, 0.3)' }}
@@ -139,7 +153,7 @@ export default function IllustrativeOne() {
             className="text-center mb-12"
           >
             <h2 className="text-3xl font-bold text-white drop-shadow-lg mb-4">Winning Together</h2>
-            <p className="text-lg text-white/90 dark:text-gray-300 max-w-3xl mx-auto">
+            <p className="text-lg text-white/90 max-w-3xl mx-auto">
               Leading organizations leverage our platform for end-to-end digitization of treasury, risk, trade finance,
               and supply chain operations, achieving agility, insights, and productivity.
             </p>
@@ -322,7 +336,7 @@ export default function IllustrativeOne() {
             className="text-center mb-12"
           >
             <h2 className="text-3xl font-bold text-white drop-shadow-lg mb-4">Why Choose Us</h2>
-            <p className="text-lg text-white/90 dark:text-gray-300 max-w-3xl mx-auto">
+            <p className="text-lg text-white/90 max-w-3xl mx-auto">
               Unparalleled features and benefits that set our platform apart.
             </p>
           </motion.div>
@@ -340,9 +354,9 @@ export default function IllustrativeOne() {
                 transition={{ duration: 0.4, delay: index * 0.1 }}
               >
                 <Tilt tiltMaxAngleX={10} tiltMaxAngleY={10}>
-                  <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-md hover:shadow-xl transition-shadow border border-gray-200 dark:border-gray-700">
+                  <div className="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition-shadow border border-gray-200">
                     <div className="h-12 w-12 bg-white rounded-full flex items-center justify-center mb-4">
-                      <diff.icon className="h-6 w-6 text-blue-600 dark:text-blue-400" />
+                      <diff.icon className="h-6 w-6 text-blue-600" />
                     </div>
                     <h3 className="text-xl font-semibold text-blue-900 mb-2">{diff.title}</h3>
                     <p className="text-blue-500 text-sm">{diff.description}</p>
@@ -377,7 +391,7 @@ export default function IllustrativeOne() {
             className="text-center mb-12"
           >
             <h2 className="text-3xl font-bold text-white drop-shadow-lg mb-4">Featured Industries</h2>
-            <p className="text-lg text-white/90 dark:text-gray-300 max-w-3xl mx-auto">
+            <p className="text-lg text-white/90 max-w-3xl mx-auto">
               Tailored solutions for diverse industry needs, driving efficiency and growth across sectors.
             </p>
           </motion.div>
