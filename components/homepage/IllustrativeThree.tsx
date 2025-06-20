@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
+import PartnershipEcosystem from './PartnershipEcosystem';
 import Tilt from 'react-parallax-tilt';
 import { ThemeToggle } from '@/components/ui/theme-toggle';
 import {
@@ -203,6 +204,8 @@ export default function IllustrativeThree() {
       <section className="bg-white dark:bg-transparent">
         <EcosystemEnabler />
       </section>
+      {/* Partnership Ecosystem Section */}
+      <PartnershipEcosystem variant="illustrative3" />
       {/* Why Choose Us */}
       <section className="py-16 bg-white dark:bg-transparent transition-colors duration-200">
         <div className="container mx-auto px-4 max-w-6xl">
@@ -327,40 +330,7 @@ export default function IllustrativeThree() {
         </div>
       </section>
 
-      {/* Partnership ecosystem */}
-      <section className="py-16 relative transition-colors duration-200 bg-white dark:bg-transparent">
-        <div className="container mx-auto px-4 max-w-6xl relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-3xl font-bold text-gray-800 dark:text-white mb-2">
-              Partnership ecosystem
-            </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-              Collaborating with leading partners to deliver unmatched value and innovation in treasury and finance.
-            </p>
-          </motion.div>
-          <div className="flex flex-wrap justify-center gap-8">
-            {/* Placeholder partners */}
-            <div className="flex-shrink-0 flex items-center justify-center bg-white/80 dark:bg-gray-800/80 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 p-4 h-28 w-48">
-              <img src="/partners/partner1.png" alt="Partner 1" width="160" height="56" className="object-contain max-h-14 w-auto mx-auto" />
-            </div>
-            <div className="flex-shrink-0 flex items-center justify-center bg-white/80 dark:bg-gray-800/80 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 p-4 h-28 w-48">
-              <img src="/partners/partner2.png" alt="Partner 2" width="160" height="56" className="object-contain max-h-14 w-auto mx-auto" />
-            </div>
-            <div className="flex-shrink-0 flex items-center justify-center bg-white/80 dark:bg-gray-800/80 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 p-4 h-28 w-48">
-              <img src="/partners/partner3.png" alt="Partner 3" width="160" height="56" className="object-contain max-h-14 w-auto mx-auto" />
-            </div>
-            <div className="flex-shrink-0 flex items-center justify-center bg-white/80 dark:bg-gray-800/80 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 p-4 h-28 w-48">
-              <img src="/partners/partner4.png" alt="Partner 4" width="160" height="56" className="object-contain max-h-14 w-auto mx-auto" />
-            </div>
-          </div>
-        </div>
-      </section>
+
 
       {/* Case Studies Section */}
       <CaseStudiesStyleThree />

@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button';
 import { ArrowRight, TrendingUp, Shield, ShieldCheck, Zap, DollarSign, BarChart2, Globe, Play, Pause, ChevronLeft, ChevronRight, Users, Building, Factory, Truck, Newspaper, Handshake, ShoppingBag } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import IBSNetworkTwo from './ibs_network_two';
+import PartnershipEcosystem from './PartnershipEcosystem';
 
 interface Testimonial {
   id: number;
@@ -154,7 +155,6 @@ export default function IllustrativeTwoV2() {
             alt="Background 1"
             fill
             className="object-cover"
-            style={{ opacity: 0.6 }}
             priority
           />
         </motion.div>
@@ -164,7 +164,6 @@ export default function IllustrativeTwoV2() {
             alt="Background 2"
             fill
             className="object-cover"
-            style={{ opacity: 0.6 }}
             priority
           />
         </motion.div>
@@ -174,7 +173,6 @@ export default function IllustrativeTwoV2() {
             alt="Background 3"
             fill
             className="object-cover"
-            style={{ opacity: 0.6 }}
             priority
           />
         </motion.div>
@@ -361,6 +359,9 @@ export default function IllustrativeTwoV2() {
       <section className="relative py-20">
         <IBSNetworkTwo />
       </section>
+
+      {/* Partnership Ecosystem Section */}
+      <PartnershipEcosystem variant="illustrative2" />
 
       {/* Featured Industries */}
       <section className="py-20 relative overflow-hidden">
