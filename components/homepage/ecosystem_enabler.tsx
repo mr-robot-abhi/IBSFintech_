@@ -66,11 +66,10 @@ export default function EcosystemEnabler() {
   const interfaceBoxSize = size * 0.15;
 
   return (
-    <section className="relative bg-white dark:bg-gray-950 py-24 overflow-hidden transition-colors duration-200">
+    <section className="relative bg-white dark:bg-transparent py-24 overflow-hidden transition-colors duration-200">
       <div className="absolute inset-0 pointer-events-none select-none">
         <Image src="/bg_12.jpg" alt="Ecosystem background" fill className="object-cover dark:hidden" style={{ opacity: 0.7 }} priority={false} />
-        <Image src="/bg_dark_1.jpg" alt="Dark mode background" fill className="object-cover hidden dark:block" style={{ opacity: 0.5 }} priority={false} />
-        <div className="absolute inset-0 bg-gradient-to-b from-white/95 via-transparent to-white/98 dark:from-gray-900/50 dark:via-gray-900/30 dark:to-gray-900/50" />
+        <div className="absolute inset-0 bg-gradient-to-b from-white/95 via-transparent to-white/98 dark:hidden" />
       </div>
       <div ref={containerRef} className="relative mx-auto w-full max-w-5xl aspect-square min-h-[400px]">
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
@@ -83,13 +82,13 @@ export default function EcosystemEnabler() {
           className="absolute z-30 flex items-center justify-center"
           style={{ width: ibsLogoRing, height: ibsLogoRing, top: center - ibsLogoRing / 2, left: center - ibsLogoRing / 2 }}
         >
-          <div className="absolute inset-0 rounded-full border-8 border-teal-100 dark:border-white shadow-2xl" />
+          <div className="absolute inset-0 rounded-full border-8 border-white shadow-2xl" />
           <div className="flex flex-col items-center justify-center">
             <div className="relative" style={{ width: ibsLogoRing * 0.5, height: ibsLogoRing * 0.5 }}>
               <Image src="/Ibs_logo_1.png" alt="IBS Logo" fill className="object-contain" priority />
             </div>
             <div className="mt-2 text-center">
-              <span className="font-semibold text-gray-800 dark:text-white leading-tight" style={{ fontSize: serviceBoxSize * 0.11 }}>IBSFintech Services</span>
+              <span className="font-semibold text-blue-700 dark:text-blue-300 leading-tight" style={{ fontSize: serviceBoxSize * 0.11 }}>IBSFintech Services</span>
             </div>
           </div>
         </motion.div>

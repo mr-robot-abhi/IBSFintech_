@@ -125,7 +125,8 @@ export default function Navbar() {
                 <MenuButton>Home <ChevronDown size={16} className="ml-1 inline" /></MenuButton>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="center" className={cn('rounded-xl shadow-2xl border-0 mt-2 backdrop-blur-xl', theme === 'dark' ? 'bg-gray-900/95 text-gray-100' : 'bg-white/95 text-gray-900')}>
-                <DropdownMenuItem asChild><Link href="/?variant=illustrative2" className="flex items-center gap-2">Illustrative Style 2</Link></DropdownMenuItem>
+                <DropdownMenuItem asChild><Link href="/?variant=illustrative1" className="flex items-center gap-2">Illystrative Style 1</Link></DropdownMenuItem>
+<DropdownMenuItem asChild><Link href="/?variant=illustrative2" className="flex items-center gap-2">Illustrative Style 2</Link></DropdownMenuItem>
                 <DropdownMenuItem asChild><Link href="/?variant=illustrative3" className="flex items-center gap-2">Illustrative Style 3</Link></DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>

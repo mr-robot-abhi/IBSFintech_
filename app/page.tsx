@@ -4,6 +4,7 @@ import { useSearchParams, useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 
 // Homepage variants
+import IllustrativeOne from '@/components/homepage/IllustrativeOne';
 import IllustrativeTwo from '@/components/homepage/IllustrativeTwo';
 import IllustrativeThree from '@/components/homepage/IllustrativeThree';
 
@@ -20,6 +21,7 @@ export default function Home() {
 
   return (
     <>
+      {variant === 'illustrative1' && <IllustrativeOne />}
       {variant === 'illustrative2' && <IllustrativeTwo />}
       {variant === 'illustrative3' && <IllustrativeThree />}
     </>
