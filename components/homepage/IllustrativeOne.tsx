@@ -1,14 +1,14 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useAnimation, useScroll } from 'framer-motion';
 import Tilt from 'react-parallax-tilt';
 import { ArrowRight, Zap, Shield, Globe, Car, Factory, Building, Users, Newspaper } from 'lucide-react';
 import EcosystemEnabler from './ecosystem_enabler';
 import ClientLogoStrip from '../common/ClientLogoStrip';
-import MegaNavbar from '../layout/MegaNavbar';
-import BannerSlideshow from './BannerSlideshow';
+import ModernMegaMenu from '../layout/ModernMegaMenu';
+import AnimatedHeroBackground from './AnimatedHeroBackground';
 import PartnershipEcosystem from './PartnershipEcosystem';
 
 import CaseStudies from './CaseStudies';
@@ -46,30 +46,16 @@ const FloatingShapes = () => (
 );
 
 export default function IllustrativeOne() {
-  // Parallax/fade effect for bg_18 in hero section
-  const { scrollYProgress } = useScroll();
-  const heroBg18Opacity = useTransform(scrollYProgress, [0, 0.18, 0.32], [0, 0.7, 0]);
+
 
   return (
     <div className="min-h-screen overflow-x-hidden relative">
-      {/* Unified Background: bg_17 for entire homepage */}
-      <div className="fixed inset-0 z-[-2] bg-gradient-to-br from-white via-blue-50 to-blue-100 bg-cover bg-center">
-        <Image src="/bg_17.jpg" alt="Background 17" fill className="object-cover" priority />
-        <div className="absolute inset-0 bg-white/20" />
-      </div>
-      {/* Parallax/Fade overlay of bg_18 in hero section only */}
-      <motion.div
-        className="fixed inset-0 z-[-1] bg-cover bg-center pointer-events-none"
-        style={{ opacity: heroBg18Opacity }}
-      >
-        <Image src="/bg_18.jpg" alt="Background 18" fill className="object-cover" />
-        <div className="absolute inset-0 bg-white/40" />
-      </motion.div>
+      <AnimatedHeroBackground />
 
       {/* --- Main Content Sections (keep order, ensure all tags close properly) --- */}
 
       {/* Mega Navigation Menu */}
-      <MegaNavbar />
+      <ModernMegaMenu />
 
 
       {/* Main Banner - Modern, Animated, Visually Stunning */}
@@ -79,39 +65,39 @@ export default function IllustrativeOne() {
           <FloatingShapes />
         </div>
         <div className="container mx-auto max-w-7xl relative z-10 px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            {/* Left: Animated Gradient Heading + CTAs */}
+          <div className="text-center">
+            {/* Centered Content: Animated Gradient Heading + CTAs */}
             <motion.div
               initial={{ opacity: 0, y: 60 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1 }}
+              transition={{ duration: 1, delay: 0.2 }}
               className="space-y-8"
             >
               <motion.div
                 className="inline-block px-4 py-2 rounded-full bg-gradient-to-r from-blue-400 via-blue-600 to-blue-800 text-white text-base font-semibold mb-2 shadow-xl backdrop-blur-lg animate-pulse"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
+                transition={{ duration: 0.5, delay: 0.4 }}
               >
                 Welcome to the Future of Treasury
               </motion.div>
               <motion.h1
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
-                className="text-5xl md:text-6xl font-bold text-white drop-shadow-md"
+                transition={{ duration: 0.8, delay: 0.6 }}
+                className="text-5xl md:text-7xl font-bold text-white drop-shadow-lg"
               >
                 Elevate Your Finance
               </motion.h1>
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.6 }}
-                className="text-2xl md:text-3xl font-semibold text-white/90 mt-2 mb-8 drop-shadow"
+                transition={{ duration: 0.8, delay: 0.8 }}
+                className="text-2xl md:text-3xl font-semibold text-white/90 mt-2 mb-8 drop-shadow-md max-w-3xl mx-auto"
               >
                 AI-powered, globally connected, and beautifully simple. Experience treasury management like never before.
               </motion.p>
-              <div className="flex flex-wrap gap-4">
+              <div className="flex flex-wrap gap-4 justify-center">
                 <motion.button
                   whileHover={{ scale: 1.07, boxShadow: '0 8px 32px 0 rgba(0, 255, 255, 0.3)' }}
                   whileTap={{ scale: 0.98 }}
@@ -127,15 +113,6 @@ export default function IllustrativeOne() {
                   Discover More
                 </motion.button>
               </div>
-            </motion.div>
-            {/* Right: BannerSlideshow */}
-            <motion.div
-              initial={{ opacity: 0, x: 60 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 1.1 }}
-              className="flex items-center justify-center relative"
-            >
-              <BannerSlideshow />
             </motion.div>
           </div>
         </div>
@@ -167,13 +144,18 @@ export default function IllustrativeOne() {
 
       {/* Ecosystem Enabler Visualization (merged centerpiece, no section/bg) */}
       <div className="w-full flex flex-col items-center justify-center py-12">
+        <div className="text-center mb-12 px-4">
+          <h2 className="text-3xl font-bold text-white drop-shadow-lg mb-4">Our Offerings</h2>
+          <p className="text-lg text-white/90 max-w-3xl mx-auto">
+            Explore our comprehensive suite of solutions designed to address your every financial need.
+            Our platform integrates seamlessly to provide unparalleled control and insight.
+          </p>
+        </div>
         {/* Inlined EcosystemEnablerContent - blue/white theme, no section/bg, seamless merge */}
         {(() => {
           // --- Begin EcosystemEnablerContent (inlined, blue/white theme) ---
-          const { useRef, useEffect, useState } = require('react');
-          const { motion, useAnimation } = require('framer-motion');
           const [size, setSize] = useState(600);
-          const containerRef = useRef(null);
+          const containerRef = useRef<HTMLDivElement | null>(null);
           const serviceControls = useAnimation();
           useEffect(() => {
             const updateSize = () => {
@@ -225,9 +207,7 @@ export default function IllustrativeOne() {
           };
           return (
             <div ref={containerRef} className="relative mx-auto w-full max-w-5xl aspect-square min-h-[400px]">
-              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                <div className="w-4/5 h-4/5 rounded-full bg-white/60 blur-3xl opacity-40" />
-              </div>
+
               <motion.div
                 initial={{ scale: 0.8, opacity: 0 }} animate={{ scale: 1, opacity: 1 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
@@ -311,15 +291,15 @@ export default function IllustrativeOne() {
                     key={`service-${i}`}
                     initial={{ opacity: 0, scale: 0.85 }} animate={serviceControls}
                     transition={{ delay: i * 0.1, type: "spring", stiffness: 100, damping: 15 }}
-                    className="absolute z-20 flex flex-col items-center justify-center text-center bg-white border border-blue-100 shadow-lg rounded-2xl hover:shadow-2xl hover:scale-105 transition-all duration-300 backdrop-blur-sm"
+                    className="absolute z-20 flex flex-col items-center justify-center text-center bg-gray-900/50 backdrop-blur-md border border-white/20 shadow-xl rounded-2xl hover:shadow-2xl hover:scale-105 transition-all duration-300"
                     style={{ width: serviceBoxSize, height: serviceBoxSize, top: y - serviceBoxSize / 2, left: x - serviceBoxSize / 2 }}
                   >
-                    <div className="mb-2 bg-white text-blue-700 rounded-full flex items-center justify-center shadow"
+                    <div className="mb-2 bg-white/10 text-white rounded-full flex items-center justify-center shadow-lg"
                       style={{ width: serviceBoxSize * 0.32, height: serviceBoxSize * 0.32 }}>
-                      <service.icon size={Math.round(serviceBoxSize * 0.2)} strokeWidth={2} />
+                      <service.icon size={Math.round(serviceBoxSize * 0.2)} strokeWidth={1.5} />
                     </div>
-                    <h4 className="font-semibold text-blue-900 mb-1 leading-tight" style={{ fontSize: serviceBoxSize * 0.11 }}>{service.name}</h4>
-                    <p className="text-blue-500 leading-tight px-2" style={{ fontSize: serviceBoxSize * 0.09 }}>{service.desc}</p>
+                    <h4 className="font-semibold text-white mb-1 leading-tight" style={{ fontSize: serviceBoxSize * 0.11 }}>{service.name}</h4>
+                    <p className="text-white/70 leading-tight px-2" style={{ fontSize: serviceBoxSize * 0.09 }}>{service.desc}</p>
                   </motion.div>
                 );
               })}
@@ -350,10 +330,6 @@ export default function IllustrativeOne() {
           // --- End EcosystemEnablerContent ---
         })()}
       </div>
-
-      {/* Partnership Ecosystem Section */}
-      <PartnershipEcosystem variant="illustrative1" />
-
       {/* Why Choose Us */}
       <section className="py-16">
         <div className="container mx-auto px-4 max-w-6xl">
@@ -401,14 +377,7 @@ export default function IllustrativeOne() {
         </div>
       </section>
 
-      {/* Parallax/Fade overlay of bg_18 in lower section */}
-      <motion.div
-        className="fixed inset-0 z-[-1] bg-cover bg-center pointer-events-none"
-        style={{ opacity: heroBg18Opacity }}
-      >
-        <Image src="/bg_18.jpg" alt="Background 18 Lower" fill className="object-cover" />
-        <div className="absolute inset-0 bg-white/40" />
-      </motion.div>
+
 
       {/* Featured Industries */}
       <section className="py-16">
@@ -459,44 +428,8 @@ export default function IllustrativeOne() {
           </div>
         </div>
       </section>
-
-      {/* Partnership Ecosystem */}
-      <section className="py-16">
-        <div className="container mx-auto px-4 max-w-6xl">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-3xl font-bold text-white drop-shadow-lg mb-2">Partnership Ecosystem</h2>
-            <p className="text-lg text-white/90 max-w-2xl mx-auto drop-shadow">
-              Collaborating with leading partners to deliver unmatched value and innovation in treasury and finance.
-            </p>
-          </motion.div>
-          <div className="flex flex-wrap justify-center gap-8">
-            {['partner1', 'partner2', 'partner3', 'partner4'].map((partner, index) => (
-  <motion.div
-    key={partner}
-    initial={{ opacity: 0, scale: 0.9 }}
-    whileInView={{ opacity: 1, scale: 1 }}
-    viewport={{ once: true }}
-    transition={{ duration: 0.4, delay: index * 0.1 }}
-    className="bg-white/90 rounded-2xl shadow-md hover:shadow-xl transition-all p-4 h-28 w-48 flex items-center justify-center"
-  >
-    <Image
-      src={`/partners/${partner}.png`}
-      alt={`Partner ${index + 1}`}
-      width={160}
-      height={56}
-      className="object-contain max-h-14 w-auto"
-    />
-  </motion.div>
-))}
-          </div>
-        </div>
-      </section>
+      {/* Partnership Ecosystem Section */}
+      <PartnershipEcosystem variant="illustrative1" />
 
       {/* Case Studies */}
       <CaseStudies />
