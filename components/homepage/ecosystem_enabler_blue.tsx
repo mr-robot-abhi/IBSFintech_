@@ -130,8 +130,8 @@ export default function EcosystemEnablerBlue() {
                   }}
                 />
                 <motion.circle
-                  r={size * 0.012}
-                  fill="#3b82f6" // blue-500
+                  r={size * 0.005}
+                  fill="#fff"
                   initial={{ cx: center, cy: center, opacity: 0 }}
                   animate={{
                     cx: [center, x],
@@ -163,11 +163,11 @@ export default function EcosystemEnablerBlue() {
                 />
                 <motion.circle
                   r={size * 0.004}
-                  fill="#3b82f6"
+                  fill="#fff"
                   initial={{ cx: center, cy: center, opacity: 0 }}
                   animate={{ cx: [center, x], cy: [center, y], opacity: [0.6, 1, 0.6] }}
                   transition={{ repeat: Infinity, duration: 6, delay: 0.8 + i * 0.4, ease: "easeInOut" }}
-                  style={{ filter: 'drop-shadow(0 0 2px #3b82f6)' }}
+                  style={{ filter: 'drop-shadow(0 0 4px #fff)' }}
                 />
               </g>
             );

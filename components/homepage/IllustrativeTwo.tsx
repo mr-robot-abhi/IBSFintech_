@@ -296,7 +296,7 @@ export default function IllustrativeTwoV2() {
         <ClientLogoStrip variant="illustrative2" />
       </div>
 
-      {/* Our Offerings */}
+      {/* {/* Our Offerings 
       <section className="py-20 relative overflow-hidden">
         <div className="container mx-auto px-4 relative">
           <motion.div
@@ -353,15 +353,26 @@ export default function IllustrativeTwoV2() {
             ))}
           </div>
         </div>
+      </section> */}
+
+      {/* Our Offerings section */}
+      <section className="relative py-20">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Our Offerings</h2>
+            <p className="text-lg text-gray-200 max-w-3xl mx-auto">
+              Discover a full range of integrated solutions tailored to your business requirements.
+              From treasury to trade finance, we provide the tools for your success.
+            </p>
+          </div>
+        </div>
+        <IBSNetworkTwo />
       </section>
 
       {/* Our Ecosystem section */}
       <section className="relative py-20">
         <IBSNetworkTwo />
       </section>
-
-      {/* Partnership Ecosystem Section */}
-      <PartnershipEcosystem variant="illustrative2" />
 
       {/* Featured Industries */}
       <section className="py-20 relative overflow-hidden">
@@ -408,39 +419,8 @@ export default function IllustrativeTwoV2() {
         </div>
       </section>
 
-      {/* Partnership Ecosystem */}
-      <section className="py-20 relative overflow-hidden">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center max-w-3xl mx-auto mb-16"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">Partnership Ecosystem</h2>
-            <p className="text-lg text-gray-200">
-              We collaborate with industry leaders to deliver cutting-edge solutions.
-            </p>
-          </motion.div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {['Partner A', 'Partner B', 'Partner C', 'Partner D'].map((partner, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                whileHover={{ scale: 1.05 }}
-                className="bg-white p-6 rounded-xl shadow-md flex items-center justify-center"
-              >
-                <Handshake size={24} className="text-blue-600 mr-2" />
-                <p className="text-gray-800 font-medium">{partner}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Partnership Ecosystem Section */}
+      <PartnershipEcosystem variant="illustrative2" />
 
       {/* Case Studies */}
       <section className="py-20 relative overflow-hidden">

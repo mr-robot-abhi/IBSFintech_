@@ -200,12 +200,29 @@ export default function IllustrativeThree() {
           <ClientLogoStrip variant="illustrative3" />
         </div>
       </section>
+      {/* Our Offerings */}
+      <section className="py-16 bg-white dark:bg-transparent transition-colors duration-200">
+        <div className="container mx-auto px-4 max-w-6xl">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl font-bold text-gray-800 dark:text-white mb-4">Our Offerings</h2>
+            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+              We provide a holistic suite of financial tools to empower your organization.
+              Our solutions are crafted for scalability, security, and superior performance.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Ecosystem Enabler */}
       <section className="bg-white dark:bg-transparent">
         <EcosystemEnabler />
       </section>
-      {/* Partnership Ecosystem Section */}
-      <PartnershipEcosystem variant="illustrative3" />
       {/* Why Choose Us */}
       <section className="py-16 bg-white dark:bg-transparent transition-colors duration-200">
         <div className="container mx-auto px-4 max-w-6xl">
@@ -329,9 +346,8 @@ export default function IllustrativeThree() {
           </div>
         </div>
       </section>
-
-
-
+      {/* Partnership Ecosystem Section */}
+      <PartnershipEcosystem variant="illustrative3" />        
       {/* Case Studies Section */}
       <CaseStudiesStyleThree />
 
