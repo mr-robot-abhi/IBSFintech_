@@ -369,11 +369,6 @@ export default function IllustrativeTwoV2() {
         <IBSNetworkTwo />
       </section>
 
-      {/* Our Ecosystem section */}
-      <section className="relative py-20">
-        <IBSNetworkTwo />
-      </section>
-
       {/* Featured Industries */}
       <section className="py-20 relative overflow-hidden">
         <div className="container mx-auto px-4 relative">

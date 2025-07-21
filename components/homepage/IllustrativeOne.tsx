@@ -8,10 +8,10 @@ import { ArrowRight, Zap, Shield, Globe, Car, Factory, Building, Users, Newspape
 import EcosystemEnabler from './ecosystem_enabler';
 import ClientLogoStrip from '../common/ClientLogoStrip';
 import ModernMegaMenu from '../layout/ModernMegaMenu';
-import AnimatedHeroBackground from './AnimatedHeroBackground';
 import PartnershipEcosystem from './PartnershipEcosystem';
 
 import CaseStudies from './CaseStudies';
+import FintechParticlesBackground from './FintechParticlesBackground';
 
 // Animated floating shapes for visual interest
 const FloatingShapes = () => (
@@ -50,8 +50,7 @@ export default function IllustrativeOne() {
 
   return (
     <div className="min-h-screen overflow-x-hidden relative">
-      <AnimatedHeroBackground />
-
+      <FintechParticlesBackground />
       {/* --- Main Content Sections (keep order, ensure all tags close properly) --- */}
 
       {/* Mega Navigation Menu */}

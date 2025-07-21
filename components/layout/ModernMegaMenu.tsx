@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Globe, ChevronDown, ArrowRight } from 'lucide-react';
@@ -131,6 +131,15 @@ const menuVariants = {
 export default function ModernMegaMenu() {
   const [openMenu, setOpenMenu] = useState<string | null>(null);
   const [locale, setLocale] = useState('IND');
+  const closeTimeout = useRef<NodeJS.Timeout | null>(null);
+
+  function handleMouseEnter(label: string) {
+    if (closeTimeout.current) clearTimeout(closeTimeout.current);
+    setOpenMenu(label);
+  }
+  function handleMouseLeave() {
+    closeTimeout.current = setTimeout(() => setOpenMenu(null), 120); // 120ms delay
+  }
 
   return (
     <nav className="w-full bg-black/20 backdrop-blur-lg border-b border-white/10 shadow-lg fixed top-0 z-50">
@@ -144,8 +153,8 @@ export default function ModernMegaMenu() {
             <div
               key={item.label}
               className="relative"
-              onMouseEnter={() => setOpenMenu(item.label)}
-              onMouseLeave={() => setOpenMenu(null)}
+              onMouseEnter={() => handleMouseEnter(item.label)}
+              onMouseLeave={handleMouseLeave}
             >
               <Link href={item.href || '#'}>
                 <div className={`px-4 py-2 font-semibold text-white/80 hover:text-white rounded-lg transition-colors flex items-center gap-1 ${openMenu === item.label ? 'bg-white/10' : ''}`}>
@@ -163,17 +172,17 @@ export default function ModernMegaMenu() {
                     exit="exit"
                     className={`absolute top-full mt-2 z-40 ${index >= menu.length - 2 ? 'right-0' : 'left-0'}`}
                   >
-                    <div className={`rounded-xl shadow-2xl border border-white/10 bg-black/50 backdrop-blur-xl overflow-hidden`}>
+                    <div className={`rounded-xl shadow-2xl border border-white/10 bg-white overflow-hidden`}>
                       {item.mega ? (
                         <div className="grid grid-cols-3 gap-6 p-6 w-[700px]">
                           <div className="col-span-2 grid grid-cols-2 gap-6">
                             {item.groups.map((group) => (
                               <div key={group.title}>
-                                <h4 className="text-white font-bold text-sm mb-3 px-2">{group.title}</h4>
+                                <h4 className="text-gray-900 font-bold text-sm mb-3 px-2">{group.title}</h4>
                                 <ul className="space-y-1">
                                   {group.items.map((sub) => (
                                     <li key={sub.label}>
-                                      <Link href={sub.href} className="block px-2 py-1.5 rounded hover:bg-white/10 text-white/70 hover:text-white transition-colors">
+                                      <Link href={sub.href} className="block px-2 py-1.5 rounded hover:bg-blue-50 text-gray-800 hover:text-blue-700 transition-colors">
                                         {sub.label}
                                       </Link>
                                     </li>
@@ -183,24 +192,24 @@ export default function ModernMegaMenu() {
                             ))}
                           </div>
                           <div className="col-span-1">
-                            <div className="bg-white/10 rounded-lg p-4 h-full flex flex-col justify-between">
+                            <div className="bg-blue-50 rounded-lg p-4 h-full flex flex-col justify-between">
                                 <div>
-                                    <h5 className='text-white font-bold mb-2'>Featured Insight</h5>
+                                    <h5 className='text-blue-900 font-bold mb-2'>Featured Insight</h5>
                                     <Image src="/bg_1.jpg" alt="Featured" width={300} height={150} className="rounded-md mb-2" />
-                                    <p className='text-white/70 text-sm'>Discover how our solutions are driving innovation in finance.</p>
+                                    <p className='text-gray-700 text-sm'>Discover how our solutions are driving innovation in finance.</p>
                                 </div>
-                                <Link href="/resources/case-studies" className='text-white font-semibold text-sm mt-4 flex items-center gap-1 hover:underline'>
+                                <Link href="/resources/case-studies" className='text-blue-700 font-semibold text-sm mt-4 flex items-center gap-1 hover:underline'>
                                     Read More <ArrowRight size={14} />
                                 </Link>
                             </div>
                           </div>
                         </div>
                       ) : item.submenus ? (
-                        <div className="p-2 w-56">
+                        <div className="p-2 w-56 bg-white shadow-xl rounded-xl border border-white/10">
                             <ul className="space-y-1">
                             {item.submenus.map((sub) => (
                                 <li key={sub.label}>
-                                <Link href={sub.href} className="block px-3 py-1.5 rounded hover:bg-white/10 text-white/70 hover:text-white transition-colors">
+                                <Link href={sub.href} className="block px-2 py-1.5 rounded hover:bg-blue-50 text-gray-800 hover:text-blue-700 transition-colors">
                                     {sub.label}
                                 </Link>
                                 </li>
