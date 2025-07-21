@@ -206,43 +206,41 @@ export default function NavbarStyle2() {
                 <AnimatePresence>
                   {openDropdown === 'products' && (
                     <motion.div
-                      className="absolute left-0 mt-2 w-56 rounded-xl bg-gray-800/95 backdrop-blur-xl shadow-2xl border border-gray-700 overflow-hidden z-50"
+                      className="absolute left-0 mt-2 w-[600px] rounded-2xl bg-white shadow-2xl border border-blue-100 overflow-hidden z-50 flex"
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: 10 }}
                       transition={{ duration: 0.2, ease: 'easeOut' }}
                     >
-                      <div className="px-1 py-2">
-                        <span className="px-4 py-2 text-xs font-medium text-gray-400 uppercase tracking-wider">
-                          Enterprise TMS
-                        </span>
-                        <Link
-                          href="/enterprise/cashflow-liquidity"
-                          className="block px-4 py-2.5 text-sm text-gray-300 hover:bg-gray-700/50 rounded-lg mx-1 hover:text-white transition-colors duration-200"
-                        >
-                          Cashflow & Liquidity
-                        </Link>
-                        <Link
-                          href="/enterprise/currency-fx-risk"
-                          className="block px-4 py-2.5 text-sm text-gray-300 hover:bg-gray-700/50 rounded-lg mx-1 hover:text-white transition-colors duration-200"
-                        >
-                          Currency (FX) Risk
-                        </Link>
-                        <span className="px-4 py-2 text-xs font-medium text-gray-400 uppercase tracking-wider block mt-2">
-                          SME – TMS
-                        </span>
-                        <Link
-                          href="/sme/innottm"
-                          className="block px-4 py-2.5 text-sm text-gray-300 hover:bg-gray-700/50 rounded-lg mx-1 hover:text-white transition-colors duration-200"
-                        >
-                          InnoTTM
-                        </Link>
+                      <div className="w-2/3 p-6 grid grid-cols-2 gap-4">
+                        <div>
+                          <span className="text-xs font-bold text-blue-700 uppercase tracking-wider mb-2 block">Enterprise TMS</span>
+                          <Link href="/enterprise/cashflow-liquidity" className="block px-2 py-2 rounded-lg hover:bg-blue-50 text-blue-900 font-medium transition">Cashflow & Liquidity</Link>
+                          <Link href="/enterprise/currency-fx-risk" className="block px-2 py-2 rounded-lg hover:bg-blue-50 text-blue-900 font-medium transition">Currency (FX) Risk</Link>
+                          <Link href="/enterprise/investment-money-market" className="block px-2 py-2 rounded-lg hover:bg-blue-50 text-blue-900 font-medium transition">Investment (Money Market)</Link>
+                          <Link href="/enterprise/trade-finance" className="block px-2 py-2 rounded-lg hover:bg-blue-50 text-blue-900 font-medium transition">Trade Finance – Import Export & Banking</Link>
+                          <Link href="/enterprise/debt-borrowings" className="block px-2 py-2 rounded-lg hover:bg-blue-50 text-blue-900 font-medium transition">Debt (Borrowings)</Link>
+                          <Link href="/enterprise/commodity-risk" className="block px-2 py-2 rounded-lg hover:bg-blue-50 text-blue-900 font-medium transition">Commodity Risk</Link>
+                          <Link href="/enterprise/payments" className="block px-2 py-2 rounded-lg hover:bg-blue-50 text-blue-900 font-medium transition">Payments</Link>
+                          <Link href="/enterprise/supply-chain-finance" className="block px-2 py-2 rounded-lg hover:bg-blue-50 text-blue-900 font-medium transition">Supply Chain Finance – VNDZY®</Link>
+                        </div>
+                        <div>
+                          <span className="text-xs font-bold text-blue-700 uppercase tracking-wider mb-2 block">SME – TMS</span>
+                          <Link href="/sme/innottm" className="block px-2 py-2 rounded-lg hover:bg-blue-50 text-blue-900 font-medium transition">InnoTTM</Link>
+                          <Link href="/sme/innovest" className="block px-2 py-2 rounded-lg hover:bg-blue-50 text-blue-900 font-medium transition">InnoInvest</Link>
+                        </div>
+                      </div>
+                      <div className="w-1/3 bg-blue-50 flex flex-col items-center justify-center p-4 border-l border-blue-100">
+                        <Image src="/clients/Asset 10@4x.png" alt="Featured Product" width={120} height={120} className="rounded-xl mb-2 object-contain" />
+                        <div className="text-blue-900 font-bold text-base mb-1">Featured Product</div>
+                        <div className="text-blue-700 text-xs text-center">Discover our most popular treasury solution for enterprises.</div>
                       </div>
                     </motion.div>
                   )}
                 </AnimatePresence>
               </div>
 
+              {/* Solutions Dropdown */}
               <div
                 className="relative"
                 onMouseEnter={() => handleMouseEnter('solutions')}
@@ -254,31 +252,50 @@ export default function NavbarStyle2() {
                 <AnimatePresence>
                   {openDropdown === 'solutions' && (
                     <motion.div
-                      className="absolute left-0 mt-2 w-80 rounded-xl bg-gray-800/95 backdrop-blur-xl shadow-xl border-0 overflow-hidden z-50"
+                      className="absolute left-0 mt-2 w-[600px] rounded-2xl bg-white shadow-2xl border border-blue-100 overflow-hidden z-50 flex"
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: 10 }}
                       transition={{ duration: 0.2, ease: 'easeOut' }}
                     >
-                      <div className="px-1 py-2">
-                        {[
-                          { href: "/solutions/cash-visibility-forecasting", label: "Cash Visibility & Forecasting" },
-                          { href: "/solutions/foreign-exchange-risk", label: "Navigate Foreign Exchange Risk" },
-                          { href: "/solutions/money-market", label: "Manage end-to-end money market instruments" },
-                          { href: "/solutions/trade-finance", label: "Optimize Trade Finance Operations" },
-                          { href: "/solutions/manage-debt", label: "Manage Debt" },
-                          { href: "/solutions/commodity-risk", label: "Mitigate Commodity Risk" },
-                          { href: "/solutions/treasury-payments", label: "Automate Treasury Payment Processes" },
-                          { href: "/solutions/supply-chain-finance", label: "Supply Chain Finance Platform" },
-                        ].map((item) => (
-                          <Link
-                            key={item.href}
-                            href={item.href}
-                            className="block px-4 py-2.5 text-sm text-gray-100 hover:bg-teal-600/30 rounded-lg mx-1 transition-colors duration-200"
-                          >
-                            {item.label}
-                          </Link>
-                        ))}
+                      <div className="w-2/3 p-6 grid grid-cols-2 gap-4">
+                        <div>
+                          <span className="text-xs font-bold text-blue-700 uppercase tracking-wider mb-2 block">Cash Visibility & Forecasting</span>
+                          <Link href="/solutions/cash-visibility-forecasting" className="block px-2 py-2 rounded-lg hover:bg-blue-50 text-blue-900 font-medium transition">Cash Visibility & Forecasting</Link>
+                        </div>
+                        <div>
+                          <span className="text-xs font-bold text-blue-700 uppercase tracking-wider mb-2 block">Navigate Foreign Exchange Risk</span>
+                          <Link href="/solutions/foreign-exchange-risk" className="block px-2 py-2 rounded-lg hover:bg-blue-50 text-blue-900 font-medium transition">Navigate Foreign Exchange Risk</Link>
+                        </div>
+                        <div>
+                          <span className="text-xs font-bold text-blue-700 uppercase tracking-wider mb-2 block">Manage end-to-end money market instruments</span>
+                          <Link href="/solutions/money-market" className="block px-2 py-2 rounded-lg hover:bg-blue-50 text-blue-900 font-medium transition">Manage end-to-end money market instruments</Link>
+                        </div>
+                        <div>
+                          <span className="text-xs font-bold text-blue-700 uppercase tracking-wider mb-2 block">Optimize Trade Finance Operations</span>
+                          <Link href="/solutions/trade-finance" className="block px-2 py-2 rounded-lg hover:bg-blue-50 text-blue-900 font-medium transition">Optimize Trade Finance Operations</Link>
+                        </div>
+                        <div>
+                          <span className="text-xs font-bold text-blue-700 uppercase tracking-wider mb-2 block">Manage Debt</span>
+                          <Link href="/solutions/manage-debt" className="block px-2 py-2 rounded-lg hover:bg-blue-50 text-blue-900 font-medium transition">Manage Debt</Link>
+                        </div>
+                        <div>
+                          <span className="text-xs font-bold text-blue-700 uppercase tracking-wider mb-2 block">Mitigate Commodity Risk</span>
+                          <Link href="/solutions/commodity-risk" className="block px-2 py-2 rounded-lg hover:bg-blue-50 text-blue-900 font-medium transition">Mitigate Commodity Risk</Link>
+                        </div>
+                        <div>
+                          <span className="text-xs font-bold text-blue-700 uppercase tracking-wider mb-2 block">Automate Treasury Payment Processes</span>
+                          <Link href="/solutions/treasury-payments" className="block px-2 py-2 rounded-lg hover:bg-blue-50 text-blue-900 font-medium transition">Automate Treasury Payment Processes</Link>
+                        </div>
+                        <div>
+                          <span className="text-xs font-bold text-blue-700 uppercase tracking-wider mb-2 block">Supply Chain Finance Platform</span>
+                          <Link href="/solutions/supply-chain-finance" className="block px-2 py-2 rounded-lg hover:bg-blue-50 text-blue-900 font-medium transition">Supply Chain Finance Platform</Link>
+                        </div>
+                      </div>
+                      <div className="w-1/3 bg-blue-50 flex flex-col items-center justify-center p-4 border-l border-blue-100">
+                        <Image src="/clients/Asset 11@4x.png" alt="Featured Solution" width={120} height={120} className="rounded-xl mb-2 object-contain" />
+                        <div className="text-blue-900 font-bold text-base mb-1">Featured Solution</div>
+                        <div className="text-blue-700 text-xs text-center">Explore our innovative treasury management platform.</div>
                       </div>
                     </motion.div>
                   )}
@@ -297,57 +314,38 @@ export default function NavbarStyle2() {
                 <AnimatePresence>
                   {openDropdown === 'resources' && (
                     <motion.div
-                      className="absolute left-0 mt-2 w-96 rounded-xl bg-gray-800/95 backdrop-blur-xl shadow-2xl border border-gray-700 overflow-hidden z-50 p-4"
+                      className="absolute left-0 mt-2 w-[600px] rounded-2xl bg-white shadow-2xl border border-blue-100 overflow-hidden z-50 flex"
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: 10 }}
                       transition={{ duration: 0.2, ease: 'easeOut' }}
                     >
-                      <div className="grid grid-cols-2 gap-4">
-                        <div className="space-y-2">
-                          <h4 className="text-sm font-semibold text-gray-300">Menu Links</h4>
-                          <div className="space-y-1">
-                            {[
-                              { href: "/resources/our-clients", label: "Our Clients" },
-                              { href: "/resources/success-stories", label: "Success Stories" },
-                              { href: "/resources/why-choose-us", label: "Why Choose Us" },
-                              { href: "/resources/integration", label: "Integration" },
-                              { href: "/resources/security", label: "Security" },
-                              { href: "/resources/fact-sheet", label: "Fact Sheet" },
-                              { href: "/resources/faqs", label: "FAQs" },
-                            ].map((item) => (
-                              <Link
-                                key={item.href}
-                                href={item.href}
-                                className="block w-full px-3 py-2 text-sm text-gray-200 hover:bg-gray-700/50 hover:text-white rounded-lg transition-colors duration-200"
-                              >
-                                {item.label}
-                              </Link>
-                            ))}
-                          </div>
+                      <div className="w-2/3 p-6 grid grid-cols-2 gap-4">
+                        <div>
+                          <span className="text-xs font-bold text-blue-700 uppercase tracking-wider mb-2 block">Menu Links</span>
+                          <Link href="/resources/our-clients" className="block px-2 py-2 rounded-lg hover:bg-blue-50 text-blue-900 font-medium transition">Our Clients</Link>
+                          <Link href="/resources/success-stories" className="block px-2 py-2 rounded-lg hover:bg-blue-50 text-blue-900 font-medium transition">Success Stories</Link>
+                          <Link href="/resources/why-choose-us" className="block px-2 py-2 rounded-lg hover:bg-blue-50 text-blue-900 font-medium transition">Why Choose Us</Link>
+                          <Link href="/resources/integration" className="block px-2 py-2 rounded-lg hover:bg-blue-50 text-blue-900 font-medium transition">Integration Capabilities</Link>
+                          <Link href="/resources/security" className="block px-2 py-2 rounded-lg hover:bg-blue-50 text-blue-900 font-medium transition">Security</Link>
+                          <Link href="/resources/fact-sheet" className="block px-2 py-2 rounded-lg hover:bg-blue-50 text-blue-900 font-medium transition">Fact Sheet</Link>
+                          <Link href="/resources/faqs" className="block px-2 py-2 rounded-lg hover:bg-blue-50 text-blue-900 font-medium transition">FAQs</Link>
                         </div>
-                        <div className="space-y-2">
-                          <h4 className="text-sm font-semibold text-gray-300">Resources</h4>
-                          <div className="space-y-1">
-                            {[
-                              { href: "/resources/blog", label: "Blog" },
-                              { href: "/resources/whitepapers", label: "Whitepapers" },
-                              { href: "/resources/case-studies", label: "Case Studies" },
-                              { href: "/resources/webinars", label: "Webinars" },
-                              { href: "/resources/videos", label: "Videos" },
-                              { href: "/resources/glossary", label: "Glossary" },
-                              { href: "/resources/help-center", label: "Help Center" },
-                            ].map((item) => (
-                              <Link
-                                key={item.href}
-                                href={item.href}
-                                className="block w-full px-3 py-2 text-sm text-gray-200 hover:bg-gray-700/50 hover:text-white rounded-lg transition-colors duration-200"
-                              >
-                                {item.label}
-                              </Link>
-                            ))}
-                          </div>
+                        <div>
+                          <span className="text-xs font-bold text-blue-700 uppercase tracking-wider mb-2 block">Resources</span>
+                          <Link href="/resources/blog" className="block px-2 py-2 rounded-lg hover:bg-blue-50 text-blue-900 font-medium transition">Blog</Link>
+                          <Link href="/resources/whitepapers" className="block px-2 py-2 rounded-lg hover:bg-blue-50 text-blue-900 font-medium transition">Whitepapers</Link>
+                          <Link href="/resources/case-studies" className="block px-2 py-2 rounded-lg hover:bg-blue-50 text-blue-900 font-medium transition">Case Studies</Link>
+                          <Link href="/resources/webinars" className="block px-2 py-2 rounded-lg hover:bg-blue-50 text-blue-900 font-medium transition">Webinars</Link>
+                          <Link href="/resources/videos" className="block px-2 py-2 rounded-lg hover:bg-blue-50 text-blue-900 font-medium transition">Videos</Link>
+                          <Link href="/resources/glossary" className="block px-2 py-2 rounded-lg hover:bg-blue-50 text-blue-900 font-medium transition">Glossary</Link>
+                          <Link href="/resources/help-center" className="block px-2 py-2 rounded-lg hover:bg-blue-50 text-blue-900 font-medium transition">Help Center</Link>
                         </div>
+                      </div>
+                      <div className="w-1/3 bg-blue-50 flex flex-col items-center justify-center p-4 border-l border-blue-100">
+                        <Image src="/clients/Asset 12@4x.png" alt="Featured Resource" width={120} height={120} className="rounded-xl mb-2 object-contain" />
+                        <div className="text-blue-900 font-bold text-base mb-1">Featured Resource</div>
+                        <div className="text-blue-700 text-xs text-center">Access our comprehensive library of resources.</div>
                       </div>
                     </motion.div>
                   )}
@@ -366,32 +364,27 @@ export default function NavbarStyle2() {
                 <AnimatePresence>
                   {openDropdown === 'company' && (
                     <motion.div
-                      className="absolute left-0 mt-2 w-56 rounded-xl bg-gray-800/95 backdrop-blur-xl shadow-2xl border border-gray-700 overflow-hidden z-50 p-4"
+                      className="absolute left-0 mt-2 w-[600px] rounded-2xl bg-white shadow-2xl border border-blue-100 overflow-hidden z-50 flex"
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: 10 }}
                       transition={{ duration: 0.2, ease: 'easeOut' }}
                     >
-                      <div className="space-y-2">
-                        <h4 className="text-sm font-semibold text-gray-300">Company Information</h4>
-                        <div className="space-y-1">
-                          {[
-                            { href: "/about", label: "About Us" },
-                            { href: "/leadership", label: "Leadership" },
-                            { href: "/careers", label: "Careers" },
-                            { href: "/newsroom", label: "Newsroom" },
-                            { href: "/contact", label: "Contact Us" },
-                            { href: "/partners", label: "Partners" },
-                          ].map((item) => (
-                            <Link
-                              key={item.href}
-                              href={item.href}
-                              className="block w-full px-3 py-2 text-sm text-gray-200 hover:bg-gray-700/50 hover:text-white rounded-lg transition-colors duration-200"
-                            >
-                              {item.label}
-                            </Link>
-                          ))}
+                      <div className="w-2/3 p-6 grid grid-cols-2 gap-4">
+                        <div>
+                          <span className="text-xs font-bold text-blue-700 uppercase tracking-wider mb-2 block">Company Information</span>
+                          <Link href="/about" className="block px-2 py-2 rounded-lg hover:bg-blue-50 text-blue-900 font-medium transition">About Us</Link>
+                          <Link href="/leadership" className="block px-2 py-2 rounded-lg hover:bg-blue-50 text-blue-900 font-medium transition">Leadership</Link>
+                          <Link href="/careers" className="block px-2 py-2 rounded-lg hover:bg-blue-50 text-blue-900 font-medium transition">Careers</Link>
+                          <Link href="/newsroom" className="block px-2 py-2 rounded-lg hover:bg-blue-50 text-blue-900 font-medium transition">Newsroom</Link>
+                          <Link href="/contact" className="block px-2 py-2 rounded-lg hover:bg-blue-50 text-blue-900 font-medium transition">Contact Us</Link>
+                          <Link href="/partners" className="block px-2 py-2 rounded-lg hover:bg-blue-50 text-blue-900 font-medium transition">Partners</Link>
                         </div>
+                      </div>
+                      <div className="w-1/3 bg-blue-50 flex flex-col items-center justify-center p-4 border-l border-blue-100">
+                        <Image src="/clients/Asset 13@4x.png" alt="Featured Company" width={120} height={120} className="rounded-xl mb-2 object-contain" />
+                        <div className="text-blue-900 font-bold text-base mb-1">Featured Company</div>
+                        <div className="text-blue-700 text-xs text-center">Learn more about our company and mission.</div>
                       </div>
                     </motion.div>
                   )}

@@ -24,7 +24,7 @@ export function LogoStripIllustrative3({ clients }: LogoStripIllustrative3Props)
   const animationDistance = -totalWidth / 2;
 
   return (
-    <div className="w-screen relative left-1/2 right-1/2 -mx-[50vw] overflow-hidden bg-teal-50 dark:bg-gray-900/80 py-4">
+    <div className="w-screen relative left-1/2 right-1/2 -mx-[50vw] overflow-hidden py-4">
       <div className="max-w-[2000px] mx-auto">
       <motion.div
         className="flex space-x-12"
@@ -44,7 +44,7 @@ export function LogoStripIllustrative3({ clients }: LogoStripIllustrative3Props)
         {allLogos.map((logo, idx) => (
           <motion.div
             key={`logo-1-${idx}`}
-            className="flex-shrink-0 flex items-center justify-center bg-white/80 dark:bg-gray-800/80 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 p-4 h-28 w-48"
+            className="flex-shrink-0 flex items-center justify-center h-28 w-48"
             whileHover={{ scale: 1.07 }}
           >
             <Image
@@ -61,7 +61,7 @@ export function LogoStripIllustrative3({ clients }: LogoStripIllustrative3Props)
         {allLogos.map((logo, idx) => (
           <motion.div
             key={`logo-2-${idx}`}
-            className="flex-shrink-0 flex items-center justify-center bg-white/80 dark:bg-gray-800/80 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 p-4 h-28 w-48"
+            className="flex-shrink-0 flex items-center justify-center h-28 w-48"
             whileHover={{ scale: 1.07 }}
           >
             <Image
