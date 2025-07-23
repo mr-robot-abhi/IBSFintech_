@@ -3,11 +3,49 @@
 import React, { useState, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Globe, ChevronDown, ArrowRight } from 'lucide-react';
+import { 
+  Globe, 
+  ChevronDown, 
+  ArrowRight, 
+  Eye, 
+  BarChart2, 
+  TrendingUp, 
+  DollarSign, 
+  Scale, 
+  Shield, 
+  Clock, 
+  Zap, 
+  Activity, 
+  FileText,
+  Home,
+  Briefcase,
+  BookOpen,
+  Building2
+} from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
+// Define types for menu items
+interface MenuItem {
+  label: string;
+  href: string;
+  icon?: React.ComponentType<{ className?: string }>;
+}
+
+interface MenuGroup {
+  title: string;
+  items: MenuItem[];
+}
+
+interface MenuSection {
+  label: string;
+  href?: string;
+  mega?: boolean;
+  submenus?: MenuItem[];
+  groups?: MenuGroup[];
+}
+
 // Re-using the same menu structure
-const menu = [
+const menu: MenuSection[] = [
   {
     label: "Home",
     href: "/?variant=illustrative1",
@@ -50,14 +88,14 @@ const menu = [
       {
         title: "Solutions",
         items: [
-          { label: "Cash Visibility & Forecasting", href: "/solutions/cash-visibility-forecasting" },
-          { label: "Navigate Foreign Exchange Risk", href: "/solutions/foreign-exchange-risk" },
-          { label: "Manage end-to-end money market instruments", href: "/solutions/money-market" },
-          { label: "Optimize Trade Finance Operations", href: "/solutions/trade-finance" },
-          { label: "Manage Debt", href: "/solutions/manage-debt" },
-          { label: "Mitigate Commodity Risk", href: "/solutions/commodity-risk" },
-          { label: "Automate Treasury Payment Processes", href: "/solutions/treasury-payments" },
-          { label: "Supply Chain Finance Platform", href: "/solutions/supply-chain-finance" },
+          { label: "Cash Visibility & Forecasting", href: "/solutions/cash-visibility-forecasting", icon: Eye },
+          { label: "FX Risk", href: "/solutions/foreign-exchange-risk", icon: TrendingUp },
+          { label: "Money Market", href: "/solutions/money-market", icon: BarChart2 },
+          { label: "Trade Finance", href: "/solutions/trade-finance", icon: FileText },
+          { label: "Debt Management", href: "/solutions/manage-debt", icon: Scale },
+          { label: "Commodity Risk", href: "/solutions/commodity-risk", icon: Activity },
+          { label: "Treasury Payments", href: "/solutions/treasury-payments", icon: DollarSign },
+          { label: "SCF Platform", href: "/solutions/supply-chain-finance", icon: Zap },
         ],
       },
     ],
@@ -175,22 +213,49 @@ export default function ModernMegaMenu() {
                     <div className={`rounded-xl shadow-2xl border border-white/10 bg-white overflow-hidden`}>
                       {item.mega ? (
                         <div className="grid grid-cols-3 gap-6 p-6 w-[700px]">
-                          <div className="col-span-2 grid grid-cols-2 gap-6">
-                            {item.groups.map((group) => (
-                              <div key={group.title}>
-                                <h4 className="text-gray-900 font-bold text-sm mb-3 px-2">{group.title}</h4>
-                                <ul className="space-y-1">
-                                  {group.items.map((sub) => (
-                                    <li key={sub.label}>
-                                      <Link href={sub.href} className="block px-2 py-1.5 rounded hover:bg-blue-50 text-gray-800 hover:text-blue-700 transition-colors">
-                                        {sub.label}
-                                      </Link>
-                                    </li>
-                                  ))}
-                                </ul>
+                          {item.label === "Solutions" && item.groups ? (
+                            <div className="col-span-3">
+                              <h4 className="text-gray-900 font-bold text-sm mb-3 px-2">Our Solutions</h4>
+                              <div className="grid grid-cols-4 gap-4">
+                                {item.groups[0]?.items.map((sub) => {
+                                  const Icon = sub.icon || FileText;
+                                  return (
+                                    <Link 
+                                      key={sub.label} 
+                                      href={sub.href} 
+                                      className="flex flex-col items-center p-3 rounded-lg hover:bg-blue-50 text-gray-800 hover:text-blue-700 transition-colors text-center"
+                                    >
+                                      <div className="bg-blue-100 p-3 rounded-full mb-2">
+                                        <Icon className="w-5 h-5 text-blue-700" />
+                                      </div>
+                                      <span className="text-sm font-medium">{sub.label}</span>
+                                    </Link>
+                                  );
+                                })}
                               </div>
-                            ))}
-                          </div>
+                            </div>
+                          ) : (
+                            <div className="col-span-2 grid grid-cols-2 gap-6">
+                              {item.groups?.map((group) => (
+                                <div key={group.title}>
+                                  <h4 className="text-gray-900 font-bold text-sm mb-3 px-2">{group.title}</h4>
+                                  <ul className="space-y-1">
+                                    {group.items.map((sub) => {
+                                      const Icon = sub.icon || FileText;
+                                      return (
+                                        <li key={sub.label}>
+                                          <Link href={sub.href} className="flex items-center gap-2 px-2 py-1.5 rounded hover:bg-blue-50 text-gray-800 hover:text-blue-700 transition-colors">
+                                            <Icon className="w-4 h-4 text-blue-600" />
+                                            {sub.label}
+                                          </Link>
+                                        </li>
+                                      );
+                                    })}
+                                  </ul>
+                                </div>
+                              ))}
+                            </div>
+                          )}
                           <div className="col-span-1">
                             <div className="bg-blue-50 rounded-lg p-4 h-full flex flex-col justify-between">
                                 <div>

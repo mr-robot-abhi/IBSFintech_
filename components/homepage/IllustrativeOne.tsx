@@ -4,7 +4,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import { motion, useAnimation, useScroll } from 'framer-motion';
 import Tilt from 'react-parallax-tilt';
-import { ArrowRight, Zap, Shield, Globe, Car, Factory, Building, Users, Newspaper } from 'lucide-react';
+import { ArrowRight, Zap, Shield, Globe, Car, Factory, Building, Users, Newspaper, ShoppingBag, Cpu, Truck, Home, BookOpen, ChevronLeft, ChevronRight } from 'lucide-react';
 import EcosystemEnabler from './ecosystem_enabler';
 import ClientLogoStrip from '../common/ClientLogoStrip';
 import ModernMegaMenu from '../layout/ModernMegaMenu';
@@ -46,6 +46,63 @@ const FloatingShapes = () => (
 );
 
 export default function IllustrativeOne() {
+  const industries = [
+    { name: 'Automotive', icon: Car, description: 'Streamlined supply chain finance solutions for the automotive industry.', metric: '30% Cost Reduction' },
+    { name: 'Manufacturing', icon: Factory, description: 'End-to-end financial solutions for manufacturing operations.', metric: '40% Efficiency Gain' },
+    { name: 'Financial Services', icon: Building, description: 'Advanced analytics and risk management for financial institutions.', metric: '50% Risk Reduction' },
+    { name: 'Healthcare', icon: Users, description: 'Financial solutions tailored for healthcare providers and institutions.', metric: '35% Faster Payments' },
+    { name: 'Retail', icon: ShoppingBag, description: 'Omnichannel payment and inventory financing solutions.', metric: '45% Sales Growth' },
+    { name: 'Technology', icon: Cpu, description: 'Financial solutions for tech companies and startups.', metric: '60% Faster Funding' },
+    { name: 'Energy', icon: Zap, description: 'Sustainable energy financing and risk management.', metric: '50% Clean Energy' },
+    { name: 'Logistics', icon: Truck, description: 'Supply chain and working capital optimization.', metric: '45% Faster Delivery' },
+    { name: 'Real Estate', icon: Home, description: 'Property development and investment financing.', metric: '35% ROI Increase' },
+    { name: 'Education', icon: BookOpen, description: 'Financial solutions for educational institutions.', metric: '40% Cost Savings' },
+  ];
+
+  const [scrollX, setScrollX] = useState(0);
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollStart, setScrollStart] = useState(0);
+  const carouselRef = useRef<HTMLDivElement>(null);
+
+  const SCROLL_AMOUNT = 336; // 80 (w-80) + 16 (gap-4)
+  const MAX_SCROLL = -((industries.length - 4) * SCROLL_AMOUNT);
+
+  const scrollLeft = () => {
+    setScrollX(prev => {
+      const newScroll = Math.min(prev + SCROLL_AMOUNT, 0);
+      return newScroll;
+    });
+  };
+
+  const scrollRight = () => {
+    setScrollX(prev => {
+      const newScroll = Math.max(prev - SCROLL_AMOUNT, MAX_SCROLL);
+      return newScroll;
+    });
+  };
+
+  const onMouseDown = (e: React.MouseEvent) => {
+    setIsDragging(true);
+    setStartX(e.pageX - (carouselRef.current?.offsetLeft || 0));
+    setScrollStart(scrollX);
+  };
+
+  const onMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging) return;
+    e.preventDefault();
+    const x = e.pageX - (carouselRef.current?.offsetLeft || 0);
+    const walk = x - startX;
+    setScrollX(Math.max(MAX_SCROLL, Math.min(0, scrollStart - walk)));
+  };
+
+  const onMouseUp = () => {
+    setIsDragging(false);
+  };
+
+  const onMouseLeave = () => {
+    setIsDragging(false);
+  };
 
 
   return (
@@ -378,9 +435,9 @@ export default function IllustrativeOne() {
 
 
 
-      {/* Featured Industries */}
-      <section className="py-16">
-        <div className="container mx-auto px-4 max-w-6xl">
+      {/* Featured Industries Carousel */}
+      <section className="py-16 relative overflow-hidden">
+        <div className="container mx-auto px-4 max-w-7xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -388,42 +445,78 @@ export default function IllustrativeOne() {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl font-bold text-white drop-shadow-lg mb-4">Featured Industries</h2>
+            <h2 className="text-4xl font-bold bg-gradient-to-r from-blue-300 to-blue-500 bg-clip-text text-transparent mb-4">
+              Featured Industries
+            </h2>
             <p className="text-lg text-white/90 max-w-3xl mx-auto">
               Tailored solutions for diverse industry needs, driving efficiency and growth across sectors.
             </p>
           </motion.div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              { name: 'Automotive', icon: Car, description: 'Streamlined supply chain finance solutions for the automotive industry.', metric: '30% Cost Reduction', color: 'blue' },
-              { name: 'Manufacturing', icon: Factory, description: 'End-to-end financial solutions for manufacturing operations.', metric: '40% Efficiency Gain', color: 'emerald' },
-              { name: 'Financial Services', icon: Building, description: 'Advanced analytics and risk management for financial institutions.', metric: '50% Risk Reduction', color: 'violet' },
-              { name: 'Retail & E-commerce', icon: Users, description: 'Seamless payment processing and financial operations for retail.', metric: '25% Savings', color: 'amber' },
-            ].map((industry, index) => (
-              <motion.div
-                key={industry.name}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
+          
+          <div className="relative">
+            {/* Carousel Container */}
+            <div className="overflow-hidden">
+              <div 
+                className="flex gap-6 py-4 transition-transform duration-300 ease-out"
+                style={{
+                  transform: `translateX(${scrollX}px)`,
+                  width: 'max-content',
+                }}
               >
-                <Tilt tiltMaxAngleX={5} tiltMaxAngleY={5}>
-                  <div className="bg-white/90 rounded-2xl shadow-md hover:shadow-xl transition-all border border-gray-200">
-                    <div className="h-2 bg-blue-700" />
-                    <div className="p-6">
-                      <div className="mb-4 p-3 rounded-lg w-12 h-12 flex items-center justify-center bg-white">
-                        <industry.icon className="h-6 w-6 text-blue-700" />
+                {[
+                  { name: 'Automotive', icon: Car, description: 'Streamlined supply chain finance solutions for the automotive industry.', metric: '30% Cost Reduction' },
+                  { name: 'Manufacturing', icon: Factory, description: 'End-to-end financial solutions for manufacturing operations.', metric: '40% Efficiency Gain' },
+                  { name: 'Financial Services', icon: Building, description: 'Advanced analytics and risk management for financial institutions.', metric: '50% Risk Reduction' },
+                  { name: 'Healthcare', icon: Users, description: 'Financial solutions tailored for healthcare providers and institutions.', metric: '35% Faster Payments' },
+                  { name: 'Retail', icon: ShoppingBag, description: 'Omnichannel payment and inventory financing solutions.', metric: '45% Sales Growth' },
+                  { name: 'Technology', icon: Cpu, description: 'Financial solutions for tech companies and startups.', metric: '60% Faster Funding' },
+                  { name: 'Energy', icon: Zap, description: 'Sustainable energy financing and risk management.', metric: '50% Clean Energy' },
+                  { name: 'Logistics', icon: Truck, description: 'Supply chain and working capital optimization.', metric: '45% Faster Delivery' },
+                  { name: 'Real Estate', icon: Home, description: 'Property development and investment financing.', metric: '35% ROI Increase' },
+                  { name: 'Education', icon: BookOpen, description: 'Financial solutions for educational institutions.', metric: '40% Cost Savings' },
+                ].map((industry, idx) => (
+                  <motion.div
+                    key={idx}
+                    className="flex-shrink-0 w-80"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.3, delay: idx * 0.05 }}
+                    viewport={{ once: true }}
+                  >
+                    <Tilt tiltMaxAngleX={5} tiltMaxAngleY={5} className="h-full">
+                      <div className="bg-gradient-to-br from-navy-800 to-navy-900 p-6 rounded-2xl shadow-xl border border-blue-900/30 h-full flex flex-col hover:shadow-2xl hover:border-blue-700/50 transition-all duration-300 hover:-translate-y-1">
+                        <div className="h-14 w-14 bg-blue-900/40 backdrop-blur-sm rounded-xl flex items-center justify-center mb-4 border border-blue-700/30">
+                          <industry.icon className="h-7 w-7 text-blue-300" />
+                        </div>
+                        <h3 className="text-xl font-bold text-white mb-2">{industry.name}</h3>
+                        <p className="text-blue-100/80 text-sm mb-4 flex-grow">{industry.description}</p>
+                        <span className="inline-block px-3 py-1.5 bg-gradient-to-r from-blue-600 to-blue-500 text-white text-xs font-medium rounded-full self-start hover:from-blue-500 hover:to-blue-400 transition-all duration-300 shadow-lg hover:shadow-blue-500/20">
+                          {industry.metric} <ArrowRight className="inline-block ml-1 h-3 w-3" />
+                        </span>
                       </div>
-                      <h3 className="text-xl font-bold text-blue-900 mb-2">{industry.name}</h3>
-                      <p className="text-blue-700 mb-4">{industry.description}</p>
-                      <span className="inline-block px-3 py-1.5 text-sm font-medium rounded-full bg-blue-500/80 text-white">
-                        {industry.metric} <ArrowRight className="inline-block ml-1 h-3 w-3" />
-                      </span>
-                    </div>
-                  </div>
-                </Tilt>
-              </motion.div>
-            ))}
+                    </Tilt>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+            
+            {/* Navigation Arrows */}
+            <button 
+              className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/20 transition-all duration-300 shadow-lg hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed"
+              onClick={scrollLeft}
+              disabled={scrollX >= 0}
+              aria-label="Previous industries"
+            >
+              <ChevronLeft className="h-5 w-5" />
+            </button>
+            <button 
+              className="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/20 transition-all duration-300 shadow-lg hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed"
+              onClick={scrollRight}
+              disabled={scrollX <= -((industries.length - 4) * 336)} // 336px = 80px (w-80) + 16px (gap-4)
+              aria-label="Next industries"
+            >
+              <ChevronRight className="h-5 w-5" />
+            </button>
           </div>
         </div>
       </section>
@@ -434,7 +527,7 @@ export default function IllustrativeOne() {
       <CaseStudies />
 
       {/* Latest News */}
-      <section className="py-16">
+      <section className="py-16 bg-gradient-to-b from-navy-900 to-navy-950">
         <div className="container mx-auto px-4 max-w-6xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -443,16 +536,31 @@ export default function IllustrativeOne() {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl font-bold text-white drop-shadow-lg mb-4">Latest News</h2>
-            <p className="text-lg text-white/90 max-w-3xl mx-auto">
+            <h2 className="text-3xl font-bold bg-gradient-to-r from-blue-300 to-blue-400 bg-clip-text text-transparent mb-4">Latest News</h2>
+            <p className="text-lg text-blue-100/90 max-w-3xl mx-auto">
               Stay updated with our latest achievements and insights.
             </p>
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
-              { title: 'AI Dashboard Launch', date: 'May 2025', description: 'New real-time analytics for treasury insights.' },
-              { title: 'Global Expansion', date: 'April 2025', description: 'Now serving 30+ countries.' },
-              { title: 'FinTech Award', date: 'March 2025', description: 'Named Top Treasury Platform 2025.' },
+              { 
+                title: 'AI Dashboard Launch', 
+                date: 'May 2025', 
+                description: 'New real-time analytics for treasury insights.',
+                icon: <Newspaper className="h-6 w-6 text-blue-300" />
+              },
+              { 
+                title: 'Global Expansion', 
+                date: 'April 2025', 
+                description: 'Now serving 30+ countries.',
+                icon: <Globe className="h-6 w-6 text-blue-300" />
+              },
+              { 
+                title: 'FinTech Award', 
+                date: 'March 2025', 
+                description: 'Named Top Treasury Platform 2025.',
+                icon: <Shield className="h-6 w-6 text-blue-300" />
+              },
             ].map((news, index) => (
               <motion.div
                 key={index}
@@ -461,16 +569,16 @@ export default function IllustrativeOne() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: index * 0.1 }}
               >
-                <Tilt tiltMaxAngleX={10} tiltMaxAngleY={10} className="h-full">
-                  <div className="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition-shadow border border-gray-200 h-full flex flex-col">
-                    <div className="h-12 w-12 bg-white rounded-full flex items-center justify-center mb-4">
-                      <Newspaper className="h-6 w-6 text-blue-600" />
+                <Tilt tiltMaxAngleX={5} tiltMaxAngleY={5} className="h-full">
+                  <div className="bg-gradient-to-br from-navy-800 to-navy-900 p-6 rounded-2xl shadow-xl border border-blue-900/30 h-full flex flex-col hover:shadow-2xl hover:border-blue-700/50 transition-all duration-300">
+                    <div className="h-12 w-12 bg-blue-900/40 backdrop-blur-sm rounded-xl flex items-center justify-center mb-4 border border-blue-700/30">
+                      {news.icon}
                     </div>
-                    <h3 className="text-xl font-semibold text-blue-900 mb-2">{news.title}</h3>
-                    <p className="text-blue-500 text-sm">{news.description}</p>
+                    <h3 className="text-xl font-semibold text-white mb-2">{news.title}</h3>
+                    <p className="text-blue-100/80 text-sm mb-4">{news.description}</p>
                     <div className="flex-grow"></div>
-                    <span className="mt-4 inline-block px-4 py-1 bg-blue-500/80 text-white text-sm font-medium rounded-full self-start">
-                      {news.date}
+                    <span className="mt-4 inline-block px-4 py-1.5 bg-gradient-to-r from-blue-600 to-blue-500 text-white text-xs font-medium rounded-full self-start hover:from-blue-500 hover:to-blue-400 transition-all duration-300 shadow-lg hover:shadow-blue-500/20">
+                      {news.date} <ArrowRight className="inline-block ml-1 h-3 w-3" />
                     </span>
                   </div>
                 </Tilt>
@@ -509,21 +617,6 @@ export default function IllustrativeOne() {
               >
                 Request Demo
               </motion.button>
-            </div>
-            <div className="mt-12">
-              <div className="flex justify-center gap-6 mb-4">
-                {['Twitter', 'LinkedIn', 'Email'].map((social) => (
-                  <a
-                    key={social}
-                    href="#"
-                    className="text-blue-200 hover:text-white transition-colors"
-                    aria-label={social}
-                  >
-                    {social}
-                  </a>
-                ))}
-              </div>
-              <p className="text-sm">© 2025 Treasury Management Platform. All Rights Reserved.</p>
             </div>
           </motion.div>
         </div>
