@@ -66,7 +66,7 @@ export function LogoStripIllustrative2({ clients }: LogoStripIllustrative2Props)
   };
 
   return (
-    <div className="py-16 bg-gradient-to-r from-indigo-50 to-purple-50 relative w-full overflow-hidden">
+    <div className="w-full overflow-hidden py-8">
       <div className="w-full px-0">
         <motion.div 
           className="text-center mb-12"
@@ -95,7 +95,7 @@ export function LogoStripIllustrative2({ clients }: LogoStripIllustrative2Props)
           
           <div 
             ref={scrollRef}
-            className="relative w-full overflow-hidden py-6 px-2"
+            className="relative w-full overflow-hidden py-2 px-2"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
           >
@@ -107,28 +107,18 @@ export function LogoStripIllustrative2({ clients }: LogoStripIllustrative2Props)
               {variantClients.map((client, index) => (
                 <motion.div
                   key={`${client.id}-${index}`}
-                  className="flex-shrink-0 px-6 py-3 mx-2 bg-white/90 backdrop-blur-sm rounded-lg shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105 relative group"
-                  whileHover={{ 
-                    y: -5,
-                    boxShadow: '0 8px 12px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)'
-                  } as any}
+                  className="flex-shrink-0 flex items-center justify-center h-16 w-32 mx-4"
+                  whileHover={{ y: -5 }}
                 >
-                  <div className="relative w-32 h-16 flex items-center justify-center p-2">
-                    <Image
-                      src={`/clients/${client.logo}`}
-                      alt={client.name}
-                      width={120}
-                      height={56}
-                      className="object-contain max-h-12 w-auto mx-auto opacity-90 group-hover:opacity-100 transition-opacity duration-300"
-                      style={{ maxWidth: '100%' }}
-                      priority={index < 8} // Only prioritize loading first few images
-                    />
-                  </div>
-                  {client.hasVideo && (
-                    <div className="absolute -top-1 -right-1 w-5 h-5 bg-indigo-500 rounded-full flex items-center justify-center shadow-md">
-                      <Play className="w-2.5 h-2.5 text-white" />
-                    </div>
-                  )}
+                  <Image
+                    src={`/clients/${client.logo}`}
+                    alt={client.name}
+                    width={120}
+                    height={56}
+                    className="object-contain max-h-12 w-auto mx-auto"
+                    style={{ maxWidth: '100%' }}
+                    priority={index < 8}
+                  />
                 </motion.div>
               ))}
             </motion.div>

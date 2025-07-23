@@ -81,6 +81,10 @@ export default function Footer() {
                 <Mail size={20} className="text-blue-400" />
                 <span className="text-gray-400">contact@ibsfintech.com</span>
               </li>
+              <li>
+                <Linkedin size={20} className="text-blue-400" />
+                <span className="text-gray-400">linkedin.com/ibsfintech</span>
+              </li>
             </ul>
           </div>
           

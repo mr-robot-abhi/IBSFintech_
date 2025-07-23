@@ -9,6 +9,7 @@ import { ArrowRight, TrendingUp, Shield, ShieldCheck, Zap, DollarSign, BarChart2
 import { cn } from '@/lib/utils';
 import IBSNetworkTwo from './ibs_network_two';
 import PartnershipEcosystem from './PartnershipEcosystem';
+import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from '@/components/ui/carousel';
 
 interface Testimonial {
   id: number;
@@ -144,6 +145,21 @@ export default function IllustrativeTwoV2() {
       video.play().catch(e => console.error('Auto-play failed:', e));
     }
   }, []);
+
+  const industries2 = [
+    { name: 'Automotive', icon: Truck, desc: 'Streamlined supply chain and payments for OEMs and suppliers.', metric: '30% Cost Reduction' },
+    { name: 'Manufacturing', icon: Factory, desc: 'Optimized cash flows and risk management for global plants.', metric: '40% Efficiency Gain' },
+    { name: 'Financial Services', icon: DollarSign, desc: 'Advanced analytics and compliance for banks and NBFCs.', metric: '50% Risk Mitigation' },
+    { name: 'Healthcare', icon: Users, desc: 'Automated treasury for hospitals and pharma companies.', metric: '35% Cash Flow Improvement' },
+    { name: 'Retail', icon: Building, desc: 'Centralized payments and liquidity for multi-store chains.', metric: '25% Transaction Savings' },
+    { name: 'Energy', icon: Globe, desc: 'Hedging and commodity management for energy firms.', metric: '20% Volatility Reduction' },
+    { name: 'Education', icon: Newspaper, desc: 'Automated fee management for schools and universities.', metric: '18% Admin Savings' },
+    { name: 'Hospitality', icon: Handshake, desc: 'Centralized payments for hotels and resorts.', metric: '27% Cost Efficiency' },
+    { name: 'Telecom', icon: BarChart2, desc: 'Real-time analytics for telecom operators.', metric: '45% Uptime Boost' },
+    { name: 'Technology', icon: Zap, desc: 'Digital-first treasury for tech innovators.', metric: '60% Faster Reconciliation' },
+    { name: 'Insurance', icon: Shield, desc: 'Risk analytics and claims automation for insurers.', metric: '38% Claims Efficiency' },
+    { name: 'Logistics', icon: Truck, desc: 'Optimized cash flow and payments for logistics providers.', metric: '22% Faster Delivery' },
+  ];
 
   return (
     <div className="relative" ref={containerRef}>
@@ -384,32 +400,27 @@ export default function IllustrativeTwoV2() {
               Our Treasury Management System is tailored to meet the diverse needs of businesses across all industries.
             </p>
           </motion.div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-            {[
-              { name: "Automotive", icon: Truck, desc: "Streamlined supply chain and payments for OEMs and suppliers.", metric: "30% Cost Reduction" },
-              { name: "Manufacturing", icon: Factory, desc: "Optimized cash flows and risk management for global plants.", metric: "40% Efficiency Gain" },
-              { name: "Financial Services", icon: DollarSign, desc: "Advanced analytics and compliance for banks and NBFCs.", metric: "50% Risk Mitigation" },
-              { name: "Healthcare", icon: Users, desc: "Automated treasury for hospitals and pharma companies.", metric: "35% Cash Flow Improvement" },
-              { name: "Retail", icon: Building, desc: "Centralized payments and liquidity for multi-store chains.", metric: "25% Transaction Savings" },
-              { name: "Energy", icon: Globe, desc: "Hedging and commodity management for energy firms.", metric: "20% Volatility Reduction" },
-            ].map((industry, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                whileHover={{ scale: 1.07, boxShadow: '0 8px 32px 0 rgba(59,130,246,0.13)' }}
-                className="bg-white rounded-2xl shadow-lg border border-blue-100 p-8 flex flex-col items-center text-center transition-all"
-              >
-                <div className="mb-4 w-14 h-14 flex items-center justify-center rounded-full bg-gradient-to-br from-blue-400 to-blue-600 text-white shadow-lg">
-                  <industry.icon size={28} />
-                </div>
-                <h4 className="font-semibold text-gray-800 text-lg mb-1">{industry.name}</h4>
-                <p className="text-gray-500 text-sm mb-3">{industry.desc}</p>
-                <span className="inline-block px-4 py-1 bg-blue-50 text-blue-700 text-xs font-medium rounded-full mt-auto shadow-sm">{industry.metric}</span>
-              </motion.div>
-            ))}
+          <div className="relative">
+            <Carousel opts={{ loop: true, align: 'center' }} className="w-full max-w-6xl mx-auto">
+              <CarouselContent className="justify-between">
+                {industries2.map((industry: any, idx: number) => (
+                  <CarouselItem key={industry.name + idx} className="basis-full sm:basis-1/2 md:basis-1/5 max-w-[20%] flex-shrink-0 px-2">
+                    <div className="relative flex flex-col items-center text-center bg-white rounded-2xl shadow-lg border border-blue-100 p-8 transition-all duration-300 group hover:scale-105 hover:shadow-2xl">
+                      <div className="mb-4 w-16 h-16 flex items-center justify-center rounded-full bg-gradient-to-br from-blue-400 to-blue-600 text-white shadow-lg group-hover:scale-110 transition-transform duration-300">
+                        <industry.icon size={32} />
+                      </div>
+                      <h4 className="font-bold text-blue-800 text-xl mb-1 group-hover:text-blue-600 transition-colors duration-200 drop-shadow">{industry.name}</h4>
+                      <p className="text-blue-700/90 text-base mb-3 font-medium group-hover:text-blue-900 transition-colors duration-200">{industry.desc}</p>
+                      <span className="inline-block px-4 py-2 text-base font-bold rounded-full bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 text-white shadow-md group-hover:from-pink-500 group-hover:to-yellow-500 group-hover:scale-110 transition-all duration-300 mt-auto">
+                        {industry.metric}
+                      </span>
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious />
+              <CarouselNext />
+            </Carousel>
           </div>
         </div>
       </section>

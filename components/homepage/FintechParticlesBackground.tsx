@@ -75,8 +75,8 @@ export default function FintechParticlesBackground() {
 
     function animate() {
       for (const p of particles.current) {
-        p.x += p.dx * 0.09; // reduced from 0.18 to 0.09 for even slower movement
-        p.y += p.dy * 0.09;
+        p.x += p.dx * 0.02; // reduced from 0.05 to 0.02 for even slower movement
+        p.y += p.dy * 0.02;
         if (p.x < 0 || p.x > 1) p.dx *= -1;
         if (p.y < 0 || p.y > 1) p.dy *= -1;
       }

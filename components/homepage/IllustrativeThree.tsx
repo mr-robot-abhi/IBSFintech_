@@ -19,6 +19,7 @@ import {
   Handshake,
   Newspaper,
   Users,
+  Truck,
 } from 'lucide-react';
 import EcosystemEnabler from './ecosystem_enabler';
 import ClientLogoStrip from '../common/ClientLogoStrip';
@@ -29,39 +30,22 @@ export default function IllustrativeThree() {
   const clientRef = useRef<NodeJS.Timeout | null>(null);
 
   const clients = ['BankCorp', 'TechFin', 'GlobalTrade', 'RetailPay', 'AutoFinance', 'ManuBank'];
+  // Expand industries array to at least 12 unique industries, each with color/darkColor
   const industries = [
-    { 
-      name: 'Automotive', 
-      icon: Car, 
-      description: 'Streamlined supply chain finance solutions for the automotive industry.', 
-      metric: '30% Cost Reduction',
-      color: 'from-blue-500 to-blue-600',
-      darkColor: 'from-blue-600 to-blue-700'
-    },
-    { 
-      name: 'Manufacturing', 
-      icon: Factory, 
-      description: 'End-to-end financial solutions for manufacturing operations.', 
-      metric: '40% Efficiency Gain',
-      color: 'from-emerald-500 to-emerald-600',
-      darkColor: 'from-emerald-600 to-emerald-700'
-    },
-    { 
-      name: 'Financial Services', 
-      icon: Building, 
-      description: 'Advanced analytics and risk management for financial institutions.', 
-      metric: '50% Risk Reduction',
-      color: 'from-violet-500 to-violet-600',
-      darkColor: 'from-violet-600 to-violet-700'
-    },
-    { 
-      name: 'Retail & E-commerce', 
-      icon: Users, 
-      description: 'Seamless payment processing and financial operations for retail.', 
-      metric: '25% Savings',
-      color: 'from-amber-500 to-amber-600',
-      darkColor: 'from-amber-600 to-amber-700'
-    },
+    { name: 'Automotive', icon: Car, description: 'Streamlined supply chain finance solutions for the automotive industry.', metric: '30% Cost Reduction', color: 'from-blue-500 to-blue-600', darkColor: 'from-blue-600 to-blue-700' },
+    { name: 'Manufacturing', icon: Factory, description: 'End-to-end financial solutions for manufacturing operations.', metric: '40% Efficiency Gain', color: 'from-emerald-500 to-emerald-600', darkColor: 'from-emerald-600 to-emerald-700' },
+    { name: 'Financial Services', icon: Building, description: 'Advanced analytics and risk management for financial institutions.', metric: '50% Risk Reduction', color: 'from-violet-500 to-violet-600', darkColor: 'from-violet-600 to-violet-700' },
+    { name: 'Retail & E-commerce', icon: Users, description: 'Seamless payment processing and financial operations for retail.', metric: '25% Savings', color: 'from-amber-500 to-amber-600', darkColor: 'from-amber-600 to-amber-700' },
+    { name: 'Healthcare', icon: Users, description: 'Automated treasury for hospitals and pharma companies.', metric: '35% Cash Flow Improvement', color: 'from-rose-500 to-rose-600', darkColor: 'from-rose-600 to-rose-700' },
+    { name: 'Energy', icon: Globe, description: 'Hedging and commodity management for energy firms.', metric: '20% Volatility Reduction', color: 'from-yellow-400 to-yellow-500', darkColor: 'from-yellow-500 to-yellow-600' },
+    { name: 'Technology', icon: Zap, description: 'Digital-first treasury for tech innovators.', metric: '60% Faster Reconciliation', color: 'from-indigo-500 to-indigo-600', darkColor: 'from-indigo-600 to-indigo-700' },
+    { name: 'Logistics', icon: Truck, description: 'Optimized cash flow and payments for logistics providers.', metric: '22% Faster Delivery', color: 'from-cyan-500 to-cyan-600', darkColor: 'from-cyan-600 to-cyan-700' },
+    { name: 'Education', icon: Newspaper, description: 'Automated fee management for schools and universities.', metric: '18% Admin Savings', color: 'from-teal-500 to-teal-600', darkColor: 'from-teal-600 to-teal-700' },
+    { name: 'Hospitality', icon: Handshake, description: 'Centralized payments for hotels and resorts.', metric: '27% Cost Efficiency', color: 'from-orange-400 to-orange-500', darkColor: 'from-orange-500 to-orange-600' },
+    { name: 'Agriculture', icon: DollarSign, description: 'Supply chain finance for agri-businesses.', metric: '33% Yield Improvement', color: 'from-green-500 to-green-600', darkColor: 'from-green-600 to-green-700' },
+    { name: 'Telecom', icon: BarChart2, description: 'Real-time analytics for telecom operators.', metric: '45% Uptime Boost', color: 'from-purple-500 to-purple-600', darkColor: 'from-purple-600 to-purple-700' },
+    { name: 'Construction', icon: Building, description: 'Project-based treasury for construction firms.', metric: '29% Project Savings', color: 'from-gray-400 to-gray-500', darkColor: 'from-gray-500 to-gray-600' },
+    { name: 'Media', icon: Users, description: 'Automated royalty payments for media companies.', metric: '19% Faster Payouts', color: 'from-pink-500 to-pink-600', darkColor: 'from-pink-600 to-pink-700' },
   ];
 
   useEffect(() => {
@@ -298,51 +282,40 @@ export default function IllustrativeThree() {
               Tailored solutions for diverse industry needs, driving efficiency and growth across sectors.
             </p>
           </motion.div>
-
-          <div className="mt-20">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {industries.map((industry, index) => (
-                <motion.div
-                  key={industry.name}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: index * 0.1 }}
-                  className="group"
+          <div className="relative w-full overflow-hidden group">
+            <div
+              className="flex gap-8 w-max animate-carousel group-hover:[animation-play-state:paused]"
+              style={{ animationDuration: '40s', animationTimingFunction: 'linear', animationIterationCount: 'infinite' }}
+            >
+              {industries.concat(industries).map((industry, idx) => (
+                <div
+                  key={industry.name + idx}
+                  className={`min-w-[300px] max-w-sm w-[90vw] md:w-96 rounded-2xl shadow-xl hover:shadow-2xl transition-all border border-gray-100 dark:border-gray-700 flex-shrink-0 transform hover:scale-105 duration-300 cursor-pointer group bg-white dark:bg-gray-800/20`}
+                  style={{ transition: 'box-shadow 0.3s, transform 0.3s' }}
                 >
-                  <Tilt
-                    tiltMaxAngleX={5}
-                    tiltMaxAngleY={5}
-                    scale={1.02}
-                    transitionSpeed={300}
-                    className="h-full transition-transform duration-300 hover:scale-[1.02]"
-                  >
-                    <div className="h-full bg-white dark:bg-gray-800/20 rounded-xl shadow-lg overflow-hidden border border-gray-100 dark:border-gray-700 hover:shadow-xl transition-all duration-300 flex flex-col">
-                      <div 
-                        className={`h-2 bg-gradient-to-r ${industry.color} dark:${industry.darkColor} transition-all duration-300`}
-                      />
-                      <div className="p-6 flex-grow flex flex-col">
-                        <div className="mb-4 p-3 rounded-lg w-12 h-12 flex items-center justify-center bg-gradient-to-br from-gray-100 to-gray-50 dark:from-gray-700 dark:to-gray-800 group-hover:scale-110 transition-transform duration-300">
-                          <industry.icon className={`h-6 w-6 text-${industry.color.split('-')[1]}-600 dark:text-${industry.darkColor.split('-')[1]}-400`} />
-                        </div>
-                        <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-2 group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors duration-300">
-                          {industry.name}
-                        </h3>
-                        <p className="text-gray-600 dark:text-gray-300 mb-4 flex-grow">
-                          {industry.description}
-                        </p>
-                        <div className="mt-auto">
-                          <span className="inline-block px-3 py-1.5 text-sm font-medium rounded-full bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-700 text-gray-700 dark:text-gray-200 group-hover:translate-x-1 transition-transform duration-300">
-                            {industry.metric}
-                            <ArrowRight className="inline-block ml-1 h-3 w-3 opacity-0 group-hover:opacity-100 group-hover:ml-2 transition-all duration-300" />
-                          </span>
-                        </div>
-                      </div>
+                  <div className={`h-2 bg-gradient-to-r ${industry.color} dark:${industry.darkColor} transition-all duration-300`} />
+                  <div className="p-6 flex flex-col h-full">
+                    <div className={`mb-4 p-3 rounded-lg w-14 h-14 flex items-center justify-center bg-gradient-to-br from-gray-100 to-gray-50 dark:from-gray-700 dark:to-gray-800 group-hover:scale-110 transition-transform duration-300`}>
+                      <industry.icon className="h-7 w-7 text-teal-600 dark:text-teal-400 drop-shadow-lg" />
                     </div>
-                  </Tilt>
-                </motion.div>
+                    <h3 className="text-2xl font-extrabold text-gray-800 dark:text-white mb-2 group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors duration-200 drop-shadow">{industry.name}</h3>
+                    <p className="text-gray-700 dark:text-gray-300 mb-4 font-medium group-hover:text-gray-900 dark:group-hover:text-white transition-colors duration-200">{industry.description}</p>
+                    <span className="inline-block px-4 py-2 text-base font-bold rounded-full bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-700 text-gray-700 dark:text-gray-200 shadow-md group-hover:from-teal-500 group-hover:to-yellow-500 group-hover:scale-110 transition-all duration-300 mt-auto">
+                      {industry.metric} <ArrowRight className="inline-block ml-1 h-4 w-4 align-middle" />
+                    </span>
+                  </div>
+                </div>
               ))}
             </div>
+            <style jsx>{`
+              @keyframes carousel {
+                0% { transform: translateX(0); }
+                100% { transform: translateX(-50%); }
+              }
+              .animate-carousel {
+                animation-name: carousel;
+              }
+            `}</style>
           </div>
         </div>
       </section>

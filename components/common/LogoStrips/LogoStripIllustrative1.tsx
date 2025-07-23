@@ -61,24 +61,8 @@ export function LogoStripIllustrative1({ clients }: LogoStripIllustrative1Props)
   return (
     <div 
       ref={containerRef}
-      className="relative py-16 overflow-hidden bg-gradient-to-br from-blue-50 via-cyan-50 to-indigo-50"
+      className="relative py-8 overflow-hidden w-full"
     >
-      {/* Decorative background elements with parallax */}
-      <div className="absolute inset-0 z-0 overflow-hidden">
-        <motion.div 
-          className="absolute inset-0 opacity-20"
-          style={{ y: y1 }}
-        >
-          <Image
-            src="/images/background-pattern.png"
-            alt=""
-            fill
-            className="object-cover mix-blend-multiply"
-            priority
-          />
-        </motion.div>
-      </div>
-
       {/* Main content */}
       <div className="relative z-10 container mx-auto px-4">
         <motion.div 
@@ -94,7 +78,7 @@ export function LogoStripIllustrative1({ clients }: LogoStripIllustrative1Props)
 
         <div 
           ref={scrollRef}
-          className="relative w-full overflow-hidden py-4"
+          className="relative w-full overflow-hidden py-2"
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >
@@ -106,23 +90,15 @@ export function LogoStripIllustrative1({ clients }: LogoStripIllustrative1Props)
             {variantClients.map((client, index) => (
               <motion.div
                 key={`${client.id}-${index}`}
-                className="flex-shrink-0 px-8 py-4 bg-white/90 backdrop-blur-sm rounded-xl shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105 relative group"
-                whileHover={{ 
-                  y: -5,
-                }}
-                style={{
-                  boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)'
-                } as React.CSSProperties}
+                className="flex-shrink-0 flex items-center justify-center h-16 w-40"
+                whileHover={{ y: -5 }}
               >
-                <div className="relative w-40 h-16 flex items-center justify-center">
-                  <Image
-                    src={`/clients/${client.logo}`}
-                    alt={client.name}
-                    fill
-                    className="object-contain max-h-16 w-full transition-transform duration-300 hover:scale-105"
-                    style={{ background: 'white' }}
-                  />
-                </div>
+                <Image
+                  src={`/clients/${client.logo}`}
+                  alt={client.name}
+                  fill
+                  className="object-contain max-h-16 w-full transition-transform duration-300 hover:scale-105"
+                />
                 {client.hasVideo && (
                   <div className="absolute -top-2 -right-2 w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center shadow-md">
                     <Play className="w-3 h-3 text-white" />
@@ -132,21 +108,6 @@ export function LogoStripIllustrative1({ clients }: LogoStripIllustrative1Props)
             ))}
           </motion.div>
         </div>
-
-        {/* Decorative elements */}
-        <motion.div 
-          className="absolute -bottom-20 left-1/4 w-48 h-48 rounded-full bg-blue-300/20 blur-3xl"
-          animate={{
-            x: [0, 30, 0],
-            y: [0, -20, 0],
-          }}
-          transition={{
-            duration: 15,
-            repeat: Infinity,
-            repeatType: 'reverse' as const,
-            ease: 'easeInOut',
-          }}
-        />
       </div>
     </div>
   );

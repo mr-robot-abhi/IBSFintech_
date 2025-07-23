@@ -29,41 +29,43 @@ export const clients: Record<ClientVariant, readonly Client[]> = {
     { id: 8, name: 'Reliance', logo: 'reliance.png' },
   ],
   illustrative2: [
-    // Original client logos
-    { id: 1, name: 'Botanic Healthcare', logo: 'client1.png' },
-    { id: 2, name: 'Client 2', logo: 'client2.jpg' },
-    { id: 3, name: 'Frumar Marketing', logo: 'client3.jpg' },
-    { id: 4, name: 'GX', logo: 'client4.jpg' },
-    { id: 5, name: 'Infra Engineers India', logo: 'client5.png' },
-    { id: 6, name: 'SIDVIN', logo: 'client6.png' },
-    { id: 7, name: 'Mittal', logo: 'client7.png' },
-    { id: 8, name: 'Client 8', logo: 'client8.png' },
-    
-    // New asset logos
-    { id: 9, name: 'Asset 2', logo: 'Asset 2@4x.png' },
-    { id: 10, name: 'Asset 3', logo: 'Asset 3@4x.png' },
-    { id: 11, name: 'Asset 4', logo: 'Asset 4@4x.png' },
-    { id: 12, name: 'Asset 5', logo: 'Asset 5@4x.png' },
-    { id: 13, name: 'Asset 6', logo: 'Asset 6@4x.png' },
-    { id: 14, name: 'Asset 7', logo: 'Asset 7@4x.png' },
-    { id: 15, name: 'Asset 8', logo: 'Asset 8@4x.png' },
-    { id: 16, name: 'Asset 9', logo: 'Asset 9@4x.png' },
-    { id: 17, name: 'Asset 10', logo: 'Asset 10@4x.png' },
-    { id: 18, name: 'Asset 11', logo: 'Asset 11@4x.png' },
-    { id: 19, name: 'Asset 12', logo: 'Asset 12@4x.png' },
-    { id: 20, name: 'Asset 13', logo: 'Asset 13@4x.png' },
-    { id: 21, name: 'Asset 14', logo: 'Asset 14@4x.png' },
-    { id: 22, name: 'Asset 15', logo: 'Asset 15@4x.png' },
-    { id: 23, name: 'Asset 16', logo: 'Asset 16@4x.png' },
-    { id: 24, name: 'Asset 17', logo: 'Asset 17@4x.png' },
-    { id: 25, name: 'Asset 18', logo: 'Asset 18@4x.png' },
-    { id: 26, name: 'Asset 19', logo: 'Asset 19@4x.png' },
-    { id: 27, name: 'Asset 20', logo: 'Asset 20@4x.png' },
-    { id: 28, name: 'Asset 21', logo: 'Asset 21@4x.png' },
-    { id: 29, name: 'Asset 22', logo: 'Asset 22@4x.png' },
-    { id: 30, name: 'Asset 23', logo: 'Asset 23@4x.png' },
-    { id: 31, name: 'Asset 24', logo: 'Asset 24@4x.png' },
-    { id: 32, name: 'Asset 25', logo: 'Asset 25@4x.png' },
+    { id: 1, name: 'Asset 10@4x', logo: 'Asset 10@4x.png' },
+    { id: 2, name: 'Asset 11@4x', logo: 'Asset 11@4x.png' },
+    { id: 3, name: 'Asset 12@4x', logo: 'Asset 12@4x.png' },
+    { id: 4, name: 'Asset 13@4x', logo: 'Asset 13@4x.png' },
+    { id: 5, name: 'Asset 14@4x', logo: 'Asset 14@4x.png' },
+    { id: 6, name: 'Asset 15@4x', logo: 'Asset 15@4x.png' },
+    { id: 7, name: 'Asset 16@4x', logo: 'Asset 16@4x.png' },
+    { id: 8, name: 'Asset 17@4x', logo: 'Asset 17@4x.png' },
+    { id: 9, name: 'Asset 18@4x', logo: 'Asset 18@4x.png' },
+    { id: 10, name: 'Asset 19@4x', logo: 'Asset 19@4x.png' },
+    { id: 11, name: 'Asset 21@4x', logo: 'Asset 21@4x.png' },
+    { id: 12, name: 'Asset 22@4x', logo: 'Asset 22@4x.png' },
+    { id: 13, name: 'Asset 23@4x', logo: 'Asset 23@4x.png' },
+    { id: 14, name: 'Asset 24@4x', logo: 'Asset 24@4x.png' },
+    { id: 15, name: 'Asset 25@4x', logo: 'Asset 25@4x.png' },
+    { id: 16, name: 'Asset 2@4x', logo: 'Asset 2@4x.png' },
+    { id: 17, name: 'Asset 3@4x', logo: 'Asset 3@4x.png' },
+    { id: 18, name: 'Asset 4@4x', logo: 'Asset 4@4x.png' },
+    { id: 19, name: 'Asset 5@4x', logo: 'Asset 5@4x.png' },
+    { id: 20, name: 'Asset 6@4x', logo: 'Asset 6@4x.png' },
+    { id: 21, name: 'Asset 7@4x', logo: 'Asset 7@4x.png' },
+    { id: 22, name: 'Asset_20_4x', logo: 'Asset_20_4x.png' },
+    { id: 23, name: 'Asset_8_4x', logo: 'Asset_8_4x.png' },
+    { id: 24, name: 'Asset_9_4x', logo: 'Asset_9_4x.png' },
+    { id: 25, name: 'c1', logo: 'c1.png' },
+    { id: 26, name: 'c2', logo: 'c2.png' },
+    { id: 27, name: 'c3', logo: 'c3.png' },
+    { id: 28, name: 'c4', logo: 'c4.png' },
+    { id: 29, name: 'c5', logo: 'c5.png' },
+    { id: 30, name: 'client1-removebg-preview', logo: 'client1-removebg-preview.png' },
+    { id: 31, name: 'client2', logo: 'client2.jpg' },
+    { id: 32, name: 'client3', logo: 'client3.png' },
+    { id: 33, name: 'client4', logo: 'client4.png' },
+    { id: 34, name: 'client5', logo: 'client5.png' },
+    { id: 35, name: 'client6', logo: 'client6.png' },
+    { id: 36, name: 'client7', logo: 'client7.png' },
+    { id: 37, name: 'client8', logo: 'client8.png' },
   ],
   illustrative3: [
     // Original client logos
@@ -172,15 +174,14 @@ export default function ClientLogoStrip({ variant }: ClientLogoStripProps) {
               }}
             >
               {doubledClients.map((client, index) => (
-                <div key={`${client.id}-${index}`} className="flex-shrink-0 mx-8 flex items-center justify-center">
-                  <div className="w-48 h-24 bg-white/10 backdrop-blur-md rounded-2xl p-4 flex items-center justify-center transition-all duration-300 hover:bg-white/20 hover:shadow-lg">
+                <div key={`${client.id}-${index}`} className="flex-shrink-0 mx-6 flex items-center justify-center">
+                  <div className="w-48 h-24 bg-gray-200 rounded-2xl p-4 flex items-center justify-center transition-all duration-300 hover:bg-gray-300 hover:shadow-md">
                     <div className="relative w-full h-full">
                       <Image
                         src={`/clients/${client.logo}`}
                         alt={client.name}
                         fill
-                        className="object-contain drop-shadow-md transition-all duration-300"
-                        style={{ filter: 'brightness(0) invert(1)' }}
+                        className="object-contain transition-all duration-300"
                       />
                     </div>
                   </div>
