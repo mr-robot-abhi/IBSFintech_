@@ -313,7 +313,7 @@ export default function IllustrativeTwoV2() {
         <ClientLogoStrip variant="illustrative2" />
       </div>
       {/* Our Offerings section */}
-      <section className="relative pt-4 pb-12">
+      <section className="relative py-20">
         <IBSNetworkTwo />
       </section>
 
