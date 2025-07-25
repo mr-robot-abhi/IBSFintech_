@@ -312,8 +312,12 @@ export default function IllustrativeTwoV2() {
       </section>
 
       {/* Client Logo Strip */}
-      <div className="relative z-10">
-        <ClientLogoStrip variant="illustrative2" />
+      <div className="relative z-10 py-12 bg-gradient-to-b from-blue-900/50 to-transparent">
+        <ClientLogoStrip 
+          variant="illustrative2" 
+          title="Winning Together" 
+          description="Partnering with industry leaders to drive innovation and success in financial technology." 
+        />
       </div>
       {/* Our Offerings section */}
       <section className="relative py-20">
@@ -453,53 +457,6 @@ export default function IllustrativeTwoV2() {
           </motion.div>
         </div>
       </section>
-
-      {/* Winning Together */}
-      <section className="py-20 relative overflow-hidden">
-        <div className="container mx-auto px-4 relative">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center max-w-3xl mx-auto mb-16"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">
-              <span className="relative">
-                Winning Together
-                <span className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-blue-400 to-cyan-400"></span>
-              </span>
-            </h2>
-            <p className="text-lg text-gray-200">
-              Leading organizations trust our comprehensive Treasury Management Platform for end-to-end digitization, unlocking agility, insights, and productivity.
-            </p>
-          </motion.div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              { title: "40%", description: "Reduced operational costs", icon: DollarSign, color: "from-blue-600 to-indigo-600" },
-              { title: "70%", description: "Faster processing time", icon: Zap, color: "from-cyan-600 to-blue-600" },
-              { title: "90%", description: "Higher accuracy in financial reporting", icon: TrendingUp, color: "from-indigo-600 to-purple-600" }
-            ].map((stat, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -5 }}
-                className="text-center p-8 rounded-xl bg-gradient-to-br from-gray-50 to-gray-100 shadow-md hover:shadow-xl transition-all duration-300"
-              >
-                <div className={cn("inline-flex items-center justify-center p-4 rounded-xl mb-6 text-white bg-gradient-to-r", stat.color)}>
-                  <stat.icon size={28} />
-                </div>
-                <h3 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 mb-3">{stat.title}</h3>
-                <p className="text-gray-600">{stat.description}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Why Choose Us */}
       <section className="py-20 relative overflow-hidden">
         <div className="container mx-auto px-4 relative">

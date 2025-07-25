@@ -46,7 +46,7 @@ export default function PartnershipEcosystem({ variant }: PartnershipEcosystemPr
           <h2 className={cn('text-3xl md:text-4xl font-bold mb-6', variant === 'illustrative1' ? 'text-white' : variant === 'illustrative2' ? 'text-gray-800' : 'text-gray-800 dark:text-white')}>
             Our Partnership Ecosystem
           </h2>
-          <p className={cn('text-lg', variant === 'illustrative1' ? 'text-white/90' : variant === 'illustrative2' ? 'text-gray-600' : 'text-gray-600 dark:text-gray-300')}>
+          <p className={cn('text-lg', variant === 'illustrative1' ? 'text-white' : variant === 'illustrative2' ? 'text-gray-600' : 'text-gray-600 dark:text-gray-300')}>
             We collaborate with industry leaders to deliver comprehensive and innovative financial solutions.
           </p>
         </motion.div>
