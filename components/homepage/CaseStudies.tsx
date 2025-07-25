@@ -123,9 +123,9 @@ export default function CaseStudies() {
                     <cs.icon className="h-6 w-6 text-blue-600" />
                   </div>
                   <h3 className="text-xl font-semibold text-blue-900 mb-2">{cs.title}</h3>
-                  <p className="text-blue-500 text-sm">{cs.summary}</p>
+                  <p className="text-blue-700 text-sm">{cs.summary}</p>
                   <div className="flex-grow"></div>
-                  <span className="mt-4 inline-block px-4 py-1 bg-blue-500/80 text-white text-sm font-medium rounded-full self-start">
+                  <span className="mt-4 inline-block px-4 py-1 bg-blue-600 text-white text-sm font-medium rounded-full self-start hover:bg-blue-700 transition-colors">
                     {cs.highlights[0]}
                   </span>
                 </div>

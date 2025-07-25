@@ -5,7 +5,8 @@ import Image from 'next/image';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import ClientLogoStrip from '@/components/common/ClientLogoStrip';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, TrendingUp, Shield, ShieldCheck, Zap, DollarSign, BarChart2, Globe, Play, Pause, ChevronLeft, ChevronRight, Users, Building, Factory, Truck, Newspaper, Handshake, ShoppingBag } from 'lucide-react';
+import { ArrowRight, TrendingUp, Shield, Globe, Play, Pause, ChevronLeft, ChevronRight, Users, Building, Factory, Truck, Newspaper, Handshake, ShoppingBag, Award, BarChart2, BarChart3, DollarSign, Zap, ShieldCheck } from 'lucide-react';
+import Link from 'next/link';
 import { cn } from '@/lib/utils';
 import IBSNetworkTwo from './ibs_network_two';
 import PartnershipEcosystem from './PartnershipEcosystem';
@@ -373,15 +374,6 @@ export default function IllustrativeTwoV2() {
 
       {/* Our Offerings section */}
       <section className="relative py-20">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Our Offerings</h2>
-            <p className="text-lg text-gray-200 max-w-3xl mx-auto">
-              Discover a full range of integrated solutions tailored to your business requirements.
-              From treasury to trade finance, we provide the tools for your success.
-            </p>
-          </div>
-        </div>
         <IBSNetworkTwo />
       </section>
 
@@ -698,22 +690,43 @@ export default function IllustrativeTwoV2() {
               Stay updated with the latest developments and achievements from our platform.
             </p>
           </motion.div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
                 title: "New Feature Release",
-                date: "May 2025",
-                description: "Introducing advanced analytics for real-time treasury insights."
+                date: "June 2025",
+                description: "Introducing advanced analytics for real-time treasury insights.",
+                icon: <BarChart3 size={24} className="text-blue-600 mr-2" />
               },
               {
                 title: "Global Expansion",
-                date: "April 2025",
-                description: "Now serving clients in 30+ countries with localized solutions."
+                date: "May 2025",
+                description: "Now serving clients in 30+ countries with localized solutions.",
+                icon: <Globe size={24} className="text-blue-600 mr-2" />
               },
               {
                 title: "Award Recognition",
+                date: "April 2025",
+                description: "Named top treasury platform by Financial Tech Awards.",
+                icon: <Award size={24} className="text-blue-600 mr-2" />
+              },
+              {
+                title: "Security Milestone",
                 date: "March 2025",
-                description: "Named top treasury platform by Financial Tech Awards."
+                description: "Achieved highest level of security certification in the industry.",
+                icon: <Shield size={24} className="text-blue-600 mr-2" />
+              },
+              {
+                title: "Customer Growth",
+                date: "February 2025",
+                description: "Surpassed 1,000 enterprise customers worldwide.",
+                icon: <Users size={24} className="text-blue-600 mr-2" />
+              },
+              {
+                title: "Product Update",
+                date: "January 2025",
+                description: "Enhanced UI/UX and performance improvements across all platforms.",
+                icon: <Zap size={24} className="text-blue-600 mr-2" />
               }
             ].map((news, index) => (
               <motion.div
@@ -727,7 +740,7 @@ export default function IllustrativeTwoV2() {
               >
                 <div className="p-6">
                   <div className="flex items-center mb-4">
-                    <Newspaper size={24} className="text-blue-600 mr-2" />
+                    {news.icon}
                     <p className="text-sm text-gray-500">{news.date}</p>
                   </div>
                   <h3 className="text-xl font-bold mb-3 text-gray-800">{news.title}</h3>
