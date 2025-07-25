@@ -109,7 +109,17 @@ export default function IllustrativeThree() {
       </div>
       
       {/* Main Banner */}
-      <section className="relative pt-28 pb-16 px-4 bg-gradient-to-b from-teal-700 to-teal-300 dark:bg-transparent transition-colors duration-200">
+      <section className="relative pt-28 pb-16 px-4">
+        <div className="absolute inset-0 -z-10">
+          <Image
+            src="/bg_teal.jpg"
+            alt="Background"
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-teal-900/80 dark:bg-teal-900/90" />
+        </div>
         <div className="container mx-auto max-w-6xl relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
             <motion.div
