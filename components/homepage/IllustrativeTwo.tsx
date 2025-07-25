@@ -312,68 +312,8 @@ export default function IllustrativeTwoV2() {
       <div className="relative z-10">
         <ClientLogoStrip variant="illustrative2" />
       </div>
-
-      {/* {/* Our Offerings 
-      <section className="py-20 relative overflow-hidden">
-        <div className="container mx-auto px-4 relative">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center max-w-3xl mx-auto mb-16"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">Our Offerings</h2>
-            <p className="text-lg text-gray-200">
-              A comprehensive suite of solutions designed to streamline your financial operations.
-            </p>
-          </motion.div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              { title: "Treasury Management", description: "Centralize and automate treasury processes for maximum efficiency.", icon: DollarSign, color: "from-blue-600 to-blue-400" },
-              { title: "Risk Management", description: "Proactively identify and mitigate financial risks.", icon: Shield, color: "from-indigo-600 to-indigo-400" },
-              { title: "Trade Finance", description: "Streamline trade documentation and financing.", icon: Globe, color: "from-purple-600 to-purple-400" },
-              { title: "Supply Chain Finance", description: "Optimize working capital and supplier relationships.", icon: Truck, color: "from-cyan-600 to-cyan-400" },
-              { title: "Debt Management", description: "Efficiently manage loans and repayments.", icon: BarChart2, color: "from-blue-600 to-indigo-600" },
-              { title: "Analytics & Insights", description: "Leverage data for strategic decision-making.", icon: TrendingUp, color: "from-indigo-600 to-purple-600" }
-            ].map((offering, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -8, transition: { type: 'spring', stiffness: 300 } }}
-                className="bg-white rounded-xl overflow-hidden shadow-lg relative group"
-              >
-                <div className={cn("h-2 w-full bg-gradient-to-r", offering.color)} />
-                <div className="p-8">
-                  <div className="relative z-10">
-                    <div className={cn("inline-flex items-center justify-center p-3 rounded-lg text-white mb-6 bg-gradient-to-r", offering.color)}>
-                      <offering.icon size={28} />
-                    </div>
-                    <h3 className="text-xl font-bold mb-3 text-gray-800 group-hover:text-blue-600 transition-colors">{offering.title}</h3>
-                    <p className="text-gray-600 mb-6">{offering.description}</p>
-                    <Button variant="ghost" className="text-blue-600 p-0 hover:bg-transparent hover:text-blue-800">
-                      Learn More <ArrowRight size={16} className="ml-1" />
-                    </Button>
-                  </div>
-                </div>
-                <div className="absolute bottom-0 right-0 w-24 h-24 opacity-10 transition-opacity group-hover:opacity-20">
-                  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="50" cy="50" r="40" fill="none" stroke="currentColor" strokeWidth="2" />
-                    <rect x="30" y="30" width="40" height="40" fill="none" stroke="currentColor" strokeWidth="2" transform="rotate(15 50 50)" />
-                    <path d="M20,20 L80,20 L80,80 L20,80 Z" fill="none" stroke="currentColor" strokeWidth="2" transform="rotate(-10 50 50)" />
-                  </svg>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section> */}
-
       {/* Our Offerings section */}
-      <section className="relative py-20">
+      <section className="relative pt-4 pb-12">
         <IBSNetworkTwo />
       </section>
 

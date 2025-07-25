@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { motion, useAnimation, useScroll } from 'framer-motion';
 import Tilt from 'react-parallax-tilt';
 import { ArrowRight, Zap, Shield, Globe, Car, Factory, Building, Users, Newspaper, ShoppingBag, Cpu, Truck, Home, BookOpen, ChevronLeft, ChevronRight } from 'lucide-react';
+import HeroImageSlideshow from './HeroImageSlideshow';
 import EcosystemEnabler from './ecosystem_enabler';
 import ClientLogoStrip from '../common/ClientLogoStrip';
 import ModernMegaMenu from '../layout/ModernMegaMenu';
@@ -71,60 +72,77 @@ export default function IllustrativeOne() {
       <ModernMegaMenu /> 
 
 
-      {/* Main Banner - Modern, Animated, Visually Stunning */}
-      <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden">
-        {/* Floating Shapes */}
-        <div className="absolute inset-0 z-0 pointer-events-none">
-          <FloatingShapes />
+      {/* Main Banner - Split Layout with Image Slideshow */}
+      <section className="relative min-h-[70vh] flex items-center py-12">
+        <div className="absolute inset-0 z-0">
+          <FintechParticlesBackground />
         </div>
         <div className="container mx-auto max-w-7xl relative z-10 px-4">
-          <div className="text-center">
-            {/* Centered Content: Animated Gradient Heading + CTAs */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+            {/* Left Column - Content */}
             <motion.div
-              initial={{ opacity: 0, y: 60 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.2 }}
-              className="space-y-8"
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-left"
             >
               <motion.div
-                className="inline-block px-4 py-2 rounded-full bg-gradient-to-r from-blue-400 via-blue-600 to-blue-800 text-white text-base font-semibold mb-2 shadow-xl backdrop-blur-lg animate-pulse"
-                initial={{ opacity: 0, y: 20 }}
+                className="inline-block px-4 py-1.5 rounded-full bg-gradient-to-r from-blue-400 via-blue-600 to-blue-800 text-white text-sm font-semibold mb-4 shadow-lg"
+                initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.4 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
               >
                 Welcome to the Future of Treasury
               </motion.div>
               <motion.h1
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.6 }}
-                className="text-5xl md:text-7xl font-bold text-white drop-shadow-lg"
+                transition={{ duration: 0.6, delay: 0.3 }}
+                className="text-4xl md:text-5xl font-bold text-white drop-shadow-lg mb-4"
               >
                 Elevate Your Finance
               </motion.h1>
               <motion.p
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.8 }}
-                className="text-2xl md:text-3xl font-semibold text-white/90 mt-2 mb-8 drop-shadow-md max-w-3xl mx-auto"
+                transition={{ duration: 0.6, delay: 0.4 }}
+                className="text-lg md:text-xl text-white/90 mb-6 max-w-lg"
               >
                 AI-powered, globally connected, and beautifully simple. Experience treasury management like never before.
               </motion.p>
-              <div className="flex flex-wrap gap-4 justify-center">
+              <motion.div 
+                className="flex flex-wrap gap-3"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.5 }}
+              >
                 <motion.button
-                  whileHover={{ scale: 1.07, boxShadow: '0 8px 32px 0 rgba(0, 255, 255, 0.3)' }}
+                  whileHover={{ scale: 1.05, boxShadow: '0 8px 32px 0 rgba(0, 255, 255, 0.2)' }}
                   whileTap={{ scale: 0.98 }}
-                  className="px-8 py-3 bg-gradient-to-r from-blue-600 to-blue-400 text-white rounded-xl font-bold shadow-lg hover:from-blue-700 hover:to-blue-500 hover:shadow-2xl transition-all duration-300 flex items-center text-lg"
+                  className="px-6 py-2.5 bg-gradient-to-r from-blue-600 to-blue-400 text-white rounded-lg font-semibold shadow-md hover:from-blue-700 hover:to-blue-500 transition-all duration-300 flex items-center text-base"
                 >
-                  Get Started <ArrowRight className="ml-3 h-5 w-5" />
+                  Get Started <ArrowRight className="ml-2 h-4 w-4" />
                 </motion.button>
                 <motion.button
-                  whileHover={{ scale: 1.07, boxShadow: '0 8px 32px 0 rgba(186, 51, 255, 0.15)' }}
+                  whileHover={{ scale: 1.05, boxShadow: '0 8px 32px 0 rgba(186, 51, 255, 0.1)' }}
                   whileTap={{ scale: 0.98 }}
-                  className="px-8 py-3 border-2 border-white/80 text-white rounded-xl font-bold bg-white/20 shadow-lg hover:bg-white/30 backdrop-blur-sm hover:shadow-xl transition-all duration-300 text-lg"
+                  className="px-6 py-2.5 border-2 border-white/80 text-white rounded-lg font-semibold bg-white/10 hover:bg-white/15 transition-all duration-300 text-base"
                 >
                   Discover More
                 </motion.button>
+              </motion.div>
+            </motion.div>
+
+            {/* Right Column - Image Slideshow */}
+            <motion.div 
+              className="h-[400px] lg:h-[500px] relative"
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+            >
+              <div className="absolute -inset-4 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-2xl -z-10 blur-xl"></div>
+              <div className="h-full w-full rounded-xl overflow-hidden relative">
+                <HeroImageSlideshow />
               </div>
             </motion.div>
           </div>
