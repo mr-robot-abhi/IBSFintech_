@@ -116,8 +116,10 @@ export const clients: Record<ClientVariant, readonly Client[]> = {
   ]
 } as const;
 
-type ClientLogoStripProps = {
+interface ClientLogoStripProps {
   variant: ClientVariant;
+  title?: string;
+  description?: string;
 };
 
 // Helper function to create a mutable copy of the clients array
@@ -130,7 +132,7 @@ function createMutableClients(clients: readonly Client[]): Client[] {
   }));
 }
 
-export default function ClientLogoStrip({ variant }: ClientLogoStripProps) {
+export default function ClientLogoStrip({ variant, title, description }: ClientLogoStripProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -200,7 +202,13 @@ export default function ClientLogoStrip({ variant }: ClientLogoStripProps) {
   }
 
   return (
-    <div ref={containerRef}>
+    <div ref={containerRef} className="relative overflow-hidden py-16">
+      {(title || description) && (
+        <div className="container mx-auto px-4 mb-12 text-center">
+          {title && <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">{title}</h2>}
+          {description && <p className="text-lg text-white/90 max-w-3xl mx-auto">{description}</p>}
+        </div>
+      )}
       {logoStripComponent}
     </div>
   );
