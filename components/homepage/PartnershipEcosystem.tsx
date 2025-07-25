@@ -23,13 +23,13 @@ type PartnershipEcosystemProps = {
 export default function PartnershipEcosystem({ variant }: PartnershipEcosystemProps) {
   const cardStyles = {
     illustrative1: 'bg-white text-gray-800 shadow-lg',
-    illustrative2: 'bg-white/10 backdrop-blur-md text-white',
+    illustrative2: 'bg-gradient-to-br from-gray-50 to-gray-100 text-gray-800 shadow-md hover:shadow-lg transition-shadow border border-gray-200',
     illustrative3: 'bg-gray-100 dark:bg-gray-800/50 text-gray-800 dark:text-white border border-gray-200 dark:border-gray-700',
   };
 
   const logoStyles = {
     illustrative1: '',
-    illustrative2: 'filter brightness(0) invert(1)',
+    illustrative2: '', // Removed filter to show original logos
     illustrative3: 'dark:filter dark:brightness(0) dark:invert(1)',
   };
 
@@ -59,7 +59,7 @@ export default function PartnershipEcosystem({ variant }: PartnershipEcosystemPr
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
               whileHover={{ y: -8, transition: { type: 'spring', stiffness: 300 } }}
-              className={cn('rounded-xl overflow-hidden p-8 flex flex-col items-center text-center', cardStyles[variant])}
+              className={cn('rounded-xl overflow-hidden p-6 flex flex-col items-center text-center', cardStyles[variant])}
             >
               <div className="relative w-40 h-20 mb-4">
                 <Image
