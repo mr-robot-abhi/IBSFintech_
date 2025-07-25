@@ -15,6 +15,8 @@ export default function NavbarWrapper({ children }: { children: React.ReactNode 
   // Select the appropriate Navbar based on the variant
   const getNavbar = () => {
     switch (variant) {
+      case 'illustrative3':
+        return null; // No navbar for Style 3 as it has its own header
       case 'illustrative1':
         return <NavbarStyle1 />;
       case 'illustrative2':

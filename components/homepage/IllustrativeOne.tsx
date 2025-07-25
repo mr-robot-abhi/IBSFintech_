@@ -59,50 +59,7 @@ export default function IllustrativeOne() {
     { name: 'Education', icon: BookOpen, description: 'Financial solutions for educational institutions.', metric: '40% Cost Savings' },
   ];
 
-  const [scrollX, setScrollX] = useState(0);
-  const [isDragging, setIsDragging] = useState(false);
-  const [startX, setStartX] = useState(0);
-  const [scrollStart, setScrollStart] = useState(0);
-  const carouselRef = useRef<HTMLDivElement>(null);
-
-  const SCROLL_AMOUNT = 336; // 80 (w-80) + 16 (gap-4)
-  const MAX_SCROLL = -((industries.length - 4) * SCROLL_AMOUNT);
-
-  const scrollLeft = () => {
-    setScrollX(prev => {
-      const newScroll = Math.min(prev + SCROLL_AMOUNT, 0);
-      return newScroll;
-    });
-  };
-
-  const scrollRight = () => {
-    setScrollX(prev => {
-      const newScroll = Math.max(prev - SCROLL_AMOUNT, MAX_SCROLL);
-      return newScroll;
-    });
-  };
-
-  const onMouseDown = (e: React.MouseEvent) => {
-    setIsDragging(true);
-    setStartX(e.pageX - (carouselRef.current?.offsetLeft || 0));
-    setScrollStart(scrollX);
-  };
-
-  const onMouseMove = (e: React.MouseEvent) => {
-    if (!isDragging) return;
-    e.preventDefault();
-    const x = e.pageX - (carouselRef.current?.offsetLeft || 0);
-    const walk = x - startX;
-    setScrollX(Math.max(MAX_SCROLL, Math.min(0, scrollStart - walk)));
-  };
-
-  const onMouseUp = () => {
-    setIsDragging(false);
-  };
-
-  const onMouseLeave = () => {
-    setIsDragging(false);
-  };
+  const duplicatedIndustries = [...industries, ...industries];
 
 
   return (
@@ -111,7 +68,7 @@ export default function IllustrativeOne() {
       {/* --- Main Content Sections (keep order, ensure all tags close properly) --- */}
 
       {/* Mega Navigation Menu */}
-      <ModernMegaMenu />
+      <ModernMegaMenu /> 
 
 
       {/* Main Banner - Modern, Animated, Visually Stunning */}
@@ -416,13 +373,13 @@ export default function IllustrativeOne() {
               >
                 <Tilt tiltMaxAngleX={10} tiltMaxAngleY={10} className="h-full">
                   <div className="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition-shadow border border-gray-200 h-full flex flex-col">
-                    <div className="h-12 w-12 bg-white rounded-full flex items-center justify-center mb-4">
+                    <div className="h-12 w-12 bg-blue-100 rounded-full flex items-center justify-center mb-4">
                       <diff.icon className="h-6 w-6 text-blue-600" />
                     </div>
                     <h3 className="text-xl font-semibold text-blue-900 mb-2">{diff.title}</h3>
-                    <p className="text-blue-500 text-sm">{diff.description}</p>
+                    <p className="text-gray-600 text-sm">{diff.description}</p>
                     <div className="flex-grow"></div>
-                    <span className="mt-4 inline-block px-4 py-1 bg-blue-500/80 text-white text-sm font-medium rounded-full self-start">
+                    <span className="mt-4 inline-block px-4 py-1 bg-blue-600 text-white text-sm font-medium rounded-full self-start">
                       {diff.stat}
                     </span>
                   </div>
@@ -453,70 +410,35 @@ export default function IllustrativeOne() {
             </p>
           </motion.div>
           
-          <div className="relative">
-            {/* Carousel Container */}
-            <div className="overflow-hidden">
-              <div 
-                className="flex gap-6 py-4 transition-transform duration-300 ease-out"
-                style={{
-                  transform: `translateX(${scrollX}px)`,
-                  width: 'max-content',
-                }}
-              >
-                {[
-                  { name: 'Automotive', icon: Car, description: 'Streamlined supply chain finance solutions for the automotive industry.', metric: '30% Cost Reduction' },
-                  { name: 'Manufacturing', icon: Factory, description: 'End-to-end financial solutions for manufacturing operations.', metric: '40% Efficiency Gain' },
-                  { name: 'Financial Services', icon: Building, description: 'Advanced analytics and risk management for financial institutions.', metric: '50% Risk Reduction' },
-                  { name: 'Healthcare', icon: Users, description: 'Financial solutions tailored for healthcare providers and institutions.', metric: '35% Faster Payments' },
-                  { name: 'Retail', icon: ShoppingBag, description: 'Omnichannel payment and inventory financing solutions.', metric: '45% Sales Growth' },
-                  { name: 'Technology', icon: Cpu, description: 'Financial solutions for tech companies and startups.', metric: '60% Faster Funding' },
-                  { name: 'Energy', icon: Zap, description: 'Sustainable energy financing and risk management.', metric: '50% Clean Energy' },
-                  { name: 'Logistics', icon: Truck, description: 'Supply chain and working capital optimization.', metric: '45% Faster Delivery' },
-                  { name: 'Real Estate', icon: Home, description: 'Property development and investment financing.', metric: '35% ROI Increase' },
-                  { name: 'Education', icon: BookOpen, description: 'Financial solutions for educational institutions.', metric: '40% Cost Savings' },
-                ].map((industry, idx) => (
-                  <motion.div
-                    key={idx}
-                    className="flex-shrink-0 w-80"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.3, delay: idx * 0.05 }}
-                    viewport={{ once: true }}
-                  >
-                    <Tilt tiltMaxAngleX={5} tiltMaxAngleY={5} className="h-full">
-                      <div className="bg-gradient-to-br from-navy-800 to-navy-900 p-6 rounded-2xl shadow-xl border border-blue-900/30 h-full flex flex-col hover:shadow-2xl hover:border-blue-700/50 transition-all duration-300 hover:-translate-y-1">
-                        <div className="h-14 w-14 bg-blue-900/40 backdrop-blur-sm rounded-xl flex items-center justify-center mb-4 border border-blue-700/30">
-                          <industry.icon className="h-7 w-7 text-blue-300" />
-                        </div>
-                        <h3 className="text-xl font-bold text-white mb-2">{industry.name}</h3>
-                        <p className="text-blue-100/80 text-sm mb-4 flex-grow">{industry.description}</p>
-                        <span className="inline-block px-3 py-1.5 bg-gradient-to-r from-blue-600 to-blue-500 text-white text-xs font-medium rounded-full self-start hover:from-blue-500 hover:to-blue-400 transition-all duration-300 shadow-lg hover:shadow-blue-500/20">
-                          {industry.metric} <ArrowRight className="inline-block ml-1 h-3 w-3" />
-                        </span>
+          <div className="relative overflow-hidden group">
+            <motion.div
+              className="flex gap-6 py-4"
+              animate={{
+                x: ['0%', '-100%'],
+                transition: {
+                  ease: 'linear',
+                  duration: 40,
+                  repeat: Infinity,
+                }
+              }}
+            >
+              {duplicatedIndustries.map((industry, idx) => (
+                <div key={idx} className="flex-shrink-0 w-80">
+                  <Tilt tiltMaxAngleX={5} tiltMaxAngleY={5} className="h-full">
+                    <div className="bg-gradient-to-br from-navy-800 to-navy-900 p-6 rounded-2xl shadow-xl border border-blue-900/30 h-full flex flex-col hover:shadow-2xl hover:border-blue-700/50 transition-all duration-300 hover:-translate-y-1">
+                      <div className="h-14 w-14 bg-blue-900/40 backdrop-blur-sm rounded-xl flex items-center justify-center mb-4 border border-blue-700/30">
+                        <industry.icon className="h-7 w-7 text-blue-300" />
                       </div>
-                    </Tilt>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-            
-            {/* Navigation Arrows */}
-            <button 
-              className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/20 transition-all duration-300 shadow-lg hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed"
-              onClick={scrollLeft}
-              disabled={scrollX >= 0}
-              aria-label="Previous industries"
-            >
-              <ChevronLeft className="h-5 w-5" />
-            </button>
-            <button 
-              className="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/20 transition-all duration-300 shadow-lg hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed"
-              onClick={scrollRight}
-              disabled={scrollX <= -((industries.length - 4) * 336)} // 336px = 80px (w-80) + 16px (gap-4)
-              aria-label="Next industries"
-            >
-              <ChevronRight className="h-5 w-5" />
-            </button>
+                      <h3 className="text-xl font-bold text-white mb-2">{industry.name}</h3>
+                      <p className="text-blue-100/80 text-sm mb-4 flex-grow">{industry.description}</p>
+                      <span className="inline-block px-3 py-1.5 bg-gradient-to-r from-blue-600 to-blue-500 text-white text-xs font-medium rounded-full self-start hover:from-blue-500 hover:to-blue-400 transition-all duration-300 shadow-lg hover:shadow-blue-500/20">
+                        {industry.metric} <ArrowRight className="inline-block ml-1 h-3 w-3" />
+                      </span>
+                    </div>
+                  </Tilt>
+                </div>
+              ))}
+            </motion.div>
           </div>
         </div>
       </section>
@@ -527,8 +449,11 @@ export default function IllustrativeOne() {
       <CaseStudies />
 
       {/* Latest News */}
-      <section className="py-16 bg-gradient-to-b from-navy-900 to-navy-950">
-        <div className="container mx-auto px-4 max-w-6xl">
+      <section className="py-16 relative overflow-hidden">
+        <div className="absolute inset-0 -z-10">
+          <FintechParticlesBackground />
+        </div>
+        <div className="container mx-auto px-4 max-w-6xl relative">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -541,25 +466,37 @@ export default function IllustrativeOne() {
               Stay updated with our latest achievements and insights.
             </p>
           </motion.div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 mb-12">
             {[
               { 
                 title: 'AI Dashboard Launch', 
-                date: 'May 2025', 
-                description: 'New real-time analytics for treasury insights.',
+                date: 'July 2025', 
+                description: 'New real-time analytics for treasury insights with advanced AI predictions.',
                 icon: <Newspaper className="h-6 w-6 text-blue-300" />
               },
               { 
                 title: 'Global Expansion', 
-                date: 'April 2025', 
-                description: 'Now serving 30+ countries.',
+                date: 'June 2025', 
+                description: 'Now serving 40+ countries with localized support.',
                 icon: <Globe className="h-6 w-6 text-blue-300" />
               },
               { 
                 title: 'FinTech Award', 
-                date: 'March 2025', 
-                description: 'Named Top Treasury Platform 2025.',
+                date: 'May 2025', 
+                description: 'Named Top Treasury Platform 2025 by Financial Times.',
                 icon: <Shield className="h-6 w-6 text-blue-300" />
+              },
+              { 
+                title: 'Product Update', 
+                date: 'April 2025', 
+                description: 'Enhanced security features and performance improvements.',
+                icon: <Zap className="h-6 w-6 text-blue-300" />
+              },
+              { 
+                title: 'Partnership', 
+                date: 'March 2025', 
+                description: 'Strategic alliance with leading banking institutions.',
+                icon: <Users className="h-6 w-6 text-blue-300" />
               },
             ].map((news, index) => (
               <motion.div
@@ -570,12 +507,12 @@ export default function IllustrativeOne() {
                 transition={{ duration: 0.4, delay: index * 0.1 }}
               >
                 <Tilt tiltMaxAngleX={5} tiltMaxAngleY={5} className="h-full">
-                  <div className="bg-gradient-to-br from-navy-800 to-navy-900 p-6 rounded-2xl shadow-xl border border-blue-900/30 h-full flex flex-col hover:shadow-2xl hover:border-blue-700/50 transition-all duration-300">
-                    <div className="h-12 w-12 bg-blue-900/40 backdrop-blur-sm rounded-xl flex items-center justify-center mb-4 border border-blue-700/30">
+                  <div className="bg-blue-900/50 p-6 rounded-2xl shadow-xl border border-blue-800/30 h-full flex flex-col hover:shadow-2xl hover:border-blue-700/50 transition-all duration-300 backdrop-blur-sm">
+                    <div className="h-12 w-12 bg-blue-800/40 backdrop-blur-sm rounded-xl flex items-center justify-center mb-4 border border-blue-700/30">
                       {news.icon}
                     </div>
                     <h3 className="text-xl font-semibold text-white mb-2">{news.title}</h3>
-                    <p className="text-blue-100/80 text-sm mb-4">{news.description}</p>
+                    <p className="text-blue-200/80 text-sm mb-4">{news.description}</p>
                     <div className="flex-grow"></div>
                     <span className="mt-4 inline-block px-4 py-1.5 bg-gradient-to-r from-blue-600 to-blue-500 text-white text-xs font-medium rounded-full self-start hover:from-blue-500 hover:to-blue-400 transition-all duration-300 shadow-lg hover:shadow-blue-500/20">
                       {news.date} <ArrowRight className="inline-block ml-1 h-3 w-3" />
@@ -584,6 +521,17 @@ export default function IllustrativeOne() {
                 </Tilt>
               </motion.div>
             ))}
+          </div>
+          <div className="text-center mt-10">
+            <motion.a
+              href="/news"
+              className="inline-flex items-center justify-center px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-full transition-colors duration-300 shadow-lg hover:shadow-blue-500/30 text-base"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              View All News
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </motion.a>
           </div>
         </div>
       </section>
@@ -606,14 +554,14 @@ export default function IllustrativeOne() {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-6 py-3 bg-white text-blue-700 rounded-lg shadow-md hover:bg-white flex items-center"
+                className="px-6 py-3 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 flex items-center"
               >
                 Contact Us <ArrowRight className="ml-2 h-4 w-4" />
               </motion.button>
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-6 py-3 border border-blue-100 text-white rounded-lg hover:bg-white/20"
+                className="px-6 py-3 border border-blue-500 text-white rounded-lg hover:bg-blue-500/20"
               >
                 Request Demo
               </motion.button>

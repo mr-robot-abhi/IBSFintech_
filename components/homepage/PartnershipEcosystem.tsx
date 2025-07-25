@@ -43,10 +43,10 @@ export default function PartnershipEcosystem({ variant }: PartnershipEcosystemPr
           viewport={{ once: true }}
           className="text-center max-w-3xl mx-auto mb-16"
         >
-          <h2 className={cn('text-3xl md:text-4xl font-bold mb-6', variant === 'illustrative2' ? 'text-white' : 'text-gray-800 dark:text-white')}>
+          <h2 className={cn('text-3xl md:text-4xl font-bold mb-6', variant === 'illustrative1' || variant === 'illustrative2' ? 'text-white' : 'text-gray-800 dark:text-white')}>
             Our Partnership Ecosystem
           </h2>
-          <p className={cn('text-lg', variant === 'illustrative2' ? 'text-gray-200' : 'text-gray-600 dark:text-gray-300')}>
+          <p className={cn('text-lg', variant === 'illustrative1' || variant === 'illustrative2' ? 'text-gray-200' : 'text-gray-600 dark:text-gray-300')}>
             We collaborate with industry leaders to deliver comprehensive and innovative financial solutions.
           </p>
         </motion.div>

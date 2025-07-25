@@ -3,9 +3,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
-import PartnershipEcosystem from './PartnershipEcosystem';
 import Tilt from 'react-parallax-tilt';
-import { ThemeToggle } from '@/components/ui/theme-toggle';
 import {
   ArrowRight,
   DollarSign,
@@ -24,6 +22,9 @@ import {
 import EcosystemEnabler from './ecosystem_enabler';
 import ClientLogoStrip from '../common/ClientLogoStrip';
 import CaseStudiesStyleThree from './CaseStudiesStyleThree';
+import MegaMenu3 from './MegaMenu3';
+import PartnershipEcosystem from './PartnershipEcosystem';
+import { ThemeToggle } from '@/components/ui/theme-toggle';
 
 export default function IllustrativeThree() {
   const [clientIndex, setClientIndex] = useState(0);
@@ -85,6 +86,7 @@ export default function IllustrativeThree() {
 
   return (
     <div className="relative overflow-x-hidden transition-colors duration-200">
+      <MegaMenu3 />
       <ThemeToggle />
       
       {/* Background Image */}

@@ -135,19 +135,29 @@ export default function Navbar() {
               <DropdownMenuTrigger asChild>
                 <MenuButton>Products <ChevronDown size={16} className="ml-1 inline" /></MenuButton>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="start" className="w-72 rounded-xl shadow-2xl border-0 mt-2 backdrop-blur-xl bg-white/95 dark:bg-gray-900/95">
-                <div className="px-2 py-1.5 text-sm font-medium text-gray-500">Enterprise TMS</div>
-                <DropdownMenuItem asChild><Link href="/enterprise/cashflow-liquidity" className="w-full pl-4">Cashflow & Liquidity</Link></DropdownMenuItem>
-                <DropdownMenuItem asChild><Link href="/enterprise/currency-fx-risk" className="w-full pl-4">Currency (FX) Risk</Link></DropdownMenuItem>
-                <DropdownMenuItem asChild><Link href="/enterprise/investment-money-market" className="w-full pl-4">Investment (Money Market)</Link></DropdownMenuItem>
-                <DropdownMenuItem asChild><Link href="/enterprise/trade-finance" className="w-full pl-4">Trade Finance</Link></DropdownMenuItem>
-                <DropdownMenuItem asChild><Link href="/enterprise/debt-borrowings" className="w-full pl-4">Debt (Borrowings)</Link></DropdownMenuItem>
-                <DropdownMenuItem asChild><Link href="/enterprise/commodity-risk" className="w-full pl-4">Commodity Risk</Link></DropdownMenuItem>
-                <DropdownMenuItem asChild><Link href="/enterprise/payments" className="w-full pl-4">Payments</Link></DropdownMenuItem>
-                <DropdownMenuItem asChild><Link href="/enterprise/supply-chain-finance" className="w-full pl-4">Supply Chain Finance – VNDZY®</Link></DropdownMenuItem>
-                <div className="px-2 py-1.5 mt-2 text-sm font-medium text-gray-500">SME – TMS</div>
-                <DropdownMenuItem asChild><Link href="/sme/innottm" className="w-full pl-4">InnoTTM</Link></DropdownMenuItem>
-                <DropdownMenuItem asChild><Link href="/sme/innovest" className="w-full pl-4">InnoInvest</Link></DropdownMenuItem>
+              <DropdownMenuContent align="start" className="w-[800px] p-6 rounded-xl shadow-2xl border-0 mt-2 backdrop-blur-xl bg-white/95 dark:bg-gray-900/95">
+                <div className="grid grid-cols-2 gap-8">
+                  <div>
+                    <h4 className="px-2 py-1.5 text-sm font-medium text-gray-500 dark:text-gray-400">Enterprise TMS</h4>
+                    <div className="grid grid-cols-2 gap-1">
+                      <DropdownMenuItem asChild className="p-0"><Link href="/enterprise/cashflow-liquidity" className="block w-full px-3 py-2 text-sm rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Cashflow & Liquidity</Link></DropdownMenuItem>
+                      <DropdownMenuItem asChild className="p-0"><Link href="/enterprise/currency-fx-risk" className="block w-full px-3 py-2 text-sm rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Currency (FX) Risk</Link></DropdownMenuItem>
+                      <DropdownMenuItem asChild className="p-0"><Link href="/enterprise/investment-money-market" className="block w-full px-3 py-2 text-sm rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Investment (Money Market)</Link></DropdownMenuItem>
+                      <DropdownMenuItem asChild className="p-0"><Link href="/enterprise/trade-finance" className="block w-full px-3 py-2 text-sm rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Trade Finance</Link></DropdownMenuItem>
+                      <DropdownMenuItem asChild className="p-0"><Link href="/enterprise/debt-borrowings" className="block w-full px-3 py-2 text-sm rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Debt (Borrowings)</Link></DropdownMenuItem>
+                      <DropdownMenuItem asChild className="p-0"><Link href="/enterprise/commodity-risk" className="block w-full px-3 py-2 text-sm rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Commodity Risk</Link></DropdownMenuItem>
+                      <DropdownMenuItem asChild className="p-0"><Link href="/enterprise/payments" className="block w-full px-3 py-2 text-sm rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Payments</Link></DropdownMenuItem>
+                      <DropdownMenuItem asChild className="p-0"><Link href="/enterprise/supply-chain-finance" className="block w-full px-3 py-2 text-sm rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Supply Chain Finance – VNDZY®</Link></DropdownMenuItem>
+                    </div>
+                  </div>
+                  <div>
+                    <h4 className="px-2 py-1.5 text-sm font-medium text-gray-500 dark:text-gray-400">SME – TMS</h4>
+                    <div className="space-y-1">
+                      <DropdownMenuItem asChild className="p-0"><Link href="/sme/innottm" className="block w-full px-3 py-2 text-sm rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">InnoTTM</Link></DropdownMenuItem>
+                      <DropdownMenuItem asChild className="p-0"><Link href="/sme/innovest" className="block w-full px-3 py-2 text-sm rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">InnoInvest</Link></DropdownMenuItem>
+                    </div>
+                  </div>
+                </div>
               </DropdownMenuContent>
             </DropdownMenu>
             {/* Solutions Dropdown */}
