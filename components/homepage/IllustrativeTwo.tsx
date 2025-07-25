@@ -264,29 +264,32 @@ export default function IllustrativeTwoV2() {
         </button>
         <div className="container mx-auto px-4 relative z-10">
           <motion.div
-            className="max-w-3xl mx-auto text-center"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
+            className="max-w-2xl text-left"
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <motion.h1
-              className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-white"
+              className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight text-white"
               style={{ textShadow: '0 2px 12px rgba(0,207,255,0.12)' }}
             >
-              <span className="text-white">Transform Your</span> <span className="font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500" style={{ textShadow: '0 2px 12px rgba(0,207,255,0.12)' }}>Financial Future</span>
+              <div className="block">Transform Your</div>
+              <div className="font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500" style={{ textShadow: '0 2px 12px rgba(0,207,255,0.12)' }}>
+                Financial Future
+              </div>
             </motion.h1>
             <motion.p
-              className="text-lg md:text-xl text-gray-200 mb-8"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+              className="text-lg md:text-xl text-gray-200 mb-8 max-w-xl"
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
               Our end-to-end Treasury Management Platform empowers organizations with cutting-edge solutions for treasury, risk, trade finance, and supply chain finance.
             </motion.p>
             <motion.div
-              className="flex flex-wrap gap-4 justify-center"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+              className="flex flex-wrap gap-4"
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
             >
               <Button

@@ -4,7 +4,8 @@ import React, { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import { motion, useAnimation, useScroll } from 'framer-motion';
 import Tilt from 'react-parallax-tilt';
-import { ArrowRight, Zap, Shield, Globe, Car, Factory, Building, Users, Newspaper, ShoppingBag, Cpu, Truck, Home, BookOpen, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ArrowRight, Zap, Shield, Globe, Car, Factory, Building, Users, Newspaper, ShoppingBag, Cpu, Truck, Home, BookOpen, ChevronLeft, ChevronRight, MapPin, Phone, Mail, Linkedin } from 'lucide-react';
+import Footer from '../layout/Footer';
 import HeroImageSlideshow from './HeroImageSlideshow';
 import EcosystemEnabler from './ecosystem_enabler';
 import ClientLogoStrip from '../common/ClientLogoStrip';
@@ -371,8 +372,11 @@ export default function IllustrativeOne() {
       </section>
 
       {/* Let's Connect */}
-      <section className="py-16">
-        <div className="container mx-auto px-4 max-w-6xl">
+      <section className="relative py-20">
+        <div className="absolute inset-0 -z-10">
+          <FintechParticlesBackground />
+        </div>
+        <div className="container mx-auto px-4 max-w-6xl relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -380,29 +384,39 @@ export default function IllustrativeOne() {
             transition={{ duration: 0.6 }}
             className="text-center"
           >
-            <h2 className="text-3xl font-bold mb-4 text-white dark:text-white">Let's Connect</h2>
-            <p className="text-lg text-white/90 mb-8 max-w-3xl mx-auto">
+            <div className="inline-block px-4 py-1.5 rounded-full bg-gradient-to-r from-blue-400 via-blue-600 to-blue-800 text-white text-sm font-semibold mb-4 shadow-lg">
+              Get In Touch
+            </div>
+            <h2 className="text-4xl font-bold mb-6 text-white">Let's Connect</h2>
+            <p className="text-xl text-white/90 mb-12 max-w-3xl mx-auto">
               Ready to revolutionize your treasury operations? Contact us to explore our solutions.
             </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <motion.button
+            <div className="flex flex-wrap justify-center gap-6">
+              <motion.a
+                href="/contact"
                 whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-6 py-3 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 flex items-center"
+                whileTap={{ scale: 0.98 }}
+                className="px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-medium rounded-xl shadow-xl hover:shadow-blue-600/30 transition-all duration-300 flex items-center"
               >
-                Contact Us <ArrowRight className="ml-2 h-4 w-4" />
-              </motion.button>
-              <motion.button
+                Contact Us <ArrowRight className="ml-2 h-5 w-5" />
+              </motion.a>
+              <motion.a
+                href="/demo"
                 whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-6 py-3 border border-blue-500 text-white rounded-lg hover:bg-blue-500/20"
+                whileTap={{ scale: 0.98 }}
+                className="px-8 py-4 border-2 border-blue-500 text-white font-medium rounded-xl hover:bg-blue-500/10 transition-all duration-300 flex items-center"
               >
                 Request Demo
-              </motion.button>
+              </motion.a>
             </div>
           </motion.div>
         </div>
       </section>
+
+      {/* Footer */}
+      <div className="relative z-20">
+        <Footer />
+      </div>
     </div>
   );
 }
