@@ -28,13 +28,13 @@ export default function PartnershipEcosystem({ variant }: PartnershipEcosystemPr
   };
 
   const logoStyles = {
-    illustrative1: '',
-    illustrative2: '', // Removed filter to show original logos
+    illustrative1: 'filter brightness(0)', // Make logos visible on white background
+    illustrative2: '', // Original logos
     illustrative3: 'dark:filter dark:brightness(0) dark:invert(1)',
   };
 
   return (
-    <section className="py-20">
+    <section className={cn('py-20', variant === 'illustrative1' ? 'relative z-10' : '')}>
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -43,10 +43,10 @@ export default function PartnershipEcosystem({ variant }: PartnershipEcosystemPr
           viewport={{ once: true }}
           className="text-center max-w-3xl mx-auto mb-16"
         >
-          <h2 className={cn('text-3xl md:text-4xl font-bold mb-6', variant === 'illustrative1' || variant === 'illustrative2' ? 'text-white' : 'text-gray-800 dark:text-white')}>
+          <h2 className={cn('text-3xl md:text-4xl font-bold mb-6', variant === 'illustrative1' ? 'text-white' : variant === 'illustrative2' ? 'text-gray-800' : 'text-gray-800 dark:text-white')}>
             Our Partnership Ecosystem
           </h2>
-          <p className={cn('text-lg', variant === 'illustrative1' || variant === 'illustrative2' ? 'text-gray-200' : 'text-gray-600 dark:text-gray-300')}>
+          <p className={cn('text-lg', variant === 'illustrative1' ? 'text-white/90' : variant === 'illustrative2' ? 'text-gray-600' : 'text-gray-600 dark:text-gray-300')}>
             We collaborate with industry leaders to deliver comprehensive and innovative financial solutions.
           </p>
         </motion.div>
