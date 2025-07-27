@@ -74,80 +74,17 @@ export default function IllustrativeOne() {
       <ModernMegaMenu /> 
 
 
-      {/* Main Banner - Split Layout with Image Slideshow */}
-      <section className="relative min-h-[70vh] flex items-center py-12">
-        <div className="absolute inset-0 z-0">
-          <FintechParticlesBackground />
-        </div>
-        <div className="container mx-auto max-w-7xl relative z-10 px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-            {/* Left Column - Content */}
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-              className="text-left"
-            >
-              <motion.div
-                className="inline-block px-4 py-1.5 rounded-full bg-gradient-to-r from-blue-400 via-blue-600 to-blue-800 text-white text-sm font-semibold mb-4 shadow-lg"
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-              >
-                Welcome to the Future of Treasury
-              </motion.div>
-              <motion.h1
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-                className="text-4xl md:text-5xl font-bold text-white drop-shadow-lg mb-4"
-              >
-                Elevate Your Finance
-              </motion.h1>
-              <motion.p
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-                className="text-lg md:text-xl text-white/90 mb-6 max-w-lg"
-              >
-                AI-powered, globally connected, and beautifully simple. Experience treasury management like never before.
-              </motion.p>
-              <motion.div 
-                className="flex flex-wrap gap-3"
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.5 }}
-              >
-                <motion.button
-                  whileHover={{ scale: 1.05, boxShadow: '0 8px 32px 0 rgba(0, 255, 255, 0.2)' }}
-                  whileTap={{ scale: 0.98 }}
-                  className="px-6 py-2.5 bg-gradient-to-r from-blue-600 to-blue-400 text-white rounded-lg font-semibold shadow-md hover:from-blue-700 hover:to-blue-500 transition-all duration-300 flex items-center text-base"
-                >
-                  Get Started <ArrowRight className="ml-2 h-4 w-4" />
-                </motion.button>
-                <motion.button
-                  whileHover={{ scale: 1.05, boxShadow: '0 8px 32px 0 rgba(186, 51, 255, 0.1)' }}
-                  whileTap={{ scale: 0.98 }}
-                  className="px-6 py-2.5 border-2 border-white/80 text-white rounded-lg font-semibold bg-white/10 hover:bg-white/15 transition-all duration-300 text-base"
-                >
-                  Discover More
-                </motion.button>
-              </motion.div>
-            </motion.div>
-
-            {/* Right Column - Image Slideshow */}
-            <motion.div 
-              className="h-[400px] lg:h-[500px] relative"
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-            >
-              <div className="absolute -inset-4 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-2xl -z-10 blur-xl"></div>
-              <div className="h-full w-full rounded-xl overflow-hidden relative">
-                <HeroImageSlideshow />
-              </div>
-            </motion.div>
-          </div>
+      {/* Main Banner with Full-width Image */}
+      <section className="relative w-full">
+        <div className="w-full h-auto">
+          <Image
+            src="/style_1.png"
+            alt="IBS Fintech - Treasury Management Solutions"
+            width={1536}
+            height={1024}
+            priority
+            className="w-full h-auto object-cover"
+          />
         </div>
       </section>
 
