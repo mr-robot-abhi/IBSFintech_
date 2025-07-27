@@ -89,88 +89,52 @@ export default function IllustrativeThree() {
       <MegaMenu3 />
       <ThemeToggle />
       
-      {/* Background Image */}
-      <div className="fixed inset-0 -z-10">
-        <Image
-          src="/bg_11.jpg"
-          alt="Background"
-          fill
-          className="object-cover dark:hidden"
-          priority
-        />
-        <Image
-          src="/bg_dark_2.jpg"
-          alt="Background"
-          fill
-          className="object-cover hidden dark:block"
-          priority
-        />
-        <div className="absolute inset-0 bg-white/80 dark:bg-black/80" />
-      </div>
-      
-      {/* Main Banner */}
-      <section className="relative pt-28 pb-16 px-4">
-        <div className="absolute inset-0 -z-10">
+      {/* Main Banner with resized image */}
+      <section className="relative bg-white">
+        <div className="relative w-full h-[1024px] overflow-hidden">
           <Image
-            src="/bg_teal.jpg"
-            alt="Background"
-            fill
-            className="object-cover"
+            src="/bg_style_3.png"
+            alt="Modern Financial Solutions"
+            width={1534}
+            height={1024}
+            className="w-full h-full object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-teal-900/80 dark:bg-teal-900/90" />
-        </div>
-        <div className="container mx-auto max-w-6xl relative z-10">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              <motion.div 
+          <div className="absolute inset-0 flex items-center">
+            <div className="container mx-auto px-8 max-w-6xl">
+              <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                className="inline-block px-4 py-2 rounded-full bg-teal-800 text-white text-sm font-semibold mb-4 dark:bg-teal-900 transition-colors duration-200"
+                transition={{ duration: 0.6 }}
+                className="max-w-xl"
               >
-                Next-Gen Treasury Solutions
-              </motion.div>
-              <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 leading-tight">
-                Empower Your <span className="text-teal-200">Financial Future</span>
-              </h1>
-              <p className="text-lg text-teal-100 mb-8">
-                Transform treasury operations with AI-driven insights, seamless automation, and global scalability.
-              </p>
-              <div className="flex gap-4">
-                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                  <button className="px-4 py-2 bg-teal-200 text-teal-900 rounded-md hover:bg-teal-300 flex items-center transition-colors duration-200 dark:bg-teal-400 dark:text-teal-900 dark:hover:bg-teal-300">
+                <span className="inline-block px-4 py-1 rounded-full bg-teal-600 text-white text-sm font-semibold mb-4">
+                  Next-Gen Treasury Solutions
+                </span>
+                <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4 leading-tight">
+                  Empower Your <span className="text-teal-600">Financial Future</span>
+                </h1>
+                <p className="text-lg text-gray-700 mb-6">
+                  Transform treasury operations with AI-driven insights, seamless automation, and global scalability.
+                </p>
+                <div className="flex flex-wrap gap-4">
+                  <motion.button 
+                    whileHover={{ scale: 1.03 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white rounded-lg font-medium flex items-center transition-colors"
+                  >
                     Start Now <ArrowRight className="ml-2 h-4 w-4" />
-                  </button>
-                </motion.div>
-                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                  <button className="px-4 py-2 border border-teal-200 text-teal-200 rounded-md hover:bg-teal-200/20 transition-colors duration-200 dark:border-teal-400 dark:text-teal-100 dark:hover:bg-teal-400/10">
+                  </motion.button>
+                  <motion.button
+                    whileHover={{ scale: 1.03 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="px-6 py-3 bg-white border-2 border-teal-600 text-teal-600 hover:bg-gray-50 rounded-lg font-medium transition-colors"
+                  >
                     Explore Features
-                  </button>
-                </motion.div>
-              </div>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
-              <Tilt tiltMaxAngleX={10} tiltMaxAngleY={10}>
-                <div className="bg-white/20 backdrop-blur-lg p-6 rounded-xl border border-teal-200 shadow-lg">
-                  <Image
-                    src="/bg_7.jpg"
-                    alt="Treasury dashboard"
-                    width={600}
-                    height={400}
-                    className="rounded-lg saturate-150 contrast-110"
-                  />
+                  </motion.button>
                 </div>
-              </Tilt>
-            </motion.div>
+              </motion.div>
+            </div>
           </div>
         </div>
       </section>
