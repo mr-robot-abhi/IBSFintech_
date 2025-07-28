@@ -257,53 +257,156 @@ export default function MegaMenu3() {
   const renderSubmenu = (item: any) => {
     if (!item.submenu) return null;
 
+    // Special handling for Products menu
+    const isProductsMenu = item.name === 'Products';
+
     return (
       <motion.div
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: 10 }}
         transition={{ duration: 0.2 }}
-        className={`absolute left-0 right-0 top-full z-50 w-full ${
-          theme === 'dark' ? 'bg-gray-900/95' : 'bg-white/95'
-        } shadow-2xl border-b border-gray-200 dark:border-gray-800`}
+        className="fixed left-0 right-0 top-16 z-40 bg-white/95 dark:bg-gray-900/95 shadow-2xl border-b border-gray-200 dark:border-gray-800"
         onMouseEnter={() => handleMenuEnter(item.name)}
         onMouseLeave={handleMenuLeave}
       >
-        <div className="max-w-7xl mx-auto px-6 py-8">
+        <div className="max-w-7xl mx-auto w-full py-8 px-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Left column - Menu items */}
             <div className="md:col-span-2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {item.submenu.map((section: any, idx: number) => (
-                <div key={idx} className="space-y-4">
-                  {section.title && (
-                    <h3 className="text-sm font-semibold text-gray-900 dark:text-white uppercase tracking-wider">
-                      {section.title}
-                    </h3>
-                  )}
-                  <ul className="space-y-3">
-                    {(section.items || [section]).map((subItem: any, subIdx: number) => (
-                      <li key={subIdx}>
-                        <Link
-                          href={subItem.href}
-                          className={`text-base ${
-                            theme === 'dark'
-                              ? 'text-gray-300 hover:text-white'
-                              : 'text-gray-700 hover:text-gray-900'
-                          } transition-colors duration-200 flex items-start group`}
-                        >
-                          {subItem.icon && (
-                            <subItem.icon className="h-4 w-4 mr-2 mt-0.5 flex-shrink-0 text-blue-500" />
-                          )}
-                          <span className="group-hover:translate-x-1 transition-transform duration-200">
-                            {subItem.name}
-                          </span>
-                          <ChevronRight className="ml-1 h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex-shrink-0" />
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
+              {item.submenu.map((section: any, idx: number) => {
+                // Special handling for Enterprise TMS section in Products menu
+                if (isProductsMenu && section.title === 'Enterprise TMS') {
+                  const halfLength = Math.ceil(section.items.length / 2);
+                  const firstHalf = section.items.slice(0, halfLength);
+                  const secondHalf = section.items.slice(halfLength);
+                  
+                  return (
+                    <div key={idx} className="col-span-2 grid grid-cols-2 gap-6">
+                      <div className="space-y-4">
+                        <h3 className="text-sm font-semibold text-gray-900 dark:text-white uppercase tracking-wider text-center md:text-left">
+                          Enterprise TMS
+                        </h3>
+                        <ul className="space-y-3">
+                          {firstHalf.map((subItem: any, subIdx: number) => (
+                            <li key={subIdx}>
+                              <Link
+                                href={subItem.href}
+                                className={`text-base ${
+                                  theme === 'dark'
+                                    ? 'text-gray-300 hover:text-white'
+                                    : 'text-gray-700 hover:text-gray-900'
+                                } transition-colors duration-200 flex items-start group`}
+                              >
+                                {subItem.icon && (
+                                  <subItem.icon className="h-4 w-4 mr-2 mt-0.5 flex-shrink-0 text-blue-500" />
+                                )}
+                                <span className="group-hover:translate-x-1 transition-transform duration-200">
+                                  {subItem.name}
+                                </span>
+                                <ChevronRight className="ml-1 h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex-shrink-0" />
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                      <div className="space-y-4 mt-8 md:mt-0">
+                        <div className="h-6"></div> {/* Spacer to align with title */}
+                        <ul className="space-y-3">
+                          {secondHalf.map((subItem: any, subIdx: number) => (
+                            <li key={subIdx}>
+                              <Link
+                                href={subItem.href}
+                                className={`text-base ${
+                                  theme === 'dark'
+                                    ? 'text-gray-300 hover:text-white'
+                                    : 'text-gray-700 hover:text-gray-900'
+                                } transition-colors duration-200 flex items-start group`}
+                              >
+                                {subItem.icon && (
+                                  <subItem.icon className="h-4 w-4 mr-2 mt-0.5 flex-shrink-0 text-blue-500" />
+                                )}
+                                <span className="group-hover:translate-x-1 transition-transform duration-200">
+                                  {subItem.name}
+                                </span>
+                                <ChevronRight className="ml-1 h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex-shrink-0" />
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                  );
+                }
+                
+                // For SME - TMS section in Products menu, move it to the right
+                if (isProductsMenu && section.title === 'SME – TMS') {
+                  return (
+                    <div key={idx} className="lg:col-start-3">
+                      <div className="space-y-4">
+                        <h3 className="text-sm font-semibold text-gray-900 dark:text-white uppercase tracking-wider">
+                          {section.title}
+                        </h3>
+                        <ul className="space-y-3">
+                          {section.items.map((subItem: any, subIdx: number) => (
+                            <li key={subIdx}>
+                              <Link
+                                href={subItem.href}
+                                className={`text-base ${
+                                  theme === 'dark'
+                                    ? 'text-gray-300 hover:text-white'
+                                    : 'text-gray-700 hover:text-gray-900'
+                                } transition-colors duration-200 flex items-start group`}
+                              >
+                                {subItem.icon && (
+                                  <subItem.icon className="h-4 w-4 mr-2 mt-0.5 flex-shrink-0 text-blue-500" />
+                                )}
+                                <span className="group-hover:translate-x-1 transition-transform duration-200">
+                                  {subItem.name}
+                                </span>
+                                <ChevronRight className="ml-1 h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex-shrink-0" />
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                  );
+                }
+                
+                // Default rendering for other menu items
+                return (
+                  <div key={idx} className="space-y-4">
+                    {section.title && (
+                      <h3 className="text-sm font-semibold text-gray-900 dark:text-white uppercase tracking-wider">
+                        {section.title}
+                      </h3>
+                    )}
+                    <ul className="space-y-3">
+                      {(section.items || [section]).map((subItem: any, subIdx: number) => (
+                        <li key={subIdx}>
+                          <Link
+                            href={subItem.href}
+                            className={`text-base ${
+                              theme === 'dark'
+                                ? 'text-gray-300 hover:text-white'
+                                : 'text-gray-700 hover:text-gray-900'
+                            } transition-colors duration-200 flex items-start group`}
+                          >
+                            {subItem.icon && (
+                              <subItem.icon className="h-4 w-4 mr-2 mt-0.5 flex-shrink-0 text-blue-500" />
+                            )}
+                            <span className="group-hover:translate-x-1 transition-transform duration-200">
+                              {subItem.name}
+                            </span>
+                            <ChevronRight className="ml-1 h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex-shrink-0" />
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                );
+              })}
             </div>
 
             {/* Right column - Featured content */}
@@ -342,123 +445,125 @@ export default function MegaMenu3() {
 
   return (
     <div className="relative" ref={menuRef}>
-      <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          isScrolled ? 'backdrop-blur-lg bg-white/80 dark:bg-gray-900/80 shadow-lg' : 'bg-transparent'
-        }`}
-      >
-        <nav className="max-w-7xl mx-auto px-6">
-          <div className="flex items-center justify-between h-16">
-            {/* Logo */}
-            <div className="flex-shrink-0">
-              <Link href="/" className="flex items-center">
-                <Image
-                  src="/ibs_logo_sample.png"
-                  alt="IBS Fintech"
-                  width={140}
-                  height={36}
-                  className="h-9 w-auto object-contain"
-                  priority
-                />
-              </Link>
-            </div>
+      <div className="fixed w-full left-0 right-0 z-50" style={{ padding: '0 16px' }}>
+        <header
+          className={`max-w-7xl mx-auto transition-all duration-300 ${
+            isScrolled || activeMenu
+              ? 'bg-white/95 dark:bg-gray-900/95 backdrop-blur-md shadow-sm'
+              : 'bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm'
+          }`}
+        >
+          <nav className="w-full">
+            <div className="flex items-center justify-between h-16">
+              {/* Logo */}
+              <div className="flex-shrink-0">
+                <Link href="/" className="flex items-center">
+                  <Image
+                    src="/ibs_logo_sample.png"
+                    alt="IBS Fintech"
+                    width={140}
+                    height={36}
+                    className="h-9 w-auto object-contain"
+                    priority
+                  />
+                </Link>
+              </div>
 
-            {/* Desktop Menu */}
-            <div className="hidden md:flex items-center space-x-1">
-              {menuItems.map((item) => (
-                <div
-                  key={item.name}
-                  className="relative"
-                  onMouseEnter={() => handleMenuEnter(item.name)}
-                  onMouseLeave={handleMenuLeave}
-                >
-                  <button
-                    className={`px-4 py-2.5 text-sm font-medium ${
-                      activeMenu === item.name
-                        ? 'text-blue-600 dark:text-blue-400'
-                        : theme === 'dark'
-                        ? 'text-gray-300 hover:text-white'
-                        : 'text-gray-700 hover:text-gray-900'
-                    } transition-colors duration-200 flex items-center`}
-                  >
-                    {item.icon && <item.icon className="h-4 w-4 mr-2" />}
-                    {item.name}
-                    {item.submenu && (
-                      <ChevronDown
-                        className={`ml-1 h-4 w-4 transition-transform ${
-                          activeMenu === item.name ? 'rotate-180' : ''
-                        }`}
-                      />
-                    )}
-                  </button>
-                </div>
-              ))}
-            </div>
-
-            {/* Mobile menu button */}
-            <div className="flex md:hidden items-center">
-              <button
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="p-2 rounded-md focus:outline-none"
-                aria-label="Toggle menu"
-              >
-                {isMenuOpen ? (
-                  <X className="h-6 w-6" />
-                ) : (
-                  <Menu className="h-6 w-6" />
-                )}
-              </button>
-            </div>
-          </div>
-        </nav>
-
-        {/* Desktop Mega Menu */}
-        <AnimatePresence>
-          {activeMenu && (
-            <div className="hidden md:block">
-              {menuItems.map(
-                (item) =>
-                  activeMenu === item.name && (
-                    <div key={item.name} className="w-full">
-                      {renderSubmenu(item)}
-                    </div>
-                  )
-              )}
-            </div>
-          )}
-        </AnimatePresence>
-
-        {/* Mobile Menu */}
-        <AnimatePresence>
-          {isMenuOpen && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.3 }}
-              className="md:hidden overflow-hidden"
-            >
-              <div className="px-6 py-4 space-y-2">
+              {/* Desktop Menu */}
+              <div className="hidden md:flex items-center space-x-1">
                 {menuItems.map((item) => (
-                  <div key={item.name} className="py-2">
+                  <div
+                    key={item.name}
+                    className="relative"
+                    onMouseEnter={() => handleMenuEnter(item.name)}
+                    onMouseLeave={handleMenuLeave}
+                  >
                     <button
-                      onClick={() =>
-                        setActiveMenu(activeMenu === item.name ? null : item.name)
-                      }
-                      className="flex items-center justify-between w-full text-left text-base font-medium"
+                      className={`px-4 py-2.5 text-sm font-medium ${
+                        activeMenu === item.name
+                          ? 'text-blue-600 dark:text-blue-400'
+                          : theme === 'dark'
+                          ? 'text-gray-300 hover:text-white'
+                          : 'text-gray-700 hover:text-gray-900'
+                      } transition-colors duration-200 flex items-center`}
                     >
-                      <span>{item.name}</span>
+                      {item.icon && <item.icon className="h-4 w-4 mr-2" />}
+                      {item.name}
                       {item.submenu && (
                         <ChevronDown
-                          className={`h-5 w-5 transition-transform ${
+                          className={`ml-1 h-4 w-4 transition-transform ${
                             activeMenu === item.name ? 'rotate-180' : ''
                           }`}
                         />
                       )}
                     </button>
-                    {activeMenu === item.name && item.submenu && (
-                      <div className="mt-2 pl-4 space-y-2">
-                        {item.submenu.map((section: any, idx: number) => (
+                  </div>
+                ))}
+              </div>
+
+              {/* Mobile menu button */}
+              <div className="flex md:hidden items-center">
+                <button
+                  onClick={() => setIsMenuOpen(!isMenuOpen)}
+                  className="p-2 rounded-md focus:outline-none"
+                  aria-label="Toggle menu"
+                >
+                  {isMenuOpen ? (
+                    <X className="h-6 w-6" />
+                  ) : (
+                    <Menu className="h-6 w-6" />
+                  )}
+                </button>
+              </div>
+            </div>
+            
+            {/* Desktop Mega Menu */}
+            <AnimatePresence>
+              {activeMenu && (
+                <div className="hidden md:block">
+                  {menuItems.map(
+                    (item) =>
+                      activeMenu === item.name && (
+                        <div key={item.name} className="w-full">
+                          {renderSubmenu(item)}
+                        </div>
+                      )
+                  )}
+                </div>
+              )}
+            </AnimatePresence>
+            
+            {/* Mobile Menu */}
+            <AnimatePresence>
+              {isMenuOpen && (
+                <motion.div
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: 'auto' }}
+                  exit={{ opacity: 0, height: 0 }}
+                  transition={{ duration: 0.3 }}
+                  className="md:hidden overflow-hidden"
+                >
+                  <div className="px-6 py-4 space-y-2">
+                    {menuItems.map((item) => (
+                      <div key={item.name} className="py-2">
+                        <button
+                          onClick={() =>
+                            setActiveMenu(activeMenu === item.name ? null : item.name)
+                          }
+                          className="flex items-center justify-between w-full text-left text-base font-medium"
+                        >
+                          <span>{item.name}</span>
+                          {item.submenu && (
+                            <ChevronDown
+                              className={`h-5 w-5 transition-transform ${
+                                activeMenu === item.name ? 'rotate-180' : ''
+                              }`}
+                            />
+                          )}
+                        </button>
+                        {activeMenu === item.name && item.submenu && (
+                          <div className="mt-2 pl-4 space-y-2">
+                            {item.submenu.map((section: any, idx: number) => (
                           <div key={idx}>
                             {section.title && (
                               <h4 className="font-medium text-sm text-gray-500 mt-3 mb-1">
@@ -489,10 +594,11 @@ export default function MegaMenu3() {
             </motion.div>
           )}
         </AnimatePresence>
-      </header>
-
-      {/* Add padding to account for fixed header */}
-      <div className="h-16"></div>
-    </div>
+      </nav>
+    </header>
+  </div>
+  {/* Add padding to account for fixed header */}
+  <div className="h-16"></div>
+</div>
   );
 }

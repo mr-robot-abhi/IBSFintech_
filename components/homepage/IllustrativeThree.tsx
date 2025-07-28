@@ -89,24 +89,16 @@ export default function IllustrativeThree() {
       <MegaMenu3 />
       <ThemeToggle />
       
-      {/* Main Banner with resized image */}
-      <section className="relative bg-white">
-        <div className="relative w-full h-[1024px] overflow-hidden">
-          <Image
-            src="/bg_style_3.png"
-            alt="Modern Financial Solutions"
-            width={1534}
-            height={1024}
-            className="w-full h-full object-cover"
-            priority
-          />
-          <div className="absolute inset-0 flex items-center">
-            <div className="container mx-auto px-8 max-w-6xl">
+      {/* Main Banner with right-aligned image */}
+      <section className="relative bg-white py-16 md:py-24">
+        <div className="container mx-auto px-4 max-w-7xl">
+          <div className="flex flex-col lg:flex-row items-center">
+            {/* Left side - Text content */}
+            <div className="lg:w-1/2 mb-12 lg:mb-0 lg:pr-12">
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6 }}
-                className="max-w-xl"
               >
                 <span className="inline-block px-4 py-1 rounded-full bg-teal-600 text-white text-sm font-semibold mb-4">
                   Next-Gen Treasury Solutions
@@ -114,7 +106,7 @@ export default function IllustrativeThree() {
                 <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4 leading-tight">
                   Empower Your <span className="text-teal-600">Financial Future</span>
                 </h1>
-                <p className="text-lg text-gray-700 mb-6">
+                <p className="text-lg text-gray-700 mb-8">
                   Transform treasury operations with AI-driven insights, seamless automation, and global scalability.
                 </p>
                 <div className="flex flex-wrap gap-4">
@@ -135,6 +127,32 @@ export default function IllustrativeThree() {
                 </div>
               </motion.div>
             </div>
+            
+            {/* Right side - Image with Tilt */}
+            <motion.div 
+              className="lg:w-1/2 flex justify-center lg:justify-start px-4"
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              <Tilt 
+                tiltMaxAngleX={5}
+                tiltMaxAngleY={5}
+                scale={1.05}
+                transitionSpeed={800}
+                className="w-full max-w-[900px] h-[520px] relative"
+              >
+                <Image
+                  src="/bg_style_3.png"
+                  alt="Modern Financial Solutions"
+                  fill
+                  className="object-contain object-center"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  priority
+                  quality={100}
+                />
+              </Tilt>
+            </motion.div>
           </div>
         </div>
       </section>
