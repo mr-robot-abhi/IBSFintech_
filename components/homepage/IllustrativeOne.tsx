@@ -74,18 +74,60 @@ export default function IllustrativeOne() {
       <ModernMegaMenu /> 
 
 
-      {/* Main Banner with Full-width Image */}
-      <section className="relative w-full">
-        <div className="w-full h-auto">
-          <Image
-            src="/style_1.png"
-            alt="IBS Fintech - Treasury Management Solutions"
-            width={1536}
-            height={1024}
-            priority
-            className="w-full h-auto object-cover"
-          />
+      {/* Hero Banner with Two-Column Layout */}
+      <section className="relative w-full bg-gradient-to-b from-navy-900 to-navy-950 overflow-hidden">
+        <div className="container mx-auto px-4 py-16 md:py-24 lg:py-32 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+            {/* Left Column - Text Content */}
+            <div className="max-w-2xl">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                className="mb-6"
+              >
+                <p className="text-blue-400 font-medium mb-4">Transform Your Financial Future</p>
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
+                  End-to-End Treasury Management Solutions
+                </h1>
+                <p className="text-lg text-gray-300 mb-8">
+                  Our end-to-end Treasury Management Platform empowers organizations with cutting-edge solutions for treasury, risk, trade finance, and supply chain finance.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <button className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-lg transition-colors duration-200 flex items-center justify-center">
+                    Get Started
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </button>
+                  <button className="bg-transparent hover:bg-white/10 text-white border border-white/20 font-medium py-3 px-6 rounded-lg transition-colors duration-200">
+                    Schedule a Demo
+                  </button>
+                </div>
+              </motion.div>
+            </div>
+            
+            {/* Right Column - Background Image */}
+            <motion.div 
+              className="relative h-[400px] lg:h-[600px] w-full rounded-2xl overflow-hidden"
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              <Image
+                src="/bg_style_1.png"
+                alt="Treasury Management Solutions"
+                fill
+                priority
+                className="object-cover object-right"
+                quality={100}
+              />
+              {/* Gradient overlay */}
+              <div className="absolute inset-0 bg-gradient-to-r from-navy-900 via-navy-900/90 to-transparent lg:from-navy-900/80 lg:via-navy-900/20"></div>
+            </motion.div>
+          </div>
         </div>
+        
+        {/* Floating shapes for visual interest */}
+        <FloatingShapes />
       </section>
 
 
