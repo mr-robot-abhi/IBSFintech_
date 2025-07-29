@@ -62,12 +62,12 @@ const menuItems = [
           { name: 'Debt (Borrowings)', href: '/enterprise/debt-borrowings', icon: FileText },
           { name: 'Commodity Risk', href: '/enterprise/commodity-risk', icon: Shield },
           { name: 'Payments', href: '/enterprise/payments', icon: Briefcase },
+          { name: 'Supply Chain Finance – VNDZY®', href: '/enterprise/supply-chain-finance', icon: Layers },
         ],
       },
       {
         title: 'SME – TMS',
         items: [
-          { name: 'Supply Chain Finance – VNDZY®', href: '/enterprise/supply-chain-finance', icon: Layers },
           { name: 'InnoTreasury', href: '/sme/innottm', icon: Briefcase },
           { name: 'InnoInvest', href: '/sme/innovest', icon: BarChart2 },
         ],
@@ -348,48 +348,48 @@ export default function MegaMenu3() {
                           Enterprise TMS
                         </h3>
                         <div className="grid grid-cols-2 gap-x-8 gap-y-2">
-                          <ul className="space-y-2">
+                          <div className="flex flex-wrap gap-x-3 gap-y-1">
                             {firstHalf.map((subItem: any, subIdx: number) => (
-                              <li key={subIdx}>
+                              <div key={subIdx} className="flex-shrink-0">
                                 <Link
                                   href={subItem.href}
                                   className={`text-sm ${
                                     theme === 'dark'
                                       ? 'text-gray-300 hover:text-white'
                                       : 'text-gray-700 hover:text-gray-900'
-                                  } transition-colors duration-200 flex items-start group`}
+                                  } transition-colors duration-200 flex items-center group whitespace-nowrap`}
                                 >
                                   {subItem.icon && (
-                                    <subItem.icon className="h-4 w-4 mr-2 mt-0.5 flex-shrink-0 text-blue-500" />
+                                    <subItem.icon className="h-4 w-4 mr-2 flex-shrink-0 text-blue-500" />
                                   )}
                                   <span className="group-hover:translate-x-1 transition-transform duration-200">
                                     {subItem.name}
                                   </span>
                                 </Link>
-                              </li>
+                              </div>
                             ))}
-                          </ul>
-                          <ul className="space-y-2">
+                          </div>
+                          <div className="flex flex-wrap gap-x-3 gap-y-1">
                             {secondHalf.map((subItem: any, subIdx: number) => (
-                              <li key={subIdx}>
+                              <div key={subIdx} className="flex-shrink-0">
                                 <Link
                                   href={subItem.href}
                                   className={`text-sm ${
                                     theme === 'dark'
                                       ? 'text-gray-300 hover:text-white'
                                       : 'text-gray-700 hover:text-gray-900'
-                                  } transition-colors duration-200 flex items-start group`}
+                                  } transition-colors duration-200 flex items-center group whitespace-nowrap`}
                                 >
                                   {subItem.icon && (
-                                    <subItem.icon className="h-4 w-4 mr-2 mt-0.5 flex-shrink-0 text-blue-500" />
+                                    <subItem.icon className="h-4 w-4 mr-2 flex-shrink-0 text-blue-500" />
                                   )}
                                   <span className="group-hover:translate-x-1 transition-transform duration-200">
                                     {subItem.name}
                                   </span>
                                 </Link>
-                              </li>
+                              </div>
                             ))}
-                          </ul>
+                          </div>
                         </div>
                       </div>
                     );
@@ -397,32 +397,32 @@ export default function MegaMenu3() {
                   
                   if (isProductsMenu && section.title === 'SME – TMS') {
                     return (
-                      <div key={idx} className="lg:col-start-3">
+                      <div key={idx} className="lg:col-start-3 lg:col-span-2">
                         <div className="space-y-2">
                           <h3 className="text-sm font-semibold text-gray-900 dark:text-white uppercase tracking-wider">
                             {section.title}
                           </h3>
-                          <ul className="space-y-2">
+                          <div className="flex flex-wrap gap-x-6 gap-y-2">
                             {section.items.map((subItem: any, subIdx: number) => (
-                              <li key={subIdx}>
+                              <div key={subIdx} className="flex-shrink-0">
                                 <Link
                                   href={subItem.href}
                                   className={`text-sm ${
                                     theme === 'dark'
                                       ? 'text-gray-300 hover:text-white'
                                       : 'text-gray-700 hover:text-gray-900'
-                                  } transition-colors duration-200 flex items-start group`}
+                                  } transition-colors duration-200 flex items-center group whitespace-nowrap`}
                                 >
                                   {subItem.icon && (
-                                    <subItem.icon className="h-4 w-4 mr-2 mt-0.5 flex-shrink-0 text-blue-500" />
+                                    <subItem.icon className="h-4 w-4 mr-2 flex-shrink-0 text-blue-500" />
                                   )}
                                   <span className="group-hover:translate-x-1 transition-transform duration-200">
                                     {subItem.name}
                                   </span>
                                 </Link>
-                              </li>
+                              </div>
                             ))}
-                          </ul>
+                          </div>
                         </div>
                       </div>
                     );
