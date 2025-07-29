@@ -4,14 +4,14 @@ import React, { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import { motion, useAnimation, useScroll } from 'framer-motion';
 import Tilt from 'react-parallax-tilt';
-import { ArrowRight, Zap, Shield, Globe, Car, Factory, Building, Users, Newspaper, ShoppingBag, Cpu, Truck, Home, BookOpen, ChevronLeft, ChevronRight, MapPin, Phone, Mail, Linkedin } from 'lucide-react';
+import { ArrowRight, Zap, Shield, Globe, Car, Factory, Building, Users, Newspaper, ShoppingBag, Cpu, Truck, Home, BookOpen, ChevronLeft, ChevronRight, MapPin, Phone, Mail, Linkedin, BarChart2 } from 'lucide-react';
 import Footer from '../layout/Footer';
 import HeroImageSlideshow from './HeroImageSlideshow';
 import EcosystemEnabler from './ecosystem_enabler';
 import ClientLogoStrip from '../common/ClientLogoStrip';
 import ModernMegaMenu from '../layout/ModernMegaMenu';
 import PartnershipEcosystem from './PartnershipEcosystem';
-
+import OurOfferingsSection from './our_offerings';
 import CaseStudies from './CaseStudies';
 import FintechParticlesBackground from './FintechParticlesBackground';
 import IBSNetworkTwo from './ibs_network_two';
@@ -74,54 +74,47 @@ export default function IllustrativeOne() {
       <ModernMegaMenu /> 
 
 
-      {/* Hero Banner with Two-Column Layout */}
-      <section className="relative w-full bg-gradient-to-b from-navy-900 to-navy-950 overflow-hidden">
-        <div className="container mx-auto px-4 py-16 md:py-24 lg:py-32 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-            {/* Left Column - Text Content */}
-            <div className="max-w-2xl">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                className="mb-6"
-              >
-                <p className="text-blue-400 font-medium mb-4">Transform Your Financial Future</p>
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
-                  End-to-End Treasury Management Solutions
-                </h1>
-                <p className="text-lg text-gray-300 mb-8">
-                  Our end-to-end Treasury Management Platform empowers organizations with cutting-edge solutions for treasury, risk, trade finance, and supply chain finance.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <button className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-lg transition-colors duration-200 flex items-center justify-center">
-                    Get Started
-                    <ArrowRight className="ml-2 h-5 w-5" />
-                  </button>
-                  <button className="bg-transparent hover:bg-white/10 text-white border border-white/20 font-medium py-3 px-6 rounded-lg transition-colors duration-200">
-                    Schedule a Demo
-                  </button>
-                </div>
-              </motion.div>
-            </div>
-            
-            {/* Right Column - Background Image */}
-            <motion.div 
-              className="relative h-[400px] lg:h-[600px] w-full rounded-2xl overflow-hidden"
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
+      {/* Hero Banner with Background Image */}
+      <section className="relative w-full h-screen min-h-[600px] overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/Banner.png"
+            alt="Treasury Management Solutions"
+            fill
+            priority
+            className="object-cover object-center"
+            quality={100}
+          />
+          {/* Gradient overlay for better text readability */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-black/30"></div>
+        </div>
+
+        {/* Content Overlay */}
+        <div className="container mx-auto px-4 py-16 md:py-24 lg:py-32 relative z-10 h-full flex items-center">
+          <div className="max-w-3xl">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="mb-6"
             >
-              <Image
-                src="/bg_style_1.png"
-                alt="Treasury Management Solutions"
-                fill
-                priority
-                className="object-cover object-right"
-                quality={100}
-              />
-              {/* Gradient overlay */}
-              <div className="absolute inset-0 bg-gradient-to-r from-navy-900 via-navy-900/90 to-transparent lg:from-navy-900/80 lg:via-navy-900/20"></div>
+              <p className="text-blue-400 font-medium mb-4">Transform Your Financial Future</p>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
+                End-to-End Treasury Management Solutions
+              </h1>
+              <p className="text-lg text-gray-300 mb-8 max-w-2xl">
+                Our end-to-end Treasury Management Platform empowers organizations with cutting-edge solutions for treasury, risk, trade finance, and supply chain finance.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <button className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-lg transition-colors duration-200 flex items-center justify-center">
+                  Get Started
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </button>
+                <button className="bg-transparent hover:bg-white/10 text-white border border-white/20 font-medium py-3 px-6 rounded-lg transition-colors duration-200">
+                  Schedule a Demo
+                </button>
+              </div>
             </motion.div>
           </div>
         </div>
@@ -153,10 +146,7 @@ export default function IllustrativeOne() {
           <ClientLogoStrip variant="illustrative2" />
         </div>
       </section>
-      {/* Our Offerings section */}
-            <section className="relative pt-4 pb-12">
-              <IBSNetworkTwo />
-            </section>
+      <OurOfferingsSection />
       {/* Why Choose Us */}
       <section className="py-16">
         <div className="container mx-auto px-4 max-w-6xl">
@@ -174,9 +164,36 @@ export default function IllustrativeOne() {
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
-              { icon: Zap, title: 'Innovative AI', description: 'AI-driven insights for smarter financial decisions.', stat: '80% Automation' },
-              { icon: Shield, title: 'Trusted Reliability', description: '99.9% uptime with robust security.', stat: '99.9% Uptime' },
-              { icon: Globe, title: 'Global Reach', description: 'Support for multi-currency operations worldwide.', stat: '50+ Countries' },
+              {
+                icon: Zap,
+                title: 'Comprehensive',
+                description: 'A complete Risk Management solution covering Compliance, Operational, and Financial risks.',
+              },
+              {
+                icon: Shield,
+                title: 'Integrated',
+                description: 'Seamlessly connects with your existing IT ecosystem—ERP, market data providers, and banks.',
+              },
+              {
+                icon: Globe,
+                title: 'Nimble',
+                description: 'End-to-end in-house development ensures fast, agile implementation.',
+              },
+              {
+                icon: Users,
+                title: 'Domain-Centric',
+                description: 'Founded by ex-bankers with deep expertise in finance, risk, and technology.',
+              },
+              {
+                icon: BarChart2,
+                title: 'Configurable',
+                description: 'Highly customizable to align with your workflows and business needs.',
+              },
+              {
+                icon: Building,
+                title: 'Best Practices',
+                description: 'Built on industry standards with world-class treasury, risk, and trade finance capabilities.',
+              },
             ].map((diff, index) => (
               <motion.div
                 key={index}
@@ -193,9 +210,6 @@ export default function IllustrativeOne() {
                     <h3 className="text-xl font-semibold text-blue-900 mb-2">{diff.title}</h3>
                     <p className="text-gray-600 text-sm">{diff.description}</p>
                     <div className="flex-grow"></div>
-                    <span className="mt-4 inline-block px-4 py-1 bg-blue-600 text-white text-sm font-medium rounded-full self-start">
-                      {diff.stat}
-                    </span>
                   </div>
                 </Tilt>
               </motion.div>
@@ -207,14 +221,13 @@ export default function IllustrativeOne() {
 
 
       {/* Featured Industries Carousel */}
-      <section className="py-16 relative overflow-hidden">
-        <div className="container mx-auto px-4 max-w-7xl">
+      <section className="py-16 relative overflow-hidden w-full">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-12"
+            className="text-center mb-12 px-4"
           >
             <h2 className="text-4xl font-bold bg-gradient-to-r from-blue-300 to-blue-500 bg-clip-text text-transparent mb-4">
               Featured Industries
@@ -224,7 +237,7 @@ export default function IllustrativeOne() {
             </p>
           </motion.div>
           
-          <div className="relative overflow-hidden group">
+          <div className="relative overflow-hidden group px-4">
             <motion.div
               className="flex gap-6 py-4"
               animate={{
@@ -245,16 +258,15 @@ export default function IllustrativeOne() {
                       </div>
                       <h3 className="text-xl font-bold text-white mb-2">{industry.name}</h3>
                       <p className="text-blue-100/80 text-sm mb-4 flex-grow">{industry.description}</p>
-                      <span className="inline-block px-3 py-1.5 bg-gradient-to-r from-blue-600 to-blue-500 text-white text-xs font-medium rounded-full self-start hover:from-blue-500 hover:to-blue-400 transition-all duration-300 shadow-lg hover:shadow-blue-500/20">
-                        {industry.metric} <ArrowRight className="inline-block ml-1 h-3 w-3" />
-                      </span>
+                      <button className="inline-block px-3 py-1.5 bg-gradient-to-r from-blue-600 to-blue-500 text-white text-xs font-medium rounded-full self-start hover:from-blue-500 hover:to-blue-400 transition-all duration-300 shadow-lg hover:shadow-blue-500/20">
+                        Learn More <ArrowRight className="inline-block ml-1 h-3 w-3" />
+                      </button>
                     </div>
                   </Tilt>
                 </div>
               ))}
             </motion.div>
           </div>
-        </div>
       </section>
       {/* Partnership Ecosystem Section */}
       <PartnershipEcosystem variant="illustrative1" />
@@ -393,9 +405,10 @@ export default function IllustrativeOne() {
       </section>
 
       {/* Footer */}
-      <div className="relative z-20">
+      {/* Removed Footer rendering here to avoid duplication and fix initial flash issue */}
+      {/* <div className="relative z-20">
         <Footer />
-      </div>
+      </div> */}
     </div>
   );
 }

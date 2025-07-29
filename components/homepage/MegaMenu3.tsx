@@ -62,13 +62,13 @@ const menuItems = [
           { name: 'Debt (Borrowings)', href: '/enterprise/debt-borrowings', icon: FileText },
           { name: 'Commodity Risk', href: '/enterprise/commodity-risk', icon: Shield },
           { name: 'Payments', href: '/enterprise/payments', icon: Briefcase },
-          { name: 'Supply Chain Finance – VNDZY®', href: '/enterprise/supply-chain-finance', icon: Layers },
         ],
       },
       {
         title: 'SME – TMS',
         items: [
-          { name: 'InnoTTM', href: '/sme/innottm', icon: Briefcase },
+          { name: 'Supply Chain Finance – VNDZY®', href: '/enterprise/supply-chain-finance', icon: Layers },
+          { name: 'InnoTreasury', href: '/sme/innottm', icon: Briefcase },
           { name: 'InnoInvest', href: '/sme/innovest', icon: BarChart2 },
         ],
       },
@@ -76,7 +76,7 @@ const menuItems = [
     featured: {
       title: 'Featured Product',
       description: 'Discover our latest treasury management solutions',
-      image: '/bg_10.jpg',
+      image: '/Product Image.svg',
       cta: 'Learn more',
       ctaLink: '/products/enterprise-tms'
     }
@@ -98,8 +98,8 @@ const menuItems = [
     featured: {
       title: 'Industry Solutions',
       description: 'Tailored solutions for your industry needs',
-      image: '/bg_11.jpg',
-      cta: 'Explore Solutions',
+      image: '/Solutions Image.svg',
+      cta: 'Learn more',
       ctaLink: '/solutions'
     }
   },
@@ -193,15 +193,13 @@ const menuItems = [
           { name: 'General Inquiries', href: '/contact/general', icon: Mail },
         ]
       }
-    ],
-    featured: {
-      title: 'We\'re Here to Help',
-      description: 'Get in touch with our team for any questions or support',
-      image: '/bg_14.jpeg',
-      cta: 'Contact Us',
-      ctaLink: '/contact'
-    }
+    ]
   },
+  { 
+    name: 'Request Demo', 
+    icon: Video,
+    href: '/demo'
+  }
 ];
 
 export default function MegaMenu3() {
@@ -211,8 +209,8 @@ export default function MegaMenu3() {
   const menuRef = useRef<HTMLDivElement>(null);
   const { theme } = useTheme();
   const pathname = usePathname();
+  const menuItemRefs = useRef<Record<string, HTMLDivElement | null>>({});
 
-  // Close menu when clicking outside
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
@@ -226,7 +224,6 @@ export default function MegaMenu3() {
     };
   }, []);
 
-  // Handle scroll effect
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
@@ -236,7 +233,6 @@ export default function MegaMenu3() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close menu when route changes
   useEffect(() => {
     setActiveMenu(null);
   }, [pathname]);
@@ -246,7 +242,6 @@ export default function MegaMenu3() {
   };
 
   const handleMenuLeave = () => {
-    // Delay closing to allow for mouse movement between menu items
     setTimeout(() => {
       if (activeMenu && !menuRef.current?.matches(':hover')) {
         setActiveMenu(null);
@@ -257,8 +252,54 @@ export default function MegaMenu3() {
   const renderSubmenu = (item: any) => {
     if (!item.submenu) return null;
 
-    // Special handling for Products menu
     const isProductsMenu = item.name === 'Products';
+    const isSolutionsMenu = item.name === 'Solutions';
+    const isResourcesMenu = item.name === 'Resources';
+    const isCompanyMenu = item.name === 'Company';
+    const isContactMenu = item.name === 'Contact Us';
+
+    if (isContactMenu) {
+      return (
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 10 }}
+          transition={{ duration: 0.2 }}
+          className="z-40 bg-white/95 dark:bg-gray-900/95 shadow-lg border border-gray-200 dark:border-gray-800 rounded-lg w-48 py-2"
+          onMouseEnter={() => handleMenuEnter(item.name)}
+          onMouseLeave={handleMenuLeave}
+        >
+          {item.submenu.map((section: any, idx: number) => (
+            <div key={idx} className="space-y-1 px-3 py-1">
+              {section.title && (
+                <h3 className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider px-2 py-1">
+                  {section.title}
+                </h3>
+              )}
+              <ul className="space-y-1">
+                {section.items.map((subItem: any, subIdx: number) => (
+                  <li key={subIdx}>
+                    <Link
+                      href={subItem.href}
+                      className={`text-sm ${
+                        theme === 'dark'
+                          ? 'text-gray-300 hover:text-white'
+                          : 'text-gray-700 hover:text-gray-900'
+                      } transition-colors duration-200 flex items-center px-2 py-1.5 rounded`}
+                    >
+                      {subItem.icon && (
+                        <subItem.icon className="h-4 w-4 mr-2 text-blue-500" />
+                      )}
+                      {subItem.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </motion.div>
+      );
+    }
 
     return (
       <motion.div
@@ -266,174 +307,179 @@ export default function MegaMenu3() {
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: 10 }}
         transition={{ duration: 0.2 }}
-        className="fixed left-0 right-0 top-16 z-40 bg-white/95 dark:bg-gray-900/95 shadow-2xl border-b border-gray-200 dark:border-gray-800"
+        className={`z-40 bg-white/95 dark:bg-gray-900/95 shadow-2xl border border-gray-200 dark:border-gray-800 rounded-lg ${
+          isProductsMenu || isSolutionsMenu ? 'w-[900px]' : 
+          isResourcesMenu || isCompanyMenu ? 'w-[700px]' : 'w-full'
+        }`}
         onMouseEnter={() => handleMenuEnter(item.name)}
         onMouseLeave={handleMenuLeave}
       >
-        <div className="max-w-7xl mx-auto w-full py-8 px-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="w-full">
+          <div className={`flex ${isResourcesMenu ? 'gap-2' : 'gap-6'} p-4`}>
             {/* Left column - Menu items */}
-            <div className="md:col-span-2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {item.submenu.map((section: any, idx: number) => {
-                // Special handling for Enterprise TMS section in Products menu
-                if (isProductsMenu && section.title === 'Enterprise TMS') {
-                  const halfLength = Math.ceil(section.items.length / 2);
-                  const firstHalf = section.items.slice(0, halfLength);
-                  const secondHalf = section.items.slice(halfLength);
-                  
-                  return (
-                    <div key={idx} className="col-span-2 grid grid-cols-2 gap-6">
-                      <div className="space-y-4">
-                        <h3 className="text-sm font-semibold text-gray-900 dark:text-white uppercase tracking-wider text-center md:text-left">
+            {isSolutionsMenu ? (
+              <div className="grid grid-cols-2 gap-x-8 gap-y-2 flex-1">
+                {item.submenu.map((subItem: any, idx: number) => (
+                  <Link
+                    key={idx}
+                    href={subItem.href}
+                    className={`py-1.5 text-sm ${
+                      theme === 'dark' ? 'text-gray-300 hover:text-white' : 'text-gray-700 hover:text-gray-900'
+                    } transition-colors duration-200 flex items-center space-x-2`}
+                  >
+                    {subItem.icon && (
+                      <subItem.icon className="h-4 w-4 flex-shrink-0 text-blue-500" />
+                    )}
+                    <span className="whitespace-nowrap">{subItem.name}</span>
+                  </Link>
+                ))}
+              </div>
+            ) : (
+              <div className={`md:col-span-2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 ${isResourcesMenu ? 'pr-0' : ''}`}>
+                {item.submenu.map((section: any, idx: number) => {
+                  if (isProductsMenu && section.title === 'Enterprise TMS') {
+                    const halfLength = Math.ceil(section.items.length / 2);
+                    const firstHalf = section.items.slice(0, halfLength);
+                    const secondHalf = section.items.slice(halfLength);
+                    
+                    return (
+                      <div key={idx} className="col-span-2">
+                        <h3 className="text-sm font-semibold text-gray-900 dark:text-white uppercase tracking-wider text-center mb-3">
                           Enterprise TMS
                         </h3>
-                        <ul className="space-y-3">
-                          {firstHalf.map((subItem: any, subIdx: number) => (
-                            <li key={subIdx}>
-                              <Link
-                                href={subItem.href}
-                                className={`text-base ${
-                                  theme === 'dark'
-                                    ? 'text-gray-300 hover:text-white'
-                                    : 'text-gray-700 hover:text-gray-900'
-                                } transition-colors duration-200 flex items-start group`}
-                              >
-                                {subItem.icon && (
-                                  <subItem.icon className="h-4 w-4 mr-2 mt-0.5 flex-shrink-0 text-blue-500" />
-                                )}
-                                <span className="group-hover:translate-x-1 transition-transform duration-200">
-                                  {subItem.name}
-                                </span>
-                                <ChevronRight className="ml-1 h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex-shrink-0" />
-                              </Link>
-                            </li>
-                          ))}
-                        </ul>
+                        <div className="grid grid-cols-2 gap-x-8 gap-y-2">
+                          <ul className="space-y-2">
+                            {firstHalf.map((subItem: any, subIdx: number) => (
+                              <li key={subIdx}>
+                                <Link
+                                  href={subItem.href}
+                                  className={`text-sm ${
+                                    theme === 'dark'
+                                      ? 'text-gray-300 hover:text-white'
+                                      : 'text-gray-700 hover:text-gray-900'
+                                  } transition-colors duration-200 flex items-start group`}
+                                >
+                                  {subItem.icon && (
+                                    <subItem.icon className="h-4 w-4 mr-2 mt-0.5 flex-shrink-0 text-blue-500" />
+                                  )}
+                                  <span className="group-hover:translate-x-1 transition-transform duration-200">
+                                    {subItem.name}
+                                  </span>
+                                </Link>
+                              </li>
+                            ))}
+                          </ul>
+                          <ul className="space-y-2">
+                            {secondHalf.map((subItem: any, subIdx: number) => (
+                              <li key={subIdx}>
+                                <Link
+                                  href={subItem.href}
+                                  className={`text-sm ${
+                                    theme === 'dark'
+                                      ? 'text-gray-300 hover:text-white'
+                                      : 'text-gray-700 hover:text-gray-900'
+                                  } transition-colors duration-200 flex items-start group`}
+                                >
+                                  {subItem.icon && (
+                                    <subItem.icon className="h-4 w-4 mr-2 mt-0.5 flex-shrink-0 text-blue-500" />
+                                  )}
+                                  <span className="group-hover:translate-x-1 transition-transform duration-200">
+                                    {subItem.name}
+                                  </span>
+                                </Link>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
                       </div>
-                      <div className="space-y-4 mt-8 md:mt-0">
-                        <div className="h-6"></div> {/* Spacer to align with title */}
-                        <ul className="space-y-3">
-                          {secondHalf.map((subItem: any, subIdx: number) => (
-                            <li key={subIdx}>
-                              <Link
-                                href={subItem.href}
-                                className={`text-base ${
-                                  theme === 'dark'
-                                    ? 'text-gray-300 hover:text-white'
-                                    : 'text-gray-700 hover:text-gray-900'
-                                } transition-colors duration-200 flex items-start group`}
-                              >
-                                {subItem.icon && (
-                                  <subItem.icon className="h-4 w-4 mr-2 mt-0.5 flex-shrink-0 text-blue-500" />
-                                )}
-                                <span className="group-hover:translate-x-1 transition-transform duration-200">
-                                  {subItem.name}
-                                </span>
-                                <ChevronRight className="ml-1 h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex-shrink-0" />
-                              </Link>
-                            </li>
-                          ))}
-                        </ul>
+                    );
+                  }
+                  
+                  if (isProductsMenu && section.title === 'SME – TMS') {
+                    return (
+                      <div key={idx} className="lg:col-start-3">
+                        <div className="space-y-2">
+                          <h3 className="text-sm font-semibold text-gray-900 dark:text-white uppercase tracking-wider">
+                            {section.title}
+                          </h3>
+                          <ul className="space-y-2">
+                            {section.items.map((subItem: any, subIdx: number) => (
+                              <li key={subIdx}>
+                                <Link
+                                  href={subItem.href}
+                                  className={`text-sm ${
+                                    theme === 'dark'
+                                      ? 'text-gray-300 hover:text-white'
+                                      : 'text-gray-700 hover:text-gray-900'
+                                  } transition-colors duration-200 flex items-start group`}
+                                >
+                                  {subItem.icon && (
+                                    <subItem.icon className="h-4 w-4 mr-2 mt-0.5 flex-shrink-0 text-blue-500" />
+                                  )}
+                                  <span className="group-hover:translate-x-1 transition-transform duration-200">
+                                    {subItem.name}
+                                  </span>
+                                </Link>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
                       </div>
-                    </div>
-                  );
-                }
-                
-                // For SME - TMS section in Products menu, move it to the right
-                if (isProductsMenu && section.title === 'SME – TMS') {
+                    );
+                  }
+                  
                   return (
-                    <div key={idx} className="lg:col-start-3">
-                      <div className="space-y-4">
+                    <div key={idx} className="space-y-2">
+                      {section.title && (
                         <h3 className="text-sm font-semibold text-gray-900 dark:text-white uppercase tracking-wider">
                           {section.title}
                         </h3>
-                        <ul className="space-y-3">
-                          {section.items.map((subItem: any, subIdx: number) => (
-                            <li key={subIdx}>
-                              <Link
-                                href={subItem.href}
-                                className={`text-base ${
-                                  theme === 'dark'
-                                    ? 'text-gray-300 hover:text-white'
-                                    : 'text-gray-700 hover:text-gray-900'
-                                } transition-colors duration-200 flex items-start group`}
-                              >
-                                {subItem.icon && (
-                                  <subItem.icon className="h-4 w-4 mr-2 mt-0.5 flex-shrink-0 text-blue-500" />
-                                )}
-                                <span className="group-hover:translate-x-1 transition-transform duration-200">
-                                  {subItem.name}
-                                </span>
-                                <ChevronRight className="ml-1 h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex-shrink-0" />
-                              </Link>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
+                      )}
+                      <ul className="space-y-2">
+                        {(section.items || [section]).map((subItem: any, subIdx: number) => (
+                          <li key={subIdx}>
+                            <Link
+                              href={subItem.href}
+                              className={`text-sm ${
+                                theme === 'dark'
+                                  ? 'text-gray-300 hover:text-white'
+                                  : 'text-gray-700 hover:text-gray-900'
+                              } transition-colors duration-200 flex items-start group`}
+                            >
+                              {subItem.icon && (
+                                <subItem.icon className="h-4 w-4 mr-2 mt-0.5 flex-shrink-0 text-blue-500" />
+                              )}
+                              <span className="group-hover:translate-x-1 transition-transform duration-200">
+                                {subItem.name}
+                              </span>
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
                     </div>
                   );
-                }
-                
-                // Default rendering for other menu items
-                return (
-                  <div key={idx} className="space-y-4">
-                    {section.title && (
-                      <h3 className="text-sm font-semibold text-gray-900 dark:text-white uppercase tracking-wider">
-                        {section.title}
-                      </h3>
-                    )}
-                    <ul className="space-y-3">
-                      {(section.items || [section]).map((subItem: any, subIdx: number) => (
-                        <li key={subIdx}>
-                          <Link
-                            href={subItem.href}
-                            className={`text-base ${
-                              theme === 'dark'
-                                ? 'text-gray-300 hover:text-white'
-                                : 'text-gray-700 hover:text-gray-900'
-                            } transition-colors duration-200 flex items-start group`}
-                          >
-                            {subItem.icon && (
-                              <subItem.icon className="h-4 w-4 mr-2 mt-0.5 flex-shrink-0 text-blue-500" />
-                            )}
-                            <span className="group-hover:translate-x-1 transition-transform duration-200">
-                              {subItem.name}
-                            </span>
-                            <ChevronRight className="ml-1 h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex-shrink-0" />
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                );
-              })}
-            </div>
+                })}
+              </div>
+            )}
 
             {/* Right column - Featured content */}
-            {item.featured && (
-              <div className="hidden md:block">
-                <div className="bg-gradient-to-br from-blue-600 to-blue-800 rounded-xl overflow-hidden h-full flex flex-col">
-                  <div className="relative h-40 overflow-hidden">
-                    <Image
-                      src={item.featured.image}
-                      alt={item.featured.title}
-                      fill
-                      className="object-cover opacity-90 hover:opacity-100 transition-opacity duration-300"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
-                  </div>
-                  <div className="p-6 flex-1 flex flex-col">
-                    <h3 className="text-xl font-semibold text-white mb-2">{item.featured.title}</h3>
-                    <p className="text-blue-100 text-sm mb-4 flex-1">
-                      {item.featured.description}
-                    </p>
-                    <Link 
-                      href={item.featured.ctaLink}
-                      className="text-white text-sm font-medium hover:underline flex items-center self-start"
-                    >
-                      {item.featured.cta} <ChevronRight className="ml-1 h-4 w-4" />
-                    </Link>
-                  </div>
+            {item.featured && !isContactMenu && (
+              <div className={`${isResourcesMenu ? 'w-40 h-40 ml-2' : 'w-48 h-40'}`}>
+                <div className="relative rounded-lg overflow-hidden w-full h-full bg-gradient-to-br from-blue-600 to-blue-800">
+                  <Image
+                    src={item.featured.image}
+                    alt={item.featured.title}
+                    fill
+                    className="object-cover opacity-90 hover:opacity-100 transition-opacity duration-300"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+                  <Link
+                    href={item.featured.ctaLink}
+                    className="absolute bottom-2 right-2 bg-black/60 hover:bg-black/80 text-white text-xs font-medium px-2 py-1 rounded transition-colors flex items-center space-x-1"
+                  >
+                    <span>{item.featured.cta}</span>
+                    <ChevronRight className="h-3 w-3" />
+                  </Link>
                 </div>
               </div>
             )}
@@ -445,7 +491,7 @@ export default function MegaMenu3() {
 
   return (
     <div className="relative" ref={menuRef}>
-      <div className="fixed w-full left-0 right-0 z-50" style={{ padding: '0 16px' }}>
+      <div className="fixed w-full left-0 right-0 z-50 px-4">
         <header
           className={`max-w-7xl mx-auto transition-all duration-300 ${
             isScrolled || activeMenu
@@ -470,16 +516,17 @@ export default function MegaMenu3() {
               </div>
 
               {/* Desktop Menu */}
-              <div className="hidden md:flex items-center space-x-1">
+              <div className="hidden md:flex items-center space-x-1 relative">
                 {menuItems.map((item) => (
                   <div
                     key={item.name}
-                    className="relative"
+                    className="relative group"
                     onMouseEnter={() => handleMenuEnter(item.name)}
                     onMouseLeave={handleMenuLeave}
+                    
                   >
                     <button
-                      className={`px-4 py-2.5 text-sm font-medium ${
+                      className={`px-4 py-2.5 text-sm font-medium relative ${
                         activeMenu === item.name
                           ? 'text-blue-600 dark:text-blue-400'
                           : theme === 'dark'
@@ -497,6 +544,7 @@ export default function MegaMenu3() {
                         />
                       )}
                     </button>
+                    <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-blue-500 scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300"></div>
                   </div>
                 ))}
               </div>
@@ -520,15 +568,28 @@ export default function MegaMenu3() {
             {/* Desktop Mega Menu */}
             <AnimatePresence>
               {activeMenu && (
-                <div className="hidden md:block">
-                  {menuItems.map(
-                    (item) =>
-                      activeMenu === item.name && (
-                        <div key={item.name} className="w-full">
-                          {renderSubmenu(item)}
-                        </div>
-                      )
-                  )}
+                <div className="hidden md:block absolute left-0 right-0">
+                  <div className="max-w-7xl mx-auto relative">
+                    {menuItems.map(
+                      (item) =>
+                        activeMenu === item.name && (
+                          <div 
+                            key={item.name}
+                            className={`absolute top-0 ${item.name === 'Contact Us' ? 'right-0' : 'left-0'} ${item.name === 'Contact Us' ? 'w-auto' : 'w-full'}`}
+                            style={item.name === 'Contact Us' ? {
+                              right: '0px'
+                            } : {
+                              left: menuItemRefs.current[item.name]?.getBoundingClientRect().left,
+                              width: menuItemRefs.current[item.name]?.getBoundingClientRect().width
+                            }}
+                          >
+                            <div className={`absolute top-0 ${item.name === 'Contact Us' ? 'right-0' : 'left-0'} mt-1`}>
+                              {renderSubmenu(item)}
+                            </div>
+                          </div>
+                        )
+                    )}
+                  </div>
                 </div>
               )}
             </AnimatePresence>
@@ -564,41 +625,41 @@ export default function MegaMenu3() {
                         {activeMenu === item.name && item.submenu && (
                           <div className="mt-2 pl-4 space-y-2">
                             {item.submenu.map((section: any, idx: number) => (
-                          <div key={idx}>
-                            {section.title && (
-                              <h4 className="font-medium text-sm text-gray-500 mt-3 mb-1">
-                                {section.title}
-                              </h4>
-                            )}
-                            <ul className="space-y-1">
-                              {(section.items || [section]).map(
-                                (subItem: any, subIdx: number) => (
-                                  <li key={subIdx}>
-                                    <Link
-                                      href={subItem.href}
-                                      className="block py-1.5 text-sm text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
-                                    >
-                                      {subItem.name}
-                                    </Link>
-                                  </li>
-                                )
-                              )}
-                            </ul>
+                              <div key={idx}>
+                                {section.title && (
+                                  <h4 className="font-medium text-sm text-gray-500 mt-3 mb-1">
+                                    {section.title}
+                                  </h4>
+                                )}
+                                <ul className="space-y-1">
+                                  {(section.items || [section]).map(
+                                    (subItem: any, subIdx: number) => (
+                                      <li key={subIdx}>
+                                        <Link
+                                          href={subItem.href}
+                                          className="block py-1.5 text-sm text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
+                                        >
+                                          {subItem.name}
+                                        </Link>
+                                      </li>
+                                    )
+                                  )}
+                                </ul>
+                              </div>
+                            ))}
                           </div>
-                        ))}
+                        )}
                       </div>
-                    )}
+                    ))}
                   </div>
-                ))}
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </nav>
-    </header>
-  </div>
-  {/* Add padding to account for fixed header */}
-  <div className="h-16"></div>
-</div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </nav>
+        </header>
+      </div>
+      {/* Add padding to account for fixed header */}
+      <div className="h-16"></div>
+    </div>
   );
 }
