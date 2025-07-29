@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 500">
+  <defs>
+    <style>
+      .cls-1 {
+        letter-spacing: 0em;
+      }
+
+      .cls-2 {
+        fill: #49dffb;
+      }
+
+      .cls-3, .cls-4 {
+        fill: none;
+      }
+
+      .cls-5 {
+        font-family: Oswald-Bold, Oswald;
+        font-size: 36.83px;
+        font-weight: 700;
+      }
+
+      .cls-6 {
+        clip-path: url(#clippath-1);
+      }
+
+      .cls-4 {
+        stroke: #49dffb;
+        stroke-miterlimit: 10;
+        stroke-width: 16px;
+      }
+
+      .cls-7 {
+        clip-path: url(#clippath);
+      }
+    </style>
+    <clipPath id="clippath">
+      <rect class="cls-3" x="111.43" y="-12.36" width="132.99" height="352.96" transform="translate(189.26 -77.68) rotate(50)"/>
+    </clipPath>
+    <clipPath id="clippath-1">
+      <rect class="cls-3" x="255.58" y="159.4" width="132.99" height="352.96" transform="translate(271.82 798.51) rotate(-130)"/>
+    </clipPath>
+  </defs>
+  <path class="cls-2" d="M327.43,184.75c-35.89-42.77-99.67-48.35-142.44-12.45-42.77,35.89-48.35,99.67-12.45,142.44,35.89,42.77,99.67,48.35,142.44,12.45,42.77-35.89,48.35-99.67,12.45-142.44ZM294.55,302.85c-29.33,24.62-73.07,20.79-97.68-8.54-24.62-29.33-20.79-73.07,8.54-97.68,29.33-24.62,73.07-20.79,97.68,8.54,24.62,29.33,20.79,73.07-8.54,97.68Z"/>
+  <path class="cls-2" d="M247.65,292.71c-14.2-.72-21.09-8.74-21.6-26.34l15.74-2.37c.1,10.8,2.57,14.81,7.2,14.81,3.81,0,4.63-3.19,4.63-6.07,0-6.89-3.5-11.01-9.05-15.84l-7.3-6.28c-6.17-5.45-11.21-11.01-11.21-21.71,0-13.06,8.02-20.68,20.68-21.6v-9.77h5.25v9.67c15.94.93,17.9,14.4,18.21,23.56l-15.95,1.95c-.21-7.41-.62-12.34-5.35-12.14-3.5,0-5.04,3.6-5.04,6.48,0,6.58,4.01,10.08,8.03,13.68l7,6.07c7,6.38,12.86,13.48,12.86,25s-7.2,19.65-18.83,20.78v10.29h-5.25v-10.18Z"/>
+  <g class="cls-7">
+    <ellipse class="cls-4" cx="250.17" cy="249.97" rx="144.65" ry="144.35" transform="translate(-102.15 219.31) rotate(-40)"/>
+  </g>
+  <g class="cls-6">
+    <circle class="cls-4" cx="250.25" cy="250.06" r="144.65"/>
+  </g>
+  <polyline class="cls-2" points="340.8 104.78 349 148.98 304.74 143.35"/>
+  <polyline class="cls-2" points="197.31 352.56 145.38 349.15 157.88 399.27"/>
+  <text class="cls-5" transform="translate(102.19 -25.83)"><tspan x="0" y="0">Debt Mana</tspan><tspan class="cls-1" x="159.67" y="0">g</tspan><tspan x="178.08" y="0">ement</tspan></text>
+</svg>

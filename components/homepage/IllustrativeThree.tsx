@@ -23,7 +23,7 @@ import EcosystemEnabler from './ecosystem_enabler';
 import ClientLogoStrip from '../common/ClientLogoStrip';
 import CaseStudiesStyleThree from './CaseStudiesStyleThree';
 import MegaMenu3 from './MegaMenu3';
-import PartnershipEcosystem from './PartnershipEcosystem';
+import PartnershipEcosystem_Style_3 from './PartnershipEcosystem_Style_3';
 import { ThemeToggle } from '@/components/ui/theme-toggle';
 
 export default function IllustrativeThree() {
@@ -88,13 +88,18 @@ export default function IllustrativeThree() {
     <div className="relative overflow-x-hidden transition-colors duration-200">
       <MegaMenu3 />
       <ThemeToggle />
-      
+
+      {/* Dark mode background image container */}
+      <div className="fixed inset-0 -z-10">
+        <div className="absolute inset-0 dark:bg-[url('/bg_dark_2.jpg')] dark:bg-cover dark:bg-center dark:bg-no-repeat dark:opacity-10" />
+      </div>
+
       {/* Main Banner with right-aligned image */}
-      <section className="relative bg-white py-16 md:py-24">
+      <section className="relative pt-8 pb-16 md:pt-12 md:pb-24 bg-white dark:bg-transparent">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="flex flex-col lg:flex-row items-center">
             {/* Left side - Text content */}
-            <div className="lg:w-1/2 mb-12 lg:mb-0 lg:pr-12">
+            <div className="lg:w-1/2 mb-6 lg:mb-0 lg:pr-12">
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -106,11 +111,17 @@ export default function IllustrativeThree() {
                 <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4 leading-tight">
                   Empower Your <span className="text-teal-600">Financial Future</span>
                 </h1>
-                <p className="text-lg text-gray-700 mb-8">
+                <p className="text-lg text-gray-700 mb-4">
                   Transform treasury operations with AI-driven insights, seamless automation, and global scalability.
                 </p>
+                <p className="text-lg text-gray-700 mb-4">
+                  Unlock new opportunities with our innovative platform designed to streamline your financial workflows.
+                </p>
+                <p className="text-lg text-gray-700 mb-8">
+                  Experience unparalleled efficiency and control in managing your treasury operations worldwide.
+                </p>
                 <div className="flex flex-wrap gap-4">
-                  <motion.button 
+                  <motion.button
                     whileHover={{ scale: 1.03 }}
                     whileTap={{ scale: 0.98 }}
                     className="px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white rounded-lg font-medium flex items-center transition-colors"
@@ -127,21 +138,21 @@ export default function IllustrativeThree() {
                 </div>
               </motion.div>
             </div>
-            
+
             {/* Right side - Image with Tilt */}
-            <motion.div 
+            <motion.div
               className="lg:w-1/2 flex justify-center lg:justify-start px-4"
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              <Tilt 
-                tiltMaxAngleX={5}
-                tiltMaxAngleY={5}
-                scale={1.05}
-                transitionSpeed={800}
-                className="w-full max-w-[900px] h-[520px] relative"
-              >
+                <Tilt
+                  tiltMaxAngleX={5}
+                  tiltMaxAngleY={5}
+                  scale={1.05}
+                  transitionSpeed={800}
+                  className="w-full max-w-[900px] h-[560px] relative"
+                >
                 <Image
                   src="/bg_style_3.png"
                   alt="Modern Financial Solutions"
@@ -173,30 +184,11 @@ export default function IllustrativeThree() {
               and supply chain operations, achieving agility, insights, and productivity.
             </p>
           </motion.div>
-
-          {/* Client Logo Carousel */}
-          <ClientLogoStrip variant="illustrative3" />
         </div>
       </section>
-      {/* Our Offerings */}
-      <section className="py-16 bg-white dark:bg-transparent transition-colors duration-200">
-        <div className="container mx-auto px-4 max-w-6xl">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-3xl font-bold text-gray-800 dark:text-white mb-4">Our Offerings</h2>
-            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-              We provide a holistic suite of financial tools to empower your organization.
-              Our solutions are crafted for scalability, security, and superior performance.
-            </p>
-          </motion.div>
-        </div>
+      <section className="w-full bg-transparent dark:bg-gray-700">
+        <ClientLogoStrip variant="illustrative3" />
       </section>
-
       {/* Ecosystem Enabler */}
       <section className="bg-white dark:bg-transparent">
         <EcosystemEnabler />
@@ -284,19 +276,26 @@ export default function IllustrativeThree() {
               {industries.concat(industries).map((industry, idx) => (
                 <div
                   key={industry.name + idx}
-                  className={`min-w-[300px] max-w-sm w-[90vw] md:w-96 rounded-2xl shadow-xl hover:shadow-2xl transition-all border border-gray-100 dark:border-gray-700 flex-shrink-0 transform hover:scale-105 duration-300 cursor-pointer group bg-white dark:bg-gray-800/20`}
+                  className={`min-w-[280px] max-w-[280px] rounded-2xl shadow-xl hover:shadow-2xl transition-all border border-gray-100 dark:border-gray-700 flex-shrink-0 transform hover:scale-105 duration-300 cursor-pointer group bg-white dark:bg-gray-800/20`}
                   style={{ transition: 'box-shadow 0.3s, transform 0.3s' }}
                 >
-                  <div className={`h-2 bg-gradient-to-r ${industry.color} dark:${industry.darkColor} transition-all duration-300`} />
                   <div className="p-6 flex flex-col h-full">
-                    <div className={`mb-4 p-3 rounded-lg w-14 h-14 flex items-center justify-center bg-gradient-to-br from-gray-100 to-gray-50 dark:from-gray-700 dark:to-gray-800 group-hover:scale-110 transition-transform duration-300`}>
-                      <industry.icon className="h-7 w-7 text-teal-600 dark:text-teal-400 drop-shadow-lg" />
+                    <div className="flex items-center gap-3 mb-2">
+                      <div className={`p-3 rounded-lg w-10 h-10 flex items-center justify-center bg-gradient-to-br from-gray-100 to-gray-50 dark:from-gray-700 dark:to-gray-800 group-hover:scale-110 transition-transform duration-300`}>
+                        <industry.icon className="h-6 w-6 text-teal-600 dark:text-teal-400 drop-shadow-lg" />
+                      </div>
+                      <h3 className="text-lg font-extrabold text-gray-800 dark:text-white group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors duration-200 drop-shadow">
+                        {industry.name}
+                      </h3>
                     </div>
-                    <h3 className="text-2xl font-extrabold text-gray-800 dark:text-white mb-2 group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors duration-200 drop-shadow">{industry.name}</h3>
-                    <p className="text-gray-700 dark:text-gray-300 mb-4 font-medium group-hover:text-gray-900 dark:group-hover:text-white transition-colors duration-200">{industry.description}</p>
-                    <span className="inline-block px-4 py-2 text-base font-bold rounded-full bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-700 text-gray-700 dark:text-gray-200 shadow-md group-hover:from-teal-500 group-hover:to-yellow-500 group-hover:scale-110 transition-all duration-300 mt-auto">
-                      {industry.metric} <ArrowRight className="inline-block ml-1 h-4 w-4 align-middle" />
-                    </span>
+                    <p className="text-gray-700 dark:text-gray-300 mb-4 font-medium group-hover:text-gray-900 dark:group-hover:text-white transition-colors duration-200 truncate">
+                      {industry.description}
+                    </p>
+                    <motion.div whileHover={{ x: 5 }} className="mt-auto">
+                      <button className="w-full px-3 py-1.5 border border-teal-600 dark:border-teal-400 text-teal-600 dark:text-teal-400 rounded-md hover:bg-teal-100 dark:hover:bg-teal-900/50 flex items-center justify-center text-sm transition-colors duration-200">
+                        Learn More <ArrowRight className="ml-1.5 h-4 w-4" />
+                      </button>
+                    </motion.div>
                   </div>
                 </div>
               ))}
@@ -304,7 +303,7 @@ export default function IllustrativeThree() {
             <style jsx>{`
               @keyframes carousel {
                 0% { transform: translateX(0); }
-                100% { transform: translateX(-50%); }
+                100% { transform: translateX(-100%); }
               }
               .animate-carousel {
                 animation-name: carousel;
@@ -314,7 +313,7 @@ export default function IllustrativeThree() {
         </div>
       </section>
       {/* Partnership Ecosystem Section */}
-      <PartnershipEcosystem variant="illustrative3" />        
+      <PartnershipEcosystem_Style_3 variant="illustrative3" />
       {/* Case Studies Section */}
       <CaseStudiesStyleThree />
 

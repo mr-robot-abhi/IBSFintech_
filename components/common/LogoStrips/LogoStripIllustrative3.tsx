@@ -24,63 +24,65 @@ export function LogoStripIllustrative3({ clients }: LogoStripIllustrative3Props)
   const animationDistance = -totalWidth / 2;
 
   return (
-    <div className="w-screen relative -left-[calc(50vw-50%)] -right-[calc(50vw-50%)] py-8 overflow-x-hidden">
-      <motion.div
-        className="flex items-center"
-        style={{
-          width: 'max-content',
-          willChange: 'transform',
-        }}
-        animate={{
-          x: [0, animationDistance],
-        }}
-        transition={{
-          x: {
-            repeat: Infinity,
-            repeatType: 'loop',
-            duration: 30,
-            ease: 'linear',
-          },
-        }}
-      >
-        {/* First set of logos */}
-        {allLogos.map((logo, idx) => (
-          <motion.div
-            key={`logo-1-${idx}`}
-            className="flex-shrink-0 flex items-center justify-center h-28 w-48 px-4"
-            whileHover={{ scale: 1.05 }}
-          >
-            <div className="relative w-full h-full">
-              <Image
-                src={logo.src}
-                alt={logo.alt}
-                fill
-                className="object-contain"
-                sizes="(max-width: 192px) 100vw, 192px"
-              />
-            </div>
-          </motion.div>
-        ))}
-        
-        {/* Duplicate set for seamless loop */}
-        {allLogos.map((logo, idx) => (
-          <motion.div
-            key={`logo-2-${idx}`}
-            className="flex-shrink-0 flex items-center justify-center h-28 w-48 px-4"
-            whileHover={{ scale: 1.05 }}
-          >
-            <div className="relative w-full h-full">
-              <Image
-                src={logo.src}
-                alt={logo.alt}
-                fill
-                className="object-contain"
-                sizes="(max-width: 192px) 100vw, 192px"
-              />
-            </div>
-          </motion.div>
-        ))}
-      </motion.div>
+    <div className="relative w-full overflow-hidden py-4">
+      <div className="relative w-full overflow-visible">
+        <motion.div
+          className="flex"
+          style={{
+            width: 'max-content',
+            willChange: 'transform',
+          }}
+          animate={{
+            x: [0, animationDistance],
+          }}
+          transition={{
+            x: {
+              repeat: Infinity,
+              repeatType: 'loop',
+              duration: 30,
+              ease: 'linear',
+            },
+          }}
+        >
+          {/* First set of logos */}
+          {allLogos.map((logo, idx) => (
+            <motion.div
+              key={`logo-1-${idx}`}
+              className="flex-shrink-0 flex items-center justify-center h-28 w-48 px-4"
+              whileHover={{ scale: 1.05 }}
+            >
+              <div className="relative w-full h-full">
+                <Image
+                  src={logo.src}
+                  alt={logo.alt}
+                  fill
+                  className="object-contain"
+                  sizes="(max-width: 192px) 100vw, 192px"
+                />
+              </div>
+            </motion.div>
+          ))}
+          
+          {/* Duplicate set for seamless loop */}
+          {allLogos.map((logo, idx) => (
+            <motion.div
+              key={`logo-2-${idx}`}
+              className="flex-shrink-0 flex items-center justify-center h-28 w-48 px-4"
+              whileHover={{ scale: 1.05 }}
+            >
+              <div className="relative w-full h-full">
+                <Image
+                  src={logo.src}
+                  alt={logo.alt}
+                  fill
+                  className="object-contain"
+                  sizes="(max-width: 192px) 100vw, 192px"
+                />
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
     </div>
   );
 }

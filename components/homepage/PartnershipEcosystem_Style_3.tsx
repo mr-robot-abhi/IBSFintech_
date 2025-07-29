@@ -50,37 +50,28 @@ export default function PartnershipEcosystem({ variant }: PartnershipEcosystemPr
             We collaborate with industry leaders to deliver comprehensive and innovative financial solutions.
           </p>
         </motion.div>
-        <div className="overflow-hidden">
-          <motion.div
-            className="flex gap-8"
-            animate={{ x: ['0%', '-50%'] }}
-            transition={{
-              x: {
-                repeat: Infinity,
-                repeatType: 'loop',
-                duration: 30,
-                ease: 'linear',
-              },
-            }}
-          >
-            {[...partners, ...partners].map((partner, index) => (
-              <motion.div
-                key={index}
-                whileHover={{ y: -8, transition: { type: 'spring', stiffness: 300 } }}
-                className={cn('rounded-xl overflow-hidden p-6 flex flex-col items-center text-center min-w-[280px]', cardStyles[variant])}
-              >
-                <div className="relative w-40 h-20 mb-4 flex-shrink-0">
-                  <Image
-                    src={`/${partner.logo}`}
-                    alt={partner.name}
-                    fill
-                    className={cn('object-contain', logoStyles[variant])}
-                  />
-                </div>
-                <p className="text-sm opacity-80">{partner.description}</p>
-              </motion.div>
-            ))}
-          </motion.div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {partners.map((partner, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              viewport={{ once: true }}
+              whileHover={{ y: -8, transition: { type: 'spring', stiffness: 300 } }}
+              className={cn('rounded-xl overflow-hidden p-6 flex flex-col items-center text-center', cardStyles[variant])}
+            >
+              <div className="relative w-40 h-20 mb-4">
+                <Image
+                  src={`/${partner.logo}`}
+                  alt={partner.name}
+                  fill
+                  className={cn('object-contain', logoStyles[variant])}
+                />
+              </div>
+              <p className="text-sm opacity-80">{partner.description}</p>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
