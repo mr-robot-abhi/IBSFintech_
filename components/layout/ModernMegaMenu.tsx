@@ -208,11 +208,11 @@ export default function ModernMegaMenu() {
                     initial="initial"
                     animate="animate"
                     exit="exit"
-                    className={`absolute top-full mt-2 z-40 ${index >= menu.length - 2 ? 'right-0' : 'left-0'}`}
+                    className={`absolute top-full mt-2 z-40 ${item.label === 'Products' ? 'left-0' : index >= menu.length - 2 ? 'right-0' : 'left-0'}`}
                   >
                     <div className={`rounded-xl shadow-2xl border border-white/10 bg-white overflow-hidden`}>
                       {item.mega ? (
-                        <div className="grid grid-cols-3 gap-6 p-6 w-[700px]">
+                        <div className={`grid grid-cols-3 gap-4 p-5 ${item.label === 'Products' ? 'w-[650px]' : 'w-[700px]'}`}>
                           {item.label === "Solutions" && item.groups ? (
                             <div className="col-span-3">
                               <h4 className="text-gray-900 font-bold text-sm mb-3 px-2">Our Solutions</h4>
@@ -234,6 +234,63 @@ export default function ModernMegaMenu() {
                                 })}
                               </div>
                             </div>
+                          ) : item.label === "Products" ? (
+                            // Special layout for Products dropdown with single-line Enterprise TMS
+                            <>
+                              <div className="col-span-2">
+                                {item.groups?.map((group) => (
+                                  <div key={group.title} className="mb-6 last:mb-0">
+                                    <h4 className="text-gray-900 font-bold text-sm mb-3 px-2">{group.title}</h4>
+                                    {group.title === "Enterprise TMS" ? (
+                                      // All Enterprise TMS items in a single line with icons
+                                      <div className="flex flex-wrap gap-3 px-2">
+                                        {group.items.map((sub, index) => {
+                                          const Icon = sub.icon || FileText;
+                                          return (
+                                            <Link 
+                                              key={sub.label} 
+                                              href={sub.href} 
+                                              className="flex items-center gap-1.5 px-2 py-1 rounded hover:bg-blue-50 text-gray-800 hover:text-blue-700 transition-colors whitespace-nowrap"
+                                            >
+                                              <Icon className="w-3.5 h-3.5 text-blue-600 flex-shrink-0" />
+                                              <span className="text-xs font-medium">{sub.label}</span>
+                                            </Link>
+                                          );
+                                        })}
+                                      </div>
+                                    ) : (
+                                      <ul className="space-y-1">
+                                        {group.items.map((sub) => {
+                                          const Icon = sub.icon || FileText;
+                                          return (
+                                            <li key={sub.label}>
+                                              <Link href={sub.href} className="flex items-center gap-2 px-2 py-1.5 rounded hover:bg-blue-50 text-gray-800 hover:text-blue-700 transition-colors">
+                                                <Icon className="w-4 h-4 text-blue-600" />
+                                                <span className="text-sm">{sub.label}</span>
+                                              </Link>
+                                            </li>
+                                          );
+                                        })}
+                                      </ul>
+                                    )}
+                                  </div>
+                                ))}
+                              </div>
+                              <div className="col-span-1">
+                                <div className="bg-blue-50 rounded-lg p-4 h-full flex flex-col">
+                                    <div>
+                                        <h5 className='text-blue-900 font-bold mb-2'>Our Products</h5>
+                                        <Image src="/Product Image.svg" alt="Products" width={250} height={150} className="rounded-md mb-2 mx-auto" />
+                                    </div>
+                                    <div className="mt-auto">
+                                      <p className='text-gray-700 text-xs mb-3'>Comprehensive treasury management solutions for enterprises of all sizes.</p>
+                                      <Link href="/products" className='text-blue-700 font-semibold text-xs flex items-center gap-1 hover:underline justify-center'>
+                                        View All Products <ArrowRight size={12} />
+                                      </Link>
+                                    </div>
+                                </div>
+                              </div>
+                            </>
                           ) : (
                             <div className="col-span-2 grid grid-cols-2 gap-6">
                               {item.groups?.map((group) => (
@@ -256,18 +313,20 @@ export default function ModernMegaMenu() {
                               ))}
                             </div>
                           )}
-                          <div className="col-span-1">
-                            <div className="bg-blue-50 rounded-lg p-4 h-full flex flex-col justify-between">
-                                <div>
-                                    <h5 className='text-blue-900 font-bold mb-2'>Featured Insight</h5>
-                                    <Image src="/bg_1.jpg" alt="Featured" width={300} height={150} className="rounded-md mb-2" />
-                                    <p className='text-gray-700 text-sm'>Discover how our solutions are driving innovation in finance.</p>
-                                </div>
-                                <Link href="/resources/case-studies" className='text-blue-700 font-semibold text-sm mt-4 flex items-center gap-1 hover:underline'>
-                                    Read More <ArrowRight size={14} />
-                                </Link>
+                          {item.label !== "Products" && (
+                            <div className="col-span-1">
+                              <div className="bg-blue-50 rounded-lg p-4 h-full flex flex-col justify-between">
+                                  <div>
+                                      <h5 className='text-blue-900 font-bold mb-2'>Featured Insight</h5>
+                                      <Image src="/bg_1.jpg" alt="Featured" width={300} height={150} className="rounded-md mb-2" />
+                                      <p className='text-gray-700 text-sm'>Discover how our solutions are driving innovation in finance.</p>
+                                  </div>
+                                  <Link href="/resources/case-studies" className='text-blue-700 font-semibold text-sm mt-4 flex items-center gap-1 hover:underline'>
+                                      Read More <ArrowRight size={14} />
+                                  </Link>
+                              </div>
                             </div>
-                          </div>
+                          )}
                         </div>
                       ) : item.submenus ? (
                         <div className="p-2 w-56 bg-white shadow-xl rounded-xl border border-white/10">
