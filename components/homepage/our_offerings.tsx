@@ -65,16 +65,20 @@ const INTERFACES = [
 
 export default function OurOfferingsSection() {
   const autoplay = useRef(
-    Autoplay({ delay: 2500, stopOnMouseEnter: true, stopOnInteraction: false })
+    Autoplay({ delay: 2500, stopOnMouseEnter: true, stopOnInteraction: false, playOnInit: true })
   );
+  
+  // Duplicate services for infinite scroll effect
+  const duplicatedServices = [...SERVICES, ...SERVICES, ...SERVICES];
+  
   const [emblaRef, emblaApi] = useEmblaCarousel({ 
-    loop: true, 
+    loop: false, 
     align: 'center',
     slidesToScroll: 1,
-    duration: 30,
-    startIndex: 1,
+    duration: 25,
+    startIndex: SERVICES.length,
     skipSnaps: false,
-    containScroll: 'trimSnaps',
+    containScroll: false,
     dragFree: false
   }, [autoplay.current]);
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -84,9 +88,32 @@ export default function OurOfferingsSection() {
 
   useEffect(() => {
     if (!emblaApi) return;
-    const onSelect = () => setSelectedIndex(emblaApi.selectedScrollSnap());
+    
+    const onSelect = () => {
+      const index = emblaApi.selectedScrollSnap();
+      setSelectedIndex(index % SERVICES.length);
+    };
+    
+    const onScroll = () => {
+      if (!emblaApi) return;
+      const lastIndex = emblaApi.scrollSnapList().length - 1;
+      const selectedIndex = emblaApi.selectedScrollSnap();
+      
+      if (selectedIndex === 0) {
+        emblaApi.scrollTo(lastIndex - (SERVICES.length * 2), false);
+      } else if (selectedIndex === lastIndex) {
+        emblaApi.scrollTo(SERVICES.length, false);
+      }
+    };
+    
     emblaApi.on('select', onSelect);
+    emblaApi.on('scroll', onScroll);
     onSelect();
+    
+    return () => {
+      emblaApi.off('select', onSelect);
+      emblaApi.off('scroll', onScroll);
+    };
   }, [emblaApi]);
 
   return (
@@ -111,8 +138,9 @@ export default function OurOfferingsSection() {
 
         <div className="overflow-hidden" ref={emblaRef}>
           <div className="flex items-center">
-            {SERVICES.map((service, idx) => {
-              const isActive = idx === selectedIndex;
+            {duplicatedServices.map((service, idx) => {
+              const actualIndex = idx % SERVICES.length;
+              const isActive = actualIndex === selectedIndex;
               const glowStyle = isActive ? {
                 boxShadow: `0 0 10px 3px ${service.glowColor}, 0 0 20px 6px ${service.glowColor}`,
                 borderColor: service.glowColor,
@@ -187,24 +215,24 @@ export default function OurOfferingsSection() {
         </button>
 
         <div className="mt-10">
-          <h3 className="text-white text-xl font-semibold mb-1 text-center">Interfaces</h3>
-          <p className="text-sm text-white text-center mb-4">Integrated touchpoints powering our services</p>
+          <h3 className="text-white text-2xl font-bold mb-2 text-center">Interfaces</h3>
+          <p className="text-base text-white text-center mb-6">Integrated touchpoints powering our services</p>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
             {INTERFACES.map(({ name, icon }, idx) => (
               <div
                 key={idx}
-                className="bg-white border border-blue-50 text-blue-800 rounded-lg p-0.5 flex flex-col items-center justify-center gap-0.5 text-center shadow-sm hover:shadow-md transition-all duration-200 hover:border-blue-100 hover:-translate-y-0.5 text-base font-medium h-24"
+                className="bg-white border border-blue-50 text-blue-800 rounded-lg p-1 flex flex-col items-center justify-center gap-1 text-center shadow-md hover:shadow-lg transition-all duration-300 hover:border-blue-100 hover:-translate-y-1 text-lg font-bold h-28"
               >
-                <div className="w-16 h-16 p-0 relative flex items-center justify-center">
+                <div className="w-20 h-20 p-0 relative flex items-center justify-center">
                   <Image 
                     src={icon} 
                     alt={name} 
-                    width={64} 
-                    height={64}
+                    width={80} 
+                    height={80}
                     className="text-blue-500 object-contain"
                   />
                 </div>
-                <span className="font-medium leading-tight text-xs">{name}</span>
+                <span className="font-bold leading-tight text-sm">{name}</span>
               </div>
             ))}
           </div>

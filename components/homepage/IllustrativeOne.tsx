@@ -160,7 +160,10 @@ export default function IllustrativeOne() {
       </section>
       <OurOfferingsSection />
       {/* Why Choose Us */}
-      <section className="py-20 relative overflow-hidden bg-gradient-to-b from-blue-900 via-purple-900 to-indigo-900">
+      <section className="py-20 relative overflow-hidden" style={{
+        background: 'radial-gradient(1000px 800px at 20% 50%, #3b61ff 0%, transparent 80%), radial-gradient(700px 500px at 50% 100%, #8e2de2 0%, transparent 80%), radial-gradient(1200px 1000px at 100% 0%, #000000 0%, #0c001a 100%)',
+        backgroundColor: '#0c001a'
+      }}>
         {/* Background Elements */}
         <div className="absolute -top-1/4 -left-1/4 w-[800px] h-[800px] rounded-full bg-blue-400/20 blur-[120px]"></div>
         <div className="absolute -bottom-1/3 -right-1/4 w-[1000px] h-[1000px] rounded-full bg-purple-500/30 blur-[160px]"></div>
@@ -169,14 +172,14 @@ export default function IllustrativeOne() {
           <div className="flex flex-col lg:flex-row gap-12">
             {/* LEFT TEXT */}
             <div className="w-full lg:w-2/5 text-white">
-              <h2 className="text-4xl font-bold mb-6">Why Choose Us</h2>
-              <p className="text-lg text-white/90 mb-6">
-                Discover how our innovative financial solutions can transform your business operations and drive growth in today’s competitive landscape.
+              <h2 className="text-5xl font-bold mb-6">Why Choose Us</h2>
+              <p className="text-xl text-white/90 mb-6">
+                Discover how our innovative financial solutions can transform your business operations and drive growth.
               </p>
-              <p className="text-white/80 mb-8">
-                With years of industry expertise and a commitment to excellence, we provide cutting‑edge solutions tailored to your unique business needs.
+              <p className="text-lg text-white/80 mb-8">
+                With years of industry expertise, we provide cutting‑edge solutions tailored to your unique business needs.
               </p>
-              <button className="bg-white text-blue-900 hover:bg-blue-50 font-medium py-3 px-8 rounded-full transition-colors duration-200 flex items-center">
+              <button className="bg-[#CA3826] text-white hover:bg-[#b03020] font-medium py-3 px-8 rounded-full transition-colors duration-200 flex items-center">
                 Learn More
                 <svg xmlns="http://www.w3.org/2000/svg" className="ml-2 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -187,50 +190,50 @@ export default function IllustrativeOne() {
             {/* RIGHT GRID */}
             <div className="w-full lg:w-3/5 grid grid-cols-4 grid-rows-2 gap-3 h-[600px]">
               {/* Comprehensive */}
-              <div className="col-span-2 row-span-1 rounded-xl bg-gradient-to-br from-blue-500/90 to-indigo-600/90 p-4 flex flex-col justify-between">
+              <div className="col-span-2 row-span-1 rounded-xl bg-[#A7BED3] p-4 flex flex-col justify-between">
                 <div className="space-y-2">
-                  <h3 className="text-lg font-bold">Comprehensive</h3>
-                  <p className="text-sm opacity-90 leading-tight">Our end‑to‑end solution covers compliance, operational, and financial risks. With a unified platform, you gain full visibility and control over your entire risk landscape. Integrated risk analytics provide real‑time monitoring while AI‑powered alerts prevent potential issues before they escalate. The system automatically generates regulatory reports and maintains audit trails for all transactions.</p>
+                  <h3 className="text-xl font-bold">Comprehensive</h3>
+                  <p className="text-base opacity-90 leading-tight">Our end‑to‑end solution covers compliance, operational, and financial risks. With a unified platform, you gain full visibility and control over your entire risk landscape.</p>
                 </div>
               </div>
 
               {/* Nimble */}
-              <div className="col-span-1 row-span-1 rounded-xl bg-gradient-to-br from-emerald-500/90 to-teal-600/90 p-4 flex flex-col justify-between">
+              <div className="col-span-1 row-span-1 rounded-xl bg-[#6DD6DA] p-4 flex flex-col justify-between">
                 <div className="space-y-2">
-                  <h3 className="text-lg font-bold">Nimble</h3>
-                  <p className="text-sm opacity-90 leading-tight">Rapid implementation and deployment with our agile approach. Our cloud‑native architecture allows for instant scaling while maintaining enterprise‑grade security.</p>
+                  <h3 className="text-xl font-bold">Nimble</h3>
+                  <p className="text-base opacity-90 leading-tight">Rapid implementation and deployment with our agile approach. Our cloud‑native architecture allows for instant scaling.</p>
                 </div>
               </div>
 
               {/* Domain-Centric */}
-              <div className="col-span-1 row-span-1 rounded-xl bg-gradient-to-br from-purple-500/90 to-fuchsia-600/90 p-4 flex flex-col justify-between">
+              <div className="col-span-1 row-span-1 rounded-xl bg-[#FED766] p-4 flex flex-col justify-between">
                 <div className="space-y-2">
-                  <h3 className="text-lg font-bold">Domain‑Centric</h3>
-                  <p className="text-sm opacity-90 leading-tight">Built by industry experts with deep financial expertise. Our solution incorporates decades of collective experience in banking, capital markets, and insurance.</p>
+                  <h3 className="text-xl font-bold">Domain‑Centric</h3>
+                  <p className="text-base opacity-90 leading-tight">Built by industry experts with deep financial expertise. Our solution incorporates decades of collective experience.</p>
                 </div>
               </div>
 
               {/* Configurable */}
-              <div className="col-span-1 row-span-1 rounded-xl bg-gradient-to-br from-amber-500/90 to-orange-600/90 p-4 flex flex-col justify-between">
+              <div className="col-span-1 row-span-1 rounded-xl bg-[#FFCAAF] p-4 flex flex-col justify-between">
                 <div className="space-y-2">
-                  <h3 className="text-lg font-bold">Configurable</h3>
-                  <p className="text-sm opacity-90 leading-tight">Tailor the platform to your specific requirements. Our drag‑and‑drop interface allows easy customization of dashboards and workflows. Role‑based access controls ensure users only see relevant information.</p>
+                  <h3 className="text-xl font-bold">Configurable</h3>
+                  <p className="text-base opacity-90 leading-tight">Tailor the platform to your specific requirements. Our drag‑and‑drop interface allows easy customization of dashboards.</p>
                 </div>
               </div>
 
               {/* Best Practices */}
-              <div className="col-span-1 row-span-1 rounded-xl bg-gradient-to-br from-rose-500/90 to-pink-600/90 p-4 flex flex-col justify-between">
+              <div className="col-span-1 row-span-1 rounded-xl bg-[#FCFF6C] p-4 flex flex-col justify-between">
                 <div className="space-y-2">
-                  <h3 className="text-lg font-bold">Best Practices</h3>
-                  <p className="text-sm opacity-90 leading-tight">Built on industry standards and regulatory requirements. The platform incorporates Basel III, IFRS 9, and GDPR compliance by design. Regular third‑party security audits ensure data protection.</p>
+                  <h3 className="text-xl font-bold">Best Practices</h3>
+                  <p className="text-base opacity-90 leading-tight">Built on industry standards and regulatory requirements. The platform incorporates Basel III, IFRS 9, and GDPR compliance.</p>
                 </div>
               </div>
 
               {/* Integrated */}
-              <div className="col-span-2 row-span-1 rounded-xl bg-gradient-to-br from-indigo-500/90 to-blue-700/90 p-4 flex flex-col justify-between">
+              <div className="col-span-2 row-span-1 rounded-xl bg-[#D7FFAB] p-4 flex flex-col justify-between">
                 <div className="space-y-2">
-                  <h3 className="text-lg font-bold">Integrated</h3>
-                  <p className="text-sm opacity-90 leading-tight">Seamlessly connects with ERP systems, market data providers, and banking partners. The platform supports SWIFT, FIX, and ISO 20022 messaging standards. Real‑time two‑way synchronization with accounting systems ensures data consistency. Built‑in connectors for common enterprise applications reduce integration costs. The API gateway provides secure access to external developers for custom integrations.</p>
+                  <h3 className="text-xl font-bold">Integrated</h3>
+                  <p className="text-base opacity-90 leading-tight">Seamlessly connects with ERP systems, market data providers, and banking partners. The platform supports SWIFT, FIX, and ISO 20022 messaging standards.</p>
                 </div>
               </div>
             </div>
@@ -350,7 +353,7 @@ export default function IllustrativeOne() {
             </div>
           </div>
           {/* Let's Connect Subsection */}
-          <div className="flex-1 py-16 bg-gradient-to-b from-gray-900 to-gray-800 relative z-10 flex items-center">
+          <div className="flex-1 py-0 bg-gradient-to-b from-gray-900 to-gray-800 relative z-10 flex items-center">
             <div className="container mx-auto px-4 max-w-7xl w-full">
               <div className="flex flex-row items-center justify-between gap-8">
                 {/* Left Column - Text and Buttons */}
@@ -361,24 +364,30 @@ export default function IllustrativeOne() {
                   transition={{ duration: 0.6 }}
                   className="text-center md:text-left w-full max-w-2xl"
                 >
-                  <h2 className="text-4xl font-bold mb-6 text-white">Let's Connect</h2>
-                  <p className="text-xl text-white/90 mb-8">
-                    Ready to revolutionize your treasury operations? Contact us to explore our solutions.
+                  <h2 className="text-4xl font-bold mb-2 text-white">Let's Connect</h2>
+                  <p className="text-xl text-white/90 mb-1">
+                    Ready to revolutionize your treasury operations?
                   </p>
-                  <div className="flex flex-wrap justify-center md:justify-start gap-6">
+                  <p className="text-lg text-white/80 mb-1">
+                    Contact us to explore our solutions and see how we can transform your financial processes.
+                  </p>
+                  <p className="text-base text-white/70 mb-3">
+                    Our team of experts is ready to assist you with tailored financial technology solutions.
+                  </p>
+                  <div className="flex flex-wrap justify-center md:justify-start gap-2">
                     <motion.a
                       href="/contact"
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.98 }}
-                      className="px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-medium rounded-xl shadow-xl hover:shadow-blue-600/30 transition-all duration-300 flex items-center"
+                      className="px-4 py-2 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-medium rounded-xl shadow-xl hover:shadow-blue-600/30 transition-all duration-300 flex items-center"
                     >
-                      Contact Us <ArrowRight className="ml-2 h-5 w-5" />
+                      Contact Us <ArrowRight className="ml-2 h-4 w-4" />
                     </motion.a>
                     <motion.a
                       href="/demo"
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.98 }}
-                      className="px-8 py-4 border-2 border-blue-400 text-white font-medium rounded-xl hover:bg-blue-500/10 transition-all duration-300 flex items-center"
+                      className="px-4 py-2 border-2 border-blue-400 text-white font-medium rounded-xl hover:bg-blue-500/10 transition-all duration-300 flex items-center"
                     >
                       Request Demo
                     </motion.a>
@@ -386,12 +395,12 @@ export default function IllustrativeOne() {
                 </motion.div>
 
                 {/* Middle Column - Watermark */}
-                <div className="hidden lg:flex items-center justify-center flex-shrink-0 w-64 h-64 opacity-30 mx-12">
+                <div className="hidden lg:flex items-center justify-center flex-shrink-0 w-[500px] h-[500px] opacity-20 mx-12">
                   <Image
                     src="/IBSFINtech-Cube-water mark.svg"
                     alt="IBSFINtech Watermark"
-                    width={300}
-                    height={300}
+                    width={1000}
+                    height={1000}
                     className="w-full h-full object-contain"
                   />
                 </div>
@@ -402,15 +411,15 @@ export default function IllustrativeOne() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: 0.2 }}
-                  className="flex flex-row md:flex-col items-center justify-center gap-8"
+                  className="flex flex-row md:flex-col items-center justify-center gap-6"
                 >
                   {/* LinkedIn */}
                   <a
                     href="#"
-                    className="group p-4 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 transition-all duration-300 hover:scale-110"
+                    className="group p-3 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 transition-all duration-300 hover:scale-110"
                     aria-label="LinkedIn"
                   >
-                    <svg className="w-8 h-8 text-white group-hover:text-blue-400 transition-colors duration-300" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <svg className="w-6 h-6 text-white group-hover:text-blue-400 transition-colors duration-300" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                       <path fillRule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" clipRule="evenodd" />
                     </svg>
                   </a>
@@ -418,10 +427,10 @@ export default function IllustrativeOne() {
                   {/* YouTube */}
                   <a
                     href="#"
-                    className="group p-4 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 transition-all duration-300 hover:scale-110"
+                    className="group p-3 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 transition-all duration-300 hover:scale-110"
                     aria-label="YouTube"
                   >
-                    <svg className="w-8 h-8 text-white group-hover:text-red-500 transition-colors duration-300" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <svg className="w-6 h-6 text-white group-hover:text-red-500 transition-colors duration-300" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                       <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
                     </svg>
                   </a>
@@ -429,10 +438,10 @@ export default function IllustrativeOne() {
                   {/* Facebook */}
                   <a
                     href="#"
-                    className="group p-4 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 transition-all duration-300 hover:scale-110"
+                    className="group p-3 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 transition-all duration-300 hover:scale-110"
                     aria-label="Facebook"
                   >
-                    <svg className="w-8 h-8 text-white group-hover:text-blue-500 transition-colors duration-300" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <svg className="w-6 h-6 text-white group-hover:text-blue-500 transition-colors duration-300" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                       <path d="M22.675 0h-21.35C.595 0 0 .592 0 1.326v21.348C0 23.408.595 24 1.325 24h11.495v-9.294H9.691V11.01h3.129V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.797.143v3.24l-1.918.001c-1.504 0-1.797.715-1.797 1.763v2.312h3.587l-.467 3.696h-3.12V24h6.116c.73 0 1.325-.592 1.325-1.326V1.326C24 .592 23.405 0 22.675 0" />
                     </svg>
                   </a>
@@ -440,10 +449,10 @@ export default function IllustrativeOne() {
                   {/* Twitter */}
                   <a
                     href="#"
-                    className="group p-4 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 transition-all duration-300 hover:scale-110"
+                    className="group p-3 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 transition-all duration-300 hover:scale-110"
                     aria-label="Twitter"
                   >
-                    <svg className="w-8 h-8 text-white group-hover:text-blue-400 transition-colors duration-300" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <svg className="w-6 h-6 text-white group-hover:text-blue-400 transition-colors duration-300" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                       <path d="M24 4.557a9.93 9.93 0 0 1-2.828.775 4.932 4.932 0 0 0 2.165-2.724c-.951.564-2.005.974-3.127 1.195a4.92 4.92 0 0 0-8.384 4.482C7.691 8.095 4.066 6.13 1.64 3.161c-.542.929-.856 2.01-.856 3.17 0 2.188 1.115 4.116 2.821 5.247a4.904 4.904 0 0 1-2.229-.616c-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.627 1.956 2.444 3.377 4.6 3.417A9.867 9.867 0 0 1 0 21.543a13.94 13.94 0 0 0 7.548 2.212c9.057 0 14.009-7.496 14.009-13.986 0-.21 0-.423-.016-.634A9.936 9.936 0 0 0 24 4.557z" />
                     </svg>
                   </a>
