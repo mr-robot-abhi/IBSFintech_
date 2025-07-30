@@ -7,95 +7,95 @@ import Tilt from "react-parallax-tilt";
 
 const caseStudies = [
   {
-    title: "Global Bank Treasury Transformation",
-    company: "BankCorp International",
-    logo: "/case-studies/bankcorp.png",
+    title: "FMCG Giant's path to data-driven decision",
+    company: "Dabur India Limited",
     summary:
-      "How BankCorp leveraged IBSFintech's platform to achieve 40% faster reconciliations and 25% reduction in manual effort across 12 countries.",
+      "Empowering treasury functions with automation for better financial insights and operational efficiency.",
     highlights: [
-      "40% Faster Reconciliation",
-      "25% Manual Effort Reduction",
-      "12 Countries, 1 Platform",
-    ],
-    icon: Globe,
-    image: "/case-studies/bank-treasury.jpg",
-  },
-  {
-    title: "Retail Giant: Cash Visibility at Scale",
-    company: "RetailPay Group",
-    logo: "/case-studies/retailpay.png",
-    summary:
-      "RetailPay unified 200+ accounts, automated cash forecasting, and improved working capital by 32% using IBSFintech.",
-    highlights: [
-      "200+ Accounts Unified",
-      "32% Working Capital Gain",
-      "Automated Forecasting",
-    ],
-    icon: Users,
-    image: "/case-studies/retail-cash.jpg",
-  },
-  {
-    title: "Manufacturing Risk Mitigation",
-    company: "ManuBank",
-    logo: "/case-studies/manubank.png",
-    summary:
-      "A multinational manufacturer reduced FX risk by 50% and improved compliance through real-time analytics.",
-    highlights: [
-      "50% FX Risk Reduction",
-      "Real-Time Compliance",
-      "Multinational Rollout",
-    ],
-    icon: Shield,
-    image: "/case-studies/manufacturing-risk.jpg",
-  },
-  {
-    title: "Fintech Startup: Scaling with Security",
-    company: "TechFin",
-    logo: "/case-studies/techfin.png",
-    summary:
-      "TechFin scaled to 1M users while maintaining robust security and uptime with IBSFintech services.",
-    highlights: [
-      "1M+ Users",
-      "Zero Security Incidents",
-      "99.99% Uptime",
+      "FMCG Industry Leader",
+      "Treasury Automation",
+      "Data-Driven Decisions",
     ],
     icon: Zap,
-    image: "/case-studies/fintech-scale.jpg",
+    image: "/Case_Studies/Dabur-India-IBSFINtech.png",
+    date: "September 10, 2024"
   },
   {
-    title: "Insurance Group: Automated Compliance",
-    company: "SecureLife Insurance",
-    logo: "/case-studies/securelife.png",
+    title: "Transforming Treasury Operations in the Middle East",
+    company: "Fujairah Gold FZC",
     summary:
-      "SecureLife automated regulatory reporting and improved audit readiness, reducing compliance costs by 37%.",
+      "Fujairah Gold's shift to an integrated Treasury solution for enhanced operational efficiency.",
     highlights: [
-      "37% Lower Compliance Cost",
-      "Automated Audit Trails",
-      "Instant Regulatory Reports",
+      "Precious Metal Refinery",
+      "Copper Rod Plant",
+      "Middle East Operations",
+    ],
+    icon: Globe,
+    image: "/Case_Studies/Fujairah-Gold-IBSFINtech.png",
+    date: "September 10, 2024"
+  },
+  {
+    title: "Streamlined Treasury Operations & Real-Time Insights",
+    company: "Credit Saison (India)",
+    summary:
+      "How a Global Financial Services (NBFC) Leader achieved operational excellence with IBSFintech.",
+    highlights: [
+      "Financial Services",
+      "NBFC Leader",
+      "Real-Time Analytics",
     ],
     icon: Shield,
-    image: "/case-studies/insurance-compliance.jpg",
+    image: "/Case_Studies/CreditSaison_Case-study.png",
+    date: "August 28, 2024"
   },
   {
-    title: "NBFC: Centralized Lending Operations",
-    company: "LendFast NBFC",
-    logo: "/case-studies/lendfast.png",
+    title: "End-to-End Automation Revolution",
+    company: "Hindustan Zinc Limited",
     summary:
-      "LendFast unified loan disbursal and risk analytics, scaling to 10K+ loans/month with 99% accuracy.",
+      "Transforming Treasury Management for a Global Zinc & Silver Industry Leader with comprehensive automation.",
     highlights: [
-      "10K+ Loans/Month",
-      "99% Accuracy",
-      "Unified Disbursal Platform",
+      "Metals & Mining",
+      "Global Operations",
+      "Treasury Automation",
+    ],
+    icon: BarChart2,
+    image: "/Case_Studies/Hindustan-Zinc-Limited.png",
+    date: "August 28, 2024"
+  },
+  {
+    title: "Real-Time Financial Visibility and Control",
+    company: "Signature Global",
+    summary:
+      "How the Leading Real Estate Player in Affordable Housing achieved unprecedented financial control.",
+    highlights: [
+      "Real Estate",
+      "Affordable Housing",
+      "Financial Control",
     ],
     icon: Building,
-    image: "/case-studies/nbfc-lending.jpg",
+    image: "/Case_Studies/Signature-Global.png",
+    date: "August 27, 2024"
+  },
+  {
+    title: "End-to-End Digitization Journey",
+    company: "Polycab",
+    summary:
+      "India's Cable & Wire Manufacturing Leader achieves seamless automation of Treasury & Trade Finance for $500M+ operations.",
+    highlights: [
+      "Cable & Wire Manufacturing",
+      "$500M+ Operations",
+      "Trade Finance",
+    ],
+    icon: Users,
+    image: "/Case_Studies/polycab-small.png",
+    date: "July 1, 2022"
   },
 ];
 
 export default function CaseStudies() {
   return (
-    <section className="py-16">
-      <div className="container mx-auto px-4 max-w-6xl">
+    <section className="py-16 relative">
+      <div className="container mx-auto px-4 max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -103,35 +103,93 @@ export default function CaseStudies() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl font-bold text-white drop-shadow-lg mb-4">Case Studies</h2>
-          <p className="text-lg text-white/90 max-w-2xl mx-auto drop-shadow">
-            Explore how leading organizations transformed their treasury and finance operations with IBSFintech.
+          <h2 className="text-4xl font-bold text-white mb-4 bg-gradient-to-r from-blue-300 to-blue-500 bg-clip-text text-transparent">
+            Case Studies
+          </h2>
+          <p className="text-lg text-white/90 max-w-3xl mx-auto">
+            Discover how industry leaders transformed their financial operations with our solutions
           </p>
         </motion.div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {caseStudies.map((cs, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: index * 0.1 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="group"
             >
-              <Tilt tiltMaxAngleX={10} tiltMaxAngleY={10} className="h-full">
-                <div className="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition-shadow border border-gray-200 h-full flex flex-col">
-                  <div className="h-12 w-12 bg-white rounded-full flex items-center justify-center mb-4">
-                    <cs.icon className="h-6 w-6 text-blue-600" />
+              <Tilt 
+                tiltMaxAngleX={5} 
+                tiltMaxAngleY={5} 
+                className="h-full rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1"
+                glareEnable={true}
+                glareMaxOpacity={0.2}
+                glareColor="#ffffff"
+                glarePosition="all"
+                glareBorderRadius="1rem"
+              >
+                <div className="bg-white h-full flex flex-col">
+                  {/* Image Container */}
+                  <div className="relative h-36 bg-white p-2">
+                    <div className="absolute inset-2 flex items-center justify-center">
+                      <div className="relative w-full h-full">
+                        <Image
+                          src={cs.image}
+                          alt={cs.title}
+                          fill
+                          className="object-contain p-2"
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                          priority={index < 3}
+                        />
+                      </div>
+                    </div>
+                    {/* Logo Badge */}
+                    <div className="absolute top-2 left-2 bg-white/90 backdrop-blur-sm rounded-lg shadow-md p-2 flex items-center gap-2 z-10">
+                      <cs.icon className="h-5 w-5 text-blue-600" />
+                      <span className="text-sm font-medium text-gray-800">{cs.company.split(' ')[0]}</span>
+                    </div>
                   </div>
-                  <h3 className="text-xl font-semibold text-blue-900 mb-2">{cs.title}</h3>
-                  <p className="text-blue-700 text-sm">{cs.summary}</p>
-                  <div className="flex-grow"></div>
-                  <span className="mt-4 inline-block px-4 py-1 bg-blue-600 text-white text-sm font-medium rounded-full self-start hover:bg-blue-700 transition-colors">
-                    {cs.highlights[0]}
-                  </span>
+                  
+                  {/* Content */}
+                  <div className="p-4 flex-1 flex flex-col">
+                    <h3 className="text-base font-semibold text-gray-900 mb-1">
+                      {cs.title}
+                    </h3>
+                    <p className="text-gray-600 text-xs mb-3 flex-grow line-clamp-2">{cs.summary}</p>
+                    
+                    {/* Tags */}
+                    <div className="flex flex-wrap gap-1.5 mb-3">
+                      {cs.highlights.map((highlight, i) => (
+                        <span 
+                          key={i}
+                          className="inline-block px-2 py-0.5 text-[10px] font-medium bg-blue-50 text-blue-700 rounded-full border border-blue-100 whitespace-nowrap overflow-hidden text-ellipsis max-w-[100px]"
+                        >
+                          {highlight}
+                        </span>
+                      ))}
+                    </div>
+                    
+                    <div className="mt-auto pt-2 border-t border-gray-100 flex justify-between items-center">
+                      <span className="text-xs text-gray-500">{cs.date}</span>
+                      <button className="text-blue-600 hover:text-blue-800 text-sm font-medium flex items-center group">
+                        Read Case Study
+                        <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                      </button>
+                    </div>
+                  </div>
                 </div>
               </Tilt>
             </motion.div>
           ))}
+        </div>
+        
+        <div className="mt-12 text-center">
+          <button className="px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-800 text-white font-medium rounded-full hover:from-blue-500 hover:to-blue-700 transition-all duration-300 shadow-lg hover:shadow-blue-500/20">
+            View All Case Studies
+          </button>
         </div>
       </div>
     </section>

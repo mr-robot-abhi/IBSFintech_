@@ -13,40 +13,10 @@ import ModernMegaMenu from '../layout/ModernMegaMenu';
 import PartnershipEcosystem from './PartnershipEcosystem';
 import OurOfferingsSection from './our_offerings';
 import CaseStudies from './CaseStudies';
-import FintechParticlesBackground from './FintechParticlesBackground';
+
 import IBSNetworkTwo from './ibs_network_two';
 
-// Animated floating shapes for visual interest
-const FloatingShapes = () => (
-  <>
-    {[...Array(8)].map((_, i) => (
-      <motion.div
-        key={i}
-        className={`absolute rounded-full pointer-events-none`}
-        style={{
-          width: `${60 + Math.random() * 80}px`,
-          height: `${60 + Math.random() * 80}px`,
-          left: `${10 + Math.random() * 80}%`,
-          top: `${10 + Math.random() * 80}%`,
-          background: `linear-gradient(135deg, rgba(12, 28, 31, 0.2) 0%, rgba(9,9,121,0.1) 100%)`,
-          filter: 'blur(8px)'
-        }}
-        animate={{
-          y: [0, 20 + Math.random() * 30, 0],
-          x: [0, -10 + Math.random() * 20, 0],
-          scale: [1, 1.1, 1],
-          opacity: [0.7, 1, 0.7]
-        }}
-        transition={{
-          duration: 8 + Math.random() * 4,
-          repeat: Infinity,
-          repeatType: 'reverse',
-          delay: i * 0.5
-        }}
-      />
-    ))}
-  </>
-);
+
 
 export default function IllustrativeOne() {
   const industries = [
@@ -65,13 +35,57 @@ export default function IllustrativeOne() {
   const duplicatedIndustries = [...industries, ...industries];
 
 
+  // News array for Latest News section
+  const newsItems = [
+    {
+      title: 'AI Dashboard Launch',
+      date: 'July 2025',
+      description: 'New real-time analytics for treasury insights with advanced AI predictions.',
+      icon: <Newspaper className="h-6 w-6 text-blue-300" />
+    },
+    {
+      title: 'Global Expansion',
+      date: 'June 2025',
+      description: 'Now serving 40+ countries with localized support.',
+      icon: <Globe className="h-6 w-6 text-blue-300" />
+    },
+    {
+      title: 'FinTech Award',
+      date: 'May 2025',
+      description: 'Named Top Treasury Platform 2025 by Financial Times.',
+      icon: <Shield className="h-6 w-6 text-blue-300" />
+    },
+    {
+      title: 'Product Update',
+      date: 'April 2025',
+      description: 'Enhanced security features and performance improvements.',
+      icon: <Zap className="h-6 w-6 text-blue-300" />
+    },
+    {
+      title: 'Partnership',
+      date: 'March 2025',
+      description: 'Strategic alliance with leading banking institutions.',
+      icon: <Users className="h-6 w-6 text-blue-300" />
+    },
+  ];
+
   return (
-    <div className="min-h-screen overflow-x-hidden relative">
-      <FintechParticlesBackground />
+    <div className="min-h-screen overflow-x-hidden relative bg-transparent">
+      {/* Background for all sections except hero */}
+      <div className="fixed inset-0 -z-10 w-full h-full">
+        <Image
+          src="/style1_bg.png"
+          alt="Background"
+          fill
+          className="object-cover object-center"
+          priority
+          quality={100}
+        />
+      </div>
       {/* --- Main Content Sections (keep order, ensure all tags close properly) --- */}
 
       {/* Mega Navigation Menu */}
-      <ModernMegaMenu /> 
+      <ModernMegaMenu />
 
 
       {/* Hero Banner with Background Image */}
@@ -118,9 +132,7 @@ export default function IllustrativeOne() {
             </motion.div>
           </div>
         </div>
-        
-        {/* Floating shapes for visual interest */}
-        <FloatingShapes />
+
       </section>
 
 
@@ -148,125 +160,131 @@ export default function IllustrativeOne() {
       </section>
       <OurOfferingsSection />
       {/* Why Choose Us */}
-      <section className="py-16">
-        <div className="container mx-auto px-4 max-w-6xl">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-3xl font-bold text-white drop-shadow-lg mb-4">Why Choose Us</h2>
-            <p className="text-lg text-white/90 max-w-3xl mx-auto">
-              Unparalleled features and benefits that set our platform apart.
-            </p>
-          </motion.div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[
-              {
-                icon: Zap,
-                title: 'Comprehensive',
-                description: 'A complete Risk Management solution covering Compliance, Operational, and Financial risks.',
-              },
-              {
-                icon: Shield,
-                title: 'Integrated',
-                description: 'Seamlessly connects with your existing IT ecosystem—ERP, market data providers, and banks.',
-              },
-              {
-                icon: Globe,
-                title: 'Nimble',
-                description: 'End-to-end in-house development ensures fast, agile implementation.',
-              },
-              {
-                icon: Users,
-                title: 'Domain-Centric',
-                description: 'Founded by ex-bankers with deep expertise in finance, risk, and technology.',
-              },
-              {
-                icon: BarChart2,
-                title: 'Configurable',
-                description: 'Highly customizable to align with your workflows and business needs.',
-              },
-              {
-                icon: Building,
-                title: 'Best Practices',
-                description: 'Built on industry standards with world-class treasury, risk, and trade finance capabilities.',
-              },
-            ].map((diff, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
-              >
-                <Tilt tiltMaxAngleX={10} tiltMaxAngleY={10} className="h-full">
-                  <div className="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition-shadow border border-gray-200 h-full flex flex-col">
-                    <div className="h-12 w-12 bg-blue-100 rounded-full flex items-center justify-center mb-4">
-                      <diff.icon className="h-6 w-6 text-blue-600" />
-                    </div>
-                    <h3 className="text-xl font-semibold text-blue-900 mb-2">{diff.title}</h3>
-                    <p className="text-gray-600 text-sm">{diff.description}</p>
-                    <div className="flex-grow"></div>
-                  </div>
-                </Tilt>
-              </motion.div>
-            ))}
+      <section className="py-20 relative overflow-hidden bg-gradient-to-b from-blue-900 via-purple-900 to-indigo-900">
+        {/* Background Elements */}
+        <div className="absolute -top-1/4 -left-1/4 w-[800px] h-[800px] rounded-full bg-blue-400/20 blur-[120px]"></div>
+        <div className="absolute -bottom-1/3 -right-1/4 w-[1000px] h-[1000px] rounded-full bg-purple-500/30 blur-[160px]"></div>
+
+        <div className="container mx-auto px-4 max-w-7xl">
+          <div className="flex flex-col lg:flex-row gap-12">
+            {/* LEFT TEXT */}
+            <div className="w-full lg:w-2/5 text-white">
+              <h2 className="text-4xl font-bold mb-6">Why Choose Us</h2>
+              <p className="text-lg text-white/90 mb-6">
+                Discover how our innovative financial solutions can transform your business operations and drive growth in today’s competitive landscape.
+              </p>
+              <p className="text-white/80 mb-8">
+                With years of industry expertise and a commitment to excellence, we provide cutting‑edge solutions tailored to your unique business needs.
+              </p>
+              <button className="bg-white text-blue-900 hover:bg-blue-50 font-medium py-3 px-8 rounded-full transition-colors duration-200 flex items-center">
+                Learn More
+                <svg xmlns="http://www.w3.org/2000/svg" className="ml-2 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </button>
+            </div>
+
+            {/* RIGHT GRID */}
+            <div className="w-full lg:w-3/5 grid grid-cols-4 grid-rows-2 gap-3 h-[600px]">
+              {/* Comprehensive */}
+              <div className="col-span-2 row-span-1 rounded-xl bg-gradient-to-br from-blue-500/90 to-indigo-600/90 p-4 flex flex-col justify-between">
+                <div className="space-y-2">
+                  <h3 className="text-lg font-bold">Comprehensive</h3>
+                  <p className="text-sm opacity-90 leading-tight">Our end‑to‑end solution covers compliance, operational, and financial risks. With a unified platform, you gain full visibility and control over your entire risk landscape. Integrated risk analytics provide real‑time monitoring while AI‑powered alerts prevent potential issues before they escalate. The system automatically generates regulatory reports and maintains audit trails for all transactions.</p>
+                </div>
+              </div>
+
+              {/* Nimble */}
+              <div className="col-span-1 row-span-1 rounded-xl bg-gradient-to-br from-emerald-500/90 to-teal-600/90 p-4 flex flex-col justify-between">
+                <div className="space-y-2">
+                  <h3 className="text-lg font-bold">Nimble</h3>
+                  <p className="text-sm opacity-90 leading-tight">Rapid implementation and deployment with our agile approach. Our cloud‑native architecture allows for instant scaling while maintaining enterprise‑grade security.</p>
+                </div>
+              </div>
+
+              {/* Domain-Centric */}
+              <div className="col-span-1 row-span-1 rounded-xl bg-gradient-to-br from-purple-500/90 to-fuchsia-600/90 p-4 flex flex-col justify-between">
+                <div className="space-y-2">
+                  <h3 className="text-lg font-bold">Domain‑Centric</h3>
+                  <p className="text-sm opacity-90 leading-tight">Built by industry experts with deep financial expertise. Our solution incorporates decades of collective experience in banking, capital markets, and insurance.</p>
+                </div>
+              </div>
+
+              {/* Configurable */}
+              <div className="col-span-1 row-span-1 rounded-xl bg-gradient-to-br from-amber-500/90 to-orange-600/90 p-4 flex flex-col justify-between">
+                <div className="space-y-2">
+                  <h3 className="text-lg font-bold">Configurable</h3>
+                  <p className="text-sm opacity-90 leading-tight">Tailor the platform to your specific requirements. Our drag‑and‑drop interface allows easy customization of dashboards and workflows. Role‑based access controls ensure users only see relevant information.</p>
+                </div>
+              </div>
+
+              {/* Best Practices */}
+              <div className="col-span-1 row-span-1 rounded-xl bg-gradient-to-br from-rose-500/90 to-pink-600/90 p-4 flex flex-col justify-between">
+                <div className="space-y-2">
+                  <h3 className="text-lg font-bold">Best Practices</h3>
+                  <p className="text-sm opacity-90 leading-tight">Built on industry standards and regulatory requirements. The platform incorporates Basel III, IFRS 9, and GDPR compliance by design. Regular third‑party security audits ensure data protection.</p>
+                </div>
+              </div>
+
+              {/* Integrated */}
+              <div className="col-span-2 row-span-1 rounded-xl bg-gradient-to-br from-indigo-500/90 to-blue-700/90 p-4 flex flex-col justify-between">
+                <div className="space-y-2">
+                  <h3 className="text-lg font-bold">Integrated</h3>
+                  <p className="text-sm opacity-90 leading-tight">Seamlessly connects with ERP systems, market data providers, and banking partners. The platform supports SWIFT, FIX, and ISO 20022 messaging standards. Real‑time two‑way synchronization with accounting systems ensures data consistency. Built‑in connectors for common enterprise applications reduce integration costs. The API gateway provides secure access to external developers for custom integrations.</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-
-
       {/* Featured Industries Carousel */}
       <section className="py-16 relative overflow-hidden w-full">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-12 px-4"
+        >
+          <h2 className="text-4xl font-bold bg-gradient-to-r from-blue-300 to-blue-500 bg-clip-text text-transparent mb-4">
+            Featured Industries
+          </h2>
+          <p className="text-lg text-white/90 max-w-3xl mx-auto">
+            Tailored solutions for diverse industry needs, driving efficiency and growth across sectors.
+          </p>
+        </motion.div>
+
+        <div className="relative overflow-hidden group px-4">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-12 px-4"
+            className="flex gap-6 py-4"
+            animate={{
+              x: ['0%', '-100%'],
+              transition: {
+                ease: 'linear',
+                duration: 40,
+                repeat: Infinity,
+              }
+            }}
           >
-            <h2 className="text-4xl font-bold bg-gradient-to-r from-blue-300 to-blue-500 bg-clip-text text-transparent mb-4">
-              Featured Industries
-            </h2>
-            <p className="text-lg text-white/90 max-w-3xl mx-auto">
-              Tailored solutions for diverse industry needs, driving efficiency and growth across sectors.
-            </p>
-          </motion.div>
-          
-          <div className="relative overflow-hidden group px-4">
-            <motion.div
-              className="flex gap-6 py-4"
-              animate={{
-                x: ['0%', '-100%'],
-                transition: {
-                  ease: 'linear',
-                  duration: 40,
-                  repeat: Infinity,
-                }
-              }}
-            >
-              {duplicatedIndustries.map((industry, idx) => (
-                <div key={idx} className="flex-shrink-0 w-80">
-                  <Tilt tiltMaxAngleX={5} tiltMaxAngleY={5} className="h-full">
-                    <div className="bg-gradient-to-br from-navy-800 to-navy-900 p-6 rounded-2xl shadow-xl border border-blue-900/30 h-full flex flex-col hover:shadow-2xl hover:border-blue-700/50 transition-all duration-300 hover:-translate-y-1">
-                      <div className="h-14 w-14 bg-blue-900/40 backdrop-blur-sm rounded-xl flex items-center justify-center mb-4 border border-blue-700/30">
-                        <industry.icon className="h-7 w-7 text-blue-300" />
-                      </div>
-                      <h3 className="text-xl font-bold text-white mb-2">{industry.name}</h3>
-                      <p className="text-blue-100/80 text-sm mb-4 flex-grow">{industry.description}</p>
-                      <button className="inline-block px-3 py-1.5 bg-gradient-to-r from-blue-600 to-blue-500 text-white text-xs font-medium rounded-full self-start hover:from-blue-500 hover:to-blue-400 transition-all duration-300 shadow-lg hover:shadow-blue-500/20">
-                        Learn More <ArrowRight className="inline-block ml-1 h-3 w-3" />
-                      </button>
+            {duplicatedIndustries.map((industry, idx) => (
+              <div key={idx} className="flex-shrink-0 w-80">
+                <Tilt tiltMaxAngleX={5} tiltMaxAngleY={5} className="h-full">
+                  <div className="bg-gradient-to-br from-navy-800 to-navy-900 p-6 rounded-2xl shadow-xl border border-blue-900/30 h-full flex flex-col hover:shadow-2xl hover:border-blue-700/50 transition-all duration-300 hover:-translate-y-1">
+                    <div className="h-14 w-14 bg-blue-900/40 backdrop-blur-sm rounded-xl flex items-center justify-center mb-4 border border-blue-700/30">
+                      <industry.icon className="h-7 w-7 text-blue-300" />
                     </div>
-                  </Tilt>
-                </div>
-              ))}
-            </motion.div>
-          </div>
+                    <h3 className="text-xl font-bold text-white mb-2">{industry.name}</h3>
+                    <p className="text-blue-100/80 text-sm mb-4 flex-grow">{industry.description}</p>
+                    <button className="inline-block px-3 py-1.5 bg-gradient-to-r from-blue-600 to-blue-500 text-white text-xs font-medium rounded-full self-start hover:from-blue-500 hover:to-blue-400 transition-all duration-300 shadow-lg hover:shadow-blue-500/20">
+                      Learn More <ArrowRight className="inline-block ml-1 h-3 w-3" />
+                    </button>
+                  </div>
+                </Tilt>
+              </div>
+            ))}
+          </motion.div>
+        </div>
       </section>
       {/* Partnership Ecosystem Section */}
       <PartnershipEcosystem variant="illustrative1" />
@@ -274,138 +292,169 @@ export default function IllustrativeOne() {
       {/* Case Studies */}
       <CaseStudies />
 
-      {/* Latest News */}
-      <section className="py-16 relative overflow-hidden">
-        <div className="absolute inset-0 -z-10">
-          <FintechParticlesBackground />
-        </div>
-        <div className="container mx-auto px-4 max-w-6xl relative">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-3xl font-bold bg-gradient-to-r from-blue-300 to-blue-400 bg-clip-text text-transparent mb-4">Latest News</h2>
-            <p className="text-lg text-blue-100/90 max-w-3xl mx-auto">
-              Stay updated with our latest achievements and insights.
-            </p>
-          </motion.div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 mb-12">
-            {[
-              { 
-                title: 'AI Dashboard Launch', 
-                date: 'July 2025', 
-                description: 'New real-time analytics for treasury insights with advanced AI predictions.',
-                icon: <Newspaper className="h-6 w-6 text-blue-300" />
-              },
-              { 
-                title: 'Global Expansion', 
-                date: 'June 2025', 
-                description: 'Now serving 40+ countries with localized support.',
-                icon: <Globe className="h-6 w-6 text-blue-300" />
-              },
-              { 
-                title: 'FinTech Award', 
-                date: 'May 2025', 
-                description: 'Named Top Treasury Platform 2025 by Financial Times.',
-                icon: <Shield className="h-6 w-6 text-blue-300" />
-              },
-              { 
-                title: 'Product Update', 
-                date: 'April 2025', 
-                description: 'Enhanced security features and performance improvements.',
-                icon: <Zap className="h-6 w-6 text-blue-300" />
-              },
-              { 
-                title: 'Partnership', 
-                date: 'March 2025', 
-                description: 'Strategic alliance with leading banking institutions.',
-                icon: <Users className="h-6 w-6 text-blue-300" />
-              },
-            ].map((news, index) => (
+      {/* Combined Latest News & Let's Connect */}
+      <section className="relative overflow-hidden">
+        <div className="w-full flex flex-col relative">
+
+          {/* Latest News Subsection */}
+          <div className="flex-1 py-16 bg-transparent relative z-10">
+            <div className="container mx-auto px-4 max-w-6xl">
               <motion.div
-                key={index}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
+                transition={{ duration: 0.6 }}
+                className="text-center mb-12"
               >
-                <Tilt tiltMaxAngleX={5} tiltMaxAngleY={5} className="h-full">
-                  <div className="bg-blue-900/50 p-6 rounded-2xl shadow-xl border border-blue-800/30 h-full flex flex-col hover:shadow-2xl hover:border-blue-700/50 transition-all duration-300 backdrop-blur-sm">
-                    <div className="h-12 w-12 bg-blue-800/40 backdrop-blur-sm rounded-xl flex items-center justify-center mb-4 border border-blue-700/30">
-                      {news.icon}
-                    </div>
-                    <h3 className="text-xl font-semibold text-white mb-2">{news.title}</h3>
-                    <p className="text-blue-200/80 text-sm mb-4">{news.description}</p>
-                    <div className="flex-grow"></div>
-                    <span className="mt-4 inline-block px-4 py-1.5 bg-gradient-to-r from-blue-600 to-blue-500 text-white text-xs font-medium rounded-full self-start hover:from-blue-500 hover:to-blue-400 transition-all duration-300 shadow-lg hover:shadow-blue-500/20">
-                      {news.date} <ArrowRight className="inline-block ml-1 h-3 w-3" />
-                    </span>
-                  </div>
-                </Tilt>
+                <h2 className="text-3xl font-bold bg-gradient-to-r from-blue-300 to-blue-400 bg-clip-text text-transparent mb-4">Latest News</h2>
+                <p className="text-lg text-blue-100/90 max-w-3xl mx-auto">
+                  Stay updated with our latest achievements and insights.
+                </p>
               </motion.div>
-            ))}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 mb-12">
+                {newsItems.map((news, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: index * 0.1 }}
+                  >
+                    <Tilt tiltMaxAngleX={5} tiltMaxAngleY={5} className="h-full">
+                      <div className="bg-blue-900/50 p-6 rounded-2xl shadow-xl border border-blue-800/30 h-full flex flex-col hover:shadow-2xl hover:border-blue-700/50 transition-all duration-300 backdrop-blur-sm">
+                        <div className="h-12 w-12 bg-blue-800/40 backdrop-blur-sm rounded-xl flex items-center justify-center mb-4 border border-blue-700/30">
+                          {news.icon}
+                        </div>
+                        <h3 className="text-xl font-semibold text-white mb-2">{news.title}</h3>
+                        <p className="text-blue-200/80 text-sm mb-4">{news.description}</p>
+                        <div className="flex-grow"></div>
+                        <span className="mt-4 inline-block px-4 py-1.5 bg-gradient-to-r from-blue-600 to-blue-500 text-white text-xs font-medium rounded-full self-start hover:from-blue-500 hover:to-blue-400 transition-all duration-300 shadow-lg hover:shadow-blue-500/20">
+                          {news.date} <ArrowRight className="inline-block ml-1 h-3 w-3" />
+                        </span>
+                      </div>
+                    </Tilt>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+            <div className="text-center mt-10">
+              <motion.a
+                href="/news"
+                className="inline-flex items-center justify-center px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-full transition-colors duration-300 shadow-lg hover:shadow-blue-500/30 text-base"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                View All News
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </motion.a>
+            </div>
           </div>
-          <div className="text-center mt-10">
-            <motion.a
-              href="/news"
-              className="inline-flex items-center justify-center px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-full transition-colors duration-300 shadow-lg hover:shadow-blue-500/30 text-base"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              View All News
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </motion.a>
-          </div>
-        </div>
-      </section>
+          {/* Let's Connect Subsection */}
+          <div className="flex-1 py-16 bg-gradient-to-b from-gray-900 to-gray-800 relative z-10 flex items-center">
+            <div className="container mx-auto px-4 max-w-7xl w-full">
+              <div className="flex flex-row items-center justify-between gap-8">
+                {/* Left Column - Text and Buttons */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6 }}
+                  className="text-center md:text-left w-full max-w-2xl"
+                >
+                  <h2 className="text-4xl font-bold mb-6 text-white">Let's Connect</h2>
+                  <p className="text-xl text-white/90 mb-8">
+                    Ready to revolutionize your treasury operations? Contact us to explore our solutions.
+                  </p>
+                  <div className="flex flex-wrap justify-center md:justify-start gap-6">
+                    <motion.a
+                      href="/contact"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.98 }}
+                      className="px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-medium rounded-xl shadow-xl hover:shadow-blue-600/30 transition-all duration-300 flex items-center"
+                    >
+                      Contact Us <ArrowRight className="ml-2 h-5 w-5" />
+                    </motion.a>
+                    <motion.a
+                      href="/demo"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.98 }}
+                      className="px-8 py-4 border-2 border-blue-400 text-white font-medium rounded-xl hover:bg-blue-500/10 transition-all duration-300 flex items-center"
+                    >
+                      Request Demo
+                    </motion.a>
+                  </div>
+                </motion.div>
 
-      {/* Let's Connect */}
-      <section className="relative py-20">
-        <div className="absolute inset-0 -z-10">
-          <FintechParticlesBackground />
-        </div>
-        <div className="container mx-auto px-4 max-w-6xl relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center"
-          >
-            <div className="inline-block px-4 py-1.5 rounded-full bg-gradient-to-r from-blue-400 via-blue-600 to-blue-800 text-white text-sm font-semibold mb-4 shadow-lg">
-              Get In Touch
+                {/* Middle Column - Watermark */}
+                <div className="hidden lg:flex items-center justify-center flex-shrink-0 w-64 h-64 opacity-30 mx-12">
+                  <Image
+                    src="/IBSFINtech-Cube-water mark.svg"
+                    alt="IBSFINtech Watermark"
+                    width={300}
+                    height={300}
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+
+                {/* Right Column - Social Icons */}
+                <motion.div
+                  initial={{ opacity: 0, x: 20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                  className="flex flex-row md:flex-col items-center justify-center gap-8"
+                >
+                  {/* LinkedIn */}
+                  <a
+                    href="#"
+                    className="group p-4 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 transition-all duration-300 hover:scale-110"
+                    aria-label="LinkedIn"
+                  >
+                    <svg className="w-8 h-8 text-white group-hover:text-blue-400 transition-colors duration-300" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                      <path fillRule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" clipRule="evenodd" />
+                    </svg>
+                  </a>
+
+                  {/* YouTube */}
+                  <a
+                    href="#"
+                    className="group p-4 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 transition-all duration-300 hover:scale-110"
+                    aria-label="YouTube"
+                  >
+                    <svg className="w-8 h-8 text-white group-hover:text-red-500 transition-colors duration-300" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                    </svg>
+                  </a>
+
+                  {/* Facebook */}
+                  <a
+                    href="#"
+                    className="group p-4 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 transition-all duration-300 hover:scale-110"
+                    aria-label="Facebook"
+                  >
+                    <svg className="w-8 h-8 text-white group-hover:text-blue-500 transition-colors duration-300" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M22.675 0h-21.35C.595 0 0 .592 0 1.326v21.348C0 23.408.595 24 1.325 24h11.495v-9.294H9.691V11.01h3.129V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.797.143v3.24l-1.918.001c-1.504 0-1.797.715-1.797 1.763v2.312h3.587l-.467 3.696h-3.12V24h6.116c.73 0 1.325-.592 1.325-1.326V1.326C24 .592 23.405 0 22.675 0" />
+                    </svg>
+                  </a>
+
+                  {/* Twitter */}
+                  <a
+                    href="#"
+                    className="group p-4 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 transition-all duration-300 hover:scale-110"
+                    aria-label="Twitter"
+                  >
+                    <svg className="w-8 h-8 text-white group-hover:text-blue-400 transition-colors duration-300" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M24 4.557a9.93 9.93 0 0 1-2.828.775 4.932 4.932 0 0 0 2.165-2.724c-.951.564-2.005.974-3.127 1.195a4.92 4.92 0 0 0-8.384 4.482C7.691 8.095 4.066 6.13 1.64 3.161c-.542.929-.856 2.01-.856 3.17 0 2.188 1.115 4.116 2.821 5.247a4.904 4.904 0 0 1-2.229-.616c-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.627 1.956 2.444 3.377 4.6 3.417A9.867 9.867 0 0 1 0 21.543a13.94 13.94 0 0 0 7.548 2.212c9.057 0 14.009-7.496 14.009-13.986 0-.21 0-.423-.016-.634A9.936 9.936 0 0 0 24 4.557z" />
+                    </svg>
+                  </a>
+                </motion.div>
+              </div>
             </div>
-            <h2 className="text-4xl font-bold mb-6 text-white">Let's Connect</h2>
-            <p className="text-xl text-white/90 mb-12 max-w-3xl mx-auto">
-              Ready to revolutionize your treasury operations? Contact us to explore our solutions.
-            </p>
-            <div className="flex flex-wrap justify-center gap-6">
-              <motion.a
-                href="/contact"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.98 }}
-                className="px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-medium rounded-xl shadow-xl hover:shadow-blue-600/30 transition-all duration-300 flex items-center"
-              >
-                Contact Us <ArrowRight className="ml-2 h-5 w-5" />
-              </motion.a>
-              <motion.a
-                href="/demo"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.98 }}
-                className="px-8 py-4 border-2 border-blue-500 text-white font-medium rounded-xl hover:bg-blue-500/10 transition-all duration-300 flex items-center"
-              >
-                Request Demo
-              </motion.a>
-            </div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
       {/* Footer */}
-      {/* Removed Footer rendering here to avoid duplication and fix initial flash issue */}
       {/* <div className="relative z-20">
         <Footer />
       </div> */}

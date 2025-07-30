@@ -1,0 +1,6 @@
+1- Comprehensive
+2-Nimble
+3-Domain Centric
+4-Configurable
+5-Best Practices
+6-Integrated
