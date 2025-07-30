@@ -397,32 +397,32 @@ export default function MegaMenu3() {
                   
                   if (isProductsMenu && section.title === 'SME – TMS') {
                     return (
-                      <div key={idx} className="lg:col-start-3 lg:col-span-2">
+                      <div key={idx} className="lg:col-start-3">
                         <div className="space-y-2">
                           <h3 className="text-sm font-semibold text-gray-900 dark:text-white uppercase tracking-wider">
                             {section.title}
                           </h3>
-                          <div className="flex flex-wrap gap-x-6 gap-y-2">
+                          <ul className="space-y-2">
                             {section.items.map((subItem: any, subIdx: number) => (
-                              <div key={subIdx} className="flex-shrink-0">
+                              <li key={subIdx}>
                                 <Link
                                   href={subItem.href}
                                   className={`text-sm ${
                                     theme === 'dark'
                                       ? 'text-gray-300 hover:text-white'
                                       : 'text-gray-700 hover:text-gray-900'
-                                  } transition-colors duration-200 flex items-center group whitespace-nowrap`}
+                                  } transition-colors duration-200 flex items-start group`}
                                 >
                                   {subItem.icon && (
-                                    <subItem.icon className="h-4 w-4 mr-2 flex-shrink-0 text-blue-500" />
+                                    <subItem.icon className="h-4 w-4 mr-2 mt-0.5 flex-shrink-0 text-blue-500" />
                                   )}
                                   <span className="group-hover:translate-x-1 transition-transform duration-200">
                                     {subItem.name}
                                   </span>
                                 </Link>
-                              </div>
+                              </li>
                             ))}
-                          </div>
+                          </ul>
                         </div>
                       </div>
                     );
@@ -464,7 +464,7 @@ export default function MegaMenu3() {
 
             {/* Right column - Featured content */}
             {item.featured && !isContactMenu && (
-              <div className={`${isResourcesMenu ? 'w-40 h-40 ml-2' : 'w-48 h-40'}`}>
+              <div className={`${isResourcesMenu ? 'w-40 h-40 ml-0' : 'w-48 h-40'}`}>
                 <div className="relative rounded-lg overflow-hidden w-full h-full bg-gradient-to-br from-blue-600 to-blue-800">
                   <Image
                     src={item.featured.image}
@@ -505,11 +505,11 @@ export default function MegaMenu3() {
               <div className="flex-shrink-0">
                 <Link href="/" className="flex items-center">
                   <Image
-                    src="/ibs_logo_sample.png"
+                    src="/IBSFINtech_Logo_Main.svg"
                     alt="IBS Fintech"
-                    width={140}
-                    height={36}
-                    className="h-9 w-auto object-contain"
+                    width={160}
+                    height={40}
+                    className="h-10 w-auto object-contain"
                     priority
                   />
                 </Link>
@@ -523,7 +523,9 @@ export default function MegaMenu3() {
                     className="relative group"
                     onMouseEnter={() => handleMenuEnter(item.name)}
                     onMouseLeave={handleMenuLeave}
-                    
+                    ref={(el) => {
+                      menuItemRefs.current[item.name] = el;
+                    }}
                   >
                     <button
                       className={`px-4 py-2.5 text-sm font-medium relative ${
@@ -575,15 +577,52 @@ export default function MegaMenu3() {
                         activeMenu === item.name && (
                           <div 
                             key={item.name}
-                            className={`absolute top-0 ${item.name === 'Contact Us' ? 'right-0' : 'left-0'} ${item.name === 'Contact Us' ? 'w-auto' : 'w-full'}`}
-                            style={item.name === 'Contact Us' ? {
-                              right: '0px'
-                            } : {
-                              left: menuItemRefs.current[item.name]?.getBoundingClientRect().left,
-                              width: menuItemRefs.current[item.name]?.getBoundingClientRect().width
-                            }}
+                            className="absolute top-0"
+                            style={(() => {
+                              const menuItemEl = menuItemRefs.current[item.name];
+                              const containerEl = menuRef.current;
+                              if (!menuItemEl || !containerEl) return { left: 0 };
+                              
+                              const menuItemRect = menuItemEl.getBoundingClientRect();
+                              const containerRect = containerEl.getBoundingClientRect();
+                              const relativeLeft = menuItemRect.left - containerRect.left;
+                              
+                              // For mega menus (Products, Solutions), use full width but position from left
+                              if (item.name === 'Products' || item.name === 'Solutions') {
+                                return { left: 0, width: '100%' };
+                              }
+                              
+                              // For smaller dropdowns (Resources, Company, Contact Us), position directly below
+                              const dropdownWidth = item.name === 'Contact Us' ? 280 : 
+                                                   item.name === 'Resources' ? 320 : 
+                                                   item.name === 'Company' ? 300 : 280;
+                              
+                              // Ensure dropdown doesn't exceed right edge (Request Demo position)
+                              const maxRight = containerRect.width - 20; // 20px margin from edge
+                              const proposedRight = relativeLeft + dropdownWidth;
+                              
+                              if (proposedRight > maxRight) {
+                                return { 
+                                  right: 20, // 20px from right edge
+                                  width: `${dropdownWidth}px`
+                                };
+                              }
+                              
+                              // For Resources menu, position directly under the menu item
+                              if (item.name === 'Resources') {
+                                return { 
+                                  left: `${relativeLeft}px`,
+                                  width: `${dropdownWidth}px`
+                                };
+                              }
+                              
+                              return { 
+                                left: `${relativeLeft}px`,
+                                width: `${dropdownWidth}px`
+                              };
+                            })()}
                           >
-                            <div className={`absolute top-0 ${item.name === 'Contact Us' ? 'right-0' : 'left-0'} mt-1`}>
+                            <div className="absolute top-0 left-0 mt-1">
                               {renderSubmenu(item)}
                             </div>
                           </div>

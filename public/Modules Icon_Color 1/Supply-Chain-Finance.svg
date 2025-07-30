@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 500">
+  <defs>
+    <style>
+      .cls-1 {
+        stroke: #129786;
+        stroke-miterlimit: 10;
+        stroke-width: 16px;
+      }
+
+      .cls-1, .cls-2 {
+        fill: none;
+      }
+
+      .cls-3 {
+        fill: #129786;
+      }
+
+      .cls-4 {
+        font-family: Oswald-Bold, Oswald;
+        font-size: 36.83px;
+        font-weight: 700;
+      }
+
+      .cls-5 {
+        clip-path: url(#clippath-1);
+      }
+
+      .cls-6 {
+        clip-path: url(#clippath);
+      }
+    </style>
+    <clipPath id="clippath">
+      <rect class="cls-2" x="153.4" y="67.11" width="92.71" height="246.05" transform="translate(216.99 -85.11) rotate(50)"/>
+    </clipPath>
+    <clipPath id="clippath-1">
+      <rect class="cls-2" x="253.89" y="186.85" width="92.71" height="246.05" transform="translate(255.89 739.05) rotate(-130)"/>
+    </clipPath>
+  </defs>
+  <g>
+    <g class="cls-6">
+      <circle class="cls-1" cx="249.99" cy="249.82" r="100.84"/>
+    </g>
+    <g class="cls-5">
+      <circle class="cls-1" cx="250.17" cy="250.04" r="100.84"/>
+    </g>
+    <polyline class="cls-3" points="318.82 140.15 327.64 187.72 280.01 181.66"/>
+    <polyline class="cls-3" points="222.3 314.08 166.68 310.43 180.06 364.11"/>
+    <g>
+      <path class="cls-3" d="M252.53,185.49c1.17-.09,2.71.72,3.81,1.18,18.18,7.64,35.57,17.38,53.74,25.07,2.79,2.15-.48,2.96-2.24,3.75-18.03,8.16-36.72,15.09-54.89,22.92-19.29-7.52-38.27-16.05-57.45-23.92-1.21-.54-1.29-1.77-.22-2.56,18.05-7.82,35.48-17.24,53.55-25.01.96-.41,2.77-1.36,3.7-1.44Z"/>
+      <g>
+        <path class="cls-3" d="M187.34,289.32v-68.32c.65-.61,1.48-.67,2.31-.39l58.14,24.51.83.71.08,68.14-1.14.88-57.58-22.92c-1.25-.46-1.93-1.57-2.64-2.61Z"/>
+        <path class="cls-3" d="M316.23,220.55c.99-.21,2.1-.15,2.13,1.08v66.81c.01,1.23-.82,2.18-1.68,2.93l-58.02,23.38c-.63.29-1.23-.14-1.6-.6v-68.32c.27-.56,2.97-1.58,3.72-1.91,18.3-8.17,37.15-15.18,55.45-23.36Z"/>
+      </g>
+    </g>
+  </g>
+  <text class="cls-4" transform="translate(91.12 -18.95)"><tspan x="0" y="0">Supply Chain Finance</tspan></text>
+</svg>

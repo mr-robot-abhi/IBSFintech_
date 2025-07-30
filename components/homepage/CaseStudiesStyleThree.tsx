@@ -4,74 +4,68 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import Tilt from 'react-parallax-tilt';
 import Image from 'next/image';
-import { ArrowRight, CheckCircle } from 'lucide-react';
+import { ArrowRight, CheckCircle, Globe, Shield, BarChart2, DollarSign, Truck, Zap } from 'lucide-react';
 
 const caseStudies = [
   {
-    client: 'Global Transport Inc.',
-    title: 'Streamlining Global Payments',
-    description: 'Implemented a centralized payment hub, reducing processing times by 60% and cutting cross-border transaction fees by 45%.',
-    imageUrl: '/case-studies/case1.jpg',
-    stats: [
-      { value: '60%', label: 'Faster Processing' },
-      { value: '45%', label: 'Fee Reduction' },
-      { value: '99.9%', label: 'Payment Accuracy' },
-    ],
+    client: 'Fujairah Gold',
+    title: 'Treasury Transformation',
+    description: 'Successfully implemented a comprehensive treasury management system, streamlining cash flow and optimizing working capital management.',
+    imageUrl: '/Case_Studies/Fujairah-Gold-IBSFINtech.png',
+    highlights: ['Treasury', 'Automation', 'Compliance'],
+    date: 'May 15, 2024',
+    icon: Globe,
+    industry: 'Mining & Metals',
   },
   {
-    client: 'Innovatech Solutions',
-    title: 'Automating Treasury for Hyper-Growth',
-    description: 'Deployed an AI-powered treasury management system to automate 90% of manual tasks, enabling the finance team to focus on strategic growth.',
-    imageUrl: '/case-studies/case2.jpg',
-    stats: [
-      { value: '90%', label: 'Automation' },
-      { value: '4x', label: 'Team Productivity' },
-      { value: '100%', label: 'Real-time Visibility' },
-    ],
+    client: 'Credit Saison',
+    title: 'Risk Management',
+    description: 'Deployed advanced risk analytics and monitoring tools to enhance credit risk assessment and portfolio management.',
+    imageUrl: '/Case_Studies/CreditSaison_Case-study.png',
+    highlights: ['Risk Analytics', 'Portfolio Management', 'Compliance'],
+    date: 'April 22, 2024',
+    icon: Shield,
+    industry: 'Financial Services',
   },
   {
-    client: 'Quantum Retail',
-    title: 'Optimizing Retail Cash Flow',
-    description: 'Utilized predictive analytics for cash forecasting, improving accuracy by 35% and unlocking $15M in working capital.',
-    imageUrl: '/case-studies/case3.jpg',
-    stats: [
-      { value: '35%', label: 'Forecast Accuracy' },
-      { value: '$15M', label: 'Unlocked Capital' },
-      { value: '20%', label: 'Reduced Borrowing' },
-    ],
+    client: 'Kotak Mahindra Bank',
+    title: 'Digital Banking',
+    description: 'Transformed retail and corporate banking operations with our integrated digital banking platform, enhancing customer experience and operational efficiency.',
+    imageUrl: '/Case_Studies/polycab-small.png',
+    highlights: ['Digital Transformation', 'Customer Experience', 'Efficiency'],
+    date: 'March 10, 2024',
+    icon: BarChart2,
+    industry: 'Banking',
   },
   {
-    client: 'Energy Corp',
-    title: 'Mitigating Commodity Price Risk',
-    description: 'Developed a sophisticated hedging strategy using our platform, protecting margins and reducing exposure to market volatility by 50%.',
-    imageUrl: '/case-studies/case4.jpg',
-    stats: [
-      { value: '50%', label: 'Risk Reduction' },
-      { value: '15%', label: 'Margin Protection' },
-      { value: '24/7', label: 'Exposure Monitoring' },
-    ],
+    client: 'Muthoot Finance',
+    title: 'Financial Inclusion',
+    description: 'Implemented a scalable microfinance solution to expand financial services to underbanked communities across India.',
+    imageUrl: '/Case_Studies/Dabur-India-IBSFINtech.png',
+    highlights: ['Microfinance', 'Financial Inclusion', 'Scalability'],
+    date: 'February 28, 2024',
+    icon: DollarSign,
+    industry: 'Financial Services',
   },
   {
-    client: 'HealthPro Diagnostics',
-    title: 'Securing Sensitive Financial Data',
-    description: 'Enhanced security protocols with our multi-layered defense system, achieving zero breaches and full compliance with international standards.',
-    imageUrl: '/case-studies/case5.jpg',
-    stats: [
-      { value: 'Zero', label: 'Security Breaches' },
-      { value: '100%', label: 'Compliance' },
-      { value: '2x', label: 'Faster Audits' },
-    ],
+    client: 'Maruti Suzuki',
+    title: 'Supply Chain Finance',
+    description: 'Revolutionized supply chain financing with our platform, reducing payment cycles and improving supplier relationships.',
+    imageUrl: '/Case_Studies/Signature-Global.png',
+    highlights: ['Supply Chain', 'Fintech', 'Efficiency'],
+    date: 'January 15, 2024',
+    icon: Truck,
+    industry: 'Automotive',
   },
   {
-    client: 'Apex Manufacturing',
-    title: 'Digitizing Trade Finance for Efficiency',
-    description: 'Automated the entire trade finance lifecycle, from LCs to settlements, cutting documentation processing time by 75%.',
-    imageUrl: '/case-studies/case6.jpg',
-    stats: [
-      { value: '75%', label: 'Faster Documentation' },
-      { value: '30%', label: 'Reduced Errors' },
-      { value: '5-Day', label: 'Shorter Cycle' },
-    ],
+    client: 'Hindustan Unilever',
+    title: 'Cash Management',
+    description: 'Optimized cash management processes across multiple business units, significantly improving liquidity and reducing operational costs.',
+    imageUrl: '/Case_Studies/Hindustan-Zinc-Limited.png',
+    highlights: ['Cash Management', 'Liquidity', 'Cost Reduction'],
+    date: 'December 5, 2023',
+    icon: Zap,
+    industry: 'FMCG',
   },
 ];
 
@@ -94,7 +88,7 @@ const CaseStudiesStyleThree = () => {
   };
 
   return (
-    <section className="py-20 bg-transparent">
+    <section className="py-20 bg-white dark:bg-gray-900 transition-colors duration-200">
       <div className="container mx-auto px-4 max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -103,11 +97,14 @@ const CaseStudiesStyleThree = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-bold text-gray-800 dark:text-white mb-4">
-            Success Stories That Inspire
+          <span className="inline-block px-4 py-1 rounded-full bg-teal-100 dark:bg-teal-900/30 text-teal-600 dark:text-teal-400 text-sm font-medium mb-4">
+            Case Studies
+          </span>
+          <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
+            Success Stories That <span className="text-teal-600 dark:text-teal-400">Inspire</span>
           </h2>
           <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            Discover how leading organizations have transformed their financial operations and achieved remarkable results with our platform.
+            Discover how industry leaders are transforming their financial operations with our innovative solutions
           </p>
         </motion.div>
 
@@ -118,41 +115,73 @@ const CaseStudiesStyleThree = () => {
           viewport={{ once: true }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
-          {caseStudies.map((study, index) => (
-            <motion.div key={index} variants={itemVariants}>
-              <Tilt tiltMaxAngleX={5} tiltMaxAngleY={5} scale={1.03} transitionSpeed={400}>
-                <div className="h-full bg-white/60 dark:bg-gray-800/50 backdrop-blur-lg rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-200 dark:border-gray-700 group">
-                  <div className="relative h-48 w-full overflow-hidden">
-                    <Image 
-                      src={study.imageUrl} 
-                      alt={study.title} 
-                      fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
-                    <div className="absolute bottom-0 left-0 p-4">
-                      <h3 className="text-white font-bold text-xl drop-shadow-md">{study.client}</h3>
+          {caseStudies.map((study, index) => {
+            const Icon = study.icon;
+            return (
+              <motion.div key={index} variants={itemVariants} className="h-full">
+                <Tilt 
+                  tiltMaxAngleX={5} 
+                  tiltMaxAngleY={5} 
+                  scale={1.03} 
+                  transitionSpeed={400}
+                  className="h-full"
+                >
+                  <div className="h-full bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 dark:border-gray-700 group flex flex-col">
+                    {/* Logo Badge */}
+                    <div className="absolute top-4 left-4 z-10">
+                      <div className="flex items-center space-x-2 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-lg px-3 py-1.5 shadow-md">
+                        <Icon className="h-5 w-5 text-teal-600 dark:text-teal-400" />
+                        <span className="text-sm font-medium text-gray-800 dark:text-gray-200">
+                          {study.client.split(' ')[0]}
+                        </span>
+                      </div>
+                    </div>
+                    
+                    {/* Image */}
+                    <div className="relative h-48 w-full bg-gray-50 dark:bg-gray-700 flex items-center justify-center p-6">
+                      <div className="relative w-full h-full max-w-[200px] mx-auto">
+                        <Image 
+                          src={study.imageUrl} 
+                          alt={`${study.client} logo`}
+                          fill
+                          style={{ objectFit: 'contain' }}
+                          className="transition-transform duration-300 group-hover:scale-110"
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                          priority={index < 3}
+                        />
+                      </div>
+                    </div>
+                    
+                    {/* Content */}
+                    <div className="p-6 flex flex-col flex-grow border-t border-gray-100 dark:border-gray-700">
+                      <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">{study.title}</h3>
+                      <p className="text-gray-600 dark:text-gray-300 text-sm mb-4 flex-grow">{study.description}</p>
+                      
+                      {/* Tags */}
+                      <div className="flex flex-wrap gap-2 mb-4">
+                        {study.highlights.map((tag, i) => (
+                          <span 
+                            key={i}
+                            className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-teal-50 dark:bg-teal-900/30 text-teal-700 dark:text-teal-300"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                      
+                      <div className="mt-auto pt-4 border-t border-gray-100 dark:border-gray-700 flex justify-between items-center">
+                        <span className="text-xs text-gray-500 dark:text-gray-400">{study.date}</span>
+                        <button className="text-teal-600 dark:text-teal-400 hover:text-teal-700 dark:hover:text-teal-300 text-sm font-medium flex items-center group transition-colors">
+                          View Case Study
+                          <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                        </button>
+                      </div>
                     </div>
                   </div>
-                  <div className="p-6 flex flex-col flex-grow">
-                    <h4 className="font-semibold text-lg text-gray-800 dark:text-white mb-2">{study.title}</h4>
-                    <p className="text-gray-600 dark:text-gray-300 text-sm mb-4 flex-grow">{study.description}</p>
-                    <div className="grid grid-cols-3 gap-4 text-center my-4">
-                      {study.stats.map(stat => (
-                        <div key={stat.label}>
-                          <p className="font-bold text-2xl text-teal-600 dark:text-teal-400">{stat.value}</p>
-                          <p className="text-xs text-gray-500 dark:text-gray-400">{stat.label}</p>
-                        </div>
-                      ))}
-                    </div>
-                    <button className="mt-auto w-full text-center py-2 px-4 bg-teal-500/10 dark:bg-teal-400/10 text-teal-700 dark:text-teal-300 rounded-lg font-semibold hover:bg-teal-500/20 dark:hover:bg-teal-400/20 transition-all duration-300 flex items-center justify-center">
-                      Read More <ArrowRight className="ml-2 h-4 w-4" />
-                    </button>
-                  </div>
-                </div>
-              </Tilt>
-            </motion.div>
-          ))}
+                </Tilt>
+              </motion.div>
+            );
+          })}
         </motion.div>
       </div>
     </section>

@@ -94,75 +94,58 @@ export default function IllustrativeThree() {
         <div className="absolute inset-0 dark:bg-[url('/bg_dark_2.jpg')] dark:bg-cover dark:bg-center dark:bg-no-repeat dark:opacity-10" />
       </div>
 
-      {/* Main Banner with right-aligned image */}
-      <section className="relative pt-8 pb-16 md:pt-12 md:pb-24 bg-white dark:bg-transparent">
-        <div className="container mx-auto px-4 max-w-7xl">
-          <div className="flex flex-col lg:flex-row items-center">
-            {/* Left side - Text content */}
-            <div className="lg:w-1/2 mb-6 lg:mb-0 lg:pr-12">
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6 }}
-              >
-                <span className="inline-block px-4 py-1 rounded-full bg-teal-600 text-white text-sm font-semibold mb-4">
-                  Next-Gen Treasury Solutions
-                </span>
-                <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4 leading-tight">
-                  Empower Your <span className="text-teal-600">Financial Future</span>
-                </h1>
-                <p className="text-lg text-gray-700 mb-4">
-                  Transform treasury operations with AI-driven insights, seamless automation, and global scalability.
-                </p>
-                <p className="text-lg text-gray-700 mb-4">
-                  Unlock new opportunities with our innovative platform designed to streamline your financial workflows.
-                </p>
-                <p className="text-lg text-gray-700 mb-8">
-                  Experience unparalleled efficiency and control in managing your treasury operations worldwide.
-                </p>
-                <div className="flex flex-wrap gap-4">
-                  <motion.button
-                    whileHover={{ scale: 1.03 }}
-                    whileTap={{ scale: 0.98 }}
-                    className="px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white rounded-lg font-medium flex items-center transition-colors"
-                  >
-                    Start Now <ArrowRight className="ml-2 h-4 w-4" />
-                  </motion.button>
-                  <motion.button
-                    whileHover={{ scale: 1.03 }}
-                    whileTap={{ scale: 0.98 }}
-                    className="px-6 py-3 bg-white border-2 border-teal-600 text-teal-600 hover:bg-gray-50 rounded-lg font-medium transition-colors"
-                  >
-                    Explore Features
-                  </motion.button>
-                </div>
-              </motion.div>
-            </div>
-
-            {/* Right side - Image with Tilt */}
+      {/* Main Banner with SVG background */}
+      <section 
+        className="relative pt-8 pb-16 md:pt-12 md:pb-24 bg-white dark:bg-transparent"
+        style={{
+          backgroundImage: 'url(/Currencies-Banner.png)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'right center',
+          backgroundRepeat: 'no-repeat'
+        }}
+      >
+        {/* Overlay for better text readability */}
+        <div className="absolute inset-0 bg-white/10 dark:bg-black/20"></div>
+        
+        <div className="container mx-auto px-4 max-w-7xl relative z-10">
+          <div className="flex items-center justify-start min-h-[500px]">
             <motion.div
-              className="lg:w-1/2 flex justify-center lg:justify-start px-4"
-              initial={{ opacity: 0, x: 20 }}
+              initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
+              transition={{ duration: 0.6 }}
+              className="max-w-2xl text-left"
             >
-                <Tilt
-                  tiltMaxAngleX={5}
-                  tiltMaxAngleY={5}
-                  scale={1.05}
-                  transitionSpeed={800}
-                  className="w-full max-w-[900px] h-[560px] relative"
+              <span className="inline-block px-4 py-1 rounded-full bg-teal-600 text-white text-sm font-semibold mb-6">
+                Next-Gen Treasury Solutions
+              </span>
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
+                Empower Your <span className="text-teal-400">Financial Future</span>
+              </h1>
+              <p className="text-lg md:text-xl text-white mb-6">
+                Transform treasury operations with AI-driven insights, seamless automation, and global scalability.
+              </p>
+              <p className="text-lg md:text-xl text-white mb-6">
+                Unlock new opportunities with our innovative platform designed to streamline your financial workflows.
+              </p>
+              <p className="text-lg md:text-xl text-white mb-10">
+                Experience unparalleled efficiency and control in managing your treasury operations worldwide.
+              </p>
+              <div className="flex flex-wrap gap-4">
+                <motion.button
+                  whileHover={{ scale: 1.03 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="px-8 py-4 bg-white text-teal-600 hover:bg-gray-100 rounded-lg font-medium flex items-center transition-colors text-lg shadow-lg"
                 >
-                <Image
-                  src="/bg_style_3.png"
-                  alt="Modern Financial Solutions"
-                  fill
-                  className="object-contain object-center"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  priority
-                  quality={100}
-                />
-              </Tilt>
+                  Start Now <ArrowRight className="ml-2 h-5 w-5" />
+                </motion.button>
+                <motion.button
+                  whileHover={{ scale: 1.03 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="px-8 py-4 bg-transparent border-2 border-white text-white hover:bg-white hover:text-teal-600 rounded-lg font-medium transition-colors text-lg"
+                >
+                  Explore Features
+                </motion.button>
+              </div>
             </motion.div>
           </div>
         </div>
@@ -213,39 +196,55 @@ export default function IllustrativeThree() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-3 gap-6"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
           >
             {[
               {
                 icon: Zap,
-                title: 'Innovative AI',
-                description: 'AI-driven insights for smarter financial decisions.',
-                stat: '80% Automation',
+                title: 'Comprehensive',
+                description: 'A complete Risk Management solution covering Compliance, Operational, and Financial risks.',
               },
               {
                 icon: Shield,
-                title: 'Trusted Reliability',
-                description: '99.9% uptime with robust security.',
-                stat: '99.9% Uptime',
+                title: 'Integrated',
+                description: 'Seamlessly connects with your existing IT ecosystem—ERP, market data providers, and banks.',
               },
               {
                 icon: Globe,
-                title: 'Global Reach',
-                description: 'Support for multi-currency operations worldwide.',
-                stat: '50+ Countries',
+                title: 'Nimble',
+                description: 'End-to-end in-house development ensures fast, agile implementation.',
+              },
+              {
+                icon: Users,
+                title: 'Domain-Centric',
+                description: 'Founded by ex-bankers with deep expertise in finance, risk, and technology.',
+              },
+              {
+                icon: BarChart2,
+                title: 'Configurable',
+                description: 'Highly customizable to align with your workflows and business needs.',
+              },
+              {
+                icon: Building,
+                title: 'Best Practices',
+                description: 'Built on industry standards with world-class treasury, risk, and trade finance capabilities.',
               },
             ].map((diff, index) => (
-              <motion.div key={index} variants={itemVariants}>
-                <Tilt tiltMaxAngleX={10} tiltMaxAngleY={10}>
-                  <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-md p-6 rounded-xl border border-teal-200 dark:border-teal-700 hover:shadow-xl transition-shadow">
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: index * 0.1 }}
+              >
+                <Tilt tiltMaxAngleX={10} tiltMaxAngleY={10} className="h-full">
+                  <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-md p-6 rounded-xl border border-teal-200 dark:border-teal-700 hover:shadow-xl transition-shadow h-full flex flex-col">
                     <div className="h-12 w-12 bg-teal-100 dark:bg-teal-900 rounded-full flex items-center justify-center mb-4">
                       <diff.icon className="h-6 w-6 text-teal-600 dark:text-teal-400" />
                     </div>
                     <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-2">{diff.title}</h3>
                     <p className="text-gray-600 dark:text-gray-300 text-sm">{diff.description}</p>
-                    <span className="mt-4 inline-block px-4 py-1 bg-teal-100 dark:bg-teal-900 text-teal-600 dark:text-teal-300 text-sm font-medium rounded-full">
-                      {diff.stat}
-                    </span>
+                    <div className="flex-grow"></div>
                   </div>
                 </Tilt>
               </motion.div>
@@ -337,7 +336,7 @@ export default function IllustrativeThree() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-3 gap-6"
+            className="grid grid-cols-1 md:grid-cols-5 gap-6"
           >
             {[
               {
@@ -358,10 +357,22 @@ export default function IllustrativeThree() {
                 description: 'Named Top Treasury Platform 2025.',
                 stat: 'Award Winner',
               },
+              {
+                title: 'New Product Release',
+                date: 'June 2025',
+                description: 'Launching our latest treasury management tool.',
+                stat: 'Innovative',
+              },
+              {
+                title: 'Customer Success',
+                date: 'July 2025',
+                description: 'Achieved record customer satisfaction scores.',
+                stat: 'Top Rated',
+              },
             ].map((news, index) => (
               <motion.div key={index} variants={itemVariants}>
                 <Tilt tiltMaxAngleX={10} tiltMaxAngleY={10}>
-                  <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-md p-6 rounded-xl border border-teal-200 dark:border-teal-700 hover:shadow-xl transition-shadow">
+                  <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-md p-6 rounded-xl border border-teal-200 dark:border-teal-700 hover:shadow-xl transition-shadow flex flex-col h-full">
                     <div className="flex items-center mb-4">
                       <Newspaper className="h-5 w-5 text-teal-600 dark:text-teal-400 mr-2" />
                       <span className="text-sm text-gray-500 dark:text-gray-300">{news.date}</span>
@@ -381,6 +392,11 @@ export default function IllustrativeThree() {
               </motion.div>
             ))}
           </motion.div>
+          <div className="mt-8 flex justify-center">
+            <button className="px-6 py-3 bg-transparent border-2 border-teal-600 dark:border-teal-400 text-teal-600 dark:text-teal-400 rounded-md hover:bg-teal-100 dark:hover:bg-teal-900/50 font-semibold transition-colors">
+              View All News
+            </button>
+          </div>
         </div>
       </section>
       {/* Let's Connect */}
@@ -408,21 +424,6 @@ export default function IllustrativeThree() {
                   Request Demo
                 </button>
               </motion.div>
-            </div>
-            <div className="mt-12">
-              <div className="flex justify-center gap-6 mb-4">
-                {['Twitter', 'LinkedIn', 'Email'].map((social) => (
-                  <a
-                    key={social}
-                    href="#"
-                    className="text-teal-200 hover:text-white transition-colors"
-                    aria-label={social}
-                  >
-                    {social}
-                  </a>
-                ))}
-              </div>
-              <p className="text-sm">© 2025 Treasury Management Platform. All Rights Reserved.</p>
             </div>
           </motion.div>
         </div>
