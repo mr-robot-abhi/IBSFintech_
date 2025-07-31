@@ -49,34 +49,6 @@ const caseStudies = [
     date: "August 28, 2024"
   },
   {
-    title: "End-to-End Automation Revolution",
-    company: "Hindustan Zinc Limited",
-    summary:
-      "Transforming Treasury Management for a Global Zinc & Silver Industry Leader with comprehensive automation.",
-    highlights: [
-      "Metals & Mining",
-      "Global Operations",
-      "Treasury Automation",
-    ],
-    icon: BarChart2,
-    image: "/Case_Studies/Hindustan-Zinc-Limited.png",
-    date: "August 28, 2024"
-  },
-  {
-    title: "Real-Time Financial Visibility and Control",
-    company: "Signature Global",
-    summary:
-      "How the Leading Real Estate Player in Affordable Housing achieved unprecedented financial control.",
-    highlights: [
-      "Real Estate",
-      "Affordable Housing",
-      "Financial Control",
-    ],
-    icon: Building,
-    image: "/Case_Studies/Signature-Global.png",
-    date: "August 27, 2024"
-  },
-  {
     title: "End-to-End Digitization Journey",
     company: "Polycab",
     summary:
@@ -111,7 +83,7 @@ export default function CaseStudies() {
           </p>
         </motion.div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {caseStudies.map((cs, index) => (
             <motion.div
               key={index}

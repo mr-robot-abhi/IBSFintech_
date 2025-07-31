@@ -62,7 +62,7 @@ const menu: MenuSection[] = [
       {
         title: "Enterprise TMS",
         items: [
-          { label: "Cashflow & Liquidity", href: "/enterprise/cashflow-liquidity" },
+          { label: "Cashflow & Liquidity", href: "/products/cashflow-liquidity" },
           { label: "Currency (FX) Risk", href: "/enterprise/currency-fx-risk" },
           { label: "Investment (Money Market)", href: "/enterprise/investment-money-market" },
           { label: "Trade Finance – Import Export & Banking", href: "/enterprise/trade-finance" },
@@ -88,7 +88,7 @@ const menu: MenuSection[] = [
       {
         title: "Solutions",
         items: [
-          { label: "Cash Visibility & Forecasting", href: "/solutions/cash-visibility-forecasting", icon: Eye },
+          { label: "Cash Visibility & Forecasting", href: "/style1/solutions/cash-visibility-forecasting", icon: Eye },
           { label: "FX Risk", href: "/solutions/foreign-exchange-risk", icon: TrendingUp },
           { label: "Money Market", href: "/solutions/money-market", icon: BarChart2 },
           { label: "Trade Finance", href: "/solutions/trade-finance", icon: FileText },
@@ -119,7 +119,7 @@ const menu: MenuSection[] = [
       {
         title: "Resources",
         items: [
-          { label: "Blog", href: "/resources/blog" },
+          { label: "Blog", href: "/style1/resources/blog" },
           { label: "Whitepapers", href: "/resources/whitepapers" },
           { label: "Case Studies", href: "/resources/case-studies" },
           { label: "Webinars", href: "/resources/webinars" },
