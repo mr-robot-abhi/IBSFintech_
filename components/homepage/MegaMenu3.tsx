@@ -315,7 +315,7 @@ export default function MegaMenu3() {
         onMouseLeave={handleMenuLeave}
       >
         <div className="w-full">
-          <div className={`flex ${isResourcesMenu ? 'gap-2' : 'gap-6'} p-4`}>
+          <div className={`flex ${isResourcesMenu ? 'flex-col' : 'gap-6'} p-4`}>
             {/* Left column - Menu items */}
             {isSolutionsMenu ? (
               <div className="grid grid-cols-2 gap-x-8 gap-y-2 flex-1">
@@ -335,7 +335,7 @@ export default function MegaMenu3() {
                 ))}
               </div>
             ) : (
-              <div className={`md:col-span-2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 ${isResourcesMenu ? 'pr-0' : ''}`}>
+              <div className={`${isResourcesMenu ? 'w-full' : 'flex-1'} grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4`}>
                 {item.submenu.map((section: any, idx: number) => {
                   if (isProductsMenu && section.title === 'Enterprise TMS') {
                     const halfLength = Math.ceil(section.items.length / 2);
@@ -463,7 +463,7 @@ export default function MegaMenu3() {
             )}
 
             {/* Right column - Featured content */}
-            {item.featured && !isContactMenu && (
+            {item.featured && !isContactMenu && !isResourcesMenu && (
               <div className={`${isResourcesMenu ? 'w-40 h-40 ml-0' : 'w-48 h-40'}`}>
                 <div className="relative rounded-lg overflow-hidden w-full h-full bg-gradient-to-br from-blue-600 to-blue-800">
                   <Image
@@ -586,6 +586,7 @@ export default function MegaMenu3() {
                               const menuItemRect = menuItemEl.getBoundingClientRect();
                               const containerRect = containerEl.getBoundingClientRect();
                               const relativeLeft = menuItemRect.left - containerRect.left;
+                              const relativeRight = containerRect.right - menuItemRect.right;
                               
                               // For mega menus (Products, Solutions), use full width but position from left
                               if (item.name === 'Products' || item.name === 'Solutions') {
@@ -594,8 +595,8 @@ export default function MegaMenu3() {
                               
                               // For smaller dropdowns (Resources, Company, Contact Us), position directly below
                               const dropdownWidth = item.name === 'Contact Us' ? 280 : 
-                                                   item.name === 'Resources' ? 320 : 
-                                                   item.name === 'Company' ? 300 : 280;
+                                                   item.name === 'Resources' ? 700 : 
+                                                   item.name === 'Company' ? 700 : 280;
                               
                               // Ensure dropdown doesn't exceed right edge (Request Demo position)
                               const maxRight = containerRect.width - 20; // 20px margin from edge
@@ -603,15 +604,8 @@ export default function MegaMenu3() {
                               
                               if (proposedRight > maxRight) {
                                 return { 
+                                  left: 'auto',
                                   right: 20, // 20px from right edge
-                                  width: `${dropdownWidth}px`
-                                };
-                              }
-                              
-                              // For Resources menu, position directly under the menu item
-                              if (item.name === 'Resources') {
-                                return { 
-                                  left: `${relativeLeft}px`,
                                   width: `${dropdownWidth}px`
                                 };
                               }

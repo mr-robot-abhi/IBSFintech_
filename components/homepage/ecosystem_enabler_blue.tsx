@@ -58,7 +58,7 @@ export default function EcosystemEnabler() {
   }, [serviceControls]);
 
   const center = size / 2;
-  const ibsLogoRing = size * 0.25;
+  const ibsLogoRing = size * 0.20;
   const serviceRadius = size * 0.35;
   const serviceBoxSize = size * 0.18;
 
@@ -87,13 +87,13 @@ export default function EcosystemEnabler() {
               className="absolute z-30 flex items-center justify-center"
               style={{ width: ibsLogoRing, height: ibsLogoRing, top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}
             >
-              <div className="absolute inset-0 rounded-full border-8 border-white shadow-2xl bg-white" />
+              <div className="absolute inset-0 rounded-full border-6 border-white shadow-xl bg-white" />
               <div className="relative z-10 flex flex-col items-center justify-center">
                 <div className="relative" style={{ width: ibsLogoRing * 0.5, height: ibsLogoRing * 0.5 }}>
                   <Image src="/Ibs_logo_1.png" alt="IBS Logo" fill className="object-contain" priority />
                 </div>
-                <div className="mt-2 text-center">
-                  <span className="font-semibold text-teal-700 dark:text-teal-300 leading-tight" style={{ fontSize: serviceBoxSize * 0.10 }}>
+                <div className="mt-1 text-center">
+                  <span className="font-semibold text-teal-700 dark:text-teal-300 leading-tight" style={{ fontSize: serviceBoxSize * 0.08 }}>
                     IBS Fintech <br /> Treasury Tech Platform
                   </span>
                 </div>
