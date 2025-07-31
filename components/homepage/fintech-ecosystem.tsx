@@ -145,11 +145,11 @@ export default function FintechEcosystem() {
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.5 }}
           >
-            <div className="bg-white/10 backdrop-blur-sm rounded-full p-4 shadow-xl border-2 border-white/20 min-w-[160px]">
-              <Image src="/ibs_logo_1.png" alt="IBSFintech Logo" width={45} height={45} className="mx-auto mb-2" />
-              <motion.div className="space-y-0.5">
+            <div className="bg-white/10 backdrop-blur-sm rounded-full p-3 shadow-lg border border-white/20 min-w-[130px]">
+              <Image src="/ibs_logo_1.png" alt="IBSFintech Logo" width={45} height={45} className="mx-auto mb-1" />
+              <motion.div className="space-y-0">
                 <motion.div 
-                  className="text-[10px] font-bold text-white leading-tight"
+                  className="text-[9px] font-bold text-white leading-tight"
                   initial={{ y: 10, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ duration: 0.6, delay: 1 }}
@@ -157,7 +157,7 @@ export default function FintechEcosystem() {
                   IBS Fintech
                 </motion.div>
                 <motion.div 
-                  className="text-[9px] text-white/80 leading-tight"
+                  className="text-[8px] text-white/80 leading-tight"
                   initial={{ y: 10, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ duration: 0.6, delay: 1.1 }}

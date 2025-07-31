@@ -115,9 +115,9 @@ export default function FintechEcosystem() {
 
   return (
     <div className="w-full flex items-center justify-center py-12 bg-gradient-to-b from-white to-teal-50 dark:from-teal-900/30 dark:to-gray-900 transition-colors duration-200">
-      <div className="relative w-full max-w-7xl mx-auto h-[900px]">
+      <div className="relative w-full max-w-6xl mx-auto h-[700px]">
         {/* Left side text content */}
-        <div className="absolute left-0 top-1/2 transform -translate-y-1/2 w-80 z-40">
+        <div className="absolute left-0 top-1/2 transform -translate-y-1/2 w-72 z-40">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
@@ -135,7 +135,7 @@ export default function FintechEcosystem() {
         <div
           className="absolute z-30"
           style={{
-            left: "calc(50% + 100px)", // Moved right to make space for text
+            left: "calc(50% + 80px)", // Moved right to make space for text
             top: "50%",
             transform: "translate(-50%, -50%)",
           }}
@@ -146,11 +146,11 @@ export default function FintechEcosystem() {
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.5 }}
           >
-            <div className="bg-white dark:bg-teal-900/80 backdrop-blur-sm rounded-full w-[250px] h-[250px] flex flex-col items-center justify-center shadow-lg border border-teal-200 dark:border-teal-600/30 transition-all duration-300 hover:bg-teal-50 dark:hover:bg-teal-800/70">
-              <Image src="/ibs_logo_1.png" alt="IBSFintech Logo" width={80} height={80} className="mx-auto mb-4" />
-              <motion.div className="space-y-2 text-center">
+            <div className="bg-white dark:bg-teal-900/80 backdrop-blur-sm rounded-full w-[160px] h-[160px] flex flex-col items-center justify-center shadow-lg border border-teal-200 dark:border-teal-600/30 transition-all duration-300 hover:bg-teal-50 dark:hover:bg-teal-800/70">
+              <Image src="/ibs_logo_1.png" alt="IBSFintech Logo" width={64} height={64} className="mx-auto mb-2" />
+              <motion.div className="space-y-1 text-center">
                 <motion.div 
-                  className="text-[18px] font-bold text-teal-800 dark:text-teal-50 leading-tight"
+                  className="text-[14px] font-bold text-teal-800 dark:text-teal-50 leading-tight"
                   initial={{ y: 10, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ duration: 0.6, delay: 1 }}
@@ -158,7 +158,7 @@ export default function FintechEcosystem() {
                   IBSFINtech
                 </motion.div>
                 <motion.div 
-                  className="text-[14px] text-teal-700 dark:text-teal-100/80 leading-tight"
+                  className="text-[10px] text-teal-700 dark:text-teal-100/80 leading-tight"
                   initial={{ y: 10, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ duration: 0.6, delay: 1.1 }}
@@ -174,12 +174,12 @@ export default function FintechEcosystem() {
         <div
           className="absolute transform -translate-x-1/2 -translate-y-1/2"
           style={{
-            left: "calc(50% + 100px)", // Moved right
+            left: "calc(50% + 80px)", // Moved right
             top: "50%",
           }}
         >
           {services.map((service, index) => {
-            const radius = 300 // Increased size
+            const radius = 240 // Increased radius to create more space between service circles and central logo
             const angleRad = (service.angle * Math.PI) / 180
             const x = radius * Math.cos(angleRad)
             const y = radius * Math.sin(angleRad)
@@ -189,8 +189,8 @@ export default function FintechEcosystem() {
                 key={service.id}
                 className="absolute cursor-pointer z-20"
                 style={{
-                  left: x - 80, // Adjusted for larger box
-                  top: y - 55, // Adjusted for larger box
+                  left: x - 80, // Adjusted for smaller box
+                  top: y - 55, // Adjusted for smaller box
                 }}
                 initial={{ scale: 0, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
@@ -227,54 +227,54 @@ export default function FintechEcosystem() {
         <div
           className="absolute z-5"
           style={{
-            left: "calc(50% + 100px)", // Moved right
+            left: "calc(50% + 80px)", // Moved right
             top: "50%",
             transform: "translate(-50%, -50%)",
           }}
         >
-          <svg className="w-[600px] h-[600px] pointer-events-none">
+          <svg className="w-[400px] h-[400px] pointer-events-none">
             {services.map((service) => {
-              const radius = 300
+              const radius = 240
               const angleRad = (service.angle * Math.PI) / 180
-              const centerX = 300
-              const centerY = 300
+              const centerX = 200
+              const centerY = 200
 
               // PRECISE radius calculations for each specific angle to just touch boxes
               let serviceBoxRadius
               switch (service.angle) {
                 case 0: // Cash & Liquidity (right)
-                  serviceBoxRadius = radius - 80
+                  serviceBoxRadius = radius - 70
                   break
                 case 45: // Payments (bottom-right)
-                  serviceBoxRadius = radius - 82
+                  serviceBoxRadius = radius - 72
                   break
                 case 90: // Supply Chain (bottom)
-                  serviceBoxRadius = radius - 78
+                  serviceBoxRadius = radius - 68
                   break
                 case 135: // Commodity (bottom-left)
-                  serviceBoxRadius = radius - 82
+                  serviceBoxRadius = radius - 72
                   break
                 case 180: // Currency Risk (left)
-                  serviceBoxRadius = radius - 80
+                  serviceBoxRadius = radius - 70
                   break
                 case 225: // Investment (top-left) - FIXED GAP
-                  serviceBoxRadius = radius - 85
+                  serviceBoxRadius = radius - 75
                   break
                 case 270: // Trade Finance (top)
-                  serviceBoxRadius = radius - 78
+                  serviceBoxRadius = radius - 68
                   break
                 case 315: // Debt Mgmt (top-right) - FIXED GAP
-                  serviceBoxRadius = radius - 85
+                  serviceBoxRadius = radius - 75
                   break
                 default:
-                  serviceBoxRadius = radius - 80
+                  serviceBoxRadius = radius - 70
               }
 
               const endX = centerX + serviceBoxRadius * Math.cos(angleRad)
               const endY = centerY + serviceBoxRadius * Math.sin(angleRad)
 
               // PRECISE logo box radius - touch the edge exactly
-              const logoBoxRadius = 125
+              const logoBoxRadius = 80
               const startX = centerX + logoBoxRadius * Math.cos(angleRad)
               const startY = centerY + logoBoxRadius * Math.sin(angleRad)
 
@@ -347,17 +347,17 @@ export default function FintechEcosystem() {
         <motion.div
           className="absolute z-40"
           style={{
-            left: "calc(50% + 500px)", // Moved further right but less than interfaces
-            top: "calc(50% - 180px)", // Extended to span more vertically
+            left: "calc(50% + 420px)", // Moved further right but less than interfaces
+            top: "calc(50% - 140px)", // Extended to span more vertically
             transform: "translate(0, 0)",
           }}
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 1.5 }}
         >
-          <svg width="80" height="360" viewBox="0 0 80 360">
+          <svg width="80" height="280" viewBox="0 0 80 280">
             <path
-              d="M 10 10 Q 20 10 20 20 L 20 170 Q 20 180 30 180 Q 20 180 20 190 L 20 340 Q 20 350 10 350"
+              d="M 10 10 Q 20 10 20 20 L 20 130 Q 20 140 30 140 Q 20 140 20 150 L 20 260 Q 20 270 10 270"
               stroke="#3B82F6"
               strokeWidth="4"
               fill="none"
@@ -370,7 +370,7 @@ export default function FintechEcosystem() {
         <div
           className="absolute z-20"
           style={{
-            left: "calc(50% + 540px)", // Moved further right to avoid overlap
+            left: "calc(50% + 460px)", // Moved further right to avoid overlap
             top: "50%",
             transform: "translateY(-50%)",
           }}

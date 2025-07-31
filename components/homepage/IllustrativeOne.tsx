@@ -121,7 +121,7 @@ export default function IllustrativeOne() {
                 Our end-to-end Treasury Management Platform empowers organizations with cutting-edge solutions for treasury, risk, trade finance, and supply chain finance.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <button className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-lg transition-colors duration-200 flex items-center justify-center">
+              <button className="bg-[#FF073A] hover:bg-[#e60634] text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 flex items-center justify-center transform hover:-translate-y-0.5 hover:shadow-[0_4px_12px_rgba(255,7,58,0.3)] active:translate-y-0">
                   Get Started
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </button>
@@ -160,83 +160,104 @@ export default function IllustrativeOne() {
       </section>
       <OurOfferingsSection />
       {/* Why Choose Us */}
-      <section className="py-20 relative overflow-hidden" style={{
-        background: 'radial-gradient(1000px 800px at 20% 50%, #3b61ff 0%, transparent 80%), radial-gradient(700px 500px at 50% 100%, #8e2de2 0%, transparent 80%), radial-gradient(1200px 1000px at 100% 0%, #000000 0%, #0c001a 100%)',
-        backgroundColor: '#0c001a'
-      }}>
-        {/* Background Elements */}
-        <div className="absolute -top-1/4 -left-1/4 w-[800px] h-[800px] rounded-full bg-blue-400/20 blur-[120px]"></div>
-        <div className="absolute -bottom-1/3 -right-1/4 w-[1000px] h-[1000px] rounded-full bg-purple-500/30 blur-[160px]"></div>
-
+      <section className="py-20 relative overflow-hidden">
+        {/* Blurry background */}
+        <div className="absolute inset-0 -z-10">
+          <div className="absolute inset-0 bg-gradient-to-br from-navy-900 to-navy-950 opacity-90"></div>
+          <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))] opacity-10"></div>
+        </div>
+        
         <div className="container mx-auto px-4 max-w-7xl">
-          <div className="flex flex-col lg:flex-row gap-12">
-            {/* LEFT TEXT */}
-            <div className="w-full lg:w-2/5 text-white">
-              <h2 className="text-5xl font-bold mb-6">Why Choose Us</h2>
-              <p className="text-xl text-white/90 mb-6">
-                Discover how our innovative financial solutions can transform your business operations and drive growth.
-              </p>
-              <p className="text-lg text-white/80 mb-8">
-                With years of industry expertise, we provide cutting‑edge solutions tailored to your unique business needs.
-              </p>
-              <button className="bg-[#CA3826] text-white hover:bg-[#b03020] font-medium py-3 px-8 rounded-full transition-colors duration-200 flex items-center">
-                Learn More
-                <svg xmlns="http://www.w3.org/2000/svg" className="ml-2 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </button>
-            </div>
+          <div className="backdrop-blur-sm bg-black/30 p-8 rounded-2xl">
+            <div className="flex flex-col lg:flex-row gap-12">
+              {/* LEFT TEXT */}
+              <div className="w-full lg:w-2/5 text-white">
+                <h2 className="text-5xl font-bold mb-6">Why Choose Us</h2>
+                <p className="text-xl text-white/90 mb-6">
+                  Discover how our innovative financial solutions can transform your business operations and drive growth.
+                </p>
+                <p className="text-lg text-white/80 mb-8">
+                  With years of industry expertise, we provide cutting‑edge solutions tailored to your unique business needs.
+                </p>
+                <button className="bg-[#FF073A] hover:bg-[#e60634] text-white font-medium py-3 px-8 rounded-full transition-all duration-300 flex items-center transform hover:-translate-y-0.5 hover:shadow-[0_4px_12px_rgba(255,7,58,0.3)] active:translate-y-0">
+                  Learn More
+                  <svg xmlns="http://www.w3.org/2000/svg" className="ml-2 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </button>
+              </div>
 
-            {/* RIGHT GRID */}
-            <div className="w-full lg:w-3/5 grid grid-cols-4 grid-rows-2 gap-3 h-[600px]">
+              {/* RIGHT GRID */}
+              <div className="w-full lg:w-3/5">
+                <div className="grid grid-cols-4 grid-rows-2 gap-4 h-[600px]">
               {/* Comprehensive */}
-              <div className="col-span-2 row-span-1 rounded-xl bg-[#A7BED3] p-4 flex flex-col justify-between">
-                <div className="space-y-2">
-                  <h3 className="text-xl font-bold">Comprehensive</h3>
+              <div className="col-span-2 row-span-1 rounded-xl bg-[#A7BED3] p-6 flex flex-col justify-between">
+                <div className="space-y-3">
+                  <div className="flex items-center gap-2">
+                    <BarChart2 className="h-6 w-6 text-blue-700" />
+                    <h3 className="text-xl font-bold">Comprehensive</h3>
+                  </div>
                   <p className="text-base opacity-90 leading-tight">Our end‑to‑end solution covers compliance, operational, and financial risks. With a unified platform, you gain full visibility and control over your entire risk landscape.</p>
                 </div>
               </div>
 
               {/* Nimble */}
-              <div className="col-span-1 row-span-1 rounded-xl bg-[#6DD6DA] p-4 flex flex-col justify-between">
-                <div className="space-y-2">
-                  <h3 className="text-xl font-bold">Nimble</h3>
+              <div className="col-span-2 row-span-1 rounded-xl bg-[#6DD6DA] p-6 flex flex-col justify-between">
+                <div className="space-y-3">
+                  <div className="flex items-center gap-2">
+                    <Zap className="h-6 w-6 text-teal-700" />
+                    <h3 className="text-xl font-bold">Nimble</h3>
+                  </div>
                   <p className="text-base opacity-90 leading-tight">Rapid implementation and deployment with our agile approach. Our cloud‑native architecture allows for instant scaling.</p>
                 </div>
               </div>
 
               {/* Domain-Centric */}
-              <div className="col-span-1 row-span-1 rounded-xl bg-[#FED766] p-4 flex flex-col justify-between">
-                <div className="space-y-2">
-                  <h3 className="text-xl font-bold">Domain‑Centric</h3>
+              <div className="col-span-2 row-span-1 rounded-xl bg-[#FED766] p-6 flex flex-col justify-between">
+                <div className="space-y-3">
+                  <div className="flex items-center gap-2">
+                    <Shield className="h-6 w-6 text-yellow-700" />
+                    <h3 className="text-xl font-bold">Domain‑Centric</h3>
+                  </div>
                   <p className="text-base opacity-90 leading-tight">Built by industry experts with deep financial expertise. Our solution incorporates decades of collective experience.</p>
                 </div>
               </div>
 
               {/* Configurable */}
-              <div className="col-span-1 row-span-1 rounded-xl bg-[#FFCAAF] p-4 flex flex-col justify-between">
-                <div className="space-y-2">
-                  <h3 className="text-xl font-bold">Configurable</h3>
+              <div className="col-span-2 row-span-1 rounded-xl bg-[#FFCAAF] p-6 flex flex-col justify-between">
+                <div className="space-y-3">
+                  <div className="flex items-center gap-2">
+                    <Globe className="h-6 w-6 text-orange-700" />
+                    <h3 className="text-xl font-bold">Configurable</h3>
+                  </div>
                   <p className="text-base opacity-90 leading-tight">Tailor the platform to your specific requirements. Our drag‑and‑drop interface allows easy customization of dashboards.</p>
                 </div>
               </div>
 
               {/* Best Practices */}
-              <div className="col-span-1 row-span-1 rounded-xl bg-[#FCFF6C] p-4 flex flex-col justify-between">
-                <div className="space-y-2">
-                  <h3 className="text-xl font-bold">Best Practices</h3>
+              <div className="col-span-2 row-span-1 rounded-xl bg-[#FCFF6C] p-6 flex flex-col justify-between">
+                <div className="space-y-3">
+                  <div className="flex items-center gap-2">
+                    <Users className="h-6 w-6 text-yellow-700" />
+                    <h3 className="text-xl font-bold">Best Practices</h3>
+                  </div>
                   <p className="text-base opacity-90 leading-tight">Built on industry standards and regulatory requirements. The platform incorporates Basel III, IFRS 9, and GDPR compliance.</p>
                 </div>
               </div>
 
               {/* Integrated */}
-              <div className="col-span-2 row-span-1 rounded-xl bg-[#D7FFAB] p-4 flex flex-col justify-between">
-                <div className="space-y-2">
-                  <h3 className="text-xl font-bold">Integrated</h3>
+              <div className="col-span-2 row-span-1 rounded-xl bg-[#D7FFAB] p-6 flex flex-col justify-between">
+                <div className="space-y-3">
+                  <div className="flex items-center gap-2">
+                    <Cpu className="h-6 w-6 text-green-700" />
+                    <h3 className="text-xl font-bold">Integrated</h3>
+                  </div>
                   <p className="text-base opacity-90 leading-tight">Seamlessly connects with ERP systems, market data providers, and banking partners. The platform supports SWIFT, FIX, and ISO 20022 messaging standards.</p>
                 </div>
               </div>
             </div>
+          </div>
+        </div>
           </div>
         </div>
       </section>
@@ -376,18 +397,10 @@ export default function IllustrativeOne() {
                   </p>
                   <div className="flex flex-wrap justify-center md:justify-start gap-2">
                     <motion.a
-                      href="/contact"
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.98 }}
-                      className="px-4 py-2 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-medium rounded-xl shadow-xl hover:shadow-blue-600/30 transition-all duration-300 flex items-center"
-                    >
-                      Contact Us <ArrowRight className="ml-2 h-4 w-4" />
-                    </motion.a>
-                    <motion.a
                       href="/demo"
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.98 }}
-                      className="px-4 py-2 border-2 border-blue-400 text-white font-medium rounded-xl hover:bg-blue-500/10 transition-all duration-300 flex items-center"
+                      className="px-4 py-2 bg-[#FF073A] hover:bg-[#e60634] text-white font-medium rounded-xl transition-all duration-300 flex items-center transform hover:-translate-y-0.5 hover:shadow-[0_4px_12px_rgba(255,7,58,0.3)] active:translate-y-0"
                     >
                       Request Demo
                     </motion.a>
@@ -462,11 +475,6 @@ export default function IllustrativeOne() {
           </div>
         </div>
       </section>
-
-      {/* Footer */}
-      {/* <div className="relative z-20">
-        <Footer />
-      </div> */}
     </div>
   );
 }
