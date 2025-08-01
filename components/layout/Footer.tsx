@@ -11,8 +11,7 @@ export default function Footer() {
           <div>
             <h3 className="text-xl font-bold mb-4">IBS Fintech</h3>
             <p className="text-gray-400 mb-4">
-              Pioneering treasury management solutions for modern enterprises, helping businesses streamline operations and 
-              make data-driven financial decisions.
+            We are an enterprise TreasuryTech company (ISO/IEC 27001: 2013 certified) that facilitates end-to-end digitization of cash & liquidity, investment, treasury, risk, trade finance, supply chain finance management of the corporations all over the world.
             </p>
             <div className="flex space-x-4">
               <a href="#" className="text-gray-400 hover:text-white transition-colors">
