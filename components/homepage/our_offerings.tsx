@@ -183,14 +183,7 @@ export default function OurOfferingsSection() {
                     <p className="text-sm text-white mt-4">{service.description}</p>
                     <div className="absolute bottom-4 left-0 right-0 flex justify-center z-10">
                       <button
-                        onClick={() => {
-                          const titles = ['Cash & Liquidity', 'Payments', 'Supply Chain', 'Commodity', 'Currency Risk', 'Investment', 'Trade Finance', 'Debt Management'];
-                          const paths = ['/products/cashflow-liquidity', '#', '#', '#', '#', '#', '#', '#'];
-                          const index = titles.indexOf(service.title);
-                          if (index !== -1 && paths[index] !== '#') {
-                            window.location.href = paths[index];
-                          }
-                        }}
+                        onClick={() => window.location.href = '#'}
                         className="bg-blue-600 text-white px-4 py-1 rounded-full text-sm font-medium hover:bg-blue-700 transition"
                       >
                         Learn More

@@ -18,6 +18,8 @@ import {
   Newspaper,
   Users,
   Truck,
+  ChevronLeft,
+  ChevronRight,
 } from 'lucide-react';
 import EcosystemEnabler from './ecosystem_enabler';
 import ClientLogoStrip from '../common/ClientLogoStrip';
@@ -25,6 +27,99 @@ import CaseStudiesStyleThree from './CaseStudiesStyleThree';
 import MegaMenu3 from './MegaMenu3';
 import PartnershipEcosystem_Style_3 from './PartnershipEcosystem_Style_3';
 import { ThemeToggle } from '@/components/ui/theme-toggle';
+
+// BannerSlideshow component for the hero section
+const BannerSlideshow = () => {
+  const banners = [
+    '/Currencies-Banner.png',
+    '/Home Page Banner 2.png',
+    '/Home Page Banner 3.png',
+    '/Home Page Banner 4.png'
+  ];
+  
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
+  const slideInterval = useRef<NodeJS.Timeout>();
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % banners.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + banners.length) % banners.length);
+  };
+
+  const goToSlide = (index: number) => {
+    setCurrentSlide(index);
+  };
+
+  // Auto-advance slides
+  useEffect(() => {
+    if (!isHovered) {
+      slideInterval.current = setInterval(() => {
+        nextSlide();
+      }, 5000);
+    }
+    return () => {
+      if (slideInterval.current) clearInterval(slideInterval.current);
+    };
+  }, [isHovered]);
+
+  return (
+    <div 
+      className="relative w-full h-full"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      {/* Slides */}
+      <div className="relative w-full h-full">
+        {banners.map((banner, index) => (
+          <div
+            key={index}
+            className={`absolute inset-0 transition-opacity duration-1000 ${index === currentSlide ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+          >
+            <Image
+              src={banner}
+              alt={`Banner ${index + 1}`}
+              fill
+              priority
+              className="object-cover object-right"
+              quality={100}
+            />
+          </div>
+        ))}
+      </div>
+
+      {/* Navigation Arrows */}
+      <button
+        onClick={prevSlide}
+        className="absolute left-4 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full bg-black/30 hover:bg-black/50 text-white transition-all"
+        aria-label="Previous slide"
+      >
+        <ChevronLeft className="h-8 w-8" />
+      </button>
+      <button
+        onClick={nextSlide}
+        className="absolute right-4 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full bg-black/30 hover:bg-black/50 text-white transition-all"
+        aria-label="Next slide"
+      >
+        <ChevronRight className="h-8 w-8" />
+      </button>
+
+      {/* Dots Indicator */}
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 flex space-x-2">
+        {banners.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => goToSlide(index)}
+            className={`h-2 w-2 rounded-full transition-all ${index === currentSlide ? 'bg-white w-6' : 'bg-white/50 w-2'}`}
+            aria-label={`Go to slide ${index + 1}`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
 
 export default function IllustrativeThree() {
   const [clientIndex, setClientIndex] = useState(0);
@@ -94,18 +189,14 @@ export default function IllustrativeThree() {
         <div className="absolute inset-0 dark:bg-[url('/bg_dark_2.jpg')] dark:bg-cover dark:bg-center dark:bg-no-repeat dark:opacity-10" />
       </div>
 
-      {/* Main Banner with SVG background */}
-      <section 
-        className="relative pt-8 pb-16 md:pt-12 md:pb-24 bg-white dark:bg-transparent"
-        style={{
-          backgroundImage: 'url(/Currencies-Banner.png)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'right center',
-          backgroundRepeat: 'no-repeat'
-        }}
-      >
-        {/* Overlay for better text readability */}
-        <div className="absolute inset-0 bg-white/10 dark:bg-black/20"></div>
+      {/* Main Banner with Slideshow */}
+      <section className="relative pt-8 pb-16 md:pt-12 md:pb-24 bg-white dark:bg-transparent h-[600px] md:h-[700px]">
+        {/* Slideshow Background */}
+        <div className="absolute inset-0 z-0">
+          <BannerSlideshow />
+          {/* Overlay for better text readability */}
+          <div className="absolute inset-0 bg-white/10 dark:bg-black/20"></div>
+        </div>
         
         <div className="container mx-auto px-4 max-w-7xl relative z-10">
           <div className="flex items-center justify-start min-h-[500px]">
