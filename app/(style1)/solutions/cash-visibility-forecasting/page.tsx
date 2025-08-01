@@ -99,13 +99,13 @@ const CashVisibilityForecastingPage = () => {
         <div className="max-w-6xl mx-auto mb-16">
           <div className="relative h-96 rounded-xl overflow-hidden mb-12">
             <Image
-              src="/solutions/cash-forecasting-banner.jpg"
+              src="/Interal Page 3.png"
               alt="Cash Visibility and Forecasting"
               fill
               className="object-cover"
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-900/80 to-blue-800/60 flex items-center p-12">
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-800/90 to-blue-700/80 flex items-center p-8 md:p-12">
               <div className="max-w-2xl">
                 <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">Cash Visibility and Forecasting</h1>
                 <p className="text-lg text-blue-100 mb-6">
@@ -130,7 +130,7 @@ const CashVisibilityForecastingPage = () => {
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {challenges.map((challenge, index) => (
-                <div key={index} className="bg-white p-6 rounded-xl shadow-md border border-gray-100 hover:shadow-lg transition-shadow">
+                <div key={index} className="bg-white p-6 rounded-xl shadow-md border border-gray-100 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
                   <div className="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center mb-4">
                     {challenge.icon}
                   </div>
@@ -153,15 +153,17 @@ const CashVisibilityForecastingPage = () => {
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
               <div className="bg-white p-8 rounded-xl shadow-md border border-gray-100">
-                <Image
-                  src="/solutions/cash-forecasting-dashboard.jpg"
-                  alt="Cash Forecasting Dashboard"
-                  width={600}
-                  height={400}
-                  className="w-full h-auto rounded-lg mb-6"
-                />
-                <h3 className="text-2xl font-semibold text-gray-900 mb-4">Comprehensive Cash Management</h3>
-                <p className="text-gray-600 mb-6">
+                <div className="relative h-64 md:h-80 w-full mb-6 rounded-lg overflow-hidden">
+                  <Image
+                    src="/Interal Page 5.png"
+                    alt="Cash Forecasting Dashboard"
+                    fill
+                    className="object-cover"
+                    priority
+                  />
+                </div>
+                <h3 className="text-2xl font-semibold text-gray-900 mb-3">Comprehensive Cash Management</h3>
+                <p className="text-gray-600">
                   Gain complete control over your cash position with real-time visibility and powerful forecasting tools.
                 </p>
               </div>
@@ -178,24 +180,24 @@ const CashVisibilityForecastingPage = () => {
           </div>
 
           {/* Value Propositions */}
-          <div className="bg-blue-50 rounded-2xl p-12 mb-16">
+          <div className="bg-gradient-to-r from-blue-700 to-blue-800 rounded-2xl p-8 md:p-12 mb-16 text-white">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">Value Proposition</h2>
-              <div className="w-20 h-1 bg-blue-600 mx-auto"></div>
+              <h2 className="text-3xl font-bold text-white mb-4">Value Proposition</h2>
+              <div className="w-20 h-1 bg-white/80 mx-auto"></div>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {valuePropositions.map((item, index) => (
-                <div key={index} className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                <div key={index} className="bg-white/10 backdrop-blur-sm p-6 rounded-xl border border-white/20">
                   <div className="flex items-start">
                     <div className="flex-shrink-0">
-                      <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center">
-                        {item.icon}
+                      <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center">
+                        {React.cloneElement(item.icon, { className: 'h-6 w-6 text-white' })}
                       </div>
                     </div>
                     <div className="ml-4">
-                      <h3 className="text-xl font-semibold text-gray-900 mb-2">{item.title}</h3>
-                      <p className="text-gray-600">{item.description}</p>
+                      <h3 className="text-xl font-semibold text-white mb-2">{item.title}</h3>
+                      <p className="text-blue-100">{item.description}</p>
                     </div>
                   </div>
                 </div>

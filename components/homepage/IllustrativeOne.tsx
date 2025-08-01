@@ -278,7 +278,7 @@ export default function IllustrativeOne() {
               <div className="w-full lg:w-3/5">
                 <div className="grid grid-cols-4 grid-rows-2 gap-4 h-[600px]">
               {/* Comprehensive */}
-              <div className="col-span-2 row-span-1 rounded-xl bg-[#A7BED3] p-6 flex flex-col justify-between">
+              <div className="col-span-2 row-span-1 rounded-xl bg-[#241F5D] p-6 flex flex-col justify-between">
                 <div className="space-y-3">
                   <div className="flex items-center gap-2">
                     <BarChart2 className="h-6 w-6 text-blue-700" />
@@ -289,7 +289,7 @@ export default function IllustrativeOne() {
               </div>
 
               {/* Nimble */}
-              <div className="col-span-2 row-span-1 rounded-xl bg-[#6DD6DA] p-6 flex flex-col justify-between">
+              <div className="col-span-2 row-span-1 rounded-xl bg-[#241F5D] p-6 flex flex-col justify-between">
                 <div className="space-y-3">
                   <div className="flex items-center gap-2">
                     <Zap className="h-6 w-6 text-teal-700" />
@@ -300,7 +300,7 @@ export default function IllustrativeOne() {
               </div>
 
               {/* Domain-Centric */}
-              <div className="col-span-2 row-span-1 rounded-xl bg-[#FED766] p-6 flex flex-col justify-between">
+              <div className="col-span-2 row-span-1 rounded-xl bg-[#241F5D] p-6 flex flex-col justify-between">
                 <div className="space-y-3">
                   <div className="flex items-center gap-2">
                     <Shield className="h-6 w-6 text-yellow-700" />
@@ -311,7 +311,7 @@ export default function IllustrativeOne() {
               </div>
 
               {/* Configurable */}
-              <div className="col-span-2 row-span-1 rounded-xl bg-[#FFCAAF] p-6 flex flex-col justify-between">
+              <div className="col-span-2 row-span-1 rounded-xl bg-[#241F5D] p-6 flex flex-col justify-between">
                 <div className="space-y-3">
                   <div className="flex items-center gap-2">
                     <Globe className="h-6 w-6 text-orange-700" />
@@ -322,7 +322,7 @@ export default function IllustrativeOne() {
               </div>
 
               {/* Best Practices */}
-              <div className="col-span-2 row-span-1 rounded-xl bg-[#FCFF6C] p-6 flex flex-col justify-between">
+              <div className="col-span-2 row-span-1 rounded-xl bg-[#241F5D] p-6 flex flex-col justify-between">
                 <div className="space-y-3">
                   <div className="flex items-center gap-2">
                     <Users className="h-6 w-6 text-yellow-700" />
@@ -333,7 +333,7 @@ export default function IllustrativeOne() {
               </div>
 
               {/* Integrated */}
-              <div className="col-span-2 row-span-1 rounded-xl bg-[#D7FFAB] p-6 flex flex-col justify-between">
+              <div className="col-span-2 row-span-1 rounded-xl bg-[#241F5D] p-6 flex flex-col justify-between">
                 <div className="space-y-3">
                   <div className="flex items-center gap-2">
                     <Cpu className="h-6 w-6 text-green-700" />

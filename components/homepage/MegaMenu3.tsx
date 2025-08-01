@@ -503,16 +503,18 @@ export default function MegaMenu3() {
             <div className="flex items-center justify-between h-16">
               {/* Logo */}
               <div className="flex-shrink-0">
-                <Link href="/" className="flex items-center">
-                  <Image
-                    src="/IBSFINtech_Logo_Main.svg"
-                    alt="IBS Fintech"
-                    width={160}
-                    height={40}
-                    className="h-10 w-auto object-contain"
-                    priority
-                  />
-                </Link>
+                <div className="bg-white rounded-lg p-1">
+                  <Link href="/" className="flex items-center">
+                    <Image
+                      src="/IBSFINtech_Logo_Main.svg"
+                      alt="IBS Fintech"
+                      width={160}
+                      height={40}
+                      className="h-10 w-auto object-contain"
+                      priority
+                    />
+                  </Link>
+                </div>
               </div>
 
               {/* Desktop Menu */}

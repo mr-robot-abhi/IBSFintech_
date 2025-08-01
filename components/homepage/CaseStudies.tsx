@@ -17,7 +17,7 @@ const caseStudies = [
       "Data-Driven Decisions",
     ],
     icon: Zap,
-    image: "/Case_Studies/Dabur-India-IBSFINtech.png",
+    image: "/Case_Studies/IBSFINtech-Client-Dabur.png",
     date: "September 10, 2024"
   },
   {
@@ -45,7 +45,7 @@ const caseStudies = [
       "Real-Time Analytics",
     ],
     icon: Shield,
-    image: "/Case_Studies/CreditSaison_Case-study.png",
+    image: "/Case_Studies/IBSFINtech-Client-Credit-Saison-India.png",
     date: "August 28, 2024"
   },
   {
@@ -59,7 +59,7 @@ const caseStudies = [
       "Trade Finance",
     ],
     icon: Users,
-    image: "/Case_Studies/polycab-small.png",
+    image: "/Case_Studies/IBSFINtech-Client-Polycab.png",
     date: "July 1, 2022"
   },
 ];
