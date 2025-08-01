@@ -183,7 +183,9 @@ export default function ModernMegaMenu() {
     <nav className="w-full bg-black/20 backdrop-blur-lg border-b border-white/10 shadow-lg fixed top-0 z-50">
       <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
         <Link href="/?variant=illustrative1" className="flex items-center gap-2 group">
-          <Image src="/ibs_logo_sample.png" alt="IBS Fintech" width={140} height={36} className="object-contain h-9 w-auto" priority />
+          <div className="bg-white rounded-lg p-2 pr-3">
+            <Image src="/IBSFINtech_Logo_Main.svg" alt="IBS Fintech" width={180} height={40} className="object-contain h-10 w-auto" priority />
+          </div>
         </Link>
         
         <div className="hidden md:flex items-center gap-2">

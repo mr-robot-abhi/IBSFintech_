@@ -33,7 +33,7 @@ export default function CashflowLiquidity() {
           <div className="md:w-1/2 mt-8 md:mt-0">
             <div className="relative aspect-video w-full rounded-lg overflow-hidden bg-gray-100 border border-gray-200">
               <Image
-                src="/cashflow-dashboard-placeholder.jpg"
+                src="/Internal Page 1.png"
                 alt="Cashflow Management Dashboard"
                 fill
                 className="object-cover"
@@ -49,7 +49,7 @@ export default function CashflowLiquidity() {
             <h2 className="text-2xl font-semibold text-gray-900 mb-6">Comprehensive Cash Management</h2>
             <div className="relative aspect-video w-full rounded-lg overflow-hidden bg-gray-100 mb-6">
               <Image
-                src="/cashflow-analytics-placeholder.jpg"
+                src="/Interal Page 4.png"
                 alt="Cashflow Analytics"
                 fill
                 className="object-cover"

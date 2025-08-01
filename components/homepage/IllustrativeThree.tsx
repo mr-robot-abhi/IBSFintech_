@@ -255,12 +255,12 @@ export default function IllustrativeThree() {
             <h2 className="text-3xl font-bold text-gray-800 dark:text-white mb-4">Winning Together</h2>
             <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
               Leading organizations leverage our platform for end-to-end digitization of treasury, risk, trade finance,
-              and supply chain operations, achieving agility, insights, and productivity.
+              and supply chain operations, achieving agility, insights, and productivity.Empowering businesses to drive innovation, enhance decision-making, and stay ahead in an ever-evolving financial landscape.
             </p>
           </motion.div>
         </div>
       </section>
-      <section className="w-full bg-transparent dark:bg-gray-700">
+      <section className="w-full bg-transparent dark:bg-white py-2">
         <ClientLogoStrip variant="illustrative3" />
       </section>
       {/* Ecosystem Enabler */}

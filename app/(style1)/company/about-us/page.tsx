@@ -4,86 +4,65 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import { Globe, Users, Zap, Award, ChevronRight, MapPin, Mail, Linkedin, Shield } from 'lucide-react';
 import ModernMegaMenu from '@/components/layout/ModernMegaMenu';
+import TimelineSection from '@/components/homepage/TimelineSection';
 
-// Timeline data
+// Grouped Timeline data
 const timelineData = [
   {
-    year: '2006-16',
+    year: '2006-2016',
     events: [
       'First client The Times of India',
       'Product Beta Launch - Currency Management module',
       'Launch of Investment (money market) module',
       'First industry recognition "Express IT Award - Software Product of the Year 2015"',
       'Winner of Thomson Reuters Fintech Challenge'
-    ]
+    ],
+    side: 'left'
   },
   {
-    year: '2017',
+    year: '2017-2020',
     events: [
       'Seed Funding from Shailesh Haribhakti',
       'Won Adam Smith Asia Awards 2017 - Technology Partner to Maruti Suzuki (Best Treasury Solution - India)',
-      'Acquired 8 new clients'
-    ]
-  },
-  {
-    year: '2018',
-    events: [
       'First International Client - IMR Metallurgical (Europe)',
-      'Aakash Moondhra (Global CFO - PayU) joins the advisory board'
-    ]
-  },
-  {
-    year: '2019',
-    events: [
+      'Aakash Moondhra (Global CFO - PayU) joins the advisory board',
       'First International Award in London, UK',
       'Entry in Singapore. New Client - JSW International Pvt Ltd.',
-      'Featured as Top 8 TMS globally'
-    ]
-  },
-  {
-    year: '2020',
-    events: [
+      'Featured as Top 8 TMS globally',
       'Shailesh Haribhakti joins in as Chairman',
-      'Recognised as the Technology provider of BlueStar at the prestigious Global Finance Best FX Provider 2021 Award in the category of Best Corporate for the use of Currency Hedging'
-    ]
+      'Recognised as the Technology provider of BlueStar at the prestigious Global Finance Best FX Provider 2021 Award'
+    ],
+    side: 'right'
   },
   {
-    year: '2021',
+    year: '2021-2023',
     events: [
       'Entry to Tokyo',
-      'Launch of IBSFINtech\'s SaaS Treasury Management System – InTReaX® in partnership with Refinitiv (LSEG)'
-    ]
-  },
-  {
-    year: '2022',
-    events: [
+      'Launch of IBSFINtech\'s SaaS Treasury Management System – InTReaX® in partnership with Refinitiv (LSEG)',
       'Global Partnership: Oracle, Yes Bank & KPMG',
       'Embarked on global journey – Singapore, Dubai & Japan',
-      'IBSFINtech appoints Ex-Oracle, Automation Anywhere Senior leader Pramod Agrawal as the new Chief Technology Officer'
-    ]
+      'Pramod Agrawal appointed as the new Chief Technology Officer',
+      'Named as a "Major Player" in IDC MarketScape for worldwide SaaS & Cloud-enabled Enterprise Treasury',
+      'New Development Centre in Bengaluru inaugurated by Padma Shri T.V. Mohandas Pai',
+      'Expansion to US market',
+      'Manoj Kohli joins as Advisory Board member',
+      'Won "Best TMS provider" by Corporate Treasurer Award 2023 (3rd consecutive win)'
+    ],
+    side: 'left'
   },
   {
-    year: '2023',
+    year: '2024-2025',
     events: [
-      'Named as a "Major Player" in IDC MarketScape for the worldwide SaaS & Cloud-enabled Enterprise Treasury and Risk Management Applications Partnership: Axis Bank',
-      'Padma Shri T.V. Mohandas Pai inaugurates IBSFINtech\'s New, State-of-the-Art Development Centre in Bengaluru, India to fuel the TreasuryTech company\'s global expansion plans',
-      'IBSFINtech expands horizons to US',
-      'Manoj Kohli joins in as Advisory Board member',
-      'Won "Best TMS provider" by Corporate Treasurer Award 2023 for the third time in a row'
-    ]
-  },
-  {
-    year: '2024',
-    events: [
-      'IBSFINtech Forays into SME segment with the launch of InnoTreasury',
-      'IBSFINtech receives ISO/IEC 27001:2013 certification',
-      'Featured second time IDC MarketScapes: Worldwide Cash management systems 2024',
-      'Partnership with Deloitte, Axis Bank, Aditya Birla Capital and TraydStream, NetSuite',
-      'Awarded as Best TMS provider by Corporate Treasurer Awards 2024',
-      'IBSFINtech raises USD 1.5 Mn in midst of funding winter',
-      'IBSFINtech USA Inc wins Steve Awards 2024 for Innovation in Thought Leadership',
-      'IBSFINtech collaborates with TMI for its flagship treasury event in Mumbai'
-    ]
+      'Launched InnoTreasury for SME segment',
+      'Achieved ISO/IEC 27001:2013 certification',
+      'Featured in IDC MarketScapes: Worldwide Cash management systems 2024',
+      'Strategic partnerships with Deloitte, Axis Bank, Aditya Birla Capital, TraydStream, and NetSuite',
+      'Awarded Best TMS provider by Corporate Treasurer Awards 2024',
+      'Raised USD 1.5 Mn in funding',
+      'Won Steve Awards 2024 for Innovation in Thought Leadership',
+      'Collaboration with TMI for flagship treasury event in Mumbai'
+    ],
+    side: 'right'
   }
 ];
 
@@ -173,49 +152,7 @@ export default function AboutUs() {
       </section>
 
       {/* Timeline Section */}
-      <section className="py-16 px-6 bg-gray-50">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">Our Journey</h2>
-          
-          <div className="flex flex-col md:flex-row">
-            {/* Years Navigation */}
-            <div className="md:w-1/4 mb-8 md:mb-0">
-              <div className="sticky top-24">
-                {timelineData.map((item) => (
-                  <button
-                    key={item.year}
-                    onClick={() => setActiveYear(item.year)}
-                    className={`w-full text-left px-6 py-4 mb-2 rounded-lg transition-colors ${
-                      activeYear === item.year 
-                        ? 'bg-blue-600 text-white shadow-md' 
-                        : 'bg-white text-gray-700 hover:bg-gray-100'
-                    }`}
-                  >
-                    {item.year}
-                  </button>
-                ))}
-              </div>
-            </div>
-            
-            {/* Events */}
-            <div className="md:w-3/4 md:pl-12">
-              <div className="bg-white rounded-xl shadow-sm p-8">
-                <h3 className="text-2xl font-bold text-blue-600 mb-6">{activeYear}</h3>
-                <ul className="space-y-4">
-                  {activeEvents.map((event, index) => (
-                    <li key={index} className="flex items-start">
-                      <div className="bg-blue-100 rounded-full p-1 mr-4 mt-1">
-                        <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
-                      </div>
-                      <p className="text-gray-700">{event}</p>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <TimelineSection />
 
       {/* Global Fintech Wave */}
       <section className="py-16 px-6 bg-gradient-to-r from-blue-900 to-blue-700 text-white">
