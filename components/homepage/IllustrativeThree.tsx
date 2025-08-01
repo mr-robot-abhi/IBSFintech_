@@ -242,26 +242,30 @@ export default function IllustrativeThree() {
         </div>
       </section>
 
-      {/* Winning Together */}
-      <section className="py-16 relative transition-colors duration-200 bg-white dark:bg-transparent">
+      {/* Spacer between hero and Winning Together */}
+      <div className="h-16 md:h-24 w-full"></div>
+
+      {/* Winning Together with reduced spacing */}
+      <section className="relative transition-colors duration-200 bg-white dark:bg-transparent">
         <div className="container mx-auto px-4 max-w-6xl relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-12"
+            className="text-center pb-4"
           >
-            <h2 className="text-3xl font-bold text-gray-800 dark:text-white mb-4">Winning Together</h2>
-            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+            <h2 className="text-3xl font-bold text-gray-800 dark:text-white mb-3">Winning Together</h2>
+            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-0">
               Leading organizations leverage our platform for end-to-end digitization of treasury, risk, trade finance,
-              and supply chain operations, achieving agility, insights, and productivity.Empowering businesses to drive innovation, enhance decision-making, and stay ahead in an ever-evolving financial landscape.
+              and supply chain operations, achieving agility, insights, and productivity. Empowering businesses to drive innovation, enhance decision-making, and stay ahead in an ever-evolving financial landscape.
             </p>
           </motion.div>
         </div>
-      </section>
-      <section className="w-full bg-transparent dark:bg-white py-2">
-        <ClientLogoStrip variant="illustrative3" />
+        {/* Client Logo Strip with reduced vertical space */}
+        <div className="w-full bg-transparent dark:bg-white py-1">
+          <ClientLogoStrip variant="illustrative3" />
+        </div>
       </section>
       {/* Ecosystem Enabler */}
       <section className="bg-white dark:bg-transparent">

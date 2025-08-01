@@ -81,7 +81,7 @@ export const clients: Record<ClientVariant, readonly Client[]> = {
     { id: 22, name: 'Asset 18', logo: 'Asset 18@4x.png' },
     { id: 23, name: 'Asset 19', logo: 'Asset 19@4x.png' },
     { id: 24, name: 'Asset 2', logo: 'Asset 2@4x.png' },
-    { id: 25, name: 'Asset 20', logo: 'Asset_20_4x.png' },
+    //{ id: 25, name: 'Asset 20', logo: 'Asset_20_4x.png' },
     { id: 26, name: 'Asset 21', logo: 'Asset 21@4x.png' },
     { id: 27, name: 'Asset 22', logo: 'Asset 22@4x.png' },
     { id: 28, name: 'Asset 23', logo: 'Asset 23@4x.png' },
