@@ -180,11 +180,17 @@ export default function ModernMegaMenu() {
   }
 
   return (
-    <nav className="w-full bg-black/20 backdrop-blur-lg border-b border-white/10 shadow-lg fixed top-0 z-50">
-      <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
+    <nav className="w-full bg-black border-b border-white/10 shadow-lg fixed top-0 z-50">
+      <div className="max-w-7xl mx-auto px-6 py-2 flex items-center justify-between">
         <Link href="/?variant=illustrative1" className="flex items-center gap-2 group">
-          <div className="bg-white rounded-lg p-2 pr-3">
-            <Image src="/IBSFINtech_Logo_Main.svg" alt="IBS Fintech" width={180} height={40} className="object-contain h-10 w-auto" priority />
+          <div className="relative h-16  w-64">
+            <Image 
+              src="/IBSFINtech Logo_Transparent_Black BG.png" 
+              alt="IBS Fintech" 
+              fill 
+              className="object-contain"
+              priority 
+            />
           </div>
         </Link>
         
@@ -197,7 +203,7 @@ export default function ModernMegaMenu() {
               onMouseLeave={handleMouseLeave}
             >
               <Link href={item.href || '#'}>
-                <div className={`px-4 py-2 font-semibold text-white/80 hover:text-white rounded-lg transition-colors flex items-center gap-1 ${openMenu === item.label ? 'bg-white/10' : ''}`}>
+                <div className={`px-3 py-1.5 text-sm font-semibold text-white/80 hover:text-white rounded-lg transition-colors flex items-center gap-1 ${openMenu === item.label ? 'bg-white/10' : ''}`}>
                   {item.label}
                   {(item.submenus || item.mega) && <ChevronDown size={16} className="ml-1 transition-transform duration-200" style={{ transform: openMenu === item.label ? 'rotate(180deg)' : 'rotate(0deg)'}} />}
                 </div>
@@ -356,13 +362,13 @@ export default function ModernMegaMenu() {
 
 <Link
             href="/contact"
-            className="ml-4 px-5 py-2 bg-transparent hover:bg-white/10 text-white border border-white/20 font-medium rounded-lg transition-colors duration-200"
+            className="ml-4 px-4 py-1.5 text-sm bg-transparent hover:bg-white/10 text-white border border-white/20 font-medium rounded-lg transition-colors duration-200"
           >
             Contact Us
           </Link>
           <Link
             href="/demo"
-            className="ml-4 px-5 py-2.5 bg-[#FF073A] hover:bg-[#e60634] text-white font-semibold rounded-lg transition-all duration-300 flex items-center justify-center transform hover:-translate-y-0.5 hover:shadow-[0_4px_12px_rgba(255,7,58,0.3)] active:translate-y-0"
+            className="ml-4 px-4 py-1.5 text-sm bg-[#FF073A] hover:bg-[#e60634] text-white font-semibold rounded-lg transition-all duration-300 flex items-center justify-center transform hover:-translate-y-0.5 hover:shadow-[0_4px_12px_rgba(255,7,58,0.3)] active:translate-y-0"
           >
             Request a demo
           </Link>
