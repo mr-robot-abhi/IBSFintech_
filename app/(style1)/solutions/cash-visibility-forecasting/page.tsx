@@ -105,13 +105,13 @@ const CashVisibilityForecastingPage = () => {
               className="object-cover"
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-800/90 to-blue-700/80 flex items-center p-8 md:p-12">
+            <div className="absolute inset-0 bg-[#241F5D] flex items-center p-8 md:p-12">
               <div className="max-w-2xl">
                 <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">Cash Visibility and Forecasting</h1>
-                <p className="text-lg text-blue-100 mb-6">
+                <p className="text-lg text-[#241F5D]/80 mb-6">
                   A comprehensive solution for cashflow management and liquidity planning seamlessly integrated with Banks, ERP software such as SAP, Oracle as well as other third-party solutions.
                 </p>
-                <button className="bg-white text-blue-700 hover:bg-blue-50 font-medium py-3 px-8 rounded-lg transition-colors flex items-center">
+                <button className="bg-white text-[#241F5D] hover:bg-[#241F5D]/20 font-medium py-3 px-8 rounded-lg transition-colors flex items-center">
                   Request Demo
                   <svg className="ml-2 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
@@ -125,13 +125,13 @@ const CashVisibilityForecastingPage = () => {
           <div className="mb-20">
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold text-gray-900 mb-4">Cash visibility is the key Challenge of the CFOs</h2>
-              <div className="w-20 h-1 bg-blue-600 mx-auto"></div>
+              <div className="w-20 h-1 bg-[#241F5D] mx-auto"></div>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {challenges.map((challenge, index) => (
                 <div key={index} className="bg-white p-6 rounded-xl shadow-md border border-gray-100 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
-                  <div className="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center mb-4">
+                  <div className="w-12 h-12 rounded-full bg-[#241F5D]/10 flex items-center justify-center mb-4">
                     {challenge.icon}
                   </div>
                   <h3 className="text-xl font-semibold text-gray-900 mb-2">{challenge.title}</h3>
@@ -145,7 +145,7 @@ const CashVisibilityForecastingPage = () => {
           <div className="mb-20">
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold text-gray-900 mb-4">IBSFINtech's InTREaX as a solution</h2>
-              <div className="w-20 h-1 bg-blue-600 mx-auto mb-8"></div>
+              <div className="w-20 h-1 bg-[#241F5D] mx-auto mb-8"></div>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
                 Revolutionize your cash flow and liquidity management with our Cash and Liquidity Management Solution, InTReaX.
               </p>
@@ -180,7 +180,7 @@ const CashVisibilityForecastingPage = () => {
           </div>
 
           {/* Value Propositions */}
-          <div className="bg-gradient-to-r from-blue-700 to-blue-800 rounded-2xl p-8 md:p-12 mb-16 text-white">
+          <div className="bg-[#241F5D] rounded-2xl p-8 md:p-12 mb-16 text-white">
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold text-white mb-4">Value Proposition</h2>
               <div className="w-20 h-1 bg-white/80 mx-auto"></div>
@@ -188,10 +188,10 @@ const CashVisibilityForecastingPage = () => {
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {valuePropositions.map((item, index) => (
-                <div key={index} className="bg-white/10 backdrop-blur-sm p-6 rounded-xl border border-white/20">
+                <div key={index} className="bg-[#241F5D] backdrop-blur-sm p-6 rounded-xl border border-white/20">
                   <div className="flex items-start">
                     <div className="flex-shrink-0">
-                      <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center">
+                      <div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center">
                         {React.cloneElement(item.icon, { className: 'h-6 w-6 text-white' })}
                       </div>
                     </div>
@@ -206,19 +206,19 @@ const CashVisibilityForecastingPage = () => {
           </div>
 
           {/* CTA Section */}
-          <div className="bg-gradient-to-r from-blue-600 to-blue-700 rounded-2xl p-12 text-center text-white">
+          <div className="bg-[#241F5D] rounded-2xl p-12 text-center text-white">
             <h2 className="text-3xl font-bold mb-4">Ready to Transform Your Cash Management?</h2>
             <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
               Unlock the full potential of your cash flow and liquidity management with our advanced module.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <button className="bg-white text-blue-700 hover:bg-blue-50 font-medium py-3 px-8 rounded-lg transition-colors flex items-center justify-center">
+              <button className="bg-white text-[#241F5D] hover:bg-blue-50 font-medium py-3 px-8 rounded-lg transition-colors flex items-center justify-center">
                 Request Demo
                 <svg className="ml-2 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                 </svg>
               </button>
-              <button className="bg-transparent border-2 border-white text-white hover:bg-white/10 font-medium py-3 px-8 rounded-lg transition-colors">
+              <button className="bg-transparent border-2 border-white text-white hover:bg-white/20 font-medium py-3 px-8 rounded-lg transition-colors">
                 Contact Sales
               </button>
             </div>
