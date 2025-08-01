@@ -21,18 +21,18 @@ const caseStudies = [
     date: "September 10, 2024"
   },
   {
-    title: "Transforming Treasury Operations in the Middle East",
-    company: "Fujairah Gold FZC",
+    title: "Cash Management Optimization",
+    company: "Hindustan Zinc Limited",
     summary:
-      "Fujairah Gold's shift to an integrated Treasury solution for enhanced operational efficiency.",
+      "Optimized cash management processes across multiple business units, significantly improving liquidity and reducing operational costs.",
     highlights: [
-      "Precious Metal Refinery",
-      "Copper Rod Plant",
-      "Middle East Operations",
+      "Cash Management",
+      "Liquidity",
+      "Cost Reduction",
     ],
-    icon: Globe,
-    image: "/Case_Studies/Fujairah-Gold-IBSFINtech.png",
-    date: "September 10, 2024"
+    icon: BarChart2,
+    image: "/Case_Studies/Hindustan-Zinc-Limited.png",
+    date: "December 5, 2023"
   },
   {
     title: "Streamlined Treasury Operations & Real-Time Insights",
