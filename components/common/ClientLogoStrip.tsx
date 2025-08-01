@@ -150,7 +150,7 @@ export default function ClientLogoStrip({ variant, title, description }: ClientL
       break;
     case 'illustrative2':
       logoStripComponent = (
-        <div className="py-4">
+        <div className="py-12">
           <div className="overflow-hidden">
             <motion.div
               className="flex"
@@ -167,15 +167,14 @@ export default function ClientLogoStrip({ variant, title, description }: ClientL
               }}
             >
               {doubledClients.map((client, index) => (
-                <div key={`${client.id}-${index}`} className="flex-shrink-0 mx-4 flex items-center justify-center">
-                  <div className="w-40 h-16 bg-transparent flex items-center justify-center transition-all duration-300 hover:opacity-80">
+                <div key={`${client.id}-${index}`} className="flex-shrink-0 mx-6 flex items-center justify-center">
+                  <div className="w-48 h-24 bg-gray-200 rounded-2xl p-4 flex items-center justify-center transition-all duration-300 hover:bg-gray-300 hover:shadow-md">
                     <div className="relative w-full h-full">
                       <Image
                         src={`/clients/${client.logo}`}
                         alt={client.name}
                         fill
                         className="object-contain transition-all duration-300"
-                        sizes="(max-width: 768px) 100px, 160px"
                       />
                     </div>
                   </div>
@@ -194,11 +193,11 @@ export default function ClientLogoStrip({ variant, title, description }: ClientL
   }
 
   return (
-    <div ref={containerRef} className="relative overflow-hidden py-8">
+    <div ref={containerRef} className={`relative overflow-hidden ${variant === 'illustrative3' ? 'py-8' : 'py-16'}`}>
       {(title || description) && (
         <div className="container mx-auto px-4 mb-12 text-center">
-          {title && <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">{title}</h2>}
-          {description && <p className="text-base text-white/90 max-w-3xl mx-auto">{description}</p>}
+          {title && <h2 className={`font-bold text-white ${variant === 'illustrative3' ? 'text-2xl md:text-3xl mb-2' : 'text-3xl md:text-4xl mb-4'}`}>{title}</h2>}
+          {description && <p className={`text-white/90 max-w-3xl mx-auto ${variant === 'illustrative3' ? 'text-base' : 'text-lg'}`}>{description}</p>}
         </div>
       )}
       {logoStripComponent}
