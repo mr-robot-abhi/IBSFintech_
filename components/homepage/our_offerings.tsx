@@ -72,14 +72,15 @@ export default function OurOfferingsSection() {
   const duplicatedServices = [...SERVICES, ...SERVICES, ...SERVICES];
   
   const [emblaRef, emblaApi] = useEmblaCarousel({ 
-    loop: false, 
+    loop: true, 
     align: 'center',
     slidesToScroll: 1,
     duration: 25,
-    startIndex: SERVICES.length,
+    startIndex: 0,
     skipSnaps: false,
-    containScroll: false,
-    dragFree: false
+    containScroll: 'keepSnaps',
+    dragFree: false,
+    inViewThreshold: 0.7
   }, [autoplay.current]);
   const [selectedIndex, setSelectedIndex] = useState(0);
 
@@ -94,25 +95,20 @@ export default function OurOfferingsSection() {
       setSelectedIndex(index % SERVICES.length);
     };
     
-    const onScroll = () => {
-      if (!emblaApi) return;
-      const lastIndex = emblaApi.scrollSnapList().length - 1;
-      const selectedIndex = emblaApi.selectedScrollSnap();
-      
-      if (selectedIndex === 0) {
-        emblaApi.scrollTo(lastIndex - (SERVICES.length * 2), false);
-      } else if (selectedIndex === lastIndex) {
-        emblaApi.scrollTo(SERVICES.length, false);
-      }
-    };
-    
     emblaApi.on('select', onSelect);
-    emblaApi.on('scroll', onScroll);
     onSelect();
+    
+    // Start autoplay
+    const autoplayInstance = autoplay.current;
+    if (autoplayInstance) {
+      autoplayInstance.play();
+    }
     
     return () => {
       emblaApi.off('select', onSelect);
-      emblaApi.off('scroll', onScroll);
+      if (autoplayInstance) {
+        autoplayInstance.stop();
+      }
     };
   }, [emblaApi]);
 
@@ -221,18 +217,21 @@ export default function OurOfferingsSection() {
             {INTERFACES.map(({ name, icon }, idx) => (
               <div
                 key={idx}
-                className="bg-white border border-blue-50 text-blue-800 rounded-lg p-1 flex flex-col items-center justify-center gap-1 text-center shadow-md hover:shadow-lg transition-all duration-300 hover:border-blue-100 hover:-translate-y-1 text-lg font-bold h-28"
+                className="bg-white/20 backdrop-blur-sm border border-white/30 text-white rounded-lg p-1 flex flex-col items-center justify-center gap-1 text-center shadow-lg hover:shadow-xl transition-all duration-300 hover:border-white/50 hover:-translate-y-1 h-28 relative overflow-hidden group"
               >
                 <div className="w-20 h-20 p-0 relative flex items-center justify-center">
-                  <Image 
-                    src={icon} 
-                    alt={name} 
-                    width={80} 
-                    height={80}
-                    className="text-blue-500 object-contain"
-                  />
+                  <div className="absolute w-16 h-16 bg-white/30 rounded-full blur-sm group-hover:bg-white/40 transition-all duration-300"></div>
+                  <div className="relative z-10">
+                    <Image 
+                      src={icon} 
+                      alt={name} 
+                      width={64} 
+                      height={64}
+                      className="text-white object-contain filter brightness-0 invert"
+                    />
+                  </div>
                 </div>
-                <span className="font-bold leading-tight text-sm">{name}</span>
+                <span className="font-bold leading-tight text-base text-white">{name}</span>
               </div>
             ))}
           </div>
