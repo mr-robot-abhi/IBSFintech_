@@ -88,7 +88,7 @@ const menu: MenuSection[] = [
       {
         title: "Solutions",
         items: [
-          { label: "Cash Visibility & Forecasting", href: "/style1/solutions/cash-visibility-forecasting", icon: Eye },
+          { label: "Cash Visibility & Forecasting", href: "/solutions/cash-visibility-forecasting", icon: Eye },
           { label: "FX Risk", href: "/solutions/foreign-exchange-risk", icon: TrendingUp },
           { label: "Money Market", href: "/solutions/money-market", icon: BarChart2 },
           { label: "Trade Finance", href: "/solutions/trade-finance", icon: FileText },
@@ -119,7 +119,7 @@ const menu: MenuSection[] = [
       {
         title: "Resources",
         items: [
-          { label: "Blog", href: "/style1/resources/blog" },
+          { label: "Blog", href: "/resources/blog" },
           { label: "Whitepapers", href: "/resources/whitepapers" },
           { label: "Case Studies", href: "/resources/case-studies" },
           { label: "Webinars", href: "/resources/webinars" },
@@ -137,7 +137,7 @@ const menu: MenuSection[] = [
       {
         title: "Company Information",
         items: [
-          { label: "About Us", href: "/company/about" },
+          { label: "About Us", href: "/company/about-us" },
           { label: "Leadership Team", href: "/company/leadership" },
           { label: "US Leadership Team", href: "/company/us-leadership" },
           { label: "Global Partners", href: "/company/partners" },
