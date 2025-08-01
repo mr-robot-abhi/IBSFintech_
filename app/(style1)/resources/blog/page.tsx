@@ -12,6 +12,18 @@ const BlogPage = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  // Array of available blog post images
+  const blogImages = [
+    '/Home Page Banner 2.png',
+    '/Home Page Banner 3.png',
+    '/Home Page Banner 4.png',
+    '/Home Page Banner 5.png',
+    '/Home Page Banner 6.png',
+    '/Home Page Banner 7.png',
+    '/Internal Page 1.png',
+    '/Internal Page 2.png'
+  ];
+
   const blogPosts = [
     {
       id: 'cashflow-management',
@@ -19,6 +31,7 @@ const BlogPage = () => {
       excerpt: 'Understanding the fundamentals of cashflow management and why it\'s crucial for business success.',
       readTime: '8 min read',
       date: 'July 25, 2024',
+      image: blogImages[0],
       content: [
         'Think of Cashflow as the money flowing in and out of a business. Positive cash flow means more water is coming in than going out, which is good! This is like having cash in your pocket. High liquidity means you can easily pay for things without having to sell other assets.',
         {
@@ -85,6 +98,7 @@ const BlogPage = () => {
       excerpt: 'Understanding and mitigating the risks associated with currency fluctuations in international business.',
       readTime: '6 min read',
       date: 'July 20, 2024',
+      image: blogImages[1],
       content: [
         'In the interconnected world of global finance, businesses regularly engage in transactions involving multiple currencies. This exposure to various currencies brings along the potential for Foreign Exchange Risk, also known as FX Risk or Currency Risk. Understanding and effectively managing this risk is crucial for maintaining financial stability and ensuring profitability.',
         {
@@ -138,6 +152,7 @@ const BlogPage = () => {
       excerpt: 'Exploring the world of trade finance and strategies to manage its inherent risks in global trade.',
       readTime: '7 min read',
       date: 'July 15, 2024',
+      image: blogImages[2],
       content: [
         'Trade Finance is a critical component in the realm of international commerce, functioning as a pivotal mechanism that enables businesses to manage payments and mitigate risks associated with cross-border trade. Let\'s dive into the world of Trade Finance and understand the key risks it addresses.',
         {
@@ -218,27 +233,73 @@ const BlogPage = () => {
       <ModernMegaMenu />
       
       <main className="relative z-10 pt-24 px-6 pb-12">
-        <div className="max-w-6xl mx-auto">
-          {/* Blog Header */}
-          <div className="text-center mb-16">
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Our Blog</h1>
-            <div className="w-20 h-1 bg-blue-600 mx-auto mb-6"></div>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Insights, news, and updates about treasury management, financial technology, and industry trends.
-            </p>
+        {activePost ? (
+          <div className="max-w-4xl mx-auto bg-white rounded-xl shadow-md overflow-hidden">
+            <div className="h-64 relative">
+              <Image
+                src={blogPosts.find(p => p.id === activePost)?.image || '/Home Page Banner 2.png'}
+                alt={blogPosts.find(p => p.id === activePost)?.title || 'Blog Post'}
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 80vw"
+              />
+            </div>
+            <div className="p-8">
+              <div className="flex items-center text-sm text-gray-500 mb-4">
+                <Clock className="h-4 w-4 mr-1" />
+                <span className="mr-4">{blogPosts.find(p => p.id === activePost)?.readTime}</span>
+                <span>{blogPosts.find(p => p.id === activePost)?.date}</span>
+              </div>
+              <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">{blogPosts.find(p => p.id === activePost)?.title}</h1>
+              
+              <div className="prose max-w-none">
+                {blogPosts.find(p => p.id === activePost)?.content.map((content, index) => (
+                  <React.Fragment key={index}>
+                    {renderContent(content)}
+                  </React.Fragment>
+                ))}
+              </div>
+            </div>
+            
+            <div className="flex justify-between items-center pt-6 border-t border-gray-200">
+              <button
+                onClick={() => setActivePost(null)}
+                className="text-blue-600 hover:text-blue-700 font-medium flex items-center group"
+              >
+                <ArrowRight className="h-4 w-4 mr-2 transform rotate-180" />
+                Back to all posts
+              </button>
+              <button
+                onClick={scrollToTop}
+                className="text-gray-500 hover:text-gray-700 flex items-center"
+              >
+                Back to top
+                <ArrowUp className="h-4 w-4 ml-2" />
+              </button>
+            </div>
           </div>
+        ) : (
+          <div>
+            <div className="text-center mb-16">
+              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Our Blog</h1>
+              <div className="w-20 h-1 bg-blue-600 mx-auto mb-6"></div>
+              <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+                Insights, news, and updates about treasury management, financial technology, and industry trends.
+              </p>
+            </div>
 
-          {/* Blog Posts Grid */}
-          {!activePost && (
+            {/* Blog Posts Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
               {blogPosts.map((post) => (
-                <div key={post.id} className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 hover:shadow-lg transition-shadow">
-                  <div className="h-48 bg-gray-100 relative">
+                <div key={post.id} className="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl"
+                  onClick={() => setActivePost(post.id)}>
+                  <div className="h-48 relative overflow-hidden">
                     <Image
-                      src={`/blog/${post.id}-thumbnail.jpg`}
+                      src={post.image}
                       alt={post.title}
                       fill
                       className="object-cover"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
                   </div>
                   <div className="p-6">
@@ -263,82 +324,28 @@ const BlogPage = () => {
                 </div>
               ))}
             </div>
-          )}
-
-          {/* Full Blog Post */}
-          {activePost && (
-            <div className="max-w-4xl mx-auto">
-              {blogPosts
-                .filter(post => post.id === activePost)
-                .map((post) => (
-                  <article key={post.id} className="mb-16">
-                    <div className="mb-8">
-                      <div className="h-96 bg-gray-100 rounded-xl overflow-hidden relative">
-                        <Image
-                          src={`/blog/${post.id}-banner.jpg`}
-                          alt={post.title}
-                          fill
-                          className="object-cover"
-                        />
-                      </div>
-                    </div>
-                    
-                    <div className="mb-8">
-                      <div className="flex items-center text-sm text-gray-500 mb-4">
-                        <Clock className="h-4 w-4 mr-1" />
-                        <span className="mr-4">{post.readTime}</span>
-                        <span>{post.date}</span>
-                      </div>
-                      <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">{post.title}</h1>
-                      
-                      <div className="prose max-w-none">
-                        {post.content.map((content, index) => (
-                          <React.Fragment key={index}>
-                            {renderContent(content)}
-                          </React.Fragment>
-                        ))}
-                      </div>
-                    </div>
-                    
-                    <div className="flex justify-between items-center pt-6 border-t border-gray-200">
-                      <button
-                        onClick={() => setActivePost(null)}
-                        className="text-blue-600 hover:text-blue-700 font-medium flex items-center group"
-                      >
-                        <ArrowRight className="h-4 w-4 mr-2 transform rotate-180" />
-                        Back to all posts
-                      </button>
-                      <button
-                        onClick={scrollToTop}
-                        className="text-gray-500 hover:text-gray-700 flex items-center"
-                      >
-                        Back to top
-                        <ArrowUp className="h-4 w-4 ml-2" />
-                      </button>
-                    </div>
-                  </article>
-                ))}
-            </div>
-          )}
-
-          {/* CTA Section */}
-          <div className="bg-gradient-to-r from-blue-600 to-blue-700 rounded-2xl p-12 text-center text-white">
-            <h2 className="text-3xl font-bold mb-4">Stay Updated with Our Latest Insights</h2>
-            <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-              Subscribe to our newsletter for the latest updates on treasury management and financial technology.
+          </div>
+        )}
+        
+        {/* CTA Section */}
+        <section className="py-16 px-6 bg-[#241F5D] text-white">
+          <div className="max-w-7xl mx-auto text-center">
+            <h2 className="text-3xl font-bold mb-6">Stay Updated with Our Latest Insights</h2>
+            <p className="text-xl text-blue-100 mb-8 max-w-3xl mx-auto">
+              Subscribe to our newsletter for the latest trends, insights, and updates in treasury and financial management.
             </p>
-            <div className="flex flex-col sm:flex-row justify-center gap-4 max-w-lg mx-auto">
+            <div className="flex flex-col sm:flex-row gap-4 max-w-2xl mx-auto">
               <input
                 type="email"
-                placeholder="Enter your email"
-                className="flex-grow px-6 py-3 rounded-lg border-0 focus:ring-2 focus:ring-blue-300 text-gray-900"
+                placeholder="Enter your email address"
+                className="flex-1 px-6 py-3 rounded-lg border border-white/20 bg-white/10 text-white placeholder-blue-200 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent"
               />
-              <button className="bg-white text-blue-700 hover:bg-blue-50 font-medium py-3 px-8 rounded-lg transition-colors whitespace-nowrap">
+              <button className="bg-white text-[#241F5D] hover:bg-blue-50 font-medium py-3 px-8 rounded-lg transition-colors">
                 Subscribe
               </button>
             </div>
           </div>
-        </div>
+        </section>
       </main>
     </div>
   );

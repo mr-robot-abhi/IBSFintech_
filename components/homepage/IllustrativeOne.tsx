@@ -279,9 +279,9 @@ export default function IllustrativeOne() {
                 <div className="grid grid-cols-4 grid-rows-2 gap-4 h-[600px]">
               {/* Comprehensive */}
               <div className="col-span-2 row-span-1 rounded-xl bg-[#241F5D] p-6 flex flex-col justify-between">
-                <div className="space-y-3">
+                <div className="space-y-3 text-white">
                   <div className="flex items-center gap-2">
-                    <BarChart2 className="h-6 w-6 text-blue-700" />
+                    <BarChart2 className="h-6 w-6 text-white" />
                     <h3 className="text-xl font-bold">Comprehensive</h3>
                   </div>
                   <p className="text-base opacity-90 leading-tight">Our end‑to‑end solution covers compliance, operational, and financial risks. With a unified platform, you gain full visibility and control over your entire risk landscape.</p>
@@ -290,9 +290,9 @@ export default function IllustrativeOne() {
 
               {/* Nimble */}
               <div className="col-span-2 row-span-1 rounded-xl bg-[#241F5D] p-6 flex flex-col justify-between">
-                <div className="space-y-3">
+                <div className="space-y-3 text-white">
                   <div className="flex items-center gap-2">
-                    <Zap className="h-6 w-6 text-teal-700" />
+                    <Zap className="h-6 w-6 text-white" />
                     <h3 className="text-xl font-bold">Nimble</h3>
                   </div>
                   <p className="text-base opacity-90 leading-tight">Rapid implementation and deployment with our agile approach. Our cloud‑native architecture allows for instant scaling.</p>
@@ -301,39 +301,40 @@ export default function IllustrativeOne() {
 
               {/* Domain-Centric */}
               <div className="col-span-2 row-span-1 rounded-xl bg-[#241F5D] p-6 flex flex-col justify-between">
-                <div className="space-y-3">
+                <div className="space-y-3 text-white">
                   <div className="flex items-center gap-2">
-                    <Shield className="h-6 w-6 text-yellow-700" />
-                    <h3 className="text-xl font-bold">Domain‑Centric</h3>
+                    <Shield className="h-6 w-6 text-white" />
+                    <h3 className="text-xl font-bold">Secure</h3>
                   </div>
-                  <p className="text-base opacity-90 leading-tight">Built by industry experts with deep financial expertise. Our solution incorporates decades of collective experience.</p>
+                  <p className="text-base opacity-90 leading-tight">Bank‑grade security with end‑to‑end encryption. Your data is protected with the highest industry standards.</p>
                 </div>
               </div>
 
               {/* Configurable */}
               <div className="col-span-2 row-span-1 rounded-xl bg-[#241F5D] p-6 flex flex-col justify-between">
-                <div className="space-y-3">
+                <div className="space-y-3 text-white">
                   <div className="flex items-center gap-2">
-                    <Globe className="h-6 w-6 text-orange-700" />
-                    <h3 className="text-xl font-bold">Configurable</h3>
+                    <Globe className="h-6 w-6 text-white" />
+                    <h3 className="text-xl font-bold">Global</h3>
                   </div>
-                  <p className="text-base opacity-90 leading-tight">Tailor the platform to your specific requirements. Our drag‑and‑drop interface allows easy customization of dashboards.</p>
+                  <p className="text-base opacity-90 leading-tight">Multi‑currency, multi‑language, and multi‑jurisdiction support. Operate seamlessly across borders with our global platform.</p>
                 </div>
               </div>
 
               {/* Best Practices */}
               <div className="col-span-2 row-span-1 rounded-xl bg-[#241F5D] p-6 flex flex-col justify-between">
-                <div className="space-y-3">
+                <div className="space-y-3 text-white">
                   <div className="flex items-center gap-2">
-                    <Users className="h-6 w-6 text-yellow-700" />
-                    <h3 className="text-xl font-bold">Best Practices</h3>
+                    <Users className="h-6 w-6 text-white" />
+                    <h3 className="text-xl font-bold">Collaborative</h3>
                   </div>
-                  <p className="text-base opacity-90 leading-tight">Built on industry standards and regulatory requirements. The platform incorporates Basel III, IFRS 9, and GDPR compliance.</p>
+                  <p className="text-base opacity-90 leading-tight">Work together seamlessly with role‑based access controls. Our platform enables real‑time collaboration across teams and departments.</p>
                 </div>
               </div>
 
               {/* Integrated */}
               <div className="col-span-2 row-span-1 rounded-xl bg-[#241F5D] p-6 flex flex-col justify-between">
+                <div className="space-y-3 text-white">
                 <div className="space-y-3">
                   <div className="flex items-center gap-2">
                     <Cpu className="h-6 w-6 text-green-700" />
@@ -346,6 +347,7 @@ export default function IllustrativeOne() {
           </div>
         </div>
           </div>
+        </div>
         </div>
       </section>
 
