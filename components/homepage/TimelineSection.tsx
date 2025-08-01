@@ -88,9 +88,9 @@ const TimelineSection = () => {
   });
 
   // Calculate total width needed for all timeline items
-  const itemWidth = 400; // Width of each timeline card
-  const gap = 40; // Gap between items
-  const totalWidth = (timelineData.length * (itemWidth + gap)) - gap + 100; // Extra space at the end
+  const itemWidth = 380; // Adjusted width for better content fit
+  const gap = 100; // Increased gap between items for better spacing and year labels
+  const totalWidth = (timelineData.length * (itemWidth + gap)) + 200; // Extra space at the end for better scrolling
 
   return (
     <section className="relative py-16 overflow-hidden bg-[#241F5D]">
@@ -141,7 +141,7 @@ const TimelineSection = () => {
           {/* Timeline Items Container */}
           <div 
             ref={containerRef}
-            className="relative h-[600px] overflow-x-auto overflow-y-visible pb-12 -mx-4 px-4"
+            className="relative h-[650px] overflow-x-auto overflow-y-visible pb-12 -mx-4 px-4"
             style={{
               scrollSnapType: 'x mandatory',
               WebkitOverflowScrolling: 'touch',
@@ -154,18 +154,38 @@ const TimelineSection = () => {
               style={{ width: `${totalWidth}px` }}
             >
               {timelineData.map((item, index) => (
-                <div 
-                  key={index}
-                  className="flex-shrink-0 w-[400px] h-full relative"
-                  style={{ scrollSnapAlign: 'start' }}
-                >
-                  <TimelineItem 
-                    year={item.year}
-                    title={item.title}
-                    description={item.description}
-                    isEven={index % 2 === 0}
-                  />
-                </div>
+                <React.Fragment key={index}>
+                  <div 
+                    className="flex-shrink-0 relative group"
+                    style={{ 
+                      width: `${itemWidth}px`,
+                      scrollSnapAlign: 'start',
+                      paddingTop: '60px',
+                      paddingBottom: '40px'
+                    }}
+                  >
+                    <TimelineItem 
+                      year={item.year}
+                      title={item.title}
+                      description={item.description}
+                      isEven={index % 2 === 0}
+                      isFirst={index === 0}
+                      isLast={index === timelineData.length - 1}
+                    />
+                  </div>
+                  
+                  {/* Add gap between items except after the last one */}
+                  {index < timelineData.length - 1 && (
+                    <div 
+                      className="h-full flex items-center justify-center relative"
+                      style={{ width: `${gap}px` }}
+                    >
+                      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-medium whitespace-nowrap">
+                        {timelineData[index + 1]?.year.split('-')[0]}
+                      </div>
+                    </div>
+                  )}
+                </React.Fragment>
               ))}
             </div>
           </div>
@@ -198,25 +218,29 @@ interface TimelineItemProps {
   title: string;
   description: React.ReactNode;
   isEven: boolean;
+  isFirst?: boolean;
+  isLast?: boolean;
 }
 
-const TimelineItem = ({ year, title, description, isEven }: TimelineItemProps) => {
+const TimelineItem = ({ year, title, description, isEven, isFirst, isLast }: TimelineItemProps) => {
   const itemRef = useRef<HTMLDivElement>(null);
   
   return (
-    <div className="h-full flex flex-col justify-center">
-      {/* Year - Always on top */}
-      <div className="mb-4">
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-100px' }}
-          transition={{ duration: 0.5 }}
-          className="text-2xl font-bold text-white/80"
-        >
-          {year}
-        </motion.div>
-      </div>
+    <div className="h-full flex flex-col justify-center relative">
+      {/* Year - Only show the start year for the first item */}
+      {isFirst && (
+        <div className="mb-6">
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-100px' }}
+            transition={{ duration: 0.5 }}
+            className="text-2xl font-bold text-white/90 bg-blue-900/30 px-4 py-2 rounded-lg inline-block"
+          >
+            {year.split('-')[0]}
+          </motion.div>
+        </div>
+      )}
       
       {/* Vertical Line */}
       <div className="relative h-full flex items-center">
@@ -228,7 +252,7 @@ const TimelineItem = ({ year, title, description, isEven }: TimelineItemProps) =
           className="absolute left-1/2 w-0.5 h-full bg-gradient-to-b from-blue-400 via-purple-500 to-pink-500 transform -translate-x-1/2"
         >
           <motion.div 
-            className="absolute top-0 left-1/2 w-3 h-3 -translate-x-1.5 -translate-y-1.5 rounded-full bg-gradient-to-r from-blue-400 to-purple-500 border-2 border-white shadow-lg"
+            className="absolute top-1/2 left-1/2 w-4 h-4 -translate-x-2 -translate-y-2 rounded-full bg-gradient-to-r from-blue-400 to-purple-500 border-2 border-white shadow-lg z-10"
             initial={{ scale: 0 }}
             whileInView={{ scale: 1 }}
             viewport={{ once: true, margin: '-100px' }}
@@ -237,24 +261,34 @@ const TimelineItem = ({ year, title, description, isEven }: TimelineItemProps) =
         </motion.div>
       </div>
       
-      {/* Content Box */}
+      {/* Content Box with improved spacing and visibility */}
       <motion.div
         ref={itemRef}
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: '-100px' }}
         transition={{ duration: 0.6, delay: 0.2 }}
-        className="mt-4"
+        className="mt-6"
       >
         <motion.div
           whileHover={{ 
             y: -5,
-            boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)'
+            boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1)'
           }}
-          className="bg-white/10 backdrop-blur-sm p-8 rounded-xl border border-white/20 shadow-lg transition-all duration-300 h-full min-h-[300px] flex flex-col"
+          className="bg-white/10 backdrop-blur-sm p-8 rounded-xl border border-white/20 shadow-lg transition-all duration-300 h-full min-h-[320px] flex flex-col relative"
+          style={{
+            marginLeft: isEven ? '0' : '40px',
+            marginRight: isEven ? '40px' : '0',
+          }}
         >
-          <h3 className="text-2xl font-bold text-white mb-4">{title}</h3>
-          <div className="text-blue-100 flex-1">{description}</div>
+          <div className="absolute -top-4 left-6 bg-blue-600 text-white px-4 py-1 rounded-full text-sm font-medium">
+            {title}
+          </div>
+          <div className="mt-6 text-blue-100 flex-1 overflow-y-auto pr-2 custom-scrollbar">
+            <div className="pr-2">
+              {description}
+            </div>
+          </div>
           
           {/* Gradient accent at bottom */}
           <motion.div 
