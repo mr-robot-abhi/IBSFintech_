@@ -1,357 +1,260 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import Image from 'next/image';
+import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { ArrowRight, Globe, ShieldCheck, TrendingUp, Clock, Server, Briefcase } from 'lucide-react';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { ArrowRight, Eye, TrendingUp, DollarSign, FileText, PiggyBank, BarChart3, CreditCard, Network } from 'lucide-react';
+import ModernMegaMenu from '@/components/layout/ModernMegaMenu';
+import { useEffect, useState } from 'react';
 
-export default function SolutionsPage() {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1
-      }
-    }
-  };
+const SolutionsPage = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
 
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        type: 'spring',
-        stiffness: 100
-      }
-    }
-  };
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const solutions = [
     {
-      id: "digitization",
-      title: "End-to-End Digitization",
-      description: "Transform your treasury operations with comprehensive digital solutions.",
-      features: [
-        "Paperless processes",
-        "Digital approvals and signatures",
-        "API integrations with banking systems",
-        "Automated reporting",
-        "Digital document management"
-      ],
-      benefits: [
-        "70% reduction in manual processes",
-        "85% faster document processing",
-        "99.9% accuracy in financial data"
-      ],
-      icon: Server,
-      image: "https://images.pexels.com/photos/7681091/pexels-photo-7681091.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+      icon: Eye,
+      name: "Cash Visibility & Forecasting",
+      description: "Real-time cash position monitoring and intelligent forecasting across all entities and accounts.",
+      href: "/solutions/cash-visibility",
+      features: ["Multi-entity consolidation", "AI-powered forecasting", "Real-time dashboards"],
     },
     {
-      id: "supplychain",
-      title: "Supply Chain Finance",
-      description: "Optimize working capital across your entire supply chain ecosystem.",
-      features: [
-        "Dynamic discounting",
-        "Supplier onboarding",
-        "Early payment programs",
-        "Invoice management",
-        "Supply chain analytics"
-      ],
-      benefits: [
-        "30% improvement in working capital",
-        "20-day reduction in payment cycles",
-        "45% increase in supplier satisfaction"
-      ],
-      icon: Globe,
-      image: "https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-    },
-    {
-      id: "risk",
-      title: "Risk Mitigation",
-      description: "Identify and manage financial risks before they impact your business.",
-      features: [
-        "Real-time risk monitoring",
-        "Scenario analysis",
-        "Automated alerts",
-        "Compliance tracking",
-        "Risk reporting dashboard"
-      ],
-      benefits: [
-        "50% reduction in FX exposure",
-        "Early identification of 95% of risks",
-        "40% lower compliance costs"
-      ],
-      icon: ShieldCheck,
-      image: "https://images.pexels.com/photos/7821489/pexels-photo-7821489.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-    },
-    {
-      id: "liquidity",
-      title: "Liquidity Management",
-      description: "Optimize cash positioning and forecasting for improved financial control.",
-      features: [
-        "Cash pooling",
-        "Multi-bank visibility",
-        "AI-powered forecasting",
-        "Automated reconciliation",
-        "Liquidity stress testing"
-      ],
-      benefits: [
-        "40% reduction in idle cash",
-        "60% improvement in forecast accuracy",
-        "15% increase in interest income"
-      ],
       icon: TrendingUp,
-      image: "https://images.pexels.com/photos/6801642/pexels-photo-6801642.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+      name: "FX Risk Management",
+      description: "Comprehensive foreign exchange risk identification, measurement, and hedging solutions.",
+      href: "/solutions/fx-risk",
+      features: ["Exposure tracking", "Hedging strategies", "Mark-to-market valuation"],
     },
     {
-      id: "payments",
-      title: "Payment Optimization",
-      description: "Streamline payment processes with automation and intelligent routing.",
-      features: [
-        "Payment factory",
-        "Cross-border payment optimization",
-        "Payment fraud detection",
-        "SWIFT/SEPA connectivity",
-        "Payment analytics"
-      ],
-      benefits: [
-        "35% reduction in payment costs",
-        "99% straight-through processing rate",
-        "90% fewer payment errors"
-      ],
-      icon: Clock,
-      image: "https://images.pexels.com/photos/4482900/pexels-photo-4482900.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+      icon: PiggyBank,
+      name: "Money Market Management",
+      description: "Optimize short-term investments and manage money market portfolios effectively.",
+      href: "/solutions/money-market",
+      features: ["Investment optimization", "Risk assessment", "Performance tracking"],
     },
     {
-      id: "advisory",
-      title: "Treasury Advisory",
-      description: "Expert guidance on treasury strategy and transformation.",
-      features: [
-        "Treasury diagnostics",
-        "Process optimization",
-        "System selection",
-        "Implementation support",
-        "Treasury talent development"
-      ],
-      benefits: [
-        "25% reduction in operating costs",
-        "Accelerated transformation timeline",
-        "Increased treasury team capabilities"
-      ],
-      icon: Briefcase,
-      image: "https://images.pexels.com/photos/3183186/pexels-photo-3183186.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-    }
+      icon: FileText,
+      name: "Trade Finance",
+      description: "Streamline trade finance operations with automated workflows and documentation.",
+      href: "/solutions/trade-finance",
+      features: ["LC management", "Document automation", "Compliance tracking"],
+    },
+    {
+      icon: DollarSign,
+      name: "Debt Management",
+      description: "Comprehensive debt portfolio management and optimization solutions.",
+      href: "/solutions/debt-management",
+      features: ["Debt tracking", "Covenant monitoring", "Interest optimization"],
+    },
+    {
+      icon: BarChart3,
+      name: "Commodity Risk",
+      description: "Manage commodity price exposure and implement effective hedging strategies.",
+      href: "/solutions/commodity-risk",
+      features: ["Price exposure tracking", "Hedging optimization", "Market analytics"],
+    },
+    {
+      icon: CreditCard,
+      name: "Treasury Payments",
+      description: "Centralized payment processing with multi-bank connectivity and approval workflows.",
+      href: "/solutions/treasury-payments",
+      features: ["Payment automation", "Multi-bank integration", "Approval workflows"],
+    },
+    {
+      icon: Network,
+      name: "SCF Platform",
+      description: "Advanced supply chain finance platform for working capital optimization.",
+      href: "/solutions/scf-platform",
+      features: ["Vendor financing", "Dynamic discounting", "Working capital optimization"],
+    },
   ];
 
   return (
-    <div className="pt-20 pb-16">
+    <div className="min-h-screen overflow-x-hidden relative bg-transparent">
+      {/* Background for all sections */}
+      <div className="fixed inset-0 -z-10 w-full h-full">
+        <img
+          src="/style1_bg.png"
+          alt="Background"
+          className="object-cover object-center w-full h-full"
+        />
+      </div>
+
+      {/* Mega Navigation Menu */}
+      <ModernMegaMenu />
+
       {/* Hero section */}
-      <section className="bg-gradient-to-r from-indigo-600 to-blue-700 py-16 text-white">
-        <div className="container mx-auto px-4">
+      <section className="relative w-full h-[60vh] min-h-[500px] flex items-center justify-center">
+        <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-black/30"></div>
+        <div className="container mx-auto px-4 relative z-10 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="max-w-3xl mx-auto text-center"
+            transition={{ duration: 0.6 }}
+            className="max-w-4xl mx-auto"
           >
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">Treasury Solutions</h1>
-            <p className="text-xl text-blue-100 mb-8">
-              Tailored approaches to solve your most pressing treasury and financial challenges.
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white">Our Solutions</h1>
+            <p className="text-xl text-gray-200 mb-8 max-w-3xl mx-auto">
+              Comprehensive treasury solutions designed to address your specific financial challenges and drive operational excellence
             </p>
-            <Button size="lg" className="bg-white text-indigo-600 hover:bg-blue-50">
-              Explore Solutions
+            <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white">
+              Request a Demo
             </Button>
           </motion.div>
         </div>
       </section>
 
-      {/* Solutions Tabs */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
-            className="text-center max-w-3xl mx-auto mb-12"
-          >
-            <h2 className="text-3xl font-bold mb-6 text-gray-800">Our Solutions</h2>
-            <p className="text-lg text-gray-600">
-              Comprehensive approaches to address specific treasury and financial challenges faced by modern enterprises
-            </p>
-          </motion.div>
-
-          <Tabs defaultValue="digitization" className="w-full">
-            <div className="flex justify-center mb-8">
-              <TabsList className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2">
-                {solutions.map(solution => (
-                  <TabsTrigger key={solution.id} value={solution.id} className="px-3 py-1.5 text-sm">
-                    <solution.icon className="h-4 w-4 mr-1.5" />
-                    <span className="hidden md:inline">{solution.title}</span>
-                  </TabsTrigger>
-                ))}
-              </TabsList>
-            </div>
-
-            {solutions.map(solution => (
-              <TabsContent key={solution.id} value={solution.id}>
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5 }}
-                  className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center"
-                >
-                  <div className="order-2 lg:order-1">
-                    <h3 className="text-2xl font-bold mb-4 text-gray-800">{solution.title}</h3>
-                    <p className="text-lg text-gray-600 mb-6">{solution.description}</p>
-                    
-                    <div className="mb-6">
-                      <h4 className="text-lg font-semibold mb-3 text-gray-700">Key Features</h4>
-                      <ul className="space-y-2">
-                        {solution.features.map((feature, i) => (
-                          <li key={i} className="flex items-start">
-                            <div className="mr-2 mt-1.5 h-1.5 w-1.5 rounded-full bg-blue-500"></div>
-                            <span className="text-gray-600">{feature}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                    
-                    <div className="mb-8">
-                      <h4 className="text-lg font-semibold mb-3 text-gray-700">Business Impact</h4>
-                      <ul className="space-y-2">
-                        {solution.benefits.map((benefit, i) => (
-                          <li key={i} className="flex items-start">
-                            <div className="mr-2 mt-1.5 h-1.5 w-1.5 rounded-full bg-green-500"></div>
-                            <span className="text-gray-600">{benefit}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                    
-                    <Button className="bg-blue-600 hover:bg-blue-700">
-                      Learn More About {solution.title}
-                      <ArrowRight size={16} className="ml-2" />
-                    </Button>
-                  </div>
-                  
-                  <div className="order-1 lg:order-2">
-                    <div className="relative aspect-video overflow-hidden rounded-xl shadow-xl">
-                      <Image
-                        src={solution.image}
-                        fill
-                        alt={solution.title}
-                        className="object-cover"
-                      />
-                    </div>
-                  </div>
-                </motion.div>
-              </TabsContent>
-            ))}
-          </Tabs>
-        </div>
-      </section>
-
-      {/* Case Studies Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
-            className="text-center max-w-3xl mx-auto mb-12"
-          >
-            <h2 className="text-3xl font-bold mb-6 text-gray-800">Success Stories</h2>
-            <p className="text-lg text-gray-600">
-              See how our solutions have transformed treasury operations for leading organizations
-            </p>
-          </motion.div>
-
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-3 gap-8"
-          >
-            {[
-              {
-                company: "Automotive Leader",
-                solution: "End-to-End Digitization",
-                result: "Reduced manual processes by 85% and improved cash visibility across 30 countries",
-                image: "https://images.pexels.com/photos/164634/pexels-photo-164634.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-              },
-              {
-                company: "Global Manufacturer",
-                solution: "Supply Chain Finance",
-                result: "Improved DPO by 15 days while strengthening supplier relationships",
-                image: "https://images.pexels.com/photos/1267338/pexels-photo-1267338.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-              },
-              {
-                company: "Multinational Corporation",
-                solution: "Risk Mitigation",
-                result: "Reduced FX exposure by 45% and implemented automated hedging program",
-                image: "https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-              }
-            ].map((caseStudy, index) => (
-              <motion.div key={index} variants={itemVariants}>
-                <Card className="h-full overflow-hidden hover:shadow-lg transition-shadow">
-                  <div className="relative h-48">
-                    <Image
-                      src={caseStudy.image}
-                      fill
-                      alt={caseStudy.company}
-                      className="object-cover"
-                    />
-                  </div>
-                  <CardHeader>
-                    <CardTitle>{caseStudy.company}</CardTitle>
-                    <CardDescription>{caseStudy.solution}</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-gray-600">{caseStudy.result}</p>
-                  </CardContent>
-                  <CardFooter>
-                    <Button variant="ghost" className="text-blue-600">
-                      Read Case Study <ArrowRight size={16} className="ml-1" />
-                    </Button>
-                  </CardFooter>
-                </Card>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-16 bg-blue-900 text-white">
+      {/* Solutions Grid */}
+      <section className="py-16 relative z-10">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="max-w-3xl mx-auto text-center"
+            className="mb-12 text-center"
           >
-            <h2 className="text-3xl font-bold mb-6">Ready to Transform Your Treasury?</h2>
-            <p className="text-xl mb-8 text-blue-100">
-              Contact our solution experts to discuss your specific challenges and discover how we can help
+            <h2 className="text-3xl font-bold mb-4">Treasury Solutions That Drive Results</h2>
+            <p className="text-muted-foreground max-w-3xl mx-auto">
+              Our comprehensive suite of treasury solutions addresses every aspect of modern financial management, from
+              cash visibility to risk management, helping organizations optimize their treasury operations and achieve
+              strategic financial objectives.
             </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <Button size="lg" className="bg-white text-blue-900 hover:bg-blue-50">
-                Schedule a Consultation
-              </Button>
-              <Button size="lg" variant="outline" className="text-white border-white hover:bg-blue-800">
-                Download Solution Guide
-              </Button>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {solutions.map((solution, index) => (
+              <motion.div
+                key={solution.name}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true, amount: 0.2 }}
+              >
+                <Card className="h-full hover:shadow-lg transition-shadow bg-white/90 backdrop-blur-sm group">
+                  <CardHeader>
+                    <solution.icon className="h-8 w-8 text-blue-500 mb-2 group-hover:scale-110 transition-transform" />
+                    <CardTitle className="text-xl text-gray-800">{solution.name}</CardTitle>
+                    <CardDescription className="text-gray-600">{solution.description}</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <ul className="space-y-2 mb-4">
+                      {solution.features.map((feature) => (
+                        <li key={feature} className="text-sm text-gray-600 flex items-center">
+                          <div className="w-1.5 h-1.5 bg-blue-500 rounded-full mr-2" />
+                          {feature}
+                        </li>
+                      ))}
+                    </ul>
+                    <Button 
+                      asChild 
+                      variant="outline" 
+                      className="w-full bg-transparent hover:bg-blue-50 border-blue-100 group-hover:bg-blue-600 group-hover:text-white transition-colors"
+                    >
+                      <Link href={solution.href}>
+                        Learn More <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                      </Link>
+                    </Button>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Benefits Section */}
+      <section className="py-16 relative z-10 bg-gradient-to-b from-white to-gray-50">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            viewport={{ once: true }}
+            className="mb-12 text-center"
+          >
+            <h2 className="text-3xl font-bold mb-6">Why Choose Our Solutions?</h2>
+            <p className="text-muted-foreground max-w-3xl mx-auto">
+              We deliver measurable results and tangible business value through our comprehensive treasury solutions.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              {
+                title: "Integrated Platform",
+                description: "All solutions work seamlessly together on a unified platform",
+                icon: Network,
+              },
+              {
+                title: "Real-time Insights",
+                description: "Make informed decisions with real-time data and analytics",
+                icon: Eye,
+              },
+              {
+                title: "Scalable Architecture",
+                description: "Grow with confidence using our scalable, cloud-native platform",
+                icon: TrendingUp,
+              },
+            ].map((benefit, index) => (
+              <motion.div
+                key={benefit.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
+                viewport={{ once: true }}
+                className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow"
+              >
+                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 mb-4">
+                  <benefit.icon className="h-6 w-6" />
+                </div>
+                <h3 className="text-xl font-semibold mb-2 text-gray-800">{benefit.title}</h3>
+                <p className="text-gray-600">{benefit.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-16 relative z-10">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.6 }}
+            viewport={{ once: true }}
+            className="text-center"
+          >
+            <div className="bg-gradient-to-r from-blue-600/10 to-blue-500/10 rounded-xl p-8 md:p-12 backdrop-blur-sm border border-blue-100">
+              <h3 className="text-2xl md:text-3xl font-bold mb-4 text-gray-800">Ready to Transform Your Treasury Operations?</h3>
+              <p className="text-muted-foreground mb-6 max-w-2xl mx-auto text-gray-600">
+                Discover how our comprehensive treasury solutions can streamline your operations, reduce risk, and drive
+                strategic value for your organization.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button asChild size="lg" className="bg-blue-600 hover:bg-blue-700 text-white">
+                  <Link href="/request-demo">Request a Demo</Link>
+                </Button>
+                <Button asChild variant="outline" size="lg" className="border-blue-200 hover:bg-blue-50">
+                  <Link href="/contact">Contact Sales</Link>
+                </Button>
+              </div>
             </div>
           </motion.div>
         </div>
       </section>
     </div>
   );
-}
+};
+
+export default SolutionsPage;

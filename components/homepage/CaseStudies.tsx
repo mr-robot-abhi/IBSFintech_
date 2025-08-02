@@ -2,13 +2,12 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { ArrowRight, Globe, Shield, Zap, Users, BarChart2, Building } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Tilt from "react-parallax-tilt";
 
 const caseStudies = [
   {
     title: "FMCG Giant's path to data-driven decision",
-    company: "Dabur India Limited",
     summary:
       "Empowering treasury functions with automation for better financial insights and operational efficiency.",
     highlights: [
@@ -16,13 +15,11 @@ const caseStudies = [
       "Treasury Automation",
       "Data-Driven Decisions",
     ],
-    icon: Zap,
     image: "/Case_Studies/IBSFINtech-Client-Dabur.png",
     date: "September 10, 2024"
   },
   {
     title: "Cash Management Optimization",
-    company: "Hindustan Zinc Limited",
     summary:
       "Optimized cash management processes across multiple business units, significantly improving liquidity and reducing operational costs.",
     highlights: [
@@ -30,13 +27,11 @@ const caseStudies = [
       "Liquidity",
       "Cost Reduction",
     ],
-    icon: BarChart2,
     image: "/Case_Studies/Hindustan-Zinc-Limited.png",
     date: "December 5, 2023"
   },
   {
     title: "Streamlined Treasury Operations & Real-Time Insights",
-    company: "Credit Saison (India)",
     summary:
       "How a Global Financial Services (NBFC) Leader achieved operational excellence with IBSFintech.",
     highlights: [
@@ -44,13 +39,11 @@ const caseStudies = [
       "NBFC Leader",
       "Real-Time Analytics",
     ],
-    icon: Shield,
     image: "/Case_Studies/IBSFINtech-Client-Credit-Saison-India.png",
     date: "August 28, 2024"
   },
   {
     title: "End-to-End Digitization Journey",
-    company: "Polycab",
     summary:
       "India's Cable & Wire Manufacturing Leader achieves seamless automation of Treasury & Trade Finance for $500M+ operations.",
     highlights: [
@@ -58,7 +51,6 @@ const caseStudies = [
       "$500M+ Operations",
       "Trade Finance",
     ],
-    icon: Users,
     image: "/Case_Studies/IBSFINtech-Client-Polycab.png",
     date: "July 1, 2022"
   },
@@ -118,11 +110,7 @@ export default function CaseStudies() {
                         />
                       </div>
                     </div>
-                    {/* Logo Badge */}
-                    <div className="absolute top-2 left-2 bg-white/90 backdrop-blur-sm rounded-lg shadow-md p-2 flex items-center gap-2 z-10">
-                      <cs.icon className="h-5 w-5 text-blue-600" />
-                      <span className="text-sm font-medium text-gray-800">{cs.company.split(' ')[0]}</span>
-                    </div>
+
                   </div>
                   
                   {/* Content */}

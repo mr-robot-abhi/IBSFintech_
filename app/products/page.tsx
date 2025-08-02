@@ -1,225 +1,240 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { ArrowRight, DollarSign, BarChart, Calendar, Wallet, CreditCard, Activity } from 'lucide-react';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { ArrowRight, Building2, Users } from 'lucide-react';
+import ModernMegaMenu from '@/components/layout/ModernMegaMenu';
+import { useEffect, useState } from 'react';
 
-export default function ProductsPage() {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1
-      }
-    }
-  };
+const ProductsPage = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
 
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        type: 'spring',
-        stiffness: 100
-      }
-    }
-  };
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
-  const products = [
+  const enterpriseProducts = [
     {
-      title: "Treasury Management Platform",
-      description: "Comprehensive platform for all your treasury needs with real-time visibility and control.",
-      features: [
-        "Centralized cash management",
-        "Bank connectivity",
-        "Automated reconciliation",
-        "Custom reporting",
-        "Audit trails"
-      ],
-      icon: DollarSign,
-      color: "bg-blue-500"
+      name: "Cashflow & Liquidity",
+      description: "Comprehensive cash management and liquidity optimization solutions",
+      href: "/products/enterprise/cashflow-liquidity",
+      features: ["Real-time cash visibility", "Forecasting", "Liquidity optimization"],
     },
     {
-      title: "Risk Management Module",
-      description: "Proactively identify and mitigate financial risks with powerful analytics.",
-      features: [
-        "Foreign exchange exposure",
-        "Interest rate risk",
-        "Counterparty risk",
-        "Market risk analytics",
-        "Scenario modeling"
-      ],
-      icon: BarChart,
-      color: "bg-indigo-500"
+      name: "Currency (FX) Risk",
+      description: "Advanced foreign exchange risk management and hedging solutions",
+      href: "/products/enterprise/fx-risk",
+      features: ["FX exposure tracking", "Hedging strategies", "Risk analytics"],
     },
     {
-      title: "Cash & Liquidity Tool",
-      description: "Optimize working capital with real-time cash visibility across all accounts.",
-      features: [
-        "Multi-bank reporting",
-        "Cash forecasting",
-        "Liquidity planning",
-        "Working capital optimization",
-        "Bank fee analysis"
-      ],
-      icon: Wallet,
-      color: "bg-cyan-500"
+      name: "Investment (Money Market)",
+      description: "Money market investment management and optimization",
+      href: "/products/enterprise/investment",
+      features: ["Investment tracking", "Portfolio optimization", "Risk assessment"],
     },
     {
-      title: "Payments Management",
-      description: "Streamline payment processes with security and efficiency across currencies.",
-      features: [
-        "Payment workflow automation",
-        "Cross-border payments",
-        "Payment approval routing",
-        "Sanction screening",
-        "Payment status tracking"
-      ],
-      icon: CreditCard,
-      color: "bg-purple-500"
+      name: "Trade Finance",
+      description: "Complete trade finance management and automation",
+      href: "/products/enterprise/trade-finance",
+      features: ["LC management", "Trade documentation", "Workflow automation"],
     },
     {
-      title: "Debt Management System",
-      description: "Track and optimize all aspects of your corporate debt portfolio.",
-      features: [
-        "Loan management",
-        "Interest calculation",
-        "Covenant tracking",
-        "Amortization schedules",
-        "Debt optimization"
-      ],
-      icon: Calendar,
-      color: "bg-emerald-500"
+      name: "Debt (Borrowings)",
+      description: "Debt management and borrowing optimization solutions",
+      href: "/products/enterprise/debt",
+      features: ["Debt tracking", "Covenant monitoring", "Interest optimization"],
     },
     {
-      title: "Treasury Analytics Suite",
-      description: "Gain powerful insights with interactive dashboards and custom reporting.",
-      features: [
-        "Interactive dashboards",
-        "Custom report builder",
-        "Data visualization",
-        "KPI tracking",
-        "AI-powered insights"
-      ],
-      icon: Activity,
-      color: "bg-amber-500"
-    }
+      name: "Commodity Risk",
+      description: "Commodity price risk management and hedging",
+      href: "/products/enterprise/commodity-risk",
+      features: ["Price exposure tracking", "Hedging strategies", "Market analytics"],
+    },
+    {
+      name: "Payments",
+      description: "Treasury payment processing and management",
+      href: "/products/enterprise/payments",
+      features: ["Payment automation", "Multi-bank connectivity", "Approval workflows"],
+    },
+    {
+      name: "Supply Chain Finance (VNDZY®)",
+      description: "Advanced supply chain finance platform",
+      href: "/products/enterprise/supply-chain-finance",
+      features: ["Vendor financing", "Dynamic discounting", "Working capital optimization"],
+    },
+  ];
+
+  const smeProducts = [
+    {
+      name: "InnoTreasury",
+      description: "Comprehensive treasury management solution for SMEs",
+      href: "/products/sme/inno-treasury",
+      features: ["Cash management", "FX risk management", "Payment processing"],
+    },
+    {
+      name: "InnoInvest",
+      description: "Investment management platform for small and medium enterprises",
+      href: "/products/sme/inno-invest",
+      features: ["Investment tracking", "Portfolio management", "Risk monitoring"],
+    },
   ];
 
   return (
-    <div className="pt-20 pb-16">
+    <div className="min-h-screen overflow-x-hidden relative bg-transparent">
+      {/* Background for all sections */}
+      <div className="fixed inset-0 -z-10 w-full h-full">
+        <img
+          src="/style1_bg.png"
+          alt="Background"
+          className="object-cover object-center w-full h-full"
+        />
+      </div>
+
+      {/* Mega Navigation Menu */}
+      <ModernMegaMenu />
+
       {/* Hero section */}
-      <section className="bg-gradient-to-r from-blue-600 to-indigo-700 py-16 text-white">
-        <div className="container mx-auto px-4">
+      <section className="relative w-full h-[60vh] min-h-[500px] flex items-center justify-center">
+        <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-black/30"></div>
+        <div className="container mx-auto px-4 relative z-10 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="max-w-3xl mx-auto text-center"
+            transition={{ duration: 0.6 }}
+            className="max-w-4xl mx-auto"
           >
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">Treasury Management Products</h1>
-            <p className="text-xl text-blue-100 mb-8">
-              Comprehensive solutions designed to streamline your treasury operations and unlock financial insights.
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white">Our Products</h1>
+            <p className="text-xl text-gray-200 mb-8 max-w-3xl mx-auto">
+              Comprehensive treasury management solutions designed for enterprises and SMEs
             </p>
-            <Button size="lg" className="bg-white text-blue-600 hover:bg-blue-50">
-              Schedule a Demo
+            <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white">
+              Request a Demo
             </Button>
           </motion.div>
         </div>
       </section>
 
-      {/* Products Grid */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-          >
-            {products.map((product, index) => (
-              <motion.div key={index} variants={itemVariants}>
-                <Card className="h-full flex flex-col hover:shadow-lg transition-shadow border-t-4 border-t-blue-500">
-                  <CardHeader>
-                    <div className={`w-12 h-12 rounded-lg ${product.color} flex items-center justify-center text-white mb-4`}>
-                      <product.icon size={24} />
-                    </div>
-                    <CardTitle>{product.title}</CardTitle>
-                    <CardDescription className="mt-2">{product.description}</CardDescription>
-                  </CardHeader>
-                  <CardContent className="flex-grow">
-                    <ul className="space-y-2">
-                      {product.features.map((feature, i) => (
-                        <li key={i} className="flex items-start">
-                          <div className="mr-2 mt-1 h-1.5 w-1.5 rounded-full bg-blue-500"></div>
-                          <span className="text-sm text-gray-600">{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </CardContent>
-                  <CardFooter>
-                    <Button variant="outline" className="w-full text-blue-600">
-                      Learn More <ArrowRight size={16} className="ml-1" />
-                    </Button>
-                  </CardFooter>
-                </Card>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Benefits Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
-            className="text-center max-w-3xl mx-auto mb-12"
-          >
-            <h2 className="text-3xl font-bold mb-6 text-gray-800">Why Choose Our Products?</h2>
-            <p className="text-lg text-gray-600">
-              Our treasury management products are built on years of industry expertise and cutting-edge technology.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              { title: "Integrated Platform", description: "All treasury functions in one unified system" },
-              { title: "Real-Time Insights", description: "Up-to-the-minute data for informed decision-making" },
-              { title: "Enterprise Grade", description: "Built for the complex needs of large organizations" },
-              { title: "Continuous Innovation", description: "Regular updates with the latest treasury technology" }
-            ].map((benefit, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="bg-white p-6 rounded-lg shadow-sm text-center"
-              >
-                <h3 className="text-xl font-bold mb-2 text-gray-800">{benefit.title}</h3>
-                <p className="text-gray-600">{benefit.description}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-16 bg-blue-600 text-white">
+      {/* Enterprise TMS Section */}
+      <section className="py-16 relative z-10">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="max-w-3xl mx-auto text-center"
+            className="mb-12"
+          >
+            <div className="flex items-center mb-8">
+              <Building2 className="h-8 w-8 text-blue-500 mr-3" />
+              <div>
+                <h2 className="text-3xl font-bold text-gray-800">Enterprise TMS</h2>
+                <p className="text-muted-foreground">Advanced treasury management for large enterprises</p>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {enterpriseProducts.map((product, index) => (
+                <motion.div
+                  key={product.name}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                >
+                  <Card className="h-full hover:shadow-lg transition-shadow bg-white/90 backdrop-blur-sm">
+                    <CardHeader>
+                      <CardTitle className="text-xl text-gray-800">{product.name}</CardTitle>
+                      <CardDescription className="text-gray-600">{product.description}</CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <ul className="space-y-2 mb-4">
+                        {product.features.map((feature) => (
+                          <li key={feature} className="text-sm text-gray-600 flex items-center">
+                            <div className="w-1.5 h-1.5 bg-blue-500 rounded-full mr-2" />
+                            {feature}
+                          </li>
+                        ))}
+                      </ul>
+                      <Button asChild variant="outline" className="w-full bg-transparent hover:bg-blue-50 border-blue-100">
+                        <Link href={product.href}>
+                          Learn More <ArrowRight className="ml-2 h-4 w-4" />
+                        </Link>
+                      </Button>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* SME TMS Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            viewport={{ once: true }}
+            className="mt-20"
+          >
+            <div className="flex items-center mb-8">
+              <Users className="h-8 w-8 text-blue-500 mr-3" />
+              <div>
+                <h2 className="text-3xl font-bold text-gray-800">SME TMS</h2>
+                <p className="text-muted-foreground">Tailored solutions for small and medium enterprises</p>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {smeProducts.map((product, index) => (
+                <motion.div
+                  key={product.name}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                >
+                  <Card className="h-full hover:shadow-lg transition-shadow bg-white/90 backdrop-blur-sm">
+                    <CardHeader>
+                      <CardTitle className="text-xl text-gray-800">{product.name}</CardTitle>
+                      <CardDescription className="text-gray-600">{product.description}</CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <ul className="space-y-2 mb-4">
+                        {product.features.map((feature) => (
+                          <li key={feature} className="text-sm text-gray-600 flex items-center">
+                            <div className="w-1.5 h-1.5 bg-blue-500 rounded-full mr-2" />
+                            {feature}
+                          </li>
+                        ))}
+                      </ul>
+                      <Button asChild className="w-full bg-blue-600 hover:bg-blue-700">
+                        <Link href={product.href}>
+                          Learn More <ArrowRight className="ml-2 h-4 w-4" />
+                        </Link>
+                      </Button>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-16 relative z-10">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.6 }}
+            viewport={{ once: true }}
+            className="text-center"
           >
             <h2 className="text-3xl font-bold mb-6">Ready to Explore Our Products?</h2>
             <p className="text-xl mb-8 text-blue-100">
@@ -238,4 +253,6 @@ export default function ProductsPage() {
       </section>
     </div>
   );
-}
+};
+
+export default ProductsPage;
