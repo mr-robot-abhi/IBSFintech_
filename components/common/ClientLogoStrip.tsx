@@ -5,7 +5,6 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import Image from 'next/image';
 import { LogoStripIllustrative1 } from './LogoStrips/LogoStripIllustrative1';
 import { LogoStripIllustrative3 } from './LogoStrips/LogoStripIllustrative3';
-
 // Client type definition
 export type Client = {
   id: number;

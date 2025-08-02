@@ -62,9 +62,7 @@ const MenuButton = forwardRef<HTMLButtonElement, PropsWithChildren<ButtonHTMLAtt
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const pathname = usePathname();
   const { theme } = useTheme();
-  const isIllustrativeTwo = pathname.includes('variant=illustrative2');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -90,7 +88,7 @@ export default function Navbar() {
         theme === 'dark' ? 'text-gray-100' : 'text-gray-900'
       )}>
         <div className="flex items-center justify-between">
-          <Link href="/?variant=illustrative2" className="group flex items-center">
+          <Link href="/" className="group flex items-center">
             <motion.div 
               className="relative h-10 w-auto flex items-center"
               initial={{ opacity: 0, x: -10 }}

@@ -3,10 +3,10 @@
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { ArrowRight, Globe, FileText, Bell, BarChart, CreditCard, Package, RefreshCw, Shield, TrendingUp, Users, Layers } from 'lucide-react';
+import { ArrowRight, BarChart, Bell, FileText, Layers, LineChart, Shield, TrendingUp, Zap } from 'lucide-react';
 import ModernMegaMenu from '@/components/layout/ModernMegaMenu';
 
-const TradeFinancePage = () => {
+const CommodityRiskPage = () => {
   return (
     <div className="min-h-screen overflow-x-hidden relative bg-white">
       {/* Background for all sections */}
@@ -25,7 +25,7 @@ const TradeFinancePage = () => {
               transition={{ duration: 0.6 }}
               className="text-4xl md:text-5xl font-bold mb-6 leading-tight"
             >
-              Trade Finance Management
+              Commodity Risk Management
             </motion.h1>
             <motion.p 
               initial={{ opacity: 0, y: 20 }}
@@ -33,7 +33,7 @@ const TradeFinancePage = () => {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-xl md:text-2xl text-blue-100 mb-8 max-w-3xl mx-auto"
             >
-              Optimize Your Trade Finance Operations with IBSFINtech's Trade Finance Module
+              Optimize your organization's Commodity Operations with IBSFINtech's Commodity Risk Management Solution
             </motion.p>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -41,7 +41,7 @@ const TradeFinancePage = () => {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="text-lg text-blue-100 mb-8 max-w-4xl mx-auto"
             >
-              Enhance your trade finance management with our robust module, designed to streamline processes, ensure compliance, and provide real-time insights for optimal decision-making.
+              Take control of your commodity risk management with our powerful and comprehensive module, designed to streamline operations, enhance risk oversight, and provide real-time insights.
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -69,7 +69,7 @@ const TradeFinancePage = () => {
               className="max-w-6xl mx-auto mb-16"
             >
               <h2 className="text-3xl md:text-4xl font-bold text-[#241F5D] mb-8 text-center">
-                Comprehensive Trade Finance Solution
+                Comprehensive Commodity Risk Solution
               </h2>
               
               <div className="grid md:grid-cols-2 gap-12 items-start">
@@ -77,43 +77,39 @@ const TradeFinancePage = () => {
                   <ul className="space-y-4 text-gray-700 mb-8">
                     <li className="flex items-start">
                       <span className="text-blue-600 mr-2 mt-1">•</span>
-                      <span>End-to-end lifecycle management for both Import and Export functions with complete visibility.</span>
+                      <span>End-to-end lifecycle management of commodities with complete visibility and control.</span>
                     </li>
                     <li className="flex items-start">
                       <span className="text-blue-600 mr-2 mt-1">•</span>
-                      <span>Seamless interface with ERP systems for fetching Sales Orders (SO), Sales Invoices (SI), Purchase Orders (PO), and Proforma Invoices (PI).</span>
+                      <span>Comprehensive exposure management for physical commodities and derivatives.</span>
                     </li>
                     <li className="flex items-start">
                       <span className="text-blue-600 mr-2 mt-1">•</span>
-                      <span>Comprehensive management of Export Letters of Credit, Packing Credit activities, and Post-Shipment finance.</span>
+                      <span>Complete derivative cycle management including Swaps, Futures, and Options.</span>
                     </li>
                     <li className="flex items-start">
                       <span className="text-blue-600 mr-2 mt-1">•</span>
-                      <span>Full support for Letters of Credit, Bank Guarantees, Buyer's Credit, and Supplier's Credit.</span>
+                      <span>Seamless integration with broker terminals and market data providers for real-time insights.</span>
                     </li>
                     <li className="flex items-start">
                       <span className="text-blue-600 mr-2 mt-1">•</span>
-                      <span>Advanced Limit Management with tracking of bank charges and competitive interest rates.</span>
+                      <span>Automated calculation of brokerage rates and charges.</span>
                     </li>
                     <li className="flex items-start">
                       <span className="text-blue-600 mr-2 mt-1">•</span>
-                      <span>Optimized trade finance operations through Straight-Through-Processing (STP) implementation.</span>
+                      <span>Hedge effectiveness determination through physical and paper trade linkage.</span>
                     </li>
                     <li className="flex items-start">
                       <span className="text-blue-600 mr-2 mt-1">•</span>
-                      <span>Seamless integration with leading ERP systems (SAP, Oracle, and other third-party software) for automated accounting entries.</span>
+                      <span>Daily derivative pricing on outstanding contracts for accurate valuation.</span>
                     </li>
                     <li className="flex items-start">
                       <span className="text-blue-600 mr-2 mt-1">•</span>
-                      <span>Automatic generation of all banking communication letters and documentation.</span>
+                      <span>Comprehensive counterparty limit monitoring and management.</span>
                     </li>
                     <li className="flex items-start">
                       <span className="text-blue-600 mr-2 mt-1">•</span>
-                      <span>Comprehensive document management system with secure storage by reference number.</span>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="text-blue-600 mr-2 mt-1">•</span>
-                      <span>Direct connectivity with banks via API/Host-to-Host (H2H) for straight-through processing.</span>
+                      <span>Automated upload of daily margin and rate files from exchanges.</span>
                     </li>
                   </ul>
                 </div>
@@ -127,10 +123,10 @@ const TradeFinancePage = () => {
                 >
                   <div className="relative h-full w-full rounded-lg overflow-hidden">
                     <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-indigo-50 flex items-center justify-center">
-                      <Package className="h-32 w-32 text-blue-400" />
+                      <Zap className="h-32 w-32 text-blue-400" />
                     </div>
                     <div className="absolute bottom-0 left-0 right-0 bg-black/50 text-white p-4 text-sm">
-                      Trade Finance Management Dashboard
+                      Commodity Risk Management Dashboard
                     </div>
                   </div>
                 </motion.div>
@@ -150,7 +146,7 @@ const TradeFinancePage = () => {
                 <div className="h-1 w-16 bg-blue-500 mx-auto mb-8"></div>
               </motion.div>
               
-              <div className="grid md:grid-cols-2 gap-8">
+              <div className="grid md:grid-cols-3 gap-8">
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -161,8 +157,8 @@ const TradeFinancePage = () => {
                   <div className="h-12 w-12 rounded-full bg-blue-50 flex items-center justify-center mb-4">
                     <BarChart className="h-6 w-6 text-blue-600" />
                   </div>
-                  <h4 className="text-lg font-semibold text-[#241F5D] mb-2">Comprehensive MIS Reports</h4>
-                  <p className="text-gray-600">Detailed reports on limits sanctioned, utilized, and available, including both fund-based and non-fund based limits.</p>
+                  <h4 className="text-lg font-semibold text-[#241F5D] mb-2">Real-time Position Reports</h4>
+                  <p className="text-gray-600">Comprehensive reporting by product, broker, and contract for complete visibility.</p>
                 </motion.div>
                 
                 <motion.div
@@ -173,10 +169,24 @@ const TradeFinancePage = () => {
                   className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow"
                 >
                   <div className="h-12 w-12 rounded-full bg-blue-50 flex items-center justify-center mb-4">
+                    <LineChart className="h-6 w-6 text-blue-600" />
+                  </div>
+                  <h4 className="text-lg font-semibold text-[#241F5D] mb-2">Exposure Consolidation</h4>
+                  <p className="text-gray-600">Track and analyze sale vs purchase and physical vs paper exposures, both gross and net.</p>
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+                  className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow"
+                >
+                  <div className="h-12 w-12 rounded-full bg-blue-50 flex items-center justify-center mb-4">
                     <TrendingUp className="h-6 w-6 text-blue-600" />
                   </div>
-                  <h4 className="text-lg font-semibold text-[#241F5D] mb-2">Financial Analytics</h4>
-                  <p className="text-gray-600">Maturity reports, cost of funds analysis, and interest variance tracking for better financial decision-making.</p>
+                  <h4 className="text-lg font-semibold text-[#241F5D] mb-2">Advanced Analysis</h4>
+                  <p className="text-gray-600">Perform historical scenario analysis, stress testing, and Value at Risk (VaR) calculations.</p>
                 </motion.div>
               </div>
             </div>
@@ -203,10 +213,10 @@ const TradeFinancePage = () => {
                   className="bg-white p-6 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow"
                 >
                   <div className="h-12 w-12 rounded-full bg-blue-50 flex items-center justify-center mb-4">
-                    <Bell className="h-6 w-6 text-blue-600" />
+                    <Shield className="h-6 w-6 text-blue-600" />
                   </div>
-                  <h4 className="text-lg font-semibold text-[#241F5D] mb-2">Automated Alerts</h4>
-                  <p className="text-gray-600">Real-time and due date alerts, notifications, and email reminders to ensure no critical deadlines are missed.</p>
+                  <h4 className="text-lg font-semibold text-[#241F5D] mb-2">Risk Policy Monitoring</h4>
+                  <p className="text-gray-600">Monitor and enforce risk policies at both group and entity levels for comprehensive governance.</p>
                 </motion.div>
                 
                 <motion.div
@@ -217,10 +227,10 @@ const TradeFinancePage = () => {
                   className="bg-white p-6 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow"
                 >
                   <div className="h-12 w-12 rounded-full bg-blue-50 flex items-center justify-center mb-4">
-                    <Shield className="h-6 w-6 text-blue-600" />
+                    <FileText className="h-6 w-6 text-blue-600" />
                   </div>
-                  <h4 className="text-lg font-semibold text-[#241F5D] mb-2">Regulatory Compliance</h4>
-                  <p className="text-gray-600">Automated key processes to ensure full compliance with all regulatory requirements and standards.</p>
+                  <h4 className="text-lg font-semibold text-[#241F5D] mb-2">Comprehensive Audit Trails</h4>
+                  <p className="text-gray-600">Maintain detailed audit logs of all transactions and system activities for compliance.</p>
                 </motion.div>
                 
                 <motion.div
@@ -231,73 +241,33 @@ const TradeFinancePage = () => {
                   className="bg-white p-6 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow"
                 >
                   <div className="h-12 w-12 rounded-full bg-blue-50 flex items-center justify-center mb-4">
-                    <FileText className="h-6 w-6 text-blue-600" />
+                    <Bell className="h-6 w-6 text-blue-600" />
                   </div>
-                  <h4 className="text-lg font-semibold text-[#241F5D] mb-2">EDPMS & IDPMS Compliance</h4>
-                  <p className="text-gray-600">Streamlined management of documentation for full compliance with EDPMS and IDPMS regulations.</p>
+                  <h4 className="text-lg font-semibold text-[#241F5D] mb-2">Proactive Alerts</h4>
+                  <p className="text-gray-600">Real-time alerts, notifications, and email reminders for critical risk events and thresholds.</p>
                 </motion.div>
-              </div>
-            </div>
-
-            {/* Features Section */}
-            <div className="bg-[#241F5D] rounded-2xl p-8 md:p-12 mb-20 text-white">
-              <motion.div 
-                className="text-center mb-12"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-              >
-                <h3 className="text-2xl md:text-3xl font-bold mb-4">Key Features</h3>
-                <div className="h-1 w-16 bg-blue-400 mx-auto"></div>
-              </motion.div>
-              
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {[
-                  { icon: <Globe className="h-6 w-6" />, title: "Global Trade Support", description: "End-to-end management of international trade transactions" },
-                  { icon: <RefreshCw className="h-6 w-6" />, title: "STP Processing", description: "Straight-Through-Processing for faster trade execution" },
-                  { icon: <CreditCard className="h-6 w-6" />, title: "LC & BG Management", description: "Comprehensive handling of Letters of Credit and Bank Guarantees" },
-                  { icon: <FileText className="h-6 w-6" />, title: "Document Automation", description: "Automatic generation of all required trade documents" },
-                  { icon: <Users className="h-6 w-6" />, title: "Multi-bank Connectivity", description: "Direct integration with multiple banking partners" },
-                  { icon: <Layers className="h-6 w-6" />, title: "Document Management", description: "Centralized storage and retrieval of all trade documents" }
-                ].map((feature, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                    className="bg-white/10 p-6 rounded-xl backdrop-blur-sm hover:bg-white/20 transition-colors"
-                  >
-                    <div className="h-12 w-12 rounded-full bg-white/20 flex items-center justify-center mb-4">
-                      {feature.icon}
-                    </div>
-                    <h4 className="text-lg font-semibold text-white mb-2">{feature.title}</h4>
-                    <p className="text-blue-100">{feature.description}</p>
-                  </motion.div>
-                ))}
               </div>
             </div>
 
             {/* CTA Section */}
             <motion.div 
-              className="text-center py-12"
+              className="text-center py-20 bg-gradient-to-r from-[#241F5D] to-[#3A3480] rounded-2xl px-6"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <h3 className="text-2xl md:text-3xl font-bold text-[#241F5D] mb-6">
-                Transform Your Trade Finance Operations
+              <h3 className="text-2xl md:text-3xl font-bold text-white mb-6">
+                Elevate Your Commodity Risk Management
               </h3>
-              <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-                Discover how our advanced Trade Finance solution can streamline your import/export processes and enhance compliance.
+              <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
+                Discover how our advanced Commodity Risk Management solution can transform your operations and provide unparalleled visibility.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg" className="bg-[#241F5D] hover:bg-[#1a1650] text-white">
+                <Button size="lg" className="bg-white text-[#241F5D] hover:bg-blue-50">
                   Request a Demo
                 </Button>
-                <Button size="lg" variant="outline" className="border-[#241F5D] text-[#241F5D] hover:bg-blue-50">
+                <Button size="lg" variant="outline" className="text-white border-white hover:bg-white/10">
                   Contact Our Experts
                 </Button>
               </div>
@@ -309,4 +279,4 @@ const TradeFinancePage = () => {
   );
 };
 
-export default TradeFinancePage;
+export default CommodityRiskPage;

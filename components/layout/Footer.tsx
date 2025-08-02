@@ -72,18 +72,17 @@ export default function Footer() {
                   </div>
                   <span className="font-medium">INDIA</span>
                 </div>
-                <div className="space-y-2 text-gray-400 pl-8">
-                  <div className="flex items-start space-x-2">
-                    <Mail size={16} className="text-blue-400 mt-0.5 flex-shrink-0" />
-                    <span>contactus@ibsfintech.com</span>
+                <div className="flex items-start mt-2">
+                  <div className="w-6 flex-shrink-0">
+                    <Mail size={16} className="text-blue-400 mt-1" />
                   </div>
-                  <div className="flex items-start space-x-2">
-                    <Phone size={16} className="text-blue-400 mt-0.5 flex-shrink-0" />
-                    <div>
-                      <div>(+91) 9591599720</div>
-                      <div>(+91) 8041219181</div>
-                    </div>
+                  <div className="text-gray-400 ml-2">contactus@ibsfintech.com</div>
+                </div>
+                <div className="flex items-start mt-2">
+                  <div className="w-6 flex-shrink-0">
+                    <Phone size={16} className="text-blue-400 mt-1" />
                   </div>
+                  <div className="text-gray-400 ml-2 whitespace-nowrap">(+91) 9591599720 | (+91) 8041219181</div>
                 </div>
               </div>
               
@@ -104,21 +103,23 @@ export default function Footer() {
                   </div>
                   <span className="font-medium">USA</span>
                 </div>
-                <div className="space-y-2 text-gray-400 pl-8">
-                  <div className="flex items-start space-x-2">
-                    <Mail size={16} className="text-blue-400 mt-0.5 flex-shrink-0" />
-                    <span>sales-us@ibsfintech.com</span>
+                <div className="flex items-start mt-2">
+                  <div className="w-6 flex-shrink-0">
+                    <Mail size={16} className="text-blue-400 mt-1" />
                   </div>
-                  <div className="flex items-start space-x-2">
-                    <Phone size={16} className="text-blue-400 mt-0.5 flex-shrink-0" />
-                    <span>+1 (908) 529-1096</span>
+                  <div className="text-gray-400 ml-2">sales-us@ibsfintech.com</div>
+                </div>
+                <div className="flex items-start mt-2">
+                  <div className="w-6 flex-shrink-0">
+                    <Phone size={16} className="text-blue-400 mt-1" />
                   </div>
+                  <div className="text-gray-400 ml-2">+1 (908) 529-1096</div>
                 </div>
               </div>
             </div>
           </div>
           
-          <div>
+          <div className="ml-0 lg:ml-8 w-full max-w-xs">
             <h3 className="text-xl font-bold mb-4">Newsletter</h3>
             <p className="text-gray-400 mb-4">
               Subscribe to our newsletter for the latest updates on treasury management solutions and financial insights.
