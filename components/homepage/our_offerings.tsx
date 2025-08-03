@@ -1,59 +1,22 @@
-import { useRef, useEffect, useState } from 'react';
-import useEmblaCarousel from 'embla-carousel-react';
-import Autoplay from 'embla-carousel-autoplay';
-import { motion } from 'framer-motion';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+'use client';
+
+import { useState } from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Autoplay } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
 import Image from 'next/image';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const SERVICES = [
-  { 
-    title: 'Cash & Liquidity', 
-    description: 'Visibility, forecasting, bank analysis', 
-    icon: '/Modules Icon_Color 1/Cash-Liquidity-Management.svg', 
-    glowColor: 'rgba(255, 204, 0, 0.8)' 
-  },
-  { 
-    title: 'Payments', 
-    description: 'Approvals, automation, centralization', 
-    icon: '/Modules Icon_Color 1/Payments.svg', 
-    glowColor: 'rgba(0, 122, 255, 0.8)' 
-  },
-  { 
-    title: 'Supply Chain', 
-    description: 'AP/AR automation, working capital', 
-    icon: '/Modules Icon_Color 1/Supply-Chain-Finance.svg', 
-    glowColor: 'rgba(255, 59, 48, 0.8)' 
-  },
-  { 
-    title: 'Commodity', 
-    description: 'Margin, hedging, exposure tracking', 
-    icon: '/Modules Icon_Color 1/Commodity-Management.svg', 
-    glowColor: 'rgba(88, 86, 214, 0.8)' 
-  },
-  { 
-    title: 'Currency Risk', 
-    description: 'Hedging, derivatives, valuation', 
-    icon: '/Modules Icon_Color 1/Currency-Risk-Management.svg', 
-    glowColor: 'rgba(52, 199, 89, 0.8)' 
-  },
-  { 
-    title: 'Investment', 
-    description: 'Mutual funds, FDs, PMS, bonds', 
-    icon: '/Modules Icon_Color 1/Investment-Management.svg', 
-    glowColor: 'rgba(255, 0, 0, 0.8)' 
-  },
-  { 
-    title: 'Trade Finance', 
-    description: 'LCs, BCs, shipment finance', 
-    icon: '/Modules Icon_Color 1/Trade-Finance-Management.svg', 
-    glowColor: 'rgba(0, 255, 0, 0.8)' 
-  },
-  { 
-    title: 'Debt Management', 
-    description: 'Borrowings, loans, intercompany', 
-    icon: '/Modules Icon_Color 1/Debt-Management.svg', 
-    glowColor: 'rgba(90, 200, 250, 0.8)' 
-  },
+  { title: 'Cash & Liquidity', description: 'Visibility, forecasting, bank analysis', icon: '/Modules Icon_Color 1/Cash-Liquidity-Management.svg', glowColor: 'rgba(255, 204, 0, 0.8)' },
+  { title: 'Payments', description: 'Approvals, automation, centralization', icon: '/Modules Icon_Color 1/Payments.svg', glowColor: 'rgba(0, 122, 255, 0.8)' },
+  { title: 'Supply Chain', description: 'AP/AR automation, working capital', icon: '/Modules Icon_Color 1/Supply-Chain-Finance.svg', glowColor: 'rgba(255, 59, 48, 0.8)' },
+  { title: 'Commodity', description: 'Margin, hedging, exposure tracking', icon: '/Modules Icon_Color 1/Commodity-Management.svg', glowColor: 'rgba(88, 86, 214, 0.8)' },
+  { title: 'Currency Risk', description: 'Hedging, derivatives, valuation', icon: '/Modules Icon_Color 1/Currency-Risk-Management.svg', glowColor: 'rgba(52, 199, 89, 0.8)' },
+  { title: 'Investment', description: 'Mutual funds, FDs, PMS, bonds', icon: '/Modules Icon_Color 1/Investment-Management.svg', glowColor: 'rgba(255, 0, 0, 0.8)' },
+  { title: 'Trade Finance', description: 'LCs, BCs, shipment finance', icon: '/Modules Icon_Color 1/Trade-Finance-Management.svg', glowColor: 'rgba(0, 255, 0, 0.8)' },
+  { title: 'Debt Management', description: 'Borrowings, loans, intercompany', icon: '/Modules Icon_Color 1/Debt-Management.svg', glowColor: 'rgba(90, 200, 250, 0.8)' },
 ];
 
 const INTERFACES = [
@@ -64,152 +27,104 @@ const INTERFACES = [
 ];
 
 export default function OurOfferingsSection() {
-  const autoplay = useRef(
-    Autoplay({ delay: 2500, stopOnMouseEnter: true, stopOnInteraction: false, playOnInit: true })
-  );
-  
-  // Duplicate services for infinite scroll effect
-  const duplicatedServices = [...SERVICES, ...SERVICES, ...SERVICES];
-  
-  const [emblaRef, emblaApi] = useEmblaCarousel({ 
-    loop: true, 
-    align: 'center',
-    slidesToScroll: 1,
-    duration: 25,
-    startIndex: 0,
-    skipSnaps: false,
-    containScroll: 'keepSnaps',
-    dragFree: false,
-    inViewThreshold: 0.7
-  }, [autoplay.current]);
-  const [selectedIndex, setSelectedIndex] = useState(0);
-
-  const scrollPrev = () => emblaApi?.scrollPrev();
-  const scrollNext = () => emblaApi?.scrollNext();
-
-  useEffect(() => {
-    if (!emblaApi) return;
-    
-    const onSelect = () => {
-      const index = emblaApi.selectedScrollSnap();
-      setSelectedIndex(index % SERVICES.length);
-    };
-    
-    emblaApi.on('select', onSelect);
-    onSelect();
-    
-    // Start autoplay
-    const autoplayInstance = autoplay.current;
-    if (autoplayInstance) {
-      autoplayInstance.play();
-    }
-    
-    return () => {
-      emblaApi.off('select', onSelect);
-      if (autoplayInstance) {
-        autoplayInstance.stop();
-      }
-    };
-  }, [emblaApi]);
+  const [activeIndex, setActiveIndex] = useState(0);
 
   return (
-    <div className="flex flex-col md:flex-row w-full max-w-screen-xl mx-auto px-6 py-20">
-      <div className="md:w-[40%] pr-8 flex flex-col justify-center relative z-10">
-        <div className="backdrop-blur-sm bg-black/30 p-6 rounded-xl">
+    <div className="flex flex-col md:flex-row w-full max-w-screen-xl mx-auto px-6 py-20 relative z-10">
+      {/* Left Section */}
+      <div className="md:w-[40%] pr-8 flex flex-col justify-start relative z-10 mt-[-30px]">
+        <div className="backdrop-blur-sm bg-black/30 p-6 rounded-xl shadow-lg">
           <h2 className="text-5xl font-bold text-white mb-4">Our Offerings</h2>
-          <p className="text-white text-lg">
+          <p className="text-white text-lg mb-4">
             Modular financial services — enhanced by robust technology, customizable modules, and secure integrations.
+          </p>
+          <p className="text-white text-base opacity-80">
+            From advanced cash and liquidity solutions to comprehensive trade finance and investment options, we bring
+            efficiency and transparency to your financial ecosystem.
           </p>
         </div>
       </div>
 
+      {/* Right Section */}
       <div className="md:w-[60%] mt-10 md:mt-0 relative group">
-        <button
-          onClick={scrollPrev}
-          className="absolute z-10 -left-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white transition-all duration-300 rounded-full p-2 shadow-lg hover:shadow-xl opacity-0 group-hover:opacity-100 transform -translate-x-2 group-hover:translate-x-0"
-          aria-label="Previous slide"
+        {/* Swiper Carousel */}
+        <Swiper
+          modules={[Navigation, Autoplay]}
+          spaceBetween={30}
+          slidesPerView={3}
+          centeredSlides={true}
+          loop={true}
+          autoplay={{ delay: 2500, disableOnInteraction: false }}
+          navigation={{
+            prevEl: '.swiper-button-prev',
+            nextEl: '.swiper-button-next',
+          }}
+          breakpoints={{
+            0: { slidesPerView: 1 },
+            768: { slidesPerView: 2 },
+            1024: { slidesPerView: 3 },
+          }}
+          onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
+          className="mySwiper"
+          style={{ paddingTop: '40px', paddingBottom: '40px', overflow: 'hidden' }} // ✅ breathing space for glow
         >
-          <ChevronLeft className="w-6 h-6 text-blue-600" />
-        </button>
-
-        <div className="overflow-hidden" ref={emblaRef}>
-          <div className="flex items-center">
-            {duplicatedServices.map((service, idx) => {
-              const actualIndex = idx % SERVICES.length;
-              const isActive = actualIndex === selectedIndex;
-              const glowStyle = isActive ? {
-                boxShadow: `0 0 10px 3px ${service.glowColor}, 0 0 20px 6px ${service.glowColor}`,
-                borderColor: service.glowColor,
-                borderWidth: '2px',
-                transition: 'box-shadow 0.5s ease, border-color 0.5s ease',
-              } : {
-                boxShadow: 'none',
-                borderColor: 'transparent',
-                borderWidth: '1px',
-                transition: 'box-shadow 0.5s ease, border-color 0.5s ease',
-              };
-              return (
-                <motion.div
-                  key={idx}
-                  className={`px-4 py-6 transition-all duration-500 ease-in-out embla__slide flex-[0_0_33.3333%]`}
-                  animate={{ 
-                    scale: isActive ? 1.1 : 0.9, 
-                    opacity: isActive ? 1 : 0.5,
-                    zIndex: isActive ? 10 : 1
+          {SERVICES.map((service, index) => {
+            const isActive = index === activeIndex;
+            return (
+              <SwiperSlide key={index}>
+                <div
+                  className="rounded-xl px-4 pt-6 pb-8 h-[280px] flex flex-col justify-between text-center relative transition-all duration-500 bg-white/5 backdrop-blur-sm"
+                  style={{
+                    boxShadow: isActive
+                      ? `0 0 20px 6px ${service.glowColor}, 0 0 40px 14px ${service.glowColor}`
+                      : 'none',
+                    transform: isActive ? 'scale(1.07)' : 'scale(0.92)',
+                    border: isActive ? `2px solid ${service.glowColor}` : '1px solid transparent',
+                    position: 'relative',
+                    zIndex: isActive ? 2 : 1,
                   }}
-                  transition={{ type: 'tween', ease: 'easeInOut', duration: 0.5 }}
                 >
-                  <div
-                    className={`rounded-xl px-6 pt-8 pb-16 h-full flex flex-col justify-between text-center transition-shadow duration-500 relative`}
-                    style={glowStyle}
-                  >
-                    <div className="flex flex-col items-center gap-3 relative z-10">
-                      <div className="relative w-28 h-28 flex items-center justify-center">
-                        <Image 
-                          src={service.icon} 
-                          alt={service.title} 
-                          width={96} 
-                          height={96}
-                          className={`transition-all duration-500 ${isActive ? 'scale-125' : 'scale-90 opacity-70'}`}
-                          style={isActive ? { filter: `drop-shadow(0 0 10px ${service.glowColor})` } : {}}
-                        />
-                      </div>
-                      <h3 className="text-xl font-semibold text-white">{service.title}</h3>
-                    </div>
-                    <p className="text-sm text-white mt-4">{service.description}</p>
-                    <div className="absolute bottom-4 left-0 right-0 flex justify-center z-10">
-                      <button
-                        onClick={() => window.location.href = '#'}
-                        className="bg-blue-600 text-white px-4 py-1 rounded-full text-sm font-medium hover:bg-blue-700 transition"
-                      >
-                        Learn More
-                      </button>
-                    </div>
-                    {isActive && (
-                      <div
-                        className="absolute inset-0 rounded-xl pointer-events-none"
-                        style={{
-                          boxShadow: `0 0 30px 10px ${service.glowColor}`,
-                          filter: 'blur(8px)',
-                          zIndex: 0,
-                        }}
+                  {/* Content */}
+                  <div className="flex flex-col items-center gap-2 -mt-6">
+                    <div className="relative w-20 h-20 flex items-center justify-center">
+                      <Image
+                        src={service.icon}
+                        alt={service.title}
+                        width={80}
+                        height={80}
+                        className={`${isActive ? 'scale-110' : 'scale-90 opacity-70'} transition-all duration-500`}
+                        style={isActive ? { filter: `drop-shadow(0 0 8px ${service.glowColor})` } : {}}
                       />
-                    )}
+                    </div>
+                    <h3 className="text-lg font-semibold text-white">{service.title}</h3>
                   </div>
-                </motion.div>
-              );
-            })}
-          </div>
-        </div>
+                  <p className="text-sm text-white mt-2">{service.description}</p>
+                  <button
+                    onClick={() => window.location.href = '#'}
+                    className="bg-blue-600 text-white px-4 py-1 rounded-full text-sm font-medium hover:bg-blue-700 transition mt-4"
+                  >
+                    Learn More
+                  </button>
+                </div>
+              </SwiperSlide>
+            );
+          })}
+        </Swiper>
 
+        {/* Navigation Buttons */}
         <button
-          onClick={scrollNext}
-          className="absolute z-10 -right-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white transition-all duration-300 rounded-full p-2 shadow-lg hover:shadow-xl opacity-0 group-hover:opacity-100 translate-x-2 group-hover:translate-x-0"
-          aria-label="Next slide"
+          className="swiper-button-prev absolute top-1/2 -translate-y-1/2 left-2 w-10 h-10 bg-gradient-to-r from-blue-600 to-blue-500 text-white rounded-full flex items-center justify-center shadow-lg opacity-0 group-hover:opacity-100 transition-all duration-300 hover:scale-110 z-20"
         >
-          <ChevronRight className="w-6 h-6 text-blue-600" />
+          <ChevronLeft className="w-4 h-4" />
+        </button>
+        <button
+          className="swiper-button-next absolute top-1/2 -translate-y-1/2 right-2 w-10 h-10 bg-gradient-to-r from-blue-600 to-blue-500 text-white rounded-full flex items-center justify-center shadow-lg opacity-0 group-hover:opacity-100 transition-all duration-300 hover:scale-110 z-20"
+        >
+          <ChevronRight className="w-4 h-4" />
         </button>
 
+
+        {/* Interfaces Section */}
         <div className="mt-10">
           <h3 className="text-white text-2xl font-bold mb-2 text-center">Interfaces</h3>
           <p className="text-base text-white text-center mb-6">Integrated touchpoints powering our services</p>
@@ -217,21 +132,13 @@ export default function OurOfferingsSection() {
             {INTERFACES.map(({ name, icon }, idx) => (
               <div
                 key={idx}
-                className="bg-white/20 backdrop-blur-sm border border-white/30 text-white rounded-lg p-1 flex flex-col items-center justify-center gap-1 text-center shadow-lg hover:shadow-xl transition-all duration-300 hover:border-white/50 hover:-translate-y-1 h-28 relative overflow-hidden group"
+                className="bg-white/20 backdrop-blur-sm border border-white/30 text-white rounded-lg p-1 flex flex-col items-center justify-center gap-1 text-center shadow-lg hover:shadow-xl transition-all duration-300 hover:border-white/50 hover:-translate-y-1 h-28"
               >
-                <div className="w-20 h-20 p-0 relative flex items-center justify-center">
-                  <div className="absolute w-16 h-16 bg-white/30 rounded-full blur-sm group-hover:bg-white/40 transition-all duration-300"></div>
-                  <div className="relative z-10">
-                    <Image 
-                      src={icon} 
-                      alt={name} 
-                      width={64} 
-                      height={64}
-                      className="text-white object-contain filter brightness-0 invert"
-                    />
-                  </div>
+                <div className="w-16 h-16 p-0 relative flex items-center justify-center">
+                  <div className="absolute w-12 h-12 bg-white/30 rounded-full blur-sm group-hover:bg-white/40 transition-all duration-300"></div>
+                  <Image src={icon} alt={name} width={48} height={48} className="filter brightness-0 invert" />
                 </div>
-                <span className="font-bold leading-tight text-base text-white">{name}</span>
+                <span className="font-bold text-sm">{name}</span>
               </div>
             ))}
           </div>

@@ -11,6 +11,17 @@ const NavbarStyle2 = dynamic(() => import('@/components/layout/NavbarStyle2'), {
 export default function NavbarWrapper({ children }: { children: React.ReactNode }) {
   const searchParams = useSearchParams();
   const variant = searchParams.get('variant') || 'illustrative1';
+  const pathname = typeof window !== 'undefined' ? window.location.pathname : '';
+
+  // Don't render any navbar for pages that include their own navigation
+  if (pathname.includes('(style1)')) {
+    return (
+      <>
+        <NavbarStyle1 />
+        <main className="flex-grow">{children}</main>
+      </>
+    );
+  }
 
   // Select the appropriate Navbar based on the variant
   const getNavbar = () => {
@@ -21,7 +32,6 @@ export default function NavbarWrapper({ children }: { children: React.ReactNode 
         return <NavbarStyle1 />;
       case 'illustrative2':
         return <NavbarStyle2 />;
-      case 'illustrative3':
       case 'datadriven':
       default:
         return <Navbar />;

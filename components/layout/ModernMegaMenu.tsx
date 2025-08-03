@@ -142,13 +142,22 @@ const menu: MenuSection[] = [
       {
         title: "Resources",
         items: [
-          { label: "Blog", href: "/resources/blog" },
-          { label: "Whitepapers", href: "/resources/whitepapers" },
-          { label: "Case Studies", href: "/resources/case-studies" },
-          { label: "Webinars", href: "/resources/webinars" },
-          { label: "Videos", href: "/resources/videos" },
-          { label: "Glossary", href: "/resources/glossary" },
-          { label: "Help Center", href: "/resources/help-center" },
+          { label: "Blog", href: "/resources/blog", icon: FileText },
+          { label: "Whitepapers", href: "/resources/whitepapers", icon: FileText },
+          { label: "Case Studies", href: "/resources/case-studies", icon: FileText },
+          { label: "Webinars", href: "/resources/webinars", icon: FileText },
+          { 
+            label: "Videos", 
+            href: "/resources/videos", 
+            icon: () => (
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <polygon points="23 7 16 12 23 17 23 7"></polygon>
+                <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
+              </svg>
+            )
+          },
+          { label: "Glossary", href: "/resources/glossary", icon: FileText },
+          { label: "Help Center", href: "/resources/help-center", icon: FileText },
         ],
       },
     ],

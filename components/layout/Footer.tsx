@@ -20,11 +20,6 @@ export default function Footer() {
             <h3 className="text-xl font-bold mb-4">Quick Links</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="/" className="text-gray-400 hover:text-white transition-colors">
-                  Home
-                </Link>
-              </li>
-              <li>
                 <Link href="/products" className="text-gray-400 hover:text-white transition-colors">
                   Products
                 </Link>
@@ -35,18 +30,18 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/about" className="text-gray-400 hover:text-white transition-colors">
-                  About Us
+                <Link href="/resources" className="text-gray-400 hover:text-white transition-colors">
+                  Resources
                 </Link>
               </li>
               <li>
-                <Link href="/blog" className="text-gray-400 hover:text-white transition-colors">
-                  Blog
+                <Link href="/company" className="text-gray-400 hover:text-white transition-colors">
+                  Company
                 </Link>
               </li>
               <li>
-                <Link href="/services" className="text-gray-400 hover:text-white transition-colors">
-                  Services
+                <Link href="/contact" className="text-gray-400 hover:text-white transition-colors">
+                  Contact Us
                 </Link>
               </li>
             </ul>
@@ -130,13 +125,13 @@ export default function Footer() {
                 placeholder="Your email address"
                 className="bg-gray-800 border-gray-700 text-white"
               />
-              <Button className="w-full">Subscribe</Button>
+              <Button className="w-full bg-[#FF0000] hover:bg-[#FF3333]">Subscribe</Button>
             </div>
           </div>
         </div>
         
         <div className="border-t border-gray-800 mt-8 pt-4 text-center text-gray-400">
-          <p> 2025 IBS Fintech. All rights reserved.</p>
+          <p>© 2025 IBSFINtech. All rights reserved.</p>
         </div>
       </div>
     </footer>

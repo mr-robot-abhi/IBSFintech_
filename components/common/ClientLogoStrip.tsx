@@ -149,31 +149,49 @@ export default function ClientLogoStrip({ variant, title, description }: ClientL
       break;
     case 'illustrative2':
       logoStripComponent = (
-        <div className="py-12">
-          <div className="overflow-hidden">
+        <div className="py-4">
+          <div className="relative w-full overflow-hidden">
+            {/* First set of logos */}
             <motion.div
               className="flex"
               animate={{
-                x: ['0%', '-50%'],
-                transition: {
-                  x: {
-                    repeat: Infinity,
-                    repeatType: 'loop',
-                    duration: 20,
-                    ease: 'linear',
-                  },
+                x: ['0%', '-100%'],
+              }}
+              transition={{
+                x: {
+                  repeat: Infinity,
+                  duration: 40,
+                  ease: 'linear',
                 },
               }}
             >
-              {doubledClients.map((client, index) => (
-                <div key={`${client.id}-${index}`} className="flex-shrink-0 mx-6 flex items-center justify-center">
-                  <div className="w-48 h-24 bg-gray-200 rounded-2xl p-4 flex items-center justify-center transition-all duration-300 hover:bg-gray-300 hover:shadow-md">
+              {mutableClients.map((client, index) => (
+                <div key={`${client.id}-first-${index}`} className="flex-shrink-0 px-3 flex items-center justify-center">
+                  <div className="w-32 h-16 bg-white rounded-lg p-2 flex items-center justify-center transition-all duration-300 shadow-sm hover:shadow-md hover:scale-105">
                     <div className="relative w-full h-full">
                       <Image
                         src={`/clients/${client.logo}`}
                         alt={client.name}
                         fill
-                        className="object-contain transition-all duration-300"
+                        className="object-contain object-center p-1 transition-all duration-300"
+                        sizes="(max-width: 768px) 8rem, 12rem"
+                      />
+                    </div>
+                  </div>
+                </div>
+              ))}
+              
+              {/* Second set of logos (duplicate for seamless loop) */}
+              {mutableClients.map((client, index) => (
+                <div key={`${client.id}-second-${index}`} className="flex-shrink-0 px-3 flex items-center justify-center">
+                  <div className="w-32 h-16 bg-white rounded-lg p-2 flex items-center justify-center transition-all duration-300 shadow-sm hover:shadow-md hover:scale-105">
+                    <div className="relative w-full h-full">
+                      <Image
+                        src={`/clients/${client.logo}`}
+                        alt={client.name}
+                        fill
+                        className="object-contain object-center p-1 transition-all duration-300"
+                        sizes="(max-width: 768px) 8rem, 12rem"
                       />
                     </div>
                   </div>

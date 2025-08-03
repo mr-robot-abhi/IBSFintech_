@@ -7,6 +7,7 @@ import { ThemeProvider } from '@/context/ThemeContext';
 
 // Import the NavbarWrapper component
 const NavbarWrapper = dynamic(() => import('@/components/layout/NavbarWrapper'), { ssr: false });
+const ChatbotWidget = dynamic(() => import('@/components/chatbot/Chatbot'), { ssr: false });
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -29,6 +30,7 @@ export default function RootLayout({
               {children}
             </NavbarWrapper>
             <Footer />
+            <ChatbotWidget />
           </div>
         </ThemeProvider>
       </body>

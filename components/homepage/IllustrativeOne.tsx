@@ -7,14 +7,11 @@ import Tilt from 'react-parallax-tilt';
 import { ArrowRight, Zap, Shield, Globe, Car, Factory, Building, Users, Newspaper, ShoppingBag, Cpu, Truck, Home, BookOpen, ChevronLeft, ChevronRight, MapPin, Phone, Mail, Linkedin, BarChart2 } from 'lucide-react';
 import Footer from '../layout/Footer';
 import HeroImageSlideshow from './HeroImageSlideshow';
-import EcosystemEnabler from './ecosystem_enabler';
 import ClientLogoStrip from '../common/ClientLogoStrip';
 import ModernMegaMenu from '../layout/ModernMegaMenu';
 import PartnershipEcosystem from './PartnershipEcosystem';
 import OurOfferingsSection from './our_offerings';
 import CaseStudies from './CaseStudies';
-
-import IBSNetworkTwo from './ibs_network_two';
 
 // SlideshowBanner component for the hero section
 const SlideshowBanner = () => {
@@ -148,19 +145,7 @@ export default function IllustrativeOne() {
       date: 'May 2025',
       description: 'Named Top Treasury Platform 2025 by Financial Times.',
       icon: <Shield className="h-6 w-6 text-blue-300" />
-    },
-    {
-      title: 'Product Update',
-      date: 'April 2025',
-      description: 'Enhanced security features and performance improvements.',
-      icon: <Zap className="h-6 w-6 text-blue-300" />
-    },
-    {
-      title: 'Partnership',
-      date: 'March 2025',
-      description: 'Strategic alliance with leading banking institutions.',
-      icon: <Users className="h-6 w-6 text-blue-300" />
-    },
+    }
   ];
 
   return (
@@ -224,28 +209,192 @@ export default function IllustrativeOne() {
 
 
       {/* Winning Together */}
-      <section className="py-16 relative">
-        <div className="w-full relative z-10">
+      <section className="pt-12 pb-0 relative">
+        <div className="w-full max-w-screen-xl mx-auto px-6 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-12"
+            className="text-center"
           >
-            <h2 className="text-3xl font-bold text-white drop-shadow-lg mb-4">Winning Together</h2>
-            <p className="text-lg text-white/90 max-w-3xl mx-auto">
+            <h2 className="text-5xl font-bold text-white mb-4">Winning Together</h2>
+            <p className="text-white text-lg max-w-3xl mx-auto">
               Leading organizations leverage our platform for end-to-end digitization of treasury, risk, trade finance,
               and supply chain operations, achieving agility, insights, and productivity.
             </p>
           </motion.div>
         </div>
         {/* End-to-end logo strip, outside of any container */}
-        <div className="w-full">
+        <div className="w-full -mt-4">
           <ClientLogoStrip variant="illustrative2" />
         </div>
       </section>
       <OurOfferingsSection />
+      
+      {/* Statistics Section */}
+      <section className="py-16 bg-gradient-to-b from-navy-900 to-navy-950 relative overflow-hidden">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+            {/* Productivity Gains */}
+            <motion.div 
+              className="text-center p-6 bg-navy-800/30 rounded-xl backdrop-blur-sm"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+            >
+              <div className="relative w-32 h-32 mx-auto mb-4">
+                <svg viewBox="0 0 100 100" className="w-full h-full">
+                  <circle
+                    cx="50"
+                    cy="50"
+                    r="40"
+                    fill="none"
+                    stroke="#1E3A8A"
+                    strokeWidth="8"
+                  />
+                  <circle
+                    cx="50"
+                    cy="50"
+                    r="40"
+                    fill="none"
+                    stroke="#3B82F6"
+                    strokeWidth="8"
+                    strokeDasharray="251.2"
+                    strokeDashoffset="50.24" // 80% of 251.2 (circumference)
+                    transform="rotate(-90 50 50)"
+                    strokeLinecap="round"
+                  />
+                  <text x="50" y="50" textAnchor="middle" dy=".3em" className="text-2xl font-bold fill-white">
+                    80%
+                  </text>
+                </svg>
+              </div>
+              <h3 className="text-lg font-semibold text-white mb-1">Productivity</h3>
+              <h3 className="text-lg font-semibold text-white mb-2">Gains</h3>
+            </motion.div>
+
+            {/* Accuracy Improved */}
+            <motion.div 
+              className="text-center p-6 bg-navy-800/30 rounded-xl backdrop-blur-sm"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+            >
+              <div className="relative w-32 h-32 mx-auto mb-4">
+                <svg viewBox="0 0 100 100" className="w-full h-full">
+                  <circle
+                    cx="50"
+                    cy="50"
+                    r="40"
+                    fill="none"
+                    stroke="#1E3A8A"
+                    strokeWidth="8"
+                  />
+                  <circle
+                    cx="50"
+                    cy="50"
+                    r="40"
+                    fill="none"
+                    stroke="#10B981"
+                    strokeWidth="8"
+                    strokeDasharray="251.2"
+                    strokeDashoffset="12.56" // 95% of 251.2
+                    transform="rotate(-90 50 50)"
+                    strokeLinecap="round"
+                  />
+                  <text x="50" y="50" textAnchor="middle" dy=".3em" className="text-2xl font-bold fill-white">
+                    95%
+                  </text>
+                </svg>
+              </div>
+              <h3 className="text-lg font-semibold text-white mb-1">Accuracy</h3>
+              <h3 className="text-lg font-semibold text-white mb-2">Improved</h3>
+            </motion.div>
+
+            {/* Optimised Fund Utilisation */}
+            <motion.div 
+              className="text-center p-6 bg-navy-800/30 rounded-xl backdrop-blur-sm"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
+              <div className="relative w-32 h-32 mx-auto mb-4">
+                <svg viewBox="0 0 100 100" className="w-full h-full">
+                  <circle
+                    cx="50"
+                    cy="50"
+                    r="40"
+                    fill="none"
+                    stroke="#1E3A8A"
+                    strokeWidth="8"
+                  />
+                  <circle
+                    cx="50"
+                    cy="50"
+                    r="40"
+                    fill="none"
+                    stroke="#8B5CF6"
+                    strokeWidth="8"
+                    strokeDasharray="251.2"
+                    strokeDashoffset="75.36" // 70% of 251.2
+                    transform="rotate(-90 50 50)"
+                    strokeLinecap="round"
+                  />
+                  <text x="50" y="50" textAnchor="middle" dy=".3em" className="text-2xl font-bold fill-white">
+                    70%
+                  </text>
+                </svg>
+              </div>
+              <h3 className="text-lg font-semibold text-white mb-1">Optimised Fund</h3>
+              <h3 className="text-lg font-semibold text-white mb-2">Utilisation</h3>
+            </motion.div>
+
+            {/* Manual Effort Reduced */}
+            <motion.div 
+              className="text-center p-6 bg-navy-800/30 rounded-xl backdrop-blur-sm"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+            >
+              <div className="relative w-32 h-32 mx-auto mb-4">
+                <svg viewBox="0 0 100 100" className="w-full h-full">
+                  <circle
+                    cx="50"
+                    cy="50"
+                    r="40"
+                    fill="none"
+                    stroke="#1E3A8A"
+                    strokeWidth="8"
+                  />
+                  <circle
+                    cx="50"
+                    cy="50"
+                    r="40"
+                    fill="none"
+                    stroke="#EC4899"
+                    strokeWidth="8"
+                    strokeDasharray="251.2"
+                    strokeDashoffset="125.6" // 50% of 251.2
+                    transform="rotate(-90 50 50)"
+                    strokeLinecap="round"
+                  />
+                  <text x="50" y="50" textAnchor="middle" dy=".3em" className="text-2xl font-bold fill-white">
+                    50%
+                  </text>
+                </svg>
+              </div>
+              <h3 className="text-lg font-semibold text-white mb-1">Manual Effort</h3>
+              <h3 className="text-lg font-semibold text-white mb-2">Reduced</h3>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       {/* Why Choose Us */}
       <section className="py-20 relative overflow-hidden">
         {/* Blurry background */}
@@ -405,63 +554,162 @@ export default function IllustrativeOne() {
       {/* Case Studies */}
       <CaseStudies />
 
-      {/* Combined Latest News & Let's Connect */}
+      {/* Secure Banking Section */}
+      <section className="py-16 bg-gradient-to-b from-navy-900 to-navy-950 relative overflow-hidden">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="mb-8"
+            >
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                Private. Secure. Yours.
+              </h2>
+              <p className="text-lg text-gray-300 mb-8 max-w-3xl mx-auto">
+                Your financial data belongs to you. With enterprise-grade security and privacy controls, 
+                you decide who sees what and when. Our platform is built with bank-level encryption 
+                and continuous monitoring to keep your information safe.
+              </p>
+              <motion.a
+                href="/security"
+                className="inline-flex items-center px-6 py-3 border-2 border-blue-500 text-blue-400 text-sm font-medium rounded-full hover:bg-blue-500/10 transition-colors duration-300 group"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                Learn more
+                <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+              </motion.a>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Latest News */}
       <section className="relative overflow-hidden">
         <div className="w-full flex flex-col relative">
-
-          {/* Latest News Subsection */}
-          <div className="flex-1 py-16 bg-transparent relative z-10">
-            <div className="container mx-auto px-4 max-w-6xl">
+          {/* Latest News Section */}
+          <section className="py-12 bg-gradient-to-b from-navy-900 to-navy-950 relative overflow-hidden">
+            <div className="container mx-auto px-4">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
-                className="text-center mb-12"
+                className="text-center mb-8"
               >
-                <h2 className="text-3xl font-bold bg-gradient-to-r from-blue-300 to-blue-400 bg-clip-text text-transparent mb-4">Latest News</h2>
-                <p className="text-lg text-blue-100/90 max-w-3xl mx-auto">
-                  Stay updated with our latest achievements and insights.
+                <h2 className="text-3xl font-bold text-white mb-2">Latest News</h2>
+                <p className="text-gray-300 text-sm">
+                  Stay updated with the latest news and updates from our team.
                 </p>
               </motion.div>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 mb-12">
-                {newsItems.map((news, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.4, delay: index * 0.1 }}
-                  >
-                    <Tilt tiltMaxAngleX={5} tiltMaxAngleY={5} className="h-full">
-                      <div className="bg-blue-900/50 p-6 rounded-2xl shadow-xl border border-blue-800/30 h-full flex flex-col hover:shadow-2xl hover:border-blue-700/50 transition-all duration-300 backdrop-blur-sm">
-                        <div className="h-12 w-12 bg-blue-800/40 backdrop-blur-sm rounded-xl flex items-center justify-center mb-4 border border-blue-700/30">
-                          {news.icon}
-                        </div>
-                        <h3 className="text-xl font-semibold text-white mb-2">{news.title}</h3>
-                        <p className="text-blue-200/80 text-sm mb-4">{news.description}</p>
-                        <div className="flex-grow"></div>
-                        <span className="mt-4 inline-block px-4 py-1.5 bg-gradient-to-r from-blue-600 to-blue-500 text-white text-xs font-medium rounded-full self-start hover:from-blue-500 hover:to-blue-400 transition-all duration-300 shadow-lg hover:shadow-blue-500/20">
-                          {news.date} <ArrowRight className="inline-block ml-1 h-3 w-3" />
-                        </span>
-                      </div>
-                    </Tilt>
-                  </motion.div>
-                ))}
+
+              {/* 3-Card Grid Layout */}
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 max-w-5xl mx-auto">
+                {/* Large Feature Card */}
+                <motion.div 
+                  className="lg:col-span-2 rounded-xl overflow-hidden relative group h-96 lg:h-64"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4 }}
+                >
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10 p-6 flex flex-col justify-end">
+                    <div className="bg-blue-600 text-white text-xs font-medium px-3 py-1 rounded-full inline-flex items-center w-fit mb-3">
+                      <Newspaper className="h-3 w-3 mr-1.5" />
+                      <span>Business</span>
+                    </div>
+                    <h3 className="text-xl font-bold text-white mb-2 group-hover:text-blue-300 transition-colors line-clamp-2">
+                      {newsItems[0].title}
+                    </h3>
+                    <div className="text-gray-300 text-sm">
+                      <span>By Admin</span>
+                      <span className="mx-2">•</span>
+                      <span>{newsItems[0].date}</span>
+                    </div>
+                  </div>
+                  <Image
+                    src="/Home Page Banner 2.png"
+                    alt={newsItems[0].title}
+                    fill
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                </motion.div>
+
+                {/* Right Column - Top Card */}
+                <motion.div 
+                  className="rounded-xl overflow-hidden relative group h-64"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: 0.1 }}
+                >
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10 p-4 flex flex-col justify-end">
+                    <div className="bg-green-600 text-white text-xs font-medium px-2 py-0.5 rounded-full inline-flex items-center w-fit mb-2">
+                      <span>Featured</span>
+                    </div>
+                    <h3 className="text-base font-semibold text-white mb-1 group-hover:text-blue-300 transition-colors line-clamp-3">
+                      {newsItems[1].title}
+                    </h3>
+                    <p className="text-gray-300 text-xs mt-1">
+                      {newsItems[1].date}
+                    </p>
+                  </div>
+                  <Image
+                    src="/Home Page Banner 3.png"
+                    alt={newsItems[1].title}
+                    fill
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                </motion.div>
+
+                {/* Bottom Row - Full Width Card */}
+                <motion.div 
+                  className="lg:col-span-3 rounded-xl overflow-hidden relative group h-64 mt-4"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: 0.2 }}
+                >
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10 p-6 flex flex-col justify-end">
+                    <div className="bg-purple-600 text-white text-xs font-medium px-3 py-1 rounded-full inline-flex items-center w-fit mb-3">
+                      <span>FinTech</span>
+                    </div>
+                    <h3 className="text-xl font-bold text-white mb-2 group-hover:text-blue-300 transition-colors">
+                      {newsItems[2].title}
+                    </h3>
+                    <p className="text-gray-300 text-sm line-clamp-2">
+                      {newsItems[2].description}
+                    </p>
+                    <div className="text-blue-300 text-sm mt-2">
+                      {newsItems[2].date}
+                    </div>
+                  </div>
+                  <Image
+                    src="/Home Page Banner 4.png"
+                    alt={newsItems[2].title}
+                    fill
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                </motion.div>
+              </div>
+
+              <div className="text-center mt-8">
+                <motion.a
+                  href="/news"
+                  className="inline-flex items-center px-5 py-2 border border-blue-500 text-blue-400 text-sm font-medium rounded-full hover:bg-blue-500/10 transition-colors duration-300"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  View All News
+                  <ArrowRight className="ml-1.5 h-3.5 w-3.5" />
+                </motion.a>
               </div>
             </div>
-            <div className="text-center mt-10">
-              <motion.a
-                href="/news"
-                className="inline-flex items-center justify-center px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-full transition-colors duration-300 shadow-lg hover:shadow-blue-500/30 text-base"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                View All News
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </motion.a>
-            </div>
-          </div>
+          </section>
+
           {/* Let's Connect Subsection */}
           <div className="flex-1 py-0 bg-gradient-to-b from-gray-900 to-gray-800 relative z-10 flex items-center">
             <div className="container mx-auto px-4 max-w-7xl w-full">
@@ -475,13 +723,13 @@ export default function IllustrativeOne() {
                   className="text-center md:text-left w-full max-w-2xl"
                 >
                   <h2 className="text-4xl font-bold mb-2 text-white">Let's Connect</h2>
-                  <p className="text-xl text-white/90 mb-1">
+                  <p className="text-lg text-white/90 mb-3">
                     Ready to revolutionize your treasury operations?
                   </p>
-                  <p className="text-lg text-white/80 mb-1">
+                  <p className="text-lg text-white/90 mb-3">
                     Contact us to explore our solutions and see how we can transform your financial processes.
                   </p>
-                  <p className="text-base text-white/70 mb-3">
+                  <p className="text-lg text-white/90 mb-3">
                     Our team of experts is ready to assist you with tailored financial technology solutions.
                   </p>
                   <div className="flex flex-wrap justify-center md:justify-start gap-2">
