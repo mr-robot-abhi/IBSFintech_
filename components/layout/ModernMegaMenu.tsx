@@ -64,20 +64,20 @@ const menu: MenuSection[] = [
         title: "Enterprise TMS",
         items: [
           { label: "Cashflow & Liquidity", href: "/products/cashflow-liquidity" },
-          { label: "Currency (FX) Risk", href: "/enterprise/currency-fx-risk" },
-          { label: "Investment (Money Market)", href: "/enterprise/investment-money-market" },
-          { label: "Trade Finance – Import Export & Banking", href: "/enterprise/trade-finance" },
-          { label: "Debt (Borrowings)", href: "/enterprise/debt-borrowings" },
-          { label: "Commodity Risk", href: "/enterprise/commodity-risk-management" },
-          { label: "Payments", href: "/enterprise/payments" },
-          { label: "Supply Chain Finance – VNDZY®", href: "/enterprise/supply-chain-finance", className: "flex items-center" },
+          { label: "Currency (FX) Risk", href: "/products/currency-fx-risk" },
+          { label: "Investment (Money Market)", href: "/products/investment-money-market" },
+          { label: "Trade Finance – Import Export & Banking", href: "/products/trade-finance" },
+          { label: "Debt (Borrowings)", href: "/products/debt-borrowings" },
+          { label: "Commodity Risk", href: "/products/commodity-risk" },
+          { label: "Payments", href: "/products/payments" },
+          { label: "Supply Chain Finance – VNDZY®", href: "/products/supply-chain-finance", className: "flex items-center" },
         ],
       },
       {
         title: "SME – TMS",
         items: [
-          { label: "InnoTreasury", href: "/sme/innotreasury" },
-          { label: "InnoInvest", href: "/sme/innoinvest" },
+          { label: "InnoTreasury", href: "/products/innotreasury" },
+          { label: "InnoInvest", href: "/products/innoinvest" },
         ],
       },
       {
@@ -102,7 +102,7 @@ const menu: MenuSection[] = [
         items: [
           { label: "Cash Visibility & Forecasting", href: "/solutions/cash-visibility-forecasting", icon: Eye },
           { label: "FX Risk", href: "/solutions/foreign-exchange-risk", icon: TrendingUp },
-          { label: "Money Market", href: "/solutions/fx-currency-risk", icon: BarChart2 },
+          { label: "Money Market", href: "/solutions/money-market", icon: BarChart2 },
           { label: "Trade Finance", href: "/solutions/trade-finance", icon: FileText },
           { label: "Debt Management", href: "/solutions/debt-management", icon: Scale },
           { label: "Commodity Risk", href: "/solutions/commodity-risk", icon: Activity },
