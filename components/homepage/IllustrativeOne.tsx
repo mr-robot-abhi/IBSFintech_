@@ -395,8 +395,8 @@ export default function IllustrativeOne() {
         </div>
       </section>
 
-      {/* Why Choose Us */}
-      <section className="py-20 relative overflow-hidden">
+      {/* Why Choose Us - Saturn Ring Layout */}
+      <section className="py-16 relative overflow-hidden">
         {/* Blurry background */}
         <div className="absolute inset-0 -z-10">
           <div className="absolute inset-0 bg-gradient-to-br from-navy-900 to-navy-950 opacity-90"></div>
@@ -405,17 +405,17 @@ export default function IllustrativeOne() {
         
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="backdrop-blur-sm bg-black/30 p-8 rounded-2xl">
-            <div className="flex flex-col lg:flex-row gap-12">
-              {/* LEFT TEXT */}
-              <div className="w-full lg:w-2/5 text-white">
-                <h2 className="text-5xl font-bold mb-6">Why Choose Us</h2>
+            <div className="flex flex-col lg:flex-row items-center">
+              {/* Left Column - Text */}
+              <div className="w-full lg:w-2/5 lg:pr-12 mb-12 lg:mb-0">
+                <h2 className="text-5xl font-bold text-white mb-6">Why Choose Us</h2>
                 <p className="text-xl text-white/90 mb-6">
                   Discover how our innovative financial solutions can transform your business operations and drive growth.
                 </p>
                 <p className="text-lg text-white/80 mb-8">
                   With years of industry expertise, we provide cutting‑edge solutions tailored to your unique business needs.
                 </p>
-                <button className="bg-[#FF073A] hover:bg-[#e60634] text-white font-medium py-3 px-8 rounded-full transition-all duration-300 flex items-center transform hover:-translate-y-0.5 hover:shadow-[0_4px_12px_rgba(255,7,58,0.3)] active:translate-y-0">
+                <button className="bg-[#FF073A] hover:bg-[#e60634] text-white font-medium py-3 px-8 rounded-full transition-all duration-300 flex items-center transform hover:-translate-y-0.5 hover:shadow-[0_4px_12px_rgba(255,7,58,0.3)]">
                   Learn More
                   <svg xmlns="http://www.w3.org/2000/svg" className="ml-2 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -423,80 +423,82 @@ export default function IllustrativeOne() {
                 </button>
               </div>
 
-              {/* RIGHT GRID */}
-              <div className="w-full lg:w-3/5">
-                <div className="grid grid-cols-4 grid-rows-2 gap-4 h-[600px]">
-              {/* Comprehensive */}
-              <div className="col-span-2 row-span-1 rounded-xl bg-[#241F5D] p-6 flex flex-col justify-between">
-                <div className="space-y-3 text-white">
-                  <div className="flex items-center gap-2">
-                    <BarChart2 className="h-6 w-6 text-white" />
-                    <h3 className="text-xl font-bold">Comprehensive</h3>
+              {/* Right Column - Saturn Ring Visual */}
+              <div className="w-full lg:w-3/5 relative h-[500px]">
+                {/* Elliptical Ring Background */}
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[500px] h-[300px] border-2 border-blue-400/20 rounded-full"></div>
+                
+                {/* Feature Items in Saturn Ring Formation */}
+                {[
+                  { 
+                    icon: <BarChart2 className="h-6 w-6 text-white" />,
+                    title: "Comprehensive",
+                    content: "Our end‑to‑end solution covers compliance, operational, and financial risks. With a unified platform, you gain full visibility and control over your entire risk landscape.",
+                    position: "top-0 left-1/2 -translate-x-1/2 -translate-y-1/2"
+                  },
+                  { 
+                    icon: <Zap className="h-6 w-6 text-white" />,
+                    title: "Nimble",
+                    content: "Rapid implementation and deployment with our agile approach. Our cloud‑native architecture allows for instant scaling.",
+                    position: "top-1/4 right-0 translate-x-1/4 -translate-y-1/2"
+                  },
+                  { 
+                    icon: <Shield className="h-6 w-6 text-white" />,
+                    title: "Domain Centric",
+                    content: "Bank‑grade security with end‑to‑end encryption. Your data is protected with the highest industry standards.",
+                    position: "bottom-1/4 right-0 translate-x-1/4 translate-y-1/2"
+                  },
+                  { 
+                    icon: <Globe className="h-6 w-6 text-white" />,
+                    title: "Configurable",
+                    content: "Multi‑currency, multi‑language, and multi‑jurisdiction support. Operate seamlessly across borders with our global platform.",
+                    position: "bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2"
+                  },
+                  { 
+                    icon: <Users className="h-6 w-6 text-white" />,
+                    title: "Best Practices",
+                    content: "Work together seamlessly with role‑based access controls. Our platform enables real‑time collaboration across teams and departments.",
+                    position: "bottom-1/4 left-0 -translate-x-1/4 translate-y-1/2"
+                  },
+                  { 
+                    icon: <Cpu className="h-6 w-6 text-white" />,
+                    title: "Integrated",
+                    content: "Seamlessly connects with ERP systems, market data providers, and banking partners. The platform supports SWIFT, FIX, and ISO 20022 messaging standards.",
+                    position: "top-1/4 left-0 -translate-x-1/4 -translate-y-1/2"
+                  }
+                ].map((feature, index) => (
+                  <div 
+                    key={index}
+                    className={`absolute w-40 h-40 rounded-full bg-[#241F5D] flex flex-col items-center justify-center p-4 cursor-pointer group transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-blue-500/20 ${feature.position}`}
+                  >
+                    <div className="text-center">
+                      <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-2 group-hover:bg-purple-600 transition-colors">
+                        {feature.icon}
+                      </div>
+                      <h3 className="text-md font-bold text-white mb-1">{feature.title}</h3>
+                      <div className="absolute inset-0 bg-[#241F5D] rounded-full opacity-0 group-hover:opacity-100 flex items-center justify-center p-4 transition-opacity duration-300 z-20">
+                        <p className="text-xs text-white text-center">{feature.content}</p>
+                      </div>
+                    </div>
                   </div>
-                  <p className="text-base opacity-90 leading-tight">Our end‑to‑end solution covers compliance, operational, and financial risks. With a unified platform, you gain full visibility and control over your entire risk landscape.</p>
-                </div>
-              </div>
-
-              {/* Nimble */}
-              <div className="col-span-2 row-span-1 rounded-xl bg-[#241F5D] p-6 flex flex-col justify-between">
-                <div className="space-y-3 text-white">
-                  <div className="flex items-center gap-2">
-                    <Zap className="h-6 w-6 text-white" />
-                    <h3 className="text-xl font-bold">Nimble</h3>
+                ))}
+                
+                {/* Central Element with IBS Logo */}
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-36 h-36 bg-gradient-to-br from-blue-600/20 to-purple-600/20 rounded-full border-2 border-blue-400/30 flex items-center justify-center p-2">
+                  <div className="w-full h-full rounded-full bg-gradient-to-br from-blue-600/30 to-purple-600/30 border border-blue-400/20 flex items-center justify-center overflow-hidden">
+                    <Image 
+                      src="/Ibs_logo_1.png" 
+                      alt="IBS Logo" 
+                      width={80} 
+                      height={80}
+                      className="object-contain w-20 h-20"
+                      priority
+                    />
                   </div>
-                  <p className="text-base opacity-90 leading-tight">Rapid implementation and deployment with our agile approach. Our cloud‑native architecture allows for instant scaling.</p>
-                </div>
-              </div>
-
-              {/* Domain-Centric */}
-              <div className="col-span-2 row-span-1 rounded-xl bg-[#241F5D] p-6 flex flex-col justify-between">
-                <div className="space-y-3 text-white">
-                  <div className="flex items-center gap-2">
-                    <Shield className="h-6 w-6 text-white" />
-                    <h3 className="text-xl font-bold">Secure</h3>
-                  </div>
-                  <p className="text-base opacity-90 leading-tight">Bank‑grade security with end‑to‑end encryption. Your data is protected with the highest industry standards.</p>
-                </div>
-              </div>
-
-              {/* Configurable */}
-              <div className="col-span-2 row-span-1 rounded-xl bg-[#241F5D] p-6 flex flex-col justify-between">
-                <div className="space-y-3 text-white">
-                  <div className="flex items-center gap-2">
-                    <Globe className="h-6 w-6 text-white" />
-                    <h3 className="text-xl font-bold">Global</h3>
-                  </div>
-                  <p className="text-base opacity-90 leading-tight">Multi‑currency, multi‑language, and multi‑jurisdiction support. Operate seamlessly across borders with our global platform.</p>
-                </div>
-              </div>
-
-              {/* Best Practices */}
-              <div className="col-span-2 row-span-1 rounded-xl bg-[#241F5D] p-6 flex flex-col justify-between">
-                <div className="space-y-3 text-white">
-                  <div className="flex items-center gap-2">
-                    <Users className="h-6 w-6 text-white" />
-                    <h3 className="text-xl font-bold">Collaborative</h3>
-                  </div>
-                  <p className="text-base opacity-90 leading-tight">Work together seamlessly with role‑based access controls. Our platform enables real‑time collaboration across teams and departments.</p>
-                </div>
-              </div>
-
-              {/* Integrated */}
-              <div className="col-span-2 row-span-1 rounded-xl bg-[#241F5D] p-6 flex flex-col justify-between">
-                <div className="space-y-3 text-white">
-                <div className="space-y-3">
-                  <div className="flex items-center gap-2">
-                    <Cpu className="h-6 w-6 text-green-700" />
-                    <h3 className="text-xl font-bold">Integrated</h3>
-                  </div>
-                  <p className="text-base opacity-90 leading-tight">Seamlessly connects with ERP systems, market data providers, and banking partners. The platform supports SWIFT, FIX, and ISO 20022 messaging standards.</p>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-          </div>
-        </div>
         </div>
       </section>
 

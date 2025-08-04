@@ -32,7 +32,7 @@ export default function OurOfferingsSection() {
   return (
     <div className="flex flex-col md:flex-row w-full max-w-screen-xl mx-auto px-6 py-20 relative z-10">
       {/* Left Section */}
-      <div className="md:w-[40%] pr-8 flex flex-col justify-start relative z-10 mt-[-30px]">
+      <div className="md:w-[40%] pr-8 flex flex-col justify-start relative z-10 mt-10">
         <div className="backdrop-blur-sm bg-black/30 p-6 rounded-xl shadow-lg">
           <h2 className="text-5xl font-bold text-white mb-4">Our Offerings</h2>
           <p className="text-white text-lg mb-4">
@@ -113,16 +113,15 @@ export default function OurOfferingsSection() {
 
         {/* Navigation Buttons */}
         <button
-          className="swiper-button-prev absolute top-1/2 -translate-y-1/2 left-2 w-10 h-10 bg-gradient-to-r from-blue-600 to-blue-500 text-white rounded-full flex items-center justify-center shadow-lg opacity-0 group-hover:opacity-100 transition-all duration-300 hover:scale-110 z-20"
+          className="swiper-button-prev absolute left-[-20px] top-1/2 z-10 -translate-y-1/2 w-12 h-12 rounded-full bg-blue-600 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-blue-700 shadow-lg"
         >
-          <ChevronLeft className="w-4 h-4" />
+          <ChevronLeft className="w-8 h-8 text-white" />
         </button>
         <button
-          className="swiper-button-next absolute top-1/2 -translate-y-1/2 right-2 w-10 h-10 bg-gradient-to-r from-blue-600 to-blue-500 text-white rounded-full flex items-center justify-center shadow-lg opacity-0 group-hover:opacity-100 transition-all duration-300 hover:scale-110 z-20"
+          className="swiper-button-next absolute right-[-20px] top-1/2 z-10 -translate-y-1/2 w-12 h-12 rounded-full bg-blue-600 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-blue-700 shadow-lg"
         >
-          <ChevronRight className="w-4 h-4" />
+          <ChevronRight className="w-8 h-8 text-white" />
         </button>
-
 
         {/* Interfaces Section */}
         <div className="mt-10">

@@ -28,43 +28,50 @@ export const clients: Record<ClientVariant, readonly Client[]> = {
     { id: 8, name: 'Reliance', logo: 'reliance.png' },
   ],
   illustrative2: [
-    { id: 1, name: 'Asset 10@4x', logo: 'Asset 10@4x.png' },
-    { id: 2, name: 'Asset 11@4x', logo: 'Asset 11@4x.png' },
-    { id: 3, name: 'Asset 12@4x', logo: 'Asset 12@4x.png' },
-    { id: 4, name: 'Asset 13@4x', logo: 'Asset 13@4x.png' },
-    { id: 5, name: 'Asset 14@4x', logo: 'Asset 14@4x.png' },
-    { id: 6, name: 'Asset 15@4x', logo: 'Asset 15@4x.png' },
-    { id: 7, name: 'Asset 16@4x', logo: 'Asset 16@4x.png' },
-    { id: 8, name: 'Asset 17@4x', logo: 'Asset 17@4x.png' },
-    { id: 9, name: 'Asset 18@4x', logo: 'Asset 18@4x.png' },
-    { id: 10, name: 'Asset 19@4x', logo: 'Asset 19@4x.png' },
-    { id: 11, name: 'Asset 21@4x', logo: 'Asset 21@4x.png' },
-    { id: 12, name: 'Asset 22@4x', logo: 'Asset 22@4x.png' },
-    { id: 13, name: 'Asset 23@4x', logo: 'Asset 23@4x.png' },
-    { id: 14, name: 'Asset 24@4x', logo: 'Asset 24@4x.png' },
-    { id: 15, name: 'Asset 25@4x', logo: 'Asset 25@4x.png' },
-    { id: 16, name: 'Asset 2@4x', logo: 'Asset 2@4x.png' },
-    { id: 17, name: 'Asset 3@4x', logo: 'Asset 3@4x.png' },
-    { id: 18, name: 'Asset 4@4x', logo: 'Asset 4@4x.png' },
-    { id: 19, name: 'Asset 5@4x', logo: 'Asset 5@4x.png' },
-    { id: 20, name: 'Asset 6@4x', logo: 'Asset 6@4x.png' },
-    { id: 21, name: 'Asset 7@4x', logo: 'Asset 7@4x.png' },
-    { id: 22, name: 'Asset_20_4x', logo: 'Asset_20_4x.png' },
-    { id: 23, name: 'Asset_8_4x', logo: 'Asset_8_4x.png' },
-    { id: 24, name: 'Asset_9_4x', logo: 'Asset_9_4x.png' },
-    { id: 25, name: 'c1', logo: 'c1.png' },
-    { id: 26, name: 'c2', logo: 'c2.png' },
-    { id: 27, name: 'c3', logo: 'c3.png' },
-    { id: 28, name: 'c4', logo: 'c4.png' },
-    { id: 29, name: 'c5', logo: 'c5.png' },
-    { id: 30, name: 'client1-removebg-preview', logo: 'client1-removebg-preview.png' },
-    { id: 31, name: 'client2', logo: 'client2.jpg' },
-    { id: 32, name: 'client3', logo: 'client3.png' },
-    { id: 33, name: 'client4', logo: 'client4.png' },
-    { id: 34, name: 'client5', logo: 'client5.png' },
-    { id: 35, name: 'client6', logo: 'client6.png' },
-    { id: 36, name: 'client7', logo: 'client7.png' },
-    { id: 37, name: 'client8', logo: 'client8.png' },
+    { id: 1, name: '360One', logo: 'IBSFINtech-Client-360One.png' },
+    { id: 2, name: 'APAR', logo: 'IBSFINtech-Client-APAR.png' },
+    { id: 3, name: 'Balco', logo: 'IBSFINtech-Client-Balco.png' },
+    { id: 4, name: 'Blue Star', logo: 'IBSFINtech-Client-Blue-Star.png' },
+    { id: 5, name: 'Botanic', logo: 'IBSFINtech-Client-Botanic.png' },
+    { id: 6, name: 'Cairn', logo: 'IBSFINtech-Client-Cairn.png' },
+    { id: 7, name: 'Copia', logo: 'IBSFINtech-Client-Copia.png' },
+    { id: 8, name: 'Credit Saison India', logo: 'IBSFINtech-Client-Credit-Saison-India.png' },
+    { id: 9, name: 'Dabur', logo: 'IBSFINtech-Client-Dabur.png' },
+    { id: 10, name: 'ESL Steel Limited', logo: 'IBSFINtech-Client-ESL-Steel-Limited.png' },
+    { id: 11, name: 'Fumar', logo: 'IBSFINtech-Client-Fumar.png' },
+    { id: 12, name: 'GX', logo: 'IBSFINtech-Client-GX.png' },
+    { id: 13, name: 'HCL', logo: 'IBSFINtech-Client-HCL.png' },
+    { id: 14, name: 'Hilton', logo: 'IBSFINtech-Client-Hilton.png' },
+    { id: 15, name: 'Hindustan Zinc', logo: 'IBSFINtech-Client-Hindustan-Zinc.png' },
+    { id: 16, name: 'Holiday Inn', logo: 'IBSFINtech-Client-Holiday-Inn.png' },
+    { id: 17, name: 'Indigrid', logo: 'IBSFINtech-Client-Indigrid.png' },
+    { id: 18, name: 'International Metallurgical Resources', logo: 'IBSFINtech-Client-International-Metalurgical-Resources-Ltd.png' },
+    { id: 19, name: 'JSW International Tradecorp', logo: 'IBSFINtech-Client-JSW-International-Tradecorp-Pte-Ltd.png' },
+    { id: 20, name: 'JSW', logo: 'IBSFINtech-Client-JSW.png' },
+    { id: 21, name: 'Lagata', logo: 'IBSFINtech-Client-Lagata.png' },
+    { id: 22, name: 'Mahindra', logo: 'IBSFINtech-Client-Mahindra.png' },
+    { id: 23, name: 'Marriot', logo: 'IBSFINtech-Client-Marriot.png' },
+    { id: 24, name: 'Mittal', logo: 'IBSFINtech-Client-Mittal.png' },
+    { id: 25, name: 'Mphasis', logo: 'IBSFINtech-Client-Mphasis.png' },
+    { id: 26, name: 'Northern Aromatics', logo: 'IBSFINtech-Client-Northern-Aromatics.png' },
+    { id: 27, name: 'OFI', logo: 'IBSFINtech-Client-OFI.png' },
+    { id: 28, name: 'Olam Agri', logo: 'IBSFINtech-Client-Olam-Agri.png' },
+    { id: 29, name: 'PWC', logo: 'IBSFINtech-Client-PWC.png' },
+    { id: 30, name: 'Patanjali', logo: 'IBSFINtech-Client-Patanjali.png' },
+    { id: 31, name: 'Polycab', logo: 'IBSFINtech-Client-Polycab.png' },
+    { id: 32, name: 'Puravankara', logo: 'IBSFINtech-Client-Puravankara.png' },
+    { id: 33, name: 'Raymond', logo: 'IBSFINtech-Client-Raymond.png' },
+    { id: 34, name: 'Sai', logo: 'IBSFINtech-Client-Sai.png' },
+    { id: 35, name: 'Serum Institute India', logo: 'IBSFINtech-Client-Serum-Institute-India.png' },
+    { id: 36, name: 'Sidvin', logo: 'IBSFINtech-Client-Sidvin.png' },
+    { id: 37, name: 'Signature Global', logo: 'IBSFINtech-Client-Signature-Global.png' },
+    { id: 38, name: 'Sonalika', logo: 'IBSFINtech-Client-Sonalika.png' },
+    { id: 39, name: 'TSPL India', logo: 'IBSFINtech-Client-TSPL-India.png' },
+    { id: 40, name: 'Thermax', logo: 'IBSFINtech-Client-Thermax.png' },
+    { id: 41, name: 'Vedanta', logo: 'IBSFINtech-Client-Vedanta.png' },
+    { id: 42, name: 'Viraj', logo: 'IBSFINtech-Client-Viraj.png' },
+    { id: 43, name: 'Wipro', logo: 'IBSFINtech-Client-Wipro.png' },
+    { id: 44, name: 'International Metalurgi', logo: 'International-Metalurgi.png' },
   ],
   illustrative3: [
 
@@ -167,14 +174,14 @@ export default function ClientLogoStrip({ variant, title, description }: ClientL
             >
               {mutableClients.map((client, index) => (
                 <div key={`${client.id}-first-${index}`} className="flex-shrink-0 px-3 flex items-center justify-center">
-                  <div className="w-32 h-16 bg-white rounded-lg p-2 flex items-center justify-center transition-all duration-300 shadow-sm hover:shadow-md hover:scale-105">
+                  <div className="w-36 h-20 bg-white rounded-lg p-1 flex items-center justify-center transition-all duration-300 shadow-sm hover:shadow-md hover:scale-105">
                     <div className="relative w-full h-full">
                       <Image
-                        src={`/clients/${client.logo}`}
+                        src={`/IBSFINtech-Client Logos/${client.logo}`}
                         alt={client.name}
                         fill
-                        className="object-contain object-center p-1 transition-all duration-300"
-                        sizes="(max-width: 768px) 8rem, 12rem"
+                        className="object-contain object-center p-0.5 transition-all duration-300 scale-110"
+                        sizes="(max-width: 768px) 10rem, 16rem"
                       />
                     </div>
                   </div>
@@ -184,14 +191,14 @@ export default function ClientLogoStrip({ variant, title, description }: ClientL
               {/* Second set of logos (duplicate for seamless loop) */}
               {mutableClients.map((client, index) => (
                 <div key={`${client.id}-second-${index}`} className="flex-shrink-0 px-3 flex items-center justify-center">
-                  <div className="w-32 h-16 bg-white rounded-lg p-2 flex items-center justify-center transition-all duration-300 shadow-sm hover:shadow-md hover:scale-105">
+                  <div className="w-36 h-20 bg-white rounded-lg p-1 flex items-center justify-center transition-all duration-300 shadow-sm hover:shadow-md hover:scale-105">
                     <div className="relative w-full h-full">
                       <Image
-                        src={`/clients/${client.logo}`}
+                        src={`/IBSFINtech-Client Logos/${client.logo}`}
                         alt={client.name}
                         fill
-                        className="object-contain object-center p-1 transition-all duration-300"
-                        sizes="(max-width: 768px) 8rem, 12rem"
+                        className="object-contain object-center p-0.5 transition-all duration-300 scale-110"
+                        sizes="(max-width: 768px) 10rem, 16rem"
                       />
                     </div>
                   </div>
