@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { ArrowRight, TrendingUp, FileText, Shield, Bell, BarChart, CreditCard, Scale } from 'lucide-react';
 import ModernMegaMenu from '@/components/layout/ModernMegaMenu';
+import Image from 'next/image';
 
 const DebtBorrowingsPage = () => {
   return (
@@ -121,9 +122,13 @@ const DebtBorrowingsPage = () => {
                   className="bg-gray-100 rounded-xl p-6 h-full"
                 >
                   <div className="relative h-full w-full rounded-lg overflow-hidden">
-                    <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-indigo-50 flex items-center justify-center">
-                      <CreditCard className="h-32 w-32 text-blue-400" />
-                    </div>
+                    <Image
+                      src="/bg_1.jpg"
+                      alt="Debt Portfolio Management Dashboard"
+                      fill
+                      className="object-cover"
+                      priority
+                    />
                     <div className="absolute bottom-0 left-0 right-0 bg-black/50 text-white p-4 text-sm">
                       Debt Portfolio Management Dashboard
                     </div>

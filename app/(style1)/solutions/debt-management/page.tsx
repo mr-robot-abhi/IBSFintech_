@@ -120,9 +120,9 @@ const DebtManagementPage = () => {
       <ModernMegaMenu />
 
       {/* Hero Section */}
-      <section className="relative w-full py-20 md:py-28 bg-gradient-to-r from-[#241F5D] to-[#3A3480] text-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
+      <section className="relative w-full py-12 md:py-16 bg-gradient-to-r from-[#241F5D] to-[#3A3480] text-white">
+        <div className="container mx-auto px-4 flex flex-col md:flex-row items-center">
+          <div className="md:w-1/2 text-left">
             <motion.h1 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -135,7 +135,7 @@ const DebtManagementPage = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-xl text-blue-100 mb-8 max-w-3xl mx-auto"
+              className="text-xl text-blue-100 mb-8 max-w-full"
             >
               Streamline, Automate, and Optimize with Our Comprehensive Financial Software Solution
             </motion.p>
@@ -143,7 +143,7 @@ const DebtManagementPage = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="text-lg text-blue-100 mb-8 max-w-4xl mx-auto"
+              className="text-lg text-blue-100 mb-8 max-w-full"
             >
               Managing corporate borrowings can be complex and time-consuming. Our solution simplifies the entire borrowing cycle, from setting up bank limits to managing various types of loans and ensuring compliance with regulatory requirements.
             </motion.p>
@@ -156,6 +156,9 @@ const DebtManagementPage = () => {
                 Get Started <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </motion.div>
+          </div>
+          <div className="md:w-1/2 mt-8 md:mt-0 h-64 bg-gray-300 rounded-lg flex items-center justify-center text-gray-500">
+            Placeholder Image
           </div>
         </div>
       </section>

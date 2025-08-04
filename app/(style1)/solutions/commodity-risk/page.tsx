@@ -95,42 +95,47 @@ const CommodityRiskPage = () => {
       <ModernMegaMenu />
 
       {/* Hero Section */}
-      <section className="relative w-full py-20 md:py-28 bg-gradient-to-r from-[#241F5D] to-[#3A3480] text-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <motion.h1 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="text-4xl md:text-5xl font-bold mb-6 leading-tight"
-            >
-              Managing Commodity Price Risk for Corporates
-            </motion.h1>
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-xl text-blue-100 mb-8 max-w-3xl mx-auto"
-            >
-              Effective strategies for corporates to mitigate the impact of volatile commodity prices through proactive risk management and strategic hedging
-            </motion.p>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="text-lg text-blue-100 mb-8 max-w-4xl mx-auto"
-            >
-              For corporations involved in commodity trading or reliant on commodities as part of their operational inputs, managing commodity price fluctuations is paramount. The primary challenge lies in recognizing and understanding the inherent risks stemming from exposure to volatile commodity prices.
-            </motion.p>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-            >
-              <Button size="lg" className="bg-white text-[#241F5D] hover:bg-blue-50">
-                Get Started <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-            </motion.div>
+      <section className="relative w-full pt-28 pb-20 md:pt-32 md:pb-24 bg-gradient-to-r from-[#241F5D] to-[#3A3480] text-white">
+        <div className="container mx-auto px-6">
+          <div className="flex flex-col md:flex-row items-center">
+            <div className="md:w-1/2 lg:w-2/5">
+              <motion.h1 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                className="text-2xl md:text-3xl font-bold mb-4 leading-tight"
+              >
+                Managing Commodity Price Risk for Corporates
+              </motion.h1>
+              <motion.p 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                className="text-lg text-blue-100 mb-4"
+              >
+                Effective strategies for corporates to mitigate the impact of volatile commodity prices through proactive risk management and strategic hedging
+              </motion.p>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="mt-6"
+              >
+                <Button size="lg" className="bg-white text-[#241F5D] hover:bg-blue-50">
+                  Get Started <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </motion.div>
+            </div>
+            <div className="hidden md:block md:w-1/2 lg:w-3/5 pl-8">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                className="bg-white/10 backdrop-blur-sm rounded-lg p-4 h-64 flex items-center justify-center"
+              >
+                <span className="text-blue-100 text-lg">Commodity Risk Management Dashboard</span>
+              </motion.div>
+            </div>
           </div>
         </div>
       </section>

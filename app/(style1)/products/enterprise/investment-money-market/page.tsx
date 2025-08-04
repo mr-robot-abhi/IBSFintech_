@@ -115,9 +115,13 @@ const InvestmentWealthTechPage = () => {
                 className="bg-gray-100 rounded-xl p-4"
               >
                 <div className="relative h-80 w-full rounded-lg overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-br from-blue-100 to-purple-100 flex items-center justify-center">
-                    <BarChart2 className="h-32 w-32 text-blue-400" />
-                  </div>
+                  <Image
+                    src="/Home Page Banner 6.png"
+                    alt="Investment Portfolio Analytics Dashboard"
+                    fill
+                    className="object-cover"
+                    priority
+                  />
                   <div className="absolute bottom-0 left-0 right-0 bg-black/50 text-white p-4 text-sm">
                     Investment Portfolio Analytics Dashboard
                   </div>
@@ -135,9 +139,13 @@ const InvestmentWealthTechPage = () => {
                 className="order-2 md:order-1"
               >
                 <div className="relative h-80 w-full rounded-xl overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-br from-green-100 to-teal-100 flex items-center justify-center">
-                    <PieChart className="h-32 w-32 text-green-400" />
-                  </div>
+                  <Image
+                    src="/Home Page Banner 5.png"
+                    alt="Real-time Investment Analytics"
+                    fill
+                    className="object-cover"
+                    priority
+                  />
                   <div className="absolute bottom-0 left-0 right-0 bg-black/50 text-white p-4 text-sm">
                     Real-time Investment Analytics
                   </div>

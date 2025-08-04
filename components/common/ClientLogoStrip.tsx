@@ -174,13 +174,13 @@ export default function ClientLogoStrip({ variant, title, description }: ClientL
             >
               {mutableClients.map((client, index) => (
                 <div key={`${client.id}-first-${index}`} className="flex-shrink-0 px-3 flex items-center justify-center">
-                  <div className="w-36 h-20 bg-white rounded-lg p-1 flex items-center justify-center transition-all duration-300 shadow-sm hover:shadow-md hover:scale-105">
+                  <div className="w-32 h-16 bg-white rounded-lg p-1 flex items-center justify-center transition-all duration-300 shadow-sm hover:shadow-md hover:scale-105">
                     <div className="relative w-full h-full">
                       <Image
                         src={`/IBSFINtech-Client Logos/${client.logo}`}
                         alt={client.name}
                         fill
-                        className="object-contain object-center p-0.5 transition-all duration-300 scale-110"
+                        className="object-contain object-center p-0.5 transition-all duration-300 scale-100"
                         sizes="(max-width: 768px) 10rem, 16rem"
                       />
                     </div>
@@ -191,13 +191,13 @@ export default function ClientLogoStrip({ variant, title, description }: ClientL
               {/* Second set of logos (duplicate for seamless loop) */}
               {mutableClients.map((client, index) => (
                 <div key={`${client.id}-second-${index}`} className="flex-shrink-0 px-3 flex items-center justify-center">
-                  <div className="w-36 h-20 bg-white rounded-lg p-1 flex items-center justify-center transition-all duration-300 shadow-sm hover:shadow-md hover:scale-105">
+                  <div className="w-32 h-16 bg-white rounded-lg p-1 flex items-center justify-center transition-all duration-300 shadow-sm hover:shadow-md hover:scale-105">
                     <div className="relative w-full h-full">
                       <Image
                         src={`/IBSFINtech-Client Logos/${client.logo}`}
                         alt={client.name}
                         fill
-                        className="object-contain object-center p-0.5 transition-all duration-300 scale-110"
+                        className="object-contain object-center p-0.5 transition-all duration-300 scale-100"
                         sizes="(max-width: 768px) 10rem, 16rem"
                       />
                     </div>

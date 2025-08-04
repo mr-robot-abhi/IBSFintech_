@@ -126,9 +126,11 @@ const TradeFinancePage = () => {
                   className="bg-gray-100 rounded-xl p-6 h-full"
                 >
                   <div className="relative h-full w-full rounded-lg overflow-hidden">
-                    <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-indigo-50 flex items-center justify-center">
-                      <Package className="h-32 w-32 text-blue-400" />
-                    </div>
+                    <img 
+                      src="/Home Page Banner 3.png" 
+                      alt="Trade Finance Management Dashboard" 
+                      className="w-full h-full object-cover"
+                    />
                     <div className="absolute bottom-0 left-0 right-0 bg-black/50 text-white p-4 text-sm">
                       Trade Finance Management Dashboard
                     </div>
