@@ -5,7 +5,16 @@ import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import Tilt from "react-parallax-tilt";
 
-const caseStudies = [
+interface CaseStudy {
+  title: string;
+  summary: string;
+  highlights: string[];
+  image: string;
+  backgroundImage: string;
+  date: string;
+}
+
+const caseStudies: CaseStudy[] = [
   {
     title: "FMCG Giant's path to data-driven decision",
     summary:
@@ -112,55 +121,48 @@ export default function CaseStudies() {
                 glarePosition="all"
                 glareBorderRadius="0.75rem"
               >
-                <div className="bg-white h-full flex flex-col">
-                  {/* Image Container */}
-                  <div className="relative h-32 overflow-hidden">
+                <div className="relative h-full flex flex-col p-4">
+                  {/* Full-tile background image */}
+                  <div className="absolute inset-0 -z-10">
                     <Image
                       src={cs.backgroundImage}
                       alt="Background"
                       fill
                       className="object-cover"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 20vw"
+                      priority={index < 3}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                    <div className="absolute top-2 left-2 w-16 h-8 bg-white/90 rounded p-1 flex items-center justify-center">
-                      <div className="relative w-full h-full">
-                        <Image
-                          src={cs.image}
-                          alt={cs.title}
-                          fill
-                          className="object-contain"
-                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 20vw"
-                          priority={index < 3}
-                        />
-                      </div>
-                    </div>
+                    <div className="absolute inset-0 bg-black/40"></div>
                   </div>
                   
                   {/* Content */}
-                  <div className="p-3 flex-1 flex flex-col">
-                    <h3 className="text-sm font-semibold text-gray-900 mb-1 line-clamp-2">
-                      {cs.title}
-                    </h3>
-                    <p className="text-gray-600 text-xs mb-2 flex-grow line-clamp-2">{cs.summary}</p>
-                    
-                    {/* Tags */}
-                    <div className="flex flex-wrap gap-1 mb-2">
-                      {cs.highlights.map((highlight, i) => (
-                        <span 
-                          key={i}
-                          className="inline-block px-1.5 py-0.5 text-[9px] font-medium bg-blue-50 text-blue-700 rounded-full border border-blue-100 whitespace-nowrap overflow-hidden text-ellipsis max-w-[80px]"
-                        >
-                          {highlight}
-                        </span>
-                      ))}
+                  <div className="flex-1 flex flex-col">
+                    <div className="relative z-10 text-white">
+                      <h3 className="text-lg font-semibold mb-2 line-clamp-2">
+                        {cs.title}
+                      </h3>
+                      <p className="text-sm text-white/90 mb-4 line-clamp-3">{cs.summary}</p>
                     </div>
                     
-                    <div className="mt-auto pt-1 border-t border-gray-100 flex justify-between items-center">
-                      <span className="text-xs text-gray-500">{cs.date}</span>
-                      <button className="text-blue-600 hover:text-blue-800 text-xs font-medium flex items-center group">
-                        Read More
-                        <ArrowRight className="ml-1 h-3 w-3 transition-transform group-hover:translate-x-1" />
-                      </button>
+                    <div className="mt-auto">
+                      {/* Logo at bottom left */}
+                      <div className="relative w-24 h-8 mb-2">
+                        <Image
+                          src={cs.image}
+                          alt="Client Logo"
+                          fill
+                          className="object-contain object-left"
+                        />
+                      </div>
+                      
+                      {/* Bottom bar */}
+                      <div className="flex justify-between items-center pt-2 border-t border-white/20">
+                        <span className="text-xs text-white/80">{cs.date}</span>
+                        <button className="text-white hover:text-blue-200 text-sm font-medium flex items-center group">
+                          Read the story
+                          <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
