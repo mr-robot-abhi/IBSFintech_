@@ -4,6 +4,7 @@ import React from 'react';
 import Image from 'next/image';
 import { BarChart2 } from 'lucide-react';
 import ModernMegaMenu from '@/components/layout/ModernMegaMenu';
+import Link from 'next/link';
 
 export default function CashflowLiquidity() {
   return (

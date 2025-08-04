@@ -63,21 +63,21 @@ const menu: MenuSection[] = [
       {
         title: "Enterprise TMS",
         items: [
-          { label: "Cashflow & Liquidity", href: "/products/cashflow-liquidity" },
-          { label: "Currency (FX) Risk", href: "/products/currency-fx-risk" },
-          { label: "Investment (Money Market)", href: "/products/investment-money-market" },
-          { label: "Trade Finance – Import Export & Banking", href: "/products/trade-finance" },
-          { label: "Debt (Borrowings)", href: "/products/debt-borrowings" },
-          { label: "Commodity Risk", href: "/products/commodity-risk" },
-          { label: "Payments", href: "/products/payments" },
-          { label: "Supply Chain Finance – VNDZY®", href: "/products/supply-chain-finance", className: "flex items-center" },
+          { label: "Cashflow & Liquidity", href: "/products/enterprise/cashflow-liquidity" },
+          { label: "Currency (FX) Risk", href: "/products/enterprise/currency-fx-risk" },
+          { label: "Investment (Money Market)", href: "/products/enterprise/investment-money-market" },
+          { label: "Trade Finance – Import Export & Banking", href: "/products/enterprise/trade-finance" },
+          { label: "Debt (Borrowings)", href: "/products/enterprise/debt-borrowings" },
+          { label: "Commodity Risk", href: "/products/enterprise/commodity-risk-management" },
+          { label: "Payments", href: "/products/enterprise/payments" },
+          { label: "Supply Chain Finance – VNDZY®", href: "/products/enterprise/supply-chain-finance", className: "flex items-center" },
         ],
       },
       {
         title: "SME – TMS",
         items: [
-          { label: "InnoTreasury", href: "/products/innotreasury" },
-          { label: "InnoInvest", href: "/products/innoinvest" },
+          { label: "InnoTreasury", href: "/products/sme/innotreasury" },
+          { label: "InnoInvest", href: "/products/sme/innoinvest" },
         ],
       },
       {
@@ -85,7 +85,7 @@ const menu: MenuSection[] = [
         items: [
           { 
             label: "View All Products", 
-            href: "/products",
+            href: "/all_products",
             icon: ArrowRight,
             className: "mt-4 pt-4 border-t border-gray-200 font-semibold text-blue-600 hover:text-blue-700"
           },
@@ -101,8 +101,8 @@ const menu: MenuSection[] = [
         title: "Solutions",
         items: [
           { label: "Cash Visibility & Forecasting", href: "/solutions/cash-visibility-forecasting", icon: Eye },
-          { label: "FX Risk", href: "/solutions/foreign-exchange-risk", icon: TrendingUp },
-          { label: "Money Market", href: "/solutions/money-market", icon: BarChart2 },
+          { label: "FX Risk", href: "/solutions/fx-currency-risk", icon: TrendingUp },
+          { label: "Money Market", href: "/solutions/investment-money-market", icon: BarChart2 },
           { label: "Trade Finance", href: "/solutions/trade-finance", icon: FileText },
           { label: "Debt Management", href: "/solutions/debt-management", icon: Scale },
           { label: "Commodity Risk", href: "/solutions/commodity-risk", icon: Activity },
@@ -115,7 +115,7 @@ const menu: MenuSection[] = [
         items: [
           { 
             label: "View All Solutions", 
-            href: "/solutions",
+            href: "/all_solutions",
             icon: ArrowRight,
             className: "mt-4 pt-4 border-t border-gray-200 font-semibold text-blue-600 hover:text-blue-700"
           },
