@@ -30,11 +30,11 @@ export default function OurOfferingsSection() {
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
-    <div className="flex flex-col md:flex-row w-full max-w-screen-xl mx-auto px-6 py-20 relative z-10">
+    <div className="flex flex-col md:flex-row w-full max-w-screen-xl mx-auto px-6 py-12 relative z-10">
       {/* Left Section */}
-      <div className="md:w-[40%] pr-8 flex flex-col justify-start relative z-10 mt-10">
+      <div className="md:w-[40%] pr-8 flex flex-col justify-start relative z-10 mt-6">
         <div className="backdrop-blur-sm bg-black/30 p-6 rounded-xl shadow-lg">
-          <h2 className="text-5xl font-bold text-white mb-4">Our Offerings</h2>
+          <h2 className="text-4xl font-bold text-white mb-4">Our Offerings</h2>
           <p className="text-white text-lg mb-4">
             Modular financial services — enhanced by robust technology, customizable modules, and secure integrations.
           </p>
@@ -46,7 +46,7 @@ export default function OurOfferingsSection() {
       </div>
 
       {/* Right Section */}
-      <div className="md:w-[60%] mt-10 md:mt-0 relative group">
+      <div className="md:w-[60%] mt-6 md:mt-0 relative group">
         {/* Swiper Carousel */}
         <Swiper
           modules={[Navigation, Autoplay]}
@@ -66,7 +66,7 @@ export default function OurOfferingsSection() {
           }}
           onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
           className="mySwiper"
-          style={{ paddingTop: '40px', paddingBottom: '40px', overflow: 'hidden' }} // ✅ breathing space for glow
+          style={{ paddingTop: '40px', paddingBottom: '40px', overflow: 'hidden' }}
         >
           {SERVICES.map((service, index) => {
             const isActive = index === activeIndex;
@@ -123,21 +123,57 @@ export default function OurOfferingsSection() {
           <ChevronRight className="w-8 h-8 text-white" />
         </button>
 
+        {/* Dotted Line Circle */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+          <svg className="w-[500px] h-[500px]" viewBox="0 0 500 500">
+            <defs>
+              <pattern id="dottedPattern" patternUnits="userSpaceOnUse" width="20" height="20">
+                <circle cx="10" cy="10" r="2" fill="#60A5FA" opacity="0.6">
+                  <animate attributeName="r" values="1;3;1" dur="2s" repeatCount="indefinite" />
+                </circle>
+              </pattern>
+              <pattern id="dottedPatternReverse" patternUnits="userSpaceOnUse" width="20" height="20">
+                <circle cx="10" cy="10" r="2" fill="#A78BFA" opacity="0.6">
+                  <animate attributeName="r" values="3;1;3" dur="2s" repeatCount="indefinite" />
+                </circle>
+              </pattern>
+            </defs>
+            <circle 
+              cx="250" 
+              cy="250" 
+              r="180" 
+              fill="none" 
+              stroke="url(#dottedPattern)" 
+              strokeWidth="4" 
+              strokeDasharray="8,8"
+            />
+            <circle 
+              cx="250" 
+              cy="250" 
+              r="200" 
+              fill="none" 
+              stroke="url(#dottedPatternReverse)" 
+              strokeWidth="4" 
+              strokeDasharray="8,8"
+            />
+          </svg>
+        </div>
+
         {/* Interfaces Section */}
-        <div className="mt-10">
-          <h3 className="text-white text-2xl font-bold mb-2 text-center">Interfaces</h3>
-          <p className="text-base text-white text-center mb-6">Integrated touchpoints powering our services</p>
+        <div className="mt-8">
+          <h3 className="text-white text-xl font-bold mb-2 text-center">Interfaces</h3>
+          <p className="text-sm text-white text-center mb-4">Integrated touchpoints powering our services</p>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
             {INTERFACES.map(({ name, icon }, idx) => (
               <div
                 key={idx}
-                className="bg-white/20 backdrop-blur-sm border border-white/30 text-white rounded-lg p-1 flex flex-col items-center justify-center gap-1 text-center shadow-lg hover:shadow-xl transition-all duration-300 hover:border-white/50 hover:-translate-y-1 h-28"
+                className="bg-white/20 backdrop-blur-sm border border-white/30 text-white rounded-lg p-1 flex flex-col items-center justify-center gap-1 text-center shadow-lg hover:shadow-xl transition-all duration-300 hover:border-white/50 hover:-translate-y-1 h-24"
               >
-                <div className="w-16 h-16 p-0 relative flex items-center justify-center">
-                  <div className="absolute w-12 h-12 bg-white/30 rounded-full blur-sm group-hover:bg-white/40 transition-all duration-300"></div>
-                  <Image src={icon} alt={name} width={48} height={48} className="filter brightness-0 invert" />
+                <div className="w-12 h-12 p-0 relative flex items-center justify-center">
+                  <div className="absolute w-10 h-10 bg-white/30 rounded-full blur-sm group-hover:bg-white/40 transition-all duration-300"></div>
+                  <Image src={icon} alt={name} width={40} height={40} className="filter brightness-0 invert" />
                 </div>
-                <span className="font-bold text-sm">{name}</span>
+                <span className="font-bold text-xs">{name}</span>
               </div>
             ))}
           </div>

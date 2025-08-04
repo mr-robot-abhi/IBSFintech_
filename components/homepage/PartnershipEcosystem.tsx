@@ -5,15 +5,11 @@ import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 
 const partners = [
-  { name: 'Partner One', logo: 'p1.png', description: 'Driving innovation in fintech solutions with cutting-edge technology and collaborative synergy.' },
-  { name: 'Partner Two', logo: 'p2.png', description: 'A strategic alliance to enhance market reach and deliver unparalleled value to clients.' },
-  { name: 'Partner Three', logo: 'p3.png', description: 'Pioneering new frontiers in digital finance and secure transactions.' },
-  { name: 'Partner Four', logo: 'p4.png', description: 'Transforming the landscape of asset management with data-driven insights.' },
-  { name: 'Partner Five', logo: 'p5.png', description: 'Empowering businesses with seamless integration and robust financial tools.' },
-  { name: 'Partner Six', logo: 'p6.png', description: 'A key partner in our ecosystem, providing expertise in risk management.' },
-  { name: 'Partner Seven', logo: 'p7.jpg', description: 'Fostering growth and innovation through a shared vision for the future of finance.' },
-  { name: 'Partner Eight', logo: 'p8.png', description: 'Delivering excellence in payment processing and financial services.' },
-  { name: 'Partner Nine', logo: 'p9.png', description: 'Our trusted ally in expanding global financial networks and opportunities.' },
+  { name: 'Oracle', logo: 'p1.png', description: 'Strategic technology partnership for enterprise solutions.' },
+  { name: 'Refinitiv', logo: 'p2.png', description: 'Market data and analytics integration.' },
+  { name: 'KPMG', logo: 'p3.png', description: 'Global consulting and advisory services.' },
+  { name: 'Yes Bank', logo: 'p4.png', description: 'Banking and financial services collaboration.' },
+  { name: 'Deloitte', logo: 'p5.png', description: 'Professional services and technology consulting.' },
 ];
 
 type PartnershipEcosystemProps = {
@@ -21,27 +17,16 @@ type PartnershipEcosystemProps = {
 };
 
 export default function PartnershipEcosystem({ variant }: PartnershipEcosystemProps) {
-  const cardStyles = {
-    illustrative1: 'bg-white text-gray-800 shadow-lg',
-    illustrative2: 'bg-gradient-to-br from-gray-50 to-gray-100 text-gray-800 shadow-md hover:shadow-lg transition-shadow border border-gray-200',
-    illustrative3: 'bg-gray-100 dark:bg-gray-800/50 text-gray-800 dark:text-white border border-gray-200 dark:border-gray-700',
-  };
-
-  const logoStyles = {
-    illustrative1: 'filter brightness(0)', // Make logos visible on white background
-    illustrative2: '', // Original logos
-    illustrative3: 'dark:filter dark:brightness(0) dark:invert(1)',
-  };
 
   return (
-    <section className={cn('py-20', variant === 'illustrative1' ? 'relative z-10' : '')}>
+    <section className={cn('py-12', variant === 'illustrative1' ? 'relative z-10' : '')}>
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center max-w-3xl mx-auto mb-16"
+          className="text-center max-w-3xl mx-auto mb-12"
         >
           <h2 className={cn('text-3xl md:text-4xl font-bold mb-6', variant === 'illustrative1' ? 'text-white' : variant === 'illustrative2' ? 'text-gray-800' : 'text-gray-800 dark:text-white')}>
             Our Partnership Ecosystem
@@ -50,37 +35,29 @@ export default function PartnershipEcosystem({ variant }: PartnershipEcosystemPr
             We collaborate with industry leaders to deliver comprehensive and innovative financial solutions.
           </p>
         </motion.div>
-        <div className="overflow-hidden">
-          <motion.div
-            className="flex gap-8"
-            animate={{ x: ['0%', '-50%'] }}
-            transition={{
-              x: {
-                repeat: Infinity,
-                repeatType: 'loop',
-                duration: 30,
-                ease: 'linear',
-              },
-            }}
-          >
-            {[...partners, ...partners].map((partner, index) => (
-              <motion.div
-                key={index}
-                whileHover={{ y: -8, transition: { type: 'spring', stiffness: 300 } }}
-                className={cn('rounded-xl overflow-hidden p-6 flex flex-col items-center text-center min-w-[280px]', cardStyles[variant])}
-              >
-                <div className="relative w-40 h-20 mb-4 flex-shrink-0">
-                  <Image
-                    src={`/${partner.logo}`}
-                    alt={partner.name}
-                    fill
-                    className={cn('object-contain', logoStyles[variant])}
-                  />
-                </div>
-                <p className="text-sm opacity-80">{partner.description}</p>
-              </motion.div>
-            ))}
-          </motion.div>
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
+          {partners.map((partner, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              viewport={{ once: true }}
+              whileHover={{ y: -8, transition: { type: 'spring', stiffness: 300 } }}
+              className="bg-gradient-to-br from-blue-900/40 to-purple-900/40 backdrop-blur-sm border border-white/20 rounded-xl p-6 flex flex-col items-center text-center shadow-lg hover:shadow-xl transition-all duration-300 hover:border-white/40"
+            >
+              <div className="relative w-32 h-16 mb-4 flex-shrink-0">
+                <Image
+                  src={`/${partner.logo}`}
+                  alt={partner.name}
+                  fill
+                  className="object-contain filter brightness-0 invert"
+                />
+              </div>
+              <h3 className="text-white font-semibold mb-2">{partner.name}</h3>
+              <p className="text-white/80 text-sm">{partner.description}</p>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

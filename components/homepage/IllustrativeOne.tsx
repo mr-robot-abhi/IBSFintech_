@@ -209,7 +209,7 @@ export default function IllustrativeOne() {
 
 
       {/* Winning Together */}
-      <section className="pt-12 pb-0 relative">
+      <section className="pt-8 pb-0 relative">
         <div className="w-full max-w-screen-xl mx-auto px-6 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -218,7 +218,7 @@ export default function IllustrativeOne() {
             transition={{ duration: 0.6 }}
             className="text-center"
           >
-            <h2 className="text-5xl font-bold text-white mb-4">Winning Together</h2>
+            <h2 className="text-4xl font-bold text-white mb-3">Winning Together</h2>
             <p className="text-white text-lg max-w-3xl mx-auto">
               Leading organizations leverage our platform for end-to-end digitization of treasury, risk, trade finance,
               and supply chain operations, achieving agility, insights, and productivity.
@@ -226,25 +226,25 @@ export default function IllustrativeOne() {
           </motion.div>
         </div>
         {/* End-to-end logo strip, outside of any container */}
-        <div className="w-full -mt-4">
+        <div className="w-full -mt-2">
           <ClientLogoStrip variant="illustrative2" />
         </div>
       </section>
       <OurOfferingsSection />
       
       {/* Statistics Section */}
-      <section className="py-16 bg-gradient-to-b from-navy-900 to-navy-950 relative overflow-hidden">
+      <section className="py-12 bg-gradient-to-b from-navy-900 to-navy-950 relative overflow-hidden">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 max-w-6xl mx-auto">
             {/* Productivity Gains */}
             <motion.div 
-              className="text-center p-6 bg-navy-800/30 rounded-xl backdrop-blur-sm"
+              className="text-center p-4 bg-navy-800/30 rounded-lg backdrop-blur-sm"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
             >
-              <div className="relative w-32 h-32 mx-auto mb-4">
+              <div className="relative w-24 h-24 mx-auto mb-3">
                 <svg viewBox="0 0 100 100" className="w-full h-full">
                   <circle
                     cx="50"
@@ -266,24 +266,24 @@ export default function IllustrativeOne() {
                     transform="rotate(-90 50 50)"
                     strokeLinecap="round"
                   />
-                  <text x="50" y="50" textAnchor="middle" dy=".3em" className="text-2xl font-bold fill-white">
+                  <text x="50" y="50" textAnchor="middle" dy=".3em" className="text-xl font-bold fill-white">
                     80%
                   </text>
                 </svg>
               </div>
-              <h3 className="text-lg font-semibold text-white mb-1">Productivity</h3>
-              <h3 className="text-lg font-semibold text-white mb-2">Gains</h3>
+              <h3 className="text-base font-semibold text-white mb-1">Productivity</h3>
+              <h3 className="text-base font-semibold text-white">Gains</h3>
             </motion.div>
 
             {/* Accuracy Improved */}
             <motion.div 
-              className="text-center p-6 bg-navy-800/30 rounded-xl backdrop-blur-sm"
+              className="text-center p-4 bg-navy-800/30 rounded-lg backdrop-blur-sm"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1 }}
             >
-              <div className="relative w-32 h-32 mx-auto mb-4">
+              <div className="relative w-24 h-24 mx-auto mb-3">
                 <svg viewBox="0 0 100 100" className="w-full h-full">
                   <circle
                     cx="50"
@@ -305,24 +305,24 @@ export default function IllustrativeOne() {
                     transform="rotate(-90 50 50)"
                     strokeLinecap="round"
                   />
-                  <text x="50" y="50" textAnchor="middle" dy=".3em" className="text-2xl font-bold fill-white">
+                  <text x="50" y="50" textAnchor="middle" dy=".3em" className="text-xl font-bold fill-white">
                     95%
                   </text>
                 </svg>
               </div>
-              <h3 className="text-lg font-semibold text-white mb-1">Accuracy</h3>
-              <h3 className="text-lg font-semibold text-white mb-2">Improved</h3>
+              <h3 className="text-base font-semibold text-white mb-1">Accuracy</h3>
+              <h3 className="text-base font-semibold text-white">Improved</h3>
             </motion.div>
 
             {/* Optimised Fund Utilisation */}
             <motion.div 
-              className="text-center p-6 bg-navy-800/30 rounded-xl backdrop-blur-sm"
+              className="text-center p-4 bg-navy-800/30 rounded-lg backdrop-blur-sm"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              <div className="relative w-32 h-32 mx-auto mb-4">
+              <div className="relative w-24 h-24 mx-auto mb-3">
                 <svg viewBox="0 0 100 100" className="w-full h-full">
                   <circle
                     cx="50"
@@ -344,24 +344,24 @@ export default function IllustrativeOne() {
                     transform="rotate(-90 50 50)"
                     strokeLinecap="round"
                   />
-                  <text x="50" y="50" textAnchor="middle" dy=".3em" className="text-2xl font-bold fill-white">
+                  <text x="50" y="50" textAnchor="middle" dy=".3em" className="text-xl font-bold fill-white">
                     70%
                   </text>
                 </svg>
               </div>
-              <h3 className="text-lg font-semibold text-white mb-1">Optimised Fund</h3>
-              <h3 className="text-lg font-semibold text-white mb-2">Utilisation</h3>
+              <h3 className="text-base font-semibold text-white mb-1">Optimised Fund</h3>
+              <h3 className="text-base font-semibold text-white">Utilisation</h3>
             </motion.div>
 
             {/* Manual Effort Reduced */}
             <motion.div 
-              className="text-center p-6 bg-navy-800/30 rounded-xl backdrop-blur-sm"
+              className="text-center p-4 bg-navy-800/30 rounded-lg backdrop-blur-sm"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.3 }}
             >
-              <div className="relative w-32 h-32 mx-auto mb-4">
+              <div className="relative w-24 h-24 mx-auto mb-3">
                 <svg viewBox="0 0 100 100" className="w-full h-full">
                   <circle
                     cx="50"
@@ -383,20 +383,20 @@ export default function IllustrativeOne() {
                     transform="rotate(-90 50 50)"
                     strokeLinecap="round"
                   />
-                  <text x="50" y="50" textAnchor="middle" dy=".3em" className="text-2xl font-bold fill-white">
+                  <text x="50" y="50" textAnchor="middle" dy=".3em" className="text-xl font-bold fill-white">
                     50%
                   </text>
                 </svg>
               </div>
-              <h3 className="text-lg font-semibold text-white mb-1">Manual Effort</h3>
-              <h3 className="text-lg font-semibold text-white mb-2">Reduced</h3>
+              <h3 className="text-base font-semibold text-white mb-1">Manual Effort</h3>
+              <h3 className="text-base font-semibold text-white">Reduced</h3>
             </motion.div>
           </div>
         </div>
       </section>
 
       {/* Why Choose Us - Saturn Ring Layout */}
-      <section className="py-16 relative overflow-hidden">
+      <section className="py-12 relative overflow-hidden">
         {/* Blurry background */}
         <div className="absolute inset-0 -z-10">
           <div className="absolute inset-0 bg-gradient-to-br from-navy-900 to-navy-950 opacity-90"></div>
@@ -404,18 +404,18 @@ export default function IllustrativeOne() {
         </div>
         
         <div className="container mx-auto px-4 max-w-7xl">
-          <div className="backdrop-blur-sm bg-black/30 p-8 rounded-2xl">
+          <div className="backdrop-blur-sm bg-black/30 p-6 rounded-2xl">
             <div className="flex flex-col lg:flex-row items-center">
               {/* Left Column - Text */}
-              <div className="w-full lg:w-2/5 lg:pr-12 mb-12 lg:mb-0">
-                <h2 className="text-5xl font-bold text-white mb-6">Why Choose Us</h2>
-                <p className="text-xl text-white/90 mb-6">
+              <div className="w-full lg:w-2/5 lg:pr-8 mb-8 lg:mb-0">
+                <h2 className="text-4xl font-bold text-white mb-4">Why Choose Us</h2>
+                <p className="text-lg text-white/90 mb-4">
                   Discover how our innovative financial solutions can transform your business operations and drive growth.
                 </p>
-                <p className="text-lg text-white/80 mb-8">
+                <p className="text-base text-white/80 mb-6">
                   With years of industry expertise, we provide cutting‑edge solutions tailored to your unique business needs.
                 </p>
-                <button className="bg-[#FF073A] hover:bg-[#e60634] text-white font-medium py-3 px-8 rounded-full transition-all duration-300 flex items-center transform hover:-translate-y-0.5 hover:shadow-[0_4px_12px_rgba(255,7,58,0.3)]">
+                <button className="bg-[#FF073A] hover:bg-[#e60634] text-white font-medium py-3 px-6 rounded-full transition-all duration-300 flex items-center transform hover:-translate-y-0.5 hover:shadow-[0_4px_12px_rgba(255,7,58,0.3)]">
                   Learn More
                   <svg xmlns="http://www.w3.org/2000/svg" className="ml-2 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -424,9 +424,30 @@ export default function IllustrativeOne() {
               </div>
 
               {/* Right Column - Saturn Ring Visual */}
-              <div className="w-full lg:w-3/5 relative h-[500px]">
+              <div className="w-full lg:w-3/5 relative h-[450px]">
+                {/* Galaxy Background */}
+                <div className="absolute inset-0 rounded-2xl overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-br from-purple-900/60 via-blue-900/60 to-indigo-900/60 backdrop-blur-sm"></div>
+                  <div className="absolute inset-0 bg-gradient-radial from-purple-500/20 via-blue-600/20 to-transparent"></div>
+                  <div className="absolute inset-0">
+                    {/* Animated stars */}
+                    {[...Array(20)].map((_, i) => (
+                      <div
+                        key={i}
+                        className="absolute w-1 h-1 bg-white rounded-full animate-pulse"
+                        style={{
+                          left: `${Math.random() * 100}%`,
+                          top: `${Math.random() * 100}%`,
+                          animationDelay: `${Math.random() * 2}s`,
+                          animationDuration: `${2 + Math.random() * 2}s`
+                        }}
+                      />
+                    ))}
+                  </div>
+                </div>
+                
                 {/* Elliptical Ring Background */}
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[500px] h-[300px] border-2 border-blue-400/20 rounded-full"></div>
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[450px] h-[280px] border-2 border-blue-400/30 rounded-full"></div>
                 
                 {/* Feature Items in Saturn Ring Formation */}
                 {[
@@ -434,64 +455,64 @@ export default function IllustrativeOne() {
                     icon: <BarChart2 className="h-6 w-6 text-white" />,
                     title: "Comprehensive",
                     content: "Our end‑to‑end solution covers compliance, operational, and financial risks. With a unified platform, you gain full visibility and control over your entire risk landscape.",
-                    position: "top-0 left-1/2 -translate-x-1/2 -translate-y-1/2"
+                    position: "top-4 left-1/2 -translate-x-1/2 -translate-y-1/2"
                   },
                   { 
                     icon: <Zap className="h-6 w-6 text-white" />,
                     title: "Nimble",
                     content: "Rapid implementation and deployment with our agile approach. Our cloud‑native architecture allows for instant scaling.",
-                    position: "top-1/4 right-0 translate-x-1/4 -translate-y-1/2"
+                    position: "top-1/4 right-4 translate-x-1/4 -translate-y-1/2"
                   },
                   { 
                     icon: <Shield className="h-6 w-6 text-white" />,
                     title: "Domain Centric",
                     content: "Bank‑grade security with end‑to‑end encryption. Your data is protected with the highest industry standards.",
-                    position: "bottom-1/4 right-0 translate-x-1/4 translate-y-1/2"
+                    position: "bottom-1/4 right-4 translate-x-1/4 translate-y-1/2"
                   },
                   { 
                     icon: <Globe className="h-6 w-6 text-white" />,
                     title: "Configurable",
                     content: "Multi‑currency, multi‑language, and multi‑jurisdiction support. Operate seamlessly across borders with our global platform.",
-                    position: "bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2"
+                    position: "bottom-4 left-1/2 -translate-x-1/2 translate-y-1/2"
                   },
                   { 
                     icon: <Users className="h-6 w-6 text-white" />,
                     title: "Best Practices",
                     content: "Work together seamlessly with role‑based access controls. Our platform enables real‑time collaboration across teams and departments.",
-                    position: "bottom-1/4 left-0 -translate-x-1/4 translate-y-1/2"
+                    position: "bottom-1/4 left-4 -translate-x-1/4 translate-y-1/2"
                   },
                   { 
                     icon: <Cpu className="h-6 w-6 text-white" />,
                     title: "Integrated",
                     content: "Seamlessly connects with ERP systems, market data providers, and banking partners. The platform supports SWIFT, FIX, and ISO 20022 messaging standards.",
-                    position: "top-1/4 left-0 -translate-x-1/4 -translate-y-1/2"
+                    position: "top-1/4 left-4 -translate-x-1/4 -translate-y-1/2"
                   }
                 ].map((feature, index) => (
                   <div 
                     key={index}
-                    className={`absolute w-40 h-40 rounded-full bg-[#241F5D] flex flex-col items-center justify-center p-4 cursor-pointer group transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-blue-500/20 ${feature.position}`}
+                    className={`absolute w-32 h-32 rounded-full bg-gradient-to-br from-purple-600/80 to-blue-600/80 backdrop-blur-sm border border-white/20 flex flex-col items-center justify-center p-3 cursor-pointer group transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-purple-500/30 ${feature.position}`}
                   >
                     <div className="text-center">
-                      <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-2 group-hover:bg-purple-600 transition-colors">
+                      <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-1 group-hover:bg-white/30 transition-colors">
                         {feature.icon}
                       </div>
-                      <h3 className="text-md font-bold text-white mb-1">{feature.title}</h3>
-                      <div className="absolute inset-0 bg-[#241F5D] rounded-full opacity-0 group-hover:opacity-100 flex items-center justify-center p-4 transition-opacity duration-300 z-20">
-                        <p className="text-xs text-white text-center">{feature.content}</p>
+                      <h3 className="text-sm font-bold text-white mb-1">{feature.title}</h3>
+                      <div className="absolute inset-0 bg-gradient-to-br from-purple-700/90 to-blue-700/90 backdrop-blur-sm rounded-full opacity-0 group-hover:opacity-100 flex items-center justify-center p-3 transition-opacity duration-300 z-20">
+                        <p className="text-[10px] text-white text-center leading-tight">{feature.content}</p>
                       </div>
                     </div>
                   </div>
                 ))}
                 
                 {/* Central Element with IBS Logo */}
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-36 h-36 bg-gradient-to-br from-blue-600/20 to-purple-600/20 rounded-full border-2 border-blue-400/30 flex items-center justify-center p-2">
-                  <div className="w-full h-full rounded-full bg-gradient-to-br from-blue-600/30 to-purple-600/30 border border-blue-400/20 flex items-center justify-center overflow-hidden">
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-gradient-to-br from-purple-600/40 to-blue-600/40 backdrop-blur-sm rounded-full border-2 border-white/30 flex items-center justify-center p-2 shadow-lg">
+                  <div className="w-full h-full rounded-full bg-gradient-to-br from-white/20 to-white/10 border border-white/20 flex items-center justify-center overflow-hidden">
                     <Image 
                       src="/Ibs_logo_1.png" 
                       alt="IBS Logo" 
-                      width={80} 
-                      height={80}
-                      className="object-contain w-20 h-20"
+                      width={60} 
+                      height={60}
+                      className="object-contain w-16 h-16"
                       priority
                     />
                   </div>
@@ -503,13 +524,13 @@ export default function IllustrativeOne() {
       </section>
 
       {/* Featured Industries Carousel */}
-      <section className="py-16 relative overflow-hidden w-full">
+      <section className="py-12 relative overflow-hidden w-full">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12 px-4"
+          className="text-center mb-8 px-4"
         >
           <h2 className="text-4xl font-bold bg-gradient-to-r from-blue-300 to-blue-500 bg-clip-text text-transparent mb-4">
             Featured Industries
@@ -519,28 +540,28 @@ export default function IllustrativeOne() {
           </p>
         </motion.div>
 
-        <div className="relative overflow-hidden group px-4">
+        <div className="relative overflow-hidden group px-4 pb-4">
           <motion.div
             className="flex gap-6 py-4"
             animate={{
               x: ['0%', '-100%'],
               transition: {
                 ease: 'linear',
-                duration: 40,
+                duration: 35,
                 repeat: Infinity,
               }
             }}
           >
             {duplicatedIndustries.map((industry, idx) => (
-              <div key={idx} className="flex-shrink-0 w-80">
+              <div key={idx} className="flex-shrink-0 w-72">
                 <Tilt tiltMaxAngleX={5} tiltMaxAngleY={5} className="h-full">
-                  <div className="bg-gradient-to-br from-navy-800 to-navy-900 p-6 rounded-2xl shadow-xl border border-blue-900/30 h-full flex flex-col hover:shadow-2xl hover:border-blue-700/50 transition-all duration-300 hover:-translate-y-1">
-                    <div className="h-14 w-14 bg-blue-900/40 backdrop-blur-sm rounded-xl flex items-center justify-center mb-4 border border-blue-700/30">
+                  <div className="bg-gradient-to-br from-navy-800 to-navy-900 p-5 rounded-xl shadow-lg border border-blue-900/30 h-full flex flex-col hover:shadow-xl hover:border-blue-700/50 transition-all duration-300 hover:-translate-y-1">
+                    <div className="h-12 w-12 bg-blue-900/40 backdrop-blur-sm rounded-lg flex items-center justify-center mb-3 border border-blue-700/30">
                       <industry.icon className="h-7 w-7 text-blue-300" />
                     </div>
-                    <h3 className="text-xl font-bold text-white mb-2">{industry.name}</h3>
-                    <p className="text-blue-100/80 text-sm mb-4 flex-grow">{industry.description}</p>
-                    <button className="inline-block px-3 py-1.5 bg-gradient-to-r from-blue-600 to-blue-500 text-white text-xs font-medium rounded-full self-start hover:from-blue-500 hover:to-blue-400 transition-all duration-300 shadow-lg hover:shadow-blue-500/20">
+                    <h3 className="text-lg font-bold text-white mb-2">{industry.name}</h3>
+                    <p className="text-blue-100/80 text-sm mb-3 flex-grow">{industry.description}</p>
+                    <button className="inline-block px-3 py-1 bg-gradient-to-r from-blue-600 to-blue-500 text-white text-xs font-medium rounded-full self-start hover:from-blue-500 hover:to-blue-400 transition-all duration-300 shadow-lg hover:shadow-blue-500/20">
                       Learn More <ArrowRight className="inline-block ml-1 h-3 w-3" />
                     </button>
                   </div>
@@ -557,7 +578,7 @@ export default function IllustrativeOne() {
       <CaseStudies />
 
       {/* Secure Banking Section */}
-      <section className="py-16 bg-gradient-to-b from-navy-900 to-navy-950 relative overflow-hidden">
+      <section className="py-12 bg-gradient-to-b from-navy-900 to-navy-950 relative overflow-hidden">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <motion.div
@@ -565,19 +586,19 @@ export default function IllustrativeOne() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="mb-8"
+              className="mb-6"
             >
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
                 Private. Secure. Yours.
               </h2>
-              <p className="text-lg text-gray-300 mb-8 max-w-3xl mx-auto">
+              <p className="text-base text-gray-300 mb-6 max-w-3xl mx-auto">
                 Your financial data belongs to you. With enterprise-grade security and privacy controls, 
                 you decide who sees what and when. Our platform is built with bank-level encryption 
                 and continuous monitoring to keep your information safe.
               </p>
               <motion.a
                 href="/security"
-                className="inline-flex items-center px-6 py-3 border-2 border-blue-500 text-blue-400 text-sm font-medium rounded-full hover:bg-blue-500/10 transition-colors duration-300 group"
+                className="inline-flex items-center px-5 py-2 border-2 border-blue-500 text-blue-400 text-sm font-medium rounded-full hover:bg-blue-500/10 transition-colors duration-300 group"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.98 }}
               >
@@ -593,14 +614,14 @@ export default function IllustrativeOne() {
       <section className="relative overflow-hidden">
         <div className="w-full flex flex-col relative">
           {/* Latest News Section */}
-          <section className="py-12 bg-gradient-to-b from-navy-900 to-navy-950 relative overflow-hidden">
+          <section className="py-10 bg-gradient-to-b from-navy-900 to-navy-950 relative overflow-hidden">
             <div className="container mx-auto px-4">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
-                className="text-center mb-8"
+                className="text-center mb-6"
               >
                 <h2 className="text-3xl font-bold text-white mb-2">Latest News</h2>
                 <p className="text-gray-300 text-sm">
@@ -609,21 +630,21 @@ export default function IllustrativeOne() {
               </motion.div>
 
               {/* 3-Card Grid Layout */}
-              <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 max-w-5xl mx-auto">
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 max-w-5xl mx-auto">
                 {/* Large Feature Card */}
                 <motion.div 
-                  className="lg:col-span-2 rounded-xl overflow-hidden relative group h-96 lg:h-64"
+                  className="lg:col-span-2 rounded-lg overflow-hidden relative group h-80 lg:h-56"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4 }}
                 >
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10 p-6 flex flex-col justify-end">
-                    <div className="bg-blue-600 text-white text-xs font-medium px-3 py-1 rounded-full inline-flex items-center w-fit mb-3">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10 p-4 flex flex-col justify-end">
+                    <div className="bg-blue-600 text-white text-xs font-medium px-2 py-1 rounded-full inline-flex items-center w-fit mb-2">
                       <Newspaper className="h-3 w-3 mr-1.5" />
                       <span>Business</span>
                     </div>
-                    <h3 className="text-xl font-bold text-white mb-2 group-hover:text-blue-300 transition-colors line-clamp-2">
+                    <h3 className="text-lg font-bold text-white mb-1 group-hover:text-blue-300 transition-colors line-clamp-2">
                       {newsItems[0].title}
                     </h3>
                     <div className="text-gray-300 text-sm">
@@ -636,26 +657,26 @@ export default function IllustrativeOne() {
                     src="/Home Page Banner 2.png"
                     alt={newsItems[0].title}
                     fill
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 </motion.div>
 
                 {/* Right Column - Top Card */}
                 <motion.div 
-                  className="rounded-xl overflow-hidden relative group h-64"
+                  className="rounded-lg overflow-hidden relative group h-56"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: 0.1 }}
                 >
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10 p-4 flex flex-col justify-end">
-                    <div className="bg-green-600 text-white text-xs font-medium px-2 py-0.5 rounded-full inline-flex items-center w-fit mb-2">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10 p-3 flex flex-col justify-end">
+                    <div className="bg-green-600 text-white text-xs font-medium px-2 py-0.5 rounded-full inline-flex items-center w-fit mb-1">
                       <span>Featured</span>
                     </div>
-                    <h3 className="text-base font-semibold text-white mb-1 group-hover:text-blue-300 transition-colors line-clamp-3">
+                    <h3 className="text-sm font-semibold text-white mb-1 group-hover:text-blue-300 transition-colors line-clamp-3">
                       {newsItems[1].title}
                     </h3>
-                    <p className="text-gray-300 text-xs mt-1">
+                    <p className="text-gray-300 text-xs">
                       {newsItems[1].date}
                     </p>
                   </div>
@@ -663,29 +684,29 @@ export default function IllustrativeOne() {
                     src="/Home Page Banner 3.png"
                     alt={newsItems[1].title}
                     fill
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 </motion.div>
 
                 {/* Bottom Row - Full Width Card */}
                 <motion.div 
-                  className="lg:col-span-3 rounded-xl overflow-hidden relative group h-64 mt-4"
+                  className="lg:col-span-3 rounded-lg overflow-hidden relative group h-56 mt-3"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: 0.2 }}
                 >
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10 p-6 flex flex-col justify-end">
-                    <div className="bg-purple-600 text-white text-xs font-medium px-3 py-1 rounded-full inline-flex items-center w-fit mb-3">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10 p-4 flex flex-col justify-end">
+                    <div className="bg-purple-600 text-white text-xs font-medium px-2 py-1 rounded-full inline-flex items-center w-fit mb-2">
                       <span>FinTech</span>
                     </div>
-                    <h3 className="text-xl font-bold text-white mb-2 group-hover:text-blue-300 transition-colors">
+                    <h3 className="text-lg font-bold text-white mb-1 group-hover:text-blue-300 transition-colors">
                       {newsItems[2].title}
                     </h3>
-                    <p className="text-gray-300 text-sm line-clamp-2">
+                    <p className="text-gray-300 text-sm line-clamp-1">
                       {newsItems[2].description}
                     </p>
-                    <div className="text-blue-300 text-sm mt-2">
+                    <div className="text-blue-300 text-sm mt-1">
                       {newsItems[2].date}
                     </div>
                   </div>
@@ -693,15 +714,15 @@ export default function IllustrativeOne() {
                     src="/Home Page Banner 4.png"
                     alt={newsItems[2].title}
                     fill
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 </motion.div>
               </div>
 
-              <div className="text-center mt-8">
+              <div className="text-center mt-6">
                 <motion.a
                   href="/news"
-                  className="inline-flex items-center px-5 py-2 border border-blue-500 text-blue-400 text-sm font-medium rounded-full hover:bg-blue-500/10 transition-colors duration-300"
+                  className="inline-flex items-center px-4 py-2 border border-blue-500 text-blue-400 text-sm font-medium rounded-full hover:bg-blue-500/10 transition-colors duration-300"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.98 }}
                 >
@@ -713,7 +734,7 @@ export default function IllustrativeOne() {
           </section>
 
           {/* Let's Connect Subsection */}
-          <div className="flex-1 py-0 bg-gradient-to-b from-gray-900 to-gray-800 relative z-10 flex items-center">
+          <div className="flex-1 py-8 bg-gradient-to-b from-gray-900 to-gray-800 relative z-10 flex items-center">
             <div className="container mx-auto px-4 max-w-7xl w-full">
               <div className="flex flex-row items-center justify-between gap-8">
                 {/* Left Column - Text and Buttons */}
@@ -724,14 +745,14 @@ export default function IllustrativeOne() {
                   transition={{ duration: 0.6 }}
                   className="text-center md:text-left w-full max-w-2xl"
                 >
-                  <h2 className="text-4xl font-bold mb-2 text-white">Let's Connect</h2>
-                  <p className="text-lg text-white/90 mb-3">
+                  <h2 className="text-3xl font-bold mb-2 text-white">Let's Connect</h2>
+                  <p className="text-base text-white/90 mb-2">
                     Ready to revolutionize your treasury operations?
                   </p>
-                  <p className="text-lg text-white/90 mb-3">
+                  <p className="text-base text-white/90 mb-2">
                     Contact us to explore our solutions and see how we can transform your financial processes.
                   </p>
-                  <p className="text-lg text-white/90 mb-3">
+                  <p className="text-base text-white/90 mb-4">
                     Our team of experts is ready to assist you with tailored financial technology solutions.
                   </p>
                   <div className="flex flex-wrap justify-center md:justify-start gap-2">
@@ -747,12 +768,12 @@ export default function IllustrativeOne() {
                 </motion.div>
 
                 {/* Middle Column - Watermark */}
-                <div className="hidden lg:flex items-center justify-center flex-shrink-0 w-[500px] h-[500px] opacity-20 mx-12">
+                <div className="hidden lg:flex items-center justify-center flex-shrink-0 w-[400px] h-[400px] opacity-20 mx-8">
                   <Image
                     src="/IBSFINtech-Cube-water mark.svg"
                     alt="IBSFINtech Watermark"
-                    width={1000}
-                    height={1000}
+                    width={800}
+                    height={800}
                     className="w-full h-full object-contain"
                   />
                 </div>
@@ -763,15 +784,15 @@ export default function IllustrativeOne() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: 0.2 }}
-                  className="flex flex-row md:flex-col items-center justify-center gap-6"
+                  className="flex flex-row md:flex-col items-center justify-center gap-4"
                 >
                   {/* LinkedIn */}
                   <a
                     href="#"
-                    className="group p-3 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 transition-all duration-300 hover:scale-110"
+                    className="group p-2 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 transition-all duration-300 hover:scale-110"
                     aria-label="LinkedIn"
                   >
-                    <svg className="w-6 h-6 text-white group-hover:text-blue-400 transition-colors duration-300" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <svg className="w-5 h-5 text-white group-hover:text-blue-400 transition-colors duration-300" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                       <path fillRule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" clipRule="evenodd" />
                     </svg>
                   </a>
@@ -779,10 +800,10 @@ export default function IllustrativeOne() {
                   {/* YouTube */}
                   <a
                     href="#"
-                    className="group p-3 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 transition-all duration-300 hover:scale-110"
+                    className="group p-2 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 transition-all duration-300 hover:scale-110"
                     aria-label="YouTube"
                   >
-                    <svg className="w-6 h-6 text-white group-hover:text-red-500 transition-colors duration-300" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <svg className="w-5 h-5 text-white group-hover:text-red-500 transition-colors duration-300" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                       <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
                     </svg>
                   </a>
@@ -790,10 +811,10 @@ export default function IllustrativeOne() {
                   {/* Facebook */}
                   <a
                     href="#"
-                    className="group p-3 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 transition-all duration-300 hover:scale-110"
+                    className="group p-2 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 transition-all duration-300 hover:scale-110"
                     aria-label="Facebook"
                   >
-                    <svg className="w-6 h-6 text-white group-hover:text-blue-500 transition-colors duration-300" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <svg className="w-5 h-5 text-white group-hover:text-blue-500 transition-colors duration-300" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                       <path d="M22.675 0h-21.35C.595 0 0 .592 0 1.326v21.348C0 23.408.595 24 1.325 24h11.495v-9.294H9.691V11.01h3.129V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.797.143v3.24l-1.918.001c-1.504 0-1.797.715-1.797 1.763v2.312h3.587l-.467 3.696h-3.12V24h6.116c.73 0 1.325-.592 1.325-1.326V1.326C24 .592 23.405 0 22.675 0" />
                     </svg>
                   </a>
@@ -801,10 +822,10 @@ export default function IllustrativeOne() {
                   {/* Twitter */}
                   <a
                     href="#"
-                    className="group p-3 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 transition-all duration-300 hover:scale-110"
+                    className="group p-2 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 transition-all duration-300 hover:scale-110"
                     aria-label="Twitter"
                   >
-                    <svg className="w-6 h-6 text-white group-hover:text-blue-400 transition-colors duration-300" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <svg className="w-5 h-5 text-white group-hover:text-blue-400 transition-colors duration-300" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                       <path d="M24 4.557a9.93 9.93 0 0 1-2.828.775 4.932 4.932 0 0 0 2.165-2.724c-.951.564-2.005.974-3.127 1.195a4.92 4.92 0 0 0-8.384 4.482C7.691 8.095 4.066 6.13 1.64 3.161c-.542.929-.856 2.01-.856 3.17 0 2.188 1.115 4.116 2.821 5.247a4.904 4.904 0 0 1-2.229-.616c-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.627 1.956 2.444 3.377 4.6 3.417A9.867 9.867 0 0 1 0 21.543a13.94 13.94 0 0 0 7.548 2.212c9.057 0 14.009-7.496 14.009-13.986 0-.21 0-.423-.016-.634A9.936 9.936 0 0 0 24 4.557z" />
                     </svg>
                   </a>
