@@ -122,43 +122,7 @@ export default function OurOfferingsSection() {
         >
           <ChevronRight className="w-8 h-8 text-white" />
         </button>
-
-        {/* Dotted Line Circle */}
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <svg className="w-[500px] h-[500px]" viewBox="0 0 500 500">
-            <defs>
-              <pattern id="dottedPattern" patternUnits="userSpaceOnUse" width="20" height="20">
-                <circle cx="10" cy="10" r="2" fill="#60A5FA" opacity="0.6">
-                  <animate attributeName="r" values="1;3;1" dur="2s" repeatCount="indefinite" />
-                </circle>
-              </pattern>
-              <pattern id="dottedPatternReverse" patternUnits="userSpaceOnUse" width="20" height="20">
-                <circle cx="10" cy="10" r="2" fill="#A78BFA" opacity="0.6">
-                  <animate attributeName="r" values="3;1;3" dur="2s" repeatCount="indefinite" />
-                </circle>
-              </pattern>
-            </defs>
-            <circle 
-              cx="250" 
-              cy="250" 
-              r="180" 
-              fill="none" 
-              stroke="url(#dottedPattern)" 
-              strokeWidth="4" 
-              strokeDasharray="8,8"
-            />
-            <circle 
-              cx="250" 
-              cy="250" 
-              r="200" 
-              fill="none" 
-              stroke="url(#dottedPatternReverse)" 
-              strokeWidth="4" 
-              strokeDasharray="8,8"
-            />
-          </svg>
-        </div>
-
+        
         {/* Interfaces Section */}
         <div className="mt-8">
           <h3 className="text-white text-xl font-bold mb-2 text-center">Interfaces</h3>
@@ -167,13 +131,12 @@ export default function OurOfferingsSection() {
             {INTERFACES.map(({ name, icon }, idx) => (
               <div
                 key={idx}
-                className="bg-white/20 backdrop-blur-sm border border-white/30 text-white rounded-lg p-1 flex flex-col items-center justify-center gap-1 text-center shadow-lg hover:shadow-xl transition-all duration-300 hover:border-white/50 hover:-translate-y-1 h-24"
+                className="bg-white/10 border border-white/20 text-white rounded-lg p-1.5 flex flex-col items-center justify-center gap-0.5 text-center transition-colors duration-200 hover:bg-white/15 h-20"
               >
-                <div className="w-12 h-12 p-0 relative flex items-center justify-center">
-                  <div className="absolute w-10 h-10 bg-white/30 rounded-full blur-sm group-hover:bg-white/40 transition-all duration-300"></div>
+                <div className="w-10 h-10 flex items-center justify-center">
                   <Image src={icon} alt={name} width={40} height={40} className="filter brightness-0 invert" />
                 </div>
-                <span className="font-bold text-xs">{name}</span>
+                <span className="font-medium text-sm">{name}</span>
               </div>
             ))}
           </div>

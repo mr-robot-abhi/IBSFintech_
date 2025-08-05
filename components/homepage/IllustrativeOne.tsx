@@ -13,6 +13,199 @@ import PartnershipEcosystem from './PartnershipEcosystem';
 import OurOfferingsSection from './our_offerings';
 import CaseStudies from './CaseStudies';
 
+// Define types for the feature items
+interface FeatureItem {
+  icon: React.ReactNode;
+  title: string;
+  content: string;
+  position: string;
+}
+
+// FeatureOrb component
+type FeatureOrbProps = {
+  icon: React.ReactNode;
+  title: string;
+  content: string;
+  position: string;
+};
+
+// Type definitions
+interface Industry {
+  name: string;
+  icon: React.ComponentType<{ className?: string }>;
+  color: string;
+}
+
+// Function to safely get gradient colors
+const getGradientColors = (colorString: string) => {
+  try {
+    const parts = colorString.split(' ');
+    if (parts.length >= 3 && parts[0].startsWith('from-') && parts[2].startsWith('to-')) {
+      return {
+        from: parts[0].replace('from-', ''),
+        to: parts[2].replace('to-', '')
+      };
+    }
+  } catch (e) {
+    console.warn('Error parsing gradient colors:', e);
+  }
+  // Default fallback colors
+  return {
+    from: 'blue-500',
+    to: 'blue-600'
+  };
+};
+
+// Function to get a random industry (excluding the current one)
+const getRandomIndustry = (currentIndustryName: string, industries: Industry[]): Industry => {
+  const otherIndustries = industries.filter(ind => ind.name !== currentIndustryName);
+  return otherIndustries[Math.floor(Math.random() * otherIndustries.length)];
+};
+
+// FlipCard Component Props
+interface FlipCardProps {
+  industry: Industry;
+  delay: number;
+  allIndustries: Industry[];
+}
+
+// FlipCard Component for Industry Cards
+const FlipCard: React.FC<FlipCardProps> = ({ 
+  industry, 
+  delay,
+  allIndustries 
+}) => {
+  const [isFlipped, setIsFlipped] = useState(false);
+  const [currentIndustry, setCurrentIndustry] = useState(industry);
+  const [nextIndustry, setNextIndustry] = useState<Industry>(() => 
+    getRandomIndustry(industry.name, allIndustries)
+  );
+  const controls = useAnimation();
+
+  // Function to handle flip animation
+  const flipCard = async () => {
+    await controls.start({
+      rotateY: 90,
+      transition: { duration: 0.3 }
+    });
+    
+    // Change to next industry
+    setCurrentIndustry(nextIndustry);
+    setNextIndustry(getRandomIndustry(nextIndustry.name, allIndustries));
+    
+    // Complete the flip
+    await controls.start({
+      rotateY: 0,
+      transition: { duration: 0.3, delay: 0.1 }
+    });
+  };
+
+  // Auto-flip effect
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      flipCard();
+    }, 5000 + delay * 1000);
+    
+    const interval = setInterval(() => {
+      flipCard();
+    }, 10000); // Flip every 10 seconds
+    
+    return () => {
+      clearTimeout(timer);
+      clearInterval(interval);
+    };
+  }, [nextIndustry]);
+
+  return (
+    <motion.div
+      className="relative w-28 h-28 sm:w-32 sm:h-32 cursor-pointer perspective-1000"
+      initial={{ opacity: 0, y: 20, rotate: -2 }}
+      whileInView={{ 
+        opacity: 1, 
+        y: 0,
+        transition: { 
+          delay: delay * 0.5,
+          duration: 0.5 
+        }
+      }}
+      viewport={{ once: true, margin: '-50px' }}
+      onClick={flipCard}
+    >
+      {/* Front of Card */}
+      <motion.div 
+        className="absolute w-full h-full rounded-xl overflow-hidden backface-hidden shadow-lg border border-white/20"
+        style={{ 
+          background: (() => {
+            const colors = getGradientColors(currentIndustry.color);
+            return `linear-gradient(135deg, ${colors.from} 0%, ${colors.to} 100%)`;
+          })(),
+          transform: 'rotateY(0deg)'
+        }}
+        animate={controls}
+        transition={{ duration: 0.3 }}
+      >
+        <div className="w-full h-full flex flex-col items-center justify-center p-2">
+          <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center mb-1.5">
+            <currentIndustry.icon className="h-5 w-5 text-white" />
+          </div>
+          <span className="text-xs font-semibold text-white text-center leading-tight">{currentIndustry.name}</span>
+        </div>
+      </motion.div>
+      
+      {/* Back of Card */}
+      <motion.div 
+        className="absolute w-full h-full rounded-xl overflow-hidden backface-hidden shadow-lg border border-white/20"
+        style={{ 
+          background: (() => {
+            const colors = getGradientColors(nextIndustry.color);
+            return `linear-gradient(135deg, ${colors.from} 0%, ${colors.to} 100%)`;
+          })(),
+          transform: 'rotateY(90deg)'
+        }}
+        animate={{
+          rotateY: 90,
+        }}
+        transition={{ duration: 0.3 }}
+      >
+        <div className="w-full h-full flex flex-col items-center justify-center p-2">
+          <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center mb-1.5">
+            <nextIndustry.icon className="h-5 w-5 text-white" />
+          </div>
+          <span className="text-xs font-semibold text-white text-center leading-tight">{nextIndustry.name}</span>
+        </div>
+      </motion.div>
+    </motion.div>
+  );
+};
+
+const FeatureOrb = ({ icon, title, content, position }: FeatureOrbProps) => {
+  const [isHovered, setIsHovered] = useState(false);
+  
+  return (
+    <div 
+      className={`absolute ${position} z-20 group`}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      {/* Orb */}
+      <div className="w-16 h-16 rounded-full bg-gradient-to-br from-purple-600/80 to-blue-600/80 backdrop-blur-sm border border-white/20 flex items-center justify-center cursor-pointer transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-purple-500/30">
+        <div className="text-center">
+          <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center mx-auto group-hover:bg-white/30 transition-colors">
+            {icon}
+          </div>
+        </div>
+      </div>
+
+      {/* Tooltip */}
+      <div className={`absolute top-1/2 -translate-y-1/2 left-full ml-4 w-64 bg-gradient-to-br from-navy-800 to-navy-900 backdrop-blur-sm rounded-xl p-4 border border-blue-500/30 shadow-xl transition-all duration-300 ${isHovered ? "opacity-100 translate-x-0 visible" : "opacity-0 -translate-x-2 invisible"}`}>
+        <div className="absolute top-1/2 -translate-y-1/2 -left-1.5 w-3 h-3 rotate-45 bg-navy-800 border-l border-b border-blue-500/30"></div>
+        <h3 className="text-lg font-bold text-white mb-2">{title}</h3>
+        <p className="text-sm text-gray-300">{content}</p>
+      </div>
+    </div>
+  );
+};
+
 // SlideshowBanner component for the hero section
 const SlideshowBanner = () => {
   const banners = [
@@ -21,7 +214,7 @@ const SlideshowBanner = () => {
     '/Home Page Banner 6.png',
     '/Home Page Banner 7.png'
   ];
-  
+
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
   const slideInterval = useRef<NodeJS.Timeout>();
@@ -51,7 +244,7 @@ const SlideshowBanner = () => {
   }, [isHovered]);
 
   return (
-    <div 
+    <div
       className="relative w-full h-full"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -109,21 +302,136 @@ const SlideshowBanner = () => {
 
 
 
+// Industry Card Component with Flip Animation
+interface IndustryCardProps {
+  industry: IndustryData;
+  position: { x: string; y: string; rotate: number };
+  index: number;
+  total: number;
+}
+
+const IndustryCard: React.FC<IndustryCardProps> = ({ industry, position, index, total }) => {
+  const [isFlipped, setIsFlipped] = useState(false);
+  const controls = useAnimation();
+  const delay = index * 1000; // 1 second delay between each card
+
+  useEffect(() => {
+    const startAnimation = async () => {
+      await new Promise(resolve => setTimeout(resolve, 500 + delay));
+      
+      // Infinite loop for continuous animation
+      const animate = async () => {
+        await controls.start({
+          rotateY: 180,
+          transition: { duration: 0.6, ease: 'easeInOut' }
+        });
+        
+        await new Promise(resolve => setTimeout(resolve, 2000)); // Show back for 2 seconds
+        
+        await controls.start({
+          rotateY: 0,
+          transition: { duration: 0.6, ease: 'easeInOut' }
+        });
+        
+        await new Promise(resolve => setTimeout(resolve, (total - 1) * 1000)); // Wait for other cards to flip
+        
+        // Start next cycle
+        animate();
+      };
+      
+      animate();
+    };
+    
+    startAnimation();
+  }, [controls, delay, total]);
+
+  return (
+    <motion.div
+      className="absolute w-48 h-48 cursor-pointer"
+      style={{
+        left: position.x,
+        top: position.y,
+        rotate: `${position.rotate}deg`,
+      }}
+      animate={controls}
+      onHoverStart={() => setIsFlipped(true)}
+      onHoverEnd={() => setIsFlipped(false)}
+    >
+      <div className="w-full h-full relative">
+        {/* Front of Card */}
+        <motion.div 
+          className="absolute w-full h-full bg-gradient-to-br from-blue-900/80 to-blue-800/80 backdrop-blur-sm rounded-xl p-4 flex flex-col items-center justify-center border border-blue-700/30 shadow-lg"
+          style={{
+            backfaceVisibility: 'hidden',
+            WebkitBackfaceVisibility: 'hidden',
+          }}
+          animate={{
+            rotateY: isFlipped ? 180 : 0,
+            scale: isFlipped ? 1.05 : 1,
+          }}
+          transition={{ duration: 0.6, ease: 'easeInOut' }}
+        >
+          <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center mb-3">
+            <industry.icon className="h-6 w-6 text-white" />
+          </div>
+          <h3 className="text-white font-medium text-center text-sm">{industry.name}</h3>
+        </motion.div>
+        
+        {/* Back of Card */}
+        <motion.div 
+          className="absolute w-full h-full bg-gradient-to-br from-blue-800/90 to-blue-700/90 backdrop-blur-sm rounded-xl p-4 flex flex-col items-center justify-center border border-blue-600/30 shadow-lg"
+          style={{
+            backfaceVisibility: 'hidden',
+            WebkitBackfaceVisibility: 'hidden',
+            rotateY: 180,
+          }}
+          animate={{
+            rotateY: isFlipped ? 0 : 180,
+            scale: isFlipped ? 1.05 : 1,
+          }}
+          transition={{ duration: 0.6, ease: 'easeInOut' }}
+        >
+          <p className="text-white/90 text-xs text-center">{industry.description}</p>
+        </motion.div>
+      </div>
+    </motion.div>
+  );
+};
+
+// Industry data type
+type IndustryData = {
+  name: string;
+  icon: React.ComponentType<{ className?: string }>;
+  color: string;
+  description?: string; // Made optional since not all industry objects might have it
+};
+
 export default function IllustrativeOne() {
-  const industries = [
-    { name: 'Automotive', icon: Car, description: 'Streamlined supply chain finance solutions for the automotive industry.', metric: '30% Cost Reduction' },
-    { name: 'Manufacturing', icon: Factory, description: 'End-to-end financial solutions for manufacturing operations.', metric: '40% Efficiency Gain' },
-    { name: 'Financial Services', icon: Building, description: 'Advanced analytics and risk management for financial institutions.', metric: '50% Risk Reduction' },
-    { name: 'Healthcare', icon: Users, description: 'Financial solutions tailored for healthcare providers and institutions.', metric: '35% Faster Payments' },
-    { name: 'Retail', icon: ShoppingBag, description: 'Omnichannel payment and inventory financing solutions.', metric: '45% Sales Growth' },
-    { name: 'Technology', icon: Cpu, description: 'Financial solutions for tech companies and startups.', metric: '60% Faster Funding' },
-    { name: 'Energy', icon: Zap, description: 'Sustainable energy financing and risk management.', metric: '50% Clean Energy' },
-    { name: 'Logistics', icon: Truck, description: 'Supply chain and working capital optimization.', metric: '45% Faster Delivery' },
-    { name: 'Real Estate', icon: Home, description: 'Property development and investment financing.', metric: '35% ROI Increase' },
-    { name: 'Education', icon: BookOpen, description: 'Financial solutions for educational institutions.', metric: '40% Cost Savings' },
+  // Industry data for flip cards
+  const industries: IndustryData[] = [
+    { name: 'SME', icon: Users, color: 'from-blue-500 to-blue-600' },
+    { name: 'NBFC', icon: Building, color: 'from-purple-500 to-purple-600' },
+    { name: 'Automotive', icon: Car, color: 'from-green-500 to-green-600' },
+    { name: 'Pharmaceutical', icon: Shield, color: 'from-amber-500 to-amber-600' },
+    { name: 'Manufacturing', icon: Factory, color: 'from-rose-500 to-rose-600' },
+    { name: 'Retail', icon: ShoppingBag, color: 'from-indigo-500 to-indigo-600' },
+    { name: 'Trading', icon: BarChart2, color: 'from-emerald-500 to-emerald-600' },
+    { name: 'Chemical', icon: Zap, color: 'from-violet-500 to-violet-600' },
+    { name: 'Media', icon: Newspaper, color: 'from-pink-500 to-pink-600' },
+    { name: 'IT Power', icon: Cpu, color: 'from-cyan-500 to-cyan-600' },
+    { name: 'Oil & Gas', icon: Zap, color: 'from-orange-500 to-orange-600' },
+    { name: 'Mining', icon: MapPin, color: 'from-teal-500 to-teal-600' },
+    { name: 'FMCG', icon: ShoppingBag, color: 'from-fuchsia-500 to-fuchsia-600' },
+    { name: 'Real Estate', icon: Home, color: 'from-amber-400 to-amber-500' },
+    { name: 'Textile Retail', icon: ShoppingBag, color: 'from-blue-400 to-blue-500' },
+    { name: 'Family Offices', icon: Users, color: 'from-purple-400 to-purple-500' }
   ];
 
-  const duplicatedIndustries = [...industries, ...industries];
+  // Function to get a random industry for the back of the card
+  const getRandomIndustry = (currentIndustry: string) => {
+    const otherIndustries = industries.filter(ind => ind.name !== currentIndustry);
+    return otherIndustries[Math.floor(Math.random() * otherIndustries.length)];
+  };
 
 
   // News array for Latest News section
@@ -193,7 +501,7 @@ export default function IllustrativeOne() {
                 Our end-to-end Treasury Management Platform empowers organizations with cutting-edge solutions for treasury, risk, trade finance, and supply chain finance.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-              <button className="bg-[#FF073A] hover:bg-[#e60634] text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 flex items-center justify-center transform hover:-translate-y-0.5 hover:shadow-[0_4px_12px_rgba(255,7,58,0.3)] active:translate-y-0">
+                <button className="bg-[#FF073A] hover:bg-[#e60634] text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 flex items-center justify-center transform hover:-translate-y-0.5 hover:shadow-[0_4px_12px_rgba(255,7,58,0.3)] active:translate-y-0">
                   Get Started
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </button>
@@ -231,13 +539,13 @@ export default function IllustrativeOne() {
         </div>
       </section>
       <OurOfferingsSection />
-      
+
       {/* Statistics Section */}
       <section className="py-12 bg-gradient-to-b from-navy-900 to-navy-950 relative overflow-hidden">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 max-w-6xl mx-auto">
             {/* Productivity Gains */}
-            <motion.div 
+            <motion.div
               className="text-center p-4 bg-navy-800/30 rounded-lg backdrop-blur-sm"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -276,7 +584,7 @@ export default function IllustrativeOne() {
             </motion.div>
 
             {/* Accuracy Improved */}
-            <motion.div 
+            <motion.div
               className="text-center p-4 bg-navy-800/30 rounded-lg backdrop-blur-sm"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -315,7 +623,7 @@ export default function IllustrativeOne() {
             </motion.div>
 
             {/* Optimised Fund Utilisation */}
-            <motion.div 
+            <motion.div
               className="text-center p-4 bg-navy-800/30 rounded-lg backdrop-blur-sm"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -354,7 +662,7 @@ export default function IllustrativeOne() {
             </motion.div>
 
             {/* Manual Effort Reduced */}
-            <motion.div 
+            <motion.div
               className="text-center p-4 bg-navy-800/30 rounded-lg backdrop-blur-sm"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -395,180 +703,190 @@ export default function IllustrativeOne() {
         </div>
       </section>
 
-      {/* Why Choose Us - Saturn Ring Layout */}
-      <section className="py-12 relative overflow-hidden">
-        {/* Blurry background */}
+      {/* Why Choose Us Section */}
+      <section className="py-16 relative overflow-hidden">
+        {/* Galaxy background */}
         <div className="absolute inset-0 -z-10">
           <div className="absolute inset-0 bg-gradient-to-br from-navy-900 to-navy-950 opacity-90"></div>
           <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))] opacity-10"></div>
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-purple-900/10 via-transparent to-transparent"></div>
+
+          {/* Animated stars */}
+          {[...Array(30)].map((_, i) => (
+            <div
+              key={i}
+              className="absolute w-0.5 h-0.5 bg-white rounded-full animate-pulse"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                animationDelay: `${Math.random() * 2}s`,
+                animationDuration: `${1 + Math.random() * 3}s`
+              }}
+            />
+          ))}
         </div>
-        
+
         <div className="container mx-auto px-4 max-w-7xl">
-          <div className="backdrop-blur-sm bg-black/30 p-6 rounded-2xl">
-            <div className="flex flex-col lg:flex-row items-center">
-              {/* Left Column - Text */}
-              <div className="w-full lg:w-2/5 lg:pr-8 mb-8 lg:mb-0">
-                <h2 className="text-4xl font-bold text-white mb-4">Why Choose Us</h2>
+          <div className="flex flex-col lg:flex-row items-center gap-12">
+            {/* Left Column - Text with Frosted Glass */}
+            <div className="w-full lg:w-2/5">
+              <div className="backdrop-blur-sm bg-black/30 p-8 rounded-2xl border border-white/10 shadow-xl shadow-blue-900/10">
+                <h2 className="text-4xl font-bold text-white mb-4 bg-gradient-to-r from-blue-300 to-purple-400 bg-clip-text text-transparent">
+                  Why Choose Us
+                </h2>
                 <p className="text-lg text-white/90 mb-4">
                   Discover how our innovative financial solutions can transform your business operations and drive growth.
                 </p>
                 <p className="text-base text-white/80 mb-6">
                   With years of industry expertise, we provide cutting‑edge solutions tailored to your unique business needs.
                 </p>
-                <button className="bg-[#FF073A] hover:bg-[#e60634] text-white font-medium py-3 px-6 rounded-full transition-all duration-300 flex items-center transform hover:-translate-y-0.5 hover:shadow-[0_4px_12px_rgba(255,7,58,0.3)]">
+                <button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white font-medium py-3 px-6 rounded-full transition-all duration-300 flex items-center transform hover:-translate-y-0.5 hover:shadow-[0_4px_12px_rgba(125,90,230,0.3)] active:translate-y-0">
                   Learn More
                   <svg xmlns="http://www.w3.org/2000/svg" className="ml-2 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
                 </button>
               </div>
+            </div>
 
-              {/* Right Column - Saturn Ring Visual */}
-              <div className="w-full lg:w-3/5 relative h-[450px]">
-                {/* Galaxy Background */}
-                <div className="absolute inset-0 rounded-2xl overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-br from-purple-900/60 via-blue-900/60 to-indigo-900/60 backdrop-blur-sm"></div>
-                  <div className="absolute inset-0 bg-gradient-radial from-purple-500/20 via-blue-600/20 to-transparent"></div>
-                  <div className="absolute inset-0">
-                    {/* Animated stars */}
-                    {[...Array(20)].map((_, i) => (
-                      <div
-                        key={i}
-                        className="absolute w-1 h-1 bg-white rounded-full animate-pulse"
-                        style={{
-                          left: `${Math.random() * 100}%`,
-                          top: `${Math.random() * 100}%`,
-                          animationDelay: `${Math.random() * 2}s`,
-                          animationDuration: `${2 + Math.random() * 2}s`
-                        }}
-                      />
-                    ))}
-                  </div>
-                </div>
+            {/* Right Column - Galaxy Visual with Icons */}
+            <div className="w-full lg:w-3/5 relative h-[350px]">
+              {/* Oval Saturn Ring Layers - NO TILT */}
+              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[300px] h-[200px]">
+                {/* Outer ring - Dark purple */}
+                <div className="absolute inset-0 border-2 border-purple-800/40 rounded-full animate-pulse"></div>
+                {/* Middle ring - Medium purple */}
+                <div className="absolute inset-1 border-2 border-purple-600/50 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
+                {/* Inner ring - Bright purple */}
+                <div className="absolute inset-2 border-2 border-purple-400/60 rounded-full animate-pulse" style={{ animationDelay: '2s' }}></div>
                 
-                {/* Elliptical Ring Background */}
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[450px] h-[280px] border-2 border-blue-400/30 rounded-full"></div>
-                
-                {/* Feature Items in Saturn Ring Formation */}
-                {[
-                  { 
-                    icon: <BarChart2 className="h-6 w-6 text-white" />,
-                    title: "Comprehensive",
-                    content: "Our end‑to‑end solution covers compliance, operational, and financial risks. With a unified platform, you gain full visibility and control over your entire risk landscape.",
-                    position: "top-4 left-1/2 -translate-x-1/2 -translate-y-1/2"
-                  },
-                  { 
-                    icon: <Zap className="h-6 w-6 text-white" />,
-                    title: "Nimble",
-                    content: "Rapid implementation and deployment with our agile approach. Our cloud‑native architecture allows for instant scaling.",
-                    position: "top-1/4 right-4 translate-x-1/4 -translate-y-1/2"
-                  },
-                  { 
-                    icon: <Shield className="h-6 w-6 text-white" />,
-                    title: "Domain Centric",
-                    content: "Bank‑grade security with end‑to‑end encryption. Your data is protected with the highest industry standards.",
-                    position: "bottom-1/4 right-4 translate-x-1/4 translate-y-1/2"
-                  },
-                  { 
-                    icon: <Globe className="h-6 w-6 text-white" />,
-                    title: "Configurable",
-                    content: "Multi‑currency, multi‑language, and multi‑jurisdiction support. Operate seamlessly across borders with our global platform.",
-                    position: "bottom-4 left-1/2 -translate-x-1/2 translate-y-1/2"
-                  },
-                  { 
-                    icon: <Users className="h-6 w-6 text-white" />,
-                    title: "Best Practices",
-                    content: "Work together seamlessly with role‑based access controls. Our platform enables real‑time collaboration across teams and departments.",
-                    position: "bottom-1/4 left-4 -translate-x-1/4 translate-y-1/2"
-                  },
-                  { 
-                    icon: <Cpu className="h-6 w-6 text-white" />,
-                    title: "Integrated",
-                    content: "Seamlessly connects with ERP systems, market data providers, and banking partners. The platform supports SWIFT, FIX, and ISO 20022 messaging standards.",
-                    position: "top-1/4 left-4 -translate-x-1/4 -translate-y-1/2"
-                  }
-                ].map((feature, index) => (
-                  <div 
-                    key={index}
-                    className={`absolute w-32 h-32 rounded-full bg-gradient-to-br from-purple-600/80 to-blue-600/80 backdrop-blur-sm border border-white/20 flex flex-col items-center justify-center p-3 cursor-pointer group transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-purple-500/30 ${feature.position}`}
-                  >
-                    <div className="text-center">
-                      <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-1 group-hover:bg-white/30 transition-colors">
+                {/* Glowing center - Oval purple core */}
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-20 h-16 rounded-full bg-gradient-to-br from-purple-500/50 to-purple-600/60 backdrop-blur-sm shadow-[0_0_30px_8px_rgba(147,51,234,0.4)] animate-pulse"></div>
+              </div>
+
+              {/* Feature Icons Around Galaxy - RIGHT NEXT TO RINGS */}
+              {[
+                {
+                  icon: <BarChart2 className="h-5 w-5 text-white" />,
+                  title: "Comprehensive",
+                  content: "Our end‑to‑end solution covers compliance, operational, and financial risks. With a unified platform, you gain full visibility and control over your entire risk landscape.",
+                  position: "top-0 left-1/2 -translate-x-1/2"
+                },
+                {
+                  icon: <Cpu className="h-5 w-5 text-white" />,
+                  title: "Integrated",
+                  content: "Seamlessly connects with ERP systems, market data providers, and banking partners. The platform supports SWIFT, FIX, and ISO 20022 messaging standards.",
+                  position: "top-1/4 -left-2"
+                },
+                {
+                  icon: <Users className="h-5 w-5 text-white" />,
+                  title: "Best Practices",
+                  content: "Work together seamlessly with role‑based access controls. Our platform enables real‑time collaboration across teams and departments.",
+                  position: "bottom-1/3 -left-2"
+                },
+                {
+                  icon: <Zap className="h-5 w-5 text-white" />,
+                  title: "Nimble",
+                  content: "Rapid implementation and deployment with our agile approach. Our cloud‑native architecture allows for instant scaling.",
+                  position: "top-1/4 -right-2"
+                },
+                {
+                  icon: <Shield className="h-5 w-5 text-white" />,
+                  title: "Domain Centric",
+                  content: "Bank‑grade security with end‑to‑end encryption. Your data is protected with the highest industry standards.",
+                  position: "bottom-1/3 -right-2"
+                },
+                {
+                  icon: <Globe className="h-5 w-5 text-white" />,
+                  title: "Configurable",
+                  content: "Multi‑currency, multi‑language, and multi‑jurisdiction support. Operate seamlessly across borders with our global platform.",
+                  position: "bottom-0 left-1/2 -translate-x-1/2"
+                }
+              ].map((feature, index) => (
+
+
+                <div
+                  key={index}
+                  className={`absolute ${feature.position} z-30 group cursor-pointer`}
+                >
+                  {/* Icon Container */}
+                  <div className="relative">
+                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-purple-600/90 to-purple-700/90 backdrop-blur-sm border border-white/30 flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-purple-500/40 group-hover:bg-gradient-to-br group-hover:from-purple-500/95 group-hover:to-purple-600/95 group-hover:border-white/50">
+                      <div className="w-7 h-7 bg-white/25 rounded-full flex items-center justify-center mx-auto group-hover:bg-white/35 transition-colors">
                         {feature.icon}
                       </div>
-                      <h3 className="text-sm font-bold text-white mb-1">{feature.title}</h3>
-                      <div className="absolute inset-0 bg-gradient-to-br from-purple-700/90 to-blue-700/90 backdrop-blur-sm rounded-full opacity-0 group-hover:opacity-100 flex items-center justify-center p-3 transition-opacity duration-300 z-20">
-                        <p className="text-[10px] text-white text-center leading-tight">{feature.content}</p>
-                      </div>
+                    </div>
+                    
+                    {/* Title below icon - Compact and clean */}
+                    <div className="absolute top-full left-1/2 -translate-x-1/2 mt-1 whitespace-nowrap">
+                      <span className="text-xs font-semibold text-white bg-black/70 px-2 py-0.5 rounded-md backdrop-blur-sm border border-white/20 shadow-lg">
+                        {feature.title}
+                      </span>
                     </div>
                   </div>
-                ))}
-                
-                {/* Central Element with IBS Logo */}
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-gradient-to-br from-purple-600/40 to-blue-600/40 backdrop-blur-sm rounded-full border-2 border-white/30 flex items-center justify-center p-2 shadow-lg">
-                  <div className="w-full h-full rounded-full bg-gradient-to-br from-white/20 to-white/10 border border-white/20 flex items-center justify-center overflow-hidden">
-                    <Image 
-                      src="/Ibs_logo_1.png" 
-                      alt="IBS Logo" 
-                      width={60} 
-                      height={60}
-                      className="object-contain w-16 h-16"
-                      priority
-                    />
+
+                  {/* Tooltip */}
+                  <div className="absolute top-1/2 -translate-y-1/2 left-full ml-3 w-64 bg-gradient-to-br from-navy-800/95 to-navy-900/95 backdrop-blur-sm rounded-xl p-4 border border-blue-500/30 shadow-xl transition-all duration-300 opacity-0 -translate-x-2 invisible group-hover:opacity-100 group-hover:translate-x-0 group-hover:visible">
+                    <div className="absolute top-1/2 -translate-y-1/2 -left-1.5 w-3 h-3 rotate-45 bg-navy-800/95 border-l border-b border-blue-500/30"></div>
+                    <h3 className="text-lg font-bold text-white mb-2">{feature.title}</h3>
+                    <p className="text-sm text-gray-300 leading-relaxed">{feature.content}</p>
                   </div>
                 </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
-      {/* Featured Industries Carousel */}
-      <section className="py-12 relative overflow-hidden w-full">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-8 px-4"
-        >
-          <h2 className="text-4xl font-bold bg-gradient-to-r from-blue-300 to-blue-500 bg-clip-text text-transparent mb-4">
-            Featured Industries
-          </h2>
-          <p className="text-lg text-white/90 max-w-3xl mx-auto">
-            Tailored solutions for diverse industry needs, driving efficiency and growth across sectors.
-          </p>
-        </motion.div>
 
-        <div className="relative overflow-hidden group px-4 pb-4">
-          <motion.div
-            className="flex gap-6 py-4"
-            animate={{
-              x: ['0%', '-100%'],
-              transition: {
-                ease: 'linear',
-                duration: 35,
-                repeat: Infinity,
-              }
-            }}
-          >
-            {duplicatedIndustries.map((industry, idx) => (
-              <div key={idx} className="flex-shrink-0 w-72">
-                <Tilt tiltMaxAngleX={5} tiltMaxAngleY={5} className="h-full">
-                  <div className="bg-gradient-to-br from-navy-800 to-navy-900 p-5 rounded-xl shadow-lg border border-blue-900/30 h-full flex flex-col hover:shadow-xl hover:border-blue-700/50 transition-all duration-300 hover:-translate-y-1">
-                    <div className="h-12 w-12 bg-blue-900/40 backdrop-blur-sm rounded-lg flex items-center justify-center mb-3 border border-blue-700/30">
-                      <industry.icon className="h-7 w-7 text-blue-300" />
-                    </div>
-                    <h3 className="text-lg font-bold text-white mb-2">{industry.name}</h3>
-                    <p className="text-blue-100/80 text-sm mb-3 flex-grow">{industry.description}</p>
-                    <button className="inline-block px-3 py-1 bg-gradient-to-r from-blue-600 to-blue-500 text-white text-xs font-medium rounded-full self-start hover:from-blue-500 hover:to-blue-400 transition-all duration-300 shadow-lg hover:shadow-blue-500/20">
-                      Learn More <ArrowRight className="inline-block ml-1 h-3 w-3" />
-                    </button>
-                  </div>
-                </Tilt>
+
+      {/* Featured Industries Grid */}
+      <section className="py-20 relative overflow-hidden w-full bg-gradient-to-b from-navy-900 to-navy-950">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col lg:flex-row items-start gap-12">
+            {/* Text Content - Left Side with Frosted Glass */}
+            <div className="lg:w-1/3">
+              <div className="backdrop-blur-sm bg-black/30 p-8 rounded-2xl border border-white/10 shadow-xl shadow-blue-900/10">
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6 }}
+                >
+                  <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-300 to-blue-500 bg-clip-text text-transparent mb-6">
+                    Featured Industries
+                  </h2>
+                  <p className="text-lg text-white/90 mb-6">
+                    Tailored solutions for diverse industry needs, driving efficiency and growth across sectors.
+                  </p>
+                </motion.div>
               </div>
-            ))}
-          </motion.div>
+            </div>
+
+            {/* Flip Cards - Right Side - 2 Rows of 4 */}
+            <div className="lg:w-2/3">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
+                {industries.slice(0, 4).map((industry, idx) => (
+                  <FlipCard 
+                    key={industry.name} 
+                    industry={industry} 
+                    delay={idx * 0.1} 
+                    allIndustries={industries} 
+                  />
+                ))}
+              </div>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mt-3 sm:mt-4">
+                {industries.slice(4, 8).map((industry, idx) => (
+                  <FlipCard 
+                    key={industry.name} 
+                    industry={industry} 
+                    delay={(idx + 4) * 0.1} 
+                    allIndustries={industries} 
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       </section>
       {/* Partnership Ecosystem Section */}
@@ -592,8 +910,8 @@ export default function IllustrativeOne() {
                 Private. Secure. Yours.
               </h2>
               <p className="text-base text-gray-300 mb-6 max-w-3xl mx-auto">
-                Your financial data belongs to you. With enterprise-grade security and privacy controls, 
-                you decide who sees what and when. Our platform is built with bank-level encryption 
+                Your financial data belongs to you. With enterprise-grade security and privacy controls,
+                you decide who sees what and when. Our platform is built with bank-level encryption
                 and continuous monitoring to keep your information safe.
               </p>
               <motion.a
@@ -632,7 +950,7 @@ export default function IllustrativeOne() {
               {/* 3-Card Grid Layout */}
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 max-w-5xl mx-auto">
                 {/* Large Feature Card */}
-                <motion.div 
+                <motion.div
                   className="lg:col-span-2 rounded-lg overflow-hidden relative group h-80 lg:h-56"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -662,7 +980,7 @@ export default function IllustrativeOne() {
                 </motion.div>
 
                 {/* Right Column - Top Card */}
-                <motion.div 
+                <motion.div
                   className="rounded-lg overflow-hidden relative group h-56"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -689,7 +1007,7 @@ export default function IllustrativeOne() {
                 </motion.div>
 
                 {/* Bottom Row - Full Width Card */}
-                <motion.div 
+                <motion.div
                   className="lg:col-span-3 rounded-lg overflow-hidden relative group h-56 mt-3"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}

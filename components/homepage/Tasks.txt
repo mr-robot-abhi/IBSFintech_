@@ -11,3 +11,27 @@ Solutions---Commodity..5 solutions.Arrange 2 with Image. Alternate.
 For "Featured Industries" keeping the tile content as is.... Change the way the section looks. The text moves to the left hand side. The tiles are arranged on the right hand side with a bit of tilt. 
 
 Remove key challenges section for all solutions and replace with "Value Propositions". --Later Case Studies 
+
+
+Add a bit of blurry background to all the case studies tiles only for the text part...Like for this : "FMCG Giant's path to data-driven decision
+Empowering treasury functions with automation for better financial insights and operational efficiency." the rest of the tile the background should be visible.
+No no now....Only to the text box within the tile...so tile is visible....Not blur the whole tile.... Just add like a blur backgriund only spanning the text. The logo , read more date all should be visible  
+
+
+Cool. Keep the existing tiles as they are...Increase the size of the tile and the size of font of each industry by 2 points....Keep ony 8 tiles...4 in one row and 2 rows . Here are the exact 16 services that you would inclue in those 8 tiles...Because when they flip they would represesnt a different one...so 8 tiles...16 services. : Below are the industries to be mentioned
+SME
+NBFC,
+Automotive,
+Pharmaceutical,
+Manufacturing,
+Retail,
+Trading,
+Chemical,
+Media,
+IT Power, 
+Oil & Gas,
+Mining,
+FMCG,
+Real Estate,
+Textile Retail
+Family Offices
