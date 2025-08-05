@@ -179,7 +179,7 @@ const menu: MenuSection[] = [
       {
         title: "Culture & Recognition",
         items: [
-          { label: "Awards & Recognitions", href: "/company/awards" },
+          { label: "Awards & Recognitions", href: "/awards" },
           { label: "Life at IBSFINtech", href: "/company/life" },
         ],
       }
