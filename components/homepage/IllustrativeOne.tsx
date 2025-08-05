@@ -8,7 +8,7 @@ import { ArrowRight, Zap, Shield, Globe, Car, Factory, Building, Users, Newspape
 import Footer from '../layout/Footer';
 import HeroImageSlideshow from './HeroImageSlideshow';
 import ClientLogoStrip from '../common/ClientLogoStrip';
-import ModernMegaMenu from '../layout/ModernMegaMenu';
+
 import PartnershipEcosystem from './PartnershipEcosystem';
 import OurOfferingsSection from './our_offerings';
 import CaseStudies from './CaseStudies';
@@ -470,10 +470,6 @@ export default function IllustrativeOne() {
         />
       </div>
       {/* --- Main Content Sections (keep order, ensure all tags close properly) --- */}
-
-      {/* Mega Navigation Menu */}
-      <ModernMegaMenu />
-
 
       {/* Hero Banner with Slideshow */}
       <section className="relative w-full h-screen min-h-[600px] overflow-hidden">

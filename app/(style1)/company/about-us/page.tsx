@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import { Globe, Users, Zap, Award, ChevronRight, MapPin, Mail, Linkedin, Shield } from 'lucide-react';
-import ModernMegaMenu from '@/components/layout/ModernMegaMenu';
+
 import TimelineSection from '@/components/homepage/TimelineSection';
 
 // Grouped Timeline data
@@ -73,7 +73,7 @@ export default function AboutUs() {
 
   return (
     <div className="min-h-screen bg-white">
-      <ModernMegaMenu />
+
       
       {/* Hero Section */}
       <section className="relative bg-gradient-to-r from-blue-900 to-blue-700 text-white py-24 px-6">

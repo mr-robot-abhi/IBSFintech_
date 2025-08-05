@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { ArrowRight, Eye, TrendingUp, DollarSign, FileText, PiggyBank, BarChart3, CreditCard, Network } from 'lucide-react';
-import ModernMegaMenu from '@/components/layout/ModernMegaMenu';
+
 import { useEffect, useState } from 'react';
 
 const SolutionsPage = () => {
@@ -89,8 +89,7 @@ const SolutionsPage = () => {
         />
       </div>
 
-      {/* Mega Navigation Menu */}
-      <ModernMegaMenu />
+
 
       {/* Hero section */}
       <section className="relative w-full h-[60vh] min-h-[500px] flex items-center justify-center">

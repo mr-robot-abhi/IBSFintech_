@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { ArrowRight, Globe, FileText, Bell, BarChart, CreditCard, Package, RefreshCw, Shield, TrendingUp, Users, Layers } from 'lucide-react';
-import ModernMegaMenu from '@/components/layout/ModernMegaMenu';
+
 
 const TradeFinancePage = () => {
   return (
@@ -13,7 +13,7 @@ const TradeFinancePage = () => {
       <div className="fixed inset-0 -z-10 w-full h-full bg-[#241F5D] opacity-5"></div>
 
       {/* Mega Navigation Menu */}
-      <ModernMegaMenu />
+
 
       {/* Hero Section */}
       <section className="relative w-full py-24 md:py-32 bg-gradient-to-r from-[#241F5D] to-[#3A3480] text-white">

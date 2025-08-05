@@ -3,16 +3,16 @@
 import React from 'react';
 import Image from 'next/image';
 import { BarChart2 } from 'lucide-react';
-import ModernMegaMenu from '@/components/layout/ModernMegaMenu';
+
 import Link from 'next/link';
 
 export default function CashflowLiquidity() {
   return (
     <div className="min-h-screen overflow-x-hidden relative bg-white">
       {/* Modern Mega Menu */}
-      <ModernMegaMenu />
+
       
-      <main className="relative z-10 pt-24 px-6 pb-12">
+              <main className="relative z-10 pt-20 px-6 pb-12">
       <div className="max-w-6xl mx-auto">
         {/* Hero Section */}
         <div className="flex flex-col md:flex-row items-center gap-8 mb-12">

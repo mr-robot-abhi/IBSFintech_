@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import { BookOpen, Clock, ArrowRight, Home, ArrowUp } from 'lucide-react';
-import ModernMegaMenu from '@/components/layout/ModernMegaMenu';
+
 
 const BlogPage = () => {
   const [activePost, setActivePost] = useState<string | null>(null);
@@ -230,9 +230,9 @@ const BlogPage = () => {
   return (
     <div className="min-h-screen overflow-x-hidden relative bg-white">
       {/* Modern Mega Menu */}
-      <ModernMegaMenu />
+
       
-      <main className="relative z-10 pt-24 px-6 pb-12">
+              <main className="relative z-10 pt-20 px-6 pb-12">
         {activePost ? (
           <div className="max-w-4xl mx-auto bg-white rounded-xl shadow-md overflow-hidden">
             <div className="h-64 relative">

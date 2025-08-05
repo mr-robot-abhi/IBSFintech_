@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { CreditCard, DollarSign, FileText, Shield, Zap, Clock, BarChart, PieChart, ArrowRight, Check, Activity, Layers, RefreshCw, AlertCircle, BarChart2, TrendingUp } from 'lucide-react';
-import ModernMegaMenu from '@/components/layout/ModernMegaMenu';
+
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
 
@@ -117,7 +117,7 @@ const TreasuryPaymentsPage = () => {
       <div className="fixed inset-0 -z-10 w-full h-full bg-[#241F5D] opacity-5"></div>
 
       {/* Navigation */}
-      <ModernMegaMenu />
+
 
       {/* Hero Section */}
       <section className="relative w-full py-20 md:py-28 bg-gradient-to-r from-[#241F5D] to-[#3A3480] text-white">

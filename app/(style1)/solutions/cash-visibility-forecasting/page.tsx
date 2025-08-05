@@ -3,7 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { BarChart2, Target, Eye, Zap, Clock, Globe, Layers, TrendingUp, CheckCircle } from 'lucide-react';
-import ModernMegaMenu from '@/components/layout/ModernMegaMenu';
+
 
 const CashVisibilityForecastingPage = () => {
   const challenges = [
@@ -92,9 +92,9 @@ const CashVisibilityForecastingPage = () => {
   return (
     <div className="min-h-screen overflow-x-hidden relative bg-white">
       {/* Modern Mega Menu */}
-      <ModernMegaMenu />
+
       
-      <main className="relative z-10 pt-24 px-6 pb-12">
+              <main className="relative z-10 pt-20 px-6 pb-12">
         {/* Hero Section */}
         <div className="max-w-6xl mx-auto mb-16">
           <div className="relative h-96 rounded-xl overflow-hidden mb-12">
