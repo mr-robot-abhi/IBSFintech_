@@ -35,3 +35,17 @@ FMCG,
 Real Estate,
 Textile Retail
 Family Offices
+
+
+Email Service added.    
+For Gmail Setup:
+Enable 2-factor authentication on your Gmail account
+Generate App Password:
+Go to Google Account → Security → App passwords
+Select "Mail" and generate password
+Use this as SMTP_PASS (NOT your regular password)
+Use your Gmail address as SMTP_USER
+Alternative Email Providers:
+Outlook: smtp-mail.outlook.com
+Yahoo: smtp.mail.yahoo.com
+Custom SMTP: Use your provider's settings
