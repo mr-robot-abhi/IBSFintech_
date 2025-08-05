@@ -442,7 +442,7 @@ export default function ModernMegaMenu() {
             Contact Us
           </Link>
           <Link
-            href="/demo"
+            href="/request-demo"
             className="ml-4 px-4 py-1.5 text-sm bg-[#FF073A] hover:bg-[#e60634] text-white font-semibold rounded-lg transition-all duration-300 flex items-center justify-center transform hover:-translate-y-0.5 hover:shadow-[0_4px_12px_rgba(255,7,58,0.3)] active:translate-y-0"
           >
             Request a demo

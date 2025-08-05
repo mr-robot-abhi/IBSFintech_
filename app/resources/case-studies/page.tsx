@@ -5,82 +5,124 @@ export default function CaseStudiesPage() {
   const caseStudies = [
     {
       id: 1,
-      title: 'Transforming Treasury Operations for a Global Bank',
-      excerpt: 'How we helped a leading global bank streamline their treasury operations and reduce costs by 30%.',
+      title: 'Transforming Treasury for a Top 5 Indian Bank',
+      excerpt: 'How we helped a leading Indian public sector bank modernize their treasury operations, achieving 30% cost reduction and 50% faster transaction processing.',
       industry: 'Banking & Financial Services',
       results: [
-        '30% reduction in operational costs',
-        '50% faster transaction processing',
-        'Real-time visibility into cash positions'
+        '30% reduction in operational costs through process automation',
+        '50% faster transaction processing with real-time settlement',
+        'Unified view of ₹2.5T+ in assets across 8,000+ branches',
+        '99.99% system uptime with robust disaster recovery',
+        'Seamless integration with 25+ core banking systems'
       ],
+      challenge: 'The bank faced challenges with manual processes, fragmented systems, and lack of real-time visibility across its extensive branch network, leading to operational inefficiencies and compliance risks.',
+      solution: 'Implemented our comprehensive Treasury Management System (TMS) with AI-powered cash forecasting, automated reconciliation, and real-time risk analytics.',
       image: '/images/case-studies/banking.jpg',
       logo: '/images/logos/bank-logo.svg',
-      featured: true
+      featured: true,
+      client: 'Confidential (Top 5 Indian Public Sector Bank)',
+      duration: '6 months',
+      team: '12-member dedicated team'
     },
     {
       id: 2,
-      title: 'Risk Management Solution for Manufacturing Giant',
-      excerpt: 'Implementing a comprehensive risk management framework for a Fortune 500 manufacturer.',
+      title: 'Risk Management for a Global Auto Manufacturer',
+      excerpt: 'Deployed an enterprise-wide risk management solution for a Fortune 500 manufacturer with operations in 40+ countries.',
       industry: 'Manufacturing',
       results: [
-        '40% improvement in risk assessment',
-        'Centralized risk monitoring',
-        'Automated compliance reporting'
+        '40% improvement in risk assessment accuracy',
+        'Unified risk monitoring across 200+ legal entities',
+        'Automated 85% of compliance reporting',
+        'Reduced risk exposure by $150M annually',
+        'Real-time FX and commodity risk dashboards'
       ],
+      challenge: 'The client struggled with fragmented risk data, manual reporting processes, and lacked a consolidated view of global exposures.',
+      solution: 'Implemented an integrated risk management platform with automated data aggregation, scenario analysis, and real-time monitoring capabilities.',
       image: '/images/case-studies/manufacturing.jpg',
-      logo: '/images/logos/manufacturer-logo.svg'
+      logo: '/images/logos/manufacturer-logo.svg',
+      client: 'Confidential (Global Automotive Leader)',
+      duration: '9 months',
+      team: 'Cross-functional team of 15'
     },
     {
       id: 3,
-      title: 'Digital Transformation in Retail Banking',
-      excerpt: 'Enhancing customer experience through digital treasury solutions for a retail banking leader.',
+      title: 'Digital Treasury for a Leading Private Bank',
+      excerpt: 'Transformed digital treasury operations for a top private bank, enhancing customer experience and operational efficiency.',
       industry: 'Retail Banking',
       results: [
-        '45% increase in digital transactions',
-        'Improved customer satisfaction',
-        'Reduced manual processes'
+        '45% increase in digital transaction volume',
+        '30% improvement in customer satisfaction scores',
+        '60% reduction in manual reconciliation',
+        '24/7 self-service capabilities for clients',
+        'Seamless integration with UPI and IMPS'
       ],
+      challenge: 'The bank needed to modernize its legacy systems to meet growing customer expectations for digital banking services while maintaining security and compliance.',
+      solution: 'Deployed a next-gen digital treasury platform with mobile-first design, AI-driven insights, and open banking APIs.',
       image: '/images/case-studies/retail-banking.jpg',
-      logo: '/images/logos/retail-bank-logo.svg'
+      logo: '/images/logos/retail-bank-logo.svg',
+      client: 'Confidential (Top Indian Private Bank)',
+      duration: '5 months',
+      team: '10-member implementation team'
     },
     {
       id: 4,
-      title: 'Supply Chain Finance for Global Trade',
-      excerpt: 'Revolutionizing trade finance operations for a multinational corporation.',
+      title: 'Supply Chain Finance for a Global Conglomerate',
+      excerpt: 'Revolutionized trade finance for a diversified conglomerate with complex supply chain financing needs.',
       industry: 'International Trade',
       results: [
-        '60% faster invoice processing',
-        'Improved working capital',
-        'Enhanced supplier relationships'
+        '60% faster invoice processing (from 15 to 6 days)',
+        '$200M+ in improved working capital',
+        '85% supplier onboarding rate',
+        'End-to-end digital documentation',
+        'Real-time tracking of $1B+ in annual trade volume'
       ],
+      challenge: 'The client faced challenges with paper-based processes, delayed payments, and limited visibility into their supply chain financing.',
+      solution: 'Implemented a blockchain-based supply chain finance platform with smart contracts and automated workflows.',
       image: '/images/case-studies/trade-finance.jpg',
-      logo: '/images/logos/trade-logo.svg'
+      logo: '/images/logos/trade-logo.svg',
+      client: 'Confidential (Diversified Indian Conglomerate)',
+      duration: '7 months',
+      team: '8-member core team'
     },
     {
       id: 5,
-      title: 'Treasury Automation for Healthcare',
-      excerpt: 'Automating treasury operations for a leading healthcare provider network.',
+      title: 'Treasury Automation for a Healthcare Network',
+      excerpt: 'Automated treasury operations for a leading healthcare provider with 50+ hospitals across India.',
       industry: 'Healthcare',
       results: [
         '70% reduction in manual work',
-        'Improved cash visibility',
-        'Enhanced compliance'
+        'Real-time cash visibility across all locations',
+        '100% compliance with healthcare financial regulations',
+        'Automated vendor payments and payroll processing',
+        'Integrated insurance claim processing'
       ],
+      challenge: 'The healthcare provider needed to streamline its financial operations while ensuring compliance with strict healthcare regulations.',
+      solution: 'Deployed a customized treasury management solution with automated workflows and regulatory compliance features.',
       image: '/images/case-studies/healthcare.jpg',
-      logo: '/images/logos/healthcare-logo.svg'
+      logo: '/images/logos/healthcare-logo.svg',
+      client: 'Confidential (Leading Healthcare Provider)',
+      duration: '4 months',
+      team: '6-member implementation team'
     },
     {
       id: 6,
-      title: 'FX Risk Management for Tech Startups',
-      excerpt: 'Helping high-growth tech companies manage currency risk in global markets.',
+      title: 'FX Risk Management for a Tech Unicorn',
+      excerpt: 'Helped a high-growth SaaS company manage currency risk across 30+ countries.',
       industry: 'Technology',
       results: [
         '35% reduction in FX exposure',
-        'Automated hedging strategies',
-        'Real-time risk monitoring'
+        'Automated 90% of hedging operations',
+        'Real-time risk monitoring across 15 currencies',
+        'Integrated with existing ERP and accounting systems',
+        'Monthly savings of $50K+ in currency losses'
       ],
+      challenge: 'The company was experiencing significant currency fluctuations impacting their international revenue and needed a robust FX risk management solution.',
+      solution: 'Implemented an AI-powered FX risk management system with automated hedging strategies and real-time exposure tracking.',
       image: '/images/case-studies/tech.jpg',
-      logo: '/images/logos/tech-logo.svg'
+      logo: '/images/logos/tech-logo.svg',
+      client: 'Confidential (SaaS Unicorn)',
+      duration: '3 months',
+      team: '5-member specialist team'
     }
   ];
 

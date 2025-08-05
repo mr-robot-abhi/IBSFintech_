@@ -5,62 +5,80 @@ export default function WhitepapersPage() {
   const whitepapers = [
     {
       id: 1,
-      title: 'The Future of Treasury Management in a Digital World',
-      description: 'Exploring emerging trends and technologies transforming treasury management practices globally.',
+      title: 'AI-Powered Treasury: The Next Frontier in Financial Management',
+      description: 'An in-depth analysis of how artificial intelligence is reshaping treasury operations, from predictive cash flow analytics to intelligent fraud detection and automated decision-making.',
       date: 'July 15, 2025',
       category: 'Treasury',
-      fileSize: '2.4 MB',
-      pages: 12,
-      featured: true
+      fileSize: '3.2 MB',
+      pages: 28,
+      featured: true,
+      author: 'Dr. Ananya Sharma',
+      authorTitle: 'Chief Innovation Officer',
+      preview: 'This whitepaper explores 12 key AI applications in treasury management, with case studies from leading financial institutions that have achieved 30-40% improvement in operational efficiency.'
     },
     {
       id: 2,
-      title: 'Risk Management Strategies for Modern Enterprises',
-      description: 'Comprehensive guide to implementing effective risk management frameworks in corporate treasury.',
+      title: 'Integrated Risk Management in the Age of Uncertainty',
+      description: 'A comprehensive framework for managing financial risks in an increasingly volatile global market, covering FX, interest rate, commodity, and operational risks.',
       date: 'June 28, 2025',
       category: 'Risk Management',
-      fileSize: '3.1 MB',
-      pages: 18
+      fileSize: '3.8 MB',
+      pages: 32,
+      author: 'Rajiv Malhotra',
+      authorTitle: 'Head of Risk Solutions',
+      preview: 'Learn how leading corporations are using advanced analytics and scenario planning to mitigate risks and capitalize on market opportunities.'
     },
     {
       id: 3,
-      title: 'AI and Machine Learning in Financial Operations',
-      description: 'How artificial intelligence is revolutionizing financial operations and decision-making.',
+      title: 'Blockchain Revolution in Trade Finance',
+      description: 'How distributed ledger technology is transforming trade finance operations, reducing processing times by 80% and eliminating paper-based inefficiencies.',
       date: 'May 12, 2025',
-      category: 'Technology',
-      fileSize: '2.7 MB',
-      pages: 15
+      category: 'Blockchain',
+      fileSize: '2.9 MB',
+      pages: 24,
+      author: 'Priya Kapoor',
+      authorTitle: 'Blockchain Strategist',
+      preview: 'Case studies from 15 global trade finance deployments demonstrating ROI and implementation best practices.'
     },
     {
       id: 4,
-      title: 'Blockchain in Trade Finance: Opportunities and Challenges',
-      description: 'Examining the impact of blockchain technology on global trade finance operations.',
+      title: 'ESG Integration in Corporate Treasury',
+      description: 'A practical guide to incorporating Environmental, Social, and Governance factors into treasury operations and investment decisions.',
       date: 'April 5, 2025',
-      category: 'Blockchain',
-      fileSize: '2.9 MB',
-      pages: 14
+      category: 'ESG',
+      fileSize: '2.7 MB',
+      pages: 22,
+      author: 'Dr. Sanjay Verma',
+      authorTitle: 'ESG & Sustainability Lead',
+      preview: 'Learn how leading companies are aligning their treasury strategies with sustainability goals while maintaining financial performance.'
     },
     {
       id: 5,
-      title: 'Sustainable Finance and ESG Integration',
-      description: 'Strategies for incorporating Environmental, Social, and Governance factors into financial decision-making.',
+      title: 'The Future of Digital Payments',
+      description: 'Exploring the next generation of payment technologies, including real-time payments, CBDCs, and cross-border payment innovations.',
       date: 'March 22, 2025',
-      category: 'ESG',
-      fileSize: '2.1 MB',
-      pages: 10
+      category: 'Payments',
+      fileSize: '3.1 MB',
+      pages: 26,
+      author: 'Meera Krishnan',
+      authorTitle: 'Head of Payments Innovation',
+      preview: 'Analysis of 50+ payment innovations and their impact on corporate treasury operations globally.'
     },
     {
       id: 6,
-      title: 'The Digital Transformation Journey in Treasury',
-      description: 'A practical guide to digital transformation for treasury and finance professionals.',
+      title: 'Treasury 4.0: The Digital Transformation Playbook',
+      description: 'A step-by-step guide to digital transformation in treasury, covering technology selection, change management, and ROI measurement.',
       date: 'February 14, 2025',
       category: 'Digital Transformation',
-      fileSize: '2.5 MB',
-      pages: 16
+      fileSize: '3.5 MB',
+      pages: 34,
+      author: 'Vikram Patel',
+      authorTitle: 'Digital Transformation Expert',
+      preview: 'Comprehensive framework used by Fortune 500 companies to modernize their treasury operations.'
     }
   ];
 
-  const categories = ['All', 'Treasury', 'Risk Management', 'Technology', 'Blockchain', 'ESG', 'Digital Transformation'];
+  const categories = ['All', 'Treasury', 'Risk Management', 'Blockchain', 'ESG', 'Payments', 'Digital Transformation'];
 
   return (
     <div className="min-h-screen pt-20 px-4 sm:px-6 lg:px-8 bg-gray-50">

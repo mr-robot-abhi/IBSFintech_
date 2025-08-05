@@ -1,5 +1,6 @@
 import React from 'react';
-import { Shield, Lock, EyeOff, Server, Key, FileLock } from 'lucide-react';
+import { Shield, Lock, EyeOff, Server, Key, FileLock, Check, ShieldCheck, Cpu, Users, Database, Cloud, AlertOctagon } from 'lucide-react';
+import Image from 'next/image';
 
 export default function SecurityPage() {
   const securityFeatures = [
@@ -36,51 +37,217 @@ export default function SecurityPage() {
   ];
 
   return (
-    <div className="min-h-screen pt-20 px-4 sm:px-6 lg:px-8 bg-gray-50">
-      <div className="max-w-7xl mx-auto py-12">
-        <div className="text-center mb-16">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">Security First</h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Your data's security is our top priority. We implement the highest standards to protect your information.
+    <div className="min-h-screen bg-white">
+      {/* Hero Section */}
+      <div className="relative bg-gray-900">
+        <div className="absolute inset-0">
+          <Image
+            src="/Home Page Banner 4.png"
+            alt="Security"
+            fill
+            className="w-full h-full object-cover opacity-20"
+          />
+        </div>
+        <div className="relative max-w-7xl mx-auto px-4 py-24 sm:px-6 lg:px-8 text-center">
+          <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">
+            Prioritizing Security, Prioritizing You
+          </h1>
+          <p className="mt-6 text-xl text-gray-300 max-w-4xl mx-auto">
+            IBSFINtech is an ISO/IEC 27001:2013 certified company, demonstrating our commitment to maintaining robust security measures aligned with international standards.
           </p>
         </div>
-        
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-          {securityFeatures.map((feature, index) => (
-            <div key={index} className="bg-white p-6 rounded-lg shadow-sm">
-              <div className="flex items-start">
-                <div className="bg-blue-50 p-2 rounded-full mr-4">
-                  {feature.icon}
+      </div>
+
+      {/* Main Content */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        {/* Introduction */}
+        <div className="text-center mb-16">
+          <p className="text-lg text-gray-600 max-w-4xl mx-auto">
+            At IBSFINtech, we prioritize the security of our clients' data through a comprehensive set of measures designed to protect against unauthorized access and data breaches.
+          </p>
+        </div>
+
+        {/* Security Features Grid */}
+        <div className="grid md:grid-cols-2 gap-12 mb-20">
+          {/* Column 1 */}
+          <div className="space-y-12">
+            {/* Compliance and Certification */}
+            <div className="bg-gray-50 p-6 rounded-lg">
+              <div className="flex items-center mb-4">
+                <div className="flex-shrink-0 bg-blue-100 p-2 rounded-full">
+                  <ShieldCheck className="h-6 w-6 text-blue-600" />
                 </div>
-                <div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">{feature.title}</h3>
-                  <p className="text-gray-600">{feature.description}</p>
+                <h2 className="ml-3 text-xl font-semibold text-gray-900">Compliance and Certification</h2>
+              </div>
+              <div className="space-y-4">
+                <div className="flex items-start">
+                  <Check className="h-5 w-5 text-green-500 mt-0.5 mr-2 flex-shrink-0" />
+                  <p className="text-gray-600">
+                    <span className="font-medium">ISO 27001 Certification:</span> IBSFINtech is ISO 27001 certified, reflecting our commitment to maintaining high standards in data privacy and security.
+                  </p>
+                </div>
+                <div className="flex items-start">
+                  <Check className="h-5 w-5 text-green-500 mt-0.5 mr-2 flex-shrink-0" />
+                  <p className="text-gray-600">
+                    <span className="font-medium">Regulatory Compliance:</span> We comply with data protection laws within Indian regulations, ensuring that our practices meet stringent legal requirements.
+                  </p>
                 </div>
               </div>
             </div>
-          ))}
+
+            {/* Data Encryption */}
+            <div className="bg-gray-50 p-6 rounded-lg">
+              <div className="flex items-center mb-4">
+                <div className="flex-shrink-0 bg-blue-100 p-2 rounded-full">
+                  <Lock className="h-6 w-6 text-blue-600" />
+                </div>
+                <h2 className="ml-3 text-xl font-semibold text-gray-900">Data Encryption</h2>
+              </div>
+              <div className="space-y-4">
+                <div className="flex items-start">
+                  <Check className="h-5 w-5 text-green-500 mt-0.5 mr-2 flex-shrink-0" />
+                  <p className="text-gray-600">
+                    <span className="font-medium">Encryption at Rest:</span> Customer data stored in IBSFINtech applications is encrypted, providing an additional layer of security against unauthorized access.
+                  </p>
+                </div>
+                <div className="flex items-start">
+                  <Check className="h-5 w-5 text-green-500 mt-0.5 mr-2 flex-shrink-0" />
+                  <p className="text-gray-600">
+                    <span className="font-medium">Secure Communication:</span> Data in transit is protected using the HTTPS protocol by default, ensuring secure communication channels between clients and our servers.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Secure by Default */}
+            <div className="bg-gray-50 p-6 rounded-lg">
+              <div className="flex items-center mb-4">
+                <div className="flex-shrink-0 bg-blue-100 p-2 rounded-full">
+                  <Shield className="h-6 w-6 text-blue-600" />
+                </div>
+                <h2 className="ml-3 text-xl font-semibold text-gray-900">Secure by Default</h2>
+              </div>
+              <div className="space-y-4">
+                <div className="flex items-start">
+                  <Check className="h-5 w-5 text-green-500 mt-0.5 mr-2 flex-shrink-0" />
+                  <p className="text-gray-600">
+                    <span className="font-medium">Session Management:</span> Our session management includes stringent security policies, such as robust password and user ID policies, to prevent unauthorized access.
+                  </p>
+                </div>
+                <div className="flex items-start">
+                  <Check className="h-5 w-5 text-green-500 mt-0.5 mr-2 flex-shrink-0" />
+                  <p className="text-gray-600">
+                    <span className="font-medium">Password Security:</span> We use encryption for passwords and enforce comprehensive password policies to ensure strong user authentication.
+                  </p>
+                </div>
+                <div className="flex items-start">
+                  <Check className="h-5 w-5 text-green-500 mt-0.5 mr-2 flex-shrink-0" />
+                  <p className="text-gray-600">
+                    <span className="font-medium">Vault Integration:</span> Sensitive information, including certificates and API keys, is securely stored using vault integration, protecting critical data from exposure.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Column 2 */}
+          <div className="space-y-12">
+            {/* Access Controls */}
+            <div className="bg-gray-50 p-6 rounded-lg">
+              <div className="flex items-center mb-4">
+                <div className="flex-shrink-0 bg-blue-100 p-2 rounded-full">
+                  <Users className="h-6 w-6 text-blue-600" />
+                </div>
+                <h2 className="ml-3 text-xl font-semibold text-gray-900">Access Controls</h2>
+              </div>
+              <div className="space-y-4">
+                <div className="flex items-start">
+                  <Check className="h-5 w-5 text-green-500 mt-0.5 mr-2 flex-shrink-0" />
+                  <p className="text-gray-600">
+                    <span className="font-medium">Client User Access:</span> Robust Access Control mechanism is implemented in the application to ensure only the authorized user has the designated rights as required by the client.
+                  </p>
+                </div>
+                <div className="flex items-start">
+                  <Check className="h-5 w-5 text-green-500 mt-0.5 mr-2 flex-shrink-0" />
+                  <p className="text-gray-600">
+                    <span className="font-medium">Support & Maintenance Access:</span> Access for support personnel is granted on an as-needed basis, ensuring they can only access what is necessary to perform their duties.
+                  </p>
+                </div>
+                <div className="flex items-start">
+                  <Check className="h-5 w-5 text-green-500 mt-0.5 mr-2 flex-shrink-0" />
+                  <p className="text-gray-600">
+                    <span className="font-medium">Segregation of Duties:</span> Our policy of restricted access and segregation of duties reduces the risk of unnecessary data exposure and enhances overall security.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Logical Security */}
+            <div className="bg-gray-50 p-6 rounded-lg">
+              <div className="flex items-center mb-4">
+                <div className="flex-shrink-0 bg-blue-100 p-2 rounded-full">
+                  <Cpu className="h-6 w-6 text-blue-600" />
+                </div>
+                <h2 className="ml-3 text-xl font-semibold text-gray-900">Logical Security</h2>
+              </div>
+              <p className="text-gray-600">
+                Regular Vulnerability Assessment and Penetration Testing (VAPT) is conducted every six months or after major releases to identify and mitigate potential security vulnerabilities. Our products are VAPT certified, assuring our clients of robust security measures.
+              </p>
+            </div>
+
+            {/* Physical Security */}
+            <div className="bg-gray-50 p-6 rounded-lg">
+              <div className="flex items-center mb-4">
+                <div className="flex-shrink-0 bg-blue-100 p-2 rounded-full">
+                  <Database className="h-6 w-6 text-blue-600" />
+                </div>
+                <h2 className="ml-3 text-xl font-semibold text-gray-900">Physical Security</h2>
+              </div>
+              <div className="space-y-4">
+                <div className="flex items-start">
+                  <Check className="h-5 w-5 text-green-500 mt-0.5 mr-2 flex-shrink-0" />
+                  <p className="text-gray-600">
+                    <span className="font-medium">Secure Infrastructure:</span> We use Oracle OCI for our servers and environment, providing a highly secure, reliable, and scalable infrastructure.
+                  </p>
+                </div>
+                <div className="flex items-start">
+                  <Check className="h-5 w-5 text-green-500 mt-0.5 mr-2 flex-shrink-0" />
+                  <p className="text-gray-600">
+                    <span className="font-medium">Redundancy and Reliability:</span> Oracle OCI ensures high availability and redundancy, with multiple availability domains and regions.
+                  </p>
+                </div>
+                <div className="flex items-start">
+                  <Check className="h-5 w-5 text-green-500 mt-0.5 mr-2 flex-shrink-0" />
+                  <p className="text-gray-600">
+                    <span className="font-medium">Compliance and Certifications:</span> Oracle OCI complies with various industry standards and regulations, including ISO/IEC 27001, SOC, and GDPR.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div className="bg-white p-8 rounded-lg shadow-sm">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-6">Our Security Certifications</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center">
-            {['ISO 27001', 'SOC 2', 'GDPR', 'PCI DSS'].map((cert, index) => (
-              <div key={index} className="bg-gray-50 p-6 rounded-lg text-center h-full flex items-center justify-center">
-                <span className="font-medium text-gray-700">{cert}</span>
-              </div>
-            ))}
-          </div>
-          <div className="mt-8 pt-8 border-t border-gray-200">
-            <h3 className="text-lg font-medium text-gray-900 mb-4">Have security questions?</h3>
+        {/* Call to Action */}
+        <div className="bg-blue-50 rounded-xl p-8 text-center">
+          <div className="max-w-3xl mx-auto">
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">Your Security is Our Priority</h2>
             <p className="text-gray-600 mb-6">
-              Our security team is available to answer any questions you may have about our security practices.
+              We continually review and update our security measures to address emerging threats. Our dedication to security is a core aspect of our service commitment, providing peace of mind to our clients as they entrust us with their critical business information.
             </p>
-            <button className="text-blue-600 font-medium hover:text-blue-700 flex items-center">
-              Contact Security Team
-              <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </button>
+            <div className="flex flex-col sm:flex-row justify-center gap-4">
+              <a
+                href="/contact"
+                className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+              >
+                Contact Security Team
+              </a>
+              <a
+                href="/resources/whitepapers"
+                className="inline-flex items-center justify-center px-6 py-3 border border-gray-300 shadow-sm text-base font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+              >
+                View Security Whitepapers
+              </a>
+            </div>
           </div>
         </div>
       </div>
