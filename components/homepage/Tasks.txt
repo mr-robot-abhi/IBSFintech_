@@ -49,3 +49,6 @@ Alternative Email Providers:
 Outlook: smtp-mail.outlook.com
 Yahoo: smtp.mail.yahoo.com
 Custom SMTP: Use your provider's settings
+
+
+The hex code of the color in the image is #241F5D.

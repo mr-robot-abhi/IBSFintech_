@@ -1,5 +1,7 @@
 import React from 'react';
-import { Download, Award, BarChart2, Link as LinkIcon, Cpu, Shield, Cloud, Zap, Database, RefreshCw, BarChart, CpuIcon, FileText } from 'lucide-react';
+import { Download, Award, BarChart2, Check, FileText } from 'lucide-react';
+
+const PRIMARY_COLOR = '#241F5D';
 
 export default function FactSheetPage() {
   const factSheets = [
@@ -24,14 +26,14 @@ export default function FactSheetPage() {
       date: 'October 2023',
       size: '2.5 MB',
       type: 'PDF',
-      icon: Cpu,
+      icon: FileText,
       preview: 'Comprehensive guide to IBSFINtech\'s seamless connectivity across treasury ecosystems.'
     }
   ];
 
   return (
-    <div className="min-h-screen pt-20 px-4 sm:px-6 lg:px-8 bg-gray-50">
-      <div className="max-w-7xl mx-auto py-12">
+    <div className="min-h-screen bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         {/* Hero Section */}
         <div className="text-center mb-16">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">IBSFINtech Fact Sheets</h1>
@@ -41,49 +43,98 @@ export default function FactSheetPage() {
         </div>
 
         {/* IDC MarketScape Section */}
-        <div className="bg-white rounded-xl shadow-sm overflow-hidden mb-12">
+        <div className="bg-white rounded-xl shadow-sm overflow-hidden mb-16">
           <div className="p-8">
             <div className="flex items-center mb-6">
-              <Award className="h-8 w-8 text-blue-600 mr-3" />
-              <h2 className="text-2xl font-semibold text-gray-900">IDC MarketScape Recognition 2023</h2>
+              <Award className="h-8 w-8 mr-3" style={{ color: PRIMARY_COLOR }} />
+              <h2 className="text-3xl font-bold" style={{ color: PRIMARY_COLOR }}>IBSFINtech: A Major Player in IDC MarketScape's 2023 Vendor Assessment</h2>
             </div>
             
             <div className="grid md:grid-cols-3 gap-8">
               <div className="md:col-span-2">
+                <h3 className="text-xl font-semibold text-gray-900 mb-4">Overview</h3>
                 <p className="text-gray-700 mb-6">
-                  IBSFINtech has been recognized by IDC MarketScape as a <span className="font-semibold">Major Player</span> for global SaaS and Cloud-Enabled Enterprise Treasury and Risk Management Applications in their 2023 Vendor Assessment. 
+                  IBSFINtech, a renowned SaaS and cloud-enabled enterprise treasury and risk management application provider, has been recognized by IDC MarketScape as a Major Player for global SaaS and Cloud-Enabled Enterprise Treasury and Risk Management Applications 2023 Vendor Assessment. This recognition underscores IBSFINtech's commitment to delivering innovative solutions that empower organizations to efficiently manage liquidity, risks and financial operations.
                 </p>
                 
-                <h3 className="text-lg font-medium text-gray-900 mb-3">Key Insights</h3>
+                <h3 className="text-xl font-semibold text-gray-900 mb-4">Key Insights from the Survey</h3>
                 <ul className="space-y-3 mb-6">
-                  <li className="flex">
-                    <span className="text-blue-500 mr-2">•</span>
-                    Comprehensive solutions for cash flow, liquidity, and risk management
+                  <li className="flex items-start">
+                    <Check className="h-5 w-5 mt-0.5 mr-2 flex-shrink-0" style={{ color: PRIMARY_COLOR }} />
+                    <span><span className="font-semibold">Recognition by IDC MarketScape:</span> IBSFINtech has been acknowledged as a Major Player in the 2023 assessment, highlighting its strong capabilities and robust treasury and risk management offerings.</span>
                   </li>
-                  <li className="flex">
-                    <span className="text-blue-500 mr-2">•</span>
-                    Focus on business resiliency and continuity
+                  <li className="flex items-start">
+                    <Check className="h-5 w-5 mt-0.5 mr-2 flex-shrink-0" style={{ color: PRIMARY_COLOR }} />
+                    <span><span className="font-semibold">Comprehensive Solutions:</span> IBSFINtech's SaaS and cloud-enabled applications provide comprehensive solutions for managing cash flow, liquidity, risk and financial operations, catering to the needs of modern enterprises.</span>
                   </li>
-                  <li className="flex">
-                    <span className="text-blue-500 mr-2">•</span>
-                    Cutting-edge technology with deep industry expertise
+                  <li className="flex items-start">
+                    <Check className="h-5 w-5 mt-0.5 mr-2 flex-shrink-0" style={{ color: PRIMARY_COLOR }} />
+                    <span><span className="font-semibold">Focus on Business Resiliency:</span> In a time of global economic uncertainty, IBSFINtech's solutions help CFOs prioritize business resiliency and continuity by optimizing liquidity management and ensuring efficient working capital management.</span>
+                  </li>
+                  <li className="flex items-start">
+                    <Check className="h-5 w-5 mt-0.5 mr-2 flex-shrink-0" style={{ color: PRIMARY_COLOR }} />
+                    <span><span className="font-semibold">Innovation and Expertise:</span> Led by a team of seasoned professionals, IBSFINtech leverages cutting-edge technology and deep industry expertise to deliver scalable and secure solutions that meet businesses' evolving needs.</span>
                   </li>
                 </ul>
                 
-                <button className="inline-flex items-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                <h3 className="text-xl font-semibold text-gray-900 mb-4">In the Words of Industry Experts</h3>
+                <p className="text-gray-700 mb-6 italic">
+                  "As reflected in Kevin Permenter's statement, the growing importance of robust treasury and risk management solutions makes IBSFINtech an essential partner for businesses seeking to handle the complexities of today's financial world. The solution is designed to optimize liquidity management, enhance working capital management and ensure business resiliency and continuity, helping businesses thrive in uncertain economic times."
+                </p>
+                
+                <div className="bg-gray-50 p-6 rounded-lg mb-6">
+                  <h4 className="font-medium text-gray-900 mb-3">Learn More</h4>
+                  <p className="text-gray-700 mb-4">
+                    Visit IBSFINtech website or contact our team of experts to learn how IBSFINtech can transform your treasury and risk management operations. Join the ranks of leading enterprises that trust IBSFINtech for their financial management needs.
+                  </p>
+                  <p className="text-sm text-gray-600">
+                    IDC MarketScape: Worldwide SaaS and Cloud-Enabled Enterprise Treasury and Risk Management Applications 2023 Vendor Assessment
+                  </p>
+                </div>
+                
+                <a
+                  href="#"
+                  className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white"
+                  style={{ backgroundColor: '#FF2E2E' }}
+                >
                   <Download className="-ml-1 mr-2 h-5 w-5" />
                   Download Full Report
-                </button>
+                </a>
               </div>
               
-              <div className="bg-blue-50 p-6 rounded-lg">
-                <h4 className="font-medium text-gray-900 mb-3">Why This Matters</h4>
-                <p className="text-sm text-gray-600 mb-4">
-                  In today's volatile economic climate, having robust treasury and risk management solutions is not just an option but a necessity for business continuity and growth.
-                </p>
-                <div className="text-sm text-gray-500">
-                  <p className="font-medium">Kevin Permenter</p>
-                  <p>Research Director, IDC Financial Insights</p>
+              <div className="bg-gray-50 p-6 rounded-lg h-fit">
+                <h4 className="font-medium text-gray-900 mb-3">Key Highlights</h4>
+                <ul className="space-y-3">
+                  <li className="flex items-start">
+                    <span className="font-bold mr-2" style={{ color: PRIMARY_COLOR }}>•</span>
+                    <span>Recognized as Major Player by IDC MarketScape 2023</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="font-bold mr-2" style={{ color: PRIMARY_COLOR }}>•</span>
+                    <span>Comprehensive treasury and risk management solutions</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="font-bold mr-2" style={{ color: PRIMARY_COLOR }}>•</span>
+                    <span>Focus on business resiliency and continuity</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="font-bold mr-2" style={{ color: PRIMARY_COLOR }}>•</span>
+                    <span>Cutting-edge technology with deep industry expertise</span>
+                  </li>
+                </ul>
+                
+                <div className="mt-6 pt-6 border-t border-gray-200">
+                  <h4 className="font-medium text-gray-900 mb-3">Contact Our Experts</h4>
+                  <p className="text-sm text-gray-600 mb-4">
+                    Learn how IBSFINtech can transform your treasury operations with our award-winning solutions.
+                  </p>
+                  <a
+                    href="/contact"
+                    className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white"
+                    style={{ backgroundColor: PRIMARY_COLOR }}
+                  >
+                    Contact Us
+                  </a>
                 </div>
               </div>
             </div>
@@ -91,160 +142,117 @@ export default function FactSheetPage() {
         </div>
 
         {/* LSEG Survey Section */}
-        <div className="bg-white rounded-xl shadow-sm overflow-hidden mb-12">
+        <div className="bg-white rounded-xl shadow-sm overflow-hidden mb-16">
           <div className="p-8">
             <div className="flex items-center mb-6">
-              <BarChart2 className="h-8 w-8 text-blue-600 mr-3" />
-              <h2 className="text-2xl font-semibold text-gray-900">LSEG & IBSFINtech TMS Survey 2023</h2>
+              <BarChart2 className="h-8 w-8 mr-3" style={{ color: PRIMARY_COLOR }} />
+              <h2 className="text-3xl font-bold" style={{ color: PRIMARY_COLOR }}>LSEG & IBSFINtech TMS Survey 2023</h2>
             </div>
             
             <div className="grid md:grid-cols-3 gap-8">
               <div className="md:col-span-2">
                 <p className="text-gray-700 mb-6">
-                  A comprehensive global survey of corporate treasurers exploring evolving trends and challenges in the treasury landscape, conducted in collaboration with the London Stock Exchange Group.
+                  In collaboration with the London Stock Exchange Group (LSEG), IBSFINtech conducted a comprehensive global survey of corporate treasurers to explore the evolving trends and challenges in the treasury landscape. The findings from this survey offer valuable insights into how Treasury Management Systems (TMS) are being leveraged to address these challenges and optimize financial operations.
                 </p>
                 
-                <h3 className="text-lg font-medium text-gray-900 mb-3">Key Findings</h3>
+                <h3 className="text-xl font-semibold text-gray-900 mb-4">Key Insights from the Survey</h3>
+                <ul className="space-y-3 mb-6">
+                  <li className="flex items-start">
+                    <Check className="h-5 w-5 mt-0.5 mr-2 flex-shrink-0" style={{ color: PRIMARY_COLOR }} />
+                    <span><span className="font-semibold">Emerging Trends:</span> The survey underscores key trends, including the rising adoption of digital technologies, the transition to cloud-based solutions and the growing focus on real-time data analytics in treasury operations.</span>
+                  </li>
+                  <li className="flex items-start">
+                    <Check className="h-5 w-5 mt-0.5 mr-2 flex-shrink-0" style={{ color: PRIMARY_COLOR }} />
+                    <span><span className="font-semibold">Challenges Faced by Treasurers:</span> Corporate treasurers identified several challenges, including managing liquidity, mitigating risks, ensuring compliance with regulatory requirements and enhancing the efficiency of financial processes.</span>
+                  </li>
+                  <li className="flex items-start">
+                    <Check className="h-5 w-5 mt-0.5 mr-2 flex-shrink-0" style={{ color: PRIMARY_COLOR }} />
+                    <span><span className="font-semibold">Role of TMS in Addressing Challenges:</span> The report showcases how advanced TMS solutions, like those provided by IBSFINtech, are crucial in helping organizations overcome these challenges. Key benefits include improved cash flow forecasting, enhanced risk management capabilities, streamlined operations and better decision-making.</span>
+                  </li>
+                </ul>
+                
+                <h3 className="text-xl font-semibold text-gray-900 mb-4">Highlights from the Report</h3>
                 <div className="grid md:grid-cols-2 gap-6 mb-6">
                   <div>
-                    <h4 className="font-medium text-gray-900 mb-2">Emerging Trends</h4>
-                    <ul className="space-y-2 text-sm text-gray-600">
-                      <li className="flex items-start">
-                        <Cloud className="h-4 w-4 text-blue-500 mr-2 mt-0.5 flex-shrink-0" />
-                        <span>Shift to cloud-based solutions</span>
-                      </li>
-                      <li className="flex items-start">
-                        <Zap className="h-4 w-4 text-blue-500 mr-2 mt-0.5 flex-shrink-0" />
-                        <span>Rise of real-time data analytics</span>
-                      </li>
-                      <li className="flex items-start">
-                        <RefreshCw className="h-4 w-4 text-blue-500 mr-2 mt-0.5 flex-shrink-0" />
-                        <span>Automation of treasury processes</span>
-                      </li>
-                    </ul>
-                  </div>
-                  
-                  <div>
-                    <h4 className="font-medium text-gray-900 mb-2">Key Challenges</h4>
-                    <ul className="space-y-2 text-sm text-gray-600">
-                      <li className="flex items-start">
-                        <Shield className="h-4 w-4 text-blue-500 mr-2 mt-0.5 flex-shrink-0" />
-                        <span>Data security concerns</span>
-                      </li>
-                      <li className="flex items-start">
-                        <FileText className="h-4 w-4 text-blue-500 mr-2 mt-0.5 flex-shrink-0" />
-                        <span>Regulatory compliance</span>
-                      </li>
-                      <li className="flex items-start">
-                        <BarChart className="h-4 w-4 text-blue-500 mr-2 mt-0.5 flex-shrink-0" />
-                        <span>Liquidity management</span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-                
-                <button className="inline-flex items-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                  <Download className="-ml-1 mr-2 h-5 w-5" />
-                  Download Survey Report
-                </button>
-              </div>
-              
-              <div className="bg-gray-50 p-6 rounded-lg">
-                <h4 className="font-medium text-gray-900 mb-3">Survey Highlights</h4>
-                <ul className="space-y-3 text-sm">
-                  <li className="flex items-start">
-                    <span className="text-blue-500 font-bold mr-2">87%</span>
-                    <span>of treasurers prioritize cloud-based TMS solutions</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-blue-500 font-bold mr-2">92%</span>
-                    <span>consider real-time analytics crucial for decision making</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-blue-500 font-bold mr-2">78%</span>
-                    <span>face challenges with system integration</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Integration Capabilities Section */}
-        <div className="bg-white rounded-xl shadow-sm overflow-hidden mb-12">
-          <div className="p-8">
-            <div className="flex items-center mb-6">
-              <Cpu className="h-8 w-8 text-blue-600 mr-3" />
-              <h2 className="text-2xl font-semibold text-gray-900">Integration Capabilities</h2>
-            </div>
-            
-            <div className="grid md:grid-cols-2 gap-8">
-              <div>
-                <h3 className="text-lg font-medium text-gray-900 mb-4">Seamless Connectivity Across Your Treasury Ecosystem</h3>
-                <p className="text-gray-700 mb-6">
-                  Automate, integrate, and optimize your treasury operations with our comprehensive connectivity solutions. Ensure effortless data flow between IBSFINtech's TMS and all third-party systems.
-                </p>
-                
-                <div className="space-y-4">
-                  <div>
                     <h4 className="font-medium text-gray-900 mb-2 flex items-center">
-                      <Database className="h-5 w-5 text-blue-500 mr-2" />
-                      ERP Integrations
+                      <FileText className="h-5 w-5 mr-2" style={{ color: PRIMARY_COLOR }} />
+                      Adoption of Cloud-Based TMS
                     </h4>
-                    <p className="text-sm text-gray-600">
-                      SAP, Oracle Fusion, Oracle EBS, Oracle NetSuite, Microsoft Dynamics, Tally, Navision, and custom-built ERPs
+                    <p className="text-gray-600 text-sm">
+                      A significant trend observed in the survey is the shift towards cloud-based TMS solutions. These systems offer flexibility, scalability, and accessibility, enabling organizations to respond swiftly to market changes and operational needs.
                     </p>
                   </div>
                   
                   <div>
                     <h4 className="font-medium text-gray-900 mb-2 flex items-center">
-                      <LinkIcon className="h-5 w-5 text-blue-500 mr-2" />
-                      Banking & Payments
+                      <FileText className="h-5 w-5 mr-2" style={{ color: PRIMARY_COLOR }} />
+                      Integration with Other Financial Systems
                     </h4>
-                    <p className="text-sm text-gray-600">
-                      API integrations with major Indian & global banks for payments, balances, statements, and trade finance
+                    <p className="text-gray-600 text-sm">
+                      The integration of TMS with other financial systems and platforms is critical for achieving a unified and cohesive view of financial data, thereby improving accuracy and reducing the risk of errors.
+                    </p>
+                  </div>
+                  
+                  <div className="md:col-span-2">
+                    <h4 className="font-medium text-gray-900 mb-2 flex items-center">
+                      <FileText className="h-5 w-5 mr-2" style={{ color: PRIMARY_COLOR }} />
+                      Focus on Data Security and Compliance
+                    </h4>
+                    <p className="text-gray-600">
+                      With increasing concerns over data security, treasurers are prioritizing the implementation of robust security measures within their TMS. Additionally, compliance with global and local regulatory standards remains a top priority.
                     </p>
                   </div>
                 </div>
+                
+                <div className="bg-gray-50 p-6 rounded-lg mb-6">
+                  <h4 className="font-medium text-gray-900 mb-3">Download the Full Report</h4>
+                  <p className="text-gray-700 mb-4">
+                    To gain a deeper understanding of the findings and learn how TMS solutions are transforming the treasury function, download the full report. The report provides detailed analysis, expert commentary, and actionable recommendations for enhancing your treasury operations.
+                  </p>
+                  <a
+                    href="#"
+                    className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white"
+                    style={{ backgroundColor: '#FF2E2E' }}
+                  >
+                    <Download className="-ml-1 mr-2 h-5 w-5" />
+                    Download Survey Report
+                  </a>
+                </div>
               </div>
               
-              <div className="bg-blue-50 p-6 rounded-lg">
-                <h4 className="font-medium text-gray-900 mb-4">Technical Capabilities</h4>
-                <ul className="space-y-3 text-sm">
-                  <li className="flex items-start">
-                    <Zap className="h-4 w-4 text-blue-500 mr-2 mt-0.5 flex-shrink-0" />
-                    <span>Real-time API connectivity</span>
+              <div className="bg-gray-50 p-6 rounded-lg h-fit">
+                <h4 className="font-medium text-gray-900 mb-3">Key Statistics</h4>
+                <ul className="space-y-4">
+                  <li className="p-4 bg-white rounded-lg shadow-sm">
+                    <div className="text-2xl font-bold mb-1" style={{ color: PRIMARY_COLOR }}>87%</div>
+                    <p className="text-sm text-gray-600">of treasurers prioritize cloud-based TMS solutions for better flexibility and scalability</p>
                   </li>
-                  <li className="flex items-start">
-                    <Shield className="h-4 w-4 text-blue-500 mr-2 mt-0.5 flex-shrink-0" />
-                    <span>End-to-end security with authentication & encryption</span>
+                  <li className="p-4 bg-white rounded-lg shadow-sm">
+                    <div className="text-2xl font-bold mb-1" style={{ color: PRIMARY_COLOR }}>92%</div>
+                    <p className="text-sm text-gray-600">consider real-time analytics crucial for strategic decision making in treasury operations</p>
                   </li>
-                  <li className="flex items-start">
-                    <RefreshCw className="h-4 w-4 text-blue-500 mr-2 mt-0.5 flex-shrink-0" />
-                    <span>High-throughput with guaranteed delivery</span>
-                  </li>
-                  <li className="flex items-start">
-                    <BarChart2 className="h-4 w-4 text-blue-500 mr-2 mt-0.5 flex-shrink-0" />
-                    <span>Seamless BI tool integration (Tableau, Power BI)</span>
+                  <li className="p-4 bg-white rounded-lg shadow-sm">
+                    <div className="text-2xl font-bold mb-1" style={{ color: PRIMARY_COLOR }}>78%</div>
+                    <p className="text-sm text-gray-600">report challenges with system integration when implementing new TMS solutions</p>
                   </li>
                 </ul>
                 
-                <button className="mt-6 w-full inline-flex justify-center items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-blue-700 bg-blue-100 hover:bg-blue-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                  <Download className="-ml-1 mr-2 h-4 w-4" />
-                  Download Integration Guide
-                </button>
+                <div className="mt-6 pt-6 border-t border-gray-200">
+                  <h4 className="font-medium text-gray-900 mb-3">Request More Information</h4>
+                  <p className="text-sm text-gray-600 mb-4">
+                    Interested in learning more about how our TMS solutions can address your treasury challenges?
+                  </p>
+                  <a
+                    href="/contact"
+                    className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white"
+                    style={{ backgroundColor: PRIMARY_COLOR }}
+                  >
+                    Contact Our Experts
+                  </a>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-
-        {/* All Documents Section */}
-        <div className="bg-white rounded-xl shadow-sm overflow-hidden">
-          <div className="p-6 border-b border-gray-200">
-            <h2 className="text-xl font-semibold text-gray-900">All Available Documents</h2>
-            <p className="mt-1 text-sm text-gray-500">Download our comprehensive resources in PDF format</p>
-          </div>
-          
           <ul className="divide-y divide-gray-200">
             {factSheets.map((doc, index) => {
               const Icon = doc.icon;

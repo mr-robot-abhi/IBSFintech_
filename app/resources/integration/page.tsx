@@ -1,72 +1,127 @@
 import React from 'react';
-import { Cpu, Database, Zap, Link2, Server, Cloud } from 'lucide-react';
+import { Check, Link2, Cpu, Database, Server, Cloud, Zap, BarChart } from 'lucide-react';
+
+const PRIMARY_COLOR = '#241F5D';
+
+const integrationFeatures = [
+  {
+    title: 'Pre-built ERP Integrations',
+    description: 'Connect seamlessly with SAP, Oracle Fusion, Oracle EBS, Oracle NetSuite, Microsoft Dynamics, Tally, and Navision.',
+    icon: <Database className="h-6 w-6" style={{ color: PRIMARY_COLOR }} />
+  },
+  {
+    title: 'Banking & Payment Connectivity',
+    description: 'API integrations with major Indian & global banks for payments, balances, statements, trade finance, and FX confirmations.',
+    icon: <Server className="h-6 w-6" style={{ color: PRIMARY_COLOR }} />
+  },
+  {
+    title: 'Dealing & Investment Platforms',
+    description: 'Integration with FX ALL, FX GO, MFUs, AMFI, CAMS, CBRICS, BSE Star MF, and major exchanges.',
+    icon: <Link2 className="h-6 w-6" style={{ color: PRIMARY_COLOR }} />
+  },
+  {
+    title: 'Advanced Reporting & Market Data',
+    description: 'Connectivity with BI tools like Tableau, Power BI, and market data providers like Refinitiv (LSEG) and Bloomberg.',
+    icon: <BarChart className="h-6 w-6" style={{ color: PRIMARY_COLOR }} />
+  },
+  {
+    title: 'Technical Capabilities',
+    description: 'Real-time API connectivity, batch processing, end-to-end security, and high-throughput with guaranteed delivery.',
+    icon: <Zap className="h-6 w-6" style={{ color: PRIMARY_COLOR }} />
+  }
+];
+
+const technicalCapabilities = [
+  'Real-time API connectivity for instant data exchange',
+  'Batch processing for structured file-based integrations',
+  'End-to-end security with authentication and encryption',
+  'High-throughput & guaranteed delivery with robust audit trails'
+];
 
 export default function IntegrationPage() {
-  const integrationTypes = [
-    {
-      icon: <Database className="h-8 w-8 text-blue-600" />,
-      title: 'ERP Systems',
-      description: 'Seamless integration with leading ERP solutions for unified financial management.'
-    },
-    {
-      icon: <Server className="h-8 w-8 text-green-600" />,
-      title: 'Banking APIs',
-      description: 'Direct connectivity with multiple banks for real-time transaction processing.'
-    },
-    {
-      icon: <Link2 className="h-8 w-8 text-purple-600" />,
-      title: 'Payment Gateways',
-      description: 'Secure and efficient payment processing with major gateways.'
-    },
-    {
-      icon: <Cpu className="h-8 w-8 text-red-600" />,
-      title: 'AI & Analytics',
-      description: 'Advanced analytics and AI tools for data-driven decision making.'
-    },
-    {
-      icon: <Zap className="h-8 w-8 text-yellow-600" />,
-      title: 'Trading Platforms',
-      description: 'Integration with trading platforms for comprehensive risk management.'
-    },
-    {
-      icon: <Cloud className="h-8 w-8 text-indigo-600" />,
-      title: 'Cloud Services',
-      description: 'Cloud-based integration for scalability and flexibility.'
-    }
-  ];
-
   return (
-    <div className="min-h-screen pt-20 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto py-12">
-        <h1 className="text-4xl font-bold text-gray-900 mb-4">Integration Capabilities</h1>
-        <p className="text-xl text-gray-600 mb-12">
-          Our platform is designed to work seamlessly with your existing systems and technologies.
-        </p>
-        
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {integrationTypes.map((item, index) => (
-            <div key={index} className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
-              <div className="mb-4">
-                {item.icon}
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">{item.title}</h3>
-              <p className="text-gray-600">{item.description}</p>
+    <div className="min-h-screen bg-white">
+      {/* Hero Banner */}
+      <div className="relative h-96 w-full overflow-hidden">
+        <div 
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage: 'url(/Currencies-Banner.png)'
+          }}
+        >
+          <div className="absolute inset-0 bg-black/40 flex items-center">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center w-full">
+              <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">IBSFINtech's Integration Capabilities</h1>
+              <p className="text-xl text-gray-200 max-w-4xl mx-auto">
+                Seamless Connectivity Across Your Treasury Ecosystem
+              </p>
+              <p className="text-xl font-semibold text-gray-200 mt-2">Automate, Integrate & Optimize</p>
             </div>
-          ))}
+          </div>
+        </div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        {/* Introduction */}
+        <div className="mb-16 text-center">
+          <p className="text-lg text-gray-700 max-w-5xl mx-auto">
+            Ensure effortless data flow between IBSFINtech's Treasury Management System (TMS) and all third-party systems—ERPs, banks, dealing platforms, investment gateways, and market data providers. Reduce operational costs, establish a single source of truth, and gain real-time visibility into your treasury data.
+          </p>
         </div>
 
-        <div className="mt-16 bg-gray-50 p-8 rounded-lg">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Need Custom Integration?</h2>
-          <p className="text-gray-700 mb-6">
-            Our team can develop custom integrations to meet your specific requirements.
-          </p>
-          <div className="flex flex-wrap gap-4">
-            <button className="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition-colors">
-              Contact Sales
-            </button>
-            <button className="border border-gray-300 text-gray-700 px-6 py-2 rounded-md hover:bg-gray-50 transition-colors">
-              View API Documentation
-            </button>
+        {/* 360° Connectivity */}
+        <div className="mb-16">
+          <h2 className="text-3xl font-bold text-center mb-8" style={{ color: PRIMARY_COLOR }}>360° Connectivity for a Fully Digitized Treasury</h2>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+            {integrationFeatures.map((item, index) => (
+              <div key={index} className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-all">
+                <div className="w-12 h-12 rounded-full flex items-center justify-center mb-4" style={{ backgroundColor: `${PRIMARY_COLOR}10` }}>
+                  {item.icon}
+                </div>
+                <h3 className="text-xl font-semibold mb-2" style={{ color: PRIMARY_COLOR }}>{item.title}</h3>
+                <p className="text-gray-600">{item.description}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* Technical Capabilities */}
+          <div className="bg-gray-50 p-8 rounded-xl">
+            <h3 className="text-2xl font-semibold mb-6" style={{ color: PRIMARY_COLOR }}>Technical Capabilities</h3>
+            <div className="grid md:grid-cols-2 gap-4">
+              {technicalCapabilities.map((item, index) => (
+                <div key={index} className="flex items-start">
+                  <Check className="h-5 w-5 mt-1 mr-2 flex-shrink-0" style={{ color: PRIMARY_COLOR }} />
+                  <p className="text-gray-700">{item}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* CTA Section */}
+        <div className="bg-white rounded-xl overflow-hidden border border-gray-200">
+          <div className="px-8 py-12 text-center">
+            <h2 className="text-2xl md:text-3xl font-bold mb-4" style={{ color: PRIMARY_COLOR }}>Lower Your Integration Costs with Proven Treasury Connectivity</h2>
+            <p className="text-gray-700 max-w-3xl mx-auto mb-8">
+              Leverage our best-in-class integration capabilities to optimize your treasury ecosystem, minimize manual efforts, and enhance decision-making with real-time insights.
+            </p>
+            <div className="flex flex-wrap justify-center gap-4">
+              <a
+                href="/contact"
+                className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white"
+                style={{ backgroundColor: '#FF2E2E' }}
+              >
+                Request a Demo
+              </a>
+              <a
+                href="/contact/sales"
+                className="inline-flex items-center justify-center px-6 py-3 border border-gray-300 text-base font-medium rounded-md"
+                style={{ color: PRIMARY_COLOR, borderColor: PRIMARY_COLOR, backgroundColor: 'white' }}
+              >
+                Contact Sales
+              </a>
+            </div>
           </div>
         </div>
       </div>
