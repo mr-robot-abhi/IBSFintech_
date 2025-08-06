@@ -20,7 +20,34 @@ import {
   Home,
   Briefcase,
   BookOpen,
-  Building2
+  Building2,
+  Users,
+  Award,
+  Heart,
+  Phone,
+  Mail,
+  MapPin,
+  Calendar,
+  Play,
+  Newspaper,
+  BookOpenCheck,
+  Presentation,
+  Video,
+  HelpCircle,
+  Star,
+  Trophy,
+  Smile,
+  UserCheck,
+  Handshake,
+  GraduationCap,
+  Target,
+  TrendingDown,
+  PiggyBank,
+  CreditCard,
+  Truck,
+  Warehouse,
+  Send,
+  Link as LinkIcon
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -51,9 +78,9 @@ const menu: MenuSection[] = [
     label: "Home",
     href: "/?variant=illustrative1",
     submenus: [
-      { label: "Illystrative Style 1", href: "/?variant=illustrative1" },
-      { label: "Illustrative Style 2", href: "/?variant=illustrative2" },
-      { label: "Illustrative Style 3", href: "/?variant=illustrative3" },
+      { label: "Illystrative Style 1", href: "/?variant=illustrative1", icon: Home },
+      { label: "Illustrative Style 2", href: "/?variant=illustrative2", icon: Home },
+      { label: "Illustrative Style 3", href: "/?variant=illustrative3", icon: Home },
     ],
   },
   {
@@ -63,21 +90,21 @@ const menu: MenuSection[] = [
       {
         title: "Enterprise TMS",
         items: [
-          { label: "Cashflow & Liquidity", href: "/products/enterprise/cashflow-liquidity" },
-          { label: "Currency (FX) Risk", href: "/products/enterprise/currency-fx-risk" },
-          { label: "Investment (Money Market)", href: "/products/enterprise/investment-money-market" },
-          { label: "Trade Finance – Import Export & Banking", href: "/products/enterprise/trade-finance" },
-          { label: "Debt (Borrowings)", href: "/products/enterprise/debt-borrowings" },
-          { label: "Commodity Risk", href: "/products/enterprise/commodity-risk-management" },
-          { label: "Payments", href: "/products/enterprise/payments" },
-          { label: "Supply Chain Finance – VNDZY®", href: "/products/enterprise/supply-chain-finance", className: "flex items-center" },
+          { label: "Cashflow & Liquidity", href: "/products/enterprise/cashflow-liquidity", icon: TrendingUp },
+          { label: "Currency (FX) Risk", href: "/products/enterprise/currency-fx-risk", icon: TrendingDown },
+          { label: "Investment (Money Market)", href: "/products/enterprise/investment-money-market", icon: PiggyBank },
+          { label: "Trade Finance – Import Export & Banking", href: "/products/enterprise/trade-finance", icon: CreditCard },
+          { label: "Debt (Borrowings)", href: "/products/enterprise/debt-borrowings", icon: Scale },
+          { label: "Commodity Risk", href: "/products/enterprise/commodity-risk-management", icon: Warehouse },
+          { label: "Payments", href: "/products/enterprise/payments", icon: Send },
+          { label: "Supply Chain Finance – VNDZY®", href: "/products/enterprise/supply-chain-finance", icon: Truck, className: "flex items-center" },
         ],
       },
       {
         title: "SME – TMS",
         items: [
-          { label: "InnoTreasury", href: "/products/sme/innotreasury" },
-          { label: "InnoInvest", href: "/products/sme/innoinvest" },
+          { label: "InnoTreasury", href: "/products/sme/innotreasury", icon: Briefcase },
+          { label: "InnoInvest", href: "/products/sme/innoinvest", icon: BarChart2 },
         ],
       },
     ],
@@ -108,21 +135,24 @@ const menu: MenuSection[] = [
       {
         title: "Menu Links",
         items: [
-          { label: "Our Clients", href: "/resources/our-clients" },
-          { label: "Why Choose Us", href: "/resources/why-choose-us" },
-          { label: "Integration Capabilities", href: "/resources/integration" },
-          { label: "Security", href: "/resources/security" },
-          { label: "Fact Sheet", href: "/resources/fact-sheet" },
-          { label: "FAQs", href: "/resources/faqs" },
+          { label: "Our Clients", href: "/resources/our-clients", icon: Users },
+          { label: "Success Stories", href: "/resources/success-stories", icon: Star },
+          { label: "Why Choose Us", href: "/resources/why-choose-us", icon: Target },
+          { label: "Integration Capabilities", href: "/resources/integration", icon: LinkIcon },
+          { label: "Security", href: "/resources/security", icon: Shield },
+          { label: "Fact Sheet", href: "/resources/fact-sheet", icon: FileText },
+          { label: "Latest News", href: "/resources/news", icon: Newspaper },
+          { label: "Events", href: "/resources/events", icon: Calendar },
+          { label: "FAQs", href: "/resources/faqs", icon: HelpCircle },
         ],
       },
       {
         title: "Resources",
         items: [
           { label: "Blog", href: "/resources/blog", icon: FileText },
-          { label: "Whitepapers", href: "/resources/whitepapers", icon: FileText },
+          { label: "Whitepapers", href: "/resources/whitepapers", icon: BookOpenCheck },
           { label: "Case Studies", href: "/resources/case-studies", icon: FileText },
-          { label: "Webinars", href: "/resources/webinars", icon: FileText },
+          { label: "Webinars", href: "/resources/webinars", icon: Presentation },
           { 
             label: "Videos", 
             href: "/resources/videos", 
@@ -144,18 +174,19 @@ const menu: MenuSection[] = [
       {
         title: "Company Information",
         items: [
-          { label: "About Us", href: "/company/about-us" },
-          { label: "Leadership Team", href: "/company/leadership" },
-          { label: "US Leadership Team", href: "/company/us-leadership" },
-          { label: "Global Partners", href: "/company/partners" },
-          { label: "Career", href: "/company/careers" },
+          { label: "About Us", href: "/company/about-us", icon: Building2 },
+          { label: "Leadership Team", href: "/company/leadership", icon: Users },
+          { label: "US Leadership Team", href: "/company/us-leadership", icon: UserCheck },
+          { label: "Global Partners", href: "/company/partners", icon: Handshake },
+          { label: "Career", href: "/company/careers", icon: GraduationCap },
+          { label: "Contact Us", href: "/contact", icon: Phone },
         ],
       },
       {
         title: "Culture & Recognition",
         items: [
-          { label: "Awards & Recognitions", href: "/awards" },
-          { label: "Life at IBSFINtech", href: "/company/life" },
+          { label: "Awards & Recognitions", href: "/awards", icon: Trophy },
+          { label: "Life at IBSFINtech", href: "/company/life", icon: Heart },
         ],
       }
     ],
@@ -227,7 +258,7 @@ export default function ModernMegaMenu() {
                   >
                     <div className={`rounded-xl shadow-2xl border border-white/10 bg-white overflow-hidden`}>
                       {item.mega ? (
-                        <div className={`grid grid-cols-3 gap-3 p-3 ${item.label === 'Products' ? 'w-[650px]' : item.label === 'Solutions' ? 'w-[700px]' : 'w-[600px]'}`}>
+                        <div className={`grid grid-cols-3 gap-3 p-3 ${item.label === 'Products' ? 'w-[650px]' : item.label === 'Solutions' ? 'w-[700px]' : item.label === 'Resources' ? 'w-[650px]' : 'w-[600px]'}`}>
                           {item.label === "Solutions" ? (
                             // Special layout for Solutions dropdown with two columns and aligned icons
                             <>
@@ -302,91 +333,91 @@ export default function ModernMegaMenu() {
                                 </div>
                               </div>
                             </>
-                                                     ) : item.label === "Resources" ? (
-                             // Special layout for Resources dropdown with image
-                             <>
-                               <div className="col-span-2">
-                                 <div className="flex gap-6 w-max">
-                                   {item.groups?.map((group) => (
-                                     <div key={group.title} className="min-w-[150px]">
-                                       <h4 className="text-gray-900 font-bold text-sm mb-1 px-2">{group.title}</h4>
-                                       <ul className="space-y-0.5">
-                                         {group.items.map((sub) => {
-                                           const Icon = sub.icon || FileText;
-                                           return (
-                                             <li key={sub.label}>
-                                               <Link 
-                                                 href={sub.href} 
-                                                 className="flex items-center gap-2 px-2 py-0.5 rounded hover:bg-blue-50 text-gray-800 hover:text-blue-700 transition-colors whitespace-nowrap"
-                                               >
-                                                 <Icon className="w-4 h-4 text-blue-600 flex-shrink-0" />
-                                                 <span className="text-sm">{sub.label}</span>
-                                               </Link>
-                                             </li>
-                                           );
-                                         })}
-                                       </ul>
-                                     </div>
-                                   ))}
-                                 </div>
-                               </div>
-                               <div className="col-span-1">
-                                 <div className="bg-blue-50 rounded-lg p-2 h-full flex flex-col">
-                                     <div>
-                                         <h5 className='text-blue-900 font-bold mb-1 text-sm'>Resources</h5>
-                                         <Image src="/bg_1.jpg" alt="Resources" width={180} height={100} className="rounded-md mb-1 mx-auto object-cover" />
-                                     </div>
-                                     <div className="mt-auto">
-                                       <Link href="/resources" className='text-blue-700 font-semibold text-sm flex items-center gap-1 hover:underline justify-center'>
-                                         View All Resources <ArrowRight size={14} />
-                                       </Link>
-                                     </div>
-                                 </div>
-                               </div>
-                             </>
-                                                     ) : item.label === "Company" ? (
-                             // Special layout for Company dropdown with image below content
-                             <>
-                               <div className="col-span-2">
-                                 <div className="flex gap-6 w-max">
-                                   {item.groups?.map((group) => (
-                                     <div key={group.title} className="min-w-[150px]">
-                                       <h4 className="text-gray-900 font-bold text-sm mb-1 px-2">{group.title}</h4>
-                                       <ul className="space-y-0.5">
-                                         {group.items.map((sub) => {
-                                           const Icon = sub.icon || FileText;
-                                           return (
-                                             <li key={sub.label}>
-                                               <Link 
-                                                 href={sub.href} 
-                                                 className="flex items-center gap-2 px-2 py-0.5 rounded hover:bg-blue-50 text-gray-800 hover:text-blue-700 transition-colors whitespace-nowrap"
-                                               >
-                                                 <Icon className="w-4 h-4 text-blue-600 flex-shrink-0" />
-                                                 <span className="text-sm">{sub.label}</span>
-                                               </Link>
-                                             </li>
-                                           );
-                                         })}
-                                       </ul>
-                                     </div>
-                                   ))}
-                                 </div>
-                                 <div className="mt-3 px-2">
-                                   <Image src="/bg_6.jpg" alt="Company" width={400} height={80} className="rounded-md w-full object-cover" />
-                                 </div>
-                               </div>
-                               <div className="col-span-1">
-                                 <div className="bg-blue-50 rounded-lg p-2 h-full flex flex-col justify-center">
-                                   <div className="text-center">
-                                     <h5 className='text-blue-900 font-bold mb-2 text-sm'>About Us</h5>
-                                     <p className="text-blue-700 text-xs mb-3 leading-tight">Discover our mission, values, and commitment to transforming treasury management.</p>
-                                     <Link href="/company" className='text-blue-700 font-semibold text-sm flex items-center gap-1 hover:underline justify-center'>
-                                       Learn More <ArrowRight size={14} />
-                                     </Link>
-                                   </div>
-                                 </div>
-                               </div>
-                             </>
+                          ) : item.label === "Resources" ? (
+                            // Special layout for Resources dropdown with image
+                            <>
+                              <div className="col-span-2">
+                                <div className="flex gap-6 w-max">
+                                  {item.groups?.map((group) => (
+                                    <div key={group.title} className="min-w-[150px]">
+                                      <h4 className="text-gray-900 font-bold text-sm mb-1 px-2">{group.title}</h4>
+                                      <ul className="space-y-0.5">
+                                        {group.items.map((sub) => {
+                                          const Icon = sub.icon || FileText;
+                                          return (
+                                            <li key={sub.label}>
+                                              <Link 
+                                                href={sub.href} 
+                                                className="flex items-center gap-2 px-2 py-0.5 rounded hover:bg-blue-50 text-gray-800 hover:text-blue-700 transition-colors whitespace-nowrap"
+                                              >
+                                                <Icon className="w-4 h-4 text-blue-600 flex-shrink-0" />
+                                                <span className="text-sm">{sub.label}</span>
+                                              </Link>
+                                            </li>
+                                          );
+                                        })}
+                                      </ul>
+                                    </div>
+                                  ))}
+                                </div>
+                              </div>
+                              <div className="col-span-1">
+                                <div className="bg-blue-50 rounded-lg p-2 h-full flex flex-col">
+                                    <div>
+                                        <h5 className='text-blue-900 font-bold mb-1 text-sm'>Resources</h5>
+                                        <Image src="/bg_1.jpg" alt="Resources" width={180} height={100} className="rounded-md mb-1 mx-auto object-cover" />
+                                    </div>
+                                    <div className="mt-auto">
+                                      <Link href="/resources" className='text-blue-700 font-semibold text-sm flex items-center gap-1 hover:underline justify-center'>
+                                        View All Resources <ArrowRight size={14} />
+                                      </Link>
+                                    </div>
+                                </div>
+                              </div>
+                            </>
+                          ) : item.label === "Company" ? (
+                            // Special layout for Company dropdown with image below content
+                            <>
+                              <div className="col-span-2">
+                                <div className="flex gap-6 w-max">
+                                  {item.groups?.map((group) => (
+                                    <div key={group.title} className="min-w-[150px]">
+                                      <h4 className="text-gray-900 font-bold text-sm mb-1 px-2">{group.title}</h4>
+                                      <ul className="space-y-0.5">
+                                        {group.items.map((sub) => {
+                                          const Icon = sub.icon || FileText;
+                                          return (
+                                            <li key={sub.label}>
+                                              <Link 
+                                                href={sub.href} 
+                                                className="flex items-center gap-2 px-2 py-0.5 rounded hover:bg-blue-50 text-gray-800 hover:text-blue-700 transition-colors whitespace-nowrap"
+                                              >
+                                                <Icon className="w-4 h-4 text-blue-600 flex-shrink-0" />
+                                                <span className="text-sm">{sub.label}</span>
+                                              </Link>
+                                            </li>
+                                          );
+                                        })}
+                                      </ul>
+                                    </div>
+                                  ))}
+                                </div>
+                                <div className="mt-3 px-2">
+                                  <Image src="/bg_6.jpg" alt="Company" width={400} height={80} className="rounded-md w-full object-cover" />
+                                </div>
+                              </div>
+                              <div className="col-span-1">
+                                <div className="bg-blue-50 rounded-lg p-2 h-full flex flex-col justify-center">
+                                  <div className="text-center">
+                                    <h5 className='text-blue-900 font-bold mb-2 text-sm'>About Us</h5>
+                                    <p className="text-blue-700 text-xs mb-3 leading-tight">Discover our mission, values, and commitment to transforming treasury management.</p>
+                                    <Link href="/company" className='text-blue-700 font-semibold text-sm flex items-center gap-1 hover:underline justify-center'>
+                                      Learn More <ArrowRight size={14} />
+                                    </Link>
+                                  </div>
+                                </div>
+                              </div>
+                            </>
                           ) : (
                             <div className="col-span-2">
                               <div className="flex gap-8 w-max">
@@ -418,13 +449,17 @@ export default function ModernMegaMenu() {
                       ) : item.submenus ? (
                         <div className="p-2 w-56 bg-white shadow-xl rounded-xl border border-white/10">
                             <ul className="space-y-1">
-                            {item.submenus.map((sub) => (
+                            {item.submenus.map((sub) => {
+                              const Icon = sub.icon || FileText;
+                              return (
                                 <li key={sub.label}>
-                                <Link href={sub.href} className="block px-2 py-1.5 rounded hover:bg-blue-50 text-gray-800 hover:text-blue-700 transition-colors">
+                                <Link href={sub.href} className="flex items-center gap-2 px-2 py-1.5 rounded hover:bg-blue-50 text-gray-800 hover:text-blue-700 transition-colors">
+                                    <Icon className="w-4 h-4 text-blue-600 flex-shrink-0" />
                                     {sub.label}
                                 </Link>
                                 </li>
-                            ))}
+                              );
+                            })}
                             </ul>
                         </div>
                       ) : null}
@@ -435,12 +470,6 @@ export default function ModernMegaMenu() {
             </div>
           ))}
 
-<Link
-            href="/contact"
-            className="ml-4 px-4 py-1.5 text-sm bg-transparent hover:bg-white/10 text-white border border-white/20 font-medium rounded-lg transition-colors duration-200"
-          >
-            Contact Us
-          </Link>
           <Link
             href="/request-demo"
             className="ml-4 px-4 py-1.5 text-sm bg-[#FF073A] hover:bg-[#e60634] text-white font-semibold rounded-lg transition-all duration-300 flex items-center justify-center transform hover:-translate-y-0.5 hover:shadow-[0_4px_12px_rgba(255,7,58,0.3)] active:translate-y-0"

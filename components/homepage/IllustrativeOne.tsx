@@ -86,7 +86,7 @@ const FlipCard: React.FC<FlipCardProps> = ({
   const flipCard = async () => {
     await controls.start({
       rotateY: 90,
-      transition: { duration: 0.3 }
+      transition: { duration: 0.4, ease: "easeInOut" }
     });
     
     // Change to next industry
@@ -96,7 +96,7 @@ const FlipCard: React.FC<FlipCardProps> = ({
     // Complete the flip
     await controls.start({
       rotateY: 0,
-      transition: { duration: 0.3, delay: 0.1 }
+      transition: { duration: 0.4, ease: "easeInOut", delay: 0.1 }
     });
   };
 
@@ -104,11 +104,11 @@ const FlipCard: React.FC<FlipCardProps> = ({
   useEffect(() => {
     const timer = setTimeout(() => {
       flipCard();
-    }, 5000 + delay * 1000);
+    }, 3000 + delay * 500);
     
     const interval = setInterval(() => {
       flipCard();
-    }, 10000); // Flip every 10 seconds
+    }, 8000); // Flip every 8 seconds
     
     return () => {
       clearTimeout(timer);
@@ -118,18 +118,20 @@ const FlipCard: React.FC<FlipCardProps> = ({
 
   return (
     <motion.div
-      className="relative w-28 h-28 sm:w-32 sm:h-32 cursor-pointer perspective-1000"
-      initial={{ opacity: 0, y: 20, rotate: -2 }}
+      className="relative w-24 h-24 cursor-pointer perspective-1000"
+      initial={{ opacity: 0, y: 20 }}
       whileInView={{ 
         opacity: 1, 
         y: 0,
         transition: { 
-          delay: delay * 0.5,
-          duration: 0.5 
+          delay: delay * 0.3,
+          duration: 0.6 
         }
       }}
       viewport={{ once: true, margin: '-50px' }}
       onClick={flipCard}
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
     >
       {/* Front of Card */}
       <motion.div 
@@ -142,13 +144,13 @@ const FlipCard: React.FC<FlipCardProps> = ({
           transform: 'rotateY(0deg)'
         }}
         animate={controls}
-        transition={{ duration: 0.3 }}
+        transition={{ duration: 0.4, ease: "easeInOut" }}
       >
         <div className="w-full h-full flex flex-col items-center justify-center p-2">
-          <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center mb-1.5">
-            <currentIndustry.icon className="h-5 w-5 text-white" />
+          <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center mb-1">
+            <currentIndustry.icon className="h-4 w-4 text-white" />
           </div>
-          <span className="text-xs font-semibold text-white text-center leading-tight">{currentIndustry.name}</span>
+          <span className="text-xs font-medium text-white text-center leading-tight">{currentIndustry.name}</span>
         </div>
       </motion.div>
       
@@ -165,13 +167,13 @@ const FlipCard: React.FC<FlipCardProps> = ({
         animate={{
           rotateY: 90,
         }}
-        transition={{ duration: 0.3 }}
+        transition={{ duration: 0.4, ease: "easeInOut" }}
       >
         <div className="w-full h-full flex flex-col items-center justify-center p-2">
-          <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center mb-1.5">
-            <nextIndustry.icon className="h-5 w-5 text-white" />
+          <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center mb-1">
+            <nextIndustry.icon className="h-4 w-4 text-white" />
           </div>
-          <span className="text-xs font-semibold text-white text-center leading-tight">{nextIndustry.name}</span>
+          <span className="text-xs font-medium text-white text-center leading-tight">{nextIndustry.name}</span>
         </div>
       </motion.div>
     </motion.div>
@@ -409,22 +411,22 @@ type IndustryData = {
 export default function IllustrativeOne() {
   // Industry data for flip cards
   const industries: IndustryData[] = [
-    { name: 'SME', icon: Users, color: 'from-blue-500 to-blue-600' },
-    { name: 'NBFC', icon: Building, color: 'from-purple-500 to-purple-600' },
-    { name: 'Automotive', icon: Car, color: 'from-green-500 to-green-600' },
-    { name: 'Pharmaceutical', icon: Shield, color: 'from-amber-500 to-amber-600' },
-    { name: 'Manufacturing', icon: Factory, color: 'from-rose-500 to-rose-600' },
-    { name: 'Retail', icon: ShoppingBag, color: 'from-indigo-500 to-indigo-600' },
-    { name: 'Trading', icon: BarChart2, color: 'from-emerald-500 to-emerald-600' },
-    { name: 'Chemical', icon: Zap, color: 'from-violet-500 to-violet-600' },
-    { name: 'Media', icon: Newspaper, color: 'from-pink-500 to-pink-600' },
-    { name: 'IT Power', icon: Cpu, color: 'from-cyan-500 to-cyan-600' },
-    { name: 'Oil & Gas', icon: Zap, color: 'from-orange-500 to-orange-600' },
-    { name: 'Mining', icon: MapPin, color: 'from-teal-500 to-teal-600' },
-    { name: 'FMCG', icon: ShoppingBag, color: 'from-fuchsia-500 to-fuchsia-600' },
-    { name: 'Real Estate', icon: Home, color: 'from-amber-400 to-amber-500' },
-    { name: 'Textile Retail', icon: ShoppingBag, color: 'from-blue-400 to-blue-500' },
-    { name: 'Family Offices', icon: Users, color: 'from-purple-400 to-purple-500' }
+    { name: 'SME', icon: Users, color: 'from-blue-600 to-blue-700' },
+    { name: 'NBFC', icon: Building, color: 'from-purple-600 to-purple-700' },
+    { name: 'Automotive', icon: Car, color: 'from-green-600 to-green-700' },
+    { name: 'Pharmaceutical', icon: Shield, color: 'from-amber-600 to-amber-700' },
+    { name: 'Manufacturing', icon: Factory, color: 'from-rose-600 to-rose-700' },
+    { name: 'Retail', icon: ShoppingBag, color: 'from-indigo-600 to-indigo-700' },
+    { name: 'Trading', icon: BarChart2, color: 'from-emerald-600 to-emerald-700' },
+    { name: 'Chemical', icon: Zap, color: 'from-violet-600 to-violet-700' },
+    { name: 'Media', icon: Newspaper, color: 'from-pink-600 to-pink-700' },
+    { name: 'IT Power', icon: Cpu, color: 'from-cyan-600 to-cyan-700' },
+    { name: 'Oil & Gas', icon: Zap, color: 'from-orange-600 to-orange-700' },
+    { name: 'Mining', icon: MapPin, color: 'from-teal-600 to-teal-700' },
+    { name: 'FMCG', icon: ShoppingBag, color: 'from-fuchsia-600 to-fuchsia-700' },
+    { name: 'Real Estate', icon: Home, color: 'from-amber-500 to-amber-600' },
+    { name: 'Textile Retail', icon: ShoppingBag, color: 'from-blue-500 to-blue-600' },
+    { name: 'Family Offices', icon: Users, color: 'from-purple-500 to-purple-600' }
   ];
 
   // Function to get a random industry for the back of the card
@@ -859,25 +861,31 @@ export default function IllustrativeOne() {
               </div>
             </div>
 
-            {/* Flip Cards - Right Side - 2 Rows of 4 */}
-            <div className="lg:w-2/3">
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
-                {industries.slice(0, 4).map((industry, idx) => (
+            {/* Compact Flip Cards - Right Side - 2 Rows of 4 */}
+            <div className="lg:w-2/3 relative">
+              {/* Frosted Glass Background */}
+              <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md rounded-2xl border border-white/20"></div>
+              
+              {/* Row 1 - First 4 tiles */}
+              <div className="grid grid-cols-4 gap-2 mb-2 relative z-10">
+                {[0, 1, 2, 3].map((idx) => (
                   <FlipCard 
-                    key={industry.name} 
-                    industry={industry} 
-                    delay={idx * 0.1} 
-                    allIndustries={industries} 
+                    key={`row1-${idx}`}
+                    industry={industries[idx]} 
+                    delay={idx * 0.2} 
+                    allIndustries={industries.slice(0, 8)} 
                   />
                 ))}
               </div>
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mt-3 sm:mt-4">
-                {industries.slice(4, 8).map((industry, idx) => (
+              
+              {/* Row 2 - Next 4 tiles */}
+              <div className="grid grid-cols-4 gap-2 relative z-10">
+                {[4, 5, 6, 7].map((idx) => (
                   <FlipCard 
-                    key={industry.name} 
-                    industry={industry} 
-                    delay={(idx + 4) * 0.1} 
-                    allIndustries={industries} 
+                    key={`row2-${idx}`}
+                    industry={industries[idx]} 
+                    delay={(idx - 4) * 0.2} 
+                    allIndustries={industries.slice(8, 16)} 
                   />
                 ))}
               </div>
