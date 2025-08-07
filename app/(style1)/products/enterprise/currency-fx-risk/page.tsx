@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { ArrowRight, BarChart, Bell, FileText, Layers, LineChart, Shield, TrendingUp, Zap, Globe, DollarSign, AlertTriangle } from 'lucide-react';
@@ -52,9 +53,15 @@ const CurrencyFXRiskPage = () => {
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
-                className="bg-white/10 backdrop-blur-sm rounded-lg p-4 h-64 flex items-center justify-center"
+                className="relative w-full h-64 rounded-lg overflow-hidden shadow-xl"
               >
-                <span className="text-blue-100 text-lg">FX Risk Management Dashboard</span>
+                <Image
+                  src="/Inner pages/Products/Currency_Risk_Management_IBSFINtech_50.jpg"
+                  alt="Currency Risk Management Dashboard"
+                  fill
+                  className="object-cover"
+                  priority
+                />
               </motion.div>
             </div>
           </div>

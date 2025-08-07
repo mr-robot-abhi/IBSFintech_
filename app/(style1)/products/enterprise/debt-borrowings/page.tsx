@@ -17,34 +17,52 @@ const DebtBorrowingsPage = () => {
 
 
       {/* Hero Section */}
-      <section className="relative w-full py-24 md:py-32 bg-gradient-to-r from-[#241F5D] to-[#3A3480] text-white">
+      <section className="relative w-full py-12 md:py-16 bg-gradient-to-r from-[#241F5D] to-[#3A3480] text-white">
         <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-4xl mx-auto text-center">
-            <motion.h1 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="text-4xl md:text-5xl font-bold mb-6 leading-tight"
-            >
-              Debt (Borrowings) Management Solution
-            </motion.h1>
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-xl md:text-2xl text-blue-100 mb-8 max-w-3xl mx-auto"
-            >
-              Streamline your debt portfolio with our comprehensive borrowing management solution
-            </motion.p>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-            >
-              <Button size="lg" className="bg-white text-[#241F5D] hover:bg-blue-50">
-                Request a Demo <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-            </motion.div>
+          <div className="flex flex-col md:flex-row items-center">
+            <div className="md:w-1/2 mb-6 md:mb-0 md:pr-8">
+              <motion.h1 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                className="text-3xl md:text-4xl font-bold mb-4 leading-tight"
+              >
+                Debt (Borrowings) Management Solution
+              </motion.h1>
+              <motion.p 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                className="text-lg text-blue-100 mb-6"
+              >
+                Streamline your debt portfolio with our comprehensive borrowing management solution
+              </motion.p>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+              >
+                <Button size="lg" className="bg-white text-[#241F5D] hover:bg-blue-50">
+                  Request a Demo <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </motion.div>
+            </div>
+            <div className="md:w-1/2">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                className="relative w-full h-64 md:h-72 rounded-lg overflow-hidden shadow-xl"
+              >
+                <Image
+                  src="/Inner pages/Products/debt_visibility_for_treasury_team_50.jpg"
+                  alt="Debt Visibility for Treasury Team"
+                  fill
+                  className="object-cover"
+                  priority
+                />
+              </motion.div>
+            </div>
           </div>
         </div>
       </section>
@@ -123,15 +141,12 @@ const DebtBorrowingsPage = () => {
                 >
                   <div className="relative h-full w-full rounded-lg overflow-hidden">
                     <Image
-                      src="/bg_1.jpg"
-                      alt="Debt Portfolio Management Dashboard"
+                      src="/Inner pages/Products/multi_instrument_debt_management_50.jpg"
+                      alt="Multi-Instrument Debt Management"
                       fill
                       className="object-cover"
                       priority
                     />
-                    <div className="absolute bottom-0 left-0 right-0 bg-black/50 text-white p-4 text-sm">
-                      Debt Portfolio Management Dashboard
-                    </div>
                   </div>
                 </motion.div>
               </div>

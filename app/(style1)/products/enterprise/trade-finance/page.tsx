@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { ArrowRight, Globe, FileText, Bell, BarChart, CreditCard, Package, RefreshCw, Shield, TrendingUp, Users, Layers } from 'lucide-react';
@@ -16,65 +17,73 @@ const TradeFinancePage = () => {
 
 
       {/* Hero Section */}
-      <section className="relative w-full py-24 md:py-32 bg-gradient-to-r from-[#241F5D] to-[#3A3480] text-white">
+      <section className="relative w-full py-16 md:py-20 bg-gradient-to-r from-[#241F5D] to-[#3A3480] text-white">
         <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-4xl mx-auto text-center">
-            <motion.h1 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="text-4xl md:text-5xl font-bold mb-6 leading-tight"
-            >
-              Trade Finance Management
-            </motion.h1>
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-xl md:text-2xl text-blue-100 mb-8 max-w-3xl mx-auto"
-            >
-              Optimize Your Trade Finance Operations with IBSFINtech's Trade Finance Module
-            </motion.p>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="text-lg text-blue-100 mb-8 max-w-4xl mx-auto"
-            >
-              Enhance your trade finance management with our robust module, designed to streamline processes, ensure compliance, and provide real-time insights for optimal decision-making.
-            </motion.p>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-            >
-              <Button size="lg" className="bg-white text-[#241F5D] hover:bg-blue-50">
-                Request a Demo <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-            </motion.div>
+          <div className="flex flex-col md:flex-row items-center">
+            <div className="md:w-1/2 mb-8 md:mb-0 md:pr-8">
+              <motion.h1 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                className="text-3xl md:text-4xl font-bold mb-4 leading-tight"
+              >
+                Trade Finance Management
+              </motion.h1>
+              <motion.p 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                className="text-lg text-blue-100 mb-6"
+              >
+                Optimize Your Trade Finance Operations with IBSFINtech's Comprehensive Module
+              </motion.p>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+              >
+                <Button size="lg" className="bg-white text-[#241F5D] hover:bg-blue-50">
+                  Request Demo <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </motion.div>
+            </div>
+            <div className="md:w-1/2">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                className="relative w-full h-64 md:h-80 rounded-lg overflow-hidden shadow-xl"
+              >
+                <Image
+                  src="/Inner pages/Products/trade_finance_management.jpeg"
+                  alt="Trade Finance Management"
+                  fill
+                  className="object-cover"
+                  priority
+                />
+              </motion.div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Main Content */}
       <div className="relative z-10 bg-white">
-        {/* All-in-One Solution Section */}
-        <section className="py-16">
+        <section className="py-12">
           <div className="container mx-auto px-4">
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="max-w-6xl mx-auto mb-16"
-            >
-              <h2 className="text-3xl md:text-4xl font-bold text-[#241F5D] mb-8 text-center">
-                Comprehensive Trade Finance Solution
-              </h2>
-              
-              <div className="grid md:grid-cols-2 gap-12 items-start">
-                <div>
-                  <ul className="space-y-4 text-gray-700 mb-8">
+            <div className="max-w-6xl mx-auto">
+              <div className="flex flex-col md:flex-row items-center gap-8">
+                <div className="md:w-1/2">
+                  <motion.h2 
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6 }}
+                    className="text-3xl font-bold text-[#241F5D] mb-6"
+                  >
+                    Comprehensive Trade Finance Solution
+                  </motion.h2>
+                  <ul className="space-y-4 text-gray-700 mb-6">
                     <li className="flex items-start">
                       <span className="text-blue-600 mr-2 mt-1">•</span>
                       <span>End-to-end lifecycle management for both Import and Export functions with complete visibility.</span>
@@ -96,8 +105,14 @@ const TradeFinancePage = () => {
                       <span>Advanced Limit Management with tracking of bank charges and competitive interest rates.</span>
                     </li>
                     <li className="flex items-start">
-                      <span className="text-blue-600 mr-2 mt-1">•</span>
-                      <span>Optimized trade finance operations through Straight-Through-Processing (STP) implementation.</span>
+                      <div className="flex-shrink-0 mt-1">
+                        <div className="flex items-center justify-center h-6 w-6 rounded-full bg-blue-100">
+                          <svg className="h-3 w-3 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                          </svg>
+                        </div>
+                      </div>
+                      <span className="ml-3">Optimized trade finance operations through Straight-Through-Processing (STP) implementation.</span>
                     </li>
                     <li className="flex items-start">
                       <span className="text-blue-600 mr-2 mt-1">•</span>
@@ -125,19 +140,18 @@ const TradeFinancePage = () => {
                   transition={{ duration: 0.6, delay: 0.2 }}
                   className="bg-gray-100 rounded-xl p-6 h-full"
                 >
-                  <div className="relative h-full w-full rounded-lg overflow-hidden">
-                    <img 
-                      src="/Home Page Banner 3.png" 
-                      alt="Trade Finance Management Dashboard" 
-                      className="w-full h-full object-cover"
+                  <div className="relative w-full h-96 rounded-lg overflow-hidden">
+                    <Image
+                      src="/Inner pages/Products/AdobeStock_788404479_50.jpeg"
+                      alt="Trade Finance Dashboard"
+                      fill
+                      className="object-cover"
+                      priority
                     />
-                    <div className="absolute bottom-0 left-0 right-0 bg-black/50 text-white p-4 text-sm">
-                      Trade Finance Management Dashboard
-                    </div>
                   </div>
                 </motion.div>
               </div>
-            </motion.div>
+            </div>
 
             {/* Analytics Section */}
             <div className="bg-gray-50 rounded-2xl p-8 md:p-12 mb-20">

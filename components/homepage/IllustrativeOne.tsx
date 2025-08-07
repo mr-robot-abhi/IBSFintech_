@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useMemo } from 'react';
 import Image from 'next/image';
 import { motion, useAnimation, useScroll } from 'framer-motion';
 import Tilt from 'react-parallax-tilt';
@@ -70,14 +70,14 @@ interface FlipCardProps {
 }
 
 // FlipCard Component for Industry Cards
-const FlipCard: React.FC<FlipCardProps> = ({ 
-  industry, 
+const FlipCard: React.FC<FlipCardProps> = ({
+  industry,
   delay,
-  allIndustries 
+  allIndustries
 }) => {
   const [isFlipped, setIsFlipped] = useState(false);
   const [currentIndustry, setCurrentIndustry] = useState(industry);
-  const [nextIndustry, setNextIndustry] = useState<Industry>(() => 
+  const [nextIndustry, setNextIndustry] = useState<Industry>(() =>
     getRandomIndustry(industry.name, allIndustries)
   );
   const controls = useAnimation();
@@ -88,11 +88,11 @@ const FlipCard: React.FC<FlipCardProps> = ({
       rotateY: 90,
       transition: { duration: 0.4, ease: "easeInOut" }
     });
-    
+
     // Change to next industry
     setCurrentIndustry(nextIndustry);
     setNextIndustry(getRandomIndustry(nextIndustry.name, allIndustries));
-    
+
     // Complete the flip
     await controls.start({
       rotateY: 0,
@@ -105,86 +105,105 @@ const FlipCard: React.FC<FlipCardProps> = ({
     const timer = setTimeout(() => {
       flipCard();
     }, 3000 + delay * 500);
-    
+
     const interval = setInterval(() => {
       flipCard();
     }, 8000); // Flip every 8 seconds
-    
+
     return () => {
       clearTimeout(timer);
       clearInterval(interval);
     };
   }, [nextIndustry]);
 
+  // Generate random tilt for asymmetric arrangement
+  const randomTilt = useMemo(() => {
+    const tilts = [-8, -5, -3, 2, 4, 6, -4, 3];
+    return tilts[Math.floor(Math.random() * tilts.length)];
+  }, []);
+
   return (
     <motion.div
-      className="relative w-24 h-24 cursor-pointer perspective-1000"
+      className="relative w-20 h-20 cursor-pointer perspective-1000"
       initial={{ opacity: 0, y: 20 }}
-      whileInView={{ 
-        opacity: 1, 
+      whileInView={{
+        opacity: 1,
         y: 0,
-        transition: { 
+        transition: {
           delay: delay * 0.3,
-          duration: 0.6 
+          duration: 0.6
         }
       }}
       viewport={{ once: true, margin: '-50px' }}
       onClick={flipCard}
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
+      style={{
+        transform: `rotate(${randomTilt}deg)`, // Random tilt for asymmetric arrangement
+      }}
     >
-      {/* Front of Card */}
-      <motion.div 
-        className="absolute w-full h-full rounded-xl overflow-hidden backface-hidden shadow-lg border border-white/20"
-        style={{ 
-          background: (() => {
-            const colors = getGradientColors(currentIndustry.color);
-            return `linear-gradient(135deg, ${colors.from} 0%, ${colors.to} 100%)`;
-          })(),
-          transform: 'rotateY(0deg)'
-        }}
-        animate={controls}
-        transition={{ duration: 0.4, ease: "easeInOut" }}
-      >
-        <div className="w-full h-full flex flex-col items-center justify-center p-2">
-          <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center mb-1">
-            <currentIndustry.icon className="h-4 w-4 text-white" />
+              {/* Front of Card */}
+        <motion.div
+          className="absolute w-full h-full rounded-xl overflow-hidden backface-hidden shadow-lg border border-white/20"
+          style={{
+            background: currentIndustry.color.includes('bg-[') ? 
+              currentIndustry.color.split(' ')[0].replace('bg-[', '').replace(']', '') : 
+              (currentIndustry.color === 'from-blue-500 to-blue-600' ? 'linear-gradient(135deg, #3B82F6 0%, #2563EB 100%)' :
+               currentIndustry.color === 'from-emerald-500 to-emerald-600' ? 'linear-gradient(135deg, #10B981 0%, #059669 100%)' :
+                 currentIndustry.color === 'from-orange-500 to-orange-600' ? 'linear-gradient(135deg, #F97316 0%, #EA580C 100%)' :
+                   currentIndustry.color === 'from-amber-500 to-amber-600' ? 'linear-gradient(135deg, #F59E0B 0%, #D97706 100%)' :
+                     currentIndustry.color === 'from-purple-500 to-purple-600' ? 'linear-gradient(135deg, #A855F7 0%, #9333EA 100%)' :
+                       currentIndustry.color === 'from-pink-500 to-pink-600' ? 'linear-gradient(135deg, #EC4899 0%, #DB2777 100%)' :
+                         currentIndustry.color === 'from-cyan-500 to-cyan-600' ? 'linear-gradient(135deg, #06B6D4 0%, #0891B2 100%)' :
+                           'linear-gradient(135deg, #6366F1 0%, #4F46E5 100%)') // indigo default
+          }}
+          animate={controls}
+          transition={{ duration: 0.4, ease: "easeInOut" }}
+        >
+          <div className="w-full h-full flex flex-col items-center justify-center p-1">
+            <div className="w-6 h-6 bg-white/20 rounded-full flex items-center justify-center mb-1">
+              <currentIndustry.icon className="h-3 w-3 text-white" />
+            </div>
+            <span className="text-[10px] font-medium text-white text-center leading-tight">{currentIndustry.name}</span>
           </div>
-          <span className="text-xs font-medium text-white text-center leading-tight">{currentIndustry.name}</span>
-        </div>
-      </motion.div>
-      
-      {/* Back of Card */}
-      <motion.div 
-        className="absolute w-full h-full rounded-xl overflow-hidden backface-hidden shadow-lg border border-white/20"
-        style={{ 
-          background: (() => {
-            const colors = getGradientColors(nextIndustry.color);
-            return `linear-gradient(135deg, ${colors.from} 0%, ${colors.to} 100%)`;
-          })(),
-          transform: 'rotateY(90deg)'
-        }}
-        animate={{
-          rotateY: 90,
-        }}
-        transition={{ duration: 0.4, ease: "easeInOut" }}
-      >
-        <div className="w-full h-full flex flex-col items-center justify-center p-2">
-          <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center mb-1">
-            <nextIndustry.icon className="h-4 w-4 text-white" />
+        </motion.div>
+        
+        {/* Back of Card */}
+        <motion.div
+          className="absolute w-full h-full rounded-xl overflow-hidden backface-hidden shadow-lg border border-white/20"
+          style={{
+            background: nextIndustry.color.includes('bg-[') ? 
+              nextIndustry.color.split(' ')[0].replace('bg-[', '').replace(']', '') : 
+              (nextIndustry.color === 'from-blue-500 to-blue-600' ? 'linear-gradient(135deg, #3B82F6 0%, #2563EB 100%)' :
+               nextIndustry.color === 'from-emerald-500 to-emerald-600' ? 'linear-gradient(135deg, #10B981 0%, #059669 100%)' :
+                 nextIndustry.color === 'from-orange-500 to-orange-600' ? 'linear-gradient(135deg, #F97316 0%, #EA580C 100%)' :
+                   nextIndustry.color === 'from-amber-500 to-amber-600' ? 'linear-gradient(135deg, #F59E0B 0%, #D97706 100%)' :
+                     nextIndustry.color === 'from-purple-500 to-purple-600' ? 'linear-gradient(135deg, #A855F7 0%, #9333EA 100%)' :
+                       nextIndustry.color === 'from-pink-500 to-pink-600' ? 'linear-gradient(135deg, #EC4899 0%, #DB2777 100%)' :
+                         nextIndustry.color === 'from-cyan-500 to-cyan-600' ? 'linear-gradient(135deg, #06B6D4 0%, #0891B2 100%)' :
+                           'linear-gradient(135deg, #6366F1 0%, #4F46E5 100%)') // indigo default
+          }}
+          animate={{
+            rotateY: 90,
+          }}
+          transition={{ duration: 0.4, ease: "easeInOut" }}
+        >
+          <div className="w-full h-full flex flex-col items-center justify-center p-1">
+            <div className="w-6 h-6 bg-white/20 rounded-full flex items-center justify-center mb-1">
+              <nextIndustry.icon className="h-3 w-3 text-white" />
+            </div>
+            <span className="text-[10px] font-medium text-white text-center leading-tight">{nextIndustry.name}</span>
           </div>
-          <span className="text-xs font-medium text-white text-center leading-tight">{nextIndustry.name}</span>
-        </div>
-      </motion.div>
+        </motion.div>
     </motion.div>
   );
 };
 
 const FeatureOrb = ({ icon, title, content, position }: FeatureOrbProps) => {
   const [isHovered, setIsHovered] = useState(false);
-  
+
   return (
-    <div 
+    <div
       className={`absolute ${position} z-20 group`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -320,30 +339,30 @@ const IndustryCard: React.FC<IndustryCardProps> = ({ industry, position, index, 
   useEffect(() => {
     const startAnimation = async () => {
       await new Promise(resolve => setTimeout(resolve, 500 + delay));
-      
+
       // Infinite loop for continuous animation
       const animate = async () => {
         await controls.start({
           rotateY: 180,
           transition: { duration: 0.6, ease: 'easeInOut' }
         });
-        
+
         await new Promise(resolve => setTimeout(resolve, 2000)); // Show back for 2 seconds
-        
+
         await controls.start({
           rotateY: 0,
           transition: { duration: 0.6, ease: 'easeInOut' }
         });
-        
+
         await new Promise(resolve => setTimeout(resolve, (total - 1) * 1000)); // Wait for other cards to flip
-        
+
         // Start next cycle
         animate();
       };
-      
+
       animate();
     };
-    
+
     startAnimation();
   }, [controls, delay, total]);
 
@@ -361,7 +380,7 @@ const IndustryCard: React.FC<IndustryCardProps> = ({ industry, position, index, 
     >
       <div className="w-full h-full relative">
         {/* Front of Card */}
-        <motion.div 
+        <motion.div
           className="absolute w-full h-full bg-gradient-to-br from-blue-900/80 to-blue-800/80 backdrop-blur-sm rounded-xl p-4 flex flex-col items-center justify-center border border-blue-700/30 shadow-lg"
           style={{
             backfaceVisibility: 'hidden',
@@ -378,9 +397,9 @@ const IndustryCard: React.FC<IndustryCardProps> = ({ industry, position, index, 
           </div>
           <h3 className="text-white font-medium text-center text-sm">{industry.name}</h3>
         </motion.div>
-        
+
         {/* Back of Card */}
-        <motion.div 
+        <motion.div
           className="absolute w-full h-full bg-gradient-to-br from-blue-800/90 to-blue-700/90 backdrop-blur-sm rounded-xl p-4 flex flex-col items-center justify-center border border-blue-600/30 shadow-lg"
           style={{
             backfaceVisibility: 'hidden',
@@ -409,24 +428,16 @@ type IndustryData = {
 };
 
 export default function IllustrativeOne() {
-  // Industry data for flip cards
+  // Industry data for flip cards with vibrant colors
   const industries: IndustryData[] = [
-    { name: 'SME', icon: Users, color: 'from-blue-600 to-blue-700' },
-    { name: 'NBFC', icon: Building, color: 'from-purple-600 to-purple-700' },
-    { name: 'Automotive', icon: Car, color: 'from-green-600 to-green-700' },
-    { name: 'Pharmaceutical', icon: Shield, color: 'from-amber-600 to-amber-700' },
-    { name: 'Manufacturing', icon: Factory, color: 'from-rose-600 to-rose-700' },
-    { name: 'Retail', icon: ShoppingBag, color: 'from-indigo-600 to-indigo-700' },
-    { name: 'Trading', icon: BarChart2, color: 'from-emerald-600 to-emerald-700' },
-    { name: 'Chemical', icon: Zap, color: 'from-violet-600 to-violet-700' },
-    { name: 'Media', icon: Newspaper, color: 'from-pink-600 to-pink-700' },
-    { name: 'IT Power', icon: Cpu, color: 'from-cyan-600 to-cyan-700' },
-    { name: 'Oil & Gas', icon: Zap, color: 'from-orange-600 to-orange-700' },
-    { name: 'Mining', icon: MapPin, color: 'from-teal-600 to-teal-700' },
-    { name: 'FMCG', icon: ShoppingBag, color: 'from-fuchsia-600 to-fuchsia-700' },
-    { name: 'Real Estate', icon: Home, color: 'from-amber-500 to-amber-600' },
-    { name: 'Textile Retail', icon: ShoppingBag, color: 'from-blue-500 to-blue-600' },
-    { name: 'Family Offices', icon: Users, color: 'from-purple-500 to-purple-600' }
+    { name: 'Manufacturing', icon: Factory, color: 'from-blue-500 to-blue-600' },
+    { name: 'Pharmaceutical', icon: Shield, color: 'from-emerald-500 to-emerald-600' },
+    { name: 'Automotive', icon: Car, color: 'from-orange-500 to-orange-600' },
+    { name: 'Mining', icon: MapPin, color: 'from-amber-500 to-amber-600' },
+    { name: 'Family Offices', icon: Users, color: 'from-purple-500 to-purple-600' },
+    { name: 'Textile Retail', icon: ShoppingBag, color: 'from-pink-500 to-pink-600' },
+    { name: 'SME', icon: Users, color: 'from-cyan-500 to-cyan-600' },
+    { name: 'NBFC', icon: Building, color: 'from-indigo-500 to-indigo-600' }
   ];
 
   // Function to get a random industry for the back of the card
@@ -700,194 +711,177 @@ export default function IllustrativeOne() {
           </div>
         </div>
       </section>
-
       {/* Why Choose Us Section */}
-      <section className="py-16 relative overflow-hidden">
-        {/* Galaxy background */}
-        <div className="absolute inset-0 -z-10">
-          <div className="absolute inset-0 bg-gradient-to-br from-navy-900 to-navy-950 opacity-90"></div>
-          <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))] opacity-10"></div>
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-purple-900/10 via-transparent to-transparent"></div>
+      <section className="py-16 relative overflow-hidden w-full bg-gradient-to-b from-navy-900 to-navy-950">
+        <div className="container mx-auto px-4">
+          <div className="backdrop-blur-sm bg-black/30 rounded-2xl border border-white/10 shadow-xl p-6">
+           <div className="flex flex-col lg:flex-row items-center gap-8">
+             {/* Left Column: Text Panel */}
+             <div className="w-full lg:w-2/5">
+               <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-300 to-blue-500 bg-clip-text text-transparent mb-4">
+                 Why Choose Us
+               </h2>
+               <p className="text-base text-white/90 mb-4">
+                 Discover how our innovative financial solutions can transform your business operations and drive growth.
+               </p>
+               <p className="text-base text-white/80 mb-6">
+                 With years of industry expertise, we provide cutting‑edge solutions tailored to your unique business needs.
+               </p>
+               <button className="flex items-center bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white font-medium py-3 px-6 rounded-full transition transform hover:-translate-y-0.5 hover:shadow-lg">
+                 Learn More
+                 <svg xmlns="http://www.w3.org/2000/svg" className="ml-2 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                 </svg>
+               </button>
+             </div>
 
-          {/* Animated stars */}
-          {[...Array(30)].map((_, i) => (
-            <div
-              key={i}
-              className="absolute w-0.5 h-0.5 bg-white rounded-full animate-pulse"
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 2}s`,
-                animationDuration: `${1 + Math.random() * 3}s`
-              }}
-            />
-          ))}
-        </div>
+             {/* Right Column: Enhanced IBS Logo with 6 Vectors */}
+             <div className="w-full lg:w-3/5 relative h-[400px] flex items-center justify-center">
+             {/* Central IBS Logo - Enhanced */}
+             <div className="absolute z-50 flex items-center justify-center w-36 h-36 rounded-full bg-gradient-to-br from-blue-600 to-purple-600 shadow-[0_0_60px_rgba(59,130,246,0.7)] border-2 border-white/30">
+               <Image 
+                 src="/Ibs_logo_1.png" 
+                 alt="IBS Logo" 
+                 width={56} 
+                 height={56} 
+                 className="object-contain" 
+               />
+             </div>
 
-        <div className="container mx-auto px-4 max-w-7xl">
-          <div className="flex flex-col lg:flex-row items-center gap-12">
-            {/* Left Column - Text with Frosted Glass */}
-            <div className="w-full lg:w-2/5">
-              <div className="backdrop-blur-sm bg-black/30 p-8 rounded-2xl border border-white/10 shadow-xl shadow-blue-900/10">
-                <h2 className="text-4xl font-bold text-white mb-4 bg-gradient-to-r from-blue-300 to-purple-400 bg-clip-text text-transparent">
-                  Why Choose Us
-                </h2>
-                <p className="text-lg text-white/90 mb-4">
-                  Discover how our innovative financial solutions can transform your business operations and drive growth.
-                </p>
-                <p className="text-base text-white/80 mb-6">
-                  With years of industry expertise, we provide cutting‑edge solutions tailored to your unique business needs.
-                </p>
-                <button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white font-medium py-3 px-6 rounded-full transition-all duration-300 flex items-center transform hover:-translate-y-0.5 hover:shadow-[0_4px_12px_rgba(125,90,230,0.3)] active:translate-y-0">
-                  Learn More
-                  <svg xmlns="http://www.w3.org/2000/svg" className="ml-2 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
-                </button>
-              </div>
-            </div>
+             {/* Enhanced Ring */}
+             <div className="absolute w-72 h-72 rounded-full border border-blue-500/20 z-10"></div>
 
-            {/* Right Column - Galaxy Visual with Icons */}
-            <div className="w-full lg:w-3/5 relative h-[350px]">
-              {/* Oval Saturn Ring Layers - NO TILT */}
-              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[300px] h-[200px]">
-                {/* Outer ring - Dark purple */}
-                <div className="absolute inset-0 border-2 border-purple-800/40 rounded-full animate-pulse"></div>
-                {/* Middle ring - Medium purple */}
-                <div className="absolute inset-1 border-2 border-purple-600/50 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
-                {/* Inner ring - Bright purple */}
-                <div className="absolute inset-2 border-2 border-purple-400/60 rounded-full animate-pulse" style={{ animationDelay: '2s' }}></div>
-                
-                {/* Glowing center - Oval purple core */}
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-20 h-16 rounded-full bg-gradient-to-br from-purple-500/50 to-purple-600/60 backdrop-blur-sm shadow-[0_0_30px_8px_rgba(147,51,234,0.4)] animate-pulse"></div>
-              </div>
+             {/* 6 Enhanced Vectors Around Logo */}
+             {[
+               { icon: BarChart2, title: 'Comprehensive', angle: 0, content: "Our end‑to‑end solution covers compliance, operational, and financial risks. With a unified platform, you gain full visibility and control over your entire risk landscape." },
+               { icon: Cpu, title: 'Integrated', angle: 60, content: "Seamlessly connects with ERP systems, market data providers, and banking partners. The platform supports SWIFT, FIX, and ISO 20022 messaging standards." },
+               { icon: Users, title: 'Best Practices', angle: 120, content: "Work together seamlessly with role‑based access controls. Our platform enables real‑time collaboration across teams and departments." },
+               { icon: Zap, title: 'Nimble', angle: 180, content: "Rapid implementation and deployment with our agile approach. Our cloud‑native architecture allows for instant scaling." },
+               { icon: Shield, title: 'Domain Centric', angle: 240, content: "Bank‑grade security with end‑to‑end encryption. Your data is protected with the highest industry standards." },
+               { icon: Globe, title: 'Configurable', angle: 300, content: "Multi‑currency, multi‑language, and multi‑jurisdiction support. Operate seamlessly across borders with our global platform." },
+             ].map((feature, idx) => {
+               const radius = 150; // Increased distance from center
+               const x = Math.cos((feature.angle * Math.PI) / 180) * radius;
+               const y = Math.sin((feature.angle * Math.PI) / 180) * radius;
+               const Icon = feature.icon;
+               
+               // Determine if this is a left-side vector (angles 120, 180, 240)
+               const isLeftSide = feature.angle >= 120 && feature.angle <= 240;
+               
+               return (
+                 <div
+                   key={idx}
+                   className="absolute group cursor-pointer z-30"
+                   style={{ 
+                     left: '50%',
+                     top: '50%',
+                     transform: `translate(${x - 24}px, ${y - 24}px)` // Center the 48px node
+                   }}
+                 >
+                   {/* Enhanced Vector Node */}
+                   <div className="relative">
+                     <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-600 to-purple-600 flex items-center justify-center shadow-lg border border-white/20 hover:scale-110 transition-transform duration-300">
+                       <Icon className="w-5 h-5 text-white" />
+                     </div>
+                     
+                     {/* Enhanced Title */}
+                     <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 whitespace-nowrap">
+                       <span className="text-xs font-semibold text-white bg-black/80 px-2 py-1 rounded-md">
+                         {feature.title}
+                       </span>
+                     </div>
+                   </div>
 
-              {/* Feature Icons Around Galaxy - RIGHT NEXT TO RINGS */}
-              {[
-                {
-                  icon: <BarChart2 className="h-5 w-5 text-white" />,
-                  title: "Comprehensive",
-                  content: "Our end‑to‑end solution covers compliance, operational, and financial risks. With a unified platform, you gain full visibility and control over your entire risk landscape.",
-                  position: "top-0 left-1/2 -translate-x-1/2"
-                },
-                {
-                  icon: <Cpu className="h-5 w-5 text-white" />,
-                  title: "Integrated",
-                  content: "Seamlessly connects with ERP systems, market data providers, and banking partners. The platform supports SWIFT, FIX, and ISO 20022 messaging standards.",
-                  position: "top-1/4 -left-2"
-                },
-                {
-                  icon: <Users className="h-5 w-5 text-white" />,
-                  title: "Best Practices",
-                  content: "Work together seamlessly with role‑based access controls. Our platform enables real‑time collaboration across teams and departments.",
-                  position: "bottom-1/3 -left-2"
-                },
-                {
-                  icon: <Zap className="h-5 w-5 text-white" />,
-                  title: "Nimble",
-                  content: "Rapid implementation and deployment with our agile approach. Our cloud‑native architecture allows for instant scaling.",
-                  position: "top-1/4 -right-2"
-                },
-                {
-                  icon: <Shield className="h-5 w-5 text-white" />,
-                  title: "Domain Centric",
-                  content: "Bank‑grade security with end‑to‑end encryption. Your data is protected with the highest industry standards.",
-                  position: "bottom-1/3 -right-2"
-                },
-                {
-                  icon: <Globe className="h-5 w-5 text-white" />,
-                  title: "Configurable",
-                  content: "Multi‑currency, multi‑language, and multi‑jurisdiction support. Operate seamlessly across borders with our global platform.",
-                  position: "bottom-0 left-1/2 -translate-x-1/2"
-                }
-              ].map((feature, index) => (
-
-
-                <div
-                  key={index}
-                  className={`absolute ${feature.position} z-30 group cursor-pointer`}
-                >
-                  {/* Icon Container */}
-                  <div className="relative">
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-purple-600/90 to-purple-700/90 backdrop-blur-sm border border-white/30 flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-purple-500/40 group-hover:bg-gradient-to-br group-hover:from-purple-500/95 group-hover:to-purple-600/95 group-hover:border-white/50">
-                      <div className="w-7 h-7 bg-white/25 rounded-full flex items-center justify-center mx-auto group-hover:bg-white/35 transition-colors">
-                        {feature.icon}
-                      </div>
-                    </div>
-                    
-                    {/* Title below icon - Compact and clean */}
-                    <div className="absolute top-full left-1/2 -translate-x-1/2 mt-1 whitespace-nowrap">
-                      <span className="text-xs font-semibold text-white bg-black/70 px-2 py-0.5 rounded-md backdrop-blur-sm border border-white/20 shadow-lg">
-                        {feature.title}
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* Tooltip */}
-                  <div className="absolute top-1/2 -translate-y-1/2 left-full ml-3 w-64 bg-gradient-to-br from-navy-800/95 to-navy-900/95 backdrop-blur-sm rounded-xl p-4 border border-blue-500/30 shadow-xl transition-all duration-300 opacity-0 -translate-x-2 invisible group-hover:opacity-100 group-hover:translate-x-0 group-hover:visible">
-                    <div className="absolute top-1/2 -translate-y-1/2 -left-1.5 w-3 h-3 rotate-45 bg-navy-800/95 border-l border-b border-blue-500/30"></div>
-                    <h3 className="text-lg font-bold text-white mb-2">{feature.title}</h3>
-                    <p className="text-sm text-gray-300 leading-relaxed">{feature.content}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
+                   {/* Smart Tooltip - Left side for left vectors, right side for right vectors */}
+                   <div className={`absolute top-1/2 -translate-y-1/2 w-60 bg-black/90 backdrop-blur-sm rounded-lg p-4 border border-blue-500/30 shadow-xl transition-all duration-300 opacity-0 invisible group-hover:opacity-100 group-hover:visible z-50 ${
+                     isLeftSide 
+                       ? 'right-full mr-3' // Left side tooltip
+                       : 'left-full ml-3'   // Right side tooltip
+                   }`}>
+                     {/* Tooltip arrow */}
+                     <div className={`absolute top-1/2 -translate-y-1/2 w-3 h-3 rotate-45 bg-black/90 border border-blue-500/30 ${
+                       isLeftSide 
+                         ? '-right-1.5 border-l-0 border-t-0' // Arrow pointing right
+                         : '-left-1.5 border-r-0 border-b-0'   // Arrow pointing left
+                     }`}></div>
+                     
+                     <h3 className="text-sm font-bold text-white mb-2">{feature.title}</h3>
+                     <p className="text-xs text-gray-300 leading-relaxed">{feature.content}</p>
+                   </div>
+                 </div>
+               );
+             })}
+           </div>
+         </div>
+       </div>
+         </div>
       </section>
 
 
 
-      {/* Featured Industries Grid */}
-      <section className="py-20 relative overflow-hidden w-full bg-gradient-to-b from-navy-900 to-navy-950">
+            {/* Featured Industries Grid */}
+      <section className="py-16 relative overflow-hidden w-full bg-gradient-to-b from-navy-900 to-navy-950">
         <div className="container mx-auto px-4">
-          <div className="flex flex-col lg:flex-row items-start gap-12">
-            {/* Text Content - Left Side with Frosted Glass */}
-            <div className="lg:w-1/3">
-              <div className="backdrop-blur-sm bg-black/30 p-8 rounded-2xl border border-white/10 shadow-xl shadow-blue-900/10">
+          <div className="backdrop-blur-sm bg-black/30 rounded-2xl border border-white/10 shadow-xl p-6">
+            <div className="flex flex-col lg:flex-row items-center gap-8">
+              {/* Text Content - Left Side */}
+              <div className="lg:w-2/5">
                 <motion.div
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6 }}
                 >
-                  <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-300 to-blue-500 bg-clip-text text-transparent mb-6">
+                  <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-300 to-blue-500 bg-clip-text text-transparent mb-4">
                     Featured Industries
                   </h2>
-                  <p className="text-lg text-white/90 mb-6">
+                  <p className="text-base text-white/90">
                     Tailored solutions for diverse industry needs, driving efficiency and growth across sectors.
                   </p>
                 </motion.div>
               </div>
-            </div>
 
-            {/* Compact Flip Cards - Right Side - 2 Rows of 4 */}
-            <div className="lg:w-2/3 relative">
-              {/* Frosted Glass Background */}
-              <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md rounded-2xl border border-white/20"></div>
-              
-              {/* Row 1 - First 4 tiles */}
-              <div className="grid grid-cols-4 gap-2 mb-2 relative z-10">
-                {[0, 1, 2, 3].map((idx) => (
-                  <FlipCard 
-                    key={`row1-${idx}`}
-                    industry={industries[idx]} 
-                    delay={idx * 0.2} 
-                    allIndustries={industries.slice(0, 8)} 
-                  />
-                ))}
-              </div>
-              
-              {/* Row 2 - Next 4 tiles */}
-              <div className="grid grid-cols-4 gap-2 relative z-10">
-                {[4, 5, 6, 7].map((idx) => (
-                  <FlipCard 
-                    key={`row2-${idx}`}
-                    industry={industries[idx]} 
-                    delay={(idx - 4) * 0.2} 
-                    allIndustries={industries.slice(8, 16)} 
-                  />
-                ))}
+              {/* Enhanced Flip Cards - Right Side */}
+              <div className="lg:w-3/5 relative">
+                {/* Grid Container for 2 rows of 4 tiles each */}
+                <div className="grid grid-cols-4 gap-6 max-w-2xl mx-auto">
+                  {industries.slice(0, 8).map((industry, idx) => {
+                    // New color palette
+                    const colors = [
+                      { bg: '#eae9e7', text: '#111226' }, // Light Beige
+                      { bg: '#111226', text: '#fdfdfd' }, // Dark Navy Blue
+                      { bg: '#45494b', text: '#fdfdfd' }, // Grayish Slate
+                      { bg: '#fce403', text: '#111226' }, // Bright Yellow
+                      { bg: '#4260fb', text: '#fdfdfd' }, // Vivid Blue
+                      { bg: '#fdfdfd', text: '#111226' }, // Pure White
+                      { bg: '#f2b75a', text: '#111226' }, // Warm Peach/Orange
+                      { bg: '#dd7f19', text: '#fdfdfd' }, // Orange
+                    ];
+                    
+                    const color = colors[idx % colors.length];
+                    const offsetX = (Math.random() - 0.5) * 10; // Smaller random X offset
+                    const offsetY = (Math.random() - 0.5) * 10; // Smaller random Y offset
+                    
+                    return (
+                      <div 
+                        key={idx}
+                        className="relative w-24 h-24 cursor-pointer perspective-1000"
+                        style={{
+                          transform: `rotate(-20deg) translate(${offsetX}px, ${offsetY}px)`,
+                        }}
+                      >
+                        <FlipCard
+                          industry={{
+                            ...industry,
+                            color: `bg-[${color.bg}] text-[${color.text}]`
+                          }}
+                          delay={idx * 0.1}
+                          allIndustries={industries}
+                        />
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
             </div>
           </div>

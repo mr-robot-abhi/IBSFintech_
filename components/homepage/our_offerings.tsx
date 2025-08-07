@@ -30,115 +30,119 @@ export default function OurOfferingsSection() {
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
-    <div className="flex flex-col md:flex-row w-full max-w-screen-xl mx-auto px-6 py-12 relative z-10">
-      {/* Left Section */}
-      <div className="md:w-[40%] pr-8 flex flex-col justify-start relative z-10 mt-6">
-        <div className="backdrop-blur-sm bg-black/30 p-6 rounded-xl shadow-lg">
-          <h2 className="text-4xl font-bold text-white mb-4">Our Offerings</h2>
-          <p className="text-white text-lg mb-4">
-            Modular financial services — enhanced by robust technology, customizable modules, and secure integrations.
-          </p>
-          <p className="text-white text-base opacity-80">
-            From advanced cash and liquidity solutions to comprehensive trade finance and investment options, we bring
-            efficiency and transparency to your financial ecosystem.
-          </p>
-        </div>
-      </div>
+    <div className="container mx-auto px-4 py-16">
+      <div className="backdrop-blur-sm bg-black/30 rounded-2xl border border-white/10 shadow-xl p-6">
+        <div className="flex flex-col lg:flex-row items-center gap-8">
+          {/* Left Section */}
+          <div className="w-full lg:w-2/5">
+            <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-300 to-blue-500 bg-clip-text text-transparent mb-4">
+              Our Offerings
+            </h2>
+            <p className="text-base text-white/90 mb-4">
+              Modular financial services — enhanced by robust technology, customizable modules, and secure integrations.
+            </p>
+            <p className="text-base text-white/80">
+              From advanced cash and liquidity solutions to comprehensive trade finance and investment options, we bring
+              efficiency and transparency to your financial ecosystem.
+            </p>
+          </div>
 
-      {/* Right Section */}
-      <div className="md:w-[60%] mt-6 md:mt-0 relative group">
-        {/* Swiper Carousel */}
-        <Swiper
-          modules={[Navigation, Autoplay]}
-          spaceBetween={30}
-          slidesPerView={3}
-          centeredSlides={true}
-          loop={true}
-          autoplay={{ delay: 2500, disableOnInteraction: false }}
-          navigation={{
-            prevEl: '.swiper-button-prev',
-            nextEl: '.swiper-button-next',
-          }}
-          breakpoints={{
-            0: { slidesPerView: 1 },
-            768: { slidesPerView: 2 },
-            1024: { slidesPerView: 3 },
-          }}
-          onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
-          className="mySwiper"
-          style={{ paddingTop: '40px', paddingBottom: '40px', overflow: 'hidden' }}
-        >
-          {SERVICES.map((service, index) => {
-            const isActive = index === activeIndex;
-            return (
-              <SwiperSlide key={index}>
-                <div
-                  className="rounded-xl px-4 pt-6 pb-8 h-[280px] flex flex-col justify-between text-center relative transition-all duration-500 bg-white/5 backdrop-blur-sm"
-                  style={{
-                    boxShadow: isActive
-                      ? `0 0 20px 6px ${service.glowColor}, 0 0 40px 14px ${service.glowColor}`
-                      : 'none',
-                    transform: isActive ? 'scale(1.07)' : 'scale(0.92)',
-                    border: isActive ? `2px solid ${service.glowColor}` : '1px solid transparent',
-                    position: 'relative',
-                    zIndex: isActive ? 2 : 1,
-                  }}
-                >
-                  {/* Content */}
-                  <div className="flex flex-col items-center gap-2 -mt-6">
-                    <div className="relative w-20 h-20 flex items-center justify-center">
-                      <Image
-                        src={service.icon}
-                        alt={service.title}
-                        width={80}
-                        height={80}
-                        className={`${isActive ? 'scale-110' : 'scale-90 opacity-70'} transition-all duration-500`}
-                        style={isActive ? { filter: `drop-shadow(0 0 8px ${service.glowColor})` } : {}}
-                      />
+          {/* Right Section */}
+          <div className="w-full lg:w-3/5 relative group">
+            {/* Swiper Carousel */}
+            <Swiper
+              modules={[Navigation, Autoplay]}
+              spaceBetween={30}
+              slidesPerView={3}
+              centeredSlides={true}
+              loop={true}
+              autoplay={{ delay: 2500, disableOnInteraction: false }}
+              navigation={{
+                prevEl: '.swiper-button-prev',
+                nextEl: '.swiper-button-next',
+              }}
+              breakpoints={{
+                0: { slidesPerView: 1 },
+                768: { slidesPerView: 2 },
+                1024: { slidesPerView: 3 },
+              }}
+              onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
+              className="mySwiper"
+              style={{ paddingTop: '40px', paddingBottom: '40px', overflow: 'hidden' }}
+            >
+              {SERVICES.map((service, index) => {
+                const isActive = index === activeIndex;
+                return (
+                  <SwiperSlide key={index}>
+                    <div
+                      className="rounded-xl px-4 pt-6 pb-8 h-[280px] flex flex-col justify-between text-center relative transition-all duration-500 bg-white/5 backdrop-blur-sm"
+                      style={{
+                        boxShadow: isActive
+                          ? `0 0 20px 6px ${service.glowColor}, 0 0 40px 14px ${service.glowColor}`
+                          : 'none',
+                        transform: isActive ? 'scale(1.07)' : 'scale(0.92)',
+                        border: isActive ? `2px solid ${service.glowColor}` : '1px solid transparent',
+                        position: 'relative',
+                        zIndex: isActive ? 2 : 1,
+                      }}
+                    >
+                      {/* Content */}
+                      <div className="flex flex-col items-center gap-2 -mt-6">
+                        <div className="relative w-20 h-20 flex items-center justify-center">
+                          <Image
+                            src={service.icon}
+                            alt={service.title}
+                            width={80}
+                            height={80}
+                            className={`${isActive ? 'scale-110' : 'scale-90 opacity-70'} transition-all duration-500`}
+                            style={isActive ? { filter: `drop-shadow(0 0 8px ${service.glowColor})` } : {}}
+                          />
+                        </div>
+                        <h3 className="text-lg font-semibold text-white">{service.title}</h3>
+                      </div>
+                      <p className="text-sm text-white mt-2">{service.description}</p>
+                      <button
+                        onClick={() => window.location.href = '#'}
+                        className="bg-blue-600 text-white px-4 py-1 rounded-full text-sm font-medium hover:bg-blue-700 transition mt-4"
+                      >
+                        Learn More
+                      </button>
                     </div>
-                    <h3 className="text-lg font-semibold text-white">{service.title}</h3>
-                  </div>
-                  <p className="text-sm text-white mt-2">{service.description}</p>
-                  <button
-                    onClick={() => window.location.href = '#'}
-                    className="bg-blue-600 text-white px-4 py-1 rounded-full text-sm font-medium hover:bg-blue-700 transition mt-4"
-                  >
-                    Learn More
-                  </button>
-                </div>
-              </SwiperSlide>
-            );
-          })}
-        </Swiper>
+                  </SwiperSlide>
+                );
+              })}
+            </Swiper>
 
-        {/* Navigation Buttons */}
-        <button
-          className="swiper-button-prev absolute left-[-20px] top-1/2 z-10 -translate-y-1/2 w-12 h-12 rounded-full bg-blue-600 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-blue-700 shadow-lg"
-        >
-          <ChevronLeft className="w-8 h-8 text-white" />
-        </button>
-        <button
-          className="swiper-button-next absolute right-[-20px] top-1/2 z-10 -translate-y-1/2 w-12 h-12 rounded-full bg-blue-600 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-blue-700 shadow-lg"
-        >
-          <ChevronRight className="w-8 h-8 text-white" />
-        </button>
-        
-        {/* Interfaces Section */}
-        <div className="mt-8">
-          <h3 className="text-white text-xl font-bold mb-2 text-center">Interfaces</h3>
-          <p className="text-sm text-white text-center mb-4">Integrated touchpoints powering our services</p>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-            {INTERFACES.map(({ name, icon }, idx) => (
-              <div
-                key={idx}
-                className="bg-white/10 border border-white/20 text-white rounded-lg p-1.5 flex flex-col items-center justify-center gap-0.5 text-center transition-colors duration-200 hover:bg-white/15 h-20"
-              >
-                <div className="w-10 h-10 flex items-center justify-center">
-                  <Image src={icon} alt={name} width={40} height={40} className="filter brightness-0 invert" />
-                </div>
-                <span className="font-medium text-sm">{name}</span>
+            {/* Navigation Buttons */}
+            <button
+              className="swiper-button-prev absolute left-[-20px] top-1/2 z-10 -translate-y-1/2 w-12 h-12 rounded-full bg-blue-600 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-blue-700 shadow-lg"
+            >
+              <ChevronLeft className="w-8 h-8 text-white" />
+            </button>
+            <button
+              className="swiper-button-next absolute right-[-20px] top-1/2 z-10 -translate-y-1/2 w-12 h-12 rounded-full bg-blue-600 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-blue-700 shadow-lg"
+            >
+              <ChevronRight className="w-8 h-8 text-white" />
+            </button>
+            
+            {/* Interfaces Section */}
+            <div className="mt-8">
+              <h3 className="text-white text-xl font-bold mb-2 text-center">Interfaces</h3>
+              <p className="text-sm text-white text-center mb-4">Integrated touchpoints powering our services</p>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                {INTERFACES.map(({ name, icon }, idx) => (
+                  <div
+                    key={idx}
+                    className="bg-white/10 border border-white/20 text-white rounded-lg p-1.5 flex flex-col items-center justify-center gap-0.5 text-center transition-colors duration-200 hover:bg-white/15 h-20"
+                  >
+                    <div className="w-10 h-10 flex items-center justify-center">
+                      <Image src={icon} alt={name} width={40} height={40} className="filter brightness-0 invert" />
+                    </div>
+                    <span className="font-medium text-sm">{name}</span>
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
           </div>
         </div>
       </div>

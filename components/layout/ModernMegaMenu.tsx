@@ -219,9 +219,26 @@ const locales = [
 ];
 
 const menuVariants = {
-  initial: { opacity: 0, y: -20 },
-  animate: { opacity: 1, y: 0, transition: { duration: 0.3, ease: 'easeOut' } },
-  exit: { opacity: 0, y: -20, transition: { duration: 0.2, ease: 'easeIn' } },
+  initial: { opacity: 0, y: -10, scale: 0.95 },
+  animate: { 
+    opacity: 1, 
+    y: 0, 
+    scale: 1,
+    transition: { 
+      duration: 0.15, 
+      ease: [0.4, 0, 0.2, 1],
+      staggerChildren: 0.02
+    } 
+  },
+  exit: { 
+    opacity: 0, 
+    y: -10, 
+    scale: 0.95,
+    transition: { 
+      duration: 0.1, 
+      ease: [0.4, 0, 1, 1] 
+    } 
+  },
 };
 
 export default function ModernMegaMenu() {
@@ -230,11 +247,15 @@ export default function ModernMegaMenu() {
   const closeTimeout = useRef<NodeJS.Timeout | null>(null);
 
   function handleMouseEnter(label: string) {
-    if (closeTimeout.current) clearTimeout(closeTimeout.current);
+    if (closeTimeout.current) {
+      clearTimeout(closeTimeout.current);
+      closeTimeout.current = null;
+    }
     setOpenMenu(label);
   }
+  
   function handleMouseLeave() {
-    closeTimeout.current = setTimeout(() => setOpenMenu(null), 120); // 120ms delay
+    closeTimeout.current = setTimeout(() => setOpenMenu(null), 50); // Reduced from 120ms to 50ms
   }
 
   return (
@@ -261,9 +282,16 @@ export default function ModernMegaMenu() {
               onMouseLeave={handleMouseLeave}
             >
               <Link href={item.href || '#'}>
-                <div className={`px-3 py-1.5 text-sm font-semibold text-white/80 hover:text-white rounded-lg transition-colors flex items-center gap-1 ${openMenu === item.label ? 'bg-white/10' : ''}`}>
+                <div className={`px-3 py-1.5 text-sm font-semibold text-white/80 hover:text-white rounded-lg transition-all duration-150 ease-out flex items-center gap-1 ${openMenu === item.label ? 'bg-white/10' : ''}`}>
                   {item.label}
-                  {(item.submenus || item.mega) && <ChevronDown size={16} className="ml-1 transition-transform duration-200" style={{ transform: openMenu === item.label ? 'rotate(180deg)' : 'rotate(0deg)'}} />}
+                  {(item.submenus || item.mega) && (
+                    <ChevronDown 
+                      size={16} 
+                      className={`ml-1 transition-all duration-150 ease-out ${
+                        openMenu === item.label ? 'rotate-180' : 'rotate-0'
+                      }`} 
+                    />
+                  )}
                 </div>
               </Link>
 
@@ -274,28 +302,28 @@ export default function ModernMegaMenu() {
                     initial="initial"
                     animate="animate"
                     exit="exit"
-                    className={`absolute top-full mt-2 z-40 ${item.label === 'Solutions' ? 'left-0' : index >= menu.length - 2 ? 'right-0' : 'left-0'}`}
+                    className={`absolute top-full mt-2 z-40 ${item.label === 'Solutions' ? '-left-32' : item.label === 'Resources' ? '-left-24' : item.label === 'Company' ? 'right-0' : 'left-0'}`}
                   >
                     <div className={`rounded-xl shadow-2xl border border-white/10 bg-white overflow-hidden`}>
                       {item.mega ? (
-                        <div className={`grid grid-cols-3 gap-3 p-3 ${item.label === 'Products' ? 'w-[650px]' : item.label === 'Solutions' ? 'w-[900px]' : item.label === 'Resources' ? 'w-[650px]' : 'w-[600px]'}`}>
+                        <div className={`grid grid-cols-3 gap-3 p-3 ${item.label === 'Products' ? 'w-[650px]' : item.label === 'Solutions' ? 'w-[750px]' : item.label === 'Resources' ? 'w-[600px]' : 'w-[600px]'}`}>
                           {item.label === "Solutions" ? (
-                            // Enhanced Solutions dropdown with descriptions
+                            // Enhanced Solutions dropdown with descriptions in 2 columns
                             <>
                               <div className="col-span-2">
                                 <h4 className="text-gray-900 font-bold text-sm mb-3 px-2">Our Solutions</h4>
-                                <div className="space-y-3 px-2">
+                                <div className="grid grid-cols-2 gap-x-4 gap-y-2 px-2">
                                   {item.groups && item.groups[0]?.items.map((sub, index) => {
                                     const Icon = sub.icon || FileText;
                                     return (
                                       <Link 
                                         key={sub.label} 
                                         href={sub.href} 
-                                        className="block p-3 rounded-lg hover:bg-blue-50 text-gray-800 hover:text-blue-700 transition-colors border border-transparent hover:border-blue-200"
+                                        className="block p-2 rounded-lg hover:bg-blue-50 text-gray-800 hover:text-blue-700 transition-all duration-200 border border-transparent hover:border-blue-200"
                                       >
-                                        <div className="flex items-start gap-3">
-                                          <Icon className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                                          <div className="flex-1">
+                                        <div className="flex items-start gap-2">
+                                          <Icon className="w-4 h-4 text-blue-600 flex-shrink-0 mt-0.5" />
+                                          <div className="flex-1 min-w-0">
                                             <h5 className="text-sm font-semibold mb-1 leading-tight">{sub.label}</h5>
                                             {sub.description && (
                                               <p className="text-xs text-gray-600 leading-relaxed">{sub.description}</p>
@@ -308,13 +336,13 @@ export default function ModernMegaMenu() {
                                 </div>
                               </div>
                               <div className="col-span-1">
-                                <div className="bg-blue-50 rounded-lg p-3 h-full flex flex-col">
+                                <div className="bg-blue-50 rounded-lg p-2 h-full flex flex-col">
                                     <div>
-                                        <h5 className='text-blue-900 font-bold mb-2 text-sm'>Our Solutions</h5>
-                                        <Image src="/Solutions Image.svg" alt="Solutions" width={180} height={100} className="rounded-md mb-2 mx-auto" />
+                                        <h5 className='text-blue-900 font-bold mb-1 text-sm'>Our Solutions</h5>
+                                        <Image src="/Solutions Image.svg" alt="Solutions" width={160} height={90} className="rounded-md mb-1 mx-auto" />
                                     </div>
                                     <div className="mt-auto">
-                                      <Link href="/all_solutions" className='text-blue-700 font-semibold text-sm flex items-center gap-1 hover:underline justify-center'>
+                                      <Link href="/all_solutions" className='text-blue-700 font-semibold text-sm flex items-center gap-1 hover:underline justify-center transition-colors duration-200'>
                                         View All Solutions <ArrowRight size={14} />
                                       </Link>
                                     </div>
@@ -322,27 +350,45 @@ export default function ModernMegaMenu() {
                               </div>
                             </>
                           ) : item.label === "Products" ? (
-                            // Products dropdown with consistent font size
+                            // Products dropdown with 2-column layout under Enterprise TMS
                             <>
                               <div className="col-span-2">
                                 {item.groups?.map((group) => (
                                   <div key={group.title} className="mb-3 last:mb-0">
                                     <h4 className="text-gray-900 font-bold text-sm mb-2 px-2">{group.title}</h4>
-                                    <div className="flex flex-wrap gap-1 px-2">
-                                      {group.items.map((sub, index) => {
-                                        const Icon = sub.icon || FileText;
-                                        return (
-                                          <Link 
-                                            key={sub.label} 
-                                            href={sub.href} 
-                                            className="flex items-start gap-1 px-2 py-1 rounded hover:bg-blue-50 text-gray-800 hover:text-blue-700 transition-colors text-sm font-medium"
-                                          >
-                                            <Icon className="w-4 h-4 text-blue-600 flex-shrink-0 mt-0.5" />
-                                            <span className="leading-tight">{sub.label}</span>
-                                          </Link>
-                                        );
-                                      })}
-                                    </div>
+                                    {group.title === "Enterprise TMS" ? (
+                                      <div className="grid grid-cols-2 gap-x-4 gap-y-1 px-2">
+                                        {group.items.map((sub, index) => {
+                                          const Icon = sub.icon || FileText;
+                                          return (
+                                            <Link 
+                                              key={sub.label} 
+                                              href={sub.href} 
+                                              className="flex items-center gap-2 px-2 py-1 rounded hover:bg-blue-50 text-gray-800 hover:text-blue-700 transition-all duration-150 ease-out text-sm font-medium"
+                                            >
+                                              <Icon className="w-4 h-4 text-blue-600 flex-shrink-0" />
+                                              <span className="leading-tight">{sub.label}</span>
+                                            </Link>
+                                          );
+                                        })}
+                                      </div>
+                                    ) : (
+                                      <div className="flex flex-wrap gap-1 px-2">
+                                        {group.items.map((sub, index) => {
+                                          const Icon = sub.icon || FileText;
+                                          return (
+                                            <Link 
+                                              key={sub.label} 
+                                              href={sub.href} 
+                                              className="flex items-center gap-2 px-2 py-1 rounded hover:bg-blue-50 text-gray-800 hover:text-blue-700 transition-all duration-150 ease-out text-sm font-medium"
+                                            >
+                                              <Icon className="w-4 h-4 text-blue-600 flex-shrink-0" />
+                                              <span className="leading-tight">{sub.label}</span>
+                                            </Link>
+                                          );
+                                        })}
+                                      </div>
+                                    )}
                                   </div>
                                 ))}
                               </div>
@@ -350,10 +396,10 @@ export default function ModernMegaMenu() {
                                 <div className="bg-blue-50 rounded-lg p-2 h-full flex flex-col">
                                     <div>
                                         <h5 className='text-blue-900 font-bold mb-1 text-sm'>Our Products</h5>
-                                        <Image src="/Product Image.svg" alt="Products" width={180} height={100} className="rounded-md mb-1 mx-auto" />
+                                        <Image src="/Product Image.svg" alt="Products" width={160} height={90} className="rounded-md mb-1 mx-auto" />
                                     </div>
                                     <div className="mt-auto">
-                                      <Link href="/all_products" className='text-blue-700 font-semibold text-sm flex items-center gap-1 hover:underline justify-center'>
+                                      <Link href="/all_products" className='text-blue-700 font-semibold text-sm flex items-center gap-1 hover:underline justify-center transition-colors duration-150 ease-out'>
                                         View All Products <ArrowRight size={14} />
                                       </Link>
                                     </div>
@@ -361,50 +407,33 @@ export default function ModernMegaMenu() {
                               </div>
                             </>
                           ) : item.label === "Resources" ? (
-                            // Resources dropdown in 2 columns without headings
+                            // Resources dropdown with 2 columns (6 items each)
                             <>
                               <div className="col-span-2">
-                                <div className="grid grid-cols-2 gap-6">
-                                  <div className="space-y-1">
-                                    {item.groups && item.groups[0]?.items.slice(0, 6).map((sub) => {
-                                      const Icon = sub.icon || FileText;
-                                      return (
-                                        <Link 
-                                          key={sub.label} 
-                                          href={sub.href} 
-                                          className="flex items-center gap-2 px-2 py-1 rounded hover:bg-blue-50 text-gray-800 hover:text-blue-700 transition-colors"
-                                        >
-                                          <Icon className="w-4 h-4 text-blue-600 flex-shrink-0" />
-                                          <span className="text-sm">{sub.label}</span>
-                                        </Link>
-                                      );
-                                    })}
-                                  </div>
-                                  <div className="space-y-1">
-                                    {item.groups && item.groups[0]?.items.slice(6).map((sub) => {
-                                      const Icon = sub.icon || FileText;
-                                      return (
-                                        <Link 
-                                          key={sub.label} 
-                                          href={sub.href} 
-                                          className="flex items-center gap-2 px-2 py-1 rounded hover:bg-blue-50 text-gray-800 hover:text-blue-700 transition-colors"
-                                        >
-                                          <Icon className="w-4 h-4 text-blue-600 flex-shrink-0" />
-                                          <span className="text-sm">{sub.label}</span>
-                                        </Link>
-                                      );
-                                    })}
-                                  </div>
+                                <div className="grid grid-cols-2 gap-x-6 gap-y-1 px-2">
+                                  {item.groups && item.groups[0]?.items.map((sub, index) => {
+                                    const Icon = sub.icon || FileText;
+                                    return (
+                                      <Link 
+                                        key={sub.label} 
+                                        href={sub.href} 
+                                        className="flex items-center gap-2 px-2 py-1 rounded hover:bg-blue-50 text-gray-800 hover:text-blue-700 transition-all duration-150 ease-out text-sm font-medium"
+                                      >
+                                        <Icon className="w-4 h-4 text-blue-600 flex-shrink-0" />
+                                        <span className="leading-tight">{sub.label}</span>
+                                      </Link>
+                                    );
+                                  })}
                                 </div>
                               </div>
                               <div className="col-span-1">
                                 <div className="bg-blue-50 rounded-lg p-2 h-full flex flex-col">
                                     <div>
                                         <h5 className='text-blue-900 font-bold mb-1 text-sm'>Resources</h5>
-                                        <Image src="/bg_1.jpg" alt="Resources" width={180} height={100} className="rounded-md mb-1 mx-auto object-cover" />
+                                        <Image src="/bg_1.jpg" alt="Resources" width={160} height={90} className="rounded-md mb-1 mx-auto object-cover" />
                                     </div>
                                     <div className="mt-auto">
-                                      <Link href="/resources" className='text-blue-700 font-semibold text-sm flex items-center gap-1 hover:underline justify-center'>
+                                      <Link href="/resources" className='text-blue-700 font-semibold text-sm flex items-center gap-1 hover:underline justify-center transition-colors duration-150 ease-out'>
                                         View All Resources <ArrowRight size={14} />
                                       </Link>
                                     </div>
@@ -412,51 +441,34 @@ export default function ModernMegaMenu() {
                               </div>
                             </>
                           ) : item.label === "Company" ? (
-                            // Company dropdown in 2 columns without headings
+                            // Company dropdown with 2 columns (4 items each)
                             <>
                               <div className="col-span-2">
-                                <div className="grid grid-cols-2 gap-6">
-                                  <div className="space-y-1">
-                                    {item.groups && item.groups[0]?.items.slice(0, 4).map((sub) => {
-                                      const Icon = sub.icon || FileText;
-                                      return (
-                                        <Link 
-                                          key={sub.label} 
-                                          href={sub.href} 
-                                          className="flex items-center gap-2 px-2 py-1 rounded hover:bg-blue-50 text-gray-800 hover:text-blue-700 transition-colors"
-                                        >
-                                          <Icon className="w-4 h-4 text-blue-600 flex-shrink-0" />
-                                          <span className="text-sm">{sub.label}</span>
-                                        </Link>
-                                      );
-                                    })}
-                                  </div>
-                                  <div className="space-y-1">
-                                    {item.groups && item.groups[0]?.items.slice(4).map((sub) => {
-                                      const Icon = sub.icon || FileText;
-                                      return (
-                                        <Link 
-                                          key={sub.label} 
-                                          href={sub.href} 
-                                          className="flex items-center gap-2 px-2 py-1 rounded hover:bg-blue-50 text-gray-800 hover:text-blue-700 transition-colors"
-                                        >
-                                          <Icon className="w-4 h-4 text-blue-600 flex-shrink-0" />
-                                          <span className="text-sm">{sub.label}</span>
-                                        </Link>
-                                      );
-                                    })}
-                                  </div>
+                                <div className="grid grid-cols-2 gap-x-6 gap-y-1 px-2">
+                                  {item.groups && item.groups[0]?.items.map((sub, index) => {
+                                    const Icon = sub.icon || FileText;
+                                    return (
+                                      <Link 
+                                        key={sub.label} 
+                                        href={sub.href} 
+                                        className="flex items-center gap-2 px-2 py-1 rounded hover:bg-blue-50 text-gray-800 hover:text-blue-700 transition-all duration-150 ease-out text-sm font-medium"
+                                      >
+                                        <Icon className="w-4 h-4 text-blue-600 flex-shrink-0" />
+                                        <span className="leading-tight">{sub.label}</span>
+                                      </Link>
+                                    );
+                                  })}
                                 </div>
-                                <div className="mt-3 px-2">
-                                  <Image src="/bg_6.jpg" alt="Company" width={400} height={80} className="rounded-md w-full object-cover" />
+                                <div className="mt-2 px-2">
+                                  <Image src="/bg_6.jpg" alt="Company" width={350} height={70} className="rounded-md w-full object-cover" />
                                 </div>
                               </div>
                               <div className="col-span-1">
                                 <div className="bg-blue-50 rounded-lg p-2 h-full flex flex-col justify-center">
                                   <div className="text-center">
-                                    <h5 className='text-blue-900 font-bold mb-2 text-sm'>About Us</h5>
-                                    <p className="text-blue-700 text-xs mb-3 leading-tight">Discover our mission, values, and commitment to transforming treasury management.</p>
-                                    <Link href="/company" className='text-blue-700 font-semibold text-sm flex items-center gap-1 hover:underline justify-center'>
+                                    <h5 className='text-blue-900 font-bold mb-1 text-sm'>About Us</h5>
+                                    <p className="text-blue-700 text-xs mb-2 leading-tight">Discover our mission, values, and commitment to transforming treasury management.</p>
+                                    <Link href="/company" className='text-blue-700 font-semibold text-sm flex items-center gap-1 hover:underline justify-center transition-colors duration-150 ease-out'>
                                       Learn More <ArrowRight size={14} />
                                     </Link>
                                   </div>
@@ -476,7 +488,7 @@ export default function ModernMegaMenu() {
                                           <li key={sub.label}>
                                             <Link 
                                               href={sub.href} 
-                                              className="flex items-center gap-2 px-2 py-1 rounded hover:bg-blue-50 text-gray-800 hover:text-blue-700 transition-colors whitespace-nowrap"
+                                              className="flex items-center gap-2 px-2 py-1 rounded hover:bg-blue-50 text-gray-800 hover:text-blue-700 transition-all duration-200 whitespace-nowrap"
                                             >
                                               <Icon className="w-4 h-4 text-blue-600 flex-shrink-0" />
                                               <span className="text-sm">{sub.label}</span>
@@ -498,7 +510,7 @@ export default function ModernMegaMenu() {
                               const Icon = sub.icon || FileText;
                               return (
                                 <li key={sub.label}>
-                                <Link href={sub.href} className="flex items-center gap-2 px-2 py-1.5 rounded hover:bg-blue-50 text-gray-800 hover:text-blue-700 transition-colors">
+                                <Link href={sub.href} className="flex items-center gap-2 px-2 py-1.5 rounded hover:bg-blue-50 text-gray-800 hover:text-blue-700 transition-all duration-200">
                                     <Icon className="w-4 h-4 text-blue-600 flex-shrink-0" />
                                     {sub.label}
                                 </Link>

@@ -92,36 +92,40 @@ const CashVisibilityForecastingPage = () => {
   return (
     <div className="min-h-screen overflow-x-hidden relative bg-white">
       {/* Modern Mega Menu */}
-
-      
-              <main className="relative z-10 pt-20 px-6 pb-12">
+      <main className="relative z-10">
         {/* Hero Section */}
-        <div className="max-w-6xl mx-auto mb-16">
-          <div className="relative h-96 rounded-xl overflow-hidden mb-12">
-            <Image
-              src="/Interal Page 3.png"
-              alt="Cash Visibility and Forecasting"
-              fill
-              className="object-cover"
-              priority
-            />
-            <div className="absolute inset-0 bg-[#241F5D] flex items-center p-8 md:p-12">
-              <div className="max-w-2xl">
-                <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">Cash Visibility and Forecasting</h1>
-                <p className="text-lg text-[#241F5D]/80 mb-6">
+        <div className="w-full bg-gradient-to-r from-[#241F5D] to-[#3A3480] relative">
+          <div className="container mx-auto px-4 py-12 md:py-16">
+            <div className="flex flex-col md:flex-row items-center">
+              <div className="md:w-1/2 mb-8 md:mb-0 md:pr-8">
+                <h1 className="text-3xl md:text-4xl font-bold text-white mb-4">Cash Visibility and Forecasting</h1>
+                <p className="text-blue-100 mb-6">
                   A comprehensive solution for cashflow management and liquidity planning seamlessly integrated with Banks, ERP software such as SAP, Oracle as well as other third-party solutions.
                 </p>
-                <button className="bg-white text-[#241F5D] hover:bg-[#241F5D]/20 font-medium py-3 px-8 rounded-lg transition-colors flex items-center">
+                <button className="bg-white text-[#241F5D] hover:bg-gray-100 font-medium py-2.5 px-6 rounded-lg transition-colors flex items-center text-sm">
                   Request Demo
-                  <svg className="ml-2 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg className="ml-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                   </svg>
                 </button>
               </div>
+              <div className="md:w-1/2">
+                <div className="relative w-full h-64 md:h-80 rounded-lg overflow-hidden shadow-xl">
+                  <Image
+                    src="/solutions/cash_visibility.jpeg"
+                    alt="Cash Visibility and Forecasting"
+                    fill
+                    className="object-cover"
+                    priority
+                  />
+                </div>
+              </div>
             </div>
           </div>
+        </div>
 
-          {/* Challenges Section */}
+        {/* Challenges Section */}
+        <div className="container mx-auto px-4 py-12">
           <div className="mb-20">
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold text-gray-900 mb-4">Cash visibility is the key Challenge of the CFOs</h2>

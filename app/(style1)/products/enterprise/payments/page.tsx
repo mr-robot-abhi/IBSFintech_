@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { ArrowRight, CreditCard, Shield, Bell, BarChart, FileText, Users, Send, CheckCircle, Lock, RefreshCw } from 'lucide-react';
@@ -16,34 +17,52 @@ const PaymentsPage = () => {
 
 
       {/* Hero Section */}
-      <section className="relative w-full py-24 md:py-32 bg-gradient-to-r from-[#241F5D] to-[#3A3480] text-white">
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-4xl mx-auto text-center">
-            <motion.h1 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="text-4xl md:text-5xl font-bold mb-6 leading-tight"
-            >
-              Enterprise Payments Management
-            </motion.h1>
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-xl md:text-2xl text-blue-100 mb-8 max-w-3xl mx-auto"
-            >
-              Streamline your payment operations with our comprehensive, secure, and efficient payment management solution
-            </motion.p>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-            >
-              <Button size="lg" className="bg-white text-[#241F5D] hover:bg-blue-50">
-                Schedule a Demo <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-            </motion.div>
+      <section className="relative w-full py-12 md:py-16 bg-gradient-to-r from-[#241F5D] to-[#3A3480] text-white">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col md:flex-row items-center">
+            <div className="md:w-1/2 mb-6 md:mb-0 md:pr-8">
+              <motion.h1 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                className="text-3xl md:text-4xl font-bold mb-4 leading-tight"
+              >
+                Enterprise Payments Management
+              </motion.h1>
+              <motion.p 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                className="text-lg text-blue-100 mb-6"
+              >
+                Streamline your payment operations with our comprehensive, secure, and efficient payment management solution
+              </motion.p>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+              >
+                <Button size="lg" className="bg-white text-[#241F5D] hover:bg-blue-50">
+                  Schedule a Demo <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </motion.div>
+            </div>
+            <div className="md:w-1/2">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                className="relative w-full h-64 md:h-72 rounded-lg overflow-hidden shadow-xl"
+              >
+                <Image
+                  src="/Inner pages/Products/IBSFINtech Treasury Management System Module.png"
+                  alt="Treasury Management System Module"
+                  fill
+                  className="object-cover"
+                  priority
+                />
+              </motion.div>
+            </div>
           </div>
         </div>
       </section>
@@ -58,15 +77,15 @@ const PaymentsPage = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="max-w-4xl mx-auto mb-16"
+              className="max-w-6xl mx-auto"
             >
-              <h2 className="text-3xl md:text-4xl font-bold text-[#241F5D] mb-8 text-center">
+              <h2 className="text-3xl md:text-4xl font-bold text-[#241F5D] mb-12 text-center">
                 All-in-One Payment Solution
               </h2>
               
-              <div className="grid md:grid-cols-2 gap-12 items-start">
-                <div>
-                  <ul className="space-y-4 text-gray-700 mb-8">
+              <div className="grid md:grid-cols-2 gap-12 items-center">
+                <div className="space-y-8">
+                  <ul className="space-y-4 text-gray-700">
                     <li className="flex items-start">
                       <span className="text-blue-600 mr-2 mt-1">•</span>
                       <span>Centralized platform to manage different payment types including vendor payments, payroll, and tax payments.</span>
@@ -125,17 +144,15 @@ const PaymentsPage = () => {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: 0.2 }}
-                  className="bg-gray-100 rounded-xl p-6 h-full"
+                  className="h-full"
                 >
-                  <div className="relative h-full w-full rounded-lg overflow-hidden">
-                    <img 
-                      src="/Currencies-Banner.png" 
-                      alt="Payment Processing Dashboard" 
-                      className="w-full h-full object-cover"
+                  <div className="relative w-full h-96 md:h-full rounded-xl overflow-hidden shadow-xl">
+                    <Image
+                      src="/Inner pages/Products/Treasury Payments Platform.jpeg"
+                      alt="Treasury Payments Platform"
+                      fill
+                      className="object-cover"
                     />
-                    <div className="absolute bottom-0 left-0 right-0 bg-black/50 text-white p-4 text-sm">
-                      Payment Processing Dashboard
-                    </div>
                   </div>
                 </motion.div>
               </div>

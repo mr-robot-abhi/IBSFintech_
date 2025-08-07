@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { ArrowRight, BarChart, Bell, FileText, Layers, LineChart, Shield, TrendingUp, Truck, Package, Users, CreditCard, Zap } from 'lucide-react';
@@ -16,42 +17,60 @@ const SupplyChainFinancePage = () => {
 
 
       {/* Hero Section */}
-      <section className="relative w-full py-24 md:py-32 bg-gradient-to-r from-[#241F5D] to-[#3A3480] text-white">
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-4xl mx-auto text-center">
-            <motion.h1 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="text-4xl md:text-5xl font-bold mb-6 leading-tight"
-            >
-              Supply Chain Finance – VNDZY®
-            </motion.h1>
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-xl md:text-2xl text-blue-100 mb-8 max-w-3xl mx-auto"
-            >
-              Transform Your Supply Chain with VNDZY®
-            </motion.p>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="text-lg text-blue-100 mb-8 max-w-4xl mx-auto"
-            >
-              Unlock working capital and optimize your supply chain with our innovative financing solutions.
-            </motion.p>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-            >
-              <Button size="lg" className="bg-white text-[#241F5D] hover:bg-blue-50">
-                Request a Demo <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-            </motion.div>
+      <section className="relative w-full py-12 md:py-16 bg-gradient-to-r from-[#241F5D] to-[#3A3480] text-white">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col md:flex-row items-center">
+            <div className="md:w-1/2 mb-6 md:mb-0 md:pr-8">
+              <motion.h1 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                className="text-3xl md:text-4xl font-bold mb-4 leading-tight"
+              >
+                Supply Chain Finance – VNDZY®
+              </motion.h1>
+              <motion.p 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                className="text-lg text-blue-100 mb-4"
+              >
+                Transform Your Supply Chain with VNDZY®
+              </motion.p>
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="text-base text-blue-100 mb-6"
+              >
+                Unlock working capital and optimize your supply chain with our innovative financing solutions.
+              </motion.p>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+              >
+                <Button size="lg" className="bg-white text-[#241F5D] hover:bg-blue-50">
+                  Request a Demo <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </motion.div>
+            </div>
+            <div className="md:w-1/2">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+                className="relative w-full h-64 md:h-72 rounded-lg overflow-hidden shadow-xl"
+              >
+                <Image
+                  src="/Inner pages/Products/Supply Chain Finance automation.png"
+                  alt="Supply Chain Finance Automation"
+                  fill
+                  className="object-cover"
+                  priority
+                />
+              </motion.div>
+            </div>
           </div>
         </div>
       </section>
@@ -115,13 +134,14 @@ const SupplyChainFinancePage = () => {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: 0.2 }}
-                  className="bg-gray-100 rounded-xl p-6 h-full"
+                  className="h-full"
                 >
-                  <div className="relative h-full w-full rounded-lg overflow-hidden">
-                    <img 
-                      src="/bg_6.jpg" 
-                      alt="Supply Chain Finance Dashboard" 
-                      className="w-full h-full object-cover"
+                  <div className="relative w-full h-96 md:h-full rounded-xl overflow-hidden shadow-xl">
+                    <Image
+                      src="/Inner pages/Products/SCF_corporates_TMS_50.jpeg"
+                      alt="Supply Chain Finance Solution"
+                      fill
+                      className="object-cover"
                     />
                   </div>
                 </motion.div>

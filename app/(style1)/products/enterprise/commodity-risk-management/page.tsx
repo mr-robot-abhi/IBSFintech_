@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { ArrowRight, BarChart, Bell, FileText, Layers, LineChart, Shield, TrendingUp, Zap } from 'lucide-react';
@@ -16,10 +17,10 @@ const CommodityRiskPage = () => {
 
 
       {/* Hero Section */}
-      <section className="relative w-full pt-28 pb-20 md:pt-32 md:pb-24 bg-gradient-to-r from-[#241F5D] to-[#3A3480] text-white">
-        <div className="container mx-auto px-6">
+      <section className="relative w-full py-12 md:py-16 bg-gradient-to-r from-[#241F5D] to-[#3A3480] text-white">
+        <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row items-center">
-            <div className="md:w-1/2 lg:w-2/5">
+            <div className="md:w-1/2 mb-6 md:mb-0 md:pr-8">
               <motion.h1 
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -32,7 +33,7 @@ const CommodityRiskPage = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.1 }}
-                className="text-lg text-blue-100 mb-4"
+                className="text-lg text-blue-100 mb-6"
               >
                 Effective strategies for corporates to mitigate the impact of volatile commodity prices through proactive risk management and strategic hedging
               </motion.p>
@@ -40,21 +41,26 @@ const CommodityRiskPage = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="mt-6"
               >
                 <Button size="lg" className="bg-white text-[#241F5D] hover:bg-blue-50">
                   Get Started <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </motion.div>
             </div>
-            <div className="hidden md:block md:w-1/2 lg:w-3/5 pl-8">
+            <div className="md:w-1/2">
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
-                className="bg-white/10 backdrop-blur-sm rounded-lg p-4 h-64 flex items-center justify-center"
+                className="relative w-full h-64 md:h-72 rounded-lg overflow-hidden shadow-xl"
               >
-                <span className="text-blue-100 text-lg">Commodity Risk Management Dashboard</span>
+                <Image
+                  src="/Inner pages/Products/Commodity_Risk_Management_IBSFINtech_50.jpg"
+                  alt="Commodity Risk Management Dashboard"
+                  fill
+                  className="object-cover"
+                  priority
+                />
               </motion.div>
             </div>
           </div>
