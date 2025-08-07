@@ -37,7 +37,7 @@ export default function PartnershipEcosystem({ variant = 'illustrative1' }: Part
         </motion.div>
         
         <div className="w-full max-w-6xl mx-auto">
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 md:gap-6 px-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 md:gap-8 px-4">
             {partners.map((partner, index) => (
               <motion.div
                 key={index}
@@ -47,16 +47,16 @@ export default function PartnershipEcosystem({ variant = 'illustrative1' }: Part
                 viewport={{ once: true }}
                 className="flex items-center justify-center"
               >
-                <div className="w-full max-w-[180px] aspect-[2/1] bg-white/5 rounded-lg flex items-center justify-center p-4 hover:bg-white/10 transition-all duration-300">
-                  <div className={`relative w-full ${partner.large ? 'h-4/5' : 'h-3/5'}`}>
+                <div className="w-full max-w-[220px] aspect-[2/1] bg-white/5 rounded-lg flex items-center justify-center p-6 hover:bg-white/10 transition-all duration-300">
+                  <div className={`relative w-full ${partner.large ? 'h-5/6' : 'h-4/5'}`}>
                     <Image
                       src={`/${partner.logo}`}
                       alt=""
                       fill
                       className="object-contain brightness-0 invert"
                       sizes={partner.large ? 
-                        "(max-width: 640px) 45vw, (max-width: 768px) 35vw, 200px" : 
-                        "(max-width: 640px) 40vw, (max-width: 768px) 30vw, 180px"
+                        "(max-width: 640px) 50vw, (max-width: 768px) 40vw, 250px" : 
+                        "(max-width: 640px) 45vw, (max-width: 768px) 35vw, 200px"
                       }
                     />
                   </div>

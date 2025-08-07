@@ -35,15 +35,49 @@ export default function OurOfferingsSection() {
         <div className="flex flex-col lg:flex-row items-center gap-8">
           {/* Left Section */}
           <div className="w-full lg:w-2/5">
-            <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-300 to-blue-500 bg-clip-text text-transparent mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 ">
               Our Offerings
             </h2>
-            <p className="text-base text-white/90 mb-4">
-              Modular financial services — enhanced by robust technology, customizable modules, and secure integrations.
+            <p className="text-base text-white/90 mb-6 text-justify">
+              Step into the future of treasury with IBSFINtech's comprehensive, integrated, and intelligent Treasury Management System — designed to put CFOs, Treasurers, and Finance Leaders in full control of their financial ecosystem.
             </p>
-            <p className="text-base text-white/80">
-              From advanced cash and liquidity solutions to comprehensive trade finance and investment options, we bring
-              efficiency and transparency to your financial ecosystem.
+            <p className="text-base text-white/90 mb-4 text-justify">
+              Whether you're a global enterprise or an agile SME, our all-in-one platform empowers you to: <br /><br />
+            </p>
+            <ul className="space-y-3 mb-6 text-justify">
+              <li className="flex items-start">
+                <svg className="h-5 w-5 text-white mr-2 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+                <span className="text-white/90">Gain real-time visibility across cash, risk, trade, and investments</span>
+              </li>
+              <li className="flex items-start">
+                <svg className="h-5 w-5 text-white mr-2 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+                <span className="text-white/90">Automate complex workflows and eliminate manual errors</span>
+              </li>
+              <li className="flex items-start">
+                <svg className="h-5 w-5 text-white mr-2 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+                <span className="text-white/90">Mitigate operational risks and ensure regulatory compliance</span>
+              </li>
+              <li className="flex items-start">
+                <svg className="h-5 w-5 text-white mr-2 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+                <span className="text-white/90">Drive strategic efficiency and ensure business continuity</span>
+              </li>
+              <li className="flex items-start">
+                <svg className="h-5 w-5 text-white mr-2 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+                <span className="text-white/90">Operate seamlessly across multiple entities, currencies, geographies, and asset classes</span>
+              </li>
+            </ul>
+            <p className="text-base text-white/90">
+              Built to scale with your growth, the platform is available as both on-premise and SaaS — giving you flexibility with agility.
             </p>
           </div>
 

@@ -142,59 +142,59 @@ const FlipCard: React.FC<FlipCardProps> = ({
         transform: `rotate(${randomTilt}deg)`, // Random tilt for asymmetric arrangement
       }}
     >
-              {/* Front of Card */}
-        <motion.div
-          className="absolute w-full h-full rounded-xl overflow-hidden backface-hidden shadow-lg border border-white/20"
-          style={{
-            background: currentIndustry.color.includes('bg-[') ? 
-              currentIndustry.color.split(' ')[0].replace('bg-[', '').replace(']', '') : 
-              (currentIndustry.color === 'from-blue-500 to-blue-600' ? 'linear-gradient(135deg, #3B82F6 0%, #2563EB 100%)' :
-               currentIndustry.color === 'from-emerald-500 to-emerald-600' ? 'linear-gradient(135deg, #10B981 0%, #059669 100%)' :
-                 currentIndustry.color === 'from-orange-500 to-orange-600' ? 'linear-gradient(135deg, #F97316 0%, #EA580C 100%)' :
-                   currentIndustry.color === 'from-amber-500 to-amber-600' ? 'linear-gradient(135deg, #F59E0B 0%, #D97706 100%)' :
-                     currentIndustry.color === 'from-purple-500 to-purple-600' ? 'linear-gradient(135deg, #A855F7 0%, #9333EA 100%)' :
-                       currentIndustry.color === 'from-pink-500 to-pink-600' ? 'linear-gradient(135deg, #EC4899 0%, #DB2777 100%)' :
-                         currentIndustry.color === 'from-cyan-500 to-cyan-600' ? 'linear-gradient(135deg, #06B6D4 0%, #0891B2 100%)' :
-                           'linear-gradient(135deg, #6366F1 0%, #4F46E5 100%)') // indigo default
-          }}
-          animate={controls}
-          transition={{ duration: 0.4, ease: "easeInOut" }}
-        >
-          <div className="w-full h-full flex flex-col items-center justify-center p-1">
-            <div className="w-6 h-6 bg-white/20 rounded-full flex items-center justify-center mb-1">
-              <currentIndustry.icon className="h-3 w-3 text-white" />
-            </div>
-            <span className="text-[10px] font-medium text-white text-center leading-tight">{currentIndustry.name}</span>
+      {/* Front of Card */}
+      <motion.div
+        className="absolute w-full h-full rounded-xl overflow-hidden backface-hidden shadow-lg border border-white/20"
+        style={{
+          background: currentIndustry.color.includes('bg-[') ?
+            currentIndustry.color.split(' ')[0].replace('bg-[', '').replace(']', '') :
+            (currentIndustry.color === 'from-blue-500 to-blue-600' ? 'linear-gradient(135deg, #3B82F6 0%, #2563EB 100%)' :
+              currentIndustry.color === 'from-emerald-500 to-emerald-600' ? 'linear-gradient(135deg, #10B981 0%, #059669 100%)' :
+                currentIndustry.color === 'from-orange-500 to-orange-600' ? 'linear-gradient(135deg, #F97316 0%, #EA580C 100%)' :
+                  currentIndustry.color === 'from-amber-500 to-amber-600' ? 'linear-gradient(135deg, #F59E0B 0%, #D97706 100%)' :
+                    currentIndustry.color === 'from-purple-500 to-purple-600' ? 'linear-gradient(135deg, #A855F7 0%, #9333EA 100%)' :
+                      currentIndustry.color === 'from-pink-500 to-pink-600' ? 'linear-gradient(135deg, #EC4899 0%, #DB2777 100%)' :
+                        currentIndustry.color === 'from-cyan-500 to-cyan-600' ? 'linear-gradient(135deg, #06B6D4 0%, #0891B2 100%)' :
+                          'linear-gradient(135deg, #6366F1 0%, #4F46E5 100%)') // indigo default
+        }}
+        animate={controls}
+        transition={{ duration: 0.4, ease: "easeInOut" }}
+      >
+        <div className="w-full h-full flex flex-col items-center justify-center p-1">
+          <div className="w-6 h-6 bg-white/20 rounded-full flex items-center justify-center mb-1">
+            <currentIndustry.icon className="h-3 w-3 text-white" />
           </div>
-        </motion.div>
-        
-        {/* Back of Card */}
-        <motion.div
-          className="absolute w-full h-full rounded-xl overflow-hidden backface-hidden shadow-lg border border-white/20"
-          style={{
-            background: nextIndustry.color.includes('bg-[') ? 
-              nextIndustry.color.split(' ')[0].replace('bg-[', '').replace(']', '') : 
-              (nextIndustry.color === 'from-blue-500 to-blue-600' ? 'linear-gradient(135deg, #3B82F6 0%, #2563EB 100%)' :
-               nextIndustry.color === 'from-emerald-500 to-emerald-600' ? 'linear-gradient(135deg, #10B981 0%, #059669 100%)' :
-                 nextIndustry.color === 'from-orange-500 to-orange-600' ? 'linear-gradient(135deg, #F97316 0%, #EA580C 100%)' :
-                   nextIndustry.color === 'from-amber-500 to-amber-600' ? 'linear-gradient(135deg, #F59E0B 0%, #D97706 100%)' :
-                     nextIndustry.color === 'from-purple-500 to-purple-600' ? 'linear-gradient(135deg, #A855F7 0%, #9333EA 100%)' :
-                       nextIndustry.color === 'from-pink-500 to-pink-600' ? 'linear-gradient(135deg, #EC4899 0%, #DB2777 100%)' :
-                         nextIndustry.color === 'from-cyan-500 to-cyan-600' ? 'linear-gradient(135deg, #06B6D4 0%, #0891B2 100%)' :
-                           'linear-gradient(135deg, #6366F1 0%, #4F46E5 100%)') // indigo default
-          }}
-          animate={{
-            rotateY: 90,
-          }}
-          transition={{ duration: 0.4, ease: "easeInOut" }}
-        >
-          <div className="w-full h-full flex flex-col items-center justify-center p-1">
-            <div className="w-6 h-6 bg-white/20 rounded-full flex items-center justify-center mb-1">
-              <nextIndustry.icon className="h-3 w-3 text-white" />
-            </div>
-            <span className="text-[10px] font-medium text-white text-center leading-tight">{nextIndustry.name}</span>
+          <span className="text-[10px] font-medium text-white text-center leading-tight">{currentIndustry.name}</span>
+        </div>
+      </motion.div>
+
+      {/* Back of Card */}
+      <motion.div
+        className="absolute w-full h-full rounded-xl overflow-hidden backface-hidden shadow-lg border border-white/20"
+        style={{
+          background: nextIndustry.color.includes('bg-[') ?
+            nextIndustry.color.split(' ')[0].replace('bg-[', '').replace(']', '') :
+            (nextIndustry.color === 'from-blue-500 to-blue-600' ? 'linear-gradient(135deg, #3B82F6 0%, #2563EB 100%)' :
+              nextIndustry.color === 'from-emerald-500 to-emerald-600' ? 'linear-gradient(135deg, #10B981 0%, #059669 100%)' :
+                nextIndustry.color === 'from-orange-500 to-orange-600' ? 'linear-gradient(135deg, #F97316 0%, #EA580C 100%)' :
+                  nextIndustry.color === 'from-amber-500 to-amber-600' ? 'linear-gradient(135deg, #F59E0B 0%, #D97706 100%)' :
+                    nextIndustry.color === 'from-purple-500 to-purple-600' ? 'linear-gradient(135deg, #A855F7 0%, #9333EA 100%)' :
+                      nextIndustry.color === 'from-pink-500 to-pink-600' ? 'linear-gradient(135deg, #EC4899 0%, #DB2777 100%)' :
+                        nextIndustry.color === 'from-cyan-500 to-cyan-600' ? 'linear-gradient(135deg, #06B6D4 0%, #0891B2 100%)' :
+                          'linear-gradient(135deg, #6366F1 0%, #4F46E5 100%)') // indigo default
+        }}
+        animate={{
+          rotateY: 90,
+        }}
+        transition={{ duration: 0.4, ease: "easeInOut" }}
+      >
+        <div className="w-full h-full flex flex-col items-center justify-center p-1">
+          <div className="w-6 h-6 bg-white/20 rounded-full flex items-center justify-center mb-1">
+            <nextIndustry.icon className="h-3 w-3 text-white" />
           </div>
-        </motion.div>
+          <span className="text-[10px] font-medium text-white text-center leading-tight">{nextIndustry.name}</span>
+        </div>
+      </motion.div>
     </motion.div>
   );
 };
@@ -502,12 +502,12 @@ export default function IllustrativeOne() {
               transition={{ duration: 0.6 }}
               className="mb-6"
             >
-              <p className="text-blue-400 font-medium mb-4">Transform Your Financial Future</p>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
-                End-to-End Treasury Management Solutions
+              <p className="text-yellow-400 font-medium mb-4">Digitising Treasury Across Borders</p>
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-6">
+                Future-ready <br /> Treasury Management System <br /> built for Corporations worldwide
               </h1>
               <p className="text-lg text-gray-300 mb-8 max-w-2xl">
-                Our end-to-end Treasury Management Platform empowers organizations with cutting-edge solutions for treasury, risk, trade finance, and supply chain finance.
+                A Comprehensive & Integrated TMS for CFOs and Treasurers to manage Cash Flow, Liquidity, Risk, Investments, Debt Trade Finance, and Supply Chain Finance with precision.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <button className="bg-[#FF073A] hover:bg-[#e60634] text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 flex items-center justify-center transform hover:-translate-y-0.5 hover:shadow-[0_4px_12px_rgba(255,7,58,0.3)] active:translate-y-0">
@@ -533,13 +533,15 @@ export default function IllustrativeOne() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center"
+            className="relative"
           >
-            <h2 className="text-4xl font-bold text-white mb-3">Winning Together</h2>
-            <p className="text-white text-lg max-w-3xl mx-auto">
-              Leading organizations leverage our platform for end-to-end digitization of treasury, risk, trade finance,
-              and supply chain operations, achieving agility, insights, and productivity.
-            </p>
+            <h2 className="text-4xl font-bold text-white mb-3 text-center">From Conglomerates to SMEs — One Treasury Solution</h2>
+            <div className="max-w-3xl mx-auto">
+              <p className="text-white text-lg">
+                <span className="inline-block w-[4.5rem]"></span>
+                Trusted by global corporations to streamline complex treasury operations across sectors and geographies — ensuring unified control, regulatory compliance, and operational efficiency at every scale.
+              </p>
+            </div>
           </motion.div>
         </div>
         {/* End-to-end logo strip, outside of any container */}
@@ -550,9 +552,20 @@ export default function IllustrativeOne() {
       <OurOfferingsSection />
 
       {/* Statistics Section */}
-      <section className="py-12 bg-gradient-to-b from-navy-900 to-navy-950 relative overflow-hidden">
+      <section className="pt-16 pb-8 bg-gradient-to-b from-navy-900 to-navy-950 relative overflow-hidden">
+        <div className="container mx-auto px-4 text-center mb-12">
+          <motion.h2 
+            className="text-4xl font-bold text-white mb-4"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            Real Impact. Real Outcomes.
+          </motion.h2>
+        </div>
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
             {/* Productivity Gains */}
             <motion.div
               className="text-center p-4 bg-navy-800/30 rounded-lg backdrop-blur-sm"
@@ -561,7 +574,7 @@ export default function IllustrativeOne() {
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
             >
-              <div className="relative w-24 h-24 mx-auto mb-3">
+              <div className="relative w-32 h-32 mx-auto mb-4">
                 <svg viewBox="0 0 100 100" className="w-full h-full">
                   <circle
                     cx="50"
@@ -600,7 +613,7 @@ export default function IllustrativeOne() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1 }}
             >
-              <div className="relative w-24 h-24 mx-auto mb-3">
+              <div className="relative w-32 h-32 mx-auto mb-4">
                 <svg viewBox="0 0 100 100" className="w-full h-full">
                   <circle
                     cx="50"
@@ -639,7 +652,7 @@ export default function IllustrativeOne() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              <div className="relative w-24 h-24 mx-auto mb-3">
+              <div className="relative w-32 h-32 mx-auto mb-4">
                 <svg viewBox="0 0 100 100" className="w-full h-full">
                   <circle
                     cx="50"
@@ -678,7 +691,7 @@ export default function IllustrativeOne() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.3 }}
             >
-              <div className="relative w-24 h-24 mx-auto mb-3">
+              <div className="relative w-32 h-32 mx-auto mb-4">
                 <svg viewBox="0 0 100 100" className="w-full h-full">
                   <circle
                     cx="50"
@@ -712,114 +725,112 @@ export default function IllustrativeOne() {
         </div>
       </section>
       {/* Why Choose Us Section */}
-      <section className="py-16 relative overflow-hidden w-full bg-gradient-to-b from-navy-900 to-navy-950">
+      <section className="pt-8 pb-16 relative overflow-hidden w-full bg-gradient-to-b from-navy-900 to-navy-950">
         <div className="container mx-auto px-4">
           <div className="backdrop-blur-sm bg-black/30 rounded-2xl border border-white/10 shadow-xl p-6">
-           <div className="flex flex-col lg:flex-row items-center gap-8">
-             {/* Left Column: Text Panel */}
-             <div className="w-full lg:w-2/5">
-               <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-300 to-blue-500 bg-clip-text text-transparent mb-4">
-                 Why Choose Us
-               </h2>
-               <p className="text-base text-white/90 mb-4">
-                 Discover how our innovative financial solutions can transform your business operations and drive growth.
-               </p>
-               <p className="text-base text-white/80 mb-6">
-                 With years of industry expertise, we provide cutting‑edge solutions tailored to your unique business needs.
-               </p>
-               <button className="flex items-center bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white font-medium py-3 px-6 rounded-full transition transform hover:-translate-y-0.5 hover:shadow-lg">
-                 Learn More
-                 <svg xmlns="http://www.w3.org/2000/svg" className="ml-2 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                 </svg>
-               </button>
-             </div>
+            <div className="flex flex-col lg:flex-row items-center gap-8">
+              {/* Left Column: Text Panel */}
+              <div className="w-full lg:w-2/5">
+                <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-300 to-blue-500 bg-clip-text text-white mb-4">
+                  Why Choose Us
+                </h2>
+                <p className="text-base text-white/90 mb-4">
+                  Discover how our innovative financial solutions can transform your business operations and drive growth.
+                </p>
+                <p className="text-base text-white/80 mb-6">
+                  With years of industry expertise, we provide cutting‑edge solutions tailored to your unique business needs.
+                </p>
+                <button className="flex items-center bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white font-medium py-3 px-6 rounded-full transition transform hover:-translate-y-0.5 hover:shadow-lg">
+                  Learn More
+                  <svg xmlns="http://www.w3.org/2000/svg" className="ml-2 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </button>
+              </div>
 
-             {/* Right Column: Enhanced IBS Logo with 6 Vectors */}
-             <div className="w-full lg:w-3/5 relative h-[400px] flex items-center justify-center">
-             {/* Central IBS Logo - Enhanced */}
-             <div className="absolute z-50 flex items-center justify-center w-36 h-36 rounded-full bg-gradient-to-br from-blue-600 to-purple-600 shadow-[0_0_60px_rgba(59,130,246,0.7)] border-2 border-white/30">
-               <Image 
-                 src="/Ibs_logo_1.png" 
-                 alt="IBS Logo" 
-                 width={56} 
-                 height={56} 
-                 className="object-contain" 
-               />
-             </div>
+              {/* Right Column: Enhanced IBS Logo with 6 Vectors */}
+              <div className="w-full lg:w-3/5 relative h-[400px] flex items-center justify-center">
+                {/* Central IBS Logo - Enhanced */}
+                <div className="absolute z-50 flex items-center justify-center w-36 h-36 rounded-full bg-gradient-to-br from-blue-600 to-purple-600 shadow-[0_0_60px_rgba(59,130,246,0.7)] border-2 border-white/30">
+                  <Image
+                    src="/Ibs_logo_1.png"
+                    alt="IBS Logo"
+                    width={56}
+                    height={56}
+                    className="object-contain"
+                  />
+                </div>
 
-             {/* Enhanced Ring */}
-             <div className="absolute w-72 h-72 rounded-full border border-blue-500/20 z-10"></div>
+                {/* Enhanced Ring */}
+                <div className="absolute w-72 h-72 rounded-full border border-blue-500/20 z-10"></div>
 
-             {/* 6 Enhanced Vectors Around Logo */}
-             {[
-               { icon: BarChart2, title: 'Comprehensive', angle: 0, content: "Our end‑to‑end solution covers compliance, operational, and financial risks. With a unified platform, you gain full visibility and control over your entire risk landscape." },
-               { icon: Cpu, title: 'Integrated', angle: 60, content: "Seamlessly connects with ERP systems, market data providers, and banking partners. The platform supports SWIFT, FIX, and ISO 20022 messaging standards." },
-               { icon: Users, title: 'Best Practices', angle: 120, content: "Work together seamlessly with role‑based access controls. Our platform enables real‑time collaboration across teams and departments." },
-               { icon: Zap, title: 'Nimble', angle: 180, content: "Rapid implementation and deployment with our agile approach. Our cloud‑native architecture allows for instant scaling." },
-               { icon: Shield, title: 'Domain Centric', angle: 240, content: "Bank‑grade security with end‑to‑end encryption. Your data is protected with the highest industry standards." },
-               { icon: Globe, title: 'Configurable', angle: 300, content: "Multi‑currency, multi‑language, and multi‑jurisdiction support. Operate seamlessly across borders with our global platform." },
-             ].map((feature, idx) => {
-               const radius = 150; // Increased distance from center
-               const x = Math.cos((feature.angle * Math.PI) / 180) * radius;
-               const y = Math.sin((feature.angle * Math.PI) / 180) * radius;
-               const Icon = feature.icon;
-               
-               // Determine if this is a left-side vector (angles 120, 180, 240)
-               const isLeftSide = feature.angle >= 120 && feature.angle <= 240;
-               
-               return (
-                 <div
-                   key={idx}
-                   className="absolute group cursor-pointer z-30"
-                   style={{ 
-                     left: '50%',
-                     top: '50%',
-                     transform: `translate(${x - 24}px, ${y - 24}px)` // Center the 48px node
-                   }}
-                 >
-                   {/* Enhanced Vector Node */}
-                   <div className="relative">
-                     <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-600 to-purple-600 flex items-center justify-center shadow-lg border border-white/20 hover:scale-110 transition-transform duration-300">
-                       <Icon className="w-5 h-5 text-white" />
-                     </div>
-                     
-                     {/* Enhanced Title */}
-                     <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 whitespace-nowrap">
-                       <span className="text-xs font-semibold text-white bg-black/80 px-2 py-1 rounded-md">
-                         {feature.title}
-                       </span>
-                     </div>
-                   </div>
+                {/* 6 Enhanced Vectors Around Logo */}
+                {[
+                  { icon: BarChart2, title: 'Comprehensive', angle: 0, content: "Our end‑to‑end solution covers compliance, operational, and financial risks. With a unified platform, you gain full visibility and control over your entire risk landscape." },
+                  { icon: Cpu, title: 'Integrated', angle: 60, content: "Seamlessly connects with ERP systems, market data providers, and banking partners. The platform supports SWIFT, FIX, and ISO 20022 messaging standards." },
+                  { icon: Users, title: 'Best Practices', angle: 120, content: "Work together seamlessly with role‑based access controls. Our platform enables real‑time collaboration across teams and departments." },
+                  { icon: Zap, title: 'Nimble', angle: 180, content: "Rapid implementation and deployment with our agile approach. Our cloud‑native architecture allows for instant scaling." },
+                  { icon: Shield, title: 'Domain Centric', angle: 240, content: "Bank‑grade security with end‑to‑end encryption. Your data is protected with the highest industry standards." },
+                  { icon: Globe, title: 'Configurable', angle: 300, content: "Multi‑currency, multi‑language, and multi‑jurisdiction support. Operate seamlessly across borders with our global platform." },
+                ].map((feature, idx) => {
+                  const radius = 150; // Increased distance from center
+                  const x = Math.cos((feature.angle * Math.PI) / 180) * radius;
+                  const y = Math.sin((feature.angle * Math.PI) / 180) * radius;
+                  const Icon = feature.icon;
 
-                   {/* Smart Tooltip - Left side for left vectors, right side for right vectors */}
-                   <div className={`absolute top-1/2 -translate-y-1/2 w-60 bg-black/90 backdrop-blur-sm rounded-lg p-4 border border-blue-500/30 shadow-xl transition-all duration-300 opacity-0 invisible group-hover:opacity-100 group-hover:visible z-50 ${
-                     isLeftSide 
-                       ? 'right-full mr-3' // Left side tooltip
-                       : 'left-full ml-3'   // Right side tooltip
-                   }`}>
-                     {/* Tooltip arrow */}
-                     <div className={`absolute top-1/2 -translate-y-1/2 w-3 h-3 rotate-45 bg-black/90 border border-blue-500/30 ${
-                       isLeftSide 
-                         ? '-right-1.5 border-l-0 border-t-0' // Arrow pointing right
-                         : '-left-1.5 border-r-0 border-b-0'   // Arrow pointing left
-                     }`}></div>
-                     
-                     <h3 className="text-sm font-bold text-white mb-2">{feature.title}</h3>
-                     <p className="text-xs text-gray-300 leading-relaxed">{feature.content}</p>
-                   </div>
-                 </div>
-               );
-             })}
-           </div>
-         </div>
-       </div>
-         </div>
+                  // Determine if this is a left-side vector (angles 120, 180, 240)
+                  const isLeftSide = feature.angle >= 120 && feature.angle <= 240;
+
+                  return (
+                    <div
+                      key={idx}
+                      className="absolute group cursor-pointer z-30"
+                      style={{
+                        left: '50%',
+                        top: '50%',
+                        transform: `translate(${x - 24}px, ${y - 24}px)` // Center the 48px node
+                      }}
+                    >
+                      {/* Enhanced Vector Node */}
+                      <div className="relative">
+                        <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-600 to-purple-600 flex items-center justify-center shadow-lg border border-white/20 hover:scale-110 transition-transform duration-300">
+                          <Icon className="w-5 h-5 text-white" />
+                        </div>
+
+                        {/* Enhanced Title */}
+                        <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 whitespace-nowrap">
+                          <span className="text-xs font-semibold text-white bg-black/80 px-2 py-1 rounded-md">
+                            {feature.title}
+                          </span>
+                        </div>
+                      </div>
+
+                      {/* Smart Tooltip - Left side for left vectors, right side for right vectors */}
+                      <div className={`absolute top-1/2 -translate-y-1/2 w-60 bg-black/90 backdrop-blur-sm rounded-lg p-4 border border-blue-500/30 shadow-xl transition-all duration-300 opacity-0 invisible group-hover:opacity-100 group-hover:visible z-50 ${isLeftSide
+                        ? 'right-full mr-3' // Left side tooltip
+                        : 'left-full ml-3'   // Right side tooltip
+                        }`}>
+                        {/* Tooltip arrow */}
+                        <div className={`absolute top-1/2 -translate-y-1/2 w-3 h-3 rotate-45 bg-black/90 border border-blue-500/30 ${isLeftSide
+                          ? '-right-1.5 border-l-0 border-t-0' // Arrow pointing right
+                          : '-left-1.5 border-r-0 border-b-0'   // Arrow pointing left
+                          }`}></div>
+
+                        <h3 className="text-sm font-bold text-white mb-2">{feature.title}</h3>
+                        <p className="text-xs text-gray-300 leading-relaxed">{feature.content}</p>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
 
 
 
-            {/* Featured Industries Grid */}
+      {/* Featured Industries Grid */}
       <section className="py-16 relative overflow-hidden w-full bg-gradient-to-b from-navy-900 to-navy-950">
         <div className="container mx-auto px-4">
           <div className="backdrop-blur-sm bg-black/30 rounded-2xl border border-white/10 shadow-xl p-6">
@@ -832,8 +843,8 @@ export default function IllustrativeOne() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.6 }}
                 >
-                  <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-300 to-blue-500 bg-clip-text text-transparent mb-4">
-                    Featured Industries
+                  <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-300 to-blue-500 bg-clip-text text-white mb-4">
+                  One Solution. Any Industry. Anywhere.
                   </h2>
                   <p className="text-base text-white/90">
                     Tailored solutions for diverse industry needs, driving efficiency and growth across sectors.
@@ -846,24 +857,22 @@ export default function IllustrativeOne() {
                 {/* Grid Container for 2 rows of 4 tiles each */}
                 <div className="grid grid-cols-4 gap-6 max-w-2xl mx-auto">
                   {industries.slice(0, 8).map((industry, idx) => {
-                    // New color palette
+                    // New color palette - exact colors specified
                     const colors = [
-                      { bg: '#eae9e7', text: '#111226' }, // Light Beige
-                      { bg: '#111226', text: '#fdfdfd' }, // Dark Navy Blue
-                      { bg: '#45494b', text: '#fdfdfd' }, // Grayish Slate
-                      { bg: '#fce403', text: '#111226' }, // Bright Yellow
-                      { bg: '#4260fb', text: '#fdfdfd' }, // Vivid Blue
-                      { bg: '#fdfdfd', text: '#111226' }, // Pure White
-                      { bg: '#f2b75a', text: '#111226' }, // Warm Peach/Orange
-                      { bg: '#dd7f19', text: '#fdfdfd' }, // Orange
+                      { bg: '#1be7ff', text: '#111226' }, // Cyan
+                      { bg: '#89fc00', text: '#111226' }, // Lime Green
+                      { bg: '#e4ff1a', text: '#111226' }, // Bright Yellow
+                      { bg: '#e8aa14', text: '#111226' }, // Orange
+                      { bg: '#00ffe7', text: '#111226' }, // Turquoise
+                      { bg: '#e2a0ff', text: '#111226' }, // Light Purple
                     ];
-                    
+
                     const color = colors[idx % colors.length];
                     const offsetX = (Math.random() - 0.5) * 10; // Smaller random X offset
                     const offsetY = (Math.random() - 0.5) * 10; // Smaller random Y offset
-                    
+
                     return (
-                      <div 
+                      <div
                         key={idx}
                         className="relative w-24 h-24 cursor-pointer perspective-1000"
                         style={{
@@ -905,12 +914,10 @@ export default function IllustrativeOne() {
               className="mb-6"
             >
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                Private. Secure. Yours.
+              Innovate. Automate. Accelerate
               </h2>
               <p className="text-base text-gray-300 mb-6 max-w-3xl mx-auto">
-                Your financial data belongs to you. With enterprise-grade security and privacy controls,
-                you decide who sees what and when. Our platform is built with bank-level encryption
-                and continuous monitoring to keep your information safe.
+              Go beyond traditional treasury. Driven by deep domain expertise, IBSFINtech Treasury Management System simplifies treasury complexity and delivers seamless digitisation across Cashflow & Liquidity, Currency Risk, Commodity Risk, Investment, Debt Management, Trade Finance and Supply chain Finance — enabling a seamless shift from manual to smart treasury operations
               </p>
               <motion.a
                 href="/security"
@@ -939,7 +946,7 @@ export default function IllustrativeOne() {
                 transition={{ duration: 0.6 }}
                 className="text-center mb-6"
               >
-                <h2 className="text-3xl font-bold text-white mb-2">Latest News</h2>
+                <h2 className="text-3xl font-bold text-white mb-2">The Latest</h2>
                 <p className="text-gray-300 text-sm">
                   Stay updated with the latest news and updates from our team.
                 </p>

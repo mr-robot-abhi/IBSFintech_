@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { BarChart2, Target, Eye, Zap, Clock, Globe, Layers, TrendingUp, CheckCircle, Shield, FileText, PieChart, LineChart, ArrowRight } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
@@ -95,34 +96,50 @@ const FXCurrencyRiskPage = () => {
 
 
       {/* Hero Section */}
-      <section className="relative w-full py-20 md:py-28 bg-gradient-to-r from-[#241F5D] to-[#3A3480] text-white">
+      <section className="relative w-full py-12 md:py-16 bg-gradient-to-r from-[#241F5D] to-[#3A3480] text-white">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <motion.h1 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="text-4xl md:text-5xl font-bold mb-6 leading-tight"
-            >
-              Navigate Foreign Exchange Risk
-            </motion.h1>
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-xl text-blue-100 mb-8 max-w-3xl mx-auto"
-            >
-              A comprehensive solution covering all hedge derivatives to efficiently manage and mitigate Foreign Exchange Risk.
-            </motion.p>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-            >
-              <Button size="lg" className="bg-white text-[#241F5D] hover:bg-blue-50">
-                Request a Demo <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-            </motion.div>
+          <div className="flex flex-col md:flex-row items-center">
+            {/* Text content on the left */}
+            <div className="w-full md:w-1/2 mb-8 md:mb-0 md:pr-8">
+              <motion.h1 
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6 }}
+                className="text-3xl md:text-4xl font-bold mb-4 leading-tight"
+              >
+                Navigate Foreign Exchange Risk
+              </motion.h1>
+              <motion.p 
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="text-blue-100 mb-6"
+              >
+                A comprehensive solution covering all hedge derivatives to efficiently manage and mitigate Foreign Exchange Risk.
+              </motion.p>
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+              >
+                <Button size="lg" className="bg-white text-[#241F5D] hover:bg-blue-50">
+                  Request a Demo <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </motion.div>
+            </div>
+            
+            {/* Image on the right */}
+            <div className="w-full md:w-1/2">
+              <div className="relative w-full h-64 md:h-80 rounded-lg overflow-hidden shadow-xl">
+                <Image
+                  src="/Inner Pages/Solutions/Fx_Risk_Management_Solution_50.jpg"
+                  alt="FX Risk Management Solution"
+                  fill
+                  className="object-cover"
+                  priority
+                />
+              </div>
+            </div>
           </div>
         </div>
       </section>

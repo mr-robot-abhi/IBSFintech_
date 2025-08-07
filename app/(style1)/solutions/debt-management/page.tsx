@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { BarChart2, Target, Eye, Zap, Clock, TrendingUp, Check, ArrowRight, Scale, Banknote, BarChart, FileText, Shield, PieChart } from 'lucide-react';
+import Image from 'next/image';
 
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
@@ -157,8 +158,16 @@ const DebtManagementPage = () => {
               </Button>
             </motion.div>
           </div>
-          <div className="md:w-1/2 mt-8 md:mt-0 h-64 bg-gray-300 rounded-lg flex items-center justify-center text-gray-500">
-            Placeholder Image
+          <div className="md:w-1/2 mt-8 md:mt-0">
+            <div className="relative w-full h-64 md:h-80 rounded-lg overflow-hidden shadow-xl">
+              <Image
+                src="/Inner Pages/Solutions/Borrowing_Management_treasury_50.jpeg"
+                alt="Debt Management Solution"
+                fill
+                className="object-cover"
+                priority
+              />
+            </div>
           </div>
         </div>
       </section>
