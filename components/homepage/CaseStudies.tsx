@@ -7,79 +7,31 @@ import Tilt from "react-parallax-tilt";
 
 interface CaseStudy {
   title: string;
-  summary: string;
-  highlights: string[];
   image: string;
   backgroundImage: string;
-  date: string;
 }
 
 const caseStudies: CaseStudy[] = [
   {
-    title: "FMCG Giant's path to data-driven decision",
-    summary:
-      "Empowering treasury functions with automation for better financial insights and operational efficiency.",
-    highlights: [
-      "FMCG Industry Leader",
-      "Treasury Automation",
-      "Data-Driven Decisions",
-    ],
+    title: "FMCG Giant's Path to Data-Driven Decisions",
     image: "/Case_Studies/IBSFINtech-Client-Dabur.png",
-    backgroundImage: "/bg_12.jpg",
-    date: "September 10, 2024"
+    backgroundImage: "/bg_12.jpg"
   },
   {
     title: "Cash Management Optimization",
-    summary:
-      "Optimized cash management processes across multiple business units, significantly improving liquidity and reducing operational costs.",
-    highlights: [
-      "Cash Management",
-      "Liquidity",
-      "Cost Reduction",
-    ],
     image: "/Case_Studies/Hindustan-Zinc-Limited.png",
-    backgroundImage: "/bg_13.jpeg",
-    date: "December 5, 2023"
+    backgroundImage: "/bg_13.jpeg"
   },
   {
-    title: "Streamlined Treasury Operations & Real-Time Insights",
-    summary:
-      "How a Global Financial Services (NBFC) Leader achieved operational excellence with IBSFintech.",
-    highlights: [
-      "Financial Services",
-      "NBFC Leader",
-      "Real-Time Analytics",
-    ],
+    title: "Streamlined Treasury Operations",
     image: "/Case_Studies/IBSFINtech-Client-Credit-Saison-India.png",
-    backgroundImage: "/bg_14.jpeg",
-    date: "August 28, 2024"
+    backgroundImage: "/bg_14.jpeg"
   },
   {
     title: "End-to-End Digitization Journey",
-    summary:
-      "India's Cable & Wire Manufacturing Leader achieves seamless automation of Treasury & Trade Finance for $500M+ operations.",
-    highlights: [
-      "Cable & Wire Manufacturing",
-      "$500M+ Operations",
-      "Trade Finance",
-    ],
     image: "/Case_Studies/IBSFINtech-Client-Polycab.png",
-    backgroundImage: "/bg_15.jpeg",
-    date: "July 1, 2022"
-  },
-  {
-    title: "Supply Chain Finance Transformation",
-    summary:
-      "Global automotive leader streamlined supplier payments and optimized working capital with our VNDZY® platform.",
-    highlights: [
-      "Automotive Industry",
-      "Supply Chain Finance",
-      "Working Capital",
-    ],
-    image: "/Case_Studies/Signature-Global.png",
-    backgroundImage: "/bg_16.jpg",
-    date: "March 15, 2024"
-  },
+    backgroundImage: "/bg_15.jpeg"
+  }
 ];
 
 export default function CaseStudies() {
@@ -101,80 +53,72 @@ export default function CaseStudies() {
           </p>
         </motion.div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
-          {caseStudies.map((cs, index) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+          {caseStudies.slice(0, 4).map((cs, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group"
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.3, delay: index * 0.1 }}
+              className="h-48 rounded-xl overflow-hidden shadow-lg group relative"
             >
-              <Tilt 
-                tiltMaxAngleX={5} 
-                tiltMaxAngleY={5} 
-                className="h-full rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
-                glareEnable={true}
-                glareMaxOpacity={0.2}
-                glareColor="#ffffff"
-                glarePosition="all"
-                glareBorderRadius="0.75rem"
-              >
-                <div className="relative h-full flex flex-col p-4">
-                  {/* Full-tile background image */}
-                  <div className="absolute inset-0 -z-10">
+              <div className="absolute inset-0">
+                <Image
+                  src={cs.backgroundImage}
+                  alt=""
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 33vw, 20vw"
+                  priority={index < 2}
+                />
+                <div className="absolute inset-0 bg-black/40"></div>
+              </div>
+              
+              <div className="relative h-full flex flex-col p-4">
+                <h3 className="text-white font-semibold text-sm line-clamp-2 mb-2">
+                  {cs.title}
+                </h3>
+                
+                <div className="mt-auto flex justify-between items-end">
+                  <div className="relative h-5 w-16">
                     <Image
-                      src={cs.backgroundImage}
-                      alt="Background"
+                      src={cs.image}
+                      alt=""
                       fill
-                      className="object-cover"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 20vw"
-                      priority={index < 3}
+                      className="object-contain object-left"
                     />
-                    <div className="absolute inset-0 bg-black/40"></div>
                   </div>
                   
-                  {/* Content */}
-                  <div className="flex-1 flex flex-col">
-                    <div className="relative z-10 text-white">
-                      <h3 className="text-lg font-semibold mb-2 line-clamp-2">
-                        {cs.title}
-                      </h3>
-                      <p className="text-sm text-white/90 mb-4 line-clamp-3">{cs.summary}</p>
-                    </div>
-                    
-                    <div className="mt-auto">
-                      {/* Logo at bottom left */}
-                      <div className="relative w-24 h-8 mb-2">
-                        <Image
-                          src={cs.image}
-                          alt="Client Logo"
-                          fill
-                          className="object-contain object-left"
-                        />
-                      </div>
-                      
-                      {/* Bottom bar */}
-                      <div className="flex justify-between items-center pt-2 border-t border-white/20">
-                        <span className="text-xs text-white/80">{cs.date}</span>
-                        <button className="text-white hover:text-blue-200 text-sm font-medium flex items-center group">
-                          Read the story
-                          <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                        </button>
-                      </div>
-                    </div>
-                  </div>
+                  <button className="text-white text-xs font-medium flex items-center opacity-80 hover:opacity-100 transition-opacity">
+                    Read more
+                    <ArrowRight className="ml-1 h-3 w-3" />
+                  </button>
                 </div>
-              </Tilt>
+              </div>
             </motion.div>
           ))}
-        </div>
-        
-        <div className="mt-8 text-center">
-          <button className="px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-800 text-white font-medium rounded-full hover:from-blue-500 hover:to-blue-700 transition-all duration-300 shadow-lg hover:shadow-blue-500/20">
-            View All Case Studies
-          </button>
+          
+          {/* 5th Tile - View All */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.3, delay: 0.3 }}
+            className="h-48 rounded-xl overflow-hidden bg-gradient-to-br from-blue-600 to-blue-800 flex items-center justify-center group cursor-pointer"
+          >
+            <div className="text-center p-4">
+              <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-2 group-hover:bg-white/30 transition-colors">
+                <ArrowRight className="h-4 w-4 text-white rotate-45" />
+              </div>
+              <h3 className="text-white font-semibold text-sm mb-1">
+                View All
+              </h3>
+              <p className="text-blue-100 text-xs">
+                Case Studies
+              </p>
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>
