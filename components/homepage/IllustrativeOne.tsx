@@ -12,6 +12,7 @@ import ClientLogoStrip from '../common/ClientLogoStrip';
 import PartnershipEcosystem from './PartnershipEcosystem';
 import OurOfferingsSection from './our_offerings';
 import CaseStudies from './CaseStudies';
+import { newsArticles } from '@/lib/news';
 
 // Define types for the feature items
 interface FeatureItem {
@@ -467,27 +468,8 @@ export default function IllustrativeOne() {
   };
 
 
-  // News array for Latest News section
-  const newsItems = [
-    {
-      title: 'AI Dashboard Launch',
-      date: 'July 2025',
-      description: 'New real-time analytics for treasury insights with advanced AI predictions.',
-      icon: <Newspaper className="h-6 w-6 text-blue-300" />
-    },
-    {
-      title: 'Global Expansion',
-      date: 'June 2025',
-      description: 'Now serving 40+ countries with localized support.',
-      icon: <Globe className="h-6 w-6 text-blue-300" />
-    },
-    {
-      title: 'FinTech Award',
-      date: 'May 2025',
-      description: 'Named Top Treasury Platform 2025 by Financial Times.',
-      icon: <Shield className="h-6 w-6 text-blue-300" />
-    }
-  ];
+  // Get the 3 most recent news articles
+  const latestNews = newsArticles.slice(0, 3);
 
   return (
     <div className="min-h-screen overflow-x-hidden relative bg-transparent">
@@ -555,12 +537,14 @@ export default function IllustrativeOne() {
             transition={{ duration: 0.6 }}
             className="relative"
           >
-            <h2 className="text-4xl font-bold text-white mb-3 text-center">From Conglomerates to SMEs — One Treasury Solution</h2>
-            <div className="max-w-3xl mx-auto">
-              <p className="text-white text-lg">
-                <span className="inline-block w-[4.5rem]"></span>
-                Trusted by global corporations to streamline complex treasury operations across sectors and geographies — ensuring unified control, regulatory compliance, and operational efficiency at every scale.
-              </p>
+            <h2 className="text-4xl font-bold text-white mb-6 text-center">From Conglomerates to SMEs — One Treasury Solution</h2>
+            <div className="w-full max-w-5xl mx-auto px-4">
+              <div className="text-white text-base md:text-lg text-center">
+                <p className="leading-tight">
+                  <span className="block">Trusted by global corporations to streamline complex treasury operations across sectors and geographies —</span>
+                  <span className="block">ensuring unified control, regulatory compliance, and operational efficiency at every scale.</span>
+                </p>
+              </div>
             </div>
           </motion.div>
         </div>
@@ -989,20 +973,20 @@ export default function IllustrativeOne() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10 p-4 flex flex-col justify-end">
                     <div className="bg-blue-600 text-white text-xs font-medium px-2 py-1 rounded-full inline-flex items-center w-fit mb-2">
                       <Newspaper className="h-3 w-3 mr-1.5" />
-                      <span>Business</span>
+                      <span>{latestNews[0].category}</span>
                     </div>
                     <h3 className="text-lg font-bold text-white mb-1 group-hover:text-blue-300 transition-colors line-clamp-2">
-                      {newsItems[0].title}
+                      {latestNews[0].title}
                     </h3>
                     <div className="text-gray-300 text-sm">
-                      <span>By Admin</span>
+                      <span>By {latestNews[0].author}</span>
                       <span className="mx-2">•</span>
-                      <span>{newsItems[0].date}</span>
+                      <span>{latestNews[0].date}</span>
                     </div>
                   </div>
                   <Image
-                    src="/Home Page Banner 2.png"
-                    alt={newsItems[0].title}
+                    src={latestNews[0].backgroundImage}
+                    alt={latestNews[0].title}
                     fill
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
@@ -1018,18 +1002,18 @@ export default function IllustrativeOne() {
                 >
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10 p-3 flex flex-col justify-end">
                     <div className="bg-green-600 text-white text-xs font-medium px-2 py-0.5 rounded-full inline-flex items-center w-fit mb-1">
-                      <span>Featured</span>
+                      <span>{latestNews[1].category}</span>
                     </div>
                     <h3 className="text-sm font-semibold text-white mb-1 group-hover:text-blue-300 transition-colors line-clamp-3">
-                      {newsItems[1].title}
+                      {latestNews[1].title}
                     </h3>
                     <p className="text-gray-300 text-xs">
-                      {newsItems[1].date}
+                      {latestNews[1].date}
                     </p>
                   </div>
                   <Image
-                    src="/Home Page Banner 3.png"
-                    alt={newsItems[1].title}
+                    src={latestNews[1].backgroundImage}
+                    alt={latestNews[1].title}
                     fill
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
@@ -1045,21 +1029,21 @@ export default function IllustrativeOne() {
                 >
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10 p-4 flex flex-col justify-end">
                     <div className="bg-purple-600 text-white text-xs font-medium px-2 py-1 rounded-full inline-flex items-center w-fit mb-2">
-                      <span>FinTech</span>
+                      <span>{latestNews[2].category}</span>
                     </div>
                     <h3 className="text-lg font-bold text-white mb-1 group-hover:text-blue-300 transition-colors">
-                      {newsItems[2].title}
+                      {latestNews[2].title}
                     </h3>
                     <p className="text-gray-300 text-sm line-clamp-1">
-                      {newsItems[2].description}
+                      {latestNews[2].excerpt}
                     </p>
                     <div className="text-blue-300 text-sm mt-1">
-                      {newsItems[2].date}
+                      {latestNews[2].date}
                     </div>
                   </div>
                   <Image
-                    src="/Home Page Banner 4.png"
-                    alt={newsItems[2].title}
+                    src={latestNews[2].backgroundImage}
+                    alt={latestNews[2].title}
                     fill
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
@@ -1068,7 +1052,7 @@ export default function IllustrativeOne() {
 
               <div className="text-center mt-6">
                 <motion.a
-                  href="/news"
+                  href="/resources/news"
                   className="inline-flex items-center px-4 py-2 border border-blue-500 text-blue-400 text-sm font-medium rounded-full hover:bg-blue-500/10 transition-colors duration-300"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.98 }}

@@ -17,8 +17,8 @@ export const newsArticles: NewsArticle[] = [
   {
     id: "1",
     slug: "ibsfintech-tms-microsoft-azure-marketplace",
-    title: "IBSFINtech's TMS Now Available in the Microsoft Azure Marketplace",
-    excerpt: "Microsoft Azure customers worldwide now gain access to IBSFINtech's TreasuryTech solution, to take advantage of the scalability, reliability, and agility of Azure to enhance application development and shape business strategies.",
+    title: "IBSFINtech's TMS Now available in Microsoft Azure Marketplace",
+    excerpt: "IBSFINtech's Treasury Management Solution (TMS) is now officially available in the Microsoft Azure Marketplace, making enterprise treasury digitalization easier than ever.",
     content: `
       <p>Microsoft Azure customers worldwide now gain access to IBSFINtech's TreasuryTech solution, to take advantage of the scalability, reliability, and agility of Azure to enhance application development and shape business strategies.</p>
       
@@ -50,7 +50,7 @@ export const newsArticles: NewsArticle[] = [
     id: "2",
     slug: "patanjali-digitizes-treasury-operations-ibsfintech",
     title: "Patanjali digitizes Treasury operations, goes live with IBSFINtech's integrated Treasury Management system",
-    excerpt: "India's leading FMCG conglomerate, Patanjali Group, today announced a significant milestone in its digitization journey by successfully going live with IBSFINtech's Integrated Treasury Management Solution.",
+    excerpt: "Patanjali has successfully digitized its treasury operations by going live with IBSFINtech's integrated Treasury Management System.",
     content: `
       <p>India's leading FMCG conglomerate, Patanjali Group, today announced a significant milestone in its digitization journey by successfully going live with IBSFINtech's Integrated Treasury Management Solution. This groundbreaking initiative has positioned Patanjali at the forefront of digital transformation in the FMCG sector.</p>
       
@@ -81,8 +81,8 @@ export const newsArticles: NewsArticle[] = [
   {
     id: "3",
     slug: "ibsfintech-act-middle-east-2024-cfos-treasury-heads",
-    title: "Join IBSFINtech at ACT Middle East 2024: Empowering CFOs and Treasury Heads with Cutting-Edge Solutions",
-    excerpt: "IBSFINtech is thrilled to sponsor the ACT Middle East Treasury Summit 2024. This premier event will gather CFOs and Treasury Heads from across the region for two days of groundbreaking discussions.",
+    title: "IBSFINtech sponsors ACT Middle East Treasury Summit 2024",
+    excerpt: "IBSFINtech proudly sponsored the ACT Middle East Treasury Summit 2024, showcasing global treasury innovations.",
     content: `
       <p>IBSFINtech is thrilled to sponsor the ACT Middle East Treasury Summit 2024. This premier event will gather CFOs and Treasury Heads from across the region for two days of groundbreaking discussions on treasury management, risk mitigation, and financial technology innovations.</p>
       
@@ -123,8 +123,8 @@ export const newsArticles: NewsArticle[] = [
   {
     id: "4",
     slug: "ibsfintech-expands-global-presence-new-office-dubai",
-    title: "IBSFINtech Expands Global Presence with New Office in Dubai",
-    excerpt: "IBSFINtech announces the opening of its new regional office in Dubai, strengthening its commitment to serving the Middle East and North Africa (MENA) market with innovative treasury solutions.",
+    title: "IBSFINtech forays into the SME segment",
+    excerpt: "IBSFINtech announces its entry into the SME segment, bringing robust treasury solutions to a wider business audience.",
     content: `
       <p>IBSFINtech announces the opening of its new regional office in Dubai, strengthening its commitment to serving the Middle East and North Africa (MENA) market with innovative treasury solutions. This strategic expansion reflects the growing demand for advanced treasury management technology in the region.</p>
       
@@ -155,8 +155,8 @@ export const newsArticles: NewsArticle[] = [
   {
     id: "5",
     slug: "ibsfintech-launches-ai-powered-treasury-analytics",
-    title: "IBSFINtech Launches AI-Powered Treasury Analytics Platform",
-    excerpt: "IBSFINtech introduces its revolutionary AI-powered treasury analytics platform, designed to provide predictive insights and intelligent recommendations for treasury decision-making.",
+    title: "IBSFINtech gets ISO/IEC 27001 certified",
+    excerpt: "IBSFINtech has achieved ISO/IEC 27001 certification, affirming its commitment to information security.",
     content: `
       <p>IBSFINtech introduces its revolutionary AI-powered treasury analytics platform, designed to provide predictive insights and intelligent recommendations for treasury decision-making. This cutting-edge solution represents a significant advancement in treasury technology, combining artificial intelligence with deep financial expertise.</p>
       
@@ -195,8 +195,8 @@ export const newsArticles: NewsArticle[] = [
   {
     id: "6",
     slug: "ibsfintech-recognized-top-tms-provider-2024",
-    title: "IBSFINtech Recognized as Top TMS Provider in 2024 Industry Awards",
-    excerpt: "IBSFINtech has been recognized as one of the top Treasury Management System providers in the 2024 industry awards, acknowledging its innovation, customer satisfaction, and market leadership.",
+    title: "IBSFINtech raises USD 1.5Mn in midst of funding winter",
+    excerpt: "Despite a challenging funding environment, IBSFINtech successfully raised USD 1.5Mn to fuel further growth.",
     content: `
       <p>IBSFINtech has been recognized as one of the top Treasury Management System providers in the 2024 industry awards, acknowledging its innovation, customer satisfaction, and market leadership. This prestigious recognition validates IBSFINtech's commitment to delivering exceptional treasury solutions and outstanding customer service.</p>
       
@@ -237,8 +237,8 @@ export const newsArticles: NewsArticle[] = [
   {
     id: "7",
     slug: "ibsfintech-partners-leading-banks-digital-treasury-solutions",
-    title: "IBSFINtech Partners with Leading Banks to Deliver Integrated Digital Treasury Solutions",
-    excerpt: "IBSFINtech announces strategic partnerships with leading global banks to provide integrated digital treasury solutions, enhancing connectivity and automation for corporate clients.",
+    title: "IBSFINtech's Global Growth Strategy Meet, paving the way for a multi-billion dollar journey",
+    excerpt: "The company sets ambitious targets at its Global Growth Strategy Meet, paving the way for a multi-billion dollar journey.",
     content: `
       <p>IBSFINtech announces strategic partnerships with leading global banks to provide integrated digital treasury solutions, enhancing connectivity and automation for corporate clients. These partnerships represent a significant step forward in creating seamless treasury ecosystems that connect corporate treasurers directly with their banking partners.</p>
 
@@ -279,8 +279,8 @@ export const newsArticles: NewsArticle[] = [
   {
     id: "8",
     slug: "ibsfintech-launches-mobile-treasury-app-executives",
-    title: "IBSFINtech Launches Mobile Treasury App for Executives",
-    excerpt: "IBSFINtech introduces a new mobile treasury application designed specifically for executives and treasury leaders, providing real-time access to critical financial data and decision-making tools.",
+    title: "IBSFINtech announces Atul Punj as the CEO for IBSFINtech USA Inc.",
+    excerpt: "Atul Punj is announced as CEO for IBSFINtech USA Inc., strengthening the company's global leadership team.",
     content: `
       <p>IBSFINtech introduces a new mobile treasury application designed specifically for executives and treasury leaders, providing real-time access to critical financial data and decision-making tools. This innovative mobile solution enables treasury executives to monitor key metrics, approve transactions, and make informed decisions from anywhere in the world.</p>
 
@@ -321,8 +321,8 @@ export const newsArticles: NewsArticle[] = [
   {
     id: "9",
     slug: "ibsfintech-achieves-iso-27001-certification-security",
-    title: "IBSFINtech Achieves ISO 27001 Certification for Information Security Management",
-    excerpt: "IBSFINtech has successfully achieved ISO 27001 certification, demonstrating its commitment to maintaining the highest standards of information security and data protection.",
+    title: "Former SoftBank India head Manoj Kohli joins the Advisory Board of IBSFINtech",
+    excerpt: "Manoj Kohli, former SoftBank India head, joins IBSFINtech's Advisory Board to provide strategic guidance.",
     content: `
       <p>IBSFINtech has successfully achieved ISO 27001 certification, demonstrating its commitment to maintaining the highest standards of information security and data protection. This prestigious certification validates IBSFINtech's comprehensive information security management system and its dedication to protecting client data and maintaining operational security.</p>
 
@@ -363,8 +363,8 @@ export const newsArticles: NewsArticle[] = [
   {
     id: "10",
     slug: "ibsfintech-sponsors-treasury-management-conference-2024",
-    title: "IBSFINtech Sponsors Treasury Management Conference 2024",
-    excerpt: "IBSFINtech is proud to announce its sponsorship of the Treasury Management Conference 2024, a premier event bringing together treasury professionals from across the industry.",
+    title: "IBSFINtech named as a Major Player in IDC MarketScape",
+    excerpt: "IBSFINtech is recognized as a major player in the IDC MarketScape for treasury software providers.",
     content: `
       <p>IBSFINtech is proud to announce its sponsorship of the Treasury Management Conference 2024, a premier event bringing together treasury professionals from across the industry. This sponsorship reflects IBSFINtech's commitment to supporting the treasury community and advancing the field of treasury management through knowledge sharing and collaboration.</p>
 
@@ -405,8 +405,8 @@ export const newsArticles: NewsArticle[] = [
   {
     id: "11",
     slug: "ibsfintech-releases-quarterly-treasury-insights-report",
-    title: "IBSFINtech Releases Quarterly Treasury Insights Report",
-    excerpt: "IBSFINtech has published its latest Quarterly Treasury Insights Report, providing comprehensive analysis of treasury trends, challenges, and opportunities in the current market environment.",
+    title: "Padma Shri T.V. Mohandas Pai inaugurates IBSFINtech's New Development Centre",
+    excerpt: "Padma Shri T.V. Mohandas Pai inaugurated IBSFINtech's new state-of-the-art Development Centre.",
     content: `
       <p>IBSFINtech has published its latest Quarterly Treasury Insights Report, providing comprehensive analysis of treasury trends, challenges, and opportunities in the current market environment. This report offers valuable insights for treasury professionals seeking to optimize their operations and navigate the evolving financial landscape.</p>
 
@@ -447,8 +447,8 @@ export const newsArticles: NewsArticle[] = [
   {
     id: "12",
     slug: "ibsfintech-celebrates-15-years-treasury-innovation",
-    title: "IBSFINtech Celebrates 15 Years of Treasury Innovation and Excellence",
-    excerpt: "IBSFINtech marks its 15th anniversary, celebrating a decade and a half of innovation, growth, and commitment to transforming treasury operations worldwide.",
+    title: "KPMG in India & IBSFINtech collaborate to provide enterprises with integrated Treasury, Risk & Trade Finance Management functions",
+    excerpt: "KPMG India and IBSFINtech collaborate to offer comprehensive solutions for treasury, risk, and trade finance management.",
     content: `
       <p>IBSFINtech marks its 15th anniversary, celebrating a decade and a half of innovation, growth, and commitment to transforming treasury operations worldwide. This milestone represents a significant achievement in the company's journey to democratize treasury technology and make enterprise-grade solutions accessible to organizations of all sizes.</p>
 
@@ -485,6 +485,114 @@ export const newsArticles: NewsArticle[] = [
     backgroundImage: "/bg_12.jpg",
     featured: true,
     tags: ["15th Anniversary", "Company Milestone", "Innovation", "Growth", "Success"]
+  },
+  {
+    id: "13",
+    slug: "ibsfintech-appoints-pramod-agrawal-cto",
+    title: "IBSFINtech appoints Ex-Oracle, Automation Anywhere Senior Leader Pramod Agrawal as CTO",
+    excerpt: "Pramod Agrawal, ex-Oracle and Automation Anywhere, joins IBSFINtech as CTO to drive technical innovation.",
+    content: `
+      <p>IBSFINtech is pleased to announce the appointment of Pramod Agrawal as Chief Technology Officer (CTO). With extensive experience from Oracle and Automation Anywhere, Pramod brings deep technical expertise and innovation leadership to drive IBSFINtech's technology strategy forward.</p>
+      
+      <p>Pramod's appointment represents a significant milestone in IBSFINtech's commitment to technological excellence and innovation in treasury management solutions.</p>
+    `,
+    date: "August 27, 2022",
+    category: "Leadership",
+    author: "IBSFINtech Team",
+    image: "/IBSFINtech-Client Logos/IBSFINtech-Client-CTO.png",
+    backgroundImage: "/bg_13.jpg",
+    featured: false,
+    tags: ["CTO", "Leadership", "Technology", "Innovation", "Oracle"]
+  },
+  {
+    id: "14",
+    slug: "yes-bank-ibsfintech-partnership",
+    title: "YES BANK and IBSFINtech tie up to provide enhanced digital services",
+    excerpt: "YES BANK and IBSFINtech announce partnership for enhanced digital treasury services for corporate clients.",
+    content: `
+      <p>YES BANK and IBSFINtech have announced a strategic partnership to provide enhanced digital treasury services for corporate clients. This collaboration combines YES BANK's banking expertise with IBSFINtech's treasury technology solutions.</p>
+      
+      <p>The partnership aims to deliver comprehensive digital treasury solutions that streamline corporate financial operations and enhance banking connectivity.</p>
+    `,
+    date: "August 9, 2022",
+    category: "Partnership",
+    author: "IBSFINtech Team",
+    image: "/IBSFINtech-Client Logos/IBSFINtech-Client-YesBank.png",
+    backgroundImage: "/bg_14.jpg",
+    featured: false,
+    tags: ["YES BANK", "Partnership", "Digital Services", "Banking", "Corporate"]
+  },
+  {
+    id: "15",
+    slug: "ibsfintech-intreax-oracle-cloud",
+    title: "IBSFINtech SaaS TMS, InTReaX™ is Powered by Oracle Cloud and Now Available",
+    excerpt: "IBSFINtech releases its SaaS Treasury Management Solution InTReaX™, now powered by Oracle Cloud.",
+    content: `
+      <p>IBSFINtech has successfully launched its SaaS Treasury Management Solution InTReaX™, now powered by Oracle Cloud. This cloud-native solution provides organizations with scalable, secure, and efficient treasury management capabilities.</p>
+      
+      <p>The Oracle Cloud-powered InTReaX™ platform offers enterprise-grade security, performance, and reliability for modern treasury operations.</p>
+    `,
+    date: "May 31, 2022",
+    category: "Product Launch",
+    author: "IBSFINtech Team",
+    image: "/IBSFINtech-Client Logos/IBSFINtech-Client-Oracle.png",
+    backgroundImage: "/bg_15.jpg",
+    featured: true,
+    tags: ["InTReaX", "Oracle Cloud", "SaaS", "TMS", "Cloud"]
+  },
+  {
+    id: "16",
+    slug: "ibsfintech-oracle-digital-transformation",
+    title: "IBSFINtech and Oracle to enable digital transformation for customers",
+    excerpt: "IBSFINtech and Oracle partner to accelerate digital transformation for enterprise treasury operations.",
+    content: `
+      <p>IBSFINtech and Oracle have announced a strategic partnership to accelerate digital transformation for enterprise treasury operations. This collaboration leverages Oracle's cloud infrastructure and IBSFINtech's treasury expertise.</p>
+      
+      <p>The partnership enables organizations to modernize their treasury operations with cloud-native solutions and advanced technology capabilities.</p>
+    `,
+    date: "May 20, 2022",
+    category: "Partnership",
+    author: "IBSFINtech Team",
+    image: "/IBSFINtech-Client Logos/IBSFINtech-Client-Oracle-Partnership.png",
+    backgroundImage: "/bg_16.jpg",
+    featured: false,
+    tags: ["Oracle", "Digital Transformation", "Partnership", "Cloud", "Enterprise"]
+  },
+  {
+    id: "17",
+    slug: "ibsfintech-vndzy-supply-chain-finance",
+    title: "IBSFINtech launches VNDZY® – AI-powered SaaS solution for Supply Chain Finance",
+    excerpt: "IBSFINtech launches VNDZY®, an AI-powered SaaS platform to optimize supply chain finance.",
+    content: `
+      <p>IBSFINtech has launched VNDZY®, an innovative AI-powered SaaS solution designed to optimize supply chain finance operations. This platform leverages artificial intelligence to streamline supply chain financial processes.</p>
+      
+      <p>VNDZY® represents IBSFINtech's commitment to innovation in supply chain finance and AI-driven financial solutions.</p>
+    `,
+    date: "March 17, 2022",
+    category: "Product Launch",
+    author: "IBSFINtech Team",
+    image: "/IBSFINtech-Client Logos/IBSFINtech-Client-VNDZY.png",
+    backgroundImage: "/bg_17.jpg",
+    featured: true,
+    tags: ["VNDZY", "AI", "Supply Chain Finance", "SaaS", "Innovation"]
+  },
+  {
+    id: "18",
+    slug: "ibsfintech-et-now-feature",
+    title: "IBSFINtech is doing a phenomenal job: N. Jayakumar on ET NOW",
+    excerpt: "N. Jayakumar praises IBSFINtech's performance in a special feature on ET NOW.",
+    content: `
+      <p>N. Jayakumar, a prominent industry leader, has praised IBSFINtech's performance and contributions to the treasury technology sector in a special feature on ET NOW. This recognition highlights IBSFINtech's impact on the financial technology landscape.</p>
+      
+      <p>The feature showcases IBSFINtech's innovative approach to treasury management and its commitment to transforming financial operations.</p>
+    `,
+    date: "February 16, 2022",
+    category: "Media",
+    author: "IBSFINtech Team",
+    image: "/IBSFINtech-Client Logos/IBSFINtech-Client-ETNow.png",
+    backgroundImage: "/bg_18.jpg",
+    featured: false,
+    tags: ["ET NOW", "Media", "Recognition", "N. Jayakumar", "Industry"]
   }
 ];
 

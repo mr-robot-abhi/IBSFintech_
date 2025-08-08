@@ -31,7 +31,7 @@ import {
   Play,
   Newspaper,
   BookOpenCheck,
-  Presentation,
+  MessageSquare,
   Video,
   HelpCircle,
   Star,
@@ -185,7 +185,7 @@ const menu: MenuSection[] = [
           { label: "Latest News", href: "/resources/news", icon: Newspaper },
           { label: "Blogs", href: "/resources/blog", icon: FileText },
           { label: "Videos", href: "/resources/videos", icon: Video },
-          { label: "Webinars", href: "/resources/webinars", icon: Presentation },
+          { label: "Testimonials", href: "/resources/testimonials", icon: MessageSquare },
           { label: "Events", href: "/resources/events", icon: Calendar },
           { label: "FAQs", href: "/resources/faqs", icon: HelpCircle },
         ],
@@ -497,4 +497,6 @@ export default function ModernMegaMenu() {
     </nav>
   );
 }
+
+
 

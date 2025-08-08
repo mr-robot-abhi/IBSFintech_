@@ -1,313 +1,205 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Card, CardContent, CardFooter } from '@/components/ui/card';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { CalendarDays, Clock, ArrowRight, Search } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { ArrowRight, Calendar, User, Tag, ChevronLeft, ChevronRight } from 'lucide-react';
+import { blogPosts } from '@/lib/blog';
 
-export default function BlogPage() {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1
-      }
+const BlogPage = () => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 6;
+  const totalPages = Math.ceil(blogPosts.length / itemsPerPage);
+
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const currentPosts = blogPosts.slice(startIndex, endIndex);
+
+  const goToPage = (page: number) => {
+    setCurrentPage(page);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const goToPreviousPage = () => {
+    if (currentPage > 1) {
+      goToPage(currentPage - 1);
     }
   };
 
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        type: 'spring',
-        stiffness: 100
-      }
+  const goToNextPage = () => {
+    if (currentPage < totalPages) {
+      goToPage(currentPage + 1);
     }
   };
-
-  const featuredPosts = [
-    {
-      title: "How Company X Improved Efficiency by 40%",
-      excerpt: "Learn how one of India's largest manufacturing companies transformed their treasury operations.",
-      image: "https://images.pexels.com/photos/6801874/pexels-photo-6801874.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-      date: "April 15, 2025",
-      readTime: "8 min read",
-      category: "Case Study"
-    },
-    {
-      title: "5 Treasury Trends to Watch in 2025",
-      excerpt: "Discover the emerging trends shaping the future of treasury management and how to stay ahead.",
-      image: "https://images.pexels.com/photos/6801868/pexels-photo-6801868.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-      date: "April 10, 2025",
-      readTime: "5 min read",
-      category: "Trends"
-    },
-    {
-      title: "Optimizing Working Capital During Economic Uncertainty",
-      excerpt: "Strategies for maintaining liquidity and financial flexibility in challenging times.",
-      image: "https://images.pexels.com/photos/6801867/pexels-photo-6801867.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-      date: "April 5, 2025",
-      readTime: "7 min read",
-      category: "Strategy"
-    }
-  ];
-
-  const recentPosts = [
-    {
-      title: "The Future of AI in Treasury Management",
-      excerpt: "Exploring how artificial intelligence is revolutionizing financial operations.",
-      image: "https://images.pexels.com/photos/8369648/pexels-photo-8369648.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-      date: "April 2, 2025",
-      readTime: "6 min read",
-      category: "Technology"
-    },
-    {
-      title: "Navigating Regulatory Changes in International Banking",
-      excerpt: "A comprehensive guide to recent regulatory developments affecting treasury operations.",
-      image: "https://images.pexels.com/photos/5849577/pexels-photo-5849577.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-      date: "March 28, 2025",
-      readTime: "10 min read",
-      category: "Compliance"
-    },
-    {
-      title: "ESG Considerations in Treasury Management",
-      excerpt: "How environmental, social, and governance factors are influencing treasury strategies.",
-      image: "https://images.pexels.com/photos/3943716/pexels-photo-3943716.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-      date: "March 23, 2025",
-      readTime: "7 min read",
-      category: "Strategy"
-    },
-    {
-      title: "Cybersecurity Best Practices for Treasury Teams",
-      excerpt: "Essential security measures to protect your financial operations from emerging threats.",
-      image: "https://images.pexels.com/photos/5380664/pexels-photo-5380664.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-      date: "March 18, 2025",
-      readTime: "9 min read",
-      category: "Security"
-    },
-    {
-      title: "The Role of Treasury in Business Continuity Planning",
-      excerpt: "How treasury departments can contribute to organizational resilience and recovery.",
-      image: "https://images.pexels.com/photos/8370752/pexels-photo-8370752.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-      date: "March 15, 2025",
-      readTime: "8 min read",
-      category: "Strategy"
-    },
-    {
-      title: "Implementing Real-Time Treasury: Challenges and Solutions",
-      excerpt: "Practical insights for moving from batch processing to real-time treasury operations.",
-      image: "https://images.pexels.com/photos/5926382/pexels-photo-5926382.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-      date: "March 10, 2025",
-      readTime: "7 min read",
-      category: "Technology"
-    }
-  ];
 
   return (
-    <div className="pt-20 pb-16">
-      {/* Hero section */}
-      <section className="bg-gradient-to-r from-blue-800 to-indigo-800 py-16 text-white">
-        <div className="container mx-auto px-4">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
+      {/* Hero Section */}
+      <section className="relative py-20 bg-gradient-to-r from-[#241F5D] to-[#3B3486]">
+        <div className="absolute inset-0 bg-black/20"></div>
+        <div className="container mx-auto px-4 max-w-7xl relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="max-w-3xl mx-auto"
+            transition={{ duration: 0.6 }}
+            className="text-center"
           >
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 text-center">Treasury Insights</h1>
-            <p className="text-xl text-blue-100 mb-8 text-center">
-              Expert analysis, case studies, and thought leadership on treasury management
+            <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
+              IBSFINtech Blog
+            </h1>
+            <p className="text-xl text-white/90 max-w-3xl mx-auto">
+              Insights, analysis, and thought leadership on treasury management, financial technology, and industry trends
             </p>
-            
-            <div className="relative">
-              <div className="flex">
-                <Input 
-                  placeholder="Search articles..." 
-                  className="rounded-r-none bg-white/10 border-white/20 text-white placeholder:text-white/60 focus:border-white"
-                />
-                <Button className="rounded-l-none bg-white text-blue-700 hover:bg-blue-50">
-                  <Search size={20} />
-                </Button>
-              </div>
-            </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Featured Posts */}
+      {/* Blog Grid */}
       <section className="py-16">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
-            className="flex justify-between items-center mb-10"
-          >
-            <h2 className="text-3xl font-bold text-gray-800">Featured Stories</h2>
-            <Button variant="ghost" className="text-blue-600">
-              View All <ArrowRight size={16} className="ml-1" />
-            </Button>
-          </motion.div>
+        <div className="container mx-auto px-4 max-w-7xl">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {currentPosts.map((post, index) => (
+              <motion.div
+                key={post.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="group"
+              >
+                <Link href={`/blog/${post.slug}`}>
+                  <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group-hover:-translate-y-2">
+                    {/* Image */}
+                    <div className="relative h-48 overflow-hidden">
+                      <Image
+                        src={post.image}
+                        alt={post.title}
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                    </div>
 
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-3 gap-8"
-          >
-            {featuredPosts.map((post, index) => (
-              <motion.div key={index} variants={itemVariants}>
-                <Card className="overflow-hidden h-full flex flex-col hover:shadow-md transition-shadow">
-                  <div className="relative aspect-video">
-                    <Image
-                      src={post.image}
-                      fill
-                      alt={post.title}
-                      className="object-cover"
-                    />
-                    <div className="absolute top-3 left-3">
-                      <span className="inline-block px-3 py-1 bg-blue-600 text-white text-xs font-medium rounded-full">
-                        {post.category}
-                      </span>
+                    <div className="p-6">
+                      <div className="flex items-center text-sm text-gray-500 dark:text-gray-400 mb-3">
+                        <Calendar className="h-4 w-4 mr-2" />
+                        {post.date}
+                        <span className="mx-2">•</span>
+                        <User className="h-4 w-4 mr-2" />
+                        {post.author}
+                      </div>
+                      
+                      <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3 line-clamp-2 group-hover:text-[#241F5D] transition-colors">
+                        {post.title}
+                      </h3>
+                      
+                      <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3">
+                        {post.excerpt}
+                      </p>
+
+                      {/* Tags */}
+                      <div className="flex flex-wrap gap-2 mb-4">
+                        {post.tags.slice(0, 3).map((tag, tagIndex) => (
+                          <span
+                            key={tagIndex}
+                            className="bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 px-2 py-1 rounded-full text-xs"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+
+                      {/* Read More */}
+                      <div className="flex items-center text-[#241F5D] font-medium group-hover:text-[#3B3486] transition-colors">
+                        Read More
+                        <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                      </div>
                     </div>
                   </div>
-                  <CardContent className="pt-6 flex-grow">
-                    <h3 className="text-xl font-bold mb-3 text-gray-800 hover:text-blue-600 transition-colors">
-                      <Link href="#">{post.title}</Link>
-                    </h3>
-                    <p className="text-gray-600 mb-4">{post.excerpt}</p>
-                    <div className="flex items-center text-sm text-gray-500">
-                      <CalendarDays size={14} className="mr-1" />
-                      <span className="mr-4">{post.date}</span>
-                      <Clock size={14} className="mr-1" />
-                      <span>{post.readTime}</span>
-                    </div>
-                  </CardContent>
-                  <CardFooter className="pt-0">
-                    <Button variant="ghost" className="text-blue-600 p-0 hover:bg-transparent hover:text-blue-800">
-                      Read More <ArrowRight size={16} className="ml-1" />
-                    </Button>
-                  </CardFooter>
-                </Card>
+                </Link>
               </motion.div>
             ))}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Recent Posts */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
-            className="mb-10"
-          >
-            <h2 className="text-3xl font-bold text-gray-800 mb-4">Recent Articles</h2>
-            <Tabs defaultValue="all" className="w-full">
-              <TabsList>
-                <TabsTrigger value="all">All</TabsTrigger>
-                <TabsTrigger value="case-studies">Case Studies</TabsTrigger>
-                <TabsTrigger value="technology">Technology</TabsTrigger>
-                <TabsTrigger value="strategy">Strategy</TabsTrigger>
-                <TabsTrigger value="compliance">Compliance</TabsTrigger>
-              </TabsList>
-            </Tabs>
-          </motion.div>
-
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-          >
-            {recentPosts.map((post, index) => (
-              <motion.div key={index} variants={itemVariants}>
-                <Card className="overflow-hidden h-full flex flex-col hover:shadow-md transition-shadow">
-                  <div className="relative aspect-video">
-                    <Image
-                      src={post.image}
-                      fill
-                      alt={post.title}
-                      className="object-cover"
-                    />
-                    <div className="absolute top-3 left-3">
-                      <span className="inline-block px-3 py-1 bg-blue-600 text-white text-xs font-medium rounded-full">
-                        {post.category}
-                      </span>
-                    </div>
-                  </div>
-                  <CardContent className="pt-6 flex-grow">
-                    <h3 className="text-lg font-bold mb-3 text-gray-800 hover:text-blue-600 transition-colors">
-                      <Link href="#">{post.title}</Link>
-                    </h3>
-                    <p className="text-gray-600 text-sm mb-4">{post.excerpt}</p>
-                    <div className="flex items-center text-xs text-gray-500">
-                      <CalendarDays size={12} className="mr-1" />
-                      <span className="mr-4">{post.date}</span>
-                      <Clock size={12} className="mr-1" />
-                      <span>{post.readTime}</span>
-                    </div>
-                  </CardContent>
-                  <CardFooter className="pt-0">
-                    <Button variant="ghost" className="text-blue-600 p-0 hover:bg-transparent hover:text-blue-800 text-sm">
-                      Read More <ArrowRight size={14} className="ml-1" />
-                    </Button>
-                  </CardFooter>
-                </Card>
-              </motion.div>
-            ))}
-          </motion.div>
-          
-          <div className="mt-12 text-center">
-            <Button variant="outline" className="text-blue-600">
-              Load More Articles
-            </Button>
           </div>
+
+          {/* Pagination */}
+          {totalPages > 1 && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="mt-12 flex justify-center items-center space-x-4"
+            >
+              <button
+                onClick={goToPreviousPage}
+                disabled={currentPage === 1}
+                className={`flex items-center px-4 py-2 rounded-lg font-medium transition-colors ${
+                  currentPage === 1
+                    ? "text-gray-400 cursor-not-allowed"
+                    : "text-[#241F5D] hover:text-[#3B3486] hover:bg-[#241F5D]/10"
+                }`}
+              >
+                <ChevronLeft className="h-4 w-4 mr-1" />
+                Previous
+              </button>
+
+              <div className="flex items-center space-x-2">
+                {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                  <button
+                    key={page}
+                    onClick={() => goToPage(page)}
+                    className={`px-3 py-2 rounded-lg font-medium transition-colors ${
+                      currentPage === page
+                        ? "bg-[#241F5D] text-white"
+                        : "text-gray-600 hover:text-[#241F5D] hover:bg-[#241F5D]/10"
+                    }`}
+                  >
+                    {page}
+                  </button>
+                ))}
+              </div>
+
+              <button
+                onClick={goToNextPage}
+                disabled={currentPage === totalPages}
+                className={`flex items-center px-4 py-2 rounded-lg font-medium transition-colors ${
+                  currentPage === totalPages
+                    ? "text-gray-400 cursor-not-allowed"
+                    : "text-[#241F5D] hover:text-[#3B3486] hover:bg-[#241F5D]/10"
+                }`}
+              >
+                Next
+                <ChevronRight className="h-4 w-4 ml-1" />
+              </button>
+            </motion.div>
+          )}
         </div>
       </section>
 
-      {/* Newsletter Section */}
-      <section className="py-16 bg-blue-50">
-        <div className="container mx-auto px-4">
+      {/* CTA Section */}
+      <section className="py-16 bg-gradient-to-r from-[#241F5D] to-[#3B3486]">
+        <div className="container mx-auto px-4 max-w-4xl text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
             viewport={{ once: true }}
-            className="max-w-3xl mx-auto text-center"
+            transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl font-bold mb-6 text-gray-800">Stay Updated</h2>
-            <p className="text-lg text-gray-600 mb-8">
-              Subscribe to our newsletter for the latest treasury insights, case studies, and industry news
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+              Stay Updated with IBSFINtech
+            </h2>
+            <p className="text-xl text-white/90 mb-8">
+              Get the latest insights on treasury management, financial technology, and industry trends delivered to your inbox.
             </p>
-            <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-              <Input 
-                placeholder="Your email address" 
-                className="rounded-md sm:rounded-r-none"
-              />
-              <Button className="sm:rounded-l-none bg-blue-600 hover:bg-blue-700">
-                Subscribe
-              </Button>
-            </div>
-            <p className="text-xs text-gray-500 mt-4">
-              We respect your privacy. Unsubscribe at any time.
-            </p>
+            <Link href="/request-demo">
+              <button className="bg-white text-[#241F5D] px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-300">
+                Request Demo
+              </button>
+            </Link>
           </motion.div>
         </div>
       </section>
     </div>
   );
-}
+};
+
+export default BlogPage;

@@ -199,7 +199,7 @@ export default function Navbar() {
                       <DropdownMenuItem asChild className="p-0"><Link href="/resources/news" className="w-full px-2 py-1.5 text-sm">Latest News</Link></DropdownMenuItem>
                       <DropdownMenuItem asChild className="p-0"><Link href="/resources/blogs" className="w-full px-2 py-1.5 text-sm">Blogs</Link></DropdownMenuItem>
                       <DropdownMenuItem asChild className="p-0"><Link href="/resources/videos" className="w-full px-2 py-1.5 text-sm">Videos</Link></DropdownMenuItem>
-                      <DropdownMenuItem asChild className="p-0"><Link href="/resources/webinars" className="w-full px-2 py-1.5 text-sm">Webinars</Link></DropdownMenuItem>
+                      <DropdownMenuItem asChild className="p-0"><Link href="/resources/testimonials" className="w-full px-2 py-1.5 text-sm">Testimonials</Link></DropdownMenuItem>
                       <DropdownMenuItem asChild className="p-0"><Link href="/resources/events" className="w-full px-2 py-1.5 text-sm">Events</Link></DropdownMenuItem>
                     </div>
                   </div>

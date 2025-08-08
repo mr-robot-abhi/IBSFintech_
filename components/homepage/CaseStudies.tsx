@@ -59,14 +59,9 @@ export default function CaseStudies() {
                 
                 {/* Frosted glass bottom section */}
                 <div className="mt-auto backdrop-blur-sm bg-white/30 p-4 rounded-b-xl">
-                  <h3 className="text-black font-bold text-base mb-1">
+                  <h3 className="text-black font-bold text-sm mb-2 line-clamp-1 leading-tight">
                     {cs.title}
                   </h3>
-                  {cs.description && (
-                    <p className="text-black/90 text-xs mb-2 line-clamp-3 leading-snug">
-                      {cs.description}
-                    </p>
-                  )}
                   
                   <div className="flex justify-between items-center">
                     <div className={`relative h-8 w-24 ${cs.title.includes('Polycab') ? 'ml-1' : ''}`}>

@@ -336,10 +336,11 @@ export default function NavbarStyle2() {
                           <Link href="/resources/blog" className="block px-2 py-2 rounded-lg hover:bg-blue-50 text-blue-900 font-medium transition">Blog</Link>
                           <Link href="/resources/whitepapers" className="block px-2 py-2 rounded-lg hover:bg-blue-50 text-blue-900 font-medium transition">Whitepapers</Link>
                           <Link href="/resources/case-studies" className="block px-2 py-2 rounded-lg hover:bg-blue-50 text-blue-900 font-medium transition">Case Studies</Link>
-                          <Link href="/resources/webinars" className="block px-2 py-2 rounded-lg hover:bg-blue-50 text-blue-900 font-medium transition">Webinars</Link>
+                          <Link href="/resources/testimonials" className="block px-2 py-2 rounded-lg hover:bg-blue-50 text-blue-900 font-medium transition">Testimonials</Link>
                           <Link href="/resources/videos" className="block px-2 py-2 rounded-lg hover:bg-blue-50 text-blue-900 font-medium transition">Videos</Link>
                           <Link href="/resources/glossary" className="block px-2 py-2 rounded-lg hover:bg-blue-50 text-blue-900 font-medium transition">Glossary</Link>
                           <Link href="/resources/help-center" className="block px-2 py-2 rounded-lg hover:bg-blue-50 text-blue-900 font-medium transition">Help Center</Link>
+                          <Link href="/resources/events" className="block px-2 py-2 rounded-lg hover:bg-blue-50 text-blue-900 font-medium transition">Events</Link>
                         </div>
                       </div>
                       <div className="w-1/3 bg-blue-50 flex flex-col items-center justify-center p-4 border-l border-blue-100">
