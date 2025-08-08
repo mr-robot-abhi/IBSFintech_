@@ -2,41 +2,14 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { caseStudies } from "@/lib/caseStudies";
 
-interface CaseStudy {
-  title: string;
-  description: string;
-  image: string;
-  backgroundImage: string;
-}
-
-const caseStudies: CaseStudy[] = [
-  {
-    title: "Dabur",
-    description: "FMCG Giant's path to data-driven decision: empowering treasury functions with automation.",
-    image: "/Case_Studies/IBSFINtech-Client-Dabur.png",
-    backgroundImage: "/Case_Studies/Dabur_CaseStudy.jpg"
-  },
-  {
-    title: "Hindustan Zinc",
-    description: "How End-to-End Automation Revolutionized Treasury Management for a Global Zinc & Silver Industry Leader.",
-    image: "/Case_Studies/IBSFINtech-Client-Hindustan-Zinc.png",
-    backgroundImage: "/Case_Studies/Hindustan-Zinc-1.jpg"
-  },
-  {
-    title: "Credit Saison",
-    description: "How a Global Financial services (NBFC) Leader Streamlined Treasury Operations and Achieved Real-Time Insights.",
-    image: "/Case_Studies/IBSFINtech-Client-Credit-Saison-India.png",
-    backgroundImage: "/Case_Studies/credit_saison.jpg"
-  },
-  {
-    title: "Polycab",
-    description: "Leader of India's cable & wire manufacturing industry boards the ship towards end-to-end digitization with IBSFINtech to enable seamless automation of their Treasury & Trade Finance Functions to manage USD 500+ million.",
-    image: "/Case_Studies/IBSFINtech-Client-Polycab.png",
-    backgroundImage: "/Case_Studies/wires-cables.jpg"
-  }
-];
+// Filter to only show the 4 case studies that are displayed on the homepage
+const homepageCaseStudies = caseStudies.filter(cs => 
+  ['dabur-fmcg-automation', 'hindustan-zinc-automation', 'credit-saison-nbfc', 'polycab-cable-wire'].includes(cs.slug)
+);
 
 export default function CaseStudies() {
   return (
@@ -58,15 +31,15 @@ export default function CaseStudies() {
         </motion.div>
         
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-          {caseStudies.map((cs, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.3, delay: index * 0.1 }}
-              className="h-96 rounded-xl overflow-hidden shadow-lg group relative cursor-pointer"
-            >
+          {homepageCaseStudies.map((cs, index) => (
+            <Link href={`/resources/success-stories/${cs.slug}`} key={index}>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.3, delay: index * 0.1 }}
+                className="h-96 rounded-xl overflow-hidden shadow-lg group relative cursor-pointer"
+              >
               <div className="absolute inset-0">
                 <Image
                   src={cs.backgroundImage}
@@ -113,17 +86,19 @@ export default function CaseStudies() {
                 </div>
               </div>
             </motion.div>
+            </Link>
           ))}
           
           {/* 5th Tile - View All Button */}
-          <motion.div
-            key="view-all"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.3, delay: 0.4 }}
-            className="h-96 rounded-xl overflow-hidden shadow-lg group relative cursor-pointer bg-gradient-to-br from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 transition-all duration-300 transform hover:-translate-y-0.5 hover:shadow-xl"
-          >
+          <Link href="/resources/success-stories">
+            <motion.div
+              key="view-all"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.3, delay: 0.4 }}
+              className="h-96 rounded-xl overflow-hidden shadow-lg group relative cursor-pointer bg-gradient-to-br from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 transition-all duration-300 transform hover:-translate-y-0.5 hover:shadow-xl"
+            >
             <div className="absolute inset-0">
               <div className="absolute inset-0 bg-gradient-to-br from-blue-600 to-blue-700"></div>
               <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white/10 to-transparent"></div>
@@ -159,7 +134,8 @@ export default function CaseStudies() {
                 </div>
               </div>
             </div>
-          </motion.div>
+            </motion.div>
+          </Link>
         </div>
       </div>
     </section>

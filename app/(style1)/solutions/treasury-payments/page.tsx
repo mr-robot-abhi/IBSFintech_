@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { CreditCard, DollarSign, FileText, Shield, Zap, Clock, BarChart, PieChart, ArrowRight, Check, Activity, Layers, RefreshCw, AlertCircle, BarChart2, TrendingUp } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
@@ -120,32 +121,36 @@ const TreasuryPaymentsPage = () => {
 
 
       {/* Hero Section */}
-      <section className="relative w-full py-20 md:py-28 bg-gradient-to-r from-[#241F5D] to-[#3A3480] text-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
+      <section className="relative w-full min-h-[400px] flex items-center bg-gradient-to-r from-[#241F5D] to-[#3A3480] text-white overflow-hidden">
+        {/* Background Image with Overlay */}
+        <div className="absolute inset-0 w-full h-full">
+          <Image
+            src="/Inner Pages/Solutions/cash_visibility.jpeg"
+            alt="Treasury Payments"
+            fill
+            className="object-cover opacity-60"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#241F5D]/60 via-[#241F5D]/50 to-[#3A3480]/60"></div>
+        </div>
+        
+        <div className="container mx-auto px-4 relative z-10 py-12">
+          <div className="max-w-4xl">
             <motion.h1 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="text-4xl md:text-5xl font-bold mb-6 leading-tight"
+              className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 leading-tight"
             >
-              Streamline Your Corporate Payments with Our Comprehensive Solution
+              Streamline Your Corporate Payments
             </motion.h1>
             <motion.p 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-xl text-blue-100 mb-8 max-w-3xl mx-auto"
+              className="text-lg md:text-xl text-blue-100 mb-6 max-w-3xl"
             >
-              Automate, Integrate, and Optimize Your Payment Processes
-            </motion.p>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="text-lg text-blue-100 mb-8 max-w-4xl mx-auto"
-            >
-              Managing corporate payments involves navigating complex bank administration, ensuring timely vendor payments, and maintaining optimal cash flows. Our on-premise solution simplifies these tasks, offering comprehensive features from bank account management to real-time payment alerts and regulatory compliance.
+              Automate, integrate, and optimize your payment processes with our comprehensive solution
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -161,13 +166,16 @@ const TreasuryPaymentsPage = () => {
       </section>
 
       {/* Challenges Section */}
-      <section className="py-16 bg-white">
+      <section className="py-12 md:py-16 bg-white">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#241F5D] mb-4">
-              Challenges Corporates Face in Payment Management
+          <div className="max-w-4xl mx-auto text-center mb-8 md:mb-12">
+            <h2 className="text-2xl md:text-3xl font-bold text-[#241F5D] mb-3">
+              Key Challenges in Corporate Treasury Payments
             </h2>
-            <div className="h-1 w-16 bg-blue-500 mx-auto mb-6"></div>
+            <div className="h-1 w-12 bg-blue-500 mx-auto mb-4"></div>
+            <p className="text-gray-600">
+              Common challenges faced by corporates in managing treasury payments
+            </p>
           </div>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -180,11 +188,11 @@ const TreasuryPaymentsPage = () => {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow border border-gray-100"
               >
-                <div className="h-12 w-12 rounded-full bg-blue-50 flex items-center justify-center mb-4">
-                  {challenge.icon}
-                </div>
-                <h3 className="text-xl font-semibold text-[#241F5D] mb-2">{challenge.title}</h3>
-                <p className="text-gray-600">{challenge.description}</p>
+                <div className="h-10 w-10 rounded-full bg-blue-50 flex items-center justify-center mb-3 flex-shrink-0">
+                {React.cloneElement(challenge.icon, { className: 'h-5 w-5 text-blue-600' })}
+              </div>
+              <h3 className="text-lg font-semibold text-[#241F5D] mb-2">{challenge.title}</h3>
+              <p className="text-sm text-gray-600 mb-0">{challenge.description}</p>
               </motion.div>
             ))}
           </div>
@@ -192,13 +200,16 @@ const TreasuryPaymentsPage = () => {
       </section>
 
       {/* Features Section */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-12 md:py-16 bg-gray-50">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#241F5D] mb-4">
-              Key Features of Our Payment Module
+          <div className="max-w-4xl mx-auto text-center mb-8 md:mb-12">
+            <h2 className="text-2xl md:text-3xl font-bold text-[#241F5D] mb-3">
+              Comprehensive Treasury Payments Solution
             </h2>
-            <div className="h-1 w-16 bg-blue-500 mx-auto mb-6"></div>
+            <div className="h-1 w-12 bg-blue-500 mx-auto mb-4"></div>
+            <p className="text-gray-600">
+              End-to-end solutions for efficient payment processing and management
+            </p>
             <p className="text-lg text-gray-600">
               Our comprehensive payment solution is designed to address all your corporate payment needs efficiently and effectively.
             </p>
@@ -216,11 +227,11 @@ const TreasuryPaymentsPage = () => {
               >
                 <div className="flex items-start">
                   <div className="h-10 w-10 rounded-full bg-blue-50 flex items-center justify-center mr-4 flex-shrink-0">
-                    {feature.icon}
+                    {React.cloneElement(feature.icon, { className: 'h-5 w-5 text-blue-600' })}
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold text-[#241F5D] mb-2">{feature.title}</h3>
-                    <p className="text-gray-600">{feature.description}</p>
+                    <h3 className="text-lg font-semibold text-[#241F5D] mb-2">{feature.title}</h3>
+                    <p className="text-sm text-gray-600">{feature.description}</p>
                   </div>
                 </div>
               </motion.div>
@@ -230,13 +241,16 @@ const TreasuryPaymentsPage = () => {
       </section>
 
       {/* Value Propositions */}
-      <section className="py-16 bg-white">
+      <section className="py-12 md:py-16 bg-white">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#241F5D] mb-4">
-              Value Proposition
+          <div className="max-w-4xl mx-auto text-center mb-8 md:mb-12">
+            <h2 className="text-2xl md:text-3xl font-bold text-[#241F5D] mb-3">
+              Why Choose Our Solution?
             </h2>
-            <div className="h-1 w-16 bg-blue-500 mx-auto mb-6"></div>
+            <div className="h-1 w-12 bg-blue-500 mx-auto mb-4"></div>
+            <p className="text-gray-600">
+              Key benefits of our treasury payments platform
+            </p>
             <p className="text-lg text-gray-600">
               Experience the power of our Treasury Payments solution and transform your payment processes today.
             </p>
@@ -252,11 +266,11 @@ const TreasuryPaymentsPage = () => {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow border border-gray-100"
               >
-                <div className="h-12 w-12 rounded-full bg-blue-50 flex items-center justify-center mb-4">
-                  {proposition.icon}
+                <div className="h-12 w-12 rounded-full bg-blue-50 flex items-center justify-center mx-auto mb-3">
+                  {React.cloneElement(proposition.icon, { className: 'h-5 w-5 text-blue-600' })}
                 </div>
-                <h3 className="text-xl font-semibold text-[#241F5D] mb-2">{proposition.title}</h3>
-                <p className="text-gray-600">{proposition.description}</p>
+                <h3 className="text-lg font-semibold text-[#241F5D] mb-2">{proposition.title}</h3>
+                <p className="text-sm text-gray-600">{proposition.description}</p>
               </motion.div>
             ))}
           </div>
@@ -264,20 +278,37 @@ const TreasuryPaymentsPage = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-gradient-to-r from-[#241F5D] to-[#3A3480] text-white">
+      <section className="py-12 md:py-16 bg-gradient-to-r from-[#241F5D] to-[#3A3480] text-white">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Transform Your Payment Processes?</h2>
-          <p className="text-xl text-blue-100 mb-8 max-w-3xl mx-auto">
-            Discover how our comprehensive solution can help you streamline your payments and optimize cash flows.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-white text-[#241F5D] hover:bg-blue-50">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-2xl md:text-4xl font-bold mb-4 md:mb-6"
+          >
+            Ready to Transform Your Treasury Payments?
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-lg md:text-xl text-blue-100 mb-8 max-w-3xl mx-auto"
+          >
+            Discover how our solution can help you streamline payment processes and improve financial operations.
+          </motion.p>
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="flex flex-col sm:flex-row gap-4 justify-center"
+          >
+            <Button size="lg" className="bg-white text-[#241F5D] hover:bg-blue-50 font-medium">
               Request a Demo
             </Button>
-            <Button size="lg" variant="outline" className="text-white border-white hover:bg-white/10">
+            <Button size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white/10">
               Contact Our Experts
             </Button>
-          </div>
+          </motion.div>
         </div>
       </section>
     </div>

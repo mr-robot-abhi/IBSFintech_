@@ -83,19 +83,6 @@ export default function OurOfferingsSection() {
 
           {/* Right Section with Dotted Lines Background */}
           <div className="w-full lg:w-3/5 relative group">
-            {/* Dotted Lines Background SVG */}
-            <div className="absolute inset-0 z-0 opacity-40">
-              <Image
-                src="/dotted_lines.svg"
-                alt="Dotted lines background"
-                fill
-                className="object-cover"
-                style={{
-                  maskImage: 'radial-gradient(ellipse at center, black 30%, transparent 70%)',
-                  WebkitMaskImage: 'radial-gradient(ellipse at center, black 30%, transparent 70%)',
-                }}
-              />
-            </div>
 
             {/* Swiper Carousel */}
             <div className="relative z-10">

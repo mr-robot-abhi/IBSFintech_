@@ -302,181 +302,139 @@ export default function ModernMegaMenu() {
                     initial="initial"
                     animate="animate"
                     exit="exit"
-                    className={`absolute top-full mt-2 z-40 ${item.label === 'Solutions' ? '-left-32' : item.label === 'Resources' ? '-left-24' : item.label === 'Company' ? 'right-0' : 'left-0'}`}
+                    className={`absolute top-full mt-2 z-40 ${item.label === 'Solutions' ? '-left-48' : item.label === 'Resources' ? '-left-24' : item.label === 'Company' ? 'right-0' : 'left-0'}`}
                   >
                     <div className={`rounded-xl shadow-2xl border border-white/10 bg-white overflow-hidden`}>
                       {item.mega ? (
-                        <div className={`grid grid-cols-3 gap-3 p-3 ${item.label === 'Products' ? 'w-[650px]' : item.label === 'Solutions' ? 'w-[750px]' : item.label === 'Resources' ? 'w-[600px]' : 'w-[600px]'}`}>
+                        <div className={`p-4 ${item.label === 'Products' ? 'w-[600px]' : item.label === 'Solutions' ? 'w-[900px]' : item.label === 'Resources' ? 'w-[600px]' : 'w-[500px]'}`}>
                           {item.label === "Solutions" ? (
                             // Enhanced Solutions dropdown with descriptions in 2 columns
-                            <>
-                              <div className="col-span-2">
-                                <h4 className="text-gray-900 font-bold text-sm mb-3 px-2">Our Solutions</h4>
-                                <div className="grid grid-cols-2 gap-x-4 gap-y-2 px-2">
-                                  {item.groups && item.groups[0]?.items.map((sub, index) => {
-                                    const Icon = sub.icon || FileText;
-                                    return (
-                                      <Link 
-                                        key={sub.label} 
-                                        href={sub.href} 
-                                        className="block p-2 rounded-lg hover:bg-blue-50 text-gray-800 hover:text-blue-700 transition-all duration-200 border border-transparent hover:border-blue-200"
-                                      >
-                                        <div className="flex items-start gap-2">
-                                          <Icon className="w-4 h-4 text-blue-600 flex-shrink-0 mt-0.5" />
-                                          <div className="flex-1 min-w-0">
-                                            <h5 className="text-sm font-semibold mb-1 leading-tight">{sub.label}</h5>
-                                            {sub.description && (
-                                              <p className="text-xs text-gray-600 leading-relaxed">{sub.description}</p>
-                                            )}
-                                          </div>
+                            <div className="w-full">
+                              <h4 className="text-gray-900 font-bold text-sm mb-4 px-2">Our Solutions</h4>
+                              <div className="grid grid-cols-2 gap-x-6 gap-y-3">
+                                {item.groups && item.groups[0]?.items.map((sub, index) => {
+                                  const Icon = sub.icon || FileText;
+                                  return (
+                                    <Link 
+                                      key={sub.label} 
+                                      href={sub.href} 
+                                      className="block p-3 rounded-lg hover:bg-blue-50 text-gray-800 hover:text-blue-700 transition-all duration-200 border border-transparent hover:border-blue-200"
+                                    >
+                                      <div className="flex items-start gap-3">
+                                        <Icon className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                                        <div className="flex-1 min-w-0">
+                                          <h5 className="text-sm font-semibold mb-1 leading-tight">{sub.label}</h5>
+                                          {sub.description && (
+                                            <p className="text-xs text-gray-600 leading-relaxed">{sub.description}</p>
+                                          )}
                                         </div>
-                                      </Link>
-                                    );
-                                  })}
-                                </div>
+                                      </div>
+                                    </Link>
+                                  );
+                                })}
                               </div>
-                              <div className="col-span-1">
-                                <div className="bg-blue-50 rounded-lg p-2 h-full flex flex-col">
-                                    <div>
-                                        <h5 className='text-blue-900 font-bold mb-1 text-sm'>Our Solutions</h5>
-                                        <Image src="/Solutions Image.svg" alt="Solutions" width={160} height={90} className="rounded-md mb-1 mx-auto" />
-                                    </div>
-                                    <div className="mt-auto">
-                                      <Link href="/all_solutions" className='text-blue-700 font-semibold text-sm flex items-center gap-1 hover:underline justify-center transition-colors duration-200'>
-                                        View All Solutions <ArrowRight size={14} />
-                                      </Link>
-                                    </div>
-                                </div>
-                              </div>
-                            </>
+                            </div>
                           ) : item.label === "Products" ? (
-                            // Products dropdown with 2-column layout under Enterprise TMS
-                            <>
-                              <div className="col-span-2">
-                                {item.groups?.map((group) => (
-                                  <div key={group.title} className="mb-3 last:mb-0">
-                                    <h4 className="text-gray-900 font-bold text-sm mb-2 px-2">{group.title}</h4>
-                                    {group.title === "Enterprise TMS" ? (
-                                      <div className="grid grid-cols-2 gap-x-4 gap-y-1 px-2">
-                                        {group.items.map((sub, index) => {
-                                          const Icon = sub.icon || FileText;
-                                          return (
-                                            <Link 
-                                              key={sub.label} 
-                                              href={sub.href} 
-                                              className="flex items-center gap-2 px-2 py-1 rounded hover:bg-blue-50 text-gray-800 hover:text-blue-700 transition-all duration-150 ease-out text-sm font-medium"
-                                            >
-                                              <Icon className="w-4 h-4 text-blue-600 flex-shrink-0" />
-                                              <span className="leading-tight">{sub.label}</span>
-                                            </Link>
-                                          );
-                                        })}
-                                      </div>
-                                    ) : (
-                                      <div className="flex flex-wrap gap-1 px-2">
-                                        {group.items.map((sub, index) => {
-                                          const Icon = sub.icon || FileText;
-                                          return (
-                                            <Link 
-                                              key={sub.label} 
-                                              href={sub.href} 
-                                              className="flex items-center gap-2 px-2 py-1 rounded hover:bg-blue-50 text-gray-800 hover:text-blue-700 transition-all duration-150 ease-out text-sm font-medium"
-                                            >
-                                              <Icon className="w-4 h-4 text-blue-600 flex-shrink-0" />
-                                              <span className="leading-tight">{sub.label}</span>
-                                            </Link>
-                                          );
-                                        })}
-                                      </div>
-                                    )}
+                            // Products dropdown with single line layout
+                            <div className="w-full">
+                              {item.groups?.map((group) => (
+                                <div key={group.title} className="mb-4 last:mb-0">
+                                  <h4 className="text-gray-900 font-bold text-sm mb-3 px-2">{group.title}</h4>
+                                  <div className="flex flex-wrap gap-2 px-2">
+                                    {group.items.map((sub, index) => {
+                                      const Icon = sub.icon || FileText;
+                                      return (
+                                        <Link 
+                                          key={sub.label} 
+                                          href={sub.href} 
+                                          className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-blue-50 text-gray-800 hover:text-blue-700 transition-all duration-150 ease-out text-sm font-medium whitespace-nowrap"
+                                        >
+                                          <Icon className="w-4 h-4 text-blue-600 flex-shrink-0" />
+                                          <span className="leading-tight">{sub.label}</span>
+                                        </Link>
+                                      );
+                                    })}
                                   </div>
-                                ))}
-                              </div>
-                              <div className="col-span-1">
-                                <div className="bg-blue-50 rounded-lg p-2 h-full flex flex-col">
-                                    <div>
-                                        <h5 className='text-blue-900 font-bold mb-1 text-sm'>Our Products</h5>
-                                        <Image src="/Product Image.svg" alt="Products" width={160} height={90} className="rounded-md mb-1 mx-auto" />
-                                    </div>
-                                    <div className="mt-auto">
-                                      <Link href="/all_products" className='text-blue-700 font-semibold text-sm flex items-center gap-1 hover:underline justify-center transition-colors duration-150 ease-out'>
-                                        View All Products <ArrowRight size={14} />
-                                      </Link>
-                                    </div>
                                 </div>
-                              </div>
-                            </>
+                              ))}
+                            </div>
                           ) : item.label === "Resources" ? (
                             // Resources dropdown with 2 columns (6 items each)
-                            <>
-                              <div className="col-span-2">
-                                <div className="grid grid-cols-2 gap-x-6 gap-y-1 px-2">
-                                  {item.groups && item.groups[0]?.items.map((sub, index) => {
-                                    const Icon = sub.icon || FileText;
-                                    return (
-                                      <Link 
-                                        key={sub.label} 
-                                        href={sub.href} 
-                                        className="flex items-center gap-2 px-2 py-1 rounded hover:bg-blue-50 text-gray-800 hover:text-blue-700 transition-all duration-150 ease-out text-sm font-medium"
-                                      >
-                                        <Icon className="w-4 h-4 text-blue-600 flex-shrink-0" />
-                                        <span className="leading-tight">{sub.label}</span>
-                                      </Link>
-                                    );
-                                  })}
-                                </div>
+                            <div className="w-full">
+                              <h4 className="text-gray-900 font-bold text-sm mb-3 px-2">Resources</h4>
+                              <div className="grid grid-cols-2 gap-x-6 gap-y-2 px-2">
+                                {item.groups && item.groups[0]?.items.map((sub, index) => {
+                                  const Icon = sub.icon || FileText;
+                                  return (
+                                    <Link 
+                                      key={sub.label} 
+                                      href={sub.href} 
+                                      className="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-blue-50 text-gray-800 hover:text-blue-700 transition-all duration-150 ease-out text-sm font-medium"
+                                    >
+                                      <Icon className="w-4 h-4 text-blue-600 flex-shrink-0" />
+                                      <span className="leading-tight">{sub.label}</span>
+                                    </Link>
+                                  );
+                                })}
                               </div>
-                              <div className="col-span-1">
-                                <div className="bg-blue-50 rounded-lg p-2 h-full flex flex-col">
-                                    <div>
-                                        <h5 className='text-blue-900 font-bold mb-1 text-sm'>Resources</h5>
-                                        <Image src="/bg_1.jpg" alt="Resources" width={160} height={90} className="rounded-md mb-1 mx-auto object-cover" />
-                                    </div>
-                                    <div className="mt-auto">
-                                      <Link href="/resources" className='text-blue-700 font-semibold text-sm flex items-center gap-1 hover:underline justify-center transition-colors duration-150 ease-out'>
-                                        View All Resources <ArrowRight size={14} />
-                                      </Link>
-                                    </div>
-                                </div>
-                              </div>
-                            </>
+                            </div>
                           ) : item.label === "Company" ? (
-                            // Company dropdown with 2 columns (4 items each)
-                            <>
-                              <div className="col-span-2">
-                                <div className="grid grid-cols-2 gap-x-6 gap-y-1 px-2">
-                                  {item.groups && item.groups[0]?.items.map((sub, index) => {
-                                    const Icon = sub.icon || FileText;
-                                    return (
-                                      <Link 
-                                        key={sub.label} 
-                                        href={sub.href} 
-                                        className="flex items-center gap-2 px-2 py-1 rounded hover:bg-blue-50 text-gray-800 hover:text-blue-700 transition-all duration-150 ease-out text-sm font-medium"
-                                      >
-                                        <Icon className="w-4 h-4 text-blue-600 flex-shrink-0" />
-                                        <span className="leading-tight">{sub.label}</span>
-                                      </Link>
-                                    );
-                                  })}
+                            // Company dropdown with compact layout
+                            <div className="w-full">
+                              <div className="grid grid-cols-2 gap-6">
+                                <div className="col-span-1">
+                                  <h4 className="text-gray-900 font-bold text-sm mb-3 px-2">Company</h4>
+                                  <div className="grid grid-cols-1 gap-1 px-2">
+                                    {item.groups && item.groups[0]?.items.slice(0, 4).map((sub, index) => {
+                                      const Icon = sub.icon || FileText;
+                                      return (
+                                        <Link 
+                                          key={sub.label} 
+                                          href={sub.href} 
+                                          className="flex items-center gap-2 px-2 py-1.5 rounded-lg hover:bg-blue-50 text-gray-800 hover:text-blue-700 transition-all duration-150 ease-out text-sm font-medium"
+                                        >
+                                          <Icon className="w-4 h-4 text-blue-600 flex-shrink-0" />
+                                          <span className="leading-tight">{sub.label}</span>
+                                        </Link>
+                                      );
+                                    })}
+                                  </div>
                                 </div>
-                                <div className="mt-2 px-2">
-                                  <Image src="/bg_6.jpg" alt="Company" width={350} height={70} className="rounded-md w-full object-cover" />
+                                <div className="col-span-1">
+                                  <div className="grid grid-cols-1 gap-1 px-2">
+                                    {item.groups && item.groups[0]?.items.slice(4).map((sub, index) => {
+                                      const Icon = sub.icon || FileText;
+                                      return (
+                                        <Link 
+                                          key={sub.label} 
+                                          href={sub.href} 
+                                          className="flex items-center gap-2 px-2 py-1.5 rounded-lg hover:bg-blue-50 text-gray-800 hover:text-blue-700 transition-all duration-150 ease-out text-sm font-medium"
+                                        >
+                                          <Icon className="w-4 h-4 text-blue-600 flex-shrink-0" />
+                                          <span className="leading-tight">{sub.label}</span>
+                                        </Link>
+                                      );
+                                    })}
+                                  </div>
                                 </div>
                               </div>
-                              <div className="col-span-1">
-                                <div className="bg-blue-50 rounded-lg p-2 h-full flex flex-col justify-center">
-                                  <div className="text-center">
-                                    <h5 className='text-blue-900 font-bold mb-1 text-sm'>About Us</h5>
-                                    <p className="text-blue-700 text-xs mb-2 leading-tight">Discover our mission, values, and commitment to transforming treasury management.</p>
-                                    <Link href="/company" className='text-blue-700 font-semibold text-sm flex items-center gap-1 hover:underline justify-center transition-colors duration-150 ease-out'>
+                              <div className="mt-3 px-2">
+                                <div className="bg-blue-50 rounded-lg p-3">
+                                  <div className="flex items-center gap-3">
+                                    <Image src="/bg_6.jpg" alt="Company" width={60} height={40} className="rounded-md object-cover" />
+                                    <div className="flex-1">
+                                      <h5 className='text-blue-900 font-bold text-sm mb-1'>About Us</h5>
+                                      <p className="text-blue-700 text-xs leading-tight">Discover our mission, values, and commitment to transforming treasury management.</p>
+                                    </div>
+                                    <Link href="/company" className='text-blue-700 font-semibold text-sm flex items-center gap-1 hover:underline transition-colors duration-150 ease-out'>
                                       Learn More <ArrowRight size={14} />
                                     </Link>
                                   </div>
                                 </div>
                               </div>
-                            </>
+                            </div>
                           ) : (
-                            <div className="col-span-2">
+                            <div className="w-full">
                               <div className="flex gap-8 w-max">
                                 {item.groups?.map((group) => (
                                   <div key={group.title} className="min-w-[160px]">
@@ -539,3 +497,4 @@ export default function ModernMegaMenu() {
     </nav>
   );
 }
+

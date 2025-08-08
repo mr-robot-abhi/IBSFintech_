@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { Zap, ArrowRight, Check, RefreshCw, Shield, Activity, BarChart2, FileText, CreditCard, Users, Cpu, Link2, TrendingUp } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
@@ -91,14 +92,26 @@ const SupplyChainFinancePage = () => {
 
 
       {/* Hero Section */}
-      <section className="relative w-full py-20 md:py-28 bg-gradient-to-r from-[#241F5D] to-[#3A3480] text-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
+      <section className="relative w-full min-h-[400px] flex items-center bg-gradient-to-r from-[#241F5D] to-[#3A3480] text-white overflow-hidden">
+        {/* Background Image with Overlay */}
+        <div className="absolute inset-0 w-full h-full">
+          <Image
+            src="/Inner Pages/Solutions/SCF platform for corporates.png"
+            alt="Supply Chain Finance"
+            fill
+            className="object-cover opacity-60"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#241F5D]/60 via-[#241F5D]/50 to-[#3A3480]/60"></div>
+        </div>
+        
+        <div className="container mx-auto px-4 relative z-10 py-12">
+          <div className="max-w-4xl">
             <motion.h1 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="text-4xl md:text-5xl font-bold mb-6 leading-tight"
+              className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 leading-tight"
             >
               Supply Chain Finance
             </motion.h1>
@@ -106,25 +119,21 @@ const SupplyChainFinancePage = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-2xl text-blue-100 mb-4"
+              className="text-lg md:text-xl text-blue-100 mb-6 max-w-3xl"
             >
-              Transforming Financial Operations with AI-Driven Solutions
-            </motion.p>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="text-xl text-blue-100 mb-8 max-w-3xl mx-auto"
-            >
-              Streamline vendor onboarding, validate credibility, detect fraud, and integrate with your ERP seamlessly
+              Transforming financial operations with AI-driven solutions for vendor management and payments
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
+              className="flex flex-col sm:flex-row gap-4"
             >
-              <Button size="lg" className="bg-white text-[#241F5D] hover:bg-blue-50">
+              <Button size="lg" className="bg-white text-[#241F5D] hover:bg-blue-50 font-medium">
                 Get Started <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+              <Button size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white/10">
+                Contact Our Experts
               </Button>
             </motion.div>
           </div>
@@ -132,13 +141,13 @@ const SupplyChainFinancePage = () => {
       </section>
 
       {/* Challenges Section */}
-      <section className="py-16 bg-white">
+      <section className="py-12 md:py-16 bg-white">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#241F5D] mb-4">Challenges</h2>
-            <div className="h-1 w-16 bg-blue-500 mx-auto mb-6"></div>
-            <p className="text-lg text-gray-600">
-              Brief overview of challenges faced by corporates, suppliers, and financial institutions
+          <div className="max-w-4xl mx-auto text-center mb-8 md:mb-12">
+            <h2 className="text-2xl md:text-3xl font-bold text-[#241F5D] mb-3">Key Challenges in Supply Chain Finance</h2>
+            <div className="h-1 w-12 bg-blue-500 mx-auto mb-4"></div>
+            <p className="text-gray-600">
+              Common challenges faced across the supply chain finance ecosystem
             </p>
           </div>
           
@@ -170,14 +179,52 @@ const SupplyChainFinancePage = () => {
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className="py-16 bg-gray-50">
+      {/* Value Propositions */}
+      <section className="py-12 md:py-16 bg-white">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#241F5D] mb-4">VNDZY® Strengthens the Supply Chain Ecosystem</h2>
-            <div className="h-1 w-16 bg-blue-500 mx-auto mb-6"></div>
-            <p className="text-lg text-gray-600">
-              VNDZY® strengthens and connects the entire supply chain ecosystem, empowering corporations, suppliers, customers, and financial institutions
+          <div className="max-w-4xl mx-auto text-center mb-8 md:mb-12">
+            <h2 className="text-2xl md:text-3xl font-bold text-[#241F5D] mb-3">Why Choose Us?</h2>
+            <div className="h-1 w-12 bg-blue-500 mx-auto mb-4"></div>
+            <p className="text-gray-600">
+              Key benefits of our supply chain finance platform
+            </p>
+          </div>
+          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {challenges.map((challenge, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow border border-gray-100"
+              >
+                <div className="h-12 w-12 rounded-full bg-blue-50 flex items-center justify-center mb-4 mx-auto">
+                  {challenge.icon}
+                </div>
+                <h3 className="text-xl font-semibold text-[#241F5D] mb-4 text-center">{challenge.title}</h3>
+                <ul className="space-y-3">
+                  {challenge.items.map((item, i) => (
+                    <li key={i} className="flex items-start">
+                      <Check className="h-5 w-5 text-green-500 mt-0.5 mr-2 flex-shrink-0" />
+                      <span className="text-gray-600">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Features Section */}
+      <section className="py-12 md:py-16 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center mb-8 md:mb-12">
+            <h2 className="text-2xl md:text-3xl font-bold text-[#241F5D] mb-3">Our Supply Chain Finance Solution</h2>
+            <div className="h-1 w-12 bg-blue-500 mx-auto mb-4"></div>
+            <p className="text-gray-600">
+              End-to-end solutions for efficient supply chain finance management
             </p>
           </div>
           
@@ -191,10 +238,10 @@ const SupplyChainFinancePage = () => {
                 transition={{ duration: 0.5, delay: Math.floor(index / 3) * 0.1 + (index % 3) * 0.1 }}
                 className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100"
               >
-                <div className="h-12 w-12 rounded-full bg-blue-50 flex items-center justify-center mb-4">
-                  {feature.icon}
+                <div className="h-10 w-10 rounded-full bg-blue-50 flex items-center justify-center mb-3">
+                  {React.cloneElement(feature.icon, { className: 'h-5 w-5 text-blue-600' })}
                 </div>
-                <h3 className="text-xl font-semibold text-[#241F5D] mb-2">{feature.title}</h3>
+                <h3 className="text-lg font-semibold text-[#241F5D] mb-3">{feature.title}</h3>
                 <p className="text-gray-600">{feature.description}</p>
               </motion.div>
             ))}
@@ -202,49 +249,38 @@ const SupplyChainFinancePage = () => {
         </div>
       </section>
 
-      {/* Value Propositions */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#241F5D] mb-4">Value Proposition</h2>
-            <div className="h-1 w-16 bg-blue-500 mx-auto mb-6"></div>
-          </div>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-            {valuePropositions.map((item, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100 flex items-start"
-              >
-                <div className="h-8 w-8 rounded-full bg-blue-50 flex items-center justify-center mr-4 flex-shrink-0">
-                  {item.icon}
-                </div>
-                <p className="text-gray-700">{item.text}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* CTA Section */}
-      <section className="py-16 bg-gradient-to-r from-[#241F5D] to-[#3A3480] text-white">
+      <section className="py-12 md:py-16 bg-gradient-to-r from-[#241F5D] to-[#3A3480] text-white">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Transform Your Supply Chain Finance?</h2>
-          <p className="text-xl text-blue-100 mb-8 max-w-3xl mx-auto">
-            Discover how VNDZY® can help you streamline your supply chain operations and improve financial efficiency.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-white text-[#241F5D] hover:bg-blue-50">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-2xl md:text-4xl font-bold mb-4 md:mb-6"
+          >
+            Ready to Transform Your Supply Chain Finance?
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-lg md:text-xl text-blue-100 mb-8 max-w-3xl mx-auto"
+          >
+            Discover how our solution can help you optimize working capital and strengthen supplier relationships.
+          </motion.p>
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="flex flex-col sm:flex-row gap-4 justify-center"
+          >
+            <Button size="lg" className="bg-white text-[#241F5D] hover:bg-blue-50 font-medium">
               Request a Demo
             </Button>
-            <Button size="lg" variant="outline" className="text-white border-white hover:bg-white/10">
+            <Button size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white/10">
               Contact Our Experts
             </Button>
-          </div>
+          </motion.div>
         </div>
       </section>
     </div>

@@ -121,14 +121,26 @@ const DebtManagementPage = () => {
 
 
       {/* Hero Section */}
-      <section className="relative w-full py-12 md:py-16 bg-gradient-to-r from-[#241F5D] to-[#3A3480] text-white">
-        <div className="container mx-auto px-4 flex flex-col md:flex-row items-center">
-          <div className="md:w-1/2 text-left">
+      <section className="relative w-full min-h-[400px] flex items-center bg-gradient-to-r from-[#241F5D] to-[#3A3480] text-white overflow-hidden">
+        {/* Background Image with Overlay */}
+        <div className="absolute inset-0 w-full h-full">
+          <Image
+            src="/Inner Pages/Solutions/Borrowing_Management_treasury_50.jpeg"
+            alt="Debt Management Solution"
+            fill
+            className="object-cover opacity-60"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#241F5D]/60 via-[#241F5D]/50 to-[#3A3480]/60"></div>
+        </div>
+        
+        <div className="container mx-auto px-4 relative z-10 py-12">
+          <div className="max-w-4xl">
             <motion.h1 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="text-4xl md:text-5xl font-bold mb-6 leading-tight"
+              className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 leading-tight"
             >
               Revolutionize Your Corporate Borrowing Management
             </motion.h1>
@@ -136,53 +148,41 @@ const DebtManagementPage = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-xl text-blue-100 mb-8 max-w-full"
+              className="text-lg md:text-xl text-blue-100 mb-6 max-w-3xl"
             >
-              Streamline, Automate, and Optimize with Our Comprehensive Financial Software Solution
-            </motion.p>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="text-lg text-blue-100 mb-8 max-w-full"
-            >
-              Managing corporate borrowings can be complex and time-consuming. Our solution simplifies the entire borrowing cycle, from setting up bank limits to managing various types of loans and ensuring compliance with regulatory requirements.
+              Streamline, automate, and optimize your borrowing processes with our comprehensive financial software solution.
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="flex flex-col sm:flex-row gap-4"
             >
-              <Button size="lg" className="bg-white text-[#241F5D] hover:bg-blue-50">
+              <Button size="lg" className="bg-white text-[#241F5D] hover:bg-blue-50 font-medium">
                 Get Started <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
+              <Button size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white/10">
+                Contact Our Experts
+              </Button>
             </motion.div>
-          </div>
-          <div className="md:w-1/2 mt-8 md:mt-0">
-            <div className="relative w-full h-64 md:h-80 rounded-lg overflow-hidden shadow-xl">
-              <Image
-                src="/Inner Pages/Solutions/Borrowing_Management_treasury_50.jpeg"
-                alt="Debt Management Solution"
-                fill
-                className="object-cover"
-                priority
-              />
-            </div>
           </div>
         </div>
       </section>
 
       {/* Challenges Section */}
-      <section className="py-16 bg-white">
+      <section className="py-12 md:py-16 bg-white">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#241F5D] mb-4">
-              Challenges Corporates Face in Borrowing Management
+          <div className="max-w-4xl mx-auto text-center mb-8 md:mb-12">
+            <h2 className="text-2xl md:text-3xl font-bold text-[#241F5D] mb-3">
+              Challenges in Borrowing Management
             </h2>
-            <div className="h-1 w-16 bg-blue-500 mx-auto mb-6"></div>
+            <div className="h-1 w-12 bg-blue-500 mx-auto mb-4"></div>
+            <p className="text-gray-600">
+              Common challenges faced by corporates in managing their borrowing operations
+            </p>
           </div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
             {challenges.map((challenge, index) => (
               <motion.div
                 key={index}
@@ -190,13 +190,13 @@ const DebtManagementPage = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow border border-gray-100"
+                className="bg-white p-5 rounded-lg shadow-sm hover:shadow-md transition-all border border-gray-100 h-full flex flex-col"
               >
-                <div className="h-12 w-12 rounded-full bg-blue-50 flex items-center justify-center mb-4">
-                  {challenge.icon}
+                <div className="h-10 w-10 rounded-full bg-blue-50 flex items-center justify-center mb-3 flex-shrink-0">
+                  {React.cloneElement(challenge.icon, { className: 'h-5 w-5 text-blue-600' })}
                 </div>
-                <h3 className="text-xl font-semibold text-[#241F5D] mb-2">{challenge.title}</h3>
-                <p className="text-gray-600">{challenge.description}</p>
+                <h3 className="text-lg font-semibold text-[#241F5D] mb-2">{challenge.title}</h3>
+                <p className="text-sm text-gray-600 mb-0">{challenge.description}</p>
               </motion.div>
             ))}
           </div>

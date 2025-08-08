@@ -16,60 +16,72 @@ const InnoInvestPage = () => {
 
 
       {/* Hero Section */}
-      <section className="relative w-full py-12 md:py-16 bg-gradient-to-r from-[#241F5D] to-[#3A3480] text-white">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row items-center">
-            <div className="md:w-1/2 mb-6 md:mb-0 md:pr-8">
-              <motion.h1 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                className="text-3xl md:text-4xl font-bold mb-4 leading-tight"
-              >
-                InnoInvest by IBSFINtech
-              </motion.h1>
-              <motion.p 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.1 }}
-                className="text-lg text-blue-100 mb-4"
-              >
-                Sophisticated Investment Management for SMEs
-              </motion.p>
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="text-base text-blue-100 mb-6"
-              >
-                A ready-to-use, market-ready investment management solution that empowers your SME to manage mutual fund holdings efficiently.
-              </motion.p>
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-              >
-                <Button size="lg" className="bg-white text-[#241F5D] hover:bg-blue-50">
-                  Get Started <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-              </motion.div>
-            </div>
-            <div className="md:w-1/2">
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-                className="relative w-full h-64 md:h-72 rounded-lg overflow-hidden shadow-xl"
-              >
-                <Image
-                  src="/Inner pages/Products/Treasury_Management_System_for_SME_50.jpeg"
-                  alt="InnoInvest Treasury Management System"
-                  fill
-                  className="object-cover"
-                  priority
-                />
-              </motion.div>
-            </div>
+      <section className="relative w-full min-h-[400px] flex items-center bg-gradient-to-r from-[#241F5D] to-[#3A3480] text-white">
+        {/* Background Image */}
+        <div className="absolute inset-0 w-full h-full overflow-hidden">
+          <Image
+            src="/Inner pages/Products/Treasury_Management_System_for_SME_50.jpeg"
+            alt="InnoInvest Treasury Management System"
+            fill
+            className="object-cover object-center"
+            quality={100}
+            priority
+            sizes="100vw"
+            style={{
+              objectFit: 'cover',
+              opacity: 0.4,
+              width: '100%',
+              height: '100%'
+            }}
+          />
+          <div 
+            className="absolute inset-0 bg-gradient-to-r from-[#241F5D]/40 to-[#3A3480]/40"
+            aria-hidden="true"
+          />
+        </div>
+        <div className="container mx-auto px-4 relative z-10 py-8 md:py-10">
+          <div className="max-w-4xl mx-auto">
+            <motion.h1 
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-30px" }}
+              transition={{ duration: 0.4 }}
+              className="text-2xl md:text-3xl lg:text-4xl font-bold mb-2 leading-tight"
+            >
+              InnoInvest by IBSFINtech
+            </motion.h1>
+            <motion.p 
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-30px" }}
+              transition={{ duration: 0.4, delay: 0.1 }}
+              className="text-base md:text-lg text-blue-100 mb-2 font-medium"
+            >
+              Sophisticated Investment Management for SMEs
+            </motion.p>
+            <motion.p
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-30px" }}
+              transition={{ duration: 0.4, delay: 0.15 }}
+              className="text-base text-blue-100 mb-6 max-w-2xl"
+            >
+              A ready-to-use, market-ready investment management solution that empowers your SME to manage mutual fund holdings efficiently.
+            </motion.p>
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-30px" }}
+              transition={{ duration: 0.4, delay: 0.2 }}
+              className="flex flex-wrap gap-4"
+            >
+              <Button size="lg" className="bg-white text-[#241F5D] hover:bg-blue-50 px-8">
+                Get Started <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
+                Learn More
+              </Button>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -90,98 +102,82 @@ const InnoInvestPage = () => {
                 Comprehensive Investment Management Solution
               </h2>
               
-              {/* Comprehensive Portfolio Tracking */}
-              <div className="grid md:grid-cols-2 gap-8 items-center mb-12">
+              {/* Combined Section with Single Image */}
+              <div className="grid md:grid-cols-3 gap-8 items-start mb-16">
+                {/* Left Column - Portfolio Tracking */}
+                <div className="md:col-span-2 space-y-6 pr-0 md:pr-8">
+                  <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+                    <div className="flex items-center mb-4">
+                      <div className="h-10 w-10 rounded-lg bg-blue-50 flex items-center justify-center mr-3 flex-shrink-0">
+                        <BarChart className="h-5 w-5 text-[#3B82F6]" />
+                      </div>
+                      <h3 className="text-xl font-bold text-gray-900">Comprehensive Portfolio Tracking</h3>
+                    </div>
+                    <p className="text-gray-600 mb-4">
+                      Robust portfolio tracking capabilities to monitor mutual fund investments seamlessly. Keep an eye on asset allocation, performance, and historical returns with ease.
+                    </p>
+                    <ul className="space-y-2.5">
+                      <li className="flex items-start">
+                        <Check className="h-5 w-5 text-green-500 mr-2.5 mt-0.5 flex-shrink-0" />
+                        <span className="text-gray-700">Monitor all mutual fund investments in one place</span>
+                      </li>
+                      <li className="flex items-start">
+                        <Check className="h-5 w-5 text-green-500 mr-2.5 mt-0.5 flex-shrink-0" />
+                        <span className="text-gray-700">Track asset allocation across different funds</span>
+                      </li>
+                      <li className="flex items-start">
+                        <Check className="h-5 w-5 text-green-500 mr-2.5 mt-0.5 flex-shrink-0" />
+                        <span className="text-gray-700">Analyze performance and historical returns</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+                    <div className="flex items-center mb-4">
+                      <div className="h-10 w-10 rounded-lg bg-blue-50 flex items-center justify-center mr-3 flex-shrink-0">
+                        <Zap className="h-5 w-5 text-[#3B82F6]" />
+                      </div>
+                      <h3 className="text-xl font-bold text-gray-900">Efficient Execution & Management</h3>
+                    </div>
+                    <p className="text-gray-600 mb-4">
+                      Execute transactions directly within the platform. Streamline processes, save time, and reduce manual effort with our intuitive interface.
+                    </p>
+                    <ul className="space-y-2.5">
+                      <li className="flex items-start">
+                        <Check className="h-5 w-5 text-green-500 mr-2.5 mt-0.5 flex-shrink-0" />
+                        <span className="text-gray-700">Direct transaction execution within the platform</span>
+                      </li>
+                      <li className="flex items-start">
+                        <Check className="h-5 w-5 text-green-500 mr-2.5 mt-0.5 flex-shrink-0" />
+                        <span className="text-gray-700">Automated processes to save time and reduce errors</span>
+                      </li>
+                      <li className="flex items-start">
+                        <Check className="h-5 w-5 text-green-500 mr-2.5 mt-0.5 flex-shrink-0" />
+                        <span className="text-gray-700">Streamlined workflow for maximum efficiency</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                {/* Right Column - Single Image */}
                 <motion.div
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: 0.2 }}
-                  className="h-full"
+                  className="h-full sticky top-6"
                 >
-                  <div className="relative w-full h-96 md:h-full rounded-xl overflow-hidden shadow-xl">
+                  <div className="relative w-full h-[600px] rounded-xl overflow-hidden shadow-lg border border-gray-200">
                     <Image
                       src="/Inner pages/Products/Hedging_Strategy_automation_50.jpg"
-                      alt="Comprehensive Investment Management Solution"
+                      alt="Investment Management Solution"
                       fill
                       className="object-cover"
+                      quality={100}
+                      priority
                     />
                   </div>
                 </motion.div>
-                
-                <div>
-                  <div className="flex items-center mb-4">
-                    <div className="h-12 w-12 rounded-full bg-blue-100 flex items-center justify-center mr-4">
-                      <BarChart className="h-6 w-6 text-[#241F5D]" />
-                    </div>
-                    <h3 className="text-2xl font-bold text-[#241F5D]">Comprehensive Portfolio Tracking</h3>
-                  </div>
-                  <p className="text-gray-700 mb-4">
-                    Robust portfolio tracking capabilities to monitor mutual fund investments seamlessly. Keep an eye on asset allocation, performance, and historical returns with ease.
-                  </p>
-                  <ul className="space-y-2">
-                    <li className="flex items-start">
-                      <Check className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
-                      <span>Monitor all mutual fund investments in one place</span>
-                    </li>
-                    <li className="flex items-start">
-                      <Check className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
-                      <span>Track asset allocation across different funds</span>
-                    </li>
-                    <li className="flex items-start">
-                      <Check className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
-                      <span>Analyze performance and historical returns</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-
-              {/* Efficient Execution & Management */}
-              <div className="grid md:grid-cols-2 gap-8 items-center mb-12 md:flex-row-reverse">
-                <div className="md:order-2">
-                  <motion.div
-                    initial={{ opacity: 0, x: 20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: 0.2 }}
-                    className="h-full"
-                  >
-                    <div className="relative w-full h-96 md:h-full rounded-xl overflow-hidden shadow-xl">
-                      <Image
-                        src="/Inner pages/Products/Hedging_Strategy_automation_50.jpg"
-                        alt="Efficient Execution & Management"
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
-                  </motion.div>
-                </div>
-                
-                <div className="md:order-1">
-                  <div className="flex items-center mb-4">
-                    <div className="h-12 w-12 rounded-full bg-blue-100 flex items-center justify-center mr-4">
-                      <Zap className="h-6 w-6 text-[#241F5D]" />
-                    </div>
-                    <h3 className="text-2xl font-bold text-[#241F5D]">Efficient Execution & Management</h3>
-                  </div>
-                  <p className="text-gray-700 mb-4">
-                    Execute transactions directly within the platform. Streamline the processes, save time and reduce manual effort.
-                  </p>
-                  <ul className="space-y-2">
-                    <li className="flex items-start">
-                      <Check className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
-                      <span>Direct transaction execution within the platform</span>
-                    </li>
-                    <li className="flex items-start">
-                      <Check className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
-                      <span>Automated processes to save time</span>
-                    </li>
-                    <li className="flex items-start">
-                      <Check className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
-                      <span>Reduced manual effort and errors</span>
-                    </li>
-                  </ul>
-                </div>
               </div>
 
               {/* Real-time Position */}

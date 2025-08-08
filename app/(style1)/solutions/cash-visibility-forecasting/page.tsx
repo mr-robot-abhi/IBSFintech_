@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 import { BarChart2, Target, Eye, Zap, Clock, Globe, Layers, TrendingUp, CheckCircle } from 'lucide-react';
 
 
@@ -93,92 +94,123 @@ const CashVisibilityForecastingPage = () => {
     <div className="min-h-screen overflow-x-hidden relative bg-white">
       {/* Modern Mega Menu */}
       <main className="relative z-10">
-        {/* Hero Section */}
-        <div className="w-full bg-gradient-to-r from-[#241F5D] to-[#3A3480] relative">
-          <div className="container mx-auto px-4 py-12 md:py-16">
-            <div className="flex flex-col md:flex-row items-center">
-              <div className="md:w-1/2 mb-8 md:mb-0 md:pr-8">
-                <h1 className="text-3xl md:text-4xl font-bold text-white mb-4">Cash Visibility and Forecasting</h1>
-                <p className="text-blue-100 mb-6">
-                  A comprehensive solution for cashflow management and liquidity planning seamlessly integrated with Banks, ERP software such as SAP, Oracle as well as other third-party solutions.
-                </p>
-                <button className="bg-white text-[#241F5D] hover:bg-gray-100 font-medium py-2.5 px-6 rounded-lg transition-colors flex items-center text-sm">
+        {/* Compact Hero Section with Enhanced Visibility */}
+        <div className="relative w-full h-[400px] bg-gray-900">
+          {/* Background Image with Lighter Overlay */}
+          <div className="absolute inset-0 w-full h-full">
+            <Image
+              src="/Inner pages/Solutions/cash_visibility.jpeg"
+              alt="Cash Visibility and Forecasting"
+              fill
+              className="object-cover object-center"
+              priority
+              quality={100}
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#241F5D]/80 to-[#3A3480]/70"></div>
+          </div>
+          
+          {/* Content */}
+          <div className="container mx-auto px-4 h-full flex items-center relative z-10">
+            <div className="max-w-2xl bg-white/90 backdrop-blur-sm p-8 rounded-xl shadow-2xl">
+              <motion.h1 
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4 }}
+                className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 leading-tight"
+              >
+                Cash Visibility and Forecasting
+              </motion.h1>
+              <motion.p 
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: 0.1 }}
+                className="text-gray-700 mb-6 max-w-lg"
+              >
+                Comprehensive cashflow management and liquidity planning integrated with Banks, ERP systems, and third-party solutions.
+              </motion.p>
+              <motion.div 
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: 0.2 }}
+                className="flex flex-wrap gap-3"
+              >
+                <button className="bg-[#241F5D] hover:bg-[#3A3480] text-white font-medium py-2.5 px-6 rounded-lg transition-all duration-200 flex items-center text-sm">
                   Request Demo
                   <svg className="ml-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                   </svg>
                 </button>
-              </div>
-              <div className="md:w-1/2">
-                <div className="relative w-full h-64 md:h-80 rounded-lg overflow-hidden shadow-xl">
-                  <Image
-                    src="/solutions/cash_visibility.jpeg"
-                    alt="Cash Visibility and Forecasting"
-                    fill
-                    className="object-cover"
-                    priority
-                  />
-                </div>
-              </div>
+                <button className="bg-white border border-gray-300 hover:bg-gray-50 text-gray-700 font-medium py-2.5 px-6 rounded-lg transition-all duration-200 flex items-center text-sm">
+                  Learn More
+                  <svg className="ml-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </button>
+              </motion.div>
             </div>
           </div>
         </div>
 
-        {/* Challenges Section */}
-        <div className="container mx-auto px-4 py-12">
-          <div className="mb-20">
+        {/* Combined Challenges and Solutions Section */}
+        <div className="container mx-auto px-4 py-16">
+          <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">Cash visibility is the key Challenge of the CFOs</h2>
-              <div className="w-20 h-1 bg-[#241F5D] mx-auto"></div>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {challenges.map((challenge, index) => (
-                <div key={index} className="bg-white p-6 rounded-xl shadow-md border border-gray-100 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
-                  <div className="w-12 h-12 rounded-full bg-[#241F5D]/10 flex items-center justify-center mb-4">
-                    {challenge.icon}
-                  </div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-2">{challenge.title}</h3>
-                  <p className="text-gray-600">{challenge.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Solution Section */}
-          <div className="mb-20">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">IBSFINtech's InTREaX as a solution</h2>
-              <div className="w-20 h-1 bg-[#241F5D] mx-auto mb-8"></div>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Revolutionize your cash flow and liquidity management with our Cash and Liquidity Management Solution, InTReaX.
+              <h2 className="text-3xl font-bold text-gray-900 mb-4">Cash Visibility: The CFO's Critical Challenge</h2>
+              <div className="w-20 h-1 bg-[#241F5D] mx-auto mb-6"></div>
+              <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+                Transform your cash flow and liquidity management with InTReaX - the enterprise solution for real-time financial control.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
-              <div className="bg-white p-8 rounded-xl shadow-md border border-gray-100">
-                <div className="relative h-64 md:h-80 w-full mb-6 rounded-lg overflow-hidden">
-                  <Image
-                    src="/Interal Page 5.png"
-                    alt="Cash Forecasting Dashboard"
-                    fill
-                    className="object-cover"
-                    priority
-                  />
-                </div>
-                <h3 className="text-2xl font-semibold text-gray-900 mb-3">Comprehensive Cash Management</h3>
-                <p className="text-gray-600">
-                  Gain complete control over your cash position with real-time visibility and powerful forecasting tools.
-                </p>
-              </div>
-              
-              <div className="space-y-8">
-                {solutions.map((solution, index) => (
-                  <div key={index} className="bg-white p-6 rounded-xl shadow-md border border-gray-100">
-                    <h3 className="text-xl font-semibold text-gray-900 mb-3">{solution.title}</h3>
-                    <p className="text-gray-600">{solution.description}</p>
+            {/* 3-Column Grid for Challenges */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+              {challenges.map((challenge, index) => (
+                <div key={index} className="bg-white p-5 rounded-lg border border-gray-100 hover:shadow-md transition-all duration-200">
+                  <div className="w-10 h-10 rounded-lg bg-[#241F5D]/10 flex items-center justify-center mb-3">
+                    {React.cloneElement(challenge.icon, { className: 'h-5 w-5 text-[#241F5D]' })}
                   </div>
-                ))}
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2">{challenge.title}</h3>
+                  <p className="text-sm text-gray-600 leading-relaxed">{challenge.description}</p>
+                </div>
+              ))}
+            </div>
+
+            {/* Solutions Section - Compact Layout */}
+            <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+              <div className="grid grid-cols-1 lg:grid-cols-3">
+                {/* Left Column - Main Solution */}
+                <div className="lg:col-span-2 p-6 md:p-8">
+                  <div className="relative h-72 w-full rounded-lg overflow-hidden">
+                    <Image
+                      src="/Interal Page 5.png"
+                      alt="Cash Forecasting Dashboard"
+                      fill
+                      className="object-cover"
+                      priority
+                    />
+                  </div>
+                </div>
+                
+                {/* Right Column - Solution Cards */}
+                <div className="bg-gray-50 p-6 md:p-8 border-t lg:border-t-0 lg:border-l border-gray-100">
+                  <div className="h-full flex flex-col">
+                    <div className="mb-6">
+                      <h3 className="text-2xl font-semibold text-gray-900 mb-2">Comprehensive Cash Management</h3>
+                      <p className="text-gray-600 text-sm">
+                        Gain complete control over your cash position with real-time visibility and powerful forecasting tools.
+                      </p>
+                    </div>
+                    
+                    <div className="space-y-4 flex-1 overflow-y-auto max-h-[400px] pr-2">
+                      {solutions.map((solution, index) => (
+                        <div key={index} className="bg-white p-4 rounded-lg border border-gray-100 shadow-xs">
+                          <h4 className="font-medium text-gray-900 mb-1">{solution.title}</h4>
+                          <p className="text-sm text-gray-600 leading-relaxed">{solution.description}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

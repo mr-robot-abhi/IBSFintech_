@@ -96,159 +96,175 @@ const FXCurrencyRiskPage = () => {
 
 
       {/* Hero Section */}
-      <section className="relative w-full py-12 md:py-16 bg-gradient-to-r from-[#241F5D] to-[#3A3480] text-white">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row items-center">
-            {/* Text content on the left */}
-            <div className="w-full md:w-1/2 mb-8 md:mb-0 md:pr-8">
-              <motion.h1 
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6 }}
-                className="text-3xl md:text-4xl font-bold mb-4 leading-tight"
-              >
-                Navigate Foreign Exchange Risk
-              </motion.h1>
-              <motion.p 
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="text-blue-100 mb-6"
-              >
-                A comprehensive solution covering all hedge derivatives to efficiently manage and mitigate Foreign Exchange Risk.
-              </motion.p>
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-              >
-                <Button size="lg" className="bg-white text-[#241F5D] hover:bg-blue-50">
-                  Request a Demo <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-              </motion.div>
-            </div>
-            
-            {/* Image on the right */}
-            <div className="w-full md:w-1/2">
-              <div className="relative w-full h-64 md:h-80 rounded-lg overflow-hidden shadow-xl">
-                <Image
-                  src="/Inner Pages/Solutions/Fx_Risk_Management_Solution_50.jpg"
-                  alt="FX Risk Management Solution"
-                  fill
-                  className="object-cover"
-                  priority
-                />
-              </div>
-            </div>
+      <section className="relative w-full min-h-[400px] flex items-center bg-gradient-to-r from-[#241F5D] to-[#3A3480] text-white overflow-hidden">
+        {/* Background Image with Overlay */}
+        <div className="absolute inset-0 w-full h-full">
+          <Image
+            src="/Inner Pages/Solutions/Fx_Risk_Management_Solution_50.jpg"
+            alt="FX Risk Management Solution"
+            fill
+            className="object-cover opacity-60"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#241F5D]/50 via-[#241F5D]/40 to-[#3A3480]/50"></div>
+        </div>
+        
+        <div className="container mx-auto px-4 relative z-10 py-16">
+          <div className="max-w-4xl mx-auto text-center">
+            <motion.h1 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-4xl md:text-5xl font-bold mb-6 leading-tight"
+            >
+              Navigate Foreign Exchange Risk with Confidence
+            </motion.h1>
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="text-xl text-blue-100 mb-8 max-w-3xl mx-auto"
+            >
+              Comprehensive FX risk management solution to protect your bottom line from currency volatility
+            </motion.p>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="flex flex-col sm:flex-row justify-center gap-4"
+            >
+              <Button size="lg" className="bg-white text-[#241F5D] hover:bg-blue-50 font-medium">
+                Request a Demo <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+              <Button size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white/10">
+                Learn More
+              </Button>
+            </motion.div>
           </div>
         </div>
       </section>
 
       {/* Challenges Section */}
       <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#241F5D] mb-4">
-              Knowing the Risk is the Key Challenge for CFOs
-            </h2>
-            <div className="h-1 w-16 bg-blue-500 mx-auto mb-6"></div>
-            <p className="text-lg text-gray-600">
-              For corporations engaged in multinational operations with international trade or investment, exchange rate fluctuations have the potential to affect financial performance. The key challenge is to 'Be aware' of the risk emanating from the organization's foreign currency exposures and have this information available in time to take informed decisions.
+        <div className="container mx-auto px-4 max-w-6xl">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">The CFO's Currency Risk Challenge</h2>
+            <div className="w-20 h-1 bg-[#241F5D] mx-auto mb-6"></div>
+            <p className="text-lg text-gray-600 max-w-4xl mx-auto">
+              In today's volatile markets, currency fluctuations can significantly impact your bottom line. The key is having real-time visibility and control over your FX exposures.
             </p>
           </div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
             {challenges.map((challenge, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow border border-gray-100"
-              >
-                <div className="h-12 w-12 rounded-full bg-blue-50 flex items-center justify-center mb-4">
-                  {challenge.icon}
+              <div key={index} className="bg-white p-5 rounded-lg border border-gray-100 hover:shadow-md transition-all duration-200">
+                <div className="w-10 h-10 rounded-lg bg-[#241F5D]/10 flex items-center justify-center mb-3">
+                  {React.cloneElement(challenge.icon, { className: 'h-5 w-5 text-[#241F5D]' })}
                 </div>
-                <h3 className="text-xl font-semibold text-[#241F5D] mb-2">{challenge.title}</h3>
-                <p className="text-gray-600">{challenge.description}</p>
-              </motion.div>
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">{challenge.title}</h3>
+                <p className="text-sm text-gray-600 leading-relaxed">{challenge.description}</p>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
       {/* Solution Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#241F5D] mb-4">
-              IBSFINtech's InTREaX for Foreign Exchange Risk Management
-            </h2>
-            <div className="h-1 w-16 bg-blue-500 mx-auto mb-6"></div>
-            <p className="text-lg text-gray-600">
-              A comprehensive platform designed to address all your foreign exchange risk management needs with advanced features and seamless integration.
-            </p>
-          </div>
-          
-          <div className="grid md:grid-cols-2 gap-8 mb-16">
-            {solutions.map((solution, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow"
-              >
-                <h3 className="text-xl font-semibold text-[#241F5D] mb-3">{solution.title}</h3>
-                <p className="text-gray-600">{solution.description}</p>
-              </motion.div>
-            ))}
+      <section className="py-16 bg-white">
+        <div className="w-full max-w-full px-0">
+          <div className="bg-white shadow-sm border-t border-b border-gray-100">
+            <div className="grid grid-cols-1 lg:grid-cols-3 w-full">
+              {/* Left Column - Main Solution */}
+              <div className="lg:col-span-2 p-6 md:p-8">
+                <div className="relative h-72 w-full rounded-lg overflow-hidden">
+                  <Image
+                    src="/Inner Pages/Solutions/Fx_Risk_Management_Solution_50.jpg"
+                    alt="FX Risk Management Dashboard"
+                    fill
+                    className="object-cover"
+                    priority
+                  />
+                </div>
+              </div>
+              
+              {/* Right Column - Solution Cards */}
+              <div className="bg-gray-50 p-4 md:p-6 border-t lg:border-t-0 lg:border-l border-gray-100">
+                <div className="h-full flex flex-col">
+                  <div className="mb-6">
+                    <h3 className="text-2xl font-semibold text-gray-900 mb-2">Comprehensive FX Risk Management</h3>
+                    <p className="text-gray-600 text-sm">
+                      Advanced tools to identify, measure, monitor, and manage foreign exchange risk across your organization.
+                    </p>
+                  </div>
+                  
+                  <div className="space-y-4 flex-1 overflow-y-auto max-h-[400px] pr-2 -ml-4 pl-2">
+                    {solutions.map((solution, index) => (
+                      <motion.div
+                        key={index}
+                        initial={{ opacity: 0, y: 10 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.3, delay: index * 0.1 }}
+                        className="bg-white p-4 rounded-lg border border-gray-100 shadow-xs hover:shadow-sm transition-all"
+                      >
+                        <h4 className="font-medium text-gray-900 mb-1">{solution.title}</h4>
+                        <p className="text-sm text-gray-600">{solution.description}</p>
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
 
-          {/* Value Propositions */}
-          <div className="max-w-6xl mx-auto mt-20">
-            <h3 className="text-2xl md:text-3xl font-bold text-[#241F5D] mb-8 text-center">
-              Value Proposition
-            </h3>
-            <p className="text-lg text-center text-gray-600 mb-12 max-w-3xl mx-auto">
-              Experience the power of Currency / Foreign Exchange Risk Module and take control of your currency exposure and risk management strategy today.
-            </p>
+          {/* Value Propositions Section */}
+          <div className="mt-16 bg-[#241F5D] rounded-2xl p-8 md:p-12 text-white">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold text-white mb-4">Why Choose Our Solution?</h2>
+              <div className="w-20 h-1 bg-white/80 mx-auto"></div>
+            </div>
             
-            <div className="grid md:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {valuePropositions.map((item, index) => (
-                <motion.div
+                <motion.div 
                   key={index}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow border border-gray-100"
+                  transition={{ duration: 0.4, delay: index * 0.1 }}
+                  className="bg-[#241F5D] backdrop-blur-sm p-6 rounded-xl border border-white/20"
                 >
-                  <h4 className="text-xl font-semibold text-[#241F5D] mb-3">{item.title}</h4>
-                  <p className="text-gray-600">{item.description}</p>
+                  <div className="flex items-start">
+                    <div className="flex-shrink-0">
+                      <div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center">
+                        {React.cloneElement(challenges[index].icon, { className: 'h-6 w-6 text-white' })}
+                      </div>
+                    </div>
+                    <div className="ml-4">
+                      <h3 className="text-xl font-semibold text-white mb-2">{item.title}</h3>
+                      <p className="text-blue-100">{item.description}</p>
+                    </div>
+                  </div>
                 </motion.div>
               ))}
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* CTA Section */}
-      <section className="py-16 bg-gradient-to-r from-[#241F5D] to-[#3A3480] text-white">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Transform Your FX Risk Management?</h2>
-          <p className="text-xl text-blue-100 mb-8 max-w-3xl mx-auto">
-            Discover how our comprehensive solution can help you navigate foreign exchange risks with confidence.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-white text-[#241F5D] hover:bg-blue-50">
-              Request a Demo
-            </Button>
-            <Button size="lg" variant="outline" className="text-white border-white hover:bg-white/10">
-              Contact Our Experts
-            </Button>
+          {/* CTA Section */}
+          <div className="mt-16 bg-gradient-to-r from-[#241F5D] to-[#3A3480] rounded-2xl p-12 text-center text-white">
+            <h2 className="text-3xl font-bold mb-4">Ready to Transform Your FX Risk Management?</h2>
+            <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
+              Discover how our solution can help you mitigate currency risks and protect your bottom line.
+            </p>
+            <div className="flex flex-col sm:flex-row justify-center gap-4">
+              <Button size="lg" className="bg-white text-[#241F5D] hover:bg-blue-50 font-medium">
+                Request Demo
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+              <Button size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white/10">
+                Contact Sales
+              </Button>
+            </div>
           </div>
         </div>
       </section>

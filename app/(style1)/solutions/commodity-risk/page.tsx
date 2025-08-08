@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { Activity, BarChart2, Layers, TrendingUp, Shield, AlertCircle, Zap, ArrowRight, Check, PieChart, FileText, RefreshCw, Globe } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
@@ -95,59 +96,65 @@ const CommodityRiskPage = () => {
 
 
       {/* Hero Section */}
-      <section className="relative w-full pt-28 pb-20 md:pt-32 md:pb-24 bg-gradient-to-r from-[#241F5D] to-[#3A3480] text-white">
-        <div className="container mx-auto px-6">
-          <div className="flex flex-col md:flex-row items-center">
-            <div className="md:w-1/2 lg:w-2/5">
-              <motion.h1 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                className="text-2xl md:text-3xl font-bold mb-4 leading-tight"
-              >
-                Managing Commodity Price Risk for Corporates
-              </motion.h1>
-              <motion.p 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.1 }}
-                className="text-lg text-blue-100 mb-4"
-              >
-                Effective strategies for corporates to mitigate the impact of volatile commodity prices through proactive risk management and strategic hedging
-              </motion.p>
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="mt-6"
-              >
-                <Button size="lg" className="bg-white text-[#241F5D] hover:bg-blue-50">
-                  Get Started <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-              </motion.div>
-            </div>
-            <div className="hidden md:block md:w-1/2 lg:w-3/5 pl-8">
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-                className="bg-white/10 backdrop-blur-sm rounded-lg p-4 h-64 flex items-center justify-center"
-              >
-                <span className="text-blue-100 text-lg">Commodity Risk Management Dashboard</span>
-              </motion.div>
-            </div>
+      <section className="relative w-full min-h-[400px] flex items-center bg-gradient-to-r from-[#241F5D] to-[#3A3480] text-white overflow-hidden">
+        {/* Background Image with Overlay */}
+        <div className="absolute inset-0 w-full h-full">
+          <Image
+            src="/Inner Pages/Solutions/Commodity Risk Management.jpeg"
+            alt="Commodity Risk Management"
+            fill
+            className="object-cover opacity-60"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#241F5D]/60 via-[#241F5D]/50 to-[#3A3480]/60"></div>
+        </div>
+        
+        <div className="container mx-auto px-4 relative z-10 py-12">
+          <div className="max-w-4xl">
+            <motion.h1 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 leading-tight"
+            >
+              Managing Commodity Price Risk for Corporates
+            </motion.h1>
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="text-lg md:text-xl text-blue-100 mb-6 max-w-3xl"
+            >
+              Effective strategies to mitigate the impact of volatile commodity prices through proactive risk management and strategic hedging
+            </motion.p>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="flex flex-col sm:flex-row gap-4"
+            >
+              <Button size="lg" className="bg-white text-[#241F5D] hover:bg-blue-50 font-medium">
+                Get Started <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+              <Button size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white/10">
+                Contact Our Experts
+              </Button>
+            </motion.div>
           </div>
         </div>
       </section>
 
       {/* Challenges Section */}
-      <section className="py-16 bg-white">
+      <section className="py-12 md:py-16 bg-white">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#241F5D] mb-4">
-              Key Challenges in Global Commodity Hedging for Corporates
+          <div className="max-w-4xl mx-auto text-center mb-8 md:mb-12">
+            <h2 className="text-2xl md:text-3xl font-bold text-[#241F5D] mb-3">
+              Key Challenges in Commodity Hedging
             </h2>
-            <div className="h-1 w-16 bg-blue-500 mx-auto mb-6"></div>
+            <div className="h-1 w-12 bg-blue-500 mx-auto mb-4"></div>
+            <p className="text-gray-600">
+              Common challenges faced by corporates in managing commodity price risk
+            </p>
             <p className="text-lg text-gray-600 mb-8">
               Timely access to accurate data is crucial for making informed decisions aimed at mitigating these risks through effective hedging strategies. By proactively identifying and managing commodity price risks, businesses can safeguard their financial performance and optimize their operational efficiencies in a volatile market environment.
             </p>
@@ -163,11 +170,11 @@ const CommodityRiskPage = () => {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow border border-gray-100"
               >
-                <div className="h-12 w-12 rounded-full bg-blue-50 flex items-center justify-center mb-4">
-                  {challenge.icon}
+                <div className="h-10 w-10 rounded-full bg-blue-50 flex items-center justify-center mb-3 flex-shrink-0">
+                  {React.cloneElement(challenge.icon, { className: 'h-5 w-5 text-blue-600' })}
                 </div>
-                <h3 className="text-xl font-semibold text-[#241F5D] mb-2">{challenge.title}</h3>
-                <p className="text-gray-600">{challenge.description}</p>
+                <h3 className="text-lg font-semibold text-[#241F5D] mb-2">{challenge.title}</h3>
+                <p className="text-sm text-gray-600 mb-0">{challenge.description}</p>
               </motion.div>
             ))}
           </div>
@@ -175,13 +182,16 @@ const CommodityRiskPage = () => {
       </section>
 
       {/* Features Section */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-12 md:py-16 bg-gray-50">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#241F5D] mb-4">
-              IBSFINtech's InTREaX as a solution for Commodity Risk Management
+          <div className="max-w-4xl mx-auto text-center mb-8 md:mb-12">
+            <h2 className="text-2xl md:text-3xl font-bold text-[#241F5D] mb-3">
+              Comprehensive Risk Management Solution
             </h2>
-            <div className="h-1 w-16 bg-blue-500 mx-auto mb-6"></div>
+            <div className="h-1 w-12 bg-blue-500 mx-auto mb-4"></div>
+            <p className="text-gray-600">
+              End-to-end solutions for effective commodity price risk management
+            </p>
           </div>
           
           <div className="grid md:grid-cols-1 gap-8 max-w-4xl mx-auto">
@@ -196,11 +206,11 @@ const CommodityRiskPage = () => {
               >
                 <div className="flex items-start">
                   <div className="h-10 w-10 rounded-full bg-blue-50 flex items-center justify-center mr-4 flex-shrink-0">
-                    {feature.icon}
+                    {React.cloneElement(feature.icon, { className: 'h-5 w-5 text-blue-600' })}
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold text-[#241F5D] mb-2">{feature.title}</h3>
-                    <p className="text-gray-600">{feature.description}</p>
+                    <h3 className="text-lg font-semibold text-[#241F5D] mb-2">{feature.title}</h3>
+                    <p className="text-sm text-gray-600">{feature.description}</p>
                   </div>
                 </div>
               </motion.div>
@@ -210,13 +220,16 @@ const CommodityRiskPage = () => {
       </section>
 
       {/* Value Propositions */}
-      <section className="py-16 bg-white">
+      <section className="py-12 md:py-16 bg-white">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#241F5D] mb-4">
-              Value Proposition
+          <div className="max-w-4xl mx-auto text-center mb-8 md:mb-12">
+            <h2 className="text-2xl md:text-3xl font-bold text-[#241F5D] mb-3">
+              Why Choose Our Solution?
             </h2>
-            <div className="h-1 w-16 bg-blue-500 mx-auto mb-6"></div>
+            <div className="h-1 w-12 bg-blue-500 mx-auto mb-4"></div>
+            <p className="text-gray-600">
+              Key benefits of our commodity risk management platform
+            </p>
             <p className="text-lg text-gray-600 mb-8">
               Experience the power of Commodity Exchange Risk Module and take control of your commodity risk management strategy today.
             </p>
@@ -233,10 +246,10 @@ const CommodityRiskPage = () => {
                 className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow border border-gray-100 text-center"
               >
                 <div className="h-16 w-16 rounded-full bg-blue-50 flex items-center justify-center mx-auto mb-4">
-                  {proposition.icon}
+                  {React.cloneElement(proposition.icon, { className: 'h-5 w-5 text-blue-600' })}
                 </div>
-                <h3 className="text-xl font-semibold text-[#241F5D] mb-2">{proposition.title}</h3>
-                <p className="text-gray-600">{proposition.description}</p>
+                <h3 className="text-lg font-semibold text-[#241F5D] mb-2">{proposition.title}</h3>
+                <p className="text-sm text-gray-600">{proposition.description}</p>
               </motion.div>
             ))}
           </div>
@@ -244,20 +257,37 @@ const CommodityRiskPage = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-gradient-to-r from-[#241F5D] to-[#3A3480] text-white">
+      <section className="py-12 md:py-16 bg-gradient-to-r from-[#241F5D] to-[#3A3480] text-white">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Transform Your Commodity Risk Management?</h2>
-          <p className="text-xl text-blue-100 mb-8 max-w-3xl mx-auto">
-            Discover how our comprehensive solution can help you manage commodity price risks and optimize your hedging strategies.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-white text-[#241F5D] hover:bg-blue-50">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-2xl md:text-4xl font-bold mb-4 md:mb-6"
+          >
+            Ready to Transform Your Commodity Risk Management?
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-lg md:text-xl text-blue-100 mb-8 max-w-3xl mx-auto"
+          >
+            Discover how our solution can help you manage commodity price risk and optimize your hedging strategies.
+          </motion.p>
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="flex flex-col sm:flex-row gap-4 justify-center"
+          >
+            <Button size="lg" className="bg-white text-[#241F5D] hover:bg-blue-50 font-medium">
               Request a Demo
             </Button>
-            <Button size="lg" variant="outline" className="text-white border-white hover:bg-white/10">
+            <Button size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white/10">
               Contact Our Experts
             </Button>
-          </div>
+          </motion.div>
         </div>
       </section>
     </div>

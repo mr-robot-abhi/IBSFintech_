@@ -75,7 +75,7 @@ const TradeFinancePage = () => {
     {
       icon: <BarChart2 className="h-6 w-6 text-blue-600" />,
       title: "Dashboards and Reports",
-      description: "It also features robust dashboards and MIS reports to cover the entire trade finance operations, offering real-time insights and comprehensive visibility. To enhance control and security, our software includes an authorization matrix and an integrated Audit Trail, ensuring transparent and accountable processes."
+      description: "Robust dashboards and MIS reports for complete trade finance visibility. Features real-time insights, authorization matrix, and integrated audit trail for security."
     }
   ];
 
@@ -121,68 +121,68 @@ const TradeFinancePage = () => {
 
 
       {/* Hero Section */}
-      <section className="relative w-full py-12 md:py-16 bg-gradient-to-r from-[#241F5D] to-[#3A3480] text-white">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row items-center">
-            {/* Text content on the left */}
-            <div className="w-full md:w-1/2 mb-8 md:mb-0 md:pr-8">
-              <motion.h1 
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6 }}
-                className="text-3xl md:text-4xl font-bold mb-4 leading-tight"
-              >
-                Comprehensive Trade Finance Management Solution
-              </motion.h1>
-              <motion.p 
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="text-blue-100 mb-6"
-              >
-                Streamline and automate the complexities of global trade finance operations. Our advanced trade finance management software is designed to streamline and automate the complexities of trade finance for global corporates.
-              </motion.p>
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-              >
-                <Button size="lg" className="bg-white text-[#241F5D] hover:bg-blue-50">
-                  Get Started <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-              </motion.div>
-            </div>
-            
-            {/* Image on the right */}
-            <div className="w-full md:w-1/2">
-              <div className="relative w-full h-64 md:h-80 rounded-lg overflow-hidden shadow-xl">
-                <Image
-                  src="/Inner Pages/Solutions/endtoend_trade_finance_lifecycle_automation_61.jpeg"
-                  alt="Trade Finance Lifecycle Automation"
-                  fill
-                  className="object-cover"
-                  priority
-                />
-              </div>
-            </div>
+      <section className="relative w-full min-h-[400px] flex items-center bg-gradient-to-r from-[#241F5D] to-[#3A3480] text-white overflow-hidden">
+        {/* Background Image with Overlay */}
+        <div className="absolute inset-0 w-full h-full">
+          <Image
+            src="/Inner Pages/Solutions/endtoend_trade_finance_lifecycle_automation_61.jpeg"
+            alt="Trade Finance Lifecycle Automation"
+            fill
+            className="object-cover opacity-60"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#241F5D]/60 via-[#241F5D]/50 to-[#3A3480]/60"></div>
+        </div>
+        
+        <div className="container mx-auto px-4 relative z-10 py-12">
+          <div className="max-w-4xl">
+            <motion.h1 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 leading-tight"
+            >
+              Comprehensive Trade Finance Management Solution
+            </motion.h1>
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="text-lg md:text-xl text-blue-100 mb-8 max-w-3xl"
+            >
+              Streamline and automate the complexities of global trade finance operations with our advanced management software.
+            </motion.p>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="flex flex-col sm:flex-row gap-4"
+            >
+              <Button size="lg" className="bg-white text-[#241F5D] hover:bg-blue-50 font-medium">
+                Get Started <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+              <Button size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white/10">
+                Contact Our Experts
+              </Button>
+            </motion.div>
           </div>
         </div>
       </section>
 
       {/* Challenges Section */}
-      <section className="py-16 bg-white">
+      <section className="py-12 md:py-16 bg-white">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#241F5D] mb-4">
+          <div className="max-w-4xl mx-auto text-center mb-8 md:mb-12">
+            <h2 className="text-2xl md:text-3xl font-bold text-[#241F5D] mb-3">
               Global Trade Finance Challenges
             </h2>
-            <div className="h-1 w-16 bg-blue-500 mx-auto mb-6"></div>
-            <p className="text-lg text-gray-600 mb-8">
-              Global trade finance faces challenges such as fragmented processes, complex compliance requirements, risk management, data integration, and lack of operational transparency.
+            <div className="h-1 w-12 bg-blue-500 mx-auto mb-4"></div>
+            <p className="text-gray-600">
+              Global trade finance faces challenges such as fragmented processes, complex compliance requirements, and risk management.
             </p>
           </div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
             {challenges.map((challenge, index) => (
               <motion.div
                 key={index}
@@ -190,13 +190,13 @@ const TradeFinancePage = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow border border-gray-100"
+                className="bg-white p-4 md:p-5 rounded-lg shadow-sm hover:shadow-md transition-all border border-gray-100 h-full flex flex-col"
               >
-                <div className="h-12 w-12 rounded-full bg-blue-50 flex items-center justify-center mb-4">
-                  {challenge.icon}
+                <div className="h-10 w-10 rounded-full bg-blue-50 flex items-center justify-center mb-3 flex-shrink-0">
+                  {React.cloneElement(challenge.icon, { className: 'h-5 w-5 text-blue-600' })}
                 </div>
-                <h3 className="text-xl font-semibold text-[#241F5D] mb-2">{challenge.title}</h3>
-                <p className="text-gray-600">{challenge.description}</p>
+                <h3 className="text-lg font-semibold text-[#241F5D] mb-2">{challenge.title}</h3>
+                <p className="text-sm text-gray-600 mb-0">{challenge.description}</p>
               </motion.div>
             ))}
           </div>
@@ -204,19 +204,19 @@ const TradeFinancePage = () => {
       </section>
 
       {/* Features Section */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-12 md:py-16 bg-gray-50">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#241F5D] mb-4">
+          <div className="max-w-4xl mx-auto text-center mb-8 md:mb-12">
+            <h2 className="text-2xl md:text-3xl font-bold text-[#241F5D] mb-3">
               Explore Our Software's Robust Features
             </h2>
-            <div className="h-1 w-16 bg-blue-500 mx-auto mb-6"></div>
-            <p className="text-lg text-gray-600">
-              Automated import/export cycles, bank limit and loan management, and seamless ERP integration for enhanced efficiency and transparency
+            <div className="h-1 w-12 bg-blue-500 mx-auto mb-4"></div>
+            <p className="text-gray-600">
+              Automated import/export cycles, bank limit and loan management, and seamless ERP integration for enhanced efficiency
             </p>
           </div>
           
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
             {features.map((feature, index) => (
               <motion.div
                 key={index}
@@ -224,17 +224,13 @@ const TradeFinancePage = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow"
+                className="bg-white p-5 rounded-lg shadow-sm hover:shadow-md transition-all border border-gray-100 h-full flex flex-col break-words"
               >
-                <div className="flex items-start">
-                  <div className="h-10 w-10 rounded-full bg-blue-50 flex items-center justify-center mr-4 flex-shrink-0">
-                    {feature.icon}
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold text-[#241F5D] mb-2">{feature.title}</h3>
-                    <p className="text-gray-600">{feature.description}</p>
-                  </div>
+                <div className="h-10 w-10 rounded-full bg-blue-50 flex items-center justify-center mb-3">
+                  {React.cloneElement(feature.icon, { className: 'h-5 w-5 text-blue-600' })}
                 </div>
+                <h3 className="text-lg font-semibold text-[#241F5D] mb-2">{feature.title}</h3>
+                <p className="text-sm text-gray-600 break-words">{feature.description}</p>
               </motion.div>
             ))}
           </div>
@@ -242,16 +238,19 @@ const TradeFinancePage = () => {
       </section>
 
       {/* Value Propositions */}
-      <section className="py-16 bg-white">
+      <section className="py-12 md:py-16 bg-white">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#241F5D] mb-4">
+          <div className="max-w-4xl mx-auto text-center mb-8 md:mb-12">
+            <h2 className="text-2xl md:text-3xl font-bold text-[#241F5D] mb-3">
               Value Proposition
             </h2>
-            <div className="h-1 w-16 bg-blue-500 mx-auto mb-6"></div>
+            <div className="h-1 w-12 bg-blue-500 mx-auto mb-4"></div>
+            <p className="text-gray-600">
+              Discover how our solution transforms trade finance operations
+            </p>
           </div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
             {valuePropositions.map((proposition, index) => (
               <motion.div
                 key={index}
@@ -259,13 +258,13 @@ const TradeFinancePage = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow border border-gray-100"
+                className="bg-white p-5 rounded-lg shadow-sm hover:shadow-md transition-all border border-gray-100 h-full flex flex-col"
               >
-                <div className="h-12 w-12 rounded-full bg-blue-50 flex items-center justify-center mb-4">
-                  {proposition.icon}
+                <div className="h-10 w-10 rounded-full bg-blue-50 flex items-center justify-center mb-3">
+                  {React.cloneElement(proposition.icon, { className: 'h-5 w-5 text-blue-600' })}
                 </div>
-                <h3 className="text-xl font-semibold text-[#241F5D] mb-2">{proposition.title}</h3>
-                <p className="text-gray-600">{proposition.description}</p>
+                <h3 className="text-lg font-semibold text-[#241F5D] mb-2">{proposition.title}</h3>
+                <p className="text-sm text-gray-600 mb-0">{proposition.description}</p>
               </motion.div>
             ))}
           </div>
@@ -273,20 +272,37 @@ const TradeFinancePage = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-gradient-to-r from-[#241F5D] to-[#3A3480] text-white">
+      <section className="py-12 md:py-16 bg-gradient-to-r from-[#241F5D] to-[#3A3480] text-white">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Transform Your Trade Finance Operations?</h2>
-          <p className="text-xl text-blue-100 mb-8 max-w-3xl mx-auto">
-            Discover how our comprehensive solution can help you streamline your trade finance processes and optimize your global operations.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-white text-[#241F5D] hover:bg-blue-50">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-2xl md:text-4xl font-bold mb-4 md:mb-6"
+          >
+            Ready to Transform Your Trade Finance Operations?
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-lg md:text-xl text-blue-100 mb-8 max-w-3xl mx-auto"
+          >
+            Discover how our comprehensive solution can help you streamline your trade finance processes.
+          </motion.p>
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="flex flex-col sm:flex-row gap-4 justify-center"
+          >
+            <Button size="lg" className="bg-white text-[#241F5D] hover:bg-blue-50 font-medium">
               Request a Demo
             </Button>
-            <Button size="lg" variant="outline" className="text-white border-white hover:bg-white/10">
+            <Button size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white/10">
               Contact Our Experts
             </Button>
-          </div>
+          </motion.div>
         </div>
       </section>
     </div>
