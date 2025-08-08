@@ -9,148 +9,187 @@ import Link from 'next/link';
 export default function CashflowLiquidity() {
   return (
     <div className="min-h-screen overflow-x-hidden relative bg-white">
-      {/* Modern Mega Menu */}
-
-      
-              <main className="relative z-10 pt-20 px-6 pb-12">
-      <div className="max-w-6xl mx-auto">
-        {/* Hero Section */}
-        <div className="flex flex-col md:flex-row items-center gap-8 mb-12">
-          <div className="md:w-1/2">
-            <div className="flex items-center mb-6">
-              <BarChart2 className="text-blue-600 mr-3" size={32} />
-              <h1 className="text-3xl font-bold text-gray-900">Cashflow & Liquidity Management</h1>
+      {/* Full Width Banner Section */}
+      <section className="relative w-screen h-[600px] -mt-20 left-1/2 right-1/2 -mx-[50vw]">
+        <div className="absolute inset-0 w-screen">
+          <Image
+            src="/Inner pages/Products/Cash_position_50.jpg"
+            alt="Comprehensive Cash Management"
+            fill
+            className="object-cover w-full"
+            priority
+            style={{ objectPosition: 'center' }}
+          />
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-900/80 to-blue-600/60">
+          <div className="container mx-auto h-full flex items-center px-6 lg:px-8 max-w-7xl">
+            <div className="max-w-2xl text-white">
+              <div className="flex items-center mb-6">
+                <BarChart2 className="text-white mr-3" size={40} />
+                <h1 className="text-4xl md:text-5xl font-bold text-white">Cashflow & Liquidity Management</h1>
+              </div>
+              <p className="text-xl text-white/90 mb-8">
+                Transform your cash flow management and liquidity oversight with our comprehensive module, designed to enhance visibility, streamline operations, and maximize financial efficiency.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <button className="bg-white text-blue-700 hover:bg-blue-50 font-medium py-3 px-8 rounded-lg transition-colors flex items-center justify-center">
+                  Request Demo
+                  <svg className="ml-2 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
+                </button>
+                <button className="bg-transparent border-2 border-white text-white hover:bg-white/10 font-medium py-3 px-8 rounded-lg transition-colors">
+                  Contact Sales
+                </button>
+              </div>
             </div>
-            <p className="text-lg text-gray-600 mb-6">
-              Transform your cash flow management and liquidity oversight with our comprehensive module, designed to enhance visibility, streamline operations, and maximize financial efficiency.
+          </div>
+        </div>
+      </section>
+
+      {/* Main Content */}
+      <main className="relative z-10 px-6 pb-12 -mt-20">
+        <div className="max-w-6xl mx-auto">
+          {/* Features Section */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+            <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+              <h2 className="text-2xl font-semibold text-gray-900 mb-6">Comprehensive Cash Management</h2>
+              <div className="relative aspect-video w-full rounded-lg overflow-hidden bg-gray-100 mb-6">
+                <Image
+                  src="/Inner pages/Products/Cashflow & Liquidity Management.png"
+                  alt="Cash Position Analytics"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <ul className="space-y-4">
+                <li className="flex items-start">
+                  <div className="flex-shrink-0 mt-1">
+                    <div className="flex items-center justify-center h-5 w-5 rounded-full bg-blue-100">
+                      <svg className="h-3 w-3 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                      </svg>
+                    </div>
+                  </div>
+                  <span className="ml-3 text-gray-700">Global cash position across group entities, locations, currencies, and banks</span>
+                </li>
+                <li className="flex items-start">
+                  <div className="flex-shrink-0 mt-1">
+                    <div className="flex items-center justify-center h-5 w-5 rounded-full bg-blue-100">
+                      <svg className="h-3 w-3 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                      </svg>
+                    </div>
+                  </div>
+                  <span className="ml-3 text-gray-700">Daily cash position reports and dynamic forecasting</span>
+                </li>
+                <li className="flex items-start">
+                  <div className="flex-shrink-0 mt-1">
+                    <div className="flex items-center justify-center h-5 w-5 rounded-full bg-blue-100">
+                      <svg className="h-3 w-3 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                      </svg>
+                    </div>
+                  </div>
+                  <span className="ml-3 text-gray-700">Automated bank statement processing (MT940, MT942, Excel, CSV)</span>
+                </li>
+              </ul>
+            </div>
+
+            <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+              <h2 className="text-2xl font-semibold text-gray-900 mb-6">Advanced Analytics & Reporting</h2>
+              <ul className="space-y-4">
+                <li className="flex items-start">
+                  <div className="flex-shrink-0 mt-1">
+                    <div className="flex items-center justify-center h-5 w-5 rounded-full bg-blue-100">
+                      <svg className="h-3 w-3 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                      </svg>
+                    </div>
+                  </div>
+                  <span className="ml-3 text-gray-700">Consolidated global and group cash position and projections</span>
+                </li>
+                <li className="flex items-start">
+                  <div className="flex-shrink-0 mt-1">
+                    <div className="flex items-center justify-center h-5 w-5 rounded-full bg-blue-100">
+                      <svg className="h-3 w-3 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                      </svg>
+                    </div>
+                  </div>
+                  <span className="ml-3 text-gray-700">Cash flow reports — groupwise, company, and bank-wise</span>
+                </li>
+                <li className="flex items-start">
+                  <div className="flex-shrink-0 mt-1">
+                    <div className="flex items-center justify-center h-5 w-5 rounded-full bg-blue-100">
+                      <svg className="h-3 w-3 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                      </svg>
+                    </div>
+                  </div>
+                  <span className="ml-3 text-gray-700">Real-time dashboards for actionable insights</span>
+                </li>
+                <li className="flex items-start">
+                  <div className="flex-shrink-0 mt-1">
+                    <div className="flex items-center justify-center h-5 w-5 rounded-full bg-blue-100">
+                      <svg className="h-3 w-3 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                      </svg>
+                    </div>
+                  </div>
+                  <span className="ml-3 text-gray-700">Audit trails for every action with complete transparency</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Additional Features Section */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+            <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+              <div className="bg-blue-100 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                <svg className="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                </svg>
+              </div>
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">Real-time Analytics</h3>
+              <p className="text-gray-600">Monitor your cash positions and liquidity metrics in real-time with our intuitive dashboards.</p>
+            </div>
+            <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+              <div className="bg-blue-100 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                <svg className="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">24/7 Access</h3>
+              <p className="text-gray-600">Access your cash management tools anytime, anywhere with our cloud-based platform.</p>
+            </div>
+            <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+              <div className="bg-blue-100 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                <svg className="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+              </div>
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">Bank-Grade Security</h3>
+              <p className="text-gray-600">Your financial data is protected with enterprise-level security and encryption.</p>
+            </div>
+          </div>
+
+          {/* CTA Section */}
+          <div className="bg-gradient-to-r from-blue-600 to-blue-800 rounded-xl p-12 text-center text-white mb-12">
+            <h2 className="text-3xl font-bold mb-4">Ready to Transform Your Cash Management?</h2>
+            <p className="text-lg text-blue-100 mb-8 max-w-3xl mx-auto">
+              Unlock the full potential of your cash flow and liquidity management with our advanced module. Schedule a personalized demo today.
             </p>
-            <button className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-6 rounded-lg transition-colors flex items-center">
-              Request Demo
-              <svg className="ml-2 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-              </svg>
-            </button>
-          </div>
-          <div className="md:w-1/2 mt-8 md:mt-0">
-            <div className="relative aspect-video w-full rounded-lg overflow-hidden bg-gray-100 border border-gray-200">
-              <Image
-                src="/Inner pages/Products/Cashflow & Liquidity Management.png"
-                alt="Cashflow & Liquidity Management"
-                fill
-                className="object-cover"
-                priority
-              />
+            <div className="flex flex-col sm:flex-row justify-center gap-4">
+              <button className="bg-white text-blue-700 hover:bg-blue-50 font-medium py-3 px-8 rounded-lg transition-colors">
+                Request Demo
+              </button>
+              <button className="bg-transparent border-2 border-white text-white hover:bg-white/10 font-medium py-3 px-8 rounded-lg transition-colors">
+                Contact Sales
+              </button>
             </div>
           </div>
         </div>
-
-        {/* Features Section */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
-          <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-6">Comprehensive Cash Management</h2>
-            <div className="relative aspect-video w-full rounded-lg overflow-hidden bg-gray-100 mb-6">
-              <Image
-                src="/Inner pages/Products/Cash_position_50.jpg"
-                alt="Cash Position Analytics"
-                fill
-                className="object-cover"
-              />
-            </div>
-            <ul className="space-y-4">
-              <li className="flex items-start">
-                <div className="flex-shrink-0 mt-1">
-                  <div className="flex items-center justify-center h-5 w-5 rounded-full bg-blue-100">
-                    <svg className="h-3 w-3 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-                    </svg>
-                  </div>
-                </div>
-                <span className="ml-3 text-gray-700">Global cash position across group entities, locations, currencies, and banks</span>
-              </li>
-              <li className="flex items-start">
-                <div className="flex-shrink-0 mt-1">
-                  <div className="flex items-center justify-center h-5 w-5 rounded-full bg-blue-100">
-                    <svg className="h-3 w-3 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-                    </svg>
-                  </div>
-                </div>
-                <span className="ml-3 text-gray-700">Daily cash position reports and dynamic forecasting</span>
-              </li>
-              <li className="flex items-start">
-                <div className="flex-shrink-0 mt-1">
-                  <div className="flex items-center justify-center h-5 w-5 rounded-full bg-blue-100">
-                    <svg className="h-3 w-3 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-                    </svg>
-                  </div>
-                </div>
-                <span className="ml-3 text-gray-700">Automated bank statement processing (MT940, MT942, Excel, CSV)</span>
-              </li>
-            </ul>
-          </div>
-
-          <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-6">Advanced Analytics & Reporting</h2>
-            <ul className="space-y-4">
-              <li className="flex items-start">
-                <div className="flex-shrink-0 mt-1">
-                  <div className="flex items-center justify-center h-5 w-5 rounded-full bg-blue-100">
-                    <svg className="h-3 w-3 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-                    </svg>
-                  </div>
-                </div>
-                <span className="ml-3 text-gray-700">Consolidated global and group cash position and projections</span>
-              </li>
-              <li className="flex items-start">
-                <div className="flex-shrink-0 mt-1">
-                  <div className="flex items-center justify-center h-5 w-5 rounded-full bg-blue-100">
-                    <svg className="h-3 w-3 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-                    </svg>
-                  </div>
-                </div>
-                <span className="ml-3 text-gray-700">Cash flow reports — groupwise, company, and bank-wise</span>
-              </li>
-              <li className="flex items-start">
-                <div className="flex-shrink-0 mt-1">
-                  <div className="flex items-center justify-center h-5 w-5 rounded-full bg-blue-100">
-                    <svg className="h-3 w-3 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-                    </svg>
-                  </div>
-                </div>
-                <span className="ml-3 text-gray-700">Real-time dashboards for actionable insights</span>
-              </li>
-              <li className="flex items-start">
-                <div className="flex-shrink-0 mt-1">
-                  <div className="flex items-center justify-center h-5 w-5 rounded-full bg-blue-100">
-                    <svg className="h-3 w-3 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-                    </svg>
-                  </div>
-                </div>
-                <span className="ml-3 text-gray-700">Audit trails for every action with complete transparency</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        {/* CTA Section */}
-        <div className="bg-blue-50 rounded-xl p-8 text-center border border-blue-100">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Ready to Transform Your Cash Management?</h2>
-          <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
-            Unlock the full potential of your cash flow and liquidity management with our advanced module.
-          </p>
-          <button className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-6 rounded-lg transition-colors inline-flex items-center">
-            Get Started
-            <svg className="ml-2 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-            </svg>
-          </button>
-        </div>
-      </div>
       </main>
     </div>
   );

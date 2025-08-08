@@ -16,52 +16,49 @@ const InvestmentWealthTechPage = () => {
       {/* Mega Navigation Menu */}
 
 
-      {/* Hero Section */}
-      <section className="relative w-full py-16 md:py-20 bg-gradient-to-r from-[#241F5D] to-[#3A3480] text-white">
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="flex flex-col md:flex-row items-center">
-            <div className="md:w-1/2 mb-8 md:mb-0 md:pr-8">
+      {/* Hero Section with Full Width Banner */}
+      <section className="relative w-screen h-[600px] -mt-20 left-1/2 right-1/2 -mx-[50vw]">
+        <div className="absolute inset-0 w-screen">
+          <Image
+            src="/Inner pages/Products/IBSFINtech_Investment_Management_optimized.png"
+            alt="Investment Management Dashboard"
+            fill
+            className="object-cover w-full"
+            priority
+            style={{ objectPosition: 'center' }}
+          />
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-r from-[#241F5D]/90 to-[#3A3480]/80">
+          <div className="container mx-auto h-full flex items-center px-6 lg:px-8 max-w-7xl">
+            <div className="max-w-2xl text-white">
               <motion.h1 
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
-                className="text-3xl md:text-4xl font-bold mb-4 leading-tight text-left"
+                className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight"
               >
-                Investment (WealthTech) Management Solution
+                Investment & WealthTech Management
               </motion.h1>
               <motion.p 
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.1 }}
-                className="text-lg text-blue-100 mb-6 text-left"
+                className="text-lg md:text-xl text-blue-100 mb-8"
               >
-                Revolutionize your investment operations with our innovative software, designed to simplify management, enhance compliance, and optimize decision-making.
+                Transform your investment operations with our comprehensive solution for simplified management, enhanced compliance, and data-driven decision-making.
               </motion.p>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="text-left"
+                className="flex flex-col sm:flex-row gap-4"
               >
-                <Button size="lg" className="bg-white text-[#241F5D] hover:bg-blue-50">
-                  Request a Demo <ArrowRight className="ml-2 h-4 w-4" />
+                <Button size="lg" className="bg-white text-[#241F5D] hover:bg-blue-50 font-medium">
+                  Request Demo <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
-              </motion.div>
-            </div>
-            <div className="md:w-1/2">
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-                className="relative w-full h-64 md:h-80 rounded-lg overflow-hidden shadow-xl"
-              >
-                <Image
-                  src="/Inner pages/Products/IBSFINtech_Investment_Management_optimized.png"
-                  alt="Investment Management Dashboard"
-                  fill
-                  className="object-cover"
-                  priority
-                />
+                <Button variant="outline" size="lg" className="bg-transparent border-2 border-white text-white hover:bg-white/10 font-medium">
+                  Learn More
+                </Button>
               </motion.div>
             </div>
           </div>
@@ -157,54 +154,75 @@ const InvestmentWealthTechPage = () => {
             </div>
 
             {/* Analytics Section */}
-            <div className="grid md:grid-cols-2 gap-12 items-center mb-20">
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-                className="order-2 md:order-1"
-              >
-                <div className="relative h-80 w-full rounded-xl overflow-hidden">
-                  <Image
-                    src="/Home Page Banner 5.png"
-                    alt="Real-time Investment Analytics"
-                    fill
-                    className="object-cover"
-                    priority
-                  />
-                  <div className="absolute bottom-0 left-0 right-0 bg-black/50 text-white p-4 text-sm">
-                    Real-time Investment Analytics
-                  </div>
-                </div>
-              </motion.div>
+            <div className="bg-gray-50 rounded-2xl p-6 md:p-8 mb-12">
               <motion.div 
-                className="order-1 md:order-2"
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
+                className="text-center mb-8"
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.4 }}
               >
-                <h3 className="text-2xl font-bold text-[#241F5D] mb-6">Analytics for Top Management</h3>
-                <ul className="space-y-4 text-gray-700">
-                  <li className="flex items-start">
-                    <span className="text-blue-600 mr-2 mt-1">•</span>
-                    <span>Real automatic upload of NAV (AMFI).</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-blue-600 mr-2 mt-1">•</span>
-                    <span>Interface with market data providers such as CRISIL, ICRA, MFUI.</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-blue-600 mr-2 mt-1">•</span>
-                    <span>Reports - AMC, outstanding, maturity, portfolio return, portfolio sector wise, pre & post tax, category wise return, mutual fund credit quality & asset wise.</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-blue-600 mr-2 mt-1">•</span>
-                    <span>Single software to manage all investment instruments.</span>
-                  </li>
-                </ul>
+                <h3 className="text-2xl font-bold text-[#241F5D] mb-2">Analytics for Top Management</h3>
+                <div className="h-1 w-12 bg-blue-500 mx-auto"></div>
               </motion.div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ duration: 0.4 }}
+                  className="bg-white p-5 rounded-lg shadow-sm hover:shadow-md transition-all"
+                >
+                  <div className="h-10 w-10 rounded-full bg-blue-50 flex items-center justify-center mb-3">
+                    <BarChart2 className="h-5 w-5 text-blue-600" />
+                  </div>
+                  <h4 className="text-base font-semibold text-[#241F5D] mb-1.5">NAV Management</h4>
+                  <p className="text-sm text-gray-600">Automatic upload of NAV (AMFI) and real-time updates.</p>
+                </motion.div>
+                
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ duration: 0.4, delay: 0.1 }}
+                  className="bg-white p-5 rounded-lg shadow-sm hover:shadow-md transition-all"
+                >
+                  <div className="h-10 w-10 rounded-full bg-blue-50 flex items-center justify-center mb-3">
+                    <TrendingUp className="h-5 w-5 text-blue-600" />
+                  </div>
+                  <h4 className="text-base font-semibold text-[#241F5D] mb-1.5">Market Data Integration</h4>
+                  <p className="text-sm text-gray-600">Seamless interface with CRISIL, ICRA, and MFUI.</p>
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ duration: 0.4, delay: 0.2 }}
+                  className="bg-white p-5 rounded-lg shadow-sm hover:shadow-md transition-all"
+                >
+                  <div className="h-10 w-10 rounded-full bg-blue-50 flex items-center justify-center mb-3">
+                    <FileText className="h-5 w-5 text-blue-600" />
+                  </div>
+                  <h4 className="text-base font-semibold text-[#241F5D] mb-1.5">Comprehensive Reporting</h4>
+                  <p className="text-sm text-gray-600">AMC, maturity, portfolio return, and sector-wise analysis.</p>
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ duration: 0.4, delay: 0.3 }}
+                  className="bg-white p-5 rounded-lg shadow-sm hover:shadow-md transition-all"
+                >
+                  <div className="h-10 w-10 rounded-full bg-blue-50 flex items-center justify-center mb-3">
+                    <PieChart className="h-5 w-5 text-blue-600" />
+                  </div>
+                  <h4 className="text-base font-semibold text-[#241F5D] mb-1.5">Portfolio Analytics</h4>
+                  <p className="text-sm text-gray-600">Pre & post-tax analysis, credit quality, and asset allocation.</p>
+                </motion.div>
+              </div>
             </div>
 
             {/* Risk Management Section */}

@@ -80,41 +80,61 @@ const FlipCard: React.FC<FlipCardProps> = ({
   const [nextIndustry, setNextIndustry] = useState<Industry>(() =>
     getRandomIndustry(industry.name, allIndustries)
   );
+  const [isMounted, setIsMounted] = useState(false);
   const controls = useAnimation();
+
+  // Set mounted state after component mounts
+  useEffect(() => {
+    setIsMounted(true);
+    return () => setIsMounted(false);
+  }, []);
 
   // Function to handle flip animation
   const flipCard = async () => {
-    await controls.start({
-      rotateY: 90,
-      transition: { duration: 0.4, ease: "easeInOut" }
-    });
+    if (!isMounted) return; // Don't run if component isn't mounted
 
-    // Change to next industry
-    setCurrentIndustry(nextIndustry);
-    setNextIndustry(getRandomIndustry(nextIndustry.name, allIndustries));
+    try {
+      await controls.start({
+        rotateY: 90,
+        transition: { duration: 0.4, ease: "easeInOut" }
+      });
 
-    // Complete the flip
-    await controls.start({
-      rotateY: 0,
-      transition: { duration: 0.4, ease: "easeInOut", delay: 0.1 }
-    });
+      // Change to next industry
+      if (isMounted) { // Check again before state updates
+        setCurrentIndustry(nextIndustry);
+        setNextIndustry(getRandomIndustry(nextIndustry.name, allIndustries));
+      }
+
+      // Complete the flip
+      await controls.start({
+        rotateY: 0,
+        transition: { duration: 0.4, ease: "easeInOut", delay: 0.1 }
+      });
+    } catch (error) {
+      if (process.env.NODE_ENV !== 'production') {
+        console.warn('Animation interrupted:', error);
+      }
+    }
   };
 
   // Auto-flip effect
   useEffect(() => {
+    if (!isMounted) return; // Don't set up timers if not mounted
+
     const timer = setTimeout(() => {
-      flipCard();
+      if (isMounted) flipCard();
     }, 3000 + delay * 500);
 
     const interval = setInterval(() => {
-      flipCard();
+      if (isMounted) flipCard();
     }, 8000); // Flip every 8 seconds
 
+    // Cleanup on unmount
     return () => {
       clearTimeout(timer);
       clearInterval(interval);
     };
-  }, [nextIndustry]);
+  }, [nextIndustry, delay, isMounted]); // Add isMounted to dependencies
 
   // Generate random tilt for asymmetric arrangement
   const randomTilt = useMemo(() => {
@@ -148,23 +168,23 @@ const FlipCard: React.FC<FlipCardProps> = ({
         style={{
           background: currentIndustry.color.includes('bg-[') ?
             currentIndustry.color.split(' ')[0].replace('bg-[', '').replace(']', '') :
-            (currentIndustry.color === 'from-blue-500 to-blue-600' ? 'linear-gradient(135deg, #3B82F6 0%, #2563EB 100%)' :
-              currentIndustry.color === 'from-emerald-500 to-emerald-600' ? 'linear-gradient(135deg, #10B981 0%, #059669 100%)' :
-                currentIndustry.color === 'from-orange-500 to-orange-600' ? 'linear-gradient(135deg, #F97316 0%, #EA580C 100%)' :
-                  currentIndustry.color === 'from-amber-500 to-amber-600' ? 'linear-gradient(135deg, #F59E0B 0%, #D97706 100%)' :
-                    currentIndustry.color === 'from-purple-500 to-purple-600' ? 'linear-gradient(135deg, #A855F7 0%, #9333EA 100%)' :
-                      currentIndustry.color === 'from-pink-500 to-pink-600' ? 'linear-gradient(135deg, #EC4899 0%, #DB2777 100%)' :
-                        currentIndustry.color === 'from-cyan-500 to-cyan-600' ? 'linear-gradient(135deg, #06B6D4 0%, #0891B2 100%)' :
-                          'linear-gradient(135deg, #6366F1 0%, #4F46E5 100%)') // indigo default
+            (currentIndustry.color === 'from-blue-500 to-blue-600' ? '#ffc1cf' :
+              currentIndustry.color === 'from-emerald-500 to-emerald-600' ? '#e8ffb7' :
+                currentIndustry.color === 'from-orange-500 to-orange-600' ? '#e2a0ff' :
+                  currentIndustry.color === 'from-amber-500 to-amber-600' ? '#c4f5fc' :
+                    currentIndustry.color === 'from-purple-500 to-purple-600' ? '#b7ffd8' :
+                      currentIndustry.color === 'from-pink-500 to-pink-600' ? '#b7c9ff' :
+                        currentIndustry.color === 'from-cyan-500 to-cyan-600' ? '#ffc1cf' :
+                          '#e8ffb7')
         }}
         animate={controls}
         transition={{ duration: 0.4, ease: "easeInOut" }}
       >
         <div className="w-full h-full flex flex-col items-center justify-center p-1">
-          <div className="w-6 h-6 bg-white/20 rounded-full flex items-center justify-center mb-1">
-            <currentIndustry.icon className="h-3 w-3 text-white" />
+          <div className="w-6 h-6 bg-black/10 rounded-full flex items-center justify-center mb-1">
+            <currentIndustry.icon className="h-3 w-3 text-black" />
           </div>
-          <span className="text-[10px] font-medium text-white text-center leading-tight">{currentIndustry.name}</span>
+          <span className="text-[10px] font-medium text-black text-center leading-tight">{currentIndustry.name}</span>
         </div>
       </motion.div>
 
@@ -174,14 +194,14 @@ const FlipCard: React.FC<FlipCardProps> = ({
         style={{
           background: nextIndustry.color.includes('bg-[') ?
             nextIndustry.color.split(' ')[0].replace('bg-[', '').replace(']', '') :
-            (nextIndustry.color === 'from-blue-500 to-blue-600' ? 'linear-gradient(135deg, #3B82F6 0%, #2563EB 100%)' :
-              nextIndustry.color === 'from-emerald-500 to-emerald-600' ? 'linear-gradient(135deg, #10B981 0%, #059669 100%)' :
-                nextIndustry.color === 'from-orange-500 to-orange-600' ? 'linear-gradient(135deg, #F97316 0%, #EA580C 100%)' :
-                  nextIndustry.color === 'from-amber-500 to-amber-600' ? 'linear-gradient(135deg, #F59E0B 0%, #D97706 100%)' :
-                    nextIndustry.color === 'from-purple-500 to-purple-600' ? 'linear-gradient(135deg, #A855F7 0%, #9333EA 100%)' :
-                      nextIndustry.color === 'from-pink-500 to-pink-600' ? 'linear-gradient(135deg, #EC4899 0%, #DB2777 100%)' :
-                        nextIndustry.color === 'from-cyan-500 to-cyan-600' ? 'linear-gradient(135deg, #06B6D4 0%, #0891B2 100%)' :
-                          'linear-gradient(135deg, #6366F1 0%, #4F46E5 100%)') // indigo default
+            (nextIndustry.color === 'from-blue-500 to-blue-600' ? '#ffc1cf' :
+              nextIndustry.color === 'from-emerald-500 to-emerald-600' ? '#e8ffb7' :
+                nextIndustry.color === 'from-orange-500 to-orange-600' ? '#e2a0ff' :
+                  nextIndustry.color === 'from-amber-500 to-amber-600' ? '#c4f5fc' :
+                    nextIndustry.color === 'from-purple-500 to-purple-600' ? '#b7ffd8' :
+                      nextIndustry.color === 'from-pink-500 to-pink-600' ? '#b7c9ff' :
+                        nextIndustry.color === 'from-cyan-500 to-cyan-600' ? '#ffc1cf' :
+                          '#e8ffb7')
         }}
         animate={{
           rotateY: 90,
@@ -189,10 +209,10 @@ const FlipCard: React.FC<FlipCardProps> = ({
         transition={{ duration: 0.4, ease: "easeInOut" }}
       >
         <div className="w-full h-full flex flex-col items-center justify-center p-1">
-          <div className="w-6 h-6 bg-white/20 rounded-full flex items-center justify-center mb-1">
-            <nextIndustry.icon className="h-3 w-3 text-white" />
+          <div className="w-6 h-6 bg-black/10 rounded-full flex items-center justify-center mb-1">
+            <nextIndustry.icon className="h-3 w-3 text-black" />
           </div>
-          <span className="text-[10px] font-medium text-white text-center leading-tight">{nextIndustry.name}</span>
+          <span className="text-[10px] font-medium text-black text-center leading-tight">{nextIndustry.name}</span>
         </div>
       </motion.div>
     </motion.div>
@@ -554,7 +574,7 @@ export default function IllustrativeOne() {
       {/* Statistics Section */}
       <section className="pt-16 pb-8 bg-gradient-to-b from-navy-900 to-navy-950 relative overflow-hidden">
         <div className="container mx-auto px-4 text-center mb-12">
-          <motion.h2 
+          <motion.h2
             className="text-4xl font-bold text-white mb-4"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -731,14 +751,16 @@ export default function IllustrativeOne() {
             <div className="flex flex-col lg:flex-row items-center gap-8">
               {/* Left Column: Text Panel */}
               <div className="w-full lg:w-2/5">
-                <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-300 to-blue-500 bg-clip-text text-white mb-4">
+                <h2 className="text-3xl md:text-3xl font-bold bg-gradient-to-r from-blue-300 to-blue-500 bg-clip-text text-white mb-4">
                   Why Choose Us
                 </h2>
                 <p className="text-base text-white/90 mb-4">
-                  Discover how our innovative financial solutions can transform your business operations and drive growth.
-                </p>
+                Domain Expertise: Crafted by ex-bankers with deep treasury and tech expertise                </p>
                 <p className="text-base text-white/80 mb-6">
-                  With years of industry expertise, we provide cutting‑edge solutions tailored to your unique business needs.
+                Comprehensive Coverage: End-to-end lifecycle support — from Trade Finance, Supply Chain Finance, Payments, FX (Currency Risk), Money Market (Investments), Commodity Risk, and the most critical Cashflow & Liquidity management. <br /> 
+                <br/>User-Friendly: Mirrors real-world treasury workflows for intuitive use. <br /> 
+                <br/>Seamless Integration: Connects effortlessly with ERPs, banks, and data providers
+                <br/>Faster Deployment: Rapid implementation compared to traditional global solutions
                 </p>
                 <button className="flex items-center bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white font-medium py-3 px-6 rounded-full transition transform hover:-translate-y-0.5 hover:shadow-lg">
                   Learn More
@@ -843,12 +865,13 @@ export default function IllustrativeOne() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.6 }}
                 >
-                  <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-300 to-blue-500 bg-clip-text text-white mb-4">
-                  One Solution. Any Industry. Anywhere.
+                  <h2 className="text-3xl md:text-3xl font-bold bg-gradient-to-r from-blue-300 to-blue-500 bg-clip-text text-white mb-4">
+                    One TreasuryTech Platform <br />
+                    Any Industry Anywhere
                   </h2>
                   <p className="text-base text-white/90">
-                    Tailored solutions for diverse industry needs, driving efficiency and growth across sectors.
-                  </p>
+                    Built with flexibility at its core, IBSFINtech TMS is built to serve businesses of every size and sector - it doesn't rely on one-size-fits-all.
+                    <br/> It’s a scalable, configurable solution that fits any treasury landscape — no matter the industry or geography.                  </p>
                 </motion.div>
               </div>
 
@@ -905,7 +928,7 @@ export default function IllustrativeOne() {
       {/* Secure Banking Section */}
       <section className="py-12 bg-gradient-to-b from-navy-900 to-navy-950 relative overflow-hidden">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
+          <div className="max-w-6xl mx-auto text-center">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -914,10 +937,11 @@ export default function IllustrativeOne() {
               className="mb-6"
             >
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Innovate. Automate. Accelerate
+                Innovate. Automate. Accelerate
               </h2>
-              <p className="text-base text-gray-300 mb-6 max-w-3xl mx-auto">
-              Go beyond traditional treasury. Driven by deep domain expertise, IBSFINtech Treasury Management System simplifies treasury complexity and delivers seamless digitisation across Cashflow & Liquidity, Currency Risk, Commodity Risk, Investment, Debt Management, Trade Finance and Supply chain Finance — enabling a seamless shift from manual to smart treasury operations
+              <p className="text-base text-gray-300 mb-6 max-w-6xl mx-auto leading-relaxed">
+                <span className="block text-lg">Go beyond traditional treasury. Driven by deep domain expertise, IBSFINtech Treasury Management System simplifies treasury complexity and delivers seamless digitisation across Cashflow & Liquidity, Currency Risk, Commodity Risk, Investment,</span>
+                <span className="block text-lg">Debt Management, Trade Finance and Supply chain Finance — enabling a seamless shift from manual to smart treasury operations</span>
               </p>
               <motion.a
                 href="/security"

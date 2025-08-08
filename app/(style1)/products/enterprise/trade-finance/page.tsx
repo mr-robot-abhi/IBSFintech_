@@ -16,16 +16,26 @@ const TradeFinancePage = () => {
       {/* Mega Navigation Menu */}
 
 
-      {/* Hero Section */}
-      <section className="relative w-full py-16 md:py-20 bg-gradient-to-r from-[#241F5D] to-[#3A3480] text-white">
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="flex flex-col md:flex-row items-center">
-            <div className="md:w-1/2 mb-8 md:mb-0 md:pr-8">
+      {/* Hero Section with Full Width Banner */}
+      <section className="relative w-screen h-[600px] -mt-20 left-1/2 right-1/2 -mx-[50vw]">
+        <div className="absolute inset-0 w-screen">
+          <Image
+            src="/Inner pages/Products/trade_finance_management.jpeg"
+            alt="Trade Finance Management"
+            fill
+            className="object-cover w-full"
+            priority
+            style={{ objectPosition: 'center' }}
+          />
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-r from-[#241F5D]/90 to-[#3A3480]/80">
+          <div className="container mx-auto h-full flex items-center px-6 lg:px-8 max-w-7xl">
+            <div className="max-w-2xl text-white">
               <motion.h1 
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
-                className="text-3xl md:text-4xl font-bold mb-4 leading-tight"
+                className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight"
               >
                 Trade Finance Management
               </motion.h1>
@@ -33,34 +43,22 @@ const TradeFinancePage = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.1 }}
-                className="text-lg text-blue-100 mb-6"
+                className="text-lg md:text-xl text-blue-100 mb-8"
               >
-                Optimize Your Trade Finance Operations with IBSFINtech's Comprehensive Module
+                Streamline your global trade operations with our end-to-end trade finance solution
               </motion.p>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
+                className="flex flex-col sm:flex-row gap-4"
               >
-                <Button size="lg" className="bg-white text-[#241F5D] hover:bg-blue-50">
+                <Button size="lg" className="bg-white text-[#241F5D] hover:bg-blue-50 font-medium">
                   Request Demo <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
-              </motion.div>
-            </div>
-            <div className="md:w-1/2">
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-                className="relative w-full h-64 md:h-80 rounded-lg overflow-hidden shadow-xl"
-              >
-                <Image
-                  src="/Inner pages/Products/trade_finance_management.jpeg"
-                  alt="Trade Finance Management"
-                  fill
-                  className="object-cover"
-                  priority
-                />
+                <Button variant="outline" size="lg" className="bg-transparent border-2 border-white text-white hover:bg-white/10 font-medium">
+                  Learn More
+                </Button>
               </motion.div>
             </div>
           </div>
@@ -69,78 +67,146 @@ const TradeFinancePage = () => {
 
       {/* Main Content */}
       <div className="relative z-10 bg-white">
-        <section className="py-12">
+        <section className="py-8 md:py-10">
           <div className="container mx-auto px-4">
             <div className="max-w-6xl mx-auto">
-              <div className="flex flex-col md:flex-row items-center gap-8">
-                <div className="md:w-1/2">
+              <div className="flex flex-col lg:flex-row gap-6">
+                <div className="lg:w-1/2">
                   <motion.h2 
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6 }}
-                    className="text-3xl font-bold text-[#241F5D] mb-6"
+                    viewport={{ once: true, margin: "-50px" }}
+                    transition={{ duration: 0.5 }}
+                    className="text-2xl md:text-3xl font-bold text-[#241F5D] mb-4"
                   >
                     Comprehensive Trade Finance Solution
                   </motion.h2>
-                  <ul className="space-y-4 text-gray-700 mb-6">
-                    <li className="flex items-start">
-                      <span className="text-blue-600 mr-2 mt-1">•</span>
-                      <span>End-to-end lifecycle management for both Import and Export functions with complete visibility.</span>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="text-blue-600 mr-2 mt-1">•</span>
-                      <span>Seamless interface with ERP systems for fetching Sales Orders (SO), Sales Invoices (SI), Purchase Orders (PO), and Proforma Invoices (PI).</span>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="text-blue-600 mr-2 mt-1">•</span>
-                      <span>Comprehensive management of Export Letters of Credit, Packing Credit activities, and Post-Shipment finance.</span>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="text-blue-600 mr-2 mt-1">•</span>
-                      <span>Full support for Letters of Credit, Bank Guarantees, Buyer's Credit, and Supplier's Credit.</span>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="text-blue-600 mr-2 mt-1">•</span>
-                      <span>Advanced Limit Management with tracking of bank charges and competitive interest rates.</span>
-                    </li>
-                    <li className="flex items-start">
-                      <div className="flex-shrink-0 mt-1">
-                        <div className="flex items-center justify-center h-6 w-6 rounded-full bg-blue-100">
-                          <svg className="h-3 w-3 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-                          </svg>
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="space-y-3">
+                      <div className="flex items-start">
+                        <div className="flex-shrink-0 mt-1">
+                          <div className="flex items-center justify-center h-5 w-5 rounded-full bg-blue-100">
+                            <svg className="h-2.5 w-2.5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                            </svg>
+                          </div>
                         </div>
+                        <span className="ml-2 text-sm text-gray-700">End-to-end import/export lifecycle management</span>
                       </div>
-                      <span className="ml-3">Optimized trade finance operations through Straight-Through-Processing (STP) implementation.</span>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="text-blue-600 mr-2 mt-1">•</span>
-                      <span>Seamless integration with leading ERP systems (SAP, Oracle, and other third-party software) for automated accounting entries.</span>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="text-blue-600 mr-2 mt-1">•</span>
-                      <span>Automatic generation of all banking communication letters and documentation.</span>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="text-blue-600 mr-2 mt-1">•</span>
-                      <span>Comprehensive document management system with secure storage by reference number.</span>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="text-blue-600 mr-2 mt-1">•</span>
-                      <span>Direct connectivity with banks via API/Host-to-Host (H2H) for straight-through processing.</span>
-                    </li>
-                  </ul>
+                      
+                      <div className="flex items-start">
+                        <div className="flex-shrink-0 mt-1">
+                          <div className="flex items-center justify-center h-5 w-5 rounded-full bg-blue-100">
+                            <svg className="h-2.5 w-2.5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                            </svg>
+                          </div>
+                        </div>
+                        <span className="ml-2 text-sm text-gray-700">ERP integration (SAP, Oracle, more)</span>
+                      </div>
+                      
+                      <div className="flex items-start">
+                        <div className="flex-shrink-0 mt-1">
+                          <div className="flex items-center justify-center h-5 w-5 rounded-full bg-blue-100">
+                            <svg className="h-2.5 w-2.5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                            </svg>
+                          </div>
+                        </div>
+                        <span className="ml-2 text-sm text-gray-700">Export LCs & Packing Credit</span>
+                      </div>
+                      
+                      <div className="flex items-start">
+                        <div className="flex-shrink-0 mt-1">
+                          <div className="flex items-center justify-center h-5 w-5 rounded-full bg-blue-100">
+                            <svg className="h-2.5 w-2.5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                            </svg>
+                          </div>
+                        </div>
+                        <span className="ml-2 text-sm text-gray-700">Bank Guarantees support</span>
+                      </div>
+                      
+                      <div className="flex items-start">
+                        <div className="flex-shrink-0 mt-1">
+                          <div className="flex items-center justify-center h-5 w-5 rounded-full bg-blue-100">
+                            <svg className="h-2.5 w-2.5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                            </svg>
+                          </div>
+                        </div>
+                        <span className="ml-2 text-sm text-gray-700">Buyer's & Supplier's Credit</span>
+                      </div>
+                    </div>
+                    
+                    <div className="space-y-3">
+                      <div className="flex items-start">
+                        <div className="flex-shrink-0 mt-1">
+                          <div className="flex items-center justify-center h-5 w-5 rounded-full bg-blue-100">
+                            <svg className="h-2.5 w-2.5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                            </svg>
+                          </div>
+                        </div>
+                        <span className="ml-2 text-sm text-gray-700">Advanced Limit Management</span>
+                      </div>
+                      
+                      <div className="flex items-start">
+                        <div className="flex-shrink-0 mt-1">
+                          <div className="flex items-center justify-center h-5 w-5 rounded-full bg-blue-100">
+                            <svg className="h-2.5 w-2.5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                            </svg>
+                          </div>
+                        </div>
+                        <span className="ml-2 text-sm text-gray-700">STP (Straight-Through-Processing)</span>
+                      </div>
+                      
+                      <div className="flex items-start">
+                        <div className="flex-shrink-0 mt-1">
+                          <div className="flex items-center justify-center h-5 w-5 rounded-full bg-blue-100">
+                            <svg className="h-2.5 w-2.5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                            </svg>
+                          </div>
+                        </div>
+                        <span className="ml-2 text-sm text-gray-700">Automated accounting entries</span>
+                      </div>
+                      
+                      <div className="flex items-start">
+                        <div className="flex-shrink-0 mt-1">
+                          <div className="flex items-center justify-center h-5 w-5 rounded-full bg-blue-100">
+                            <svg className="h-2.5 w-2.5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                            </svg>
+                          </div>
+                        </div>
+                        <span className="ml-2 text-sm text-gray-700">Bank communication automation</span>
+                      </div>
+                      
+                      <div className="flex items-start">
+                        <div className="flex-shrink-0 mt-1">
+                          <div className="flex items-center justify-center h-5 w-5 rounded-full bg-blue-100">
+                            <svg className="h-2.5 w-2.5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                            </svg>
+                          </div>
+                        </div>
+                        <span className="ml-2 text-sm text-gray-700">Secure document management</span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
                 
                 <motion.div
                   initial={{ opacity: 0, x: 20 }}
                   whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: 0.2 }}
-                  className="bg-gray-100 rounded-xl p-6 h-full"
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+                  className="lg:w-1/2 mt-4 lg:mt-0"
                 >
-                  <div className="relative w-full h-96 rounded-lg overflow-hidden">
+                  <div className="relative w-full h-64 md:h-80 lg:h-96 rounded-lg overflow-hidden shadow-md">
                     <Image
                       src="/Inner pages/Products/AdobeStock_788404479_50.jpeg"
                       alt="Trade Finance Dashboard"
@@ -154,45 +220,73 @@ const TradeFinancePage = () => {
             </div>
 
             {/* Analytics Section */}
-            <div className="bg-gray-50 rounded-2xl p-8 md:p-12 mb-20">
+            <div className="bg-gray-50 rounded-2xl p-6 md:p-8 mb-12">
               <motion.div 
-                className="text-center mb-12"
-                initial={{ opacity: 0, y: 20 }}
+                className="text-center mb-8"
+                initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.4 }}
               >
-                <h3 className="text-2xl md:text-3xl font-bold text-[#241F5D] mb-4">Analytics for Top Management</h3>
-                <div className="h-1 w-16 bg-blue-500 mx-auto mb-8"></div>
+                <h3 className="text-2xl font-bold text-[#241F5D] mb-2">Analytics for Top Management</h3>
+                <div className="h-1 w-12 bg-blue-500 mx-auto"></div>
               </motion.div>
               
-              <div className="grid md:grid-cols-2 gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                 <motion.div
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 10 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5 }}
-                  className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow"
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ duration: 0.4 }}
+                  className="bg-white p-5 rounded-lg shadow-sm hover:shadow-md transition-all"
                 >
-                  <div className="h-12 w-12 rounded-full bg-blue-50 flex items-center justify-center mb-4">
-                    <BarChart className="h-6 w-6 text-blue-600" />
+                  <div className="h-10 w-10 rounded-full bg-blue-50 flex items-center justify-center mb-3">
+                    <BarChart className="h-5 w-5 text-blue-600" />
                   </div>
-                  <h4 className="text-lg font-semibold text-[#241F5D] mb-2">Comprehensive MIS Reports</h4>
-                  <p className="text-gray-600">Detailed reports on limits sanctioned, utilized, and available, including both fund-based and non-fund based limits.</p>
+                  <h4 className="text-base font-semibold text-[#241F5D] mb-1.5">MIS Reports</h4>
+                  <p className="text-sm text-gray-600">Detailed reports on limits sanctioned, utilized, and available across all facilities.</p>
                 </motion.div>
                 
                 <motion.div
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 10 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.1 }}
-                  className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow"
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ duration: 0.4, delay: 0.1 }}
+                  className="bg-white p-5 rounded-lg shadow-sm hover:shadow-md transition-all"
                 >
-                  <div className="h-12 w-12 rounded-full bg-blue-50 flex items-center justify-center mb-4">
-                    <TrendingUp className="h-6 w-6 text-blue-600" />
+                  <div className="h-10 w-10 rounded-full bg-blue-50 flex items-center justify-center mb-3">
+                    <TrendingUp className="h-5 w-5 text-blue-600" />
                   </div>
-                  <h4 className="text-lg font-semibold text-[#241F5D] mb-2">Financial Analytics</h4>
-                  <p className="text-gray-600">Maturity reports, cost of funds analysis, and interest variance tracking for better financial decision-making.</p>
+                  <h4 className="text-base font-semibold text-[#241F5D] mb-1.5">Financial Analytics</h4>
+                  <p className="text-sm text-gray-600">Maturity reports, cost analysis, and interest variance tracking.</p>
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ duration: 0.4, delay: 0.2 }}
+                  className="bg-white p-5 rounded-lg shadow-sm hover:shadow-md transition-all"
+                >
+                  <div className="h-10 w-10 rounded-full bg-blue-50 flex items-center justify-center mb-3">
+                    <Globe className="h-5 w-5 text-blue-600" />
+                  </div>
+                  <h4 className="text-base font-semibold text-[#241F5D] mb-1.5">Global Trade Insights</h4>
+                  <p className="text-sm text-gray-600">Track transactions across different countries and currencies.</p>
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ duration: 0.4, delay: 0.3 }}
+                  className="bg-white p-5 rounded-lg shadow-sm hover:shadow-md transition-all"
+                >
+                  <div className="h-10 w-10 rounded-full bg-blue-50 flex items-center justify-center mb-3">
+                    <FileText className="h-5 w-5 text-blue-600" />
+                  </div>
+                  <h4 className="text-base font-semibold text-[#241F5D] mb-1.5">Document Tracking</h4>
+                  <p className="text-sm text-gray-600">Real-time status of all trade documents and compliance.</p>
                 </motion.div>
               </div>
             </div>

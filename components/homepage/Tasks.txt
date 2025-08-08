@@ -40,11 +40,12 @@ The hex code of the color in the image is #241F5D.
 Colours for Industries tiles;
 
  Yellow | 
-#1be7ff
-#89fc00
-#e4ff1a
-#e8aa14
-#00ffe7
+#ffc1cf
+#e8ffb7
+#e2a0ff
+#c4f5fc
+#b7ffd8
+#b7c9ff
 
 Cool. Keep the existing tiles as they are...Increase the size of the tile and the size of font of each industry by 2 points....Keep ony 8 tiles...4 in one row and 2 rows . Here are the exact 16 services that you would inclue in those 8 tiles...Because when they flip they would represesnt a different one...so 8 tiles...16 services. : Below are the industries to be mentioned
 SME
@@ -66,3 +67,5 @@ Family Offices
 
 
 Lets work on the solutions/trade-finance page...Move the banner heading / text to the left. Add this image to the right hand side of the banner section and make the section more compact. No white space please 
+
+
