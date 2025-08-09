@@ -4,72 +4,9 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import { Globe, Users, Zap, Award, ChevronRight, MapPin, Mail, Linkedin, Shield } from 'lucide-react';
 
-import TimelineSection from '@/components/homepage/TimelineSection';
-
-// Grouped Timeline data
-const timelineData = [
-  {
-    year: '2006-2016',
-    events: [
-      'First client The Times of India',
-      'Product Beta Launch - Currency Management module',
-      'Launch of Investment (money market) module',
-      'First industry recognition "Express IT Award - Software Product of the Year 2015"',
-      'Winner of Thomson Reuters Fintech Challenge'
-    ],
-    side: 'left'
-  },
-  {
-    year: '2017-2020',
-    events: [
-      'Seed Funding from Shailesh Haribhakti',
-      'Won Adam Smith Asia Awards 2017 - Technology Partner to Maruti Suzuki (Best Treasury Solution - India)',
-      'First International Client - IMR Metallurgical (Europe)',
-      'Aakash Moondhra (Global CFO - PayU) joins the advisory board',
-      'First International Award in London, UK',
-      'Entry in Singapore. New Client - JSW International Pvt Ltd.',
-      'Featured as Top 8 TMS globally',
-      'Shailesh Haribhakti joins in as Chairman',
-      'Recognised as the Technology provider of BlueStar at the prestigious Global Finance Best FX Provider 2021 Award'
-    ],
-    side: 'right'
-  },
-  {
-    year: '2021-2023',
-    events: [
-      'Entry to Tokyo',
-      'Launch of IBSFINtech\'s SaaS Treasury Management System – InTReaX® in partnership with Refinitiv (LSEG)',
-      'Global Partnership: Oracle, Yes Bank & KPMG',
-      'Embarked on global journey – Singapore, Dubai & Japan',
-      'Pramod Agrawal appointed as the new Chief Technology Officer',
-      'Named as a "Major Player" in IDC MarketScape for worldwide SaaS & Cloud-enabled Enterprise Treasury',
-      'New Development Centre in Bengaluru inaugurated by Padma Shri T.V. Mohandas Pai',
-      'Expansion to US market',
-      'Manoj Kohli joins as Advisory Board member',
-      'Won "Best TMS provider" by Corporate Treasurer Award 2023 (3rd consecutive win)'
-    ],
-    side: 'left'
-  },
-  {
-    year: '2024-2025',
-    events: [
-      'Launched InnoTreasury for SME segment',
-      'Achieved ISO/IEC 27001:2013 certification',
-      'Featured in IDC MarketScapes: Worldwide Cash management systems 2024',
-      'Strategic partnerships with Deloitte, Axis Bank, Aditya Birla Capital, TraydStream, and NetSuite',
-      'Awarded Best TMS provider by Corporate Treasurer Awards 2024',
-      'Raised USD 1.5 Mn in funding',
-      'Won Steve Awards 2024 for Innovation in Thought Leadership',
-      'Collaboration with TMI for flagship treasury event in Mumbai'
-    ],
-    side: 'right'
-  }
-];
+import Timeline from '@/components/homepage/TCSInspiredTimeline';
 
 export default function AboutUs() {
-  const [activeYear, setActiveYear] = useState(timelineData[0].year);
-  
-  const activeEvents = timelineData.find(item => item.year === activeYear)?.events || [];
 
   return (
     <div className="min-h-screen bg-white">
@@ -152,7 +89,7 @@ export default function AboutUs() {
       </section>
 
       {/* Timeline Section */}
-      <TimelineSection />
+      <Timeline />
 
       {/* Global Fintech Wave */}
       <section className="py-16 px-6 bg-gradient-to-r from-blue-900 to-blue-700 text-white">

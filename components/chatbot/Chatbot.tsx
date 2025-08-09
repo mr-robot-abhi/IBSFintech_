@@ -155,14 +155,8 @@ export default function Chatbot() {
           {/* Header */}
           <div className="bg-gradient-to-r from-blue-600 to-blue-500 text-white p-3 flex justify-between items-center">
             <div className="flex items-center gap-3">
-              <div className="relative w-8 h-8">
-                <Image
-                  src="/Ibs_logo_1.png"
-                  alt="IBS Logo"
-                  fill
-                  className="object-contain"
-                  priority
-                />
+              <div className="bg-white/20 p-1.5 rounded-full">
+                <MessageSquare className="w-5 h-5 text-white" />
               </div>
               <div>
                 <h3 className="font-semibold">IBS Assistant</h3>
@@ -273,15 +267,7 @@ export default function Chatbot() {
           aria-label="Open chat"
           onMouseEnter={() => setIsHovering(true)}
         >
-          <div className="relative w-8 h-8">
-            <Image
-              src="/Ibs_logo_1.png"
-              alt="Chat with IBS Assistant"
-              fill
-              className="object-contain"
-              priority
-            />
-          </div>
+          <MessageSquare className="w-6 h-6 text-white" />
         </button>
       )}
     </div>

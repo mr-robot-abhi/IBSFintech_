@@ -32,7 +32,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <Link href="/blog" className="inline-flex items-center text-white/80 hover:text-white mb-6 transition-colors">
+            <Link href="/resources/blog" className="inline-flex items-center text-white/80 hover:text-white mb-6 transition-colors">
               <ArrowLeft className="h-4 w-4 mr-2" />
               Back to Blog
             </Link>
@@ -153,7 +153,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
                     transition={{ duration: 0.6, delay: index * 0.1 }}
                     className="group"
                   >
-                    <Link href={`/blog/${relatedPost.slug}`}>
+                    <Link href={`/resources/blog/${relatedPost.slug}`}>
                       <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group-hover:-translate-y-2">
                         <div className="relative h-48 overflow-hidden">
                           <Image

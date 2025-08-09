@@ -197,7 +197,7 @@ export default function Navbar() {
                     <h4 className="text-sm font-semibold text-gray-700 dark:text-gray-200">Media & Updates</h4>
                     <div className="space-y-1">
                       <DropdownMenuItem asChild className="p-0"><Link href="/resources/news" className="w-full px-2 py-1.5 text-sm">Latest News</Link></DropdownMenuItem>
-                      <DropdownMenuItem asChild className="p-0"><Link href="/resources/blogs" className="w-full px-2 py-1.5 text-sm">Blogs</Link></DropdownMenuItem>
+                      <DropdownMenuItem asChild className="p-0"><Link href="/resources/blog" className="w-full px-2 py-1.5 text-sm">Blogs</Link></DropdownMenuItem>
                       <DropdownMenuItem asChild className="p-0"><Link href="/resources/videos" className="w-full px-2 py-1.5 text-sm">Videos</Link></DropdownMenuItem>
                       <DropdownMenuItem asChild className="p-0"><Link href="/resources/testimonials" className="w-full px-2 py-1.5 text-sm">Testimonials</Link></DropdownMenuItem>
                       <DropdownMenuItem asChild className="p-0"><Link href="/resources/events" className="w-full px-2 py-1.5 text-sm">Events</Link></DropdownMenuItem>
@@ -341,7 +341,7 @@ export default function Navbar() {
                     <div>
                       <h4 className="text-xs font-semibold text-gray-500 px-2 py-1">Media & Updates</h4>
                       <Link href="/resources/news" className="block px-2 py-1.5 text-sm text-gray-700 hover:bg-gray-100 rounded" onClick={() => setIsOpen(false)}>Latest News</Link>
-                      <Link href="/resources/blogs" className="block px-2 py-1.5 text-sm text-gray-700 hover:bg-gray-100 rounded" onClick={() => setIsOpen(false)}>Blogs</Link>
+                      <Link href="/resources/blog" className="block px-2 py-1.5 text-sm text-gray-700 hover:bg-gray-100 rounded" onClick={() => setIsOpen(false)}>Blogs</Link>
                       <Link href="/resources/videos" className="block px-2 py-1.5 text-sm text-gray-700 hover:bg-gray-100 rounded" onClick={() => setIsOpen(false)}>Videos</Link>
                       <Link href="/resources/webinars" className="block px-2 py-1.5 text-sm text-gray-700 hover:bg-gray-100 rounded" onClick={() => setIsOpen(false)}>Webinars</Link>
                       <Link href="/resources/events" className="block px-2 py-1.5 text-sm text-gray-700 hover:bg-gray-100 rounded" onClick={() => setIsOpen(false)}>Events</Link>

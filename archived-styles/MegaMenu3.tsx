@@ -124,7 +124,7 @@ const menuItems = [
         title: 'Media & Updates',
         items: [
           { name: 'Latest News', href: '/resources/news', icon: Newspaper },
-          { name: 'Blogs', href: '/resources/blogs', icon: Book },
+          { name: 'Blogs', href: '/resources/blog', icon: Book },
           { name: 'Videos', href: '/resources/videos', icon: Video },
           { name: 'Webinars', href: '/resources/webinars', icon: MessageSquare },
           { name: 'Events', href: '/resources/events', icon: Calendar },
@@ -165,7 +165,7 @@ const menuItems = [
         title: 'Learn More',
         items: [
           { name: 'Case Studies', href: '/resources/case-studies', icon: FileSearch },
-          { name: 'Blog', href: '/blog', icon: Book },
+          { name: 'Blog', href: '/resources/blog', icon: Book },
           { name: 'Events', href: '/events', icon: Calendar },
           { name: 'Webinars', href: '/webinars', icon: Video },
         ]

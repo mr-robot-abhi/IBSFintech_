@@ -4,7 +4,7 @@ import React, { useState, useRef, useEffect, useMemo } from 'react';
 import Image from 'next/image';
 import { motion, useAnimation, useScroll } from 'framer-motion';
 import Tilt from 'react-parallax-tilt';
-import { ArrowRight, Zap, Shield, Globe, Car, Factory, Building, Users, Newspaper, ShoppingBag, Cpu, Truck, Home, BookOpen, ChevronLeft, ChevronRight, MapPin, Phone, Mail, Linkedin, BarChart2 } from 'lucide-react';
+import { ArrowRight, Zap, Shield, Globe, Car, Factory, Building, Users, Newspaper, ShoppingBag, Cpu, Truck, Home, BookOpen, ChevronLeft, ChevronRight, MapPin, Phone, Mail, Linkedin, BarChart2, Settings, Award, Link } from 'lucide-react';
 import Footer from '../layout/Footer';
 import HeroImageSlideshow from './HeroImageSlideshow';
 import ClientLogoStrip from '../common/ClientLogoStrip';
@@ -182,10 +182,10 @@ const FlipCard: React.FC<FlipCardProps> = ({
         transition={{ duration: 0.4, ease: "easeInOut" }}
       >
         <div className="w-full h-full flex flex-col items-center justify-center p-1">
-          <div className="w-6 h-6 bg-black/10 rounded-full flex items-center justify-center mb-1">
-            <currentIndustry.icon className="h-3 w-3 text-black" />
+          <div className="w-8 h-8 bg-black/10 rounded-full flex items-center justify-center mb-1.5">
+            <currentIndustry.icon className="h-4 w-4 text-black" />
           </div>
-          <span className="text-[10px] font-medium text-black text-center leading-tight">{currentIndustry.name}</span>
+          <span className="text-[11px] font-medium text-black text-center leading-tight">{currentIndustry.name}</span>
         </div>
       </motion.div>
 
@@ -487,7 +487,7 @@ export default function IllustrativeOne() {
       {/* --- Main Content Sections (keep order, ensure all tags close properly) --- */}
 
       {/* Hero Banner with Slideshow */}
-      <section className="relative w-full h-screen min-h-[600px] overflow-hidden">
+      <section className="relative w-full h-[90vh] min-h-[500px] overflow-hidden">
         {/* Background Slideshow */}
         <div className="absolute inset-0 z-0">
           <SlideshowBanner />
@@ -729,10 +729,10 @@ export default function IllustrativeOne() {
         </div>
       </section>
       {/* Why Choose Us Section */}
-      <section className="pt-8 pb-16 relative overflow-hidden w-full bg-gradient-to-b from-navy-900 to-navy-950">
+      <section className="py-4 relative overflow-hidden w-full bg-gradient-to-b from-navy-900 to-navy-950">
         <div className="container mx-auto px-4">
-          <div className="backdrop-blur-sm bg-black/30 rounded-2xl border border-white/10 shadow-xl p-6">
-            <div className="flex flex-col lg:flex-row items-center gap-8">
+          <div className="backdrop-blur-sm bg-black/30 rounded-2xl border border-white/10 shadow-xl p-4 md:p-6">
+            <div className="flex flex-col lg:flex-row items-center gap-4 md:gap-8">
               {/* Left Column: Text Panel */}
               <div className="w-full lg:w-2/5">
                 <h2 className="text-3xl md:text-3xl font-bold bg-gradient-to-r from-blue-300 to-blue-500 bg-clip-text text-white mb-4">
@@ -754,64 +754,126 @@ export default function IllustrativeOne() {
                 </button>
               </div>
 
-              {/* Right Column: Enhanced IBS Logo with 6 Vectors */}
-              <div className="w-full lg:w-3/5 relative h-[400px] flex items-center justify-center">
-                {/* Central IBS Logo - Enhanced */}
-                <div className="absolute z-50 flex items-center justify-center w-36 h-36 rounded-full bg-gradient-to-br from-blue-600 to-purple-600 shadow-[0_0_60px_rgba(59,130,246,0.7)] border-2 border-white/30">
-                  <Image
-                    src="/Ibs_logo_1.png"
-                    alt="IBS Logo"
-                    width={56}
-                    height={56}
-                    className="object-contain"
-                  />
+              {/* Right Column: Enhanced Differentiator with 6 Vectors */}
+              <div className="w-full lg:w-3/5 relative h-[500px] md:h-[550px] flex items-center justify-center">
+                {/* Central Differentiator SVG - Centered with vectors */}
+                <div className="absolute z-30 w-[280px] h-[280px] flex items-center justify-center">
+                  <div className="relative w-full h-full">
+                    <Image
+                      src="/Differentiator.svg"
+                      alt="Differentiator"
+                      fill
+                      className="object-contain"
+                      priority
+                    />
+                  </div>
                 </div>
 
-                {/* Enhanced Ring */}
-                <div className="absolute w-72 h-72 rounded-full border border-blue-500/20 z-10"></div>
-
-                {/* 6 Enhanced Vectors Around Logo */}
+                {/* 6 Differentiators */}
                 {[
-                  { icon: BarChart2, title: 'Comprehensive', angle: 0, content: "Our end‑to‑end solution covers compliance, operational, and financial risks. With a unified platform, you gain full visibility and control over your entire risk landscape." },
-                  { icon: Cpu, title: 'Integrated', angle: 60, content: "Seamlessly connects with ERP systems, market data providers, and banking partners. The platform supports SWIFT, FIX, and ISO 20022 messaging standards." },
-                  { icon: Users, title: 'Best Practices', angle: 120, content: "Work together seamlessly with role‑based access controls. Our platform enables real‑time collaboration across teams and departments." },
-                  { icon: Zap, title: 'Nimble', angle: 180, content: "Rapid implementation and deployment with our agile approach. Our cloud‑native architecture allows for instant scaling." },
-                  { icon: Shield, title: 'Domain Centric', angle: 240, content: "Bank‑grade security with end‑to‑end encryption. Your data is protected with the highest industry standards." },
-                  { icon: Globe, title: 'Configurable', angle: 300, content: "Multi‑currency, multi‑language, and multi‑jurisdiction support. Operate seamlessly across borders with our global platform." },
+                  { 
+                    icon: BarChart2, 
+                    title: 'Comprehensive', 
+                    angle: 0, 
+                    content: "End-to-end solutions covering all your business needs",
+                    iconClass: "from-blue-500 to-blue-600"
+                  },
+                  { 
+                    icon: Zap, 
+                    title: 'Nimble', 
+                    angle: 60, 
+                    content: "Quick to adapt and respond to your changing requirements",
+                    iconClass: "from-green-500 to-emerald-600"
+                  },
+                  { 
+                    icon: Cpu, 
+                    title: 'Domain Centric', 
+                    angle: 120, 
+                    content: "Specialized solutions tailored to your industry",
+                    iconClass: "from-purple-500 to-indigo-600"
+                  },
+                  { 
+                    icon: Settings, 
+                    title: 'Configurable', 
+                    angle: 180, 
+                    content: "Customizable to fit your unique business processes",
+                    iconClass: "from-pink-500 to-rose-600"
+                  },
+                  { 
+                    icon: Award, 
+                    title: 'Best Practices', 
+                    angle: 240, 
+                    content: "Built on industry standards and proven methodologies",
+                    iconClass: "from-amber-500 to-orange-600"
+                  },
+                  { 
+                    icon: Link, 
+                    title: 'Integrated', 
+                    angle: 300, 
+                    content: "Seamless connectivity with your existing systems",
+                    iconClass: "from-cyan-500 to-blue-600"
+                  },
                 ].map((feature, idx) => {
-                  const radius = 150; // Increased distance from center
-                  const x = Math.cos((feature.angle * Math.PI) / 180) * radius;
-                  const y = Math.sin((feature.angle * Math.PI) / 180) * radius;
+                  // Calculate position on oval path to match SVG edge
+                  const angleRad = (feature.angle * Math.PI) / 180;
+                  // Adjusted radius to match SVG oval edge
+                  const radiusX = 160; // Horizontal radius to match SVG oval
+                  const radiusY = 140; // Vertical radius to match SVG oval
+                  const x = Math.cos(angleRad) * radiusX;
+                  const y = Math.sin(angleRad) * radiusY;
                   const Icon = feature.icon;
 
-                  // Determine if this is a left-side vector (angles 120, 180, 240)
                   const isLeftSide = feature.angle >= 120 && feature.angle <= 240;
+                  const isTop = feature.angle >= 0 && feature.angle <= 180;
 
                   return (
-                    <div
+                    <motion.div
                       key={idx}
-                      className="absolute group cursor-pointer z-30"
+                      className="absolute group cursor-pointer z-30 w-32 h-32 flex flex-col items-center justify-center"
                       style={{
                         left: '50%',
                         top: '50%',
-                        transform: `translate(${x - 24}px, ${y - 24}px)` // Center the 48px node
+                      }}
+                      initial={{ 
+                        x: 0, 
+                        y: 0,
+                        opacity: 0,
+                        scale: 0.8
+                      }}
+                      animate={{
+                        x: x - 40,
+                        y: y - 40,
+                        opacity: 1,
+                        scale: 1,
+                        transition: {
+                          delay: 0.1 * idx,
+                          type: 'spring',
+                          stiffness: 80,
+                          damping: 12
+                        }
+                      }}
+                      whileHover={{
+                        scale: 1.1,
+                        zIndex: 40,
+                        transition: { 
+                          type: 'spring',
+                          stiffness: 300,
+                          damping: 15
+                        }
                       }}
                     >
-                      {/* Enhanced Vector Node */}
-                      <div className="relative">
-                        <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-600 to-purple-600 flex items-center justify-center shadow-lg border border-white/20 hover:scale-110 transition-transform duration-300">
-                          <Icon className="w-5 h-5 text-white" />
+                      {/* Differentiator Node */}
+                      <div className="flex flex-col items-center space-y-2">
+                        <div className={`relative w-14 h-14 rounded-xl bg-gradient-to-br ${feature.iconClass} flex items-center justify-center shadow-lg border-2 border-white/30 group-hover:shadow-[0_0_25px_-5px_rgba(59,130,246,0.3)] transition-all duration-300 transform group-hover:scale-110`}>
+                          <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                          <Icon className="h-6 w-6 text-white z-10 transition-transform duration-300 group-hover:scale-110" />
                         </div>
-
-                        {/* Enhanced Title */}
-                        <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 whitespace-nowrap">
-                          <span className="text-xs font-semibold text-white bg-black/80 px-2 py-1 rounded-md">
-                            {feature.title}
-                          </span>
-                        </div>
+                        <span className="text-sm font-medium text-white text-center bg-black/30 px-2 py-1 rounded-md backdrop-blur-sm">
+                          {feature.title}
+                        </span>
                       </div>
-
-                      {/* Smart Tooltip - Left side for left vectors, right side for right vectors */}
+                      
+                      {/* Smart Tooltip */}
                       <div className={`absolute top-1/2 -translate-y-1/2 w-60 bg-black/90 backdrop-blur-sm rounded-lg p-4 border border-blue-500/30 shadow-xl transition-all duration-300 opacity-0 invisible group-hover:opacity-100 group-hover:visible z-50 ${isLeftSide
                         ? 'right-full mr-3' // Left side tooltip
                         : 'left-full ml-3'   // Right side tooltip
@@ -825,7 +887,7 @@ export default function IllustrativeOne() {
                         <h3 className="text-sm font-bold text-white mb-2">{feature.title}</h3>
                         <p className="text-xs text-gray-300 leading-relaxed">{feature.content}</p>
                       </div>
-                    </div>
+                    </motion.div>
                   );
                 })}
               </div>

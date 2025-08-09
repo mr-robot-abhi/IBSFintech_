@@ -68,7 +68,7 @@ const featuredClients = [
   }
 ];
 
-// All client logos for the grid
+// All client data for the grid
 const allClientLogos = [
   'IBSFINtech-Client-360One.png',
   'IBSFINtech-Client-APAR.png',
@@ -76,106 +76,166 @@ const allClientLogos = [
   'IBSFINtech-Client-Blue-Star.png',
   'IBSFINtech-Client-Botanic.png',
   'IBSFINtech-Client-Cairn.png',
+  'IBSFINtech-Client-Copra.png',
   'IBSFINtech-Client-Credit-Saison-India.png',
+  'IBSFINtech-Client-Dabur.png',
   'IBSFINtech-Client-ESL-Steel-Limited.png',
+  'IBSFINtech-Client-Fumar.png',
+  'IBSFINtech-Client-GX.png',
+  'IBSFINtech-Client-HCL.png',
   'IBSFINtech-Client-Hilton.png',
   'IBSFINtech-Client-Hindustan-Zinc.png',
+  'IBSFINtech-Client-Holiday-Inn.png',
+  'IBSFINtech-Client-Indigrid.png',
+  'IBSFINtech-Client-International-Metalurgical-Resources-Ltd.png',
+  'IBSFINtech-Client-JSW-International-Tradecorp-Pte-Ltd.png',
   'IBSFINtech-Client-JSW.png',
+  'IBSFINtech-Client-Lagata.png',
+  'IBSFINtech-Client-Mahindra.png',
+  'IBSFINtech-Client-Marriot.png',
+  'IBSFINtech-Client-Mittal.png',
   'IBSFINtech-Client-Mphasis.png',
+  'IBSFINtech-Client-Northern-Aromatics.png',
+  'IBSFINtech-Client-OFI.png',
+  'IBSFINtech-Client-Olam-Agri.png',
+  'IBSFINtech-Client-PWC.png',
   'IBSFINtech-Client-Patanjali.png',
   'IBSFINtech-Client-Polycab.png',
+  'IBSFINtech-Client-Puravankara.png',
   'IBSFINtech-Client-Raymond.png',
+  'IBSFINtech-Client-Sai.png',
   'IBSFINtech-Client-Serum-Institute-India.png',
-  'IBSFINtech-Client-Thermax.png'
-];
+  'IBSFINtech-Client-Sidvin.png',
+  'IBSFINtech-Client-Signature-Global.png',
+  'IBSFINtech-Client-Sonalika.png',
+  'IBSFINtech-Client-TSPL-India.png',
+  'IBSFINtech-Client-Thermax.png',
+  'IBSFINtech-Client-Vedanta.png',
+  'IBSFINtech-Client-Viraj.png',
+  'IBSFINtech-Client-Wipro.png',
+  'International-Metalurgi.png'
+].map(logo => ({
+  name: logo
+    .replace('IBSFINtech-Client-', '')
+    .replace(/-/g, ' ')
+    .replace(/\.png$/, '')
+    .replace(/\b(?:Pte|Ltd|Inc|LLC|Corp|Co)\b/g, '')
+    .replace(/\s+/g, ' ')
+    .trim(),
+  logo: `/IBSFINtech-Client Logos/${logo}`
+}));
 
 export default function OurClientsPage() {
+  // Type for client descriptions
+  type ClientDescriptions = {
+    [key: string]: string;
+  };
+
+  // Client descriptions for the grid
+  const clientDescriptions: ClientDescriptions = {
+    '360One': 'Leading financial services company leveraging our treasury solutions',
+    'APAR': 'Industrial conglomerate optimizing financial operations',
+    'Balco': 'Aluminum manufacturer enhancing treasury management',
+    'Blue Star': 'Premier air conditioning company streamlining financial processes',
+    'Botanic': 'Innovative solutions for sustainable financial management',
+    'Cairn': 'Energy leader with optimized treasury operations',
+    'Copra': 'Transforming financial workflows with digital solutions',
+    'Credit Saison India': 'Financial services innovator in partnership with IBSFINtech',
+    'Dabur': 'FMCG giant with streamlined financial operations',
+    'ESL Steel Limited': 'Steel manufacturer with efficient treasury management',
+    'Fumar': 'Financial solutions for sustainable business growth',
+    'GX': 'Driving financial innovation through technology',
+    'HCL': 'Global IT leader with optimized financial processes',
+    'Hilton': 'Hospitality giant with streamlined financial operations',
+    'Hindustan Zinc': 'Metals and mining leader with efficient treasury solutions',
+    'Holiday Inn': 'Global hospitality brand with optimized financial management',
+    'Indigrid': 'Powering financial operations for energy infrastructure',
+    'International Metalurgical Resources': 'Mining leader with robust financial systems',
+    'JSW': 'Diversified business group with advanced treasury solutions',
+    'Lagata': 'Innovative financial management solutions',
+    'Mahindra': 'Global enterprise with streamlined financial operations',
+    'Marriot': 'Hospitality leader with efficient financial management',
+    'Mittal': 'Steel and mining giant with optimized treasury',
+    'Mphasis': 'IT solutions provider with advanced financial systems',
+    'Northern Aromatics': 'Chemical manufacturer with efficient financial operations',
+    'OFI': 'Global food ingredients leader with optimized treasury',
+    'Olam Agri': 'Agri-business with streamlined financial management',
+    'PWC': 'Professional services leader with efficient financial solutions',
+    'Patanjali': 'FMCG leader with optimized financial operations',
+    'Polycab': 'Electrical goods manufacturer with efficient treasury',
+    'Puravankara': 'Real estate developer with streamlined financial management',
+    'Raymond': 'Textile and apparel leader with optimized financial operations',
+    'Sai': 'Diversified business with efficient financial solutions',
+    'Serum Institute India': 'Pharmaceutical leader with robust financial systems',
+    'Sidvin': 'Infrastructure company with optimized financial management',
+    'Signature Global': 'Real estate developer with efficient financial operations',
+    'Sonalika': 'Automotive manufacturer with streamlined treasury',
+    'TSPL India': 'Power company with optimized financial solutions',
+    'Thermax': 'Energy and environment solutions with efficient financial management',
+    'Vedanta': 'Natural resources leader with robust financial systems',
+    'Viraj': 'Stainless steel manufacturer with optimized treasury',
+    'Wipro': 'Global IT leader with efficient financial operations',
+    'International Metalurgi': 'Mining and metals with streamlined financial management'
+  };
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Banner */}
-      <div className="relative h-96 w-full overflow-hidden">
-        <div 
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage: 'url(/bg_14.jpeg)'
-          }}
-        >
-          <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-            <div className="text-center px-4">
-              <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">Our Valued Clients</h1>
-              <p className="text-xl text-gray-200 max-w-4xl mx-auto">
-                IBSFINtech's clientele is spread across industries and geographies. Representing the leading corporates in respective industry verticals, our clientele are mid to very large organizations with global Treasury & Trade Finance operations.
-              </p>
-            </div>
+      <div className="relative h-96 w-full overflow-hidden bg-gray-900">
+        <div className="container mx-auto h-full flex items-center relative z-10">
+          <div className="w-full lg:w-1/2 px-4 lg:px-8">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">Our Valued Clients</h1>
+            <p className="text-xl text-gray-200">
+              IBSFINtech's clientele is spread across industries and geographies. Representing the leading corporates in respective industry verticals, our clientele are mid to very large organizations with global Treasury & Trade Finance operations.
+            </p>
+          </div>
+          <div className="hidden lg:block lg:w-1/2 h-full">
+            <div 
+              className="h-full w-full bg-cover bg-center"
+              style={{
+                backgroundImage: 'url(/bg_14.jpeg)',
+              }}
+            />
           </div>
         </div>
+        <div className="absolute inset-0 bg-black bg-opacity-50 lg:bg-opacity-70 lg:bg-gradient-to-r lg:from-black lg:to-transparent" />
       </div>
 
-      {/* Featured Clients Section */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">Trusted by Industry Leaders</h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            We're proud to partner with forward-thinking organizations across the globe
-          </p>
-        </div>
-
-        {/* Featured Client Highlights */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mb-16">
-          {featuredClients.map((client) => (
-            <div 
-              key={client.name} 
-              className="group bg-white rounded-xl shadow-sm hover:shadow-md overflow-hidden flex flex-col h-full transition-all duration-200 border border-gray-100 hover:border-blue-50"
-            >
-              <div className="h-36 bg-gray-50/50 flex items-center justify-center p-4">
-                <img 
-                  src={client.logo} 
-                  alt={`${client.name} logo`} 
-                  className="h-20 w-auto max-w-full object-contain transition-transform duration-200 group-hover:scale-105"
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    target.onerror = null;
-                    target.src = '/placeholder-logo.png';
-                  }}
-                />
-              </div>
-              <div className="p-4 flex-1 flex flex-col">
-                <h3 className="text-lg font-semibold text-gray-900 mb-2 line-clamp-1">{client.name}</h3>
-                <p className="text-sm text-gray-600 mb-3 line-clamp-3">{client.description}</p>
-                <div className="mt-auto flex items-center text-xs text-blue-600 pt-2 border-t border-gray-100">
-                  <Check className="h-3.5 w-3.5 mr-1.5 flex-shrink-0" />
-                  <span>Key Partner</span>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
 
         {/* Full Client Grid */}
         <div className="bg-white p-8 rounded-xl shadow-sm">
           <div className="text-center mb-12">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-2">Our Esteemed Clients</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 text-center">Our Esteemed Clients</h2>
             <p className="text-gray-600 max-w-3xl mx-auto">
               We are proud to serve a diverse portfolio of clients across various industries
             </p>
           </div>
           
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
-            {allClientLogos.map((logo, index) => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {allClientLogos.map((client, index) => (
               <div 
                 key={index} 
-                className="bg-gray-50 p-4 rounded-lg flex items-center justify-center h-32 hover:shadow-md transition-all hover:scale-105"
+                className="group bg-white rounded-xl shadow-sm hover:shadow-md overflow-hidden flex flex-col h-full transition-all duration-200 border border-gray-100 hover:border-blue-50"
               >
-                <img 
-                  src={`/IBSFINtech-Client Logos/${logo}`} 
-                  alt={logo.replace('IBSFINtech-Client-', '').replace('.png', '')} 
-                  className="h-16 w-auto object-contain grayscale hover:grayscale-0 transition-all"
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    target.onerror = null;
-                    target.src = '/placeholder-logo.png';
-                  }}
-                />
+                <div className="h-36 bg-gray-50/50 flex items-center justify-center p-4">
+                  <img 
+                    src={client.logo} 
+                    alt={client.name}
+                    className="h-20 w-auto max-w-full object-contain transition-transform duration-200 group-hover:scale-105"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.onerror = null;
+                      target.src = '/placeholder-logo.png';
+                    }}
+                  />
+                </div>
+                <div className="p-4 flex-1 flex flex-col">
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2 line-clamp-1">{client.name}</h3>
+                  <p className="text-sm text-gray-600 line-clamp-2">
+                    {clientDescriptions[client.name] || 'Trusted partner for financial solutions'}
+                  </p>
+                </div>
               </div>
             ))}
           </div>

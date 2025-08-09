@@ -7,6 +7,8 @@ import { motion } from 'framer-motion';
 import { ArrowRight, Calendar, User, Tag, ChevronLeft, ChevronRight } from 'lucide-react';
 import { blogPosts } from '@/lib/blog';
 
+
+
 const BlogPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 6;
@@ -67,7 +69,7 @@ const BlogPage = () => {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 className="group"
               >
-                <Link href={`/blog/${post.slug}`}>
+                <Link href={`/resources/blog/${post.slug}`}>
                   <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group-hover:-translate-y-2">
                     {/* Image */}
                     <div className="relative h-48 overflow-hidden">

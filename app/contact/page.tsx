@@ -7,7 +7,8 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Check, Mail, MapPin, Phone, Building, Globe, Users, Navigation } from 'lucide-react';
+import { Check, Mail, MapPin, Phone, Building, Globe } from 'lucide-react';
+import WorldMap from '@/components/common/WorldMap';
 
 const ContactPage = () => {
   const { theme } = useTheme();
@@ -21,7 +22,7 @@ const ContactPage = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [selectedLocation, setSelectedLocation] = useState('bengaluru');
+
 
   const services = [
     'Enterprise TMS',
@@ -46,8 +47,7 @@ const ContactPage = () => {
       phone: '(+91) 95915 99720',
       phone2: '(+91) (80) 41219181',
       email: 'contactus@ibsfintech.com',
-      icon: Building,
-      mapUrl: 'https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d124398.9898865502!2d77.51643725720824!3d13.005814477664561!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sJP%20CORP%20Building%2C%20%20%23219%2F11%2C%202nd%20Floor%2C%20Bellary%20Road%2C%20Sadashivanagar%2C%20Bengaluru-560080!5e0!3m2!1sen!2sin!4v1754633889905!5m2!1sen!2sin'
+      icon: Building
     },
     {
       id: 'usa',
@@ -56,8 +56,7 @@ const ContactPage = () => {
       address: '924 US-9 SUITE 200, South Amboy, NJ 08879',
       phone: '+1 (908) 529-1096',
       email: 'sales-us@ibsfintech.com',
-      icon: Globe,
-      mapUrl: 'https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d388536.16328683443!2d-74.296786!3d40.465557!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c3cbc3a69fc96d%3A0xde17eae0b48e37db!2s924%20US-9%20SUITE%20200%2C%20South%20Amboy%2C%20NJ%2008879!5e0!3m2!1sen!2sus!4v1754633950981!5m2!1sen!2sus'
+      icon: Globe
     },
     {
       id: 'mumbai-andheri',
@@ -66,8 +65,7 @@ const ContactPage = () => {
       address: 'Level – 7, Wing – B, Satellite Gazebo, Guruhargovidji Marg, Andheri Ghatkopar Link Road, Chakala, Andheri, Mumbai - 400093',
       phone: '(+91) 95915 99720',
       email: 'contactus@ibsfintech.com',
-      icon: Building,
-      mapUrl: 'https://www.google.com/maps/embed?pb=!1m12!1m8!1m3!1d482543.9150441097!2d72.861164!3d19.113168!3m2!1i1024!2i768!4f13.1!2m1!1sLevel%20%E2%80%93%207%2C%20Wing%20%E2%80%93%20B%2C%20Satellite%20Gazebo%2C%20Guruhargovidji%20Marg%2C%20Andheri%20Ghatkopar%20Link%20Road%2C%20Chakala%2C%20Andheri%2C%20Mumbai%20-%20400093!5e0!3m2!1sen!2sus!4v1754634037042!5m2!1sen!2sus'
+      icon: Building
     },
     {
       id: 'mumbai-bkc',
@@ -76,8 +74,7 @@ const ContactPage = () => {
       address: 'AKT Corporate Office: Level 20, Crescenzo Business District, Bandra Kurla Complex, Bandra, Mumbai - 400051',
       phone: '(+91) 95915 99720',
       email: 'contactus@ibsfintech.com',
-      icon: Building,
-      mapUrl: 'https://www.google.com/maps/embed?pb=!1m12!1m8!1m3!1d482683.89675206563!2d72.865175!3d19.065147!3m2!1i1024!2i768!4f13.1!2m1!1sAKT%20Corporate%20Office%3A%20Level%2020%2C%20Crescenzo%20Business%20District%2C%20Bandra%20Kurla%20Complex%2C%20Bandra%2CMumbai%20-%20400051!5e0!3m2!1sen!2sus!4v1754634070129!5m2!1sen!2sus'
+      icon: Building
     },
     {
       id: 'gurugram',
@@ -86,8 +83,7 @@ const ContactPage = () => {
       address: 'Building 8, Level 12, Tower C, DLF Cyber City Complex, 12th Cross Road, DLF City Phase II, Gurgaon, Haryana, 122002',
       phone: '(+91) 95915 99720',
       email: 'contactus@ibsfintech.com',
-      icon: Building,
-      mapUrl: 'https://www.google.com/maps/embed?pb=!1m12!1m8!1m3!1d448825.69714835857!2d77.089842!3d28.496083!3m2!1i1024!2i768!4f13.1!2m1!1sBuilding%208%2C%20Level%2012%2C%20Tower%20C%2C%20DLF%20Cyber%20City%20Complex%2C%2012th%20Cross%20Road%2C%20DLF%20City%20Phase%20II%2C%20Gurgaon%2C%20Haryana%2C%20122002!5e0!3m2!1sen!2sus!4v1754634086880!5m2!1sen!2sus'
+      icon: Building
     }
   ];
 
@@ -148,7 +144,7 @@ const ContactPage = () => {
     }
   };
 
-  const selectedLocationData = locations.find(loc => loc.id === selectedLocation);
+
 
   return (
     <div className={`min-h-screen pt-20 pb-16 px-4 sm:px-6 lg:px-8 ${theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-gray-50 text-gray-900'}`}>
@@ -389,136 +385,79 @@ const ContactPage = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
           >
-            {/* Location Selector */}
+            {/* Office Locations List */}
             <div className={`p-6 rounded-2xl shadow-xl ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'}`}>
               <h3 className="text-xl font-bold mb-4 text-gray-800 dark:text-gray-200">Our Global Offices</h3>
               
-              {/* Location Tabs */}
-              <div className="grid grid-cols-2 md:grid-cols-5 gap-2 mb-4">
+              <div className="space-y-4">
                 {locations.map((location) => {
                   const IconComponent = location.icon;
                   return (
-                    <button
+                    <motion.div
                       key={location.id}
-                      onClick={() => setSelectedLocation(location.id)}
-                      className={`p-2 rounded-lg border-2 transition-all duration-200 text-center ${
-                        selectedLocation === location.id
-                          ? 'border-teal-500 bg-teal-50 dark:bg-teal-900/20 shadow-md'
-                          : 'border-gray-200 dark:border-gray-600 hover:border-teal-300 hover:shadow-sm'
-                      }`}
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="p-4 rounded-lg bg-gradient-to-br from-teal-50 to-blue-50 dark:from-teal-900/20 dark:to-blue-900/20 border border-teal-200 dark:border-teal-800"
                     >
-                      <IconComponent className={`w-4 h-4 mx-auto mb-1 ${
-                        selectedLocation === location.id ? 'text-teal-600' : 'text-gray-500'
-                      }`} />
-                      <span className={`font-medium text-xs ${
-                        selectedLocation === location.id ? 'text-teal-800 dark:text-teal-200' : 'text-gray-700 dark:text-gray-300'
-                      }`}>
-                        {location.name}
-                      </span>
-                    </button>
+                      <div className="flex items-start mb-3">
+                        <div className={`flex-shrink-0 h-8 w-8 rounded-full flex items-center justify-center ${theme === 'dark' ? 'bg-teal-900/30' : 'bg-teal-100'} mr-3`}>
+                          <IconComponent className={`h-4 w-4 ${theme === 'dark' ? 'text-teal-400' : 'text-teal-600'}`} />
+                        </div>
+                        <div className="flex-1">
+                          <h4 className="font-semibold text-sm mb-1">{location.name}</h4>
+                          <p className="text-xs text-gray-500 dark:text-gray-400 mb-2">{location.city}</p>
+                          <p className={`text-xs ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'} mb-2`}>
+                            {location.address}
+                          </p>
+                          
+                          <div className="space-y-1">
+                            <div className="flex items-center">
+                              <Phone className={`h-3 w-3 ${theme === 'dark' ? 'text-teal-400' : 'text-teal-600'} mr-2`} />
+                              <a 
+                                href={`tel:${location.phone.replace(/\D/g, '')}`}
+                                className={`text-xs hover:text-teal-500 transition-colors ${theme === 'dark' ? 'text-teal-400' : 'text-teal-600'}`}
+                              >
+                                {location.phone}
+                              </a>
+                            </div>
+
+                            {location.phone2 && (
+                              <div className="flex items-center">
+                                <Phone className={`h-3 w-3 ${theme === 'dark' ? 'text-teal-400' : 'text-teal-600'} mr-2`} />
+                                <a 
+                                  href={`tel:${location.phone2.replace(/\D/g, '')}`}
+                                  className={`text-xs hover:text-teal-500 transition-colors ${theme === 'dark' ? 'text-teal-400' : 'text-teal-600'}`}
+                                >
+                                  {location.phone2}
+                                </a>
+                              </div>
+                            )}
+                            
+                            <div className="flex items-center">
+                              <Mail className={`h-3 w-3 ${theme === 'dark' ? 'text-teal-400' : 'text-teal-600'} mr-2`} />
+                              <a 
+                                href={`mailto:${location.email}`}
+                                className={`text-xs hover:text-teal-500 transition-colors ${theme === 'dark' ? 'text-teal-400' : 'text-teal-600'}`}
+                              >
+                                {location.email}
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </motion.div>
                   );
                 })}
               </div>
-
-              {/* Selected Location Details */}
-              <AnimatePresence mode="wait">
-                {selectedLocationData && (
-                  <motion.div
-                    key={selectedLocation}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -20 }}
-                    transition={{ duration: 0.3 }}
-                    className="p-4 rounded-lg bg-gradient-to-br from-teal-50 to-blue-50 dark:from-teal-900/20 dark:to-blue-900/20 border border-teal-200 dark:border-teal-800"
-                  >
-                    <div className="flex items-start mb-3">
-                      <div className={`flex-shrink-0 h-10 w-10 rounded-full flex items-center justify-center ${theme === 'dark' ? 'bg-teal-900/30' : 'bg-teal-100'} mr-3`}>
-                        <MapPin className={`h-5 w-5 ${theme === 'dark' ? 'text-teal-400' : 'text-teal-600'}`} />
-                      </div>
-                      <div>
-                        <h4 className="font-semibold text-base mb-1">{selectedLocationData.name}</h4>
-                        <p className="text-xs text-gray-500 dark:text-gray-400 mb-1">{selectedLocationData.city}</p>
-                        <p className={`text-xs ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}>
-                          {selectedLocationData.address}
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                      {selectedLocationData.phone && (
-                        <div className="flex items-center">
-                          <Phone className={`h-3 w-3 ${theme === 'dark' ? 'text-teal-400' : 'text-teal-600'} mr-2`} />
-                          <a 
-                            href={`tel:${selectedLocationData.phone.replace(/\D/g, '')}`}
-                            className={`text-xs hover:text-teal-500 transition-colors ${theme === 'dark' ? 'text-teal-400' : 'text-teal-600'}`}
-                          >
-                            {selectedLocationData.phone}
-                          </a>
-                        </div>
-                      )}
-
-                      {selectedLocationData.phone2 && (
-                        <div className="flex items-center">
-                          <Phone className={`h-3 w-3 ${theme === 'dark' ? 'text-teal-400' : 'text-teal-600'} mr-2`} />
-                          <a 
-                            href={`tel:${selectedLocationData.phone2.replace(/\D/g, '')}`}
-                            className={`text-xs hover:text-teal-500 transition-colors ${theme === 'dark' ? 'text-teal-400' : 'text-teal-600'}`}
-                          >
-                            {selectedLocationData.phone2}
-                          </a>
-                        </div>
-                      )}
-
-                      <div className="flex items-center md:col-span-2">
-                        <Mail className={`h-3 w-3 ${theme === 'dark' ? 'text-teal-400' : 'text-teal-600'} mr-2`} />
-                        <a 
-                          href={`mailto:${selectedLocationData.email}`}
-                          className={`text-xs hover:text-teal-500 transition-colors ${theme === 'dark' ? 'text-teal-400' : 'text-teal-600'}`}
-                        >
-                          {selectedLocationData.email}
-                        </a>
-                      </div>
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
             </div>
 
-            {/* Interactive Map */}
-            <div className={`rounded-2xl overflow-hidden shadow-xl ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'} flex-1`}>
-              <div className="p-3 border-b border-gray-200 dark:border-gray-700">
-                <div className="flex items-center justify-between">
-                  <h4 className="font-semibold text-sm text-gray-800 dark:text-gray-200">
-                    <Navigation className="w-3 h-3 inline mr-2" />
-                    {selectedLocationData?.name} Office
-                  </h4>
-                  <span className="text-xs text-gray-500 dark:text-gray-400">
-                    Interactive Map
-                  </span>
-                </div>
-              </div>
-              <div className="h-[calc(100vh-300px)] min-h-[500px] w-full">
-                <AnimatePresence mode="wait">
-                  <motion.iframe
-                    key={selectedLocation}
-                    src={selectedLocationData?.mapUrl}
-                    width="100%"
-                    height="100%"
-                    style={{ border: 0 }}
-                    allowFullScreen
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.3 }}
-                    className="w-full h-full"
-                  />
-                </AnimatePresence>
-              </div>
-            </div>
+
           </motion.div>
         </div>
+        
+        {/* World Map Component */}
+        <WorldMap />
       </div>
     </div>
   );
