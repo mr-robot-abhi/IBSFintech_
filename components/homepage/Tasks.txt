@@ -69,3 +69,4 @@ Family Offices
 Lets work on the solutions/trade-finance page...Move the banner heading / text to the left. Add this image to the right hand side of the banner section and make the section more compact. No white space please 
 
 
+For the blogs page...Create a small section on the right hand side..It should display Explore our Products and Solutions and the links should work. Also add a search bar to that page..Like a working search bar please...On the right hand side...Dont break anything. 
