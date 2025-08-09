@@ -346,8 +346,8 @@ export function searchRelevantContent(
   const relevantCaseStudies = knowledge.caseStudies.filter(cs =>
     cs.title.toLowerCase().includes(searchTerm) ||
     cs.excerpt.toLowerCase().includes(searchTerm) ||
-    cs.industry.toLowerCase().includes(searchTerm) ||
-    cs.solution.toLowerCase().includes(searchTerm)
+    cs.category.toLowerCase().includes(searchTerm) ||
+    cs.description.toLowerCase().includes(searchTerm)
   ).slice(0, 3);
 
   const relevantNews = knowledge.news.filter(article =>
@@ -419,7 +419,7 @@ export function generateEnhancedContext(
   if (relevantContent.caseStudies.length > 0) {
     context += `\nRelevant Case Studies:\n`;
     relevantContent.caseStudies.forEach(cs => {
-      context += `- ${cs.title} (${cs.industry}): ${cs.excerpt.substring(0, 100)}...\n`;
+      context += `- ${cs.title} (${cs.category}): ${cs.excerpt.substring(0, 100)}...\n`;
     });
   }
   
