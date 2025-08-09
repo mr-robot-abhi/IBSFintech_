@@ -1,14 +1,14 @@
 'use client';
 
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
+import Image from 'next/image';
 import { useTheme } from '@/context/ThemeContext';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Check, Mail, MapPin, Phone, Building, Globe } from 'lucide-react';
-import WorldMap from '@/components/common/WorldMap';
 
 const ContactPage = () => {
   const { theme } = useTheme();
@@ -147,113 +147,134 @@ const ContactPage = () => {
 
 
   return (
-    <div className={`min-h-screen pt-20 pb-16 px-4 sm:px-6 lg:px-8 ${theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-gray-50 text-gray-900'}`}>
-      <div className="max-w-7xl mx-auto">
-        {/* Header */}
-        <div className="text-center mb-12">
-          <motion.h1 
-            className="text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-teal-500 to-blue-600"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            Get Connected
-          </motion.h1>
-          <motion.p 
-            className={`text-lg max-w-2xl mx-auto ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-          >
-            Start your Digital Transformation Journey with IBSFINtech. Talk to our experts today!
-          </motion.p>
+    <div className="min-h-screen">
+      {/* Banner Section with map.jpg */}
+      <section className="relative h-[500px] overflow-hidden">
+        <div className="absolute inset-0">
+          <Image
+            src="/map.jpg"
+            alt="Global Presence Map"
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-black/50"></div>
         </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {/* Left Column - Content and Form */}
-          <motion.div 
-            className="space-y-6"
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
-            {/* Get In Touch Content */}
-            <div className={`p-6 rounded-2xl shadow-xl ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'}`}>
-              <h2 className="text-2xl font-bold mb-4 bg-gradient-to-r from-teal-500 to-blue-600 bg-clip-text text-transparent">
+        
+        <div className="relative z-10 h-full flex items-center">
+          <div className="container mx-auto px-6">
+            <div className="max-w-2xl">
+              <motion.h1 
+                className="text-5xl md:text-6xl font-bold text-white mb-6"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7 }}
+              >
                 Get In Touch
-              </h2>
-              <p className="text-base mb-4 text-gray-600 dark:text-gray-300">
+              </motion.h1>
+              <motion.p 
+                className="text-xl text-white/90 mb-8 leading-relaxed"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.2 }}
+              >
                 Connect with our Treasury, Risk & Trade Finance Management® (TRTFM®) experts to start your corporate's digital transformation journey with IBSFINtech.
-              </p>
-              
-              <p className="text-gray-600 dark:text-gray-300 mb-4">
-                IBSFINtech has a presence across the globe with offices in multiple cities. Find details of all our offices below.
-              </p>
+              </motion.p>
+              <motion.div
+                className="space-y-4 text-white/80"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.4 }}
+              >
+                <p>IBSFINtech has a presence across the globe with offices in multiple cities.</p>
+                <p>Fill out our form, and the right team will reach out to you within 2 working days.</p>
+              </motion.div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-              <p className="text-gray-600 dark:text-gray-300 mb-4">
-                Fill out this simple form, and the right team will reach out to you within 2 working days.
-              </p>
-
-              <div className="space-y-3">
-                <div className="flex items-start">
-                  <Mail className="w-4 h-4 text-teal-600 mt-1 mr-2 flex-shrink-0" />
-                  <div>
-                    <p className="text-sm text-gray-600 dark:text-gray-300">
-                      For your Treasury, Risk & Trade Finance automation related requirements, you can write to us at{' '}
-                      <a href="mailto:demo@ibsfintech.com" className="text-teal-600 hover:text-teal-700">demo@ibsfintech.com</a>
-                      {' '}or call us at <a href="tel:+919591599720" className="text-teal-600 hover:text-teal-700">(+91) 95915 99720</a> / <a href="tel:+918041219181" className="text-teal-600 hover:text-teal-700">(+91) (80) 41219181</a>
-                    </p>
+      {/* Get In Touch Section - Horizontal Layout */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+            {/* Contact Information */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="space-y-8"
+            >
+              <div>
+                <h2 className="text-3xl font-bold text-gray-900 mb-6">Contact Information</h2>
+                <div className="space-y-6">
+                  <div className="flex items-start space-x-4">
+                    <Mail className="w-6 h-6 text-teal-600 mt-1 flex-shrink-0" />
+                    <div>
+                      <h3 className="font-semibold text-gray-900 mb-2">Treasury & Trade Finance Automation</h3>
+                      <p className="text-gray-600 mb-1">
+                        Email: <a href="mailto:demo@ibsfintech.com" className="text-teal-600 hover:text-teal-700 font-medium">demo@ibsfintech.com</a>
+                      </p>
+                      <p className="text-gray-600">
+                        Phone: <a href="tel:+919591599720" className="text-teal-600 hover:text-teal-700 font-medium">(+91) 95915 99720</a> / <a href="tel:+918041219181" className="text-teal-600 hover:text-teal-700 font-medium">(+91) (80) 41219181</a>
+                      </p>
+                    </div>
                   </div>
-                </div>
 
-                <div className="flex items-start">
-                  <Mail className="w-4 h-4 text-teal-600 mt-1 mr-2 flex-shrink-0" />
-                  <div>
-                    <p className="text-sm text-gray-600 dark:text-gray-300">
-                      For sales enquiries in USA, write to us at{' '}
-                      <a href="mailto:sales-us@ibsfintech.com" className="text-teal-600 hover:text-teal-700">sales-us@ibsfintech.com</a>
-                      {' '}or call us at <a href="tel:+19085291096" className="text-teal-600 hover:text-teal-700">+1 (908) 529-1096</a>
-                    </p>
+                  <div className="flex items-start space-x-4">
+                    <Globe className="w-6 h-6 text-teal-600 mt-1 flex-shrink-0" />
+                    <div>
+                      <h3 className="font-semibold text-gray-900 mb-2">USA Sales Enquiries</h3>
+                      <p className="text-gray-600 mb-1">
+                        Email: <a href="mailto:sales-us@ibsfintech.com" className="text-teal-600 hover:text-teal-700 font-medium">sales-us@ibsfintech.com</a>
+                      </p>
+                      <p className="text-gray-600">
+                        Phone: <a href="tel:+19085291096" className="text-teal-600 hover:text-teal-700 font-medium">+1 (908) 529-1096</a>
+                      </p>
+                    </div>
                   </div>
-                </div>
 
-                <div className="flex items-start">
-                  <Mail className="w-4 h-4 text-teal-600 mt-1 mr-2 flex-shrink-0" />
-                  <div>
-                    <p className="text-sm text-gray-600 dark:text-gray-300">
-                      For Career related enquiries, write to us at{' '}
-                      <a href="mailto:career@ibsfintech.com" className="text-teal-600 hover:text-teal-700">career@ibsfintech.com</a>
-                    </p>
+                  <div className="flex items-start space-x-4">
+                    <Building className="w-6 h-6 text-teal-600 mt-1 flex-shrink-0" />
+                    <div>
+                      <h3 className="font-semibold text-gray-900 mb-2">Career Enquiries</h3>
+                      <p className="text-gray-600">
+                        Email: <a href="mailto:career@ibsfintech.com" className="text-teal-600 hover:text-teal-700 font-medium">career@ibsfintech.com</a>
+                      </p>
+                    </div>
                   </div>
-                </div>
 
-                <div className="flex items-start">
-                  <Mail className="w-4 h-4 text-teal-600 mt-1 mr-2 flex-shrink-0" />
-                  <div>
-                    <p className="text-sm text-gray-600 dark:text-gray-300">
-                      Drop in a line to us{' '}
-                      <a href="mailto:contactus@ibsfintech.com" className="text-teal-600 hover:text-teal-700">contactus@ibsfintech.com</a>
-                      {' '}for other enquiries or support
-                    </p>
+                  <div className="flex items-start space-x-4">
+                    <Phone className="w-6 h-6 text-teal-600 mt-1 flex-shrink-0" />
+                    <div>
+                      <h3 className="font-semibold text-gray-900 mb-2">General Support</h3>
+                      <p className="text-gray-600">
+                        Email: <a href="mailto:contactus@ibsfintech.com" className="text-teal-600 hover:text-teal-700 font-medium">contactus@ibsfintech.com</a>
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
 
             {/* Contact Form */}
-            <div className={`p-6 rounded-2xl shadow-xl ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'}`}>
-              <h2 className="text-xl font-bold mb-4 text-center">Get Connected</h2>
-              <p className="text-gray-600 dark:text-gray-300 mb-4 text-center text-sm">
-                Start your Digital Transformation Journey with IBSFINtech. Talk to our experts today!
-              </p>
-
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="bg-gray-50 p-8 rounded-2xl shadow-lg"
+            >
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">Send Us a Message</h2>
+              
               {isSubmitted ? (
                 <div className="text-center py-8">
-                  <div className="mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-green-100 dark:bg-green-900/30 mb-4">
-                    <Check className="h-8 w-8 text-green-600 dark:text-green-400" />
+                  <div className="mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-green-100 mb-4">
+                    <Check className="h-8 w-8 text-green-600" />
                   </div>
-                  <h3 className="text-xl font-bold mb-2">Thank You!</h3>
-                  <p className={`mb-4 text-sm ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}>
+                  <h3 className="text-xl font-bold mb-2 text-gray-900">Thank You!</h3>
+                  <p className="mb-4 text-gray-600">
                     Your message has been sent successfully. We'll get back to you within 2 working days.
                   </p>
                   <Button 
@@ -264,10 +285,10 @@ const ContactPage = () => {
                   </Button>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-4">
+                <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                      <label htmlFor="name" className="block text-sm font-medium mb-1">Full Name <span className="text-red-500">*</span></label>
+                      <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">Full Name <span className="text-red-500">*</span></label>
                       <Input
                         id="name"
                         name="name"
@@ -275,12 +296,12 @@ const ContactPage = () => {
                         required
                         value={formData.name}
                         onChange={handleChange}
-                        className={`w-full ${theme === 'dark' ? 'bg-gray-700 border-gray-600' : 'bg-white border-gray-300'}`}
+                        className="w-full"
                         placeholder="John Doe"
                       />
                     </div>
                     <div>
-                      <label htmlFor="email" className="block text-sm font-medium mb-1">Email <span className="text-red-500">*</span></label>
+                      <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">Email <span className="text-red-500">*</span></label>
                       <Input
                         id="email"
                         name="email"
@@ -288,7 +309,7 @@ const ContactPage = () => {
                         required
                         value={formData.email}
                         onChange={handleChange}
-                        className={`w-full ${theme === 'dark' ? 'bg-gray-700 border-gray-600' : 'bg-white border-gray-300'}`}
+                        className="w-full"
                         placeholder="john@company.com"
                       />
                     </div>
@@ -296,38 +317,38 @@ const ContactPage = () => {
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                      <label htmlFor="phone" className="block text-sm font-medium mb-1">Phone Number</label>
+                      <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
                       <Input
                         id="phone"
                         name="phone"
                         type="tel"
                         value={formData.phone}
                         onChange={handleChange}
-                        className={`w-full ${theme === 'dark' ? 'bg-gray-700 border-gray-600' : 'bg-white border-gray-300'}`}
+                        className="w-full"
                         placeholder="+1 (555) 123-4567"
                       />
                     </div>
                     <div>
-                      <label htmlFor="company" className="block text-sm font-medium mb-1">Company</label>
+                      <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-2">Company</label>
                       <Input
                         id="company"
                         name="company"
                         type="text"
                         value={formData.company}
                         onChange={handleChange}
-                        className={`w-full ${theme === 'dark' ? 'bg-gray-700 border-gray-600' : 'bg-white border-gray-300'}`}
+                        className="w-full"
                         placeholder="Company Name"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label htmlFor="service" className="block text-sm font-medium mb-1">Service of Interest <span className="text-red-500">*</span></label>
+                    <label htmlFor="service" className="block text-sm font-medium text-gray-700 mb-2">Service of Interest <span className="text-red-500">*</span></label>
                     <Select onValueChange={handleSelectChange} value={formData.service}>
-                      <SelectTrigger className={`w-full ${theme === 'dark' ? 'bg-gray-700 border-gray-600' : 'bg-white border-gray-300'}`}>
+                      <SelectTrigger className="w-full">
                         <SelectValue placeholder="Select a service" />
                       </SelectTrigger>
-                      <SelectContent className={theme === 'dark' ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'}>
+                      <SelectContent>
                         {services.map((service) => (
                           <SelectItem key={service} value={service}>
                             {service}
@@ -338,127 +359,115 @@ const ContactPage = () => {
                   </div>
 
                   <div>
-                    <label htmlFor="message" className="block text-sm font-medium mb-1">Your Message <span className="text-red-500">*</span></label>
+                    <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">Your Message <span className="text-red-500">*</span></label>
                     <Textarea
                       id="message"
                       name="message"
-                      rows={3}
+                      rows={4}
                       required
                       value={formData.message}
                       onChange={handleChange}
-                      className={`w-full ${theme === 'dark' ? 'bg-gray-700 border-gray-600' : 'bg-white border-gray-300'}`}
+                      className="w-full"
                       placeholder="How can we help you?"
                     />
                   </div>
 
-                  <div className="pt-2">
-                    <Button 
-                      type="submit" 
-                      className="w-full bg-gradient-to-r from-teal-500 to-blue-600 hover:from-teal-600 hover:to-blue-700 text-white py-4 text-base font-medium rounded-xl transition-all duration-300 transform hover:scale-[1.02] shadow-lg hover:shadow-xl"
-                      disabled={isSubmitting}
-                    >
-                      {isSubmitting ? 'Sending...' : 'Send Message'}
-                      {!isSubmitting && (
-                        <motion.span
-                          className="ml-2 inline-block"
-                          animate={{ x: [0, 4, 0] }}
-                          transition={{
-                            duration: 2,
-                            repeat: Infinity,
-                            ease: "easeInOut"
-                          }}
-                        >
-                          →
-                        </motion.span>
-                      )}
-                    </Button>
-                  </div>
+                  <Button 
+                    type="submit" 
+                    className="w-full bg-gradient-to-r from-teal-500 to-blue-600 hover:from-teal-600 hover:to-blue-700 text-white py-3 text-base font-semibold rounded-lg transition-all duration-300 transform hover:scale-[1.02] shadow-lg hover:shadow-xl"
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? 'Sending...' : 'Send Message'}
+                  </Button>
                 </form>
               )}
-            </div>
-          </motion.div>
-
-          {/* Right Column - Location Selector and Map */}
-          <motion.div 
-            className="space-y-6"
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-          >
-            {/* Office Locations List */}
-            <div className={`p-6 rounded-2xl shadow-xl ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'}`}>
-              <h3 className="text-xl font-bold mb-4 text-gray-800 dark:text-gray-200">Our Global Offices</h3>
-              
-              <div className="space-y-4">
-                {locations.map((location) => {
-                  const IconComponent = location.icon;
-                  return (
-                    <motion.div
-                      key={location.id}
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.3 }}
-                      className="p-4 rounded-lg bg-gradient-to-br from-teal-50 to-blue-50 dark:from-teal-900/20 dark:to-blue-900/20 border border-teal-200 dark:border-teal-800"
-                    >
-                      <div className="flex items-start mb-3">
-                        <div className={`flex-shrink-0 h-8 w-8 rounded-full flex items-center justify-center ${theme === 'dark' ? 'bg-teal-900/30' : 'bg-teal-100'} mr-3`}>
-                          <IconComponent className={`h-4 w-4 ${theme === 'dark' ? 'text-teal-400' : 'text-teal-600'}`} />
-                        </div>
-                        <div className="flex-1">
-                          <h4 className="font-semibold text-sm mb-1">{location.name}</h4>
-                          <p className="text-xs text-gray-500 dark:text-gray-400 mb-2">{location.city}</p>
-                          <p className={`text-xs ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'} mb-2`}>
-                            {location.address}
-                          </p>
-                          
-                          <div className="space-y-1">
-                            <div className="flex items-center">
-                              <Phone className={`h-3 w-3 ${theme === 'dark' ? 'text-teal-400' : 'text-teal-600'} mr-2`} />
-                              <a 
-                                href={`tel:${location.phone.replace(/\D/g, '')}`}
-                                className={`text-xs hover:text-teal-500 transition-colors ${theme === 'dark' ? 'text-teal-400' : 'text-teal-600'}`}
-                              >
-                                {location.phone}
-                              </a>
-                            </div>
-
-                            {location.phone2 && (
-                              <div className="flex items-center">
-                                <Phone className={`h-3 w-3 ${theme === 'dark' ? 'text-teal-400' : 'text-teal-600'} mr-2`} />
-                                <a 
-                                  href={`tel:${location.phone2.replace(/\D/g, '')}`}
-                                  className={`text-xs hover:text-teal-500 transition-colors ${theme === 'dark' ? 'text-teal-400' : 'text-teal-600'}`}
-                                >
-                                  {location.phone2}
-                                </a>
-                              </div>
-                            )}
-                            
-                            <div className="flex items-center">
-                              <Mail className={`h-3 w-3 ${theme === 'dark' ? 'text-teal-400' : 'text-teal-600'} mr-2`} />
-                              <a 
-                                href={`mailto:${location.email}`}
-                                className={`text-xs hover:text-teal-500 transition-colors ${theme === 'dark' ? 'text-teal-400' : 'text-teal-600'}`}
-                              >
-                                {location.email}
-                              </a>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </motion.div>
-                  );
-                })}
-              </div>
-            </div>
-
-
-          </motion.div>
+            </motion.div>
+          </div>
         </div>
-        
-        {/* World Map Component */}
-        <WorldMap />
-      </div>
+      </section>
+
+      {/* Global Offices Section */}
+      <section className="py-8 bg-gray-50">
+        <div className="container mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-6"
+          >
+            <h2 className="text-2xl font-bold text-gray-900 mb-2">Our Global Offices</h2>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-3">
+            {locations.map((location, index) => {
+              const IconComponent = location.icon;
+              return (
+                <motion.div
+                  key={location.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: index * 0.05 }}
+                  className="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
+                >
+                  <div className="flex items-center mb-3">
+                    <div className="flex-shrink-0 h-8 w-8 rounded-full bg-teal-100 flex items-center justify-center mr-2">
+                      <IconComponent className="h-4 w-4 text-teal-600" />
+                    </div>
+                    <div>
+                      <h3 className="font-bold text-gray-900 text-sm">{location.name}</h3>
+                      <p className="text-xs text-gray-500">{location.city}</p>
+                    </div>
+                  </div>
+                  
+                  <div className="space-y-2">
+                    <div>
+                      <p className="text-xs text-gray-600 leading-tight line-clamp-3">
+                        {location.address}
+                      </p>
+                    </div>
+                    
+                    <div className="space-y-1">
+                      <div className="flex items-center">
+                        <Phone className="h-3 w-3 text-teal-600 mr-1 flex-shrink-0" />
+                        <a 
+                          href={`tel:${location.phone.replace(/\D/g, '')}`}
+                          className="text-xs text-teal-600 hover:text-teal-700 font-medium truncate"
+                        >
+                          {location.phone}
+                        </a>
+                      </div>
+
+                      {location.phone2 && (
+                        <div className="flex items-center">
+                          <Phone className="h-3 w-3 text-teal-600 mr-1 flex-shrink-0" />
+                          <a 
+                            href={`tel:${location.phone2.replace(/\D/g, '')}`}
+                            className="text-xs text-teal-600 hover:text-teal-700 font-medium truncate"
+                          >
+                            {location.phone2}
+                          </a>
+                        </div>
+                      )}
+                      
+                      <div className="flex items-center">
+                        <Mail className="h-3 w-3 text-teal-600 mr-1 flex-shrink-0" />
+                        <a 
+                          href={`mailto:${location.email}`}
+                          className="text-xs text-teal-600 hover:text-teal-700 font-medium truncate"
+                        >
+                          {location.email}
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
     </div>
   );
 };

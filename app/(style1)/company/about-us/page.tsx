@@ -12,16 +12,26 @@ export default function AboutUs() {
     <div className="min-h-screen bg-white">
 
       
-      {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-blue-900 to-blue-700 text-white py-24 px-6">
-        <div className="max-w-7xl mx-auto relative z-10">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6">Agile, Innovative and future-ready</h1>
-          <p className="text-xl md:text-2xl max-w-4xl leading-relaxed">
-            IBSFINtech, a globally renowned TreasuryTech organization, provides end-to-end digitization for cash flow & liquidity, treasury, risk, trade finance and supply chain finance functions of the corporations worldwide.
-          </p>
+      {/* Hero Section with Banner */}
+      <div className="relative h-96 w-full overflow-hidden">
+        <div 
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage: 'url(/About%20Us%20IBSFINtech.jpg)'
+          }}
+        >
+          <div className="absolute inset-0 bg-black/40 flex items-center">
+            <div className="max-w-7xl w-full pl-8 sm:pl-12 lg:pl-16">
+              <div className="max-w-2xl">
+                <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">Agile, Innovative and future-ready</h1>
+                <p className="text-xl text-gray-200 mb-4">
+                  IBSFINtech, a globally renowned TreasuryTech organization, provides end-to-end digitization for cash flow & liquidity, treasury, risk, trade finance and supply chain finance functions of the corporations worldwide.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
-        <div className="absolute inset-0 bg-black/30"></div>
-      </section>
+      </div>
 
       {/* Global Presence */}
       <section className="py-16 px-6 bg-gray-50">

@@ -1,8 +1,10 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
-import { MessageSquare, X, Send, Bot, User as UserIcon } from 'lucide-react';
+import { MessageSquare, X, Send, Bot, User as UserIcon, ExternalLink, Phone, Mail } from 'lucide-react';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
+import Link from 'next/link';
 
 interface Message {
   id: number;
@@ -11,21 +13,33 @@ interface Message {
   timestamp: Date;
 }
 
+interface ChatResponse {
+  response: string;
+  context?: {
+    isCompanyRelated: boolean;
+    currentPage?: string;
+    suggestedActions: string[];
+  };
+}
+
 export default function Chatbot() {
   const [isOpen, setIsOpen] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [isMinimized, setIsMinimized] = useState(false);
+  const [showSuggestedActions, setShowSuggestedActions] = useState(false);
+  const [suggestedActions, setSuggestedActions] = useState<string[]>([]);
   const [messages, setMessages] = useState<Message[]>([
     {
       id: 1,
-      text: 'Hello! I\'m your AI assistant. How can I help you today?',
+      text: 'Hello! I\'m your IBSFINtech AI assistant. I can help you with information about our treasury management solutions, products, and services. How can I assist you today?',
       sender: 'bot',
       timestamp: new Date(),
     },
   ]);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const pathname = usePathname();
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -70,10 +84,12 @@ export default function Chatbot() {
     e.preventDefault();
     if (!input.trim()) return;
 
+    const userInput = input.trim();
+    
     // Add user message
     const userMessage: Message = {
       id: Date.now(),
-      text: input,
+      text: userInput,
       sender: 'user',
       timestamp: new Date(),
     };
@@ -81,53 +97,51 @@ export default function Chatbot() {
     setMessages((prev) => [...prev, userMessage]);
     setInput('');
     setIsLoading(true);
+    setShowSuggestedActions(false);
 
     try {
-      // Call Hugging Face API
-      const response = await fetch(
-        'https://api-inference.huggingface.co/models/facebook/blenderbot-400M-distill',
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${process.env.NEXT_PUBLIC_HF_TOKEN}`,
-          },
-          body: JSON.stringify({
-            inputs: {
-              past_user_inputs: messages
-                .filter((msg) => msg.sender === 'user')
-                .map((msg) => msg.text),
-              generated_responses: messages
-                .filter((msg) => msg.sender === 'bot')
-                .map((msg) => msg.text),
-              text: input,
-            },
-          }),
-        }
-      );
+      // Call our API endpoint
+      const response = await fetch('/api/chatbot', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          message: userInput,
+          conversation: messages,
+          currentPage: pathname,
+        }),
+      });
 
       if (!response.ok) {
-        throw new Error('Failed to get response from AI');
+        throw new Error(`HTTP error! status: ${response.status}`);
       }
 
-      const result = await response.json();
-      const botResponse = result.generated_text;
+      const result: ChatResponse = await response.json();
 
       // Add bot response
       const botMessage: Message = {
         id: Date.now() + 1,
-        text: botResponse,
+        text: result.response,
         sender: 'bot',
         timestamp: new Date(),
       };
 
       setMessages((prev) => [...prev, botMessage]);
+      
+      // Handle suggested actions
+      if (result.context?.suggestedActions && result.context.suggestedActions.length > 0) {
+        setSuggestedActions(result.context.suggestedActions);
+        setShowSuggestedActions(true);
+      }
+
     } catch (error) {
-      console.error('Error:', error);
-      // Add error message
+      console.error('Chatbot error:', error);
+      
+      // Add error message with helpful fallback
       const errorMessage: Message = {
         id: Date.now() + 1,
-        text: 'Sorry, I encountered an error. Please try again later.',
+        text: 'I apologize, but I\'m having trouble connecting right now. You can still reach us at info@ibsfintech.com or call us for immediate assistance.',
         sender: 'bot',
         timestamp: new Date(),
       };
@@ -144,11 +158,34 @@ export default function Chatbot() {
     }
   };
 
+  const handleSuggestedAction = (action: string) => {
+    setShowSuggestedActions(false);
+    
+    switch (action) {
+      case 'Request Demo':
+        window.open('/request-demo', '_blank');
+        break;
+      case 'Contact Us':
+        window.open('/contact', '_blank');
+        break;
+      case 'View Products':
+        window.open('/all_products', '_blank');
+        break;
+      case 'Read Blog':
+        window.open('/resources/blog', '_blank');
+        break;
+      default:
+        // For custom actions, send as message
+        setInput(action);
+        break;
+    }
+  };
+
   return (
     <div className="fixed bottom-8 right-8 z-50">
       {isOpen ? (
         <div 
-          className="chat-container bg-white rounded-xl shadow-2xl overflow-hidden w-80 sm:w-96 flex flex-col h-[500px] sm:h-[600px] transition-all duration-300 transform origin-bottom-right"
+          className="chat-container bg-white rounded-xl shadow-2xl overflow-hidden w-80 sm:w-96 flex flex-col h-[500px] sm:h-[600px] transition-all duration-300 transform origin-bottom-right animate-in slide-in-from-bottom-4 fade-in"
           onMouseEnter={() => setIsHovering(true)}
           onMouseLeave={() => setIsHovering(false)}
         >
@@ -223,14 +260,39 @@ export default function Chatbot() {
             {isLoading && (
               <div className="flex justify-start">
                 <div className="bg-white border border-gray-200 rounded-lg rounded-bl-none p-3 max-w-[80%]">
-                  <div className="flex space-x-2">
-                    <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
-                    <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
-                    <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
+                  <div className="flex items-center space-x-2">
+                    <div className="w-2 h-2 bg-blue-500 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
+                    <div className="w-2 h-2 bg-blue-500 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
+                    <div className="w-2 h-2 bg-blue-500 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
+                    <span className="text-xs text-gray-500 ml-2">IBSFINtech AI is thinking...</span>
                   </div>
                 </div>
               </div>
             )}
+            
+            {/* Suggested Actions */}
+            {showSuggestedActions && suggestedActions.length > 0 && (
+              <div className="flex justify-start">
+                <div className="bg-blue-50 border border-blue-200 rounded-lg rounded-bl-none p-3 max-w-[90%]">
+                  <p className="text-xs text-blue-700 mb-2 font-medium">Quick Actions:</p>
+                  <div className="flex flex-wrap gap-2">
+                    {suggestedActions.map((action, index) => (
+                      <button
+                        key={index}
+                        onClick={() => handleSuggestedAction(action)}
+                        className="bg-blue-600 text-white px-3 py-1 rounded-full text-xs hover:bg-blue-700 transition-colors flex items-center gap-1"
+                      >
+                        {action}
+                        {(action === 'Request Demo' || action === 'Contact Us' || action === 'View Products' || action === 'Read Blog') && (
+                          <ExternalLink className="w-3 h-3" />
+                        )}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            )}
+            
             <div ref={messagesEndRef} />
           </div>
 
@@ -261,14 +323,26 @@ export default function Chatbot() {
           </form>
         </div>
       ) : (
-        <button
-          onClick={toggleChat}
-          className="chat-toggle bg-gradient-to-r from-blue-600 to-blue-500 text-white p-4 rounded-full shadow-lg hover:from-blue-700 hover:to-blue-600 transition-all transform hover:scale-105 flex items-center justify-center"
-          aria-label="Open chat"
-          onMouseEnter={() => setIsHovering(true)}
-        >
-          <MessageSquare className="w-6 h-6 text-white" />
-        </button>
+        <div className="relative">
+          <button
+            onClick={toggleChat}
+            className="chat-toggle bg-gradient-to-r from-blue-600 to-blue-500 text-white p-4 rounded-full shadow-lg hover:from-blue-700 hover:to-blue-600 transition-all transform hover:scale-110 flex items-center justify-center group animate-pulse hover:animate-none"
+            aria-label="Open IBSFINtech AI Assistant"
+            onMouseEnter={() => setIsHovering(true)}
+          >
+            <MessageSquare className="w-6 h-6 text-white group-hover:rotate-12 transition-transform" />
+          </button>
+          
+          {/* Notification dot */}
+          <div className="absolute -top-1 -right-1 w-3 h-3 bg-green-400 rounded-full animate-ping"></div>
+          <div className="absolute -top-1 -right-1 w-3 h-3 bg-green-500 rounded-full"></div>
+          
+          {/* Hover tooltip */}
+          <div className="absolute bottom-full right-0 mb-2 px-3 py-2 bg-gray-800 text-white text-sm rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap pointer-events-none">
+            Chat with IBSFINtech AI
+            <div className="absolute top-full right-4 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-800"></div>
+          </div>
+        </div>
       )}
     </div>
   );

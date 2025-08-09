@@ -77,12 +77,7 @@ interface MenuSection {
 const menu: MenuSection[] = [
   {
     label: "Home",
-    href: "/?variant=illustrative1",
-    submenus: [
-      { label: "Illystrative Style 1", href: "/?variant=illustrative1", icon: Home },
-      { label: "Illustrative Style 2", href: "/?variant=illustrative2", icon: Home },
-      { label: "Illustrative Style 3", href: "/?variant=illustrative3", icon: Home },
-    ],
+    href: "/",
   },
   {
     label: "Products",
@@ -261,7 +256,7 @@ export default function ModernMegaMenu() {
   return (
     <nav className="w-full bg-black border-b border-white/10 shadow-lg fixed top-0 z-50">
       <div className="max-w-7xl mx-auto px-6 py-2 flex items-center justify-between">
-        <Link href="/?variant=illustrative1" className="flex items-center gap-2 group">
+        <Link href="/" className="flex items-center gap-2 group">
           <div className="relative h-16  w-64">
             <Image 
               src="/IBSFINtech Logo_Transparent_Black BG.png" 
@@ -310,7 +305,6 @@ export default function ModernMegaMenu() {
                           {item.label === "Solutions" ? (
                             // Enhanced Solutions dropdown with descriptions in 2 columns
                             <div className="w-full">
-                              <h4 className="text-gray-900 font-bold text-sm mb-4 px-2">Our Solutions</h4>
                               <div className="grid grid-cols-2 gap-x-6 gap-y-3">
                                 {item.groups && item.groups[0]?.items.map((sub, index) => {
                                   const Icon = sub.icon || FileText;
@@ -335,33 +329,50 @@ export default function ModernMegaMenu() {
                               </div>
                             </div>
                           ) : item.label === "Products" ? (
-                            // Products dropdown with single line layout
+                            // Products dropdown with 2 columns for Enterprise TMS
                             <div className="w-full">
                               {item.groups?.map((group) => (
                                 <div key={group.title} className="mb-4 last:mb-0">
                                   <h4 className="text-gray-900 font-bold text-sm mb-3 px-2">{group.title}</h4>
-                                  <div className="flex flex-wrap gap-2 px-2">
-                                    {group.items.map((sub, index) => {
-                                      const Icon = sub.icon || FileText;
-                                      return (
-                                        <Link 
-                                          key={sub.label} 
-                                          href={sub.href} 
-                                          className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-blue-50 text-gray-800 hover:text-blue-700 transition-all duration-150 ease-out text-sm font-medium whitespace-nowrap"
-                                        >
-                                          <Icon className="w-4 h-4 text-blue-600 flex-shrink-0" />
-                                          <span className="leading-tight">{sub.label}</span>
-                                        </Link>
-                                      );
-                                    })}
-                                  </div>
+                                  {group.title === "Enterprise TMS" ? (
+                                    <div className="grid grid-cols-2 gap-x-4 gap-y-2 px-2">
+                                      {group.items.map((sub, index) => {
+                                        const Icon = sub.icon || FileText;
+                                        return (
+                                          <Link 
+                                            key={sub.label} 
+                                            href={sub.href} 
+                                            className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-blue-50 text-gray-800 hover:text-blue-700 transition-all duration-150 ease-out text-sm font-medium whitespace-nowrap"
+                                          >
+                                            <Icon className="w-4 h-4 text-blue-600 flex-shrink-0" />
+                                            <span className="leading-tight">{sub.label}</span>
+                                          </Link>
+                                        );
+                                      })}
+                                    </div>
+                                  ) : (
+                                    <div className="flex flex-wrap gap-2 px-2">
+                                      {group.items.map((sub, index) => {
+                                        const Icon = sub.icon || FileText;
+                                        return (
+                                          <Link 
+                                            key={sub.label} 
+                                            href={sub.href} 
+                                            className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-blue-50 text-gray-800 hover:text-blue-700 transition-all duration-150 ease-out text-sm font-medium whitespace-nowrap"
+                                          >
+                                            <Icon className="w-4 h-4 text-blue-600 flex-shrink-0" />
+                                            <span className="leading-tight">{sub.label}</span>
+                                          </Link>
+                                        );
+                                      })}
+                                    </div>
+                                  )}
                                 </div>
                               ))}
                             </div>
                           ) : item.label === "Resources" ? (
                             // Resources dropdown with 2 columns (6 items each)
                             <div className="w-full">
-                              <h4 className="text-gray-900 font-bold text-sm mb-3 px-2">Resources</h4>
                               <div className="grid grid-cols-2 gap-x-6 gap-y-2 px-2">
                                 {item.groups && item.groups[0]?.items.map((sub, index) => {
                                   const Icon = sub.icon || FileText;
@@ -383,7 +394,6 @@ export default function ModernMegaMenu() {
                             <div className="w-full">
                               <div className="grid grid-cols-2 gap-6">
                                 <div className="col-span-1">
-                                  <h4 className="text-gray-900 font-bold text-sm mb-3 px-2">Company</h4>
                                   <div className="grid grid-cols-1 gap-1 px-2">
                                     {item.groups && item.groups[0]?.items.slice(0, 4).map((sub, index) => {
                                       const Icon = sub.icon || FileText;

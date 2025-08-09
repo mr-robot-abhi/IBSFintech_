@@ -46,16 +46,18 @@ export default function IntegrationPage() {
         <div 
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: 'url(/Currencies-Banner.png)'
+            backgroundImage: 'url(/Integration%20Capability%20-%20Banner.png)'
           }}
         >
           <div className="absolute inset-0 bg-black/40 flex items-center">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center w-full">
-              <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">IBSFINtech's Integration Capabilities</h1>
-              <p className="text-xl text-gray-200 max-w-4xl mx-auto">
-                Seamless Connectivity Across Your Treasury Ecosystem
-              </p>
-              <p className="text-xl font-semibold text-gray-200 mt-2">Automate, Integrate & Optimize</p>
+            <div className="max-w-7xl w-full pl-8 sm:pl-12 lg:pl-16">
+              <div className="max-w-2xl">
+                <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 text-left">IBSFINtech's Integration Capabilities</h1>
+                <p className="text-xl text-gray-200 mb-4 text-left">
+                  Seamless Connectivity Across Your Treasury Ecosystem
+                </p>
+                <p className="text-xl font-semibold text-gray-200 text-left">Automate, Integrate & Optimize</p>
+              </div>
             </div>
           </div>
         </div>

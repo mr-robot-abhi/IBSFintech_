@@ -66,14 +66,56 @@ const awardsByYear: { [key: number]: Award[] } = {
       id: 2,
       year: 2022,
       title: 'The Triple Asset A Award 2022',
-      imageUrl: '/awards/triple-a-award-2022.jpg',
-      readMoreUrl: 'https://ibsfintech.com/awards/'
+      imageUrl: '/Awards/Dabur_IBSFINtech_win_BestLiquidityInvestmentSolutionAward_TheAsset.jpg',
+      event: 'The Asset Triple A Treasury, Trade, Sustainable Supply Chain and Risk Management Awards 2021',
+      description: 'IBSFINtech awarded as technology partner for our esteemed clients',
+      readMoreContent: [
+        { type: 'heading', text: 'The Asset Triple A Treasury, Trade, Sustainable Supply Chain and Risk Management Awards 2021' },
+        { type: 'text', text: 'The Asset Triple A Awards recognized IBSFINtech India at The Asset Triple A Treasury, Trade, Sustainable Supply Chain and Risk Management, as the technology partner of our esteemed clients, Polycab, Blue Star and JSW International in various categories.' },
+        
+        { type: 'heading', text: 'Best Liquidity and Investment Solution – Polycab' },
+        { type: 'text', text: 'Polycab India Limited is the no.1 Cable and Wire manufacturing in India, which is also listed on stock exchange in Apr-19. Company has USD 2 billion plus market capitalization and USD 500 million plus treasury portfolio. The company has 25 manufacturing facilities across the country and exports to 40+ countries globally, with a network of 3500+ distributors.' },
+        { type: 'quote', text: '"It was a challenging task for us to find tailormade suitable product under one umbrella to fulfil our organizational needs. Attempted customizing existing ERP system which couldn\'t meet our needs. Finally, we started exploring proprietary solutions, one or the other way all solutions could not meet complete requirement as compared to IBSFINtech\'s Enterprise Treasury, Risk & Trade Finance Management® (TRTFM®) solution which has all the solutions under one bucket."', author: 'Sanjeev Chhabra, Chief Treasury Officer, Polycab Ltd' },
+        
+        { type: 'heading', text: 'Best Hedging and Risk Solution: FX – Blue Star' },
+        { type: 'text', text: 'Blue Star Ltd is India\'s leading air conditioning and commercial refrigeration company, with an annual revenue of over ₹5400 crores (over US$ 720 million), a network of 32 offices, 5 modern manufacturing facilities, 2800 employees, and 3600 channel partners with over 5500 stores for room ACs, packaged air conditioners, chillers, cold rooms as well as refrigeration products and systems; along with 800 service associates reaching out to customers in over 850 towns.' },
+        { type: 'quote', text: '"Many organizations still struggle with using ERP as the solution for Treasury management. It may not be feasible to use ERP, as treasury function requires a dedicated solution designed for the purpose of automating the Treasury operations. We selected IBSFINtech as their comprehensive offerings helped us automate our trade finance operations with holistic approach. It is a standardized product, having most of the business scenarios pre-existing in the product and if required solution configuration as per the corporate workflows is very easy. The solution played a pivotal role in improving process efficiencies, ensuring data accuracy and 360-degree visibility. The embedded risk policy is the added advantage for us to ensure compliance and transparency of the entire operations."', author: 'Kundip Thakker, Head – Treasury, Blue Star Ltd' },
+        
+        { type: 'heading', text: 'Best Trade Finance Solution – JSW International' },
+        { type: 'text', text: 'JSW International Tradecorp Pte Ltd, founded in 2013, engages in the purchase & trade of iron ore, coking coal, coke, and other raw materials in Singapore.' },
+        { type: 'quote', text: '"Earlier we were maintaining separate MIS prepared by different Team members but with this product everything is sorted out completely. The product has excellent functional features which can cater to need of almost all Trading companies and moreover with customization as per Clients requirement, they make it highly user friendly. They have provided different checks so that Client cannot miss any transaction. Even provides double checks for bank charges which is an Audit Trail."', author: 'Vishal Maheshwari, General Manager (F&A) at JSW International' },
+        
+        { type: 'heading', text: 'About The Asset Awards' },
+        { type: 'text', text: 'The Asset\'s annual Triple A recognition represents the industry\'s most prestigious awards for banking, finance, treasury and the capital markets. These awards recognize the technology firms and financial institutions that have excelled in innovation and developing a unique digital experience for clients across the Asia-Pacific and the Middle East.' },
+        { type: 'heading', text: 'Award Categories Include:' },
+        { type: 'list', items: [
+          'Cash management',
+          'Liquidity management',
+          'Trade finance and structured trade finance',
+          'Supply chain',
+          'Working capital',
+          'Hedging of FX, interest rate and commodities exposures',
+          'Electronic implementation',
+          'Renminbi internationalization'
+        ]},
+        { type: 'text', text: 'This is a testimony to how IBSFINtech is playing a pivotal role in empowering the digital transformation of Treasury, Risk and Trade Finance operations of the corporates globally.' }
+      ]
     },
     {
       id: 3,
       year: 2022,
       title: 'Corporate Treasurer Awards 2022',
-      imageUrl: '/awards/corporate-treasurer-2022.jpg'
+      imageUrl: '/Awards/Dabur_IBSFINtech_win_BestLiquidityInvestmentSolutionAward_TheAsset.jpg',
+      event: 'Corporate Treasurer Awards 2021',
+      description: 'Recognized as the Software Provider in the category House Awards Service Provider (APAC)',
+      readMoreContent: [
+        { type: 'heading', text: 'Corporate Treasurer Awards 2021' },
+        { type: 'text', text: 'IBSFINtech wins the prestigious Corporate Treasurer Awards 2021 recognized as the Software Provider in the category House Awards Service Provider (APAC).' },
+        { type: 'text', text: 'The CorporateTreasurer awards recognize excellence in transaction banking/services, as well as all-new corporate/CFO awards to recognize the achievements of our readership. CorporateTreasurer invites all treasurers, CFOs, vendors and financial institutions in Asia to identify who is the "best of the best" in the region each year.' },
+        { type: 'text', text: 'Entries were evaluated by a panel of Corporate Treasurer\'s jury comprising of 13 industry experts who actively participate in the APAC treasury community. After two months of discussion and deliberation in what was a very competitive process, the panel reviewed all applications in 2 rounds of judging and chose their winners. The awards recognize the achievements of treasury professionals who operate at the top of their class across the Asia Pacific region in different categories.' },
+        { type: 'heading', text: 'About the Awards' },
+        { type: 'text', text: 'The CorporateTreasurer awards celebrate standout individuals and strategies that redefine how treasury functions are managed in Asia. The awards highlight innovation, excellence, and leadership in the treasury and finance sectors across the Asia Pacific region.' }
+      ]
     },
     {
       id: 4,

@@ -1,88 +1,130 @@
 import React from 'react';
-import { Quote, Star, Building2, User, Briefcase, Clock } from 'lucide-react';
+import { Quote, Star, Building2, User, Briefcase, Clock, Award, CheckCircle, Zap, BarChart, Shield, TrendingUp } from 'lucide-react';
 
 const TestimonialsPage = () => {
   const featuredTestimonial = {
     id: 1,
-    name: 'Rajesh Kumar',
-    role: 'CFO',
-    company: 'TechNova Solutions',
-    content: 'IBSFINtech has transformed our treasury operations. The platform\'s intuitive interface and powerful analytics have given us real-time visibility into our cash positions across all our global entities.',
+    name: 'Bhawani Jhanwar',
+    role: 'Chief Financial Officer',
+    company: 'Credit Saison India',
+    content: 'As part of our digitization initiative, we sought a solution that would streamline and enhance our treasury operations. IBSFINtech solution truly met our expectations and transformed our processes. The platform is intuitive, highly customizable, and integrates effortlessly with our banks and existing ERP, allowing us to manage all our asset classes seamlessly.',
     rating: 5,
     image: '/testimonial-1.jpg',
-    industry: 'Technology',
-    implementationTime: '3 months',
-    results: '40% reduction in manual processes, 99.9% accuracy in cash forecasting'
+    industry: 'Financial Services',
+    implementationTime: 'Seamless',
+    results: 'Significant reduction in period-end reporting timelines, real-time insights, and accelerated decision-making'
   };
 
   const testimonials = [
     {
       id: 2,
-      name: 'Priya Sharma',
-      role: 'Treasury Manager',
-      company: 'Global Retail Corp',
-      content: 'The implementation was seamless, and the support team was exceptional. We\'ve seen significant improvements in our cash flow forecasting accuracy.',
+      name: 'Sandeep Modi',
+      role: 'Chief Financial Officer',
+      company: 'Hindustan Zinc Limited',
+      content: 'Our strategic initiative of digital transformation has profoundly reshaped HZL\'s treasury operations. By leveraging IBSFINtech\'s advanced treasury management solution we have streamlined our annual and monthly closing processes, optimized our treasury processes, enhanced accuracy, and significantly accelerated our reporting timelines.',
       rating: 5,
-      industry: 'Retail',
-      results: '35% faster month-end close process'
+      industry: 'Mining & Metals',
+      results: 'Streamlined processes and accelerated reporting'
     },
     {
       id: 3,
-      name: 'Amit Patel',
-      role: 'Finance Director',
-      company: 'PharmaLife Ltd',
-      content: 'The risk management features have been invaluable for our organization. We now have better control over our foreign exchange exposure.',
-      rating: 4,
-      industry: 'Pharmaceuticals',
-      results: 'Reduced FX losses by 27%'
+      name: 'Sanjay Wadhwa',
+      role: 'Chief Financial Officer',
+      company: '360 ONE Wealth',
+      content: 'The solution is intuitive, highly customizable, and parameterized. We chose IBSFINtech based on its ability to cover all asset classes on a single platform for investment management, as well as its established integration capabilities with numerous banks and current ERPs.',
+      rating: 5,
+      industry: 'Wealth Management',
+      results: 'Comprehensive asset class coverage'
     },
     {
       id: 4,
-      name: 'Neha Gupta',
-      role: 'Head of Treasury',
-      company: 'GreenEnergy Solutions',
-      content: 'The customizable dashboards give us exactly the insights we need. The automation features have saved us countless hours of manual work.',
+      name: 'Vishal Maheshwari',
+      role: 'General Manager (F&A)',
+      company: 'JSW International Tradecorp Pte Ltd',
+      content: 'The product has excellent functional features which can cater to need of almost all Trading companies and moreover with customization as per Client\'s requirement, they make it highly user friendly.',
       rating: 5,
-      industry: 'Energy',
-      results: 'Eliminated 20 hours of manual reporting per week'
+      industry: 'Trading',
+      results: 'Eliminated manual MIS preparation'
     },
     {
       id: 5,
-      name: 'Vikram Mehta',
-      role: 'Finance Controller',
-      company: 'LogiTrans Global',
-      content: 'The bank reconciliation module is a game-changer for us. It has significantly reduced our manual effort and improved accuracy.',
-      rating: 4,
-      industry: 'Logistics',
-      results: '90% reduction in reconciliation time'
+      name: 'Swati Rane',
+      role: 'GM - Corporate Finance',
+      company: 'Mahindra & Mahindra Ltd.',
+      content: 'With IBSFINtech\'s comprehensive Solution we were able to manage our FX Risk more efficiently with one easy to use and simple system. We now have full visibility and control over each transaction and consolidated position.',
+      rating: 5,
+      industry: 'Automotive',
+      results: 'Real-time monitoring of exposures and hedge positions'
     },
     {
       id: 6,
-      name: 'Ananya Reddy',
-      role: 'CFO',
-      company: 'EduTech Innovations',
-      content: 'The implementation team understood our unique requirements and delivered a solution that perfectly fits our needs. The training provided was excellent.',
+      name: 'Dinesh Gandhi',
+      role: 'GM – Internal Audit',
+      company: 'Maruti Suzuki India Ltd.',
+      content: 'We have been looking for a TMS for quite some time and finally we closed upon IBSFINtech\'s Innovative Treasury Management system as it proved to be apt for our requirements. They have offered customization, wherever necessary.',
       rating: 5,
-      industry: 'Education Technology',
-      results: 'Full team adoption within 2 weeks'
+      industry: 'Automotive',
+      results: 'Perfect fit for requirements'
     },
     {
       id: 7,
-      name: 'Rahul Verma',
-      role: 'Treasury Operations Lead',
-      company: 'FMCG Global',
-      content: 'The multi-currency support and real-time reporting have been particularly valuable for our international operations.',
-      rating: 4,
-      industry: 'Consumer Goods',
-      results: 'Improved visibility across 15+ currencies'
+      name: 'Kumar Ayashkanta',
+      role: 'CIO & Head – Global Corporate Treasury',
+      company: 'Wipro Enterprises',
+      content: 'We were looking for a suitable Treasury Management Solution to automate our treasury operations. We wanted to move beyond spreadsheet operations, manual management and deploy a dedicated solution.',
+      rating: 5,
+      industry: 'IT & Consulting',
+      results: 'End-to-end connectivity for treasury function'
+    },
+    {
+      id: 8,
+      name: 'Manish Duggar',
+      role: 'Chief Financial Officer',
+      company: 'Mphasis Ltd.',
+      content: 'The solution has helped us achieve our goal of streamlining our approach to handle cash, mitigate risks and provided better visibility of our entire treasury portfolio.',
+      rating: 5,
+      industry: 'IT Services',
+      results: 'Real-time visibility into cash, FX & liquidity'
+    },
+    {
+      id: 9,
+      name: 'Sanjeev Chhabra',
+      role: 'President (Treasury)',
+      company: 'Polycab India Ltd.',
+      content: 'It was a challenging task for us to find tailormade suitable product under one umbrella to fulfil our organizational needs. IBSFINtech\'s Enterprise Treasury, Risk & Trade Finance Management® (TRTFM®) solution has all the solutions under one bucket.',
+      rating: 5,
+      industry: 'Electrical Manufacturing',
+      results: 'Comprehensive solution under one platform'
+    },
+    {
+      id: 10,
+      name: 'Anil Jena',
+      role: 'Head – Treasury',
+      company: 'Olam Agri India Ltd.',
+      content: 'After analysing multiple alternatives in the market for our treasury front-office operations, we at OLAM India finally selected IBSFINtech which can be integrated at real-time. We perform extensive hedging activities and getting live market data has become a straightforward job.',
+      rating: 5,
+      industry: 'Agri-business',
+      results: 'Added $1M to trading portfolio in one year'
+    },
+    {
+      id: 11,
+      name: 'Santhosh Kumar U',
+      role: 'GM',
+      company: 'Coromandel',
+      content: 'Our overall experience with IBSFINtech on Treasury & Trade Finance project has been positive. They took time to understand our business and philosophy enabling practical solutions for the desired outcome.',
+      rating: 5,
+      industry: 'Fertilizers',
+      results: 'Practical solutions with excellent implementation'
     },
   ];
 
   const industryStats = [
-    { label: 'Clients Served', value: '500+' },
-    { label: 'Countries', value: '25+' },
-    { label: 'Satisfaction Rate', value: '98%' },
-    { label: 'Implementation Success', value: '100%' },
+    { label: 'Industries Served', value: '10+', icon: <Building2 className="h-8 w-8 mx-auto text-blue-600" /> },
+    { label: 'Implementation Success', value: '100%', icon: <CheckCircle className="h-8 w-8 mx-auto text-green-600" /> },
+    { label: 'Client Satisfaction', value: '98%', icon: <Star className="h-8 w-8 mx-auto text-yellow-500" /> },
+    { label: 'Operational Efficiency', value: '40%', icon: <Zap className="h-8 w-8 mx-auto text-orange-500" /> },
+    { label: 'Risk Mitigation', value: '99.9%', icon: <Shield className="h-8 w-8 mx-auto text-purple-600" /> },
+    { label: 'ROI Improvement', value: '5x', icon: <TrendingUp className="h-8 w-8 mx-auto text-green-600" /> },
   ];
 
   const renderStars = (rating: number) => {
@@ -97,13 +139,17 @@ const TestimonialsPage = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <div className="bg-gradient-to-r from-blue-700 to-blue-900 text-white py-16 px-4 sm:px-6 lg:px-8">
+      <div className="bg-gradient-to-br from-blue-700 to-blue-900 text-white py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto text-center">
+          <div className="inline-flex items-center justify-center px-4 py-2 mb-6 bg-blue-600 rounded-full text-sm font-medium">
+            <Award className="h-5 w-5 mr-2" />
+            Award-Winning Solutions
+          </div>
           <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
-            Client Testimonials
+            Success Stories
           </h1>
-          <p className="mt-6 text-xl text-blue-100 max-w-3xl mx-auto">
-            Hear from our valued clients about their experiences with IBSFINtech's treasury management solutions
+          <p className="mt-6 text-xl text-blue-100 max-w-4xl mx-auto">
+            Discover how industry leaders are transforming their treasury and trade finance operations with IBSFINtech's innovative solutions
           </p>
         </div>
       </div>
@@ -151,13 +197,22 @@ const TestimonialsPage = () => {
       </div>
 
       {/* Industry Stats */}
-      <div className="bg-white py-12">
+      <div className="bg-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 gap-8 text-center md:grid-cols-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900">Transforming Treasury Operations</h2>
+            <p className="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">
+              Trusted by leading enterprises across industries to drive efficiency, reduce risk, and unlock growth
+            </p>
+          </div>
+          <div className="grid grid-cols-2 gap-8 text-center md:grid-cols-3 lg:grid-cols-6">
             {industryStats.map((stat, index) => (
-              <div key={index} className="px-4 py-6">
-                <p className="text-4xl font-bold text-blue-700">{stat.value}</p>
-                <p className="mt-2 text-sm font-medium text-gray-500">{stat.label}</p>
+              <div key={index} className="px-4 py-6 bg-gray-50 rounded-lg hover:shadow-md transition-shadow duration-300">
+                <div className="mb-3">
+                  {stat.icon}
+                </div>
+                <p className="text-3xl font-bold text-blue-700">{stat.value}</p>
+                <p className="mt-2 text-sm font-medium text-gray-600">{stat.label}</p>
               </div>
             ))}
           </div>
@@ -165,30 +220,56 @@ const TestimonialsPage = () => {
       </div>
 
       {/* Testimonials Grid */}
-      <div className="bg-gray-50 py-16">
+      <div className="bg-gray-50 py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-extrabold text-gray-900 text-center mb-12">
-            What Our Clients Say
-          </h2>
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+              Trusted by Industry Leaders
+            </h2>
+            <p className="mt-4 text-xl text-gray-600 max-w-3xl mx-auto">
+              Discover how leading organizations are transforming their treasury and trade finance operations
+            </p>
+          </div>
+          
+          <div className="space-y-12">
             {testimonials.map((testimonial) => (
-              <div key={testimonial.id} className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
-                <div className="flex items-center mb-4">
-                  <div className="h-12 w-12 rounded-full bg-blue-100 flex items-center justify-center text-blue-700 mr-4">
-                    {testimonial.name.split(' ').map(n => n[0]).join('')}
+              <div key={testimonial.id} className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <div className="md:flex md:items-start">
+                  <div className="flex-shrink-0">
+                    <div className="h-16 w-16 rounded-full bg-gradient-to-br from-blue-600 to-blue-800 flex items-center justify-center text-white text-xl font-bold">
+                      {testimonial.name.split(' ').map(n => n[0]).join('')}
+                    </div>
                   </div>
-                  <div>
-                    <p className="font-semibold text-gray-900">{testimonial.name}</p>
-                    <p className="text-sm text-gray-600">{testimonial.role}, {testimonial.company}</p>
+                  <div className="mt-4 md:mt-0 md:ml-6">
+                    <div className="flex items-center">
+                      <div>
+                        <p className="text-xl font-semibold text-gray-900">{testimonial.name}</p>
+                        <p className="text-blue-700">{testimonial.role}</p>
+                        <p className="text-sm font-medium text-gray-600">{testimonial.company}</p>
+                      </div>
+                      <div className="ml-auto flex">
+                        {renderStars(testimonial.rating)}
+                      </div>
+                    </div>
+                    
+                    <blockquote className="mt-4 text-gray-700">
+                      <Quote className="h-6 w-6 text-blue-200 float-left mr-2 -mt-1" />
+                      <p className="relative">
+                        {testimonial.content}
+                      </p>
+                    </blockquote>
+                    
+                    <div className="mt-6 flex flex-wrap gap-4 text-sm">
+                      <span className="inline-flex items-center px-3 py-1 rounded-full bg-blue-50 text-blue-700">
+                        <Building2 className="h-4 w-4 mr-1" />
+                        {testimonial.industry}
+                      </span>
+                      <span className="inline-flex items-center px-3 py-1 rounded-full bg-green-50 text-green-700">
+                        <CheckCircle className="h-4 w-4 mr-1" />
+                        {testimonial.results}
+                      </span>
+                    </div>
                   </div>
-                </div>
-                <div className="flex mb-3">
-                  {renderStars(testimonial.rating)}
-                </div>
-                <p className="text-gray-700 mb-4">"{testimonial.content}"</p>
-                <div className="text-sm text-gray-500">
-                  <p className="font-medium">Industry: {testimonial.industry}</p>
-                  <p className="mt-1">{testimonial.results}</p>
                 </div>
               </div>
             ))}
@@ -197,7 +278,7 @@ const TestimonialsPage = () => {
       </div>
 
       {/* CTA Section */}
-      <div className="bg-blue-700">
+      <div className="bg-gradient-to-r from-blue-700 to-blue-900">
         <div className="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-extrabold text-white sm:text-4xl">
             Ready to transform your treasury operations?

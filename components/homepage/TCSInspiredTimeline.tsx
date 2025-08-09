@@ -1,13 +1,10 @@
 'use client';
 
-import React, { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-gsap.registerPlugin(ScrollTrigger);
+import React, { useEffect, useRef, useState } from 'react';
 
 interface Milestone {
   year: string;
+  displayYear: string;
   title: string;
   photoCaption: string;
   achievements: string[];
@@ -17,6 +14,7 @@ interface Milestone {
 const milestones: Milestone[] = [
   {
     year: '2006-16',
+    displayYear: '2006',
     title: 'Foundation & Industry Recognition',
     photoCaption: "IBSFINtech's first major industry recognition — Express IT Award 2015, presented by Shri Ravi Shankar Prasad to Mr. C.M. Grover.",
     achievements: [
@@ -27,6 +25,7 @@ const milestones: Milestone[] = [
   },
   {
     year: '2017',
+    displayYear: '2017',
     title: 'Client Expansion & Growth',
     photoCaption: "Acquired 8 new prestigious clients: Olam Agro India Ltd, Himatsingka Seide Ltd, Mahindra & Mahindra, Sonalika Tractors, Maruti Suzuki India Ltd, HCL Corp (Family Office), JSW Steel, Sai Life Sciences Ltd",
     achievements: [
@@ -37,6 +36,7 @@ const milestones: Milestone[] = [
   },
   {
     year: '2018-20',
+    displayYear: '2018',
     title: 'Global Expansion & Leadership',
     photoCaption: "Shailesh Haribhakti joins in as Chairman",
     achievements: [
@@ -48,6 +48,7 @@ const milestones: Milestone[] = [
   },
   {
     year: '2021',
+    displayYear: '2021',
     title: 'Product Innovation & Recognition',
     photoCaption: "IBSFINtech partners with London Stock Exchange Group (LSEG) — advancing data-driven treasury transformation",
     achievements: [
@@ -58,6 +59,7 @@ const milestones: Milestone[] = [
   },
   {
     year: '2022',
+    displayYear: '2022',
     title: 'Strategic Partnerships',
     photoCaption: "IBSFINtech partners with Oracle to redefine the future of intelligent treasury ecosystems. Further strengthening this vision through strategic collaborations with YES Bank and KPMG — uniting financial expertise, innovation, and scale.",
     achievements: [
@@ -69,6 +71,7 @@ const milestones: Milestone[] = [
   },
   {
     year: '2023',
+    displayYear: '2023',
     title: 'Market Leadership & US Expansion',
     photoCaption: "Padma Shri T.V. Mohandas Pai inaugurates IBSFINtech's New, State-of-the-Art Development Centre in Bengaluru, India to fuel the TreasuryTech company's global expansion plans",
     achievements: [
@@ -80,6 +83,7 @@ const milestones: Milestone[] = [
   },
   {
     year: '2024',
+    displayYear: '2024',
     title: 'Innovation & Strategic Alliances',
     photoCaption: "IBSFINtech partners with Deloitte — uniting TreasuryTech innovation with global consulting expertise",
     achievements: [
@@ -93,6 +97,7 @@ const milestones: Milestone[] = [
   },
   {
     year: '2025',
+    displayYear: '2025',
     title: 'Global Expansion & Innovation',
     photoCaption: "Deloitte CEO (SA) inaugurates IBSFINtech's new office — marking a new chapter of growth and innovation.",
     achievements: [
@@ -105,127 +110,51 @@ const milestones: Milestone[] = [
 ];
 
 const Timeline: React.FC = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const yearIndicatorRef = useRef<HTMLDivElement>(null);
-  const timelineRef = useRef<HTMLDivElement>(null);
+  const [activeYear, setActiveYear] = useState('2006');
+  const [showYearIndicator, setShowYearIndicator] = useState(false);
+  const timelineRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    const container = containerRef.current;
-    const yearIndicator = yearIndicatorRef.current;
-    const timeline = timelineRef.current;
-
-    if (!container || !yearIndicator || !timeline) return;
-
-    // Create ScrollTrigger for each milestone
-    milestones.forEach((milestone, index) => {
-      const milestoneElement = document.querySelector(`[data-milestone="${index}"]`);
-      if (!milestoneElement) return;
-
-      ScrollTrigger.create({
-        trigger: milestoneElement,
-        start: 'top center',
-        end: 'bottom center',
-        onEnter: () => {
-          gsap.to(yearIndicator, {
-            duration: 0.6,
-            ease: 'power2.out',
-            onUpdate: function() {
-              if (yearIndicator) {
-                yearIndicator.textContent = milestone.year;
-              }
-            }
-          });
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      const windowHeight = window.innerHeight;
+      
+      // Check if we're in the timeline section
+      if (timelineRef.current) {
+        const timelineRect = timelineRef.current.getBoundingClientRect();
+        const timelineTop = timelineRect.top + scrollY;
+        const timelineBottom = timelineTop + timelineRect.height;
+        
+        // Show year indicator only when timeline is in view
+        const isTimelineInView = scrollY + windowHeight > timelineTop && scrollY < timelineBottom;
+        setShowYearIndicator(isTimelineInView);
+      }
+      
+      milestones.forEach((milestone, index) => {
+        const element = document.getElementById(`milestone-${index}`);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          const elementTop = rect.top + scrollY;
+          const elementBottom = elementTop + rect.height;
           
-          // Add glow effect to current year
-          gsap.to(yearIndicator, {
-            boxShadow: '0 0 30px rgba(59, 130, 246, 0.6)',
-            scale: 1.05,
-            duration: 0.3,
-            ease: 'power2.out'
-          });
-        },
-        onLeave: () => {
-          gsap.to(yearIndicator, {
-            boxShadow: '0 0 0px rgba(59, 130, 246, 0)',
-            scale: 1,
-            duration: 0.3,
-            ease: 'power2.out'
-          });
-        },
-        onEnterBack: () => {
-          gsap.to(yearIndicator, {
-            duration: 0.6,
-            ease: 'power2.out',
-            onUpdate: function() {
-              if (yearIndicator) {
-                yearIndicator.textContent = milestone.year;
-              }
-            }
-          });
-          
-          gsap.to(yearIndicator, {
-            boxShadow: '0 0 30px rgba(59, 130, 246, 0.6)',
-            scale: 1.05,
-            duration: 0.3,
-            ease: 'power2.out'
-          });
-        },
-        onLeaveBack: () => {
-          gsap.to(yearIndicator, {
-            boxShadow: '0 0 0px rgba(59, 130, 246, 0)',
-            scale: 1,
-            duration: 0.3,
-            ease: 'power2.out'
-          });
-        }
-      });
-
-      // Animate milestone cards on scroll
-      gsap.fromTo(milestoneElement, 
-        {
-          opacity: 0,
-          x: 100,
-          scale: 0.9
-        },
-        {
-          opacity: 1,
-          x: 0,
-          scale: 1,
-          duration: 1,
-          ease: 'power2.out',
-          scrollTrigger: {
-            trigger: milestoneElement,
-            start: 'top 80%',
-            end: 'bottom 20%',
-            toggleActions: 'play none none reverse'
+          // Check if element is in viewport
+          if (scrollY + windowHeight * 0.6 >= elementTop && scrollY + windowHeight * 0.4 <= elementBottom) {
+            setActiveYear(milestone.displayYear);
           }
         }
-      );
-    });
+      });
+    };
 
-    // Animate timeline line
-    gsap.fromTo(timeline,
-      { height: 0 },
-      {
-        height: '100%',
-        duration: 2,
-        ease: 'power2.out',
-        scrollTrigger: {
-          trigger: container,
-          start: 'top 80%',
-          end: 'bottom 20%',
-          scrub: 1
-        }
-      }
-    );
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Initial call
 
     return () => {
-      ScrollTrigger.getAll().forEach(st => st.kill());
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
   return (
-    <section className="py-20 bg-gradient-to-br from-slate-50 to-blue-50 relative overflow-hidden">
+    <section ref={timelineRef} className="py-20 bg-gradient-to-br from-slate-50 to-blue-50 relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600"></div>
@@ -239,7 +168,7 @@ const Timeline: React.FC = () => {
         </svg>
       </div>
 
-      <div ref={containerRef} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
@@ -250,80 +179,83 @@ const Timeline: React.FC = () => {
           </p>
         </div>
 
-        <div className="relative flex">
-          {/* Fixed Year Indicator */}
-          <div className="sticky top-1/2 transform -translate-y-1/2 z-10">
-            <div 
-              ref={yearIndicatorRef}
-              className="bg-white border-4 border-blue-600 rounded-full w-32 h-32 flex items-center justify-center text-2xl font-bold text-blue-600 shadow-xl transition-all duration-300"
-            >
-              2006-16
-            </div>
-          </div>
+        <div className="relative">
+          {/* Timeline Container */}
+          <div className="flex">
+            {/* Year Indicator - Fixed Position - Only show when timeline is in view */}
+            {showYearIndicator && (
+              <div className="fixed left-20 top-1/2 transform -translate-y-1/2 z-50">
+                <div className="bg-white border-4 border-blue-600 rounded-full w-32 h-32 flex items-center justify-center text-3xl font-bold text-blue-600 shadow-2xl">
+                  {activeYear}
+                </div>
+              </div>
+            )}
+            
+            {/* Spacer for layout */}
+            <div className="w-40 flex-shrink-0"></div>
 
-          {/* Timeline Line */}
-          <div className="relative ml-16 flex-1">
-            <div className="absolute left-0 top-0 w-1 bg-gradient-to-b from-blue-600 to-purple-600 rounded-full" ref={timelineRef}></div>
+            {/* Timeline Content */}
+            <div className="flex-1 relative">
+              {/* Timeline Line */}
+              <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-600 to-purple-600"></div>
 
-            {/* Timeline Items */}
-            <div className="space-y-16 ml-8">
-              {milestones.map((milestone, index) => (
-                <div 
-                  key={index}
-                  data-milestone={index}
-                  className="relative"
-                >
-                  {/* Timeline Dot */}
-                  <div className="absolute -left-12 top-8 w-6 h-6 bg-blue-600 rounded-full border-4 border-white shadow-lg z-10"></div>
-                  
-                  {/* Content Card */}
-                  <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100 hover:shadow-2xl transition-all duration-500">
-                    <div className="md:flex">
-                      {/* Image */}
-                      <div className="md:w-1/3 relative">
-                        <img 
-                          src={milestone.image} 
-                          alt={milestone.title}
-                          className="w-full h-64 md:h-full object-cover"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                      </div>
-                      
-                      {/* Content */}
-                      <div className="md:w-2/3 p-8">
-                        <div className="flex items-center mb-4">
-                          <span className="text-2xl font-bold text-blue-600 mr-4">
-                            {milestone.year}
-                          </span>
-                          <h3 className="text-2xl font-bold text-gray-900">
-                            {milestone.title}
-                          </h3>
+              {/* Timeline Items */}
+              <div className="pl-8 space-y-16">
+                {milestones.map((milestone, index) => (
+                  <div 
+                    key={index}
+                    id={`milestone-${index}`}
+                    className="relative"
+                  >
+                    {/* Timeline Dot */}
+                    <div className="absolute -left-12 top-8 w-6 h-6 bg-blue-600 rounded-full border-4 border-white shadow-lg z-10"></div>
+                    
+                    {/* Content Card */}
+                    <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100 hover:shadow-2xl transition-all duration-500">
+                      <div className="md:flex">
+                        {/* Image */}
+                        <div className="md:w-1/3 relative">
+                          <img 
+                            src={milestone.image} 
+                            alt={milestone.title}
+                            className="w-full h-64 md:h-full object-cover"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
                         </div>
                         
-                        {/* Photo Caption */}
-                        <div className="mb-6 p-4 bg-blue-50 border-l-4 border-blue-600 rounded-r-lg">
-                          <p className="text-gray-700 italic leading-relaxed">
-                            {milestone.photoCaption}
-                          </p>
+                        {/* Content */}
+                        <div className="md:w-2/3 p-8">
+                          <div className="mb-4">
+                            <h3 className="text-2xl font-bold text-gray-900">
+                              {milestone.title}
+                            </h3>
+                          </div>
+                          
+                          {/* Photo Caption */}
+                          <div className="mb-6 p-4 bg-blue-50 border-l-4 border-blue-600 rounded-r-lg">
+                            <p className="text-gray-700 italic leading-relaxed">
+                              {milestone.photoCaption}
+                            </p>
+                          </div>
+                          
+                          {/* Achievements */}
+                          <ul className="space-y-3">
+                            {milestone.achievements.map((achievement, achievementIndex) => (
+                              <li 
+                                key={achievementIndex}
+                                className="flex items-start text-gray-600"
+                              >
+                                <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                                <span className="leading-relaxed font-medium">{achievement}</span>
+                              </li>
+                            ))}
+                          </ul>
                         </div>
-                        
-                        {/* Achievements */}
-                        <ul className="space-y-3">
-                          {milestone.achievements.map((achievement, achievementIndex) => (
-                            <li 
-                              key={achievementIndex}
-                              className="flex items-start text-gray-600"
-                            >
-                              <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                              <span className="leading-relaxed font-medium">{achievement}</span>
-                            </li>
-                          ))}
-                        </ul>
                       </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
         </div>

@@ -9,20 +9,22 @@ import { ArrowRight, Users, Clock, Award, Globe } from 'lucide-react';
 export default function AboutPage() {
   return (
     <div className="pt-20 pb-16">
-      {/* Hero section */}
-      <section className="bg-gradient-to-r from-blue-900 to-indigo-900 py-16 text-white">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="max-w-3xl mx-auto text-center"
-          >
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">About IBS Fintech</h1>
-            <p className="text-xl text-blue-100 mb-8">
-              Pioneering treasury solutions for over a decade, helping enterprises optimize financial operations
-            </p>
-          </motion.div>
+      {/* Hero section with banner image */}
+      <section className="relative h-96 w-full overflow-hidden">
+        <div 
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage: 'url(/About Us IBSFINtech.jpg)'
+          }}
+        >
+          <div className="absolute inset-0 bg-black/40 flex items-center">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center w-full">
+              <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">About IBS Fintech</h1>
+              <p className="text-xl text-gray-200">
+                Pioneering treasury solutions for over a decade, helping enterprises optimize financial operations
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
