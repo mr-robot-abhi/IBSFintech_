@@ -145,7 +145,7 @@ const FlipCard: React.FC<FlipCardProps> = ({
 
   return (
     <motion.div
-      className="relative w-20 h-20 cursor-pointer perspective-1000"
+      className="relative w-24 h-24 cursor-pointer perspective-1000"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{
         opacity: 1,
@@ -182,8 +182,8 @@ const FlipCard: React.FC<FlipCardProps> = ({
         transition={{ duration: 0.4, ease: "easeInOut" }}
       >
         <div className="w-full h-full flex flex-col items-center justify-center p-1">
-          <div className="w-8 h-8 bg-black/10 rounded-full flex items-center justify-center mb-1.5">
-            <currentIndustry.icon className="h-4 w-4 text-black" />
+          <div className="w-10 h-10 bg-black/10 rounded-full flex items-center justify-center mb-1.5">
+            <currentIndustry.icon className="h-5 w-5 text-black" />
           </div>
           <span className="text-[11px] font-medium text-black text-center leading-tight">{currentIndustry.name}</span>
         </div>
@@ -210,8 +210,8 @@ const FlipCard: React.FC<FlipCardProps> = ({
         transition={{ duration: 0.4, ease: "easeInOut" }}
       >
         <div className="w-full h-full flex flex-col items-center justify-center p-1">
-          <div className="w-6 h-6 bg-black/10 rounded-full flex items-center justify-center mb-1">
-            <nextIndustry.icon className="h-3 w-3 text-black" />
+          <div className="w-8 h-8 bg-black/10 rounded-full flex items-center justify-center mb-1">
+            <nextIndustry.icon className="h-4 w-4 text-black" />
           </div>
           <span className="text-[10px] font-medium text-black text-center leading-tight">{nextIndustry.name}</span>
         </div>
@@ -754,142 +754,18 @@ export default function IllustrativeOne() {
                 </button>
               </div>
 
-              {/* Right Column: Enhanced Differentiator with 6 Vectors */}
+              {/* Right Column: New Creative SVG */}
               <div className="w-full lg:w-3/5 relative h-[500px] md:h-[550px] flex items-center justify-center">
-                {/* Central Differentiator SVG - Centered with vectors */}
-                <div className="absolute z-30 w-[280px] h-[280px] flex items-center justify-center">
-                  <div className="relative w-full h-full">
-                    <Image
-                      src="/Differentiator.svg"
-                      alt="Differentiator"
-                      fill
-                      className="object-contain"
-                      priority
-                    />
-                  </div>
+                <div className="w-full h-full flex items-center justify-center">
+                  <Image
+                    src="/Why choose us-creative.svg"
+                    alt="Why Choose Us Creative Visual"
+                    width={600}
+                    height={600}
+                    className="object-contain w-full h-full max-w-[600px] max-h-[600px]"
+                    priority
+                  />
                 </div>
-
-                {/* 6 Differentiators */}
-                {[
-                  { 
-                    icon: BarChart2, 
-                    title: 'Comprehensive', 
-                    angle: 0, 
-                    content: "End-to-end solutions covering all your business needs",
-                    iconClass: "from-blue-500 to-blue-600"
-                  },
-                  { 
-                    icon: Zap, 
-                    title: 'Nimble', 
-                    angle: 60, 
-                    content: "Quick to adapt and respond to your changing requirements",
-                    iconClass: "from-green-500 to-emerald-600"
-                  },
-                  { 
-                    icon: Cpu, 
-                    title: 'Domain Centric', 
-                    angle: 120, 
-                    content: "Specialized solutions tailored to your industry",
-                    iconClass: "from-purple-500 to-indigo-600"
-                  },
-                  { 
-                    icon: Settings, 
-                    title: 'Configurable', 
-                    angle: 180, 
-                    content: "Customizable to fit your unique business processes",
-                    iconClass: "from-pink-500 to-rose-600"
-                  },
-                  { 
-                    icon: Award, 
-                    title: 'Best Practices', 
-                    angle: 240, 
-                    content: "Built on industry standards and proven methodologies",
-                    iconClass: "from-amber-500 to-orange-600"
-                  },
-                  { 
-                    icon: Link, 
-                    title: 'Integrated', 
-                    angle: 300, 
-                    content: "Seamless connectivity with your existing systems",
-                    iconClass: "from-cyan-500 to-blue-600"
-                  },
-                ].map((feature, idx) => {
-                  // Calculate position on oval path to match SVG edge
-                  const angleRad = (feature.angle * Math.PI) / 180;
-                  // Adjusted radius to match SVG oval edge
-                  const radiusX = 160; // Horizontal radius to match SVG oval
-                  const radiusY = 140; // Vertical radius to match SVG oval
-                  const x = Math.cos(angleRad) * radiusX;
-                  const y = Math.sin(angleRad) * radiusY;
-                  const Icon = feature.icon;
-
-                  const isLeftSide = feature.angle >= 120 && feature.angle <= 240;
-                  const isTop = feature.angle >= 0 && feature.angle <= 180;
-
-                  return (
-                    <motion.div
-                      key={idx}
-                      className="absolute group cursor-pointer z-30 w-32 h-32 flex flex-col items-center justify-center"
-                      style={{
-                        left: '50%',
-                        top: '50%',
-                      }}
-                      initial={{ 
-                        x: 0, 
-                        y: 0,
-                        opacity: 0,
-                        scale: 0.8
-                      }}
-                      animate={{
-                        x: x - 40,
-                        y: y - 40,
-                        opacity: 1,
-                        scale: 1,
-                        transition: {
-                          delay: 0.1 * idx,
-                          type: 'spring',
-                          stiffness: 80,
-                          damping: 12
-                        }
-                      }}
-                      whileHover={{
-                        scale: 1.1,
-                        zIndex: 40,
-                        transition: { 
-                          type: 'spring',
-                          stiffness: 300,
-                          damping: 15
-                        }
-                      }}
-                    >
-                      {/* Differentiator Node */}
-                      <div className="flex flex-col items-center space-y-2">
-                        <div className={`relative w-14 h-14 rounded-xl bg-gradient-to-br ${feature.iconClass} flex items-center justify-center shadow-lg border-2 border-white/30 group-hover:shadow-[0_0_25px_-5px_rgba(59,130,246,0.3)] transition-all duration-300 transform group-hover:scale-110`}>
-                          <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                          <Icon className="h-6 w-6 text-white z-10 transition-transform duration-300 group-hover:scale-110" />
-                        </div>
-                        <span className="text-sm font-medium text-white text-center bg-black/30 px-2 py-1 rounded-md backdrop-blur-sm">
-                          {feature.title}
-                        </span>
-                      </div>
-                      
-                      {/* Smart Tooltip */}
-                      <div className={`absolute top-1/2 -translate-y-1/2 w-60 bg-black/90 backdrop-blur-sm rounded-lg p-4 border border-blue-500/30 shadow-xl transition-all duration-300 opacity-0 invisible group-hover:opacity-100 group-hover:visible z-50 ${isLeftSide
-                        ? 'right-full mr-3' // Left side tooltip
-                        : 'left-full ml-3'   // Right side tooltip
-                        }`}>
-                        {/* Tooltip arrow */}
-                        <div className={`absolute top-1/2 -translate-y-1/2 w-3 h-3 rotate-45 bg-black/90 border border-blue-500/30 ${isLeftSide
-                          ? '-right-1.5 border-l-0 border-t-0' // Arrow pointing right
-                          : '-left-1.5 border-r-0 border-b-0'   // Arrow pointing left
-                          }`}></div>
-
-                        <h3 className="text-sm font-bold text-white mb-2">{feature.title}</h3>
-                        <p className="text-xs text-gray-300 leading-relaxed">{feature.content}</p>
-                      </div>
-                    </motion.div>
-                  );
-                })}
               </div>
             </div>
           </div>

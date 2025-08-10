@@ -32,7 +32,7 @@ export default function CashflowLiquidity() {
                 Transform your cash flow management and liquidity oversight with our comprehensive module, designed to enhance visibility, streamline operations, and maximize financial efficiency.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <button className="bg-white text-blue-700 hover:bg-blue-50 font-medium py-3 px-8 rounded-lg transition-colors flex items-center justify-center">
+                <button className="bg-red-500 hover:bg-red-600 text-white font-semibold py-3 px-8 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center">
                   Request Demo
                   <svg className="ml-2 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
@@ -51,7 +51,7 @@ export default function CashflowLiquidity() {
       <main className="relative z-10 px-6 pb-12 -mt-20">
         <div className="max-w-6xl mx-auto">
           {/* Features Section */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
             <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
               <h2 className="text-2xl font-semibold text-gray-900 mb-6">Comprehensive Cash Management</h2>
               <div className="relative aspect-video w-full rounded-lg overflow-hidden bg-gray-100 mb-6">
@@ -181,7 +181,7 @@ export default function CashflowLiquidity() {
               Unlock the full potential of your cash flow and liquidity management with our advanced module. Schedule a personalized demo today.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <button className="bg-white text-blue-700 hover:bg-blue-50 font-medium py-3 px-8 rounded-lg transition-colors">
+              <button className="bg-red-500 hover:bg-red-600 text-white font-semibold py-3 px-8 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl">
                 Request Demo
               </button>
               <button className="bg-transparent border-2 border-white text-white hover:bg-white/10 font-medium py-3 px-8 rounded-lg transition-colors">

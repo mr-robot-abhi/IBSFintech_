@@ -34,7 +34,7 @@ const DebtBorrowingsPage = () => {
         {/* Background Image */}
         <div className="absolute inset-0 w-full h-full overflow-hidden">
           <Image
-            src="/public/Inner Pages/Solutions/debt_visibility_for_treasury_team_50.jpg"
+            src="/Inner pages/Products/multi_instrument_debt_management_50.jpg"
             alt="Debt Management"
             fill
             className="object-cover object-center"
@@ -54,7 +54,7 @@ const DebtBorrowingsPage = () => {
           />
         </div>
         <div className="container mx-auto px-4 relative z-10 py-12">
-          <div className="max-w-4xl mx-auto text-center">
+          <div className="max-w-4xl text-left">
             <motion.h1 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -69,7 +69,7 @@ const DebtBorrowingsPage = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="text-lg md:text-xl text-blue-100 mb-8 max-w-3xl mx-auto"
+              className="text-lg md:text-xl text-blue-100 mb-8 max-w-3xl"
             >
               Streamline your debt portfolio with comprehensive borrowing management and analytics
             </motion.p>
@@ -78,9 +78,9 @@ const DebtBorrowingsPage = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="flex flex-wrap justify-center gap-4"
+              className="flex flex-wrap gap-4"
             >
-              <Button size="lg" className="bg-white text-[#241F5D] hover:bg-blue-50 px-8">
+              <Button size="lg" className="bg-red-500 hover:bg-red-600 text-white font-semibold px-8 shadow-lg hover:shadow-xl transition-all duration-300">
                 Request a Demo <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
               <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
@@ -98,7 +98,7 @@ const DebtBorrowingsPage = () => {
           <div className="container mx-auto px-4">
             <div className="max-w-6xl mx-auto">
               <div className="flex flex-col lg:flex-row gap-8">
-                <div className="lg:w-1/2">
+                <div className="lg:w-full">
                   <motion.h2 
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -243,24 +243,6 @@ const DebtBorrowingsPage = () => {
                     </div>
                   </div>
                 </div>
-                
-                <motion.div
-                  initial={{ opacity: 0, x: 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, margin: "-50px" }}
-                  transition={{ duration: 0.5, delay: 0.2 }}
-                  className="lg:w-1/2 mt-6 lg:mt-0"
-                >
-                  <div className="relative w-full h-64 md:h-80 lg:h-96 rounded-lg overflow-hidden shadow-lg">
-                    <Image
-                      src="/Inner pages/Products/multi_instrument_debt_management_50.jpg"
-                      alt="Multi-Instrument Debt Management"
-                      fill
-                      className="object-cover"
-                      priority
-                    />
-                  </div>
-                </motion.div>
               </div>
             </div>
 

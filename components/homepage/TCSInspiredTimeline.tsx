@@ -125,9 +125,35 @@ const Timeline: React.FC = () => {
         const timelineTop = timelineRect.top + scrollY;
         const timelineBottom = timelineTop + timelineRect.height;
         
-        // Show year indicator only when timeline is in view
-        const isTimelineInView = scrollY + windowHeight > timelineTop && scrollY < timelineBottom;
-        setShowYearIndicator(isTimelineInView);
+        // Show year indicator only when timeline line is actually visible
+        // Add some padding to start showing when we're closer to the actual timeline content
+        const adjustedTop = timelineTop + 200; // Start showing when we're closer to the timeline line
+        const adjustedBottom = timelineBottom - 200; // Stop showing before the section ends
+        
+        // More precise: only show when we're actually seeing the timeline content
+        const isTimelineInView = scrollY + windowHeight > adjustedTop && scrollY < adjustedBottom;
+        
+        // Additional check: ensure first milestone is actually visible before showing year indicator
+        const firstMilestone = document.getElementById('milestone-0');
+        const lastMilestone = document.getElementById(`milestone-${milestones.length - 1}`);
+        let shouldShowIndicator = isTimelineInView;
+        
+        if (firstMilestone && isTimelineInView) {
+          const firstMilestoneRect = firstMilestone.getBoundingClientRect();
+          // Only show when first milestone is actually in viewport
+          shouldShowIndicator = firstMilestoneRect.top < windowHeight * 0.8;
+        }
+        
+        // Additional check: hide when last milestone is going out of view
+        if (lastMilestone && shouldShowIndicator) {
+          const lastMilestoneRect = lastMilestone.getBoundingClientRect();
+          // Hide when last milestone is going out of viewport
+          if (lastMilestoneRect.bottom < windowHeight * 0.3) {
+            shouldShowIndicator = false;
+          }
+        }
+        
+        setShowYearIndicator(shouldShowIndicator);
       }
       
       milestones.forEach((milestone, index) => {

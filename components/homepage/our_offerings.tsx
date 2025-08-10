@@ -151,14 +151,14 @@ export default function OurOfferingsSection() {
 
               {/* Navigation Buttons */}
               <button
-                className="swiper-button-prev absolute left-[-15px] top-1/2 z-10 -translate-y-1/2 w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-blue-700 shadow-lg"
+                className="swiper-button-prev absolute left-2 top-1/2 z-10 -translate-y-1/2 w-8 h-8 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-white/20 hover:border-white/30 shadow-lg"
               >
-                <ChevronLeft className="w-4 h-4 text-white" />
+                <ChevronLeft className="w-3 h-3 text-white" />
               </button>
               <button
-                className="swiper-button-next absolute right-[-15px] top-1/2 z-10 -translate-y-1/2 w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-blue-700 shadow-lg"
+                className="swiper-button-next absolute right-2 top-1/2 z-10 -translate-y-1/2 w-8 h-8 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-white/20 hover:border-white/30 shadow-lg"
               >
-                <ChevronRight className="w-4 h-4 text-white" />
+                <ChevronRight className="w-3 h-3 text-white" />
               </button>
             </div>
             

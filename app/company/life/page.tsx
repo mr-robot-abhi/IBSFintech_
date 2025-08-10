@@ -1,120 +1,148 @@
 import React from 'react';
-import { Award, Heart, Users, Coffee, Calendar, TrendingUp, Globe, Zap, Smile } from 'lucide-react';
+import { Award, Heart, Users, Coffee, Calendar, TrendingUp, Globe, Zap, Smile, Star } from 'lucide-react';
+import Image from 'next/image';
 
 const LifeAtIBSFINtech = () => {
   const values = [
     {
       title: 'Innovation',
-      description: 'We encourage creative thinking and embrace new ideas that drive progress.',
+      description: 'Innovation runs in our blood.',
       icon: <Zap className="h-8 w-8 text-blue-600" />
     },
     {
-      title: 'Collaboration',
-      description: 'We believe in the power of teamwork and open communication to achieve common goals.',
+      title: 'Customer Focused',
+      description: 'Customer is the king and our first priority.',
+      icon: <Heart className="h-8 w-8 text-red-600" />
+    },
+    {
+      title: 'Dynamic Work Environment',
+      description: 'We cherish everyday at work.',
       icon: <Users className="h-8 w-8 text-green-600" />
     },
     {
-      title: 'Excellence',
-      description: 'We strive for the highest standards in everything we do, delivering quality results.',
+      title: 'Passion',
+      description: 'Passionate about every single thing we do.',
       icon: <Award className="h-8 w-8 text-purple-600" />
     },
     {
-      title: 'Integrity',
-      description: 'We conduct our business with honesty, transparency, and ethical practices.',
-      icon: <Heart className="h-8 w-8 text-red-600" />
-    }
-  ];
-
-  const perks = [
-    {
-      title: 'Flexible Work',
-      description: 'Hybrid work model with flexible hours to support work-life balance.',
-      icon: <Calendar className="h-6 w-6 text-blue-600" />
+      title: 'Exponential Learning',
+      description: 'Sky\'s the limit to learning',
+      icon: <TrendingUp className="h-8 w-8 text-indigo-600" />
     },
     {
-      title: 'Learning & Development',
-      description: 'Comprehensive training programs and support for professional growth.',
-      icon: <TrendingUp className="h-6 w-6 text-green-600" />
+      title: 'Challenging Environment',
+      description: 'We grow with each challenge.',
+      icon: <Globe className="h-8 w-8 text-orange-600" />
     },
     {
-      title: 'Global Opportunities',
-      description: 'Work with international teams and clients across the globe.',
-      icon: <Globe className="h-6 w-6 text-purple-600" />
+      title: 'Equality',
+      description: 'Diversity is our strength.',
+      icon: <Users className="h-8 w-8 text-teal-600" />
     },
     {
-      title: 'Wellness Programs',
-      description: 'Health insurance, fitness subsidies, and mental health support.',
-      icon: <Heart className="h-6 w-6 text-red-600" />
-    },
-    {
-      title: 'Team Events',
-      description: 'Regular team outings, celebrations, and social activities.',
-      icon: <Users className="h-6 w-6 text-yellow-600" />
-    },
-    {
-      title: 'Great Workspace',
-      description: 'Modern offices designed for collaboration and productivity.',
-      icon: <Coffee className="h-6 w-6 text-indigo-600" />
+      title: 'Strive for Excellence',
+      description: 'Hungry for growth, we strive for excellence at each step.',
+      icon: <Star className="h-8 w-8 text-yellow-600" />
     }
   ];
 
   const testimonials = [
     {
-      quote: "Working at IBSFINtech has been an incredible journey of growth and learning. The collaborative environment and challenging projects make every day exciting.",
-      author: "Priya Sharma",
-      role: "Senior Product Manager",
-      tenure: "4 years at IBSFINtech"
+      quote: "It has been a very exciting and enriching experience being a part IBSFINtech since the beginning of its journey. Here, you get to wear multiple hats and take more responsibilities. Management is highly knowledgeable, encouraging and passionate. I have grown personally as well as professionally while working at IBSFINtech. Proud to be an IBSFINtech'er.",
+      author: "Sanghmitra",
+      role: "Team Member"
     },
     {
-      quote: "The work-life balance and supportive culture here are unmatched. I've grown both professionally and personally since joining the team.",
-      author: "Rahul Mehta",
-      role: "Lead Developer",
-      tenure: "3 years at IBSFINtech"
+      quote: "I started my career with IBSFINtech and I must say, it is a great company to work with. I got wonderful opportunity to work on projects from across the industry and enhance my technical skills. Definitely a place where you can grow with a great team that is always willing to go an extra mile to help their fellow colleagues.",
+      author: "Nilesh",
+      role: "Team Member"
     },
     {
-      quote: "What I love most is the opportunity to work on innovative projects that make a real impact in the fintech space. The leadership team truly values employee input.",
-      author: "Ananya Patel",
-      role: "UX Designer",
-      tenure: "2 years at IBSFINtech"
+      quote: "Excellent work environment. The positive can-do environment at IBSFINtech encourages me to take joy in my work and also provide support to others. Everyday is a learning process here and a new experience to take home.",
+      author: "Srinidhi",
+      role: "Team Member"
     }
-  ];
-
-  const gallery = [
-    { id: 1, alt: "Team celebration", category: "events" },
-    { id: 2, alt: "Office workspace", category: "office" },
-    { id: 3, alt: "Team meeting", category: "team" },
-    { id: 4, alt: "Hackathon event", category: "events" },
-    { id: 5, alt: "Training session", category: "learning" },
-    { id: 6, alt: "Team outing", category: "team" }
   ];
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero Section */}
+      {/* Hero Section with Outing.jpg */}
       <div className="relative bg-gradient-to-r from-blue-700 to-blue-800 overflow-hidden">
+        <div className="absolute inset-0">
+          <Image
+            src="/Outing.jpg"
+            alt="Life at IBSFINtech"
+            fill
+            className="object-cover opacity-35"
+          />
+        </div>
         <div className="max-w-7xl mx-auto">
           <div className="relative z-10 pb-8 sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32">
-            <main className="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 lg:mt-16 lg:px-8 xl:mt-20">
+            <main className="mt-6 mx-auto max-w-7xl px-4 sm:mt-8 sm:px-6 lg:mt-10 lg:px-8 xl:mt-12">
               <div className="sm:text-center lg:text-left">
-                <h1 className="text-4xl tracking-tight font-extrabold text-white sm:text-5xl md:text-6xl">
-                  <span className="block">Life at</span>
-                  <span className="block text-blue-200">IBSFINtech</span>
-                </h1>
-                <p className="mt-3 text-base text-blue-100 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
-                  Where innovation meets passion, and every team member contributes to our success story.
-                </p>
-                <div className="mt-8 sm:flex sm:justify-center lg:justify-start">
-                  <div className="rounded-md shadow">
-                    <a
-                      href="/company/careers"
-                      className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-blue-700 bg-white hover:bg-gray-50 md:py-4 md:text-lg md:px-10"
-                    >
-                      Join Our Team
-                    </a>
+                <div className="backdrop-blur-md bg-white/10 rounded-xl p-4 border border-white/20 shadow-2xl max-w-md ml-0">
+                  <h1 className="text-2xl tracking-tight font-extrabold text-white sm:text-3xl">
+                    <span className="block">Life at</span>
+                    <span className="block text-blue-200">IBSFINtech</span>
+                  </h1>
+                  <p className="mt-2 text-sm text-blue-100 sm:mt-3 sm:text-base">
+                    Where innovation meets passion, and every team member contributes to our success story.
+                  </p>
+                  <div className="mt-4 sm:flex sm:justify-center lg:justify-start">
+                    <div className="rounded-md shadow">
+                      <a
+                        href="/company/careers"
+                        className="inline-flex items-center justify-center px-4 py-1.5 border border-transparent text-xs font-medium rounded-md text-blue-700 bg-white hover:bg-gray-50 transition-colors"
+                      >
+                        View Jobs
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
             </main>
+          </div>
+        </div>
+      </div>
+
+      {/* Main Content Section */}
+      <div className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="lg:text-center mb-12">
+            <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+              We are IBSFINtech!
+            </h2>
+            <p className="mt-4 max-w-3xl text-xl text-gray-600 lg:mx-auto">
+              We are the Chosen Ones. We Stand together Today & Tomorrow.
+              <br />
+              Always a Family, Always a Team.
+              <br />
+              We are IBSFINtech Family.
+            </p>
+          </div>
+
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-6">Our Greatest Strength</h3>
+              <p className="text-gray-600 mb-6 leading-relaxed">
+                At IBSFINtech, our greatest strength is "OUR PEOPLE". Every IBSFINtech'er has played a pivotal role in driving the growth of the company. Working together as one big family, IBSFINtech team enjoys a mutual passion for FinTech establishing a strong bond within the entire team.
+              </p>
+              <p className="text-gray-600 mb-6 leading-relaxed">
+                Headquartered in Bengaluru – The Silicon Valley of India, IBSFINtech is India's fastest growing FinTech company in the space of Treasury, Risk & Trade Finance Management®.
+              </p>
+              <p className="text-gray-600 leading-relaxed">
+                IBSFINtech team enjoys a mutual passion for FinTech establishing a strong bond within the entire team.
+              </p>
+            </div>
+            <div className="relative">
+              <Image
+                src="/LifeAtIBSFINtech.jpg"
+                alt="Life at IBSFINtech"
+                width={600}
+                height={400}
+                className="rounded-lg shadow-lg"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -124,97 +152,43 @@ const LifeAtIBSFINtech = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
-              Our Core Values
+              Our Values
             </h2>
             <p className="mt-4 max-w-2xl text-xl text-gray-600 mx-auto">
               The principles that guide our actions and decisions
             </p>
           </div>
 
-          <div className="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
             {values.map((value, index) => (
               <div key={index} className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow">
                 <div className="h-12 w-12 rounded-full bg-blue-50 flex items-center justify-center mb-4">
                   {value.icon}
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">{value.title}</h3>
-                <p className="text-gray-600">{value.description}</p>
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">{value.title}</h3>
+                <p className="text-gray-600 text-sm">{value.description}</p>
               </div>
             ))}
           </div>
         </div>
       </div>
 
-      {/* Culture & Environment */}
+      {/* Fun at Work Section */}
       <div className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="lg:text-center">
-            <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
-              Our Culture & Environment
-            </h2>
-            <p className="mt-4 max-w-2xl text-xl text-gray-600 lg:mx-auto">
-              A workplace where you can grow, innovate, and make an impact
-            </p>
-          </div>
-
-          <div className="mt-16">
-            <div className="grid md:grid-cols-2 gap-8 items-center">
-              <div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">Collaborative Workspaces</h3>
-                <p className="text-gray-600 mb-6">
-                  Our modern offices are designed to foster collaboration and creativity. From open workspaces to quiet zones, we provide environments that suit different work styles and needs.
-                </p>
-                <h3 className="text-2xl font-bold text-gray-900 mb-4 mt-8">Learning & Growth</h3>
-                <p className="text-gray-600">
-                  We invest in our people's growth through continuous learning opportunities, mentorship programs, and challenging projects that push boundaries and expand skills.
-                </p>
-              </div>
-              <div className="grid grid-cols-2 gap-4">
-                {gallery.slice(0, 4).map((item) => (
-                  <div key={item.id} className="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-100">
-                    <div className="h-48 bg-gray-200 flex items-center justify-center">
-                      <Smile className="h-12 w-12 text-gray-400" />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Perks & Benefits */}
-      <div className="bg-gray-50 py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
-              Perks & Benefits
+              Fun at Work
             </h2>
-            <p className="mt-4 max-w-2xl text-xl text-gray-600 mx-auto">
-              We take care of our team with a comprehensive benefits package
+            <p className="mt-4 max-w-3xl text-xl text-gray-600 mx-auto">
+              Excellent work environment. The positive can-do environment at IBSFINtech encourages me to take joy in my work and also provide support to others. Everyday is a learning process here and a new experience to take home.
             </p>
-          </div>
-
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {perks.map((perk, index) => (
-              <div key={index} className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow">
-                <div className="flex items-start">
-                  <div className="flex-shrink-0 bg-blue-50 rounded-md p-2">
-                    {perk.icon}
-                  </div>
-                  <div className="ml-4">
-                    <h3 className="text-lg font-medium text-gray-900">{perk.title}</h3>
-                    <p className="mt-1 text-gray-600">{perk.description}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
           </div>
         </div>
       </div>
 
       {/* Team Testimonials */}
-      <div className="py-16 bg-white">
+      <div className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
@@ -227,7 +201,7 @@ const LifeAtIBSFINtech = () => {
 
           <div className="grid gap-8 md:grid-cols-3">
             {testimonials.map((testimonial, index) => (
-              <div key={index} className="bg-gray-50 p-6 rounded-lg">
+              <div key={index} className="bg-white p-6 rounded-lg shadow-sm">
                 <div className="mb-4">
                   {[...Array(5)].map((_, i) => (
                     <svg
@@ -240,14 +214,33 @@ const LifeAtIBSFINtech = () => {
                     </svg>
                   ))}
                 </div>
-                <p className="text-gray-600 italic mb-4">"{testimonial.quote}"</p>
+                <p className="text-gray-600 italic mb-4 text-sm leading-relaxed">"{testimonial.quote}"</p>
                 <div className="font-medium">
                   <p className="text-gray-900">{testimonial.author}</p>
-                  <p className="text-blue-600">{testimonial.role}</p>
-                  <p className="text-sm text-gray-500">{testimonial.tenure}</p>
+                  <p className="text-blue-600 text-sm">{testimonial.role}</p>
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Welcome to Innovation Section */}
+      <div className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+              Welcome to the World of Innovation
+            </h2>
+            <p className="mt-6 max-w-3xl text-xl text-gray-600 mx-auto leading-relaxed">
+              FinTech is the booming sector of the industry today. Do you enjoy challenges and working in a dynamic environment? If yes, then IBSFINtech is your dream organization.
+            </p>
+            <p className="mt-6 max-w-3xl text-lg text-gray-600 mx-auto leading-relaxed">
+              At IBSFINtech, we know our greatest strength is YOU! We are always looking for great talent and passionate folks to join our team. If honesty, integrity, discipline, and responsibility match your characteristics, write to us today at{' '}
+              <a href="mailto:career@ibsfintech.com" className="text-blue-600 hover:text-blue-800 font-medium">
+                career@ibsfintech.com
+              </a>
+            </p>
           </div>
         </div>
       </div>

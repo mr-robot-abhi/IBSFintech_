@@ -53,11 +53,8 @@ const TradeFinancePage = () => {
                 transition={{ duration: 0.6, delay: 0.2 }}
                 className="flex flex-col sm:flex-row gap-4"
               >
-                <Button size="lg" className="bg-white text-[#241F5D] hover:bg-blue-50 font-medium">
+                <Button size="lg" className="bg-red-500 hover:bg-red-600 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300">
                   Request Demo <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-                <Button variant="outline" size="lg" className="bg-transparent border-2 border-white text-white hover:bg-white/10 font-medium">
-                  Learn More
                 </Button>
               </motion.div>
             </div>
@@ -71,7 +68,7 @@ const TradeFinancePage = () => {
           <div className="container mx-auto px-4">
             <div className="max-w-6xl mx-auto">
               <div className="flex flex-col lg:flex-row gap-6">
-                <div className="lg:w-1/2">
+                <div className="lg:w-full">
                   <motion.h2 
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -198,26 +195,8 @@ const TradeFinancePage = () => {
                     </div>
                   </div>
                 </div>
-                
-                <motion.div
-                  initial={{ opacity: 0, x: 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, margin: "-50px" }}
-                  transition={{ duration: 0.5, delay: 0.2 }}
-                  className="lg:w-1/2 mt-4 lg:mt-0"
-                >
-                  <div className="relative w-full h-64 md:h-80 lg:h-96 rounded-lg overflow-hidden shadow-md">
-                    <Image
-                      src="/Inner pages/Products/AdobeStock_788404479_50.jpeg"
-                      alt="Trade Finance Dashboard"
-                      fill
-                      className="object-cover"
-                      priority
-                    />
-                  </div>
-                </motion.div>
               </div>
-            </div>
+          </div>
 
             {/* Analytics Section */}
             <div className="bg-gray-50 rounded-2xl p-6 md:p-8 mb-12">
@@ -404,7 +383,7 @@ const TradeFinancePage = () => {
                 Discover how our advanced Trade Finance solution can streamline your import/export processes and enhance compliance.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg" className="bg-[#241F5D] hover:bg-[#1a1650] text-white">
+                <Button size="lg" className="bg-red-500 hover:bg-red-600 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300">
                   Request a Demo
                 </Button>
                 <Button size="lg" variant="outline" className="border-[#241F5D] text-[#241F5D] hover:bg-blue-50">

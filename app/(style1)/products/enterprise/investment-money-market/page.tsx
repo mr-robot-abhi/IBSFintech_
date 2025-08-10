@@ -53,7 +53,7 @@ const InvestmentWealthTechPage = () => {
                 transition={{ duration: 0.6, delay: 0.2 }}
                 className="flex flex-col sm:flex-row gap-4"
               >
-                <Button size="lg" className="bg-white text-[#241F5D] hover:bg-blue-50 font-medium">
+                <Button size="lg" className="bg-red-500 hover:bg-red-600 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300">
                   Request Demo <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
                 <Button variant="outline" size="lg" className="bg-transparent border-2 border-white text-white hover:bg-white/10 font-medium">

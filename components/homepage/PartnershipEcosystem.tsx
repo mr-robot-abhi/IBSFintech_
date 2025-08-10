@@ -5,11 +5,11 @@ import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 
 const partners = [
-  { logo: 'p1.png', large: false },
-  { logo: 'p2.png', large: true, extraLarge: true },  // Bloomberg
-  { logo: 'p3.png', large: false },
-  { logo: 'p4.png', large: true, extraLarge: true },  // KPMG
-  { logo: 'p5.png', large: false }
+  { logo: 'p1.png' },
+  { logo: 'p2.png', bloomberg: true },  // Bloomberg
+  { logo: 'p3.png' },
+  { logo: 'p4.png', kpmg: true },  // KPMG
+  { logo: 'p5.png' }
 ];
 
 type PartnershipEcosystemProps = {
@@ -47,19 +47,14 @@ export default function PartnershipEcosystem({ variant = 'illustrative1' }: Part
                 viewport={{ once: true }}
                 className="flex items-center justify-center"
               >
-                <div className={`w-full ${partner.extraLarge ? 'max-w-[280px]' : 'max-w-[220px]'} aspect-[2/1] bg-white/5 rounded-lg flex items-center justify-center p-6 hover:bg-white/10 transition-all duration-300`}>
-                  <div className={`relative w-full ${partner.extraLarge ? 'h-full' : partner.large ? 'h-5/6' : 'h-4/5'}`}>
+                <div className="w-full max-w-[220px] aspect-[2/1] bg-white/5 rounded-lg flex items-center justify-center p-4 hover:bg-white/10 transition-all duration-300">
+                  <div className="relative w-full h-4/5">
                     <Image
                       src={`/${partner.logo}`}
                       alt=""
                       fill
-                      className={`object-contain brightness-0 invert ${partner.extraLarge ? 'scale-125' : ''}`}
-                      sizes={partner.extraLarge ? 
-                        "(max-width: 640px) 60vw, (max-width: 768px) 50vw, 300px" : 
-                        partner.large ? 
-                        "(max-width: 640px) 50vw, (max-width: 768px) 40vw, 250px" : 
-                        "(max-width: 640px) 45vw, (max-width: 768px) 35vw, 200px"
-                      }
+                      className={`object-contain brightness-0 invert ${partner.bloomberg ? 'scale-140' : partner.kpmg ? 'scale-115' : ''}`}
+                      sizes="(max-width: 640px) 45vw, (max-width: 768px) 35vw, 200px"
                     />
                   </div>
                 </div>

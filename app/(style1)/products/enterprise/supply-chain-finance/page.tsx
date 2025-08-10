@@ -76,7 +76,7 @@ const SupplyChainFinancePage = () => {
               transition={{ duration: 0.4, delay: 0.2 }}
               className="flex flex-wrap gap-4"
             >
-              <Button size="lg" className="bg-white text-[#241F5D] hover:bg-blue-50 px-8">
+              <Button size="lg" className="bg-red-500 hover:bg-red-600 text-white font-semibold px-8 shadow-lg hover:shadow-xl transition-all duration-300">
                 Request a Demo <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
               <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
@@ -291,7 +291,7 @@ const SupplyChainFinancePage = () => {
                 Unlock working capital, optimize your supply chain, and drive business growth with our innovative financing solutions.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg" className="bg-white text-[#241F5D] hover:bg-blue-50">
+                <Button size="lg" className="bg-red-500 hover:bg-red-600 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300">
                   Request a Demo
                 </Button>
                 <Button size="lg" variant="outline" className="text-white border-white hover:bg-white/10">
