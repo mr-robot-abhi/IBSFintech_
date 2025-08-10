@@ -252,9 +252,7 @@ const FeatureOrb = ({ icon, title, content, position }: FeatureOrbProps) => {
 const SlideshowBanner = () => {
   const banners = [
     '/Banner.png',
-    '/Home Page Banner 5.png',
-    '/Home Page Banner 6.png',
-    '/Home Page Banner 7.png'
+    '/Home Page Banner 6.png'
   ];
 
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -735,16 +733,14 @@ export default function IllustrativeOne() {
             <div className="flex flex-col lg:flex-row items-center gap-4 md:gap-8">
               {/* Left Column: Text Panel */}
               <div className="w-full lg:w-2/5">
-                <h2 className="text-3xl md:text-3xl font-bold bg-gradient-to-r from-blue-300 to-blue-500 bg-clip-text text-white mb-4">
+                <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-300 to-blue-500 bg-clip-text text-white mb-6">
                   Why Choose Us
                 </h2>
-                <p className="text-base text-white/90 mb-4">
-                Domain Expertise: Crafted by ex-bankers with deep treasury and tech expertise                </p>
-                <p className="text-base text-white/80 mb-6">
-                Comprehensive Coverage: End-to-end lifecycle support — from Trade Finance, Supply Chain Finance, Payments, FX (Currency Risk), Money Market (Investments), Commodity Risk, and the most critical Cashflow & Liquidity management. <br /> 
-                <br/>User-Friendly: Mirrors real-world treasury workflows for intuitive use. <br /> 
-                <br/>Seamless Integration: Connects effortlessly with ERPs, banks, and data providers
-                <br/>Faster Deployment: Rapid implementation compared to traditional global solutions
+                <p className="text-lg text-white/90 mb-6 leading-relaxed">
+                  IBSFINtech solution covers the entire treasury management lifecycle, from front office to back-office operations.
+                </p>
+                <p className="text-base text-white/80 mb-6 leading-relaxed">
+                  With deep expertise in Trade Finance, Supply Chain Finance, Payments, FX, Money Market, Commodity Risk, and Cashflow & Liquidity management, we provide a comprehensive approach to streamline your operations.
                 </p>
                 <button className="flex items-center bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white font-medium py-3 px-6 rounded-full transition transform hover:-translate-y-0.5 hover:shadow-lg">
                   Learn More

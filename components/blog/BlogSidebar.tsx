@@ -2,8 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { Search, ArrowRight, Building2, Users, Eye, TrendingUp, PiggyBank, FileText, DollarSign, BarChart3, CreditCard, Network } from 'lucide-react';
-import { BlogPost } from '@/lib/blog';
+import { Search, ArrowRight, Eye, TrendingUp, PiggyBank, FileText, DollarSign, BarChart3, CreditCard, Network } from 'lucide-react';
 
 interface BlogSidebarProps {
   onSearch: (query: string) => void;
@@ -17,62 +16,6 @@ const BlogSidebar: React.FC<BlogSidebarProps> = ({ onSearch, searchQuery }) => {
     e.preventDefault();
     onSearch(localSearchQuery);
   };
-
-  const enterpriseProducts = [
-    {
-      name: "Cashflow & Liquidity",
-      href: "/products/enterprise/cashflow-liquidity",
-      icon: Eye,
-    },
-    {
-      name: "Currency (FX) Risk",
-      href: "/products/enterprise/currency-fx-risk",
-      icon: TrendingUp,
-    },
-    {
-      name: "Investment (Money Market)",
-      href: "/products/enterprise/investment-money-market",
-      icon: PiggyBank,
-    },
-    {
-      name: "Trade Finance",
-      href: "/products/enterprise/trade-finance",
-      icon: FileText,
-    },
-    {
-      name: "Debt (Borrowings)",
-      href: "/products/enterprise/debt-borrowings",
-      icon: DollarSign,
-    },
-    {
-      name: "Commodity Risk",
-      href: "/products/enterprise/commodity-risk-management",
-      icon: BarChart3,
-    },
-    {
-      name: "Payments",
-      href: "/products/enterprise/payments",
-      icon: CreditCard,
-    },
-    {
-      name: "Supply Chain Finance",
-      href: "/products/enterprise/supply-chain-finance",
-      icon: Network,
-    },
-  ];
-
-  const smeProducts = [
-    {
-      name: "InnoTreasury",
-      href: "/products/sme/innotreasury",
-      icon: Building2,
-    },
-    {
-      name: "InnoInvest",
-      href: "/products/sme/innoinvest",
-      icon: Users,
-    },
-  ];
 
   const solutions = [
     {
@@ -118,7 +61,7 @@ const BlogSidebar: React.FC<BlogSidebarProps> = ({ onSearch, searchQuery }) => {
   ];
 
   return (
-    <div className="w-full lg:w-80 space-y-8">
+    <div className="w-full lg:w-80 space-y-6">
       {/* Search Bar */}
       <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg">
         <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
@@ -142,69 +85,6 @@ const BlogSidebar: React.FC<BlogSidebarProps> = ({ onSearch, searchQuery }) => {
             Search
           </button>
         </form>
-      </div>
-
-      {/* Products Section */}
-      <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg">
-        <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
-          Explore our Products
-        </h3>
-        
-        {/* Enterprise Products */}
-        <div className="mb-6">
-          <h4 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-3 uppercase tracking-wide">
-            Enterprise
-          </h4>
-          <div className="space-y-2">
-            {enterpriseProducts.map((product, index) => (
-              <Link
-                key={index}
-                href={product.href}
-                className="flex items-center justify-between p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200 group"
-              >
-                <div className="flex items-center space-x-3">
-                  <product.icon className="h-4 w-4 text-[#241F5D] group-hover:text-[#3B3486]" />
-                  <span className="text-sm text-gray-700 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-white">
-                    {product.name}
-                  </span>
-                </div>
-                <ArrowRight className="h-3 w-3 text-gray-400 group-hover:text-[#241F5D] transition-transform group-hover:translate-x-1" />
-              </Link>
-            ))}
-          </div>
-        </div>
-
-        {/* SME Products */}
-        <div className="mb-6">
-          <h4 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-3 uppercase tracking-wide">
-            SME
-          </h4>
-          <div className="space-y-2">
-            {smeProducts.map((product, index) => (
-              <Link
-                key={index}
-                href={product.href}
-                className="flex items-center justify-between p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200 group"
-              >
-                <div className="flex items-center space-x-3">
-                  <product.icon className="h-4 w-4 text-[#241F5D] group-hover:text-[#3B3486]" />
-                  <span className="text-sm text-gray-700 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-white">
-                    {product.name}
-                  </span>
-                </div>
-                <ArrowRight className="h-3 w-3 text-gray-400 group-hover:text-[#241F5D] transition-transform group-hover:translate-x-1" />
-              </Link>
-            ))}
-          </div>
-        </div>
-
-        <Link
-          href="/all_products"
-          className="inline-flex items-center text-[#241F5D] hover:text-[#3B3486] font-medium text-sm transition-colors duration-200"
-        >
-          View All Products
-          <ArrowRight className="ml-1 h-4 w-4" />
-        </Link>
       </div>
 
       {/* Solutions Section */}

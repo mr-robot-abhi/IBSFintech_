@@ -10,6 +10,87 @@ import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Check, Mail, MapPin, Phone, Building, Globe } from 'lucide-react';
 
+interface Location {
+  id: string;
+  name: string;
+  city: string;
+  address: string;
+  phone: string;
+  phone2?: string;
+  email: string;
+  icon: React.ComponentType<{ className?: string }>;
+}
+
+interface OfficeCardProps {
+  location: Location;
+  index: number;
+}
+
+const OfficeCard = ({ location, index }: OfficeCardProps) => {
+  const IconComponent = location.icon;
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6, delay: index * 0.05 }}
+      className="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 h-full flex flex-col"
+    >
+      <div className="flex items-center mb-3">
+        <div className="flex-shrink-0 h-8 w-8 rounded-full bg-teal-100 flex items-center justify-center mr-2">
+          <IconComponent className="h-4 w-4 text-teal-600" />
+        </div>
+        <div>
+          <h3 className="font-bold text-gray-900 text-sm">{location.name}</h3>
+          <p className="text-xs text-gray-500">{location.city}</p>
+        </div>
+      </div>
+      
+      <div className="space-y-2 flex-grow">
+        <div>
+          <p className="text-xs text-gray-600 leading-tight line-clamp-3">
+            {location.address}
+          </p>
+        </div>
+        
+        <div className="space-y-1 mt-2">
+          <div className="flex items-center">
+            <Phone className="h-3 w-3 text-teal-600 mr-1 flex-shrink-0" />
+            <a 
+              href={`tel:${location.phone.replace(/\D/g, '')}`}
+              className="text-xs text-teal-600 hover:text-teal-700 font-medium truncate"
+            >
+              {location.phone}
+            </a>
+          </div>
+
+          {location.phone2 && (
+            <div className="flex items-center">
+              <Phone className="h-3 w-3 text-teal-600 mr-1 flex-shrink-0" />
+              <a 
+                href={`tel:${location.phone2.replace(/\D/g, '')}`}
+                className="text-xs text-teal-600 hover:text-teal-700 font-medium truncate"
+              >
+                {location.phone2}
+              </a>
+            </div>
+          )}
+          
+          <div className="flex items-center">
+            <Mail className="h-3 w-3 text-teal-600 mr-1 flex-shrink-0" />
+            <a 
+              href={`mailto:${location.email}`}
+              className="text-xs text-teal-600 hover:text-teal-700 font-medium truncate"
+            >
+              {location.email}
+            </a>
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  );
+};
+
 const ContactPage = () => {
   const { theme } = useTheme();
   const [formData, setFormData] = useState({
@@ -399,72 +480,30 @@ const ContactPage = () => {
             <h2 className="text-2xl font-bold text-gray-900 mb-2">Our Global Offices</h2>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-3">
-            {locations.map((location, index) => {
-              const IconComponent = location.icon;
-              return (
-                <motion.div
-                  key={location.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: index * 0.05 }}
-                  className="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
-                >
-                  <div className="flex items-center mb-3">
-                    <div className="flex-shrink-0 h-8 w-8 rounded-full bg-teal-100 flex items-center justify-center mr-2">
-                      <IconComponent className="h-4 w-4 text-teal-600" />
-                    </div>
-                    <div>
-                      <h3 className="font-bold text-gray-900 text-sm">{location.name}</h3>
-                      <p className="text-xs text-gray-500">{location.city}</p>
-                    </div>
+          <div className="w-full">
+            <div className="flex items-start space-x-2">
+              <div className="flex-shrink-0 pt-1">
+                <span className="text-sm font-medium text-gray-500">INDIA</span>
+              </div>
+              {locations
+                .filter(loc => loc.id !== 'usa')
+                .map((location, index) => (
+                  <div key={location.id} className="flex-1 min-w-0">
+                    <OfficeCard location={location} index={index} />
                   </div>
-                  
-                  <div className="space-y-2">
-                    <div>
-                      <p className="text-xs text-gray-600 leading-tight line-clamp-3">
-                        {location.address}
-                      </p>
-                    </div>
-                    
-                    <div className="space-y-1">
-                      <div className="flex items-center">
-                        <Phone className="h-3 w-3 text-teal-600 mr-1 flex-shrink-0" />
-                        <a 
-                          href={`tel:${location.phone.replace(/\D/g, '')}`}
-                          className="text-xs text-teal-600 hover:text-teal-700 font-medium truncate"
-                        >
-                          {location.phone}
-                        </a>
-                      </div>
-
-                      {location.phone2 && (
-                        <div className="flex items-center">
-                          <Phone className="h-3 w-3 text-teal-600 mr-1 flex-shrink-0" />
-                          <a 
-                            href={`tel:${location.phone2.replace(/\D/g, '')}`}
-                            className="text-xs text-teal-600 hover:text-teal-700 font-medium truncate"
-                          >
-                            {location.phone2}
-                          </a>
-                        </div>
-                      )}
-                      
-                      <div className="flex items-center">
-                        <Mail className="h-3 w-3 text-teal-600 mr-1 flex-shrink-0" />
-                        <a 
-                          href={`mailto:${location.email}`}
-                          className="text-xs text-teal-600 hover:text-teal-700 font-medium truncate"
-                        >
-                          {location.email}
-                        </a>
-                      </div>
-                    </div>
+                ))}
+              
+              <div className="flex-shrink-0 pt-1">
+                <span className="text-sm font-medium text-gray-500">USA</span>
+              </div>
+              {locations
+                .filter(loc => loc.id === 'usa')
+                .map((location, index) => (
+                  <div key={location.id} className="flex-1 min-w-0">
+                    <OfficeCard location={location} index={index} />
                   </div>
-                </motion.div>
-              );
-            })}
+                ))}
+            </div>
           </div>
         </div>
       </section>
