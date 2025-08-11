@@ -566,7 +566,7 @@ export default function IllustrativeOne() {
 
       {/* Statistics Section */}
       <section className="pt-16 pb-8 bg-gradient-to-b from-navy-900 to-navy-950 relative overflow-hidden">
-        <div className="container mx-auto px-4 text-center mb-12">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center mb-12">
           <motion.h2
             className="text-4xl font-bold text-white mb-4"
             initial={{ opacity: 0, y: 20 }}
@@ -577,7 +577,7 @@ export default function IllustrativeOne() {
             Real Impact. Real Outcomes.
           </motion.h2>
         </div>
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
             {/* Productivity Gains */}
             <motion.div
@@ -739,18 +739,18 @@ export default function IllustrativeOne() {
       </section>
       {/* Why Choose Us Section */}
       <section className="py-0 relative overflow-hidden w-full bg-gradient-to-b from-navy-900 to-navy-950">
-        <div className="container mx-auto px-2">
-          <div className="backdrop-blur-sm bg-black/30 rounded-2xl border border-white/10 shadow-xl p-2 md:p-3">
-            <div className="flex flex-col lg:flex-row items-center gap-3 md:gap-6">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="backdrop-blur-sm bg-black/30 rounded-2xl border border-white/10 shadow-xl p-4 md:p-6">
+            <div className="flex flex-col lg:flex-row items-center gap-6 md:gap-8">
               {/* Left Column: Text Panel */}
               <div className="w-full lg:w-2/5">
-                <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-300 to-blue-500 bg-clip-text text-white mb-3">
+                <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-300 to-blue-500 bg-clip-text text-white mb-4">
                   Why Choose Us
                 </h2>
-                <p className="text-lg text-white/90 mb-3 leading-relaxed">
+                <p className="text-lg text-white/90 mb-4 leading-relaxed">
                   IBSFINtech solution covers the entire treasury management lifecycle, from front office to back-office operations.
                 </p>
-                <p className="text-base text-white/80 mb-3 leading-relaxed">
+                <p className="text-base text-white/80 mb-4 leading-relaxed">
                   With deep expertise in Trade Finance, Supply Chain Finance, Payments, FX, Money Market, Commodity Risk, and Cashflow & Liquidity management, we provide a comprehensive approach to streamline your operations.
                 </p>
                 <a href="/about" className="inline-flex items-center bg-[#FF073A] hover:bg-[#e60634] text-white font-medium text-sm py-2 px-4 rounded-lg transition-all duration-300 transform hover:-translate-y-0.5 hover:shadow-[0_4px_12px_rgba(255,7,58,0.3)] active:translate-y-0">
@@ -783,7 +783,7 @@ export default function IllustrativeOne() {
 
       {/* Featured Industries Grid */}
       <section className="py-16 relative overflow-hidden w-full bg-gradient-to-b from-navy-900 to-navy-950">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="backdrop-blur-sm bg-black/30 rounded-2xl border border-white/10 shadow-xl p-6">
             <div className="flex flex-col lg:flex-row items-center gap-8">
               {/* Text Content - Left Side */}

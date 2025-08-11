@@ -17,13 +17,12 @@ const milestones: Milestone[] = [
     year: '2006-16',
     displayYear: '2006',
     title: 'Foundation & Industry Recognition',
-    photoCaption: "IBSFINtech's first major industry recognition — Express IT Award 2015, presented by Shri Ravi Shankar Prasad to Mr. C.M. Grover.",
+    photoCaption: "IBSFINtech's first major industry recognition — Express IT Award 2015, presented by Shri Ravi Shankar Prasad to Mr. C M Grover",
     achievements: [
       'First Client: The Times of India – Marked a strong beginning with India\'s leading media house.',
       'Global Recognition: Winner of Thomson Reuters Fintech Challenge'
     ],
-    image: '/Awards/Dabur_IBSFINtech_win_BestLiquidityInvestmentSolutionAward_TheAsset.jpg',
-    partnerLogo: '/Partners/IBSFINtech-Partner-KPMG.svg'
+    image: '/timeline1.jpg',
   },
   {
     year: '2017',
@@ -97,8 +96,7 @@ const milestones: Milestone[] = [
       'IBSFINtech partners with Axis Bank, Aditya Birla Capital, TraydStream and NetSuite',
       'Industry Collaboration: Partnered with TMI for its flagship treasury event in Mumbai.'
     ],
-    image: '/p3.png',
-    partnerLogo: '/Partners/IBSFINtech-Partner-Deloitte.svg'
+    image: '/timeline2.png',
   },
   {
     year: '2025',

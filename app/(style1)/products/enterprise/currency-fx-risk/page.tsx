@@ -51,14 +51,16 @@ const CurrencyFXRiskPage = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="flex flex-col sm:flex-row gap-4"
               >
-                <Button size="lg" className="bg-white text-[#241F5D] hover:bg-blue-50 font-medium">
-                  Get Started <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-                <Button size="lg" variant="outline" className="bg-transparent border-2 border-white text-white hover:bg-white/10 font-medium">
-                  Learn More
-                </Button>
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <a href="/request-demo" className="bg-red-500 hover:bg-red-600 text-white font-semibold py-3 px-8 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center">
+                    Request a Demo
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </a>
+                  <a href="/contact" className="bg-transparent border-2 border-white text-white hover:bg-white/10 font-medium py-3 px-8 rounded-lg transition-colors text-center flex items-center justify-center">
+                    Contact Sales
+                  </a>
+                </div>
               </motion.div>
             </div>
           </div>
@@ -308,12 +310,13 @@ const CurrencyFXRiskPage = () => {
                 Discover how our advanced Currency & FX Risk Management solution can protect your business and optimize international operations.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg" className="bg-red-500 hover:bg-red-600 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300">
+                <a href="/request-demo" className="bg-red-500 hover:bg-red-600 text-white font-semibold py-3 px-8 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center">
                   Request a Demo
-                </Button>
-                <Button size="lg" variant="outline" className="text-white border-white hover:bg-white/10">
-                  Contact Our Experts
-                </Button>
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </a>
+                <a href="/contact" className="bg-transparent border-2 border-white text-white hover:bg-white/10 font-medium py-3 px-8 rounded-lg transition-colors text-center">
+                  Contact Sales
+                </a>
               </div>
             </motion.div>
           </div>

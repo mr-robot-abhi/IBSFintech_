@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import { Check, Link2, Cpu, Database, Server, Cloud, Zap, BarChart } from 'lucide-react';
 
 const PRIMARY_COLOR = '#241F5D';
@@ -43,21 +44,21 @@ export default function IntegrationPage() {
     <div className="min-h-screen bg-white">
       {/* Hero Banner */}
       <div className="relative h-96 w-full overflow-hidden">
-        <div 
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage: 'url(/Integration%20Capability%20-%20Banner.png)'
-          }}
-        >
-          <div className="absolute inset-0 bg-black/40 flex items-center">
-            <div className="max-w-7xl w-full pl-8 sm:pl-12 lg:pl-16">
-              <div className="max-w-2xl">
-                <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 text-left">IBSFINtech's Integration Capabilities</h1>
-                <p className="text-xl text-gray-200 mb-4 text-left">
-                  Seamless Connectivity Across Your Treasury Ecosystem
-                </p>
-                <p className="text-xl font-semibold text-gray-200 text-left">Automate, Integrate & Optimize</p>
-              </div>
+        <Image
+          src="/Integration capabilities page Banner.svg"
+          alt="Integration Capabilities Banner"
+          fill
+          className="object-cover"
+          priority
+        />
+        <div className="absolute inset-0 flex items-center">
+          <div className="max-w-7xl w-full pl-8 sm:pl-12 lg:pl-16">
+            <div className="max-w-2xl">
+              <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 text-left">IBSFINtech's Integration Capabilities</h1>
+              <p className="text-xl text-gray-200 mb-4 text-left">
+                Seamless Connectivity Across Your Treasury Ecosystem
+              </p>
+              <p className="text-xl font-semibold text-gray-200 text-left">Automate, Integrate & Optimize</p>
             </div>
           </div>
         </div>

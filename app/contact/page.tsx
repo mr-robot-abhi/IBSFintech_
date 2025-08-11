@@ -229,18 +229,15 @@ const ContactPage = () => {
 
   return (
     <div className="min-h-screen">
-      {/* Banner Section with map.jpg */}
+      {/* Banner Section with Contact Us Banner */}
       <section className="relative h-[500px] overflow-hidden">
-        <div className="absolute inset-0">
-          <Image
-            src="/map.jpg"
-            alt="Global Presence Map"
-            fill
-            className="object-cover"
-            priority
-          />
-          <div className="absolute inset-0 bg-black/50"></div>
-        </div>
+        <Image
+          src="/Contact Us Banner.svg"
+          alt="Contact Us Banner"
+          fill
+          className="object-cover"
+          priority
+        />
         
         <div className="relative z-10 h-full flex items-center">
           <div className="container mx-auto px-6">

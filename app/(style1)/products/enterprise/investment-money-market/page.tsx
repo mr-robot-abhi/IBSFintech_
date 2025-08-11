@@ -21,45 +21,32 @@ const InvestmentWealthTechPage = () => {
         <div className="absolute inset-0 w-screen">
           <Image
             src="/Inner pages/Products/IBSFINtech_Investment_Management_optimized.png"
-            alt="Investment Management Dashboard"
+            alt="Investment & WealthTech Management"
             fill
             className="object-cover w-full"
             priority
-            style={{ objectPosition: 'center' }}
+            style={{ objectPosition: 'center', opacity: 0.4 }}
           />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-r from-[#241F5D]/90 to-[#3A3480]/80">
+        <div className="absolute inset-0 bg-gradient-to-r from-[#241F5D]/80 to-[#3A3480]/60">
           <div className="container mx-auto h-full flex items-center px-6 lg:px-8 max-w-7xl">
             <div className="max-w-2xl text-white">
-              <motion.h1 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight"
-              >
-                Investment & WealthTech Management
-              </motion.h1>
-              <motion.p 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.1 }}
-                className="text-lg md:text-xl text-blue-100 mb-8"
-              >
+              <div className="flex items-center mb-6">
+                <TrendingUp className="text-white mr-3" size={40} />
+                <h1 className="text-4xl md:text-5xl font-bold text-white">Investment & WealthTech Management</h1>
+              </div>
+              <p className="text-xl text-white/90 mb-8">
                 Transform your investment operations with our comprehensive solution for simplified management, enhanced compliance, and data-driven decision-making.
-              </motion.p>
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="flex flex-col sm:flex-row gap-4"
-              >
-                <Button size="lg" className="bg-red-500 hover:bg-red-600 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300">
-                  Request Demo <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-                <Button variant="outline" size="lg" className="bg-transparent border-2 border-white text-white hover:bg-white/10 font-medium">
-                  Learn More
-                </Button>
-              </motion.div>
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <a href="/request-demo" className="bg-red-500 hover:bg-red-600 text-white font-semibold py-3 px-8 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center">
+                  Request a Demo
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </a>
+                <a href="/contact" className="bg-transparent border-2 border-white text-white hover:bg-white/10 font-medium py-3 px-8 rounded-lg transition-colors text-center">
+                  Contact Sales
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -281,25 +268,28 @@ const InvestmentWealthTechPage = () => {
 
             {/* CTA Section */}
             <motion.div 
-              className="text-center py-12"
+              className="text-center py-16 md:py-20"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <h3 className="text-2xl md:text-3xl font-bold text-[#241F5D] mb-6">
-                Experience the future of investment management
-              </h3>
-              <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-                Take your operations to the next level with our cutting-edge features and comprehensive wealth management solutions.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg" className="bg-[#241F5D] hover:bg-[#1a1650] text-white">
-                  Schedule a Demo
-                </Button>
-                <Button size="lg" variant="outline" className="border-[#241F5D] text-[#241F5D] hover:bg-blue-50">
-                  Contact Sales
-                </Button>
+              <div className="max-w-4xl mx-auto px-4">
+                <h3 className="text-2xl md:text-3xl font-bold text-[#241F5D] mb-4">
+                  Experience the future of investment management
+                </h3>
+                <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
+                  Take your operations to the next level with our cutting-edge features and comprehensive wealth management solutions.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <a href="/request-demo" className="bg-red-500 hover:bg-red-600 text-white font-semibold py-3 px-8 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center">
+                    Request a Demo
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </a>
+                  <a href="/contact" className="bg-transparent border-2 border-[#241F5D] text-[#241F5D] hover:bg-[#241F5D]/5 font-medium py-3 px-8 rounded-lg transition-colors text-center">
+                    Contact Sales
+                  </a>
+                </div>
               </div>
             </motion.div>
           </div>

@@ -81,6 +81,23 @@
   }
 }
 
+@layer components {
+  .container-consistent {
+    @apply mx-auto px-4 sm:px-6 lg:px-8;
+    max-width: 1400px;
+  }
+  
+  .container-wide {
+    @apply mx-auto px-4 sm:px-6 lg:px-8;
+    max-width: 1600px;
+  }
+  
+  .container-narrow {
+    @apply mx-auto px-4 sm:px-6 lg:px-8;
+    max-width: 1200px;
+  }
+}
+
 .neon-text {
   color: #00cfff !important;
   text-shadow: 0 0 5px #00cfff, 0 0 10px #00cfff, 0 0 20px #00cfff;
@@ -93,4 +110,38 @@
   background-color: #00cfff !important;
   box-shadow: 0 0 10px #00cfff, 0 0 20px #00cfff;
   color: #fff !important;
+}
+
+/* Modal styles for video player */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 9999;
+  display: none;
+}
+
+.modal.show {
+  display: block;
+}
+
+.modal-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: transparent;
+  border: none;
+  outline: none;
+}
+
+/* Line clamp utility */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }

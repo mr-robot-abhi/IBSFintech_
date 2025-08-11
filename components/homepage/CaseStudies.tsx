@@ -96,7 +96,7 @@ export default function CaseStudies() {
             >
               <div className="absolute inset-0">
                 <Image
-                  src="/bg_12.jpg"
+                  src="/Currencies-Banner.png"
                   alt=""
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-105"

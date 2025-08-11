@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { ArrowRight, CreditCard, Shield, Bell, BarChart, FileText, Users, Send, CheckCircle, Lock, RefreshCw } from 'lucide-react';
+import { ArrowRight, CreditCard, Shield, Bell, BarChart2, FileText, Users, Send, CheckCircle, Lock, RefreshCw } from 'lucide-react';
 
 
 const PaymentsPage = () => {
@@ -17,63 +17,37 @@ const PaymentsPage = () => {
 
 
       {/* Hero Section */}
-      <section className="relative w-full min-h-[400px] flex items-center bg-gradient-to-r from-[#241F5D] to-[#3A3480] text-white">
-        {/* Background Image */}
-        <div className="absolute inset-0 w-full h-full overflow-hidden">
+      <section className="relative w-screen h-[600px] -mt-20 left-1/2 right-1/2 -mx-[50vw]">
+        <div className="absolute inset-0 w-screen">
           <Image
             src="/Inner pages/Products/IBSFINtech Treasury Management System Module.png"
             alt="Enterprise Payments Management"
             fill
-            className="object-cover object-center"
-            quality={100}
+            className="object-cover w-full"
             priority
-            sizes="100vw"
-            style={{
-              objectFit: 'cover',
-              opacity: 0.25,
-              width: '100%',
-              height: '100%'
-            }}
-          />
-          <div 
-            className="absolute inset-0 bg-gradient-to-r from-[#241F5D]/60 to-[#3A3480]/60"
-            aria-hidden="true"
+            style={{ objectPosition: 'center', opacity: 0.4 }}
           />
         </div>
-        <div className="container mx-auto px-4 relative z-10 py-8 md:py-10">
-          <div className="max-w-4xl mx-auto">
-            <motion.h1 
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-30px" }}
-              transition={{ duration: 0.4 }}
-              className="text-2xl md:text-3xl lg:text-4xl font-bold mb-2 leading-tight"
-            >
-              Enterprise Payments Management
-            </motion.h1>
-            <motion.p 
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-30px" }}
-              transition={{ duration: 0.4, delay: 0.1 }}
-              className="text-base md:text-lg text-blue-100 mb-6 max-w-2xl"
-            >
-              Streamline your payment operations with our comprehensive, secure, and efficient payment management solution
-            </motion.p>
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-30px" }}
-              transition={{ duration: 0.4, delay: 0.2 }}
-              className="flex flex-wrap gap-4"
-            >
-              <Button size="lg" className="bg-white text-[#241F5D] hover:bg-blue-50 px-8">
-                Schedule a Demo <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
-                Learn More
-              </Button>
-            </motion.div>
+        <div className="absolute inset-0 bg-gradient-to-r from-[#241F5D]/80 to-[#3A3480]/60">
+          <div className="container mx-auto h-full flex items-center px-6 lg:px-8 max-w-7xl">
+            <div className="max-w-2xl text-white">
+              <div className="flex items-center mb-6">
+                <BarChart2 className="text-white mr-3" size={40} />
+                <h1 className="text-4xl md:text-5xl font-bold text-white">Enterprise Payments Management</h1>
+              </div>
+              <p className="text-xl text-white/90 mb-8">
+                Streamline your payment operations with our comprehensive, secure, and efficient payment management solution
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <a href="/request-demo" className="bg-red-500 hover:bg-red-600 text-white font-semibold py-3 px-8 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center">
+                  Request a Demo
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </a>
+                <a href="/contact" className="bg-transparent border-2 border-white text-white hover:bg-white/10 font-medium py-3 px-8 rounded-lg transition-colors text-center">
+                  Contact Sales
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -81,16 +55,16 @@ const PaymentsPage = () => {
       {/* Main Content */}
       <div className="relative z-10 bg-white">
         {/* All-in-One Solution Section */}
-        <section className="py-16">
+        <section className="py-6 md:py-8 -mt-4">
           <div className="container mx-auto px-4">
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.5 }}
               className="max-w-6xl mx-auto"
             >
-              <h2 className="text-3xl md:text-4xl font-bold text-[#241F5D] mb-12 text-center">
+              <h2 className="text-2xl md:text-3xl font-bold text-[#241F5D] mb-6 text-left">
                 All-in-One Payment Solution
               </h2>
               
@@ -191,7 +165,7 @@ const PaymentsPage = () => {
                   className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow"
                 >
                   <div className="h-12 w-12 rounded-full bg-blue-50 flex items-center justify-center mb-4">
-                    <BarChart className="h-6 w-6 text-blue-600" />
+                    <BarChart2 className="h-6 w-6 text-blue-600" />
                   </div>
                   <h4 className="text-lg font-semibold text-[#241F5D] mb-2">Comprehensive MIS Reports</h4>
                   <p className="text-gray-600">Detailed payment status reports with drill-down capabilities for in-depth analysis.</p>
@@ -305,7 +279,7 @@ const PaymentsPage = () => {
                   { icon: <CheckCircle className="h-6 w-6" />, title: "Payment Reconciliation", description: "Automated matching of payments with invoices" },
                   { icon: <FileText className="h-6 w-6" />, title: "Document Management", description: "Secure storage and retrieval of payment documents" },
                   { icon: <Users className="h-6 w-6" />, title: "Vendor Portal", description: "Self-service portal for vendors to view and track payments" },
-                  { icon: <BarChart className="h-6 w-6" />, title: "Cash Flow Forecasting", description: "Predictive analytics for better cash management" }
+                  { icon: <BarChart2 className="h-6 w-6" />, title: "Cash Flow Forecasting", description: "Predictive analytics for better cash management" }
                 ].map((feature, index) => (
                   <motion.div
                     key={index}
@@ -340,12 +314,13 @@ const PaymentsPage = () => {
                 Experience the power of automated, secure, and efficient payment processing with our comprehensive solution.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg" className="bg-red-500 hover:bg-red-600 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300">
+                <a href="/request-demo" className="bg-red-500 hover:bg-red-600 text-white font-semibold py-3 px-8 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center">
                   Request a Demo
-                </Button>
-                <Button size="lg" variant="outline" className="border-[#241F5D] text-[#241F5D] hover:bg-blue-50">
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </a>
+                <a href="/contact" className="bg-transparent border-2 border-[#241F5D] text-[#241F5D] hover:bg-[#241F5D]/5 font-medium py-3 px-8 rounded-lg transition-colors text-center">
                   Contact Sales
-                </Button>
+                </a>
               </div>
             </motion.div>
           </div>
