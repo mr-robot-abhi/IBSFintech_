@@ -5,11 +5,11 @@ import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 
 const partners = [
-  { logo: 'p1.png' },
-  { logo: 'p2.png', bloomberg: true },  // Bloomberg
-  { logo: 'p3.png' },
-  { logo: 'p4.png', kpmg: true },  // KPMG
-  { logo: 'p5.png' }
+  { logo: 'Partners/IBSFINtech-Partner-Bloomberg.svg', alt: 'Bloomberg' },
+  { logo: 'Partners/IBSFINtech-Partner-Deloitte.svg', alt: 'Deloitte' },
+  { logo: 'Partners/IBSFINtech-Partner-KPMG.svg', alt: 'KPMG' },
+  { logo: 'Partners/IBSFINtech-Partner-LSEG.svg', alt: 'LSEG' },
+  { logo: 'Partners/IBSFINtech-Partner-ORACLE.svg', alt: 'Oracle' }
 ];
 
 type PartnershipEcosystemProps = {
@@ -51,10 +51,11 @@ export default function PartnershipEcosystem({ variant = 'illustrative1' }: Part
                   <div className="relative w-full h-4/5">
                     <Image
                       src={`/${partner.logo}`}
-                      alt=""
+                      alt={partner.alt}
                       fill
-                      className={`object-contain brightness-0 invert ${partner.bloomberg ? 'scale-140' : partner.kpmg ? 'scale-115' : ''}`}
+                      className="object-contain"
                       sizes="(max-width: 640px) 45vw, (max-width: 768px) 35vw, 200px"
+                      style={{ objectFit: 'contain' }}
                     />
                   </div>
                 </div>

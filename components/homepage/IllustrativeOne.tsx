@@ -5,7 +5,6 @@ import Image from 'next/image';
 import { motion, useAnimation, useScroll } from 'framer-motion';
 import Tilt from 'react-parallax-tilt';
 import { ArrowRight, Zap, Shield, Globe, Car, Factory, Building, Users, Newspaper, ShoppingBag, Cpu, Truck, Home, BookOpen, ChevronLeft, ChevronRight, MapPin, Phone, Mail, Linkedin, BarChart2, Settings, Award, Link } from 'lucide-react';
-import Footer from '../layout/Footer';
 import HeroImageSlideshow from './HeroImageSlideshow';
 import ClientLogoStrip from '../common/ClientLogoStrip';
 
@@ -78,9 +77,11 @@ const FlipCard: React.FC<FlipCardProps> = ({
 }) => {
   const [isFlipped, setIsFlipped] = useState(false);
   const [currentIndustry, setCurrentIndustry] = useState(industry);
-  const [nextIndustry, setNextIndustry] = useState<Industry>(() =>
-    getRandomIndustry(industry.name, allIndustries)
-  );
+  const [nextIndustry, setNextIndustry] = useState<Industry>(() => {
+    // Ensure nextIndustry is different from currentIndustry
+    const availableIndustries = allIndustries.filter(ind => ind.name !== industry.name);
+    return availableIndustries[Math.floor(Math.random() * availableIndustries.length)];
+  });
   const [isMounted, setIsMounted] = useState(false);
   const controls = useAnimation();
 
@@ -103,7 +104,17 @@ const FlipCard: React.FC<FlipCardProps> = ({
       // Change to next industry
       if (isMounted) { // Check again before state updates
         setCurrentIndustry(nextIndustry);
-        setNextIndustry(getRandomIndustry(nextIndustry.name, allIndustries));
+        // Ensure the new nextIndustry is different from both current and next
+        const availableIndustries = allIndustries.filter(ind => 
+          ind.name !== nextIndustry.name && ind.name !== currentIndustry.name
+        );
+        if (availableIndustries.length > 0) {
+          setNextIndustry(availableIndustries[Math.floor(Math.random() * availableIndustries.length)]);
+        } else {
+          // Fallback: get any industry different from current
+          const fallbackIndustries = allIndustries.filter(ind => ind.name !== nextIndustry.name);
+          setNextIndustry(fallbackIndustries[Math.floor(Math.random() * fallbackIndustries.length)]);
+        }
       }
 
       // Complete the flip
@@ -447,12 +458,12 @@ type IndustryData = {
 };
 
 export default function IllustrativeOne() {
-  // Industry data for flip cards with vibrant colors
+  // Industry data for flip cards with vibrant colors - ensuring all 8 are unique
   const industries: IndustryData[] = [
     { name: 'Manufacturing', icon: Factory, color: 'from-blue-500 to-blue-600' },
     { name: 'Pharmaceutical', icon: Shield, color: 'from-emerald-500 to-emerald-600' },
     { name: 'Automotive', icon: Car, color: 'from-orange-500 to-orange-600' },
-    { name: 'Mining', icon: MapPin, color: 'from-amber-500 to-amber-600' },
+    { name: 'Mining & Metals', icon: MapPin, color: 'from-amber-500 to-amber-600' },
     { name: 'Family Offices', icon: Users, color: 'from-purple-500 to-purple-600' },
     { name: 'Textile Retail', icon: ShoppingBag, color: 'from-pink-500 to-pink-600' },
     { name: 'SME', icon: Users, color: 'from-cyan-500 to-cyan-600' },
@@ -510,13 +521,13 @@ export default function IllustrativeOne() {
                 A Comprehensive & Integrated TMS for CFOs and Treasurers to manage Cash Flow, Liquidity, Risk, Investments, Debt Trade Finance, and Supply Chain Finance with precision.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <button className="bg-[#FF073A] hover:bg-[#e60634] text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 flex items-center justify-center transform hover:-translate-y-0.5 hover:shadow-[0_4px_12px_rgba(255,7,58,0.3)] active:translate-y-0">
+                <a href="/contact" className="bg-[#FF073A] hover:bg-[#e60634] text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 flex items-center justify-center transform hover:-translate-y-0.5 hover:shadow-[0_4px_12px_rgba(255,7,58,0.3)] active:translate-y-0">
                   Get Started
                   <ArrowRight className="ml-2 h-5 w-5" />
-                </button>
-                <button className="bg-transparent hover:bg-white/10 text-white border border-white/20 font-medium py-3 px-6 rounded-lg transition-colors duration-200">
+                </a>
+                <a href="/request-demo" className="bg-transparent hover:bg-white/10 text-white border border-white/20 font-medium py-3 px-6 rounded-lg transition-colors duration-200">
                   Schedule a Demo
-                </button>
+                </a>
               </div>
             </motion.div>
           </div>
@@ -727,31 +738,31 @@ export default function IllustrativeOne() {
         </div>
       </section>
       {/* Why Choose Us Section */}
-      <section className="py-2 relative overflow-hidden w-full bg-gradient-to-b from-navy-900 to-navy-950">
-        <div className="container mx-auto px-4">
-          <div className="backdrop-blur-sm bg-black/30 rounded-2xl border border-white/10 shadow-xl p-4 md:p-6">
-            <div className="flex flex-col lg:flex-row items-center gap-4 md:gap-8">
+      <section className="py-0 relative overflow-hidden w-full bg-gradient-to-b from-navy-900 to-navy-950">
+        <div className="container mx-auto px-2">
+          <div className="backdrop-blur-sm bg-black/30 rounded-2xl border border-white/10 shadow-xl p-2 md:p-3">
+            <div className="flex flex-col lg:flex-row items-center gap-3 md:gap-6">
               {/* Left Column: Text Panel */}
               <div className="w-full lg:w-2/5">
-                <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-300 to-blue-500 bg-clip-text text-white mb-6">
+                <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-300 to-blue-500 bg-clip-text text-white mb-3">
                   Why Choose Us
                 </h2>
-                <p className="text-lg text-white/90 mb-6 leading-relaxed">
+                <p className="text-lg text-white/90 mb-3 leading-relaxed">
                   IBSFINtech solution covers the entire treasury management lifecycle, from front office to back-office operations.
                 </p>
-                <p className="text-base text-white/80 mb-6 leading-relaxed">
+                <p className="text-base text-white/80 mb-3 leading-relaxed">
                   With deep expertise in Trade Finance, Supply Chain Finance, Payments, FX, Money Market, Commodity Risk, and Cashflow & Liquidity management, we provide a comprehensive approach to streamline your operations.
                 </p>
-                <button className="flex items-center bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white font-medium py-3 px-6 rounded-full transition transform hover:-translate-y-0.5 hover:shadow-lg">
+                <a href="/about" className="inline-flex items-center bg-[#FF073A] hover:bg-[#e60634] text-white font-medium text-sm py-2 px-4 rounded-lg transition-all duration-300 transform hover:-translate-y-0.5 hover:shadow-[0_4px_12px_rgba(255,7,58,0.3)] active:translate-y-0">
                   Learn More
-                  <svg xmlns="http://www.w3.org/2000/svg" className="ml-2 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="ml-1.5 h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
-                </button>
+                </a>
               </div>
 
               {/* Right Column: New Creative SVG */}
-              <div className="w-full lg:w-3/5 relative h-[500px] md:h-[550px] flex items-center justify-center">
+              <div className="w-full lg:w-3/5 relative h-[400px] md:h-[450px] flex items-center justify-center">
                 <div className="w-full h-full flex items-center justify-center">
                   <Image
                     src="/Why choose us-creative.svg"
@@ -919,10 +930,11 @@ export default function IllustrativeOne() {
                     </div>
                   </div>
                   <Image
-                    src={latestNews[0].backgroundImage}
+                    src="/Currencies-Banner.png"
                     alt={latestNews[0].title}
                     fill
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    priority
                   />
                 </motion.div>
 
@@ -946,10 +958,11 @@ export default function IllustrativeOne() {
                     </p>
                   </div>
                   <Image
-                    src={latestNews[1].backgroundImage}
+                    src="/Banner.png"
                     alt={latestNews[1].title}
                     fill
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    priority
                   />
                 </motion.div>
 
@@ -976,10 +989,11 @@ export default function IllustrativeOne() {
                     </div>
                   </div>
                   <Image
-                    src={latestNews[2].backgroundImage}
+                    src="/Home Page Banner 4.png"
                     alt={latestNews[2].title}
                     fill
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    priority
                   />
                 </motion.div>
               </div>
@@ -1022,7 +1036,7 @@ export default function IllustrativeOne() {
                   </p>
                   <div className="flex flex-wrap justify-center md:justify-start gap-2">
                     <motion.a
-                      href="/demo"
+                      href="/request-demo"
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.98 }}
                       className="px-4 py-2 bg-[#FF073A] hover:bg-[#e60634] text-white font-medium rounded-xl transition-all duration-300 flex items-center transform hover:-translate-y-0.5 hover:shadow-[0_4px_12px_rgba(255,7,58,0.3)] active:translate-y-0"
@@ -1053,7 +1067,9 @@ export default function IllustrativeOne() {
                 >
                   {/* LinkedIn */}
                   <a
-                    href="#"
+                    href="https://www.linkedin.com/company/ibsfintech-india"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="group p-2 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 transition-all duration-300 hover:scale-110"
                     aria-label="LinkedIn"
                   >
@@ -1064,7 +1080,9 @@ export default function IllustrativeOne() {
 
                   {/* YouTube */}
                   <a
-                    href="#"
+                    href="https://www.youtube.com/channel/UC_Hb4Jd0XiZntSF18ECbj2g"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="group p-2 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 transition-all duration-300 hover:scale-110"
                     aria-label="YouTube"
                   >
@@ -1075,7 +1093,9 @@ export default function IllustrativeOne() {
 
                   {/* Facebook */}
                   <a
-                    href="#"
+                    href="https://www.facebook.com/ibsfintech"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="group p-2 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 transition-all duration-300 hover:scale-110"
                     aria-label="Facebook"
                   >
@@ -1084,14 +1104,16 @@ export default function IllustrativeOne() {
                     </svg>
                   </a>
 
-                  {/* Twitter */}
+                  {/* Twitter/X */}
                   <a
-                    href="#"
+                    href="https://x.com/IbsfintechIndia"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="group p-2 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 transition-all duration-300 hover:scale-110"
-                    aria-label="Twitter"
+                    aria-label="Twitter/X"
                   >
                     <svg className="w-5 h-5 text-white group-hover:text-blue-400 transition-colors duration-300" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                      <path d="M24 4.557a9.93 9.93 0 0 1-2.828.775 4.932 4.932 0 0 0 2.165-2.724c-.951.564-2.005.974-3.127 1.195a4.92 4.92 0 0 0-8.384 4.482C7.691 8.095 4.066 6.13 1.64 3.161c-.542.929-.856 2.01-.856 3.17 0 2.188 1.115 4.116 2.821 5.247a4.904 4.904 0 0 1-2.229-.616c-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.627 1.956 2.444 3.377 4.6 3.417A9.867 9.867 0 0 1 0 21.543a13.94 13.94 0 0 0 7.548 2.212c9.057 0 14.009-7.496 14.009-13.986 0-.21 0-.423-.016-.634A9.936 9.936 0 0 0 24 4.557z" />
+                      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
                     </svg>
                   </a>
                 </motion.div>

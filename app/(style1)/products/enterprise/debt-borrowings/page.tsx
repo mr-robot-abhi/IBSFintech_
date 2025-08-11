@@ -30,7 +30,7 @@ const DebtBorrowingsPage = () => {
 
 
       {/* Hero Section */}
-      <section className="relative w-full min-h-[500px] flex items-center bg-gradient-to-r from-[#241F5D] to-[#3A3480] text-white">
+      <section className="relative w-full min-h-[400px] flex items-center bg-gradient-to-r from-[#241F5D] to-[#3A3480] text-white">
         {/* Background Image */}
         <div className="absolute inset-0 w-full h-full overflow-hidden">
           <Image
@@ -43,17 +43,17 @@ const DebtBorrowingsPage = () => {
             sizes="100vw"
             style={{
               objectFit: 'cover',
-              opacity: 0.2,
+              opacity: 0.4,
               width: '100%',
               height: '100%'
             }}
           />
           <div 
-            className="absolute inset-0 bg-gradient-to-r from-[#241F5D]/90 to-[#3A3480]/90"
+            className="absolute inset-0 bg-gradient-to-r from-[#241F5D]/60 to-[#3A3480]/80"
             aria-hidden="true"
           />
         </div>
-        <div className="container mx-auto px-4 relative z-10 py-12">
+        <div className="container mx-auto px-4 relative z-10 py-8">
           <div className="max-w-4xl text-left">
             <motion.h1 
               initial={{ opacity: 0, y: 20 }}
@@ -80,12 +80,20 @@ const DebtBorrowingsPage = () => {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="flex flex-wrap gap-4"
             >
-              <Button size="lg" className="bg-red-500 hover:bg-red-600 text-white font-semibold px-8 shadow-lg hover:shadow-xl transition-all duration-300">
-                Request a Demo <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
-                Learn More
-              </Button>
+              <a href="/contact-us?source=debt-borrowings&interest=demo" className="inline-block">
+                <Button size="lg" className="bg-red-500 hover:bg-red-600 text-white font-semibold px-8 shadow-lg hover:shadow-xl transition-all duration-300">
+                  Request a Demo <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </a>
+              <a href="/contact-sales?source=debt-borrowings" className="inline-block ml-4">
+                <Button 
+                  size="lg" 
+                  variant="outline" 
+                  className="border-white text-white bg-white/10 hover:bg-white/20 transition-all duration-300"
+                >
+                  Contact Sales
+                </Button>
+              </a>
             </motion.div>
           </div>
         </div>
@@ -94,22 +102,22 @@ const DebtBorrowingsPage = () => {
       {/* Main Content */}
       <div className="relative z-10 bg-white">
         {/* All-in-One Solution Section */}
-        <section className="py-8 md:py-12">
+        <section className="py-6 md:py-8 -mt-4">
           <div className="container mx-auto px-4">
             <div className="max-w-6xl mx-auto">
-              <div className="flex flex-col lg:flex-row gap-8">
+              <div className="flex flex-col lg:flex-row gap-6">
                 <div className="lg:w-full">
                   <motion.h2 
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-50px" }}
                     transition={{ duration: 0.5 }}
-                    className="text-2xl md:text-3xl font-bold text-[#241F5D] mb-6"
+                    className="text-2xl md:text-3xl font-bold text-[#241F5D] mb-4"
                   >
                     All-in-One Debt Management Solution
                   </motion.h2>
                   
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-4">
                     <div className="space-y-3">
                       <div className="flex items-start">
                         <div className="flex-shrink-0 mt-1">
@@ -119,7 +127,7 @@ const DebtBorrowingsPage = () => {
                             </svg>
                           </div>
                         </div>
-                        <span className="ml-2 text-sm text-gray-700">End-to-end loan lifecycle management</span>
+                        <span className="ml-2 text-sm text-gray-700 leading-tight">End-to-end loan lifecycle management</span>
                       </div>
                       
                       <div className="flex items-start">
@@ -130,7 +138,7 @@ const DebtBorrowingsPage = () => {
                             </svg>
                           </div>
                         </div>
-                        <span className="ml-2 text-sm text-gray-700">Interest & amortization schedules</span>
+                        <span className="ml-2 text-sm text-gray-700 leading-tight">Interest & amortization schedules</span>
                       </div>
                       
                       <div className="flex items-start">
@@ -141,7 +149,7 @@ const DebtBorrowingsPage = () => {
                             </svg>
                           </div>
                         </div>
-                        <span className="ml-2 text-sm text-gray-700">Cost of borrowing analysis</span>
+                        <span className="ml-2 text-sm text-gray-700 leading-tight">Cost of borrowing analysis</span>
                       </div>
                       
                       <div className="flex items-start">
@@ -152,7 +160,7 @@ const DebtBorrowingsPage = () => {
                             </svg>
                           </div>
                         </div>
-                        <span className="ml-2 text-sm text-gray-700">Loan rollover management</span>
+                        <span className="ml-2 text-sm text-gray-700 leading-tight">Loan rollover management</span>
                       </div>
                     </div>
                     
@@ -165,7 +173,7 @@ const DebtBorrowingsPage = () => {
                             </svg>
                           </div>
                         </div>
-                        <span className="ml-2 text-sm text-gray-700">Document management</span>
+                        <span className="ml-2 text-sm text-gray-700 leading-tight">Document management</span>
                       </div>
                       
                       <div className="flex items-start">
@@ -176,7 +184,7 @@ const DebtBorrowingsPage = () => {
                             </svg>
                           </div>
                         </div>
-                        <span className="ml-2 text-sm text-gray-700">Multi-currency support</span>
+                        <span className="ml-2 text-sm text-gray-700 leading-tight">Multi-currency support</span>
                       </div>
                       
                       <div className="flex items-start">
@@ -187,7 +195,7 @@ const DebtBorrowingsPage = () => {
                             </svg>
                           </div>
                         </div>
-                        <span className="ml-2 text-sm text-gray-700">Compliance tracking</span>
+                        <span className="ml-2 text-sm text-gray-700 leading-tight">Compliance tracking</span>
                       </div>
                       
                       <div className="flex items-start">
@@ -198,7 +206,7 @@ const DebtBorrowingsPage = () => {
                             </svg>
                           </div>
                         </div>
-                        <span className="ml-2 text-sm text-gray-700">Bank communication</span>
+                        <span className="ml-2 text-sm text-gray-700 leading-tight">Bank communication</span>
                       </div>
                     </div>
                   </div>
@@ -344,7 +352,7 @@ const DebtBorrowingsPage = () => {
                             <Check className="h-2.5 w-2.5 text-blue-600" />
                           </div>
                         </div>
-                        <span className="ml-2 text-sm text-gray-700">{item}</span>
+                        <span className="ml-2 text-sm text-gray-700 leading-tight">{item}</span>
                       </li>
                     ))}
                   </ul>
@@ -376,7 +384,7 @@ const DebtBorrowingsPage = () => {
                             <Check className="h-2.5 w-2.5 text-blue-600" />
                           </div>
                         </div>
-                        <span className="ml-2 text-sm text-gray-700">{item}</span>
+                        <span className="ml-2 text-sm text-gray-700 leading-tight">{item}</span>
                       </li>
                     ))}
                   </ul>

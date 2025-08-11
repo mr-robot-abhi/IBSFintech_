@@ -9,6 +9,7 @@ interface Milestone {
   photoCaption: string;
   achievements: string[];
   image: string;
+  partnerLogo?: string;
 }
 
 const milestones: Milestone[] = [
@@ -21,7 +22,8 @@ const milestones: Milestone[] = [
       'First Client: The Times of India – Marked a strong beginning with India\'s leading media house.',
       'Global Recognition: Winner of Thomson Reuters Fintech Challenge'
     ],
-    image: '/Awards/Dabur_IBSFINtech_win_BestLiquidityInvestmentSolutionAward_TheAsset.jpg'
+    image: '/Awards/Dabur_IBSFINtech_win_BestLiquidityInvestmentSolutionAward_TheAsset.jpg',
+    partnerLogo: '/Partners/IBSFINtech-Partner-KPMG.svg'
   },
   {
     year: '2017',
@@ -55,7 +57,8 @@ const milestones: Milestone[] = [
       'Product Milestone: Launched InTReaX® – IBSFINtech\'s SaaS-based Treasury Management System',
       'Global Recognition: Named Software Provider of the Year – APAC at the Corporate Treasurer Awards 2021 (Singapore)'
     ],
-    image: '/bg_13.jpeg'
+    image: '/p1.png',
+    partnerLogo: '/Partners/IBSFINtech-Partner-LSEG.svg'
   },
   {
     year: '2022',
@@ -67,7 +70,8 @@ const milestones: Milestone[] = [
       'Embarked on global journey – Singapore, Dubai & Japan',
       'IBSFINtech appoints Ex-Oracle, Automation Anywhere Senior leader Pramod Agrawal as the new Chief Technology Officer'
     ],
-    image: '/bg_14.jpeg'
+    image: '/p2.png',
+    partnerLogo: '/Partners/IBSFINtech-Partner-ORACLE.svg'
   },
   {
     year: '2023',
@@ -93,7 +97,8 @@ const milestones: Milestone[] = [
       'IBSFINtech partners with Axis Bank, Aditya Birla Capital, TraydStream and NetSuite',
       'Industry Collaboration: Partnered with TMI for its flagship treasury event in Mumbai.'
     ],
-    image: '/bg_16.jpg'
+    image: '/p3.png',
+    partnerLogo: '/Partners/IBSFINtech-Partner-Deloitte.svg'
   },
   {
     year: '2025',
@@ -105,7 +110,8 @@ const milestones: Milestone[] = [
       'Bloomberg Partnership: Enhanced market data capabilities through strategic collaboration.',
       'Office Inauguration: Romal Shetty inaugurates IBSFINtech\'s new corporate office'
     ],
-    image: '/bg_18.jpg'
+    image: '/bg_18.jpg',
+    partnerLogo: '/Partners/IBSFINtech-Partner-Bloomberg.svg'
   }
 ];
 
@@ -210,15 +216,18 @@ const Timeline: React.FC = () => {
           <div className="flex">
             {/* Year Indicator - Fixed Position - Only show when timeline is in view */}
             {showYearIndicator && (
-              <div className="fixed left-20 top-1/2 transform -translate-y-1/2 z-50">
-                <div className="bg-white border-4 border-blue-600 rounded-full w-32 h-32 flex items-center justify-center text-3xl font-bold text-blue-600 shadow-2xl">
+              <div className="fixed left-2 top-1/2 transform -translate-y-1/2 z-50">
+                <div 
+                  className="text-6xl font-black text-black"
+                  style={{ fontFamily: 'Kahlo Black Essential, sans-serif' }}
+                >
                   {activeYear}
                 </div>
               </div>
             )}
             
             {/* Spacer for layout */}
-            <div className="w-40 flex-shrink-0"></div>
+            <div className="w-8 flex-shrink-0"></div>
 
             {/* Timeline Content */}
             <div className="flex-1 relative">
@@ -234,32 +243,39 @@ const Timeline: React.FC = () => {
                     className="relative"
                   >
                     {/* Timeline Dot */}
-                    <div className="absolute -left-12 top-8 w-6 h-6 bg-blue-600 rounded-full border-4 border-white shadow-lg z-10"></div>
+                    <div className="absolute -left-2 top-8 w-6 h-6 bg-blue-600 rounded-full border-4 border-white shadow-lg z-10"></div>
                     
                     {/* Content Card */}
                     <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100 hover:shadow-2xl transition-all duration-500">
                       <div className="md:flex">
-                        {/* Image */}
+                        {/* Image/Logo Background */}
                         <div className="md:w-1/3 relative">
-                          <img 
-                            src={milestone.image} 
-                            alt={milestone.title}
-                            className="w-full h-64 md:h-full object-cover"
-                          />
+                          {milestone.partnerLogo ? (
+                            /* Use partner logo as background */
+                            <div className="w-full h-64 bg-white flex items-center justify-center p-4">
+                              <img 
+                                src={milestone.partnerLogo} 
+                                alt="Partner Logo Background"
+                                className="w-full h-full object-contain opacity-15"
+                                style={{ filter: 'brightness(0) saturate(100%)' }}
+                              />
+                            </div>
+                          ) : (
+                            /* Fallback to original image for years without partner logos */
+                            <img 
+                              src={milestone.image} 
+                              alt={milestone.title}
+                              className="w-full h-64 object-cover"
+                            />
+                          )}
                           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
                         </div>
                         
                         {/* Content */}
                         <div className="md:w-2/3 p-8">
-                          <div className="mb-4">
-                            <h3 className="text-2xl font-bold text-gray-900">
-                              {milestone.title}
-                            </h3>
-                          </div>
-                          
-                          {/* Photo Caption */}
+                          {/* Photo Caption - Now Prominent */}
                           <div className="mb-6 p-4 bg-blue-50 border-l-4 border-blue-600 rounded-r-lg">
-                            <p className="text-gray-700 italic leading-relaxed">
+                            <p className="text-gray-700 font-bold text-lg leading-relaxed">
                               {milestone.photoCaption}
                             </p>
                           </div>

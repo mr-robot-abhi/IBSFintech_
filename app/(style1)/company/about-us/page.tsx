@@ -14,12 +14,14 @@ export default function AboutUs() {
       
       {/* Hero Section with Banner */}
       <div className="relative h-96 w-full overflow-hidden">
-        <div 
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage: 'url(/About%20Us%20IBSFINtech.jpg)'
-          }}
-        >
+        <div className="absolute inset-0 w-full h-full">
+          <Image
+            src="/About Us main banner image.svg"
+            alt="About Us Banner"
+            fill
+            priority
+            className="object-cover"
+          />
           <div className="absolute inset-0 bg-black/40 flex items-center">
             <div className="max-w-7xl w-full pl-8 sm:pl-12 lg:pl-16">
               <div className="max-w-2xl">
@@ -47,13 +49,13 @@ export default function AboutUs() {
                 Global Presence <ChevronRight className="ml-2" />
               </button>
             </div>
-            <div className="bg-gray-200 rounded-xl h-96 flex items-center justify-center">
-              {/* Placeholder for world map image */}
-              <div className="text-center p-8">
-                <Globe className="w-16 h-16 mx-auto text-gray-400 mb-4" />
-                <p className="text-gray-500">World Map Image</p>
-                <p className="text-sm text-gray-400 mt-2">Recommended size: 800x600px</p>
-              </div>
+            <div className="relative rounded-xl h-96 overflow-hidden">
+              <Image
+                src="/worldmap.jpg"
+                alt="World Map"
+                fill
+                className="object-cover"
+              />
             </div>
           </div>
         </div>
@@ -102,7 +104,7 @@ export default function AboutUs() {
       <Timeline />
 
       {/* Global Fintech Wave */}
-      <section className="py-16 px-6 bg-gradient-to-r from-blue-900 to-blue-700 text-white">
+      <section className="py-16 px-6 text-white" style={{ backgroundColor: '#241F5D' }}>
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
@@ -117,14 +119,14 @@ export default function AboutUs() {
                 By leveraging cutting-edge technology and deep industry expertise, we are not only contributing to India's fintech revolution but also setting new standards in treasury, risk, trade finance and cash & liquidity worldwide. We are proud to be at the forefront, empowering businesses and fostering financial transformation across the globe.
               </p>
             </div>
-            <div className="bg-white/10 rounded-2xl p-8 backdrop-blur-sm">
-              <div className="aspect-w-16 aspect-h-9 bg-white/20 rounded-xl p-8 flex items-center justify-center">
-                <div className="text-center">
-                  <Globe className="w-16 h-16 mx-auto mb-4 text-blue-300" />
-                  <p className="text-blue-200">Fintech Innovation Visualization</p>
-                  <p className="text-sm text-blue-300 mt-2">Recommended size: 600x500px</p>
-                </div>
-              </div>
+            <div className="relative rounded-2xl overflow-hidden">
+              <Image
+                src="/Currencies-Banner.png"
+                alt="Fintech Innovation Visualization Dashboard"
+                width={600}
+                height={500}
+                className="w-full h-auto object-cover"
+              />
             </div>
           </div>
         </div>

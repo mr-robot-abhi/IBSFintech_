@@ -92,43 +92,42 @@ export default function CaseStudies() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.3, delay: 0.4 }}
-              className="h-96 rounded-xl overflow-hidden shadow-lg group relative cursor-pointer bg-gradient-to-br from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 transition-all duration-300 transform hover:-translate-y-0.5 hover:shadow-xl"
+              className="h-96 rounded-xl overflow-hidden shadow-lg group relative cursor-pointer"
             >
-            <div className="absolute inset-0">
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-600 to-blue-700"></div>
-              <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white/10 to-transparent"></div>
-            </div>
-            
-            <div className="relative h-full flex flex-col">
-              {/* Empty space to push content to bottom */}
-              <div className="flex-1"></div>
+              <div className="absolute inset-0">
+                <Image
+                  src="/bg_12.jpg"
+                  alt=""
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 20vw"
+                />
+                <div className="absolute inset-0 bg-black/20"></div>
+                <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-white/0"></div>
+              </div>
               
-              {/* Frosted glass bottom section */}
-              <div className="mt-auto backdrop-blur-sm bg-white/30 p-4 rounded-b-xl">
-                <h3 className="text-white font-bold text-base mb-1">
-                  View All Case Studies
-                </h3>
-                <p className="text-white/90 text-xs mb-2 line-clamp-2 leading-snug">
-                  Explore our complete collection of success stories and client transformations.
-                </p>
+              <div className="relative h-full flex flex-col">
+                {/* Content area - empty space for visual background */}
+                <div className="flex-1"></div>
                 
-                <div className="flex justify-between items-center">
-                  <div className="relative h-8 w-24 opacity-80">
-                    <Image
-                      src="/Case_Studies/IBSFINtech-Logo-White.png"
-                      alt="IBSFINtech Logo"
-                      fill
-                      className="object-contain object-left"
-                    />
-                  </div>
+                {/* Frosted glass bottom section */}
+                <div className="mt-auto backdrop-blur-sm bg-white/30 p-3 rounded-b-xl">
+                  <h3 className="text-black font-bold text-sm mb-2 line-clamp-1 leading-tight px-1">
+                    View All Case Studies
+                  </h3>
                   
-                  <button className="text-white text-xs font-medium flex items-center opacity-90 hover:opacity-100 transition-all group-hover:translate-x-1 bg-white/20 px-2.5 py-1 rounded-full">
-                    View all
-                    <ArrowRight className="ml-0.5 h-3 w-3 transition-transform" />
-                  </button>
+                  <div className="flex justify-between items-center px-1">
+                    <div className="w-24">
+                      {/* Empty div for consistent spacing */}
+                    </div>
+                    
+                    <button className="text-black text-xs font-medium flex items-center opacity-90 hover:opacity-100 transition-all group-hover:translate-x-1 bg-white/80 px-2.5 py-1 rounded-full">
+                      View all
+                      <ArrowRight className="ml-0.5 h-3 w-3 transition-transform" />
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
             </motion.div>
           </Link>
         </div>

@@ -42,7 +42,7 @@ export const newsArticles: NewsArticle[] = [
     category: "Partnership",
     author: "IBSFINtech Team",
     image: "/IBSFINtech-Client Logos/IBSFINtech-Client-Microsoft.png",
-    backgroundImage: "/bg_1.jpg",
+    backgroundImage: "/Currencies-Banner.png",
     featured: true,
     tags: ["Microsoft Azure", "Partnership", "TMS", "Cloud", "Marketplace"]
   },
@@ -74,7 +74,7 @@ export const newsArticles: NewsArticle[] = [
     category: "Implementation",
     author: "IBSFINtech Team",
     image: "/IBSFINtech-Client Logos/IBSFINtech-Client-Patanjali.png",
-    backgroundImage: "/bg_2.jpg",
+    backgroundImage: "/Banner.png",
     featured: true,
     tags: ["Patanjali", "FMCG", "Digital Transformation", "TMS", "Implementation"]
   },
@@ -116,7 +116,7 @@ export const newsArticles: NewsArticle[] = [
     category: "Events",
     author: "IBSFINtech Team",
     image: "/IBSFINtech-Client Logos/IBSFINtech-Client-ACT.png",
-    backgroundImage: "/bg_3.jpg",
+    backgroundImage: "/Home Page Banner 4.png",
     featured: false,
     tags: ["ACT Middle East", "Events", "CFO", "Treasury", "Middle East"]
   },
@@ -148,7 +148,7 @@ export const newsArticles: NewsArticle[] = [
     category: "Expansion",
     author: "IBSFINtech Team",
     image: "/IBSFINtech-Client Logos/IBSFINtech-Client-Dubai.png",
-    backgroundImage: "/bg_4.jpg",
+    backgroundImage: "/Home Page Banner 2.png",
     featured: false,
     tags: ["Dubai", "MENA", "Expansion", "Global Presence", "Regional Office"]
   },
@@ -188,7 +188,7 @@ export const newsArticles: NewsArticle[] = [
     category: "Innovation",
     author: "IBSFINtech Team",
     image: "/IBSFINtech-Client Logos/IBSFINtech-Client-AI.png",
-    backgroundImage: "/bg_5.jpg",
+    backgroundImage: "/Home Page Banner 3.png",
     featured: true,
     tags: ["AI", "Analytics", "Innovation", "Machine Learning", "Predictive Analytics"]
   },
@@ -230,7 +230,7 @@ export const newsArticles: NewsArticle[] = [
     category: "Awards",
     author: "IBSFINtech Team",
     image: "/IBSFINtech-Client Logos/IBSFINtech-Client-Award.png",
-    backgroundImage: "/bg_6.jpg",
+    backgroundImage: "/Home Page Banner 5.png",
     featured: false,
     tags: ["Awards", "Recognition", "TMS", "Industry Leadership", "Customer Satisfaction"]
   },
@@ -272,7 +272,7 @@ export const newsArticles: NewsArticle[] = [
     category: "Partnership",
     author: "IBSFINtech Team",
     image: "/IBSFINtech-Client Logos/IBSFINtech-Client-Banking.png",
-    backgroundImage: "/bg_7.jpg",
+    backgroundImage: "/Home Page Banner 6.png",
     featured: false,
     tags: ["Banking Partnerships", "Digital Treasury", "API Integration", "Automation", "Corporate Banking"]
   },
@@ -314,7 +314,7 @@ export const newsArticles: NewsArticle[] = [
     category: "Innovation",
     author: "IBSFINtech Team",
     image: "/IBSFINtech-Client Logos/IBSFINtech-Client-Mobile.png",
-    backgroundImage: "/bg_8.jpg",
+    backgroundImage: "/Home Page Banner 7.png",
     featured: true,
     tags: ["Mobile App", "Executive Dashboard", "Mobile Treasury", "Innovation", "Real-time Access"]
   },
@@ -356,7 +356,7 @@ export const newsArticles: NewsArticle[] = [
     category: "Security",
     author: "IBSFINtech Team",
     image: "/IBSFINtech-Client Logos/IBSFINtech-Client-Security.png",
-    backgroundImage: "/bg_9.jpg",
+    backgroundImage: "/Integration Capability - Banner.png",
     featured: false,
     tags: ["ISO 27001", "Security Certification", "Data Protection", "Information Security", "Compliance"]
   },
@@ -398,7 +398,7 @@ export const newsArticles: NewsArticle[] = [
     category: "Events",
     author: "IBSFINtech Team",
     image: "/IBSFINtech-Client Logos/IBSFINtech-Client-Conference.png",
-    backgroundImage: "/bg_10.jpg",
+    backgroundImage: "/Interal Page 3.png",
     featured: false,
     tags: ["Conference", "Treasury Management", "Events", "Thought Leadership", "Networking"]
   },
@@ -440,7 +440,7 @@ export const newsArticles: NewsArticle[] = [
     category: "Research",
     author: "IBSFINtech Team",
     image: "/IBSFINtech-Client Logos/IBSFINtech-Client-Research.png",
-    backgroundImage: "/bg_11.jpg",
+    backgroundImage: "/Interal Page 4.png",
     featured: false,
     tags: ["Research Report", "Treasury Insights", "Market Analysis", "Trends", "Best Practices"]
   },
@@ -482,7 +482,7 @@ export const newsArticles: NewsArticle[] = [
     category: "Company",
     author: "IBSFINtech Team",
     image: "/IBSFINtech-Client Logos/IBSFINtech-Client-Anniversary.png",
-    backgroundImage: "/bg_12.jpg",
+    backgroundImage: "/Interal Page 5.png",
     featured: true,
     tags: ["15th Anniversary", "Company Milestone", "Innovation", "Growth", "Success"]
   },
@@ -500,7 +500,7 @@ export const newsArticles: NewsArticle[] = [
     category: "Leadership",
     author: "IBSFINtech Team",
     image: "/IBSFINtech-Client Logos/IBSFINtech-Client-CTO.png",
-    backgroundImage: "/bg_13.jpg",
+    backgroundImage: "/Internal Page 1.png",
     featured: false,
     tags: ["CTO", "Leadership", "Technology", "Innovation", "Oracle"]
   },
@@ -518,7 +518,7 @@ export const newsArticles: NewsArticle[] = [
     category: "Partnership",
     author: "IBSFINtech Team",
     image: "/IBSFINtech-Client Logos/IBSFINtech-Client-YesBank.png",
-    backgroundImage: "/bg_14.jpg",
+    backgroundImage: "/Internal Page 2.png",
     featured: false,
     tags: ["YES BANK", "Partnership", "Digital Services", "Banking", "Corporate"]
   },
@@ -536,7 +536,7 @@ export const newsArticles: NewsArticle[] = [
     category: "Product Launch",
     author: "IBSFINtech Team",
     image: "/IBSFINtech-Client Logos/IBSFINtech-Client-Oracle.png",
-    backgroundImage: "/bg_15.jpg",
+    backgroundImage: "/LifeAtIBSFINtech.jpg",
     featured: true,
     tags: ["InTReaX", "Oracle Cloud", "SaaS", "TMS", "Cloud"]
   },
@@ -554,7 +554,7 @@ export const newsArticles: NewsArticle[] = [
     category: "Partnership",
     author: "IBSFINtech Team",
     image: "/IBSFINtech-Client Logos/IBSFINtech-Client-Oracle-Partnership.png",
-    backgroundImage: "/bg_16.jpg",
+    backgroundImage: "/Outing.jpg",
     featured: false,
     tags: ["Oracle", "Digital Transformation", "Partnership", "Cloud", "Enterprise"]
   },
@@ -590,7 +590,7 @@ export const newsArticles: NewsArticle[] = [
     category: "Media",
     author: "IBSFINtech Team",
     image: "/IBSFINtech-Client Logos/IBSFINtech-Client-ETNow.png",
-    backgroundImage: "/bg_18.jpg",
+    backgroundImage: "/map.jpg",
     featured: false,
     tags: ["ET NOW", "Media", "Recognition", "N. Jayakumar", "Industry"]
   }

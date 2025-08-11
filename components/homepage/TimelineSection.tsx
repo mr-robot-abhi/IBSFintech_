@@ -40,34 +40,72 @@ const timelineData = [
     year: '2021-2023',
     title: 'Global Expansion',
     description: (
-      <ul className="list-disc pl-5 space-y-2 text-left">
-        <li>Entry to Tokyo</li>
-        <li>Launch of IBSFINtech's SaaS Treasury Management System – InTReaX® in partnership with Refinitiv (LSEG)</li>
-        <li>Global Partnership: Oracle, Yes Bank & KPMG</li>
-        <li>Embarked on global journey – Singapore, Dubai & Japan</li>
-        <li>Pramod Agrawal appointed as the new Chief Technology Officer</li>
-        <li>Named as a "Major Player" in IDC MarketScape for worldwide SaaS & Cloud-enabled Enterprise Treasury</li>
-        <li>New Development Centre in Bengaluru inaugurated by Padma Shri T.V. Mohandas Pai</li>
-        <li>Expansion to US market</li>
-        <li>Manoj Kohli joins as Advisory Board member</li>
-        <li>Won "Best TMS provider" by Corporate Treasurer Award 2023 (3rd consecutive win)</li>
-      </ul>
+      <>
+        <div className="flex justify-center mb-4">
+          <div className="bg-white p-2 rounded-lg shadow-md">
+            <Image 
+              src="/Partners/LSEG.png" 
+              alt="LSEG Logo" 
+              width={120} 
+              height={60} 
+              className="h-12 w-auto object-contain"
+              priority
+            />
+          </div>
+          <div className="bg-white p-2 rounded-lg shadow-md ml-4">
+            <Image 
+              src="/Partners/Oracle.png" 
+              alt="Oracle Logo" 
+              width={120} 
+              height={60} 
+              className="h-12 w-auto object-contain"
+              priority
+            />
+          </div>
+        </div>
+        <ul className="list-disc pl-5 space-y-2 text-left">
+          <li>Entry to Tokyo</li>
+          <li>Launch of IBSFINtech's SaaS Treasury Management System – InTReaX® in partnership with Refinitiv (LSEG)</li>
+          <li>Global Partnership: Oracle, Yes Bank & KPMG</li>
+          <li>Embarked on global journey – Singapore, Dubai & Japan</li>
+          <li>Pramod Agrawal appointed as the new Chief Technology Officer</li>
+          <li>Named as a "Major Player" in IDC MarketScape for worldwide SaaS & Cloud-enabled Enterprise Treasury</li>
+          <li>New Development Centre in Bengaluru inaugurated by Padma Shri T.V. Mohandas Pai</li>
+          <li>Expansion to US market</li>
+          <li>Manoj Kohli joins as Advisory Board member</li>
+          <li>Won "Best TMS provider" by Corporate Treasurer Award 2023 (3rd consecutive win)</li>
+        </ul>
+      </>
     ),
   },
   {
     year: '2024-2025',
     title: 'Innovation & Leadership',
     description: (
-      <ul className="list-disc pl-5 space-y-2 text-left">
-        <li>Launched InnoTreasury for SME segment</li>
-        <li>Achieved ISO/IEC 27001:2013 certification</li>
-        <li>Featured in IDC MarketScapes: Worldwide Cash management systems 2024</li>
-        <li>Strategic partnerships with Deloitte, Axis Bank, Aditya Birla Capital, TraydStream, and NetSuite</li>
-        <li>Awarded Best TMS provider by Corporate Treasurer Awards 2024</li>
-        <li>Raised USD 1.5 Mn in funding</li>
-        <li>Won Steve Awards 2024 for Innovation in Thought Leadership</li>
-        <li>Collaboration with TMI for flagship treasury event in Mumbai</li>
-      </ul>
+      <>
+        <div className="flex justify-center mb-4">
+          <div className="bg-white p-2 rounded-lg shadow-md">
+            <Image 
+              src="/public/timeline2.png" 
+              alt="Deloitte Logo" 
+              width={120} 
+              height={60} 
+              className="h-12 w-auto object-contain"
+              priority
+            />
+          </div>
+        </div>
+        <ul className="list-disc pl-5 space-y-2 text-left">
+          <li>Launched InnoTreasury for SME segment</li>
+          <li>Achieved ISO/IEC 27001:2013 certification</li>
+          <li>Featured in IDC MarketScapes: Worldwide Cash management systems 2024</li>
+          <li>Strategic partnerships with Deloitte, Axis Bank, Aditya Birla Capital, TraydStream, and NetSuite</li>
+          <li>Awarded Best TMS provider by Corporate Treasurer Awards 2024</li>
+          <li>Raised USD 1.5 Mn in funding</li>
+          <li>Won Steve Awards 2024 for Innovation in Thought Leadership</li>
+          <li>Collaboration with TMI for flagship treasury event in Mumbai</li>
+        </ul>
+      </>
     ),
   },
 ];

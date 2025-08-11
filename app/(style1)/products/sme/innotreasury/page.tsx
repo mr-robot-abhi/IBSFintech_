@@ -1,9 +1,9 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import { Button } from '@/components/ui/button';
-import { ArrowRight } from 'lucide-react';
-
+import { ArrowRight, BarChart, Check, PieChart, TrendingUp, Zap } from 'lucide-react';
 
 const InnoTreasuryPage = () => {
   return (
@@ -15,54 +15,251 @@ const InnoTreasuryPage = () => {
 
 
       {/* Hero Section */}
-      <section className="relative w-full py-24 md:py-32 bg-gradient-to-r from-[#241F5D] to-[#3A3480] text-white">
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-4xl mx-auto text-center">
+      <section className="relative w-full min-h-[400px] flex items-center bg-gradient-to-r from-[#241F5D] to-[#3A3480] text-white">
+        {/* Background Image */}
+        <div className="absolute inset-0 w-full h-full overflow-hidden">
+          <Image
+            src="/Inner pages/Products/Treasury_Management_System_for_SME_50.jpeg"
+            alt="InnoInvest Treasury Management System"
+            fill
+            className="object-cover object-center"
+            quality={100}
+            priority
+            sizes="100vw"
+            style={{
+              objectFit: 'cover',
+              opacity: 0.4,
+              width: '100%',
+              height: '100%'
+            }}
+          />
+          <div 
+            className="absolute inset-0 bg-gradient-to-r from-[#241F5D]/40 to-[#3A3480]/40"
+            aria-hidden="true"
+          />
+        </div>
+        <div className="container mx-auto px-4 relative z-10 py-8 md:py-10">
+          <div className="max-w-4xl mx-auto">
             <motion.h1 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="text-4xl md:text-5xl font-bold mb-6 leading-tight"
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-30px" }}
+              transition={{ duration: 0.4 }}
+              className="text-2xl md:text-3xl lg:text-4xl font-bold mb-2 leading-tight"
             >
               InnoTreasury by IBSFINtech
             </motion.h1>
             <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-xl md:text-2xl text-blue-100 mb-8 max-w-3xl mx-auto"
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-30px" }}
+              transition={{ duration: 0.4, delay: 0.1 }}
+              className="text-base md:text-lg text-blue-100 mb-2 font-medium"
             >
-              Comprehensive Treasury Management for SMEs
+              Enterprise-Grade Treasury Management for SMEs
             </motion.p>
             <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="text-lg text-blue-100 mb-8 max-w-4xl mx-auto"
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-30px" }}
+              transition={{ duration: 0.4, delay: 0.15 }}
+              className="text-base text-blue-100 mb-6 max-w-2xl"
             >
-              A powerful solution designed to streamline your treasury operations and financial management.
+              A cloud-based treasury management platform designed to help small and medium-sized businesses manage their foreign exchange, hedging, and cash flow operations with enterprise precision.
             </motion.p>
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-30px" }}
+              transition={{ duration: 0.4, delay: 0.2 }}
+              className="flex flex-wrap gap-4"
             >
-              <Button size="lg" className="bg-white text-[#241F5D] hover:bg-blue-50">
-                Coming Soon <ArrowRight className="ml-2 h-4 w-4" />
+              <Button size="lg" className="bg-white text-[#241F5D] hover:bg-blue-50 px-8">
+                Get Started <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
+                Learn More
               </Button>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Placeholder Content */}
-      <div className="relative z-10 bg-white py-16">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold text-[#241F5D] mb-8">Page Under Construction</h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
-            We're currently working on creating amazing content for the InnoTreasury page. Please check back soon for updates!
-          </p>
-        </div>
+      {/* Main Content */}
+      <div className="relative z-10 bg-white">
+        {/* Features Section */}
+        <section className="py-8 md:py-12">
+          <div className="container mx-auto px-4">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="max-w-6xl mx-auto"
+            >
+              <h2 className="text-2xl md:text-3xl font-bold text-[#241F5D] mb-8 text-center">
+                Why Businesses Choose InnoTreasury
+              </h2>
+              
+              {/* Combined Section with Single Image */}
+              <div className="grid md:grid-cols-3 gap-8 items-start mb-16">
+                {/* Left Column - Features */}
+                <div className="md:col-span-2 space-y-6 pr-0 md:pr-8">
+                  <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+                    <div className="flex items-center mb-4">
+                      <div className="h-10 w-10 rounded-lg bg-blue-50 flex items-center justify-center mr-3 flex-shrink-0">
+                        <BarChart className="h-5 w-5 text-[#3B82F6]" />
+                      </div>
+                      <h3 className="text-xl font-bold text-gray-900">Simplifies Treasury Operations</h3>
+                    </div>
+                    <p className="text-gray-600 mb-4">
+                      Manage FX exposures, execute hedging strategies, and track transactions without the need for multiple tools or manual spreadsheets.
+                    </p>
+                    <ul className="space-y-2.5">
+                      <li className="flex items-start">
+                        <Check className="h-5 w-5 text-green-500 mr-2.5 mt-0.5 flex-shrink-0" />
+                        <span className="text-gray-700">Comprehensive FX exposure management</span>
+                      </li>
+                      <li className="flex items-start">
+                        <Check className="h-5 w-5 text-green-500 mr-2.5 mt-0.5 flex-shrink-0" />
+                        <span className="text-gray-700">Automated hedging strategy execution</span>
+                      </li>
+                      <li className="flex items-start">
+                        <Check className="h-5 w-5 text-green-500 mr-2.5 mt-0.5 flex-shrink-0" />
+                        <span className="text-gray-700">Unified transaction tracking and reporting</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+                    <div className="flex items-center mb-4">
+                      <div className="h-10 w-10 rounded-lg bg-blue-50 flex items-center justify-center mr-3 flex-shrink-0">
+                        <Zap className="h-5 w-5 text-[#3B82F6]" />
+                      </div>
+                      <h3 className="text-xl font-bold text-gray-900">Real-Time Visibility & Fast Deployment</h3>
+                    </div>
+                    <p className="text-gray-600 mb-4">
+                      Gain instant access to exposure data, contract details, and market positions through a clear, interactive dashboard.
+                    </p>
+                    <ul className="space-y-2.5">
+                      <li className="flex items-start">
+                        <Check className="h-5 w-5 text-green-500 mr-2.5 mt-0.5 flex-shrink-0" />
+                        <span className="text-gray-700">Interactive dashboard for real-time insights</span>
+                      </li>
+                      <li className="flex items-start">
+                        <Check className="h-5 w-5 text-green-500 mr-2.5 mt-0.5 flex-shrink-0" />
+                        <span className="text-gray-700">SaaS platform with quick deployment</span>
+                      </li>
+                      <li className="flex items-start">
+                        <Check className="h-5 w-5 text-green-500 mr-2.5 mt-0.5 flex-shrink-0" />
+                        <span className="text-gray-700">Pay-as-you-go pricing model</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                {/* Right Column - Single Image */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                  className="h-full sticky top-6"
+                >
+                  <div className="relative w-full h-[600px] rounded-xl overflow-hidden shadow-lg border border-gray-200">
+                    <Image
+                      src="/Inner pages/Products/Hedging_Strategy_automation_50.jpg"
+                      alt="Investment Management Solution"
+                      fill
+                      className="object-cover"
+                      quality={100}
+                      priority
+                    />
+                  </div>
+                </motion.div>
+              </div>
+
+              {/* Real-time Position */}
+              <div className="bg-gray-50 rounded-2xl p-6 md:p-8 mb-12">
+                <div className="text-center mb-8">
+                  <h3 className="text-xl md:text-2xl font-bold text-[#241F5D] mb-3">Secure and Compliant</h3>
+                  <div className="h-1 w-12 bg-blue-500 mx-auto mb-6"></div>
+                  <p className="text-gray-700 max-w-3xl mx-auto">
+                    Built with enterprise-grade security, it offers controlled user access, activity logs, and compliance-friendly audit trails.
+                  </p>
+                </div>
+                
+                <div className="grid md:grid-cols-3 gap-6">
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5 }}
+                    className="bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-all"
+                  >
+                    <div className="h-10 w-10 rounded-full bg-blue-50 flex items-center justify-center mb-3">
+                      <BarChart className="h-6 w-6 text-[#241F5D]" />
+                    </div>
+                    <h4 className="font-semibold text-[#241F5D] mb-2">Live Market Data</h4>
+                    <p className="text-gray-600">Real-time updates on mutual fund NAVs and market values.</p>
+                  </motion.div>
+                  
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.1 }}
+                    className="bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-all"
+                  >
+                    <div className="h-10 w-10 rounded-full bg-blue-50 flex items-center justify-center mb-3">
+                      <TrendingUp className="h-6 w-6 text-[#241F5D]" />
+                    </div>
+                    <h4 className="font-semibold text-[#241F5D] mb-2">Performance Analytics</h4>
+                    <p className="text-gray-600">Track performance metrics and generate comprehensive reports.</p>
+                  </motion.div>
+
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.2 }}
+                    className="bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-all"
+                  >
+                    <div className="h-10 w-10 rounded-full bg-blue-50 flex items-center justify-center mb-3">
+                      <PieChart className="h-6 w-6 text-[#241F5D]" />
+                    </div>
+                    <h4 className="font-semibold text-[#241F5D] mb-2">Portfolio Insights</h4>
+                    <p className="text-gray-600">Gain valuable insights into your investment portfolio.</p>
+                  </motion.div>
+                </div>
+              </div>
+
+              {/* CTA Section */}
+              <motion.div 
+                className="text-center py-20 bg-gradient-to-r from-[#241F5D] to-[#3A3480] rounded-2xl px-6"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+              >
+                <h3 className="text-2xl md:text-3xl font-bold text-white mb-6">
+                  Transform Your Investment Management Today
+                </h3>
+                <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
+                  A secure and reliable technology-backed platform that enables management and execution of transactions directly within the platform, saving time and reducing manual effort.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <Button size="lg" className="bg-white text-[#241F5D] hover:bg-blue-50">
+                    Request a Demo
+                  </Button>
+                  <Button size="lg" variant="outline" className="text-white border-white hover:bg-white/10">
+                    Contact Our Experts
+                  </Button>
+                </div>
+              </motion.div>
+            </motion.div>
+          </div>
+        </section>
       </div>
     </div>
   );
