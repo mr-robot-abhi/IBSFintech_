@@ -60,19 +60,28 @@ const BlogPage = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
       {/* Hero Section */}
-      <section className="relative py-20 bg-gradient-to-r from-[#241F5D] to-[#3B3486]">
-        <div className="absolute inset-0 bg-black/20"></div>
+      <section className="relative py-24">
+        <div className="absolute inset-0">
+          <Image
+            src="/Internal Page 2.png"
+            alt="Blog Banner"
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-black/40"></div>
+        </div>
         <div className="container mx-auto px-4 max-w-7xl relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-center"
+            className="text-left max-w-3xl"
           >
-            <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
               IBSFINtech Blog
             </h1>
-            <p className="text-xl text-white/90 max-w-3xl mx-auto">
+            <p className="text-lg md:text-xl text-white/90">
               Insights, analysis, and thought leadership on treasury management, financial technology, and industry trends
             </p>
           </motion.div>

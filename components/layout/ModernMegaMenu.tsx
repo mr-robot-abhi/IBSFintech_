@@ -301,7 +301,7 @@ export default function ModernMegaMenu() {
                   >
                     <div className={`rounded-xl shadow-2xl border border-white/10 bg-white overflow-hidden`}>
                       {item.mega ? (
-                        <div className={`p-4 ${item.label === 'Products' ? 'w-[600px]' : item.label === 'Solutions' ? 'w-[900px]' : item.label === 'Resources' ? 'w-[600px]' : 'w-[500px]'}`}>
+                        <div className={`p-4 ${item.label === 'Products' ? 'w-[650px]' : item.label === 'Solutions' ? 'w-[900px]' : item.label === 'Resources' ? 'w-[600px]' : 'w-[500px]'}`}>
                           {item.label === "Solutions" ? (
                             // Enhanced Solutions dropdown with descriptions in 2 columns
                             <div className="w-full">

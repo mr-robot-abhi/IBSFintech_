@@ -727,7 +727,7 @@ export default function IllustrativeOne() {
         </div>
       </section>
       {/* Why Choose Us Section */}
-      <section className="py-4 relative overflow-hidden w-full bg-gradient-to-b from-navy-900 to-navy-950">
+      <section className="py-2 relative overflow-hidden w-full bg-gradient-to-b from-navy-900 to-navy-950">
         <div className="container mx-auto px-4">
           <div className="backdrop-blur-sm bg-black/30 rounded-2xl border border-white/10 shadow-xl p-4 md:p-6">
             <div className="flex flex-col lg:flex-row items-center gap-4 md:gap-8">

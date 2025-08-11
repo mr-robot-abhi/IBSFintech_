@@ -76,9 +76,17 @@ export default function OurOfferingsSection() {
                 <span className="text-sm text-white/90">Operate seamlessly across multiple entities, currencies, geographies, and asset classes</span>
               </li>
             </ul>
-            <p className="text-sm text-white/90">
+            <p className="text-sm text-white/90 mb-6">
               Built to scale with your growth, the platform is available as both on-premise and SaaS — giving you flexibility with agility.
             </p>
+            
+            {/* Explore Our Solution Button */}
+            <button
+              onClick={() => window.location.href = '/solutions'}
+              className="px-6 py-3 text-sm bg-[#FF073A] hover:bg-[#e60634] text-white font-semibold rounded-lg transition-all duration-300 flex items-center justify-center transform hover:-translate-y-0.5 hover:shadow-[0_4px_12px_rgba(255,7,58,0.3)] active:translate-y-0"
+            >
+              Explore Our Solution
+            </button>
           </div>
 
           {/* Right Section with Dotted Lines Background */}
