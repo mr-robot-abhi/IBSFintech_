@@ -239,25 +239,27 @@ const ContactPage = () => {
           priority
         />
         
-        <div className="relative z-10 h-full flex items-center">
-          <div className="container mx-auto px-6">
-            <div className="max-w-2xl">
-              <motion.h1 
-                className="text-5xl md:text-6xl font-bold text-white mb-6"
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7 }}
-              >
-                Get In Touch
-              </motion.h1>
-              <motion.p 
-                className="text-xl text-white/90 mb-8 leading-relaxed"
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.2 }}
-              >
-                Connect with our Treasury, Risk & Trade Finance Management® (TRTFM®) experts to start your corporate's digital transformation journey with IBSFINtech.
-              </motion.p>
+        <div className="absolute inset-0 bg-black/30 backdrop-blur-[1px]">
+          <div className="relative z-10 h-full flex items-center">
+            <div className="container mx-auto px-6">
+              <div className="max-w-2xl bg-white/10 backdrop-blur-md p-8 rounded-2xl border border-white/20 shadow-2xl">
+                <motion.h1 
+                  className="text-5xl md:text-6xl font-bold text-white mb-6"
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.7 }}
+                >
+                  Get In Touch
+                </motion.h1>
+                <motion.p 
+                  className="text-xl text-white/90 mb-8 leading-relaxed"
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.7, delay: 0.2 }}
+                >
+                  Connect with our Treasury, Risk & Trade Finance Management® (TRTFM®) experts to start your corporate's digital transformation journey with IBSFINtech.
+                </motion.p>
+              </div>
               <motion.div
                 className="space-y-4 text-white/80"
                 initial={{ opacity: 0, y: 30 }}

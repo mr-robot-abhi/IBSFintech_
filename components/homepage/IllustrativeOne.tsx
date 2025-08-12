@@ -13,6 +13,33 @@ import OurOfferingsSection from './our_offerings';
 import CaseStudies from './CaseStudies';
 import { newsArticles } from '@/lib/news';
 
+// AnimatedNumber component for counting animation
+const AnimatedNumber: React.FC<{ value: number }> = ({ value }) => {
+  const [displayValue, setDisplayValue] = React.useState(0);
+  
+  React.useEffect(() => {
+    const duration = 1500; // 1.5 seconds
+    const steps = 60;
+    const increment = value / steps;
+    const stepDuration = duration / steps;
+    
+    let currentValue = 0;
+    const timer = setInterval(() => {
+      currentValue += increment;
+      if (currentValue >= value) {
+        setDisplayValue(value);
+        clearInterval(timer);
+      } else {
+        setDisplayValue(Math.floor(currentValue));
+      }
+    }, stepDuration);
+    
+    return () => clearInterval(timer);
+  }, [value]);
+  
+  return <>{displayValue}</>;
+};
+
 // Define types for the feature items
 interface FeatureItem {
   icon: React.ReactNode;
@@ -56,32 +83,22 @@ const getGradientColors = (colorString: string) => {
   };
 };
 
-// Function to get a random industry (excluding the current one)
-const getRandomIndustry = (currentIndustryName: string, industries: Industry[]): Industry => {
-  const otherIndustries = industries.filter(ind => ind.name !== currentIndustryName);
-  return otherIndustries[Math.floor(Math.random() * otherIndustries.length)];
-};
-
 // FlipCard Component Props
 interface FlipCardProps {
   industry: Industry;
   delay: number;
-  allIndustries: Industry[];
+  backIndustry: Industry; // Add this prop for the back industry
 }
 
 // FlipCard Component for Industry Cards
 const FlipCard: React.FC<FlipCardProps> = ({
   industry,
   delay,
-  allIndustries
+  backIndustry
 }) => {
   const [isFlipped, setIsFlipped] = useState(false);
   const [currentIndustry, setCurrentIndustry] = useState(industry);
-  const [nextIndustry, setNextIndustry] = useState<Industry>(() => {
-    // Ensure nextIndustry is different from currentIndustry
-    const availableIndustries = allIndustries.filter(ind => ind.name !== industry.name);
-    return availableIndustries[Math.floor(Math.random() * availableIndustries.length)];
-  });
+  const [nextIndustry, setNextIndustry] = useState<Industry>(backIndustry);
   const [isMounted, setIsMounted] = useState(false);
   const controls = useAnimation();
 
@@ -104,17 +121,8 @@ const FlipCard: React.FC<FlipCardProps> = ({
       // Change to next industry
       if (isMounted) { // Check again before state updates
         setCurrentIndustry(nextIndustry);
-        // Ensure the new nextIndustry is different from both current and next
-        const availableIndustries = allIndustries.filter(ind => 
-          ind.name !== nextIndustry.name && ind.name !== currentIndustry.name
-        );
-        if (availableIndustries.length > 0) {
-          setNextIndustry(availableIndustries[Math.floor(Math.random() * availableIndustries.length)]);
-        } else {
-          // Fallback: get any industry different from current
-          const fallbackIndustries = allIndustries.filter(ind => ind.name !== nextIndustry.name);
-          setNextIndustry(fallbackIndustries[Math.floor(Math.random() * fallbackIndustries.length)]);
-        }
+        // Set nextIndustry back to the original backIndustry
+        setNextIndustry(industry);
       }
 
       // Complete the flip
@@ -180,14 +188,14 @@ const FlipCard: React.FC<FlipCardProps> = ({
         style={{
           background: currentIndustry.color.includes('bg-[') ?
             currentIndustry.color.split(' ')[0].replace('bg-[', '').replace(']', '') :
+            // Use only the 6 specific colors in rotation
             (currentIndustry.color === 'from-blue-500 to-blue-600' ? '#ffc1cf' :
               currentIndustry.color === 'from-emerald-500 to-emerald-600' ? '#e8ffb7' :
-                currentIndustry.color === 'from-orange-500 to-orange-600' ? '#e2a0ff' :
-                  currentIndustry.color === 'from-amber-500 to-amber-600' ? '#c4f5fc' :
-                    currentIndustry.color === 'from-purple-500 to-purple-600' ? '#b7ffd8' :
-                      currentIndustry.color === 'from-pink-500 to-pink-600' ? '#b7c9ff' :
-                        currentIndustry.color === 'from-cyan-500 to-cyan-600' ? '#ffc1cf' :
-                          '#e8ffb7')
+              currentIndustry.color === 'from-orange-500 to-orange-600' ? '#e2a0ff' :
+              currentIndustry.color === 'from-amber-500 to-amber-600' ? '#c4f5fc' :
+              currentIndustry.color === 'from-purple-500 to-purple-600' ? '#b7ffd8' :
+              currentIndustry.color === 'from-pink-500 to-pink-600' ? '#b7c9ff' :
+              '#ffc1cf') // Default to first color
         }}
         animate={controls}
         transition={{ duration: 0.4, ease: "easeInOut" }}
@@ -206,14 +214,14 @@ const FlipCard: React.FC<FlipCardProps> = ({
         style={{
           background: nextIndustry.color.includes('bg-[') ?
             nextIndustry.color.split(' ')[0].replace('bg-[', '').replace(']', '') :
+            // Use only the 6 specific colors in rotation
             (nextIndustry.color === 'from-blue-500 to-blue-600' ? '#ffc1cf' :
               nextIndustry.color === 'from-emerald-500 to-emerald-600' ? '#e8ffb7' :
-                nextIndustry.color === 'from-orange-500 to-orange-600' ? '#e2a0ff' :
-                  nextIndustry.color === 'from-amber-500 to-amber-600' ? '#c4f5fc' :
-                    nextIndustry.color === 'from-purple-500 to-purple-600' ? '#b7ffd8' :
-                      nextIndustry.color === 'from-pink-500 to-pink-600' ? '#b7c9ff' :
-                        nextIndustry.color === 'from-cyan-500 to-cyan-600' ? '#ffc1cf' :
-                          '#e8ffb7')
+              nextIndustry.color === 'from-orange-500 to-orange-600' ? '#e2a0ff' :
+              nextIndustry.color === 'from-amber-500 to-amber-600' ? '#c4f5fc' :
+              nextIndustry.color === 'from-purple-500 to-purple-600' ? '#b7ffd8' :
+              nextIndustry.color === 'from-pink-500 to-pink-600' ? '#b7c9ff' :
+              '#ffc1cf') // Default to first color
         }}
         animate={{
           rotateY: 90,
@@ -458,8 +466,8 @@ type IndustryData = {
 };
 
 export default function IllustrativeOne() {
-  // Industry data for flip cards with vibrant colors - ensuring all 8 are unique
-  const industries: IndustryData[] = [
+  // Industry data for flip cards - 8 industries for front of cards
+  const frontIndustries: IndustryData[] = [
     { name: 'Manufacturing', icon: Factory, color: 'from-blue-500 to-blue-600' },
     { name: 'Pharmaceutical', icon: Shield, color: 'from-emerald-500 to-emerald-600' },
     { name: 'Automotive', icon: Car, color: 'from-orange-500 to-orange-600' },
@@ -470,12 +478,17 @@ export default function IllustrativeOne() {
     { name: 'NBFC', icon: Building, color: 'from-indigo-500 to-indigo-600' }
   ];
 
-  // Function to get a random industry for the back of the card
-  const getRandomIndustry = (currentIndustry: string) => {
-    const otherIndustries = industries.filter(ind => ind.name !== currentIndustry);
-    return otherIndustries[Math.floor(Math.random() * otherIndustries.length)];
-  };
-
+  // 8 different industries for back of cards
+  const backIndustries: IndustryData[] = [
+    { name: 'Banking & Finance', icon: BarChart2, color: 'from-green-500 to-green-600' },
+    { name: 'Energy & Utilities', icon: Zap, color: 'from-red-500 to-red-600' },
+    { name: 'Technology', icon: Cpu, color: 'from-teal-500 to-teal-600' },
+    { name: 'Healthcare', icon: Shield, color: 'from-rose-500 to-rose-600' },
+    { name: 'Real Estate', icon: Home, color: 'from-slate-500 to-slate-600' },
+    { name: 'Logistics', icon: Truck, color: 'from-violet-500 to-violet-600' },
+    { name: 'Education', icon: BookOpen, color: 'from-sky-500 to-sky-600' },
+    { name: 'Consulting', icon: Settings, color: 'from-fuchsia-500 to-fuchsia-600' }
+  ];
 
   // Get the 3 most recent news articles
   const latestNews = newsArticles.slice(0, 3);
@@ -597,7 +610,7 @@ export default function IllustrativeOne() {
                     stroke="#1E3A8A"
                     strokeWidth="8"
                   />
-                  <circle
+                  <motion.circle
                     cx="50"
                     cy="50"
                     r="40"
@@ -605,13 +618,33 @@ export default function IllustrativeOne() {
                     stroke="#3B82F6"
                     strokeWidth="8"
                     strokeDasharray="251.2"
-                    strokeDashoffset="50.24" // 80% of 251.2 (circumference)
+                    initial={{ strokeDashoffset: 251.2 }}
+                    whileInView={{ strokeDashoffset: 50.24 }} // 80% of 251.2 (circumference)
+                    viewport={{ once: true }}
+                    transition={{ duration: 1.5, ease: "easeOut" }}
                     transform="rotate(-90 50 50)"
                     strokeLinecap="round"
                   />
-                  <text x="50" y="50" textAnchor="middle" dy=".3em" className="text-xl font-bold fill-white">
-                    80%
-                  </text>
+                  <motion.text 
+                    x="50" 
+                    y="50" 
+                    textAnchor="middle" 
+                    dy=".3em" 
+                    className="text-xl font-bold fill-white"
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.8 }}
+                  >
+                    <motion.tspan
+                      initial={{ opacity: 0 }}
+                      whileInView={{ opacity: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.5, delay: 0.8 }}
+                    >
+                      <AnimatedNumber value={80} />%
+                    </motion.tspan>
+                  </motion.text>
                 </svg>
               </div>
               <h3 className="text-base font-semibold text-white mb-1">Productivity</h3>
@@ -636,7 +669,7 @@ export default function IllustrativeOne() {
                     stroke="#1E3A8A"
                     strokeWidth="8"
                   />
-                  <circle
+                  <motion.circle
                     cx="50"
                     cy="50"
                     r="40"
@@ -644,13 +677,33 @@ export default function IllustrativeOne() {
                     stroke="#10B981"
                     strokeWidth="8"
                     strokeDasharray="251.2"
-                    strokeDashoffset="12.56" // 95% of 251.2
+                    initial={{ strokeDashoffset: 251.2 }}
+                    whileInView={{ strokeDashoffset: 12.56 }} // 95% of 251.2
+                    viewport={{ once: true }}
+                    transition={{ duration: 1.5, ease: "easeOut", delay: 0.1 }}
                     transform="rotate(-90 50 50)"
                     strokeLinecap="round"
                   />
-                  <text x="50" y="50" textAnchor="middle" dy=".3em" className="text-xl font-bold fill-white">
-                    95%
-                  </text>
+                  <motion.text 
+                    x="50" 
+                    y="50" 
+                    textAnchor="middle" 
+                    dy=".3em" 
+                    className="text-xl font-bold fill-white"
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.9 }}
+                  >
+                    <motion.tspan
+                      initial={{ opacity: 0 }}
+                      whileInView={{ opacity: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.5, delay: 0.9 }}
+                    >
+                      <AnimatedNumber value={95} />%
+                    </motion.tspan>
+                  </motion.text>
                 </svg>
               </div>
               <h3 className="text-base font-semibold text-white mb-1">Accuracy</h3>
@@ -675,7 +728,7 @@ export default function IllustrativeOne() {
                     stroke="#1E3A8A"
                     strokeWidth="8"
                   />
-                  <circle
+                  <motion.circle
                     cx="50"
                     cy="50"
                     r="40"
@@ -683,13 +736,33 @@ export default function IllustrativeOne() {
                     stroke="#8B5CF6"
                     strokeWidth="8"
                     strokeDasharray="251.2"
-                    strokeDashoffset="75.36" // 70% of 251.2
+                    initial={{ strokeDashoffset: 251.2 }}
+                    whileInView={{ strokeDashoffset: 75.36 }} // 70% of 251.2
+                    viewport={{ once: true }}
+                    transition={{ duration: 1.5, ease: "easeOut", delay: 0.2 }}
                     transform="rotate(-90 50 50)"
                     strokeLinecap="round"
                   />
-                  <text x="50" y="50" textAnchor="middle" dy=".3em" className="text-xl font-bold fill-white">
-                    70%
-                  </text>
+                  <motion.text 
+                    x="50" 
+                    y="50" 
+                    textAnchor="middle" 
+                    dy=".3em" 
+                    className="text-xl font-bold fill-white"
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 1.0 }}
+                  >
+                    <motion.tspan
+                      initial={{ opacity: 0 }}
+                      whileInView={{ opacity: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.5, delay: 1.0 }}
+                    >
+                      <AnimatedNumber value={70} />%
+                    </motion.tspan>
+                  </motion.text>
                 </svg>
               </div>
               <h3 className="text-base font-semibold text-white mb-1">Optimised Fund</h3>
@@ -714,7 +787,7 @@ export default function IllustrativeOne() {
                     stroke="#1E3A8A"
                     strokeWidth="8"
                   />
-                  <circle
+                  <motion.circle
                     cx="50"
                     cy="50"
                     r="40"
@@ -722,13 +795,33 @@ export default function IllustrativeOne() {
                     stroke="#EC4899"
                     strokeWidth="8"
                     strokeDasharray="251.2"
-                    strokeDashoffset="125.6" // 50% of 251.2
+                    initial={{ strokeDashoffset: 251.2 }}
+                    whileInView={{ strokeDashoffset: 125.6 }} // 50% of 251.2
+                    viewport={{ once: true }}
+                    transition={{ duration: 1.5, ease: "easeOut", delay: 0.3 }}
                     transform="rotate(-90 50 50)"
                     strokeLinecap="round"
                   />
-                  <text x="50" y="50" textAnchor="middle" dy=".3em" className="text-xl font-bold fill-white">
-                    50%
-                  </text>
+                  <motion.text 
+                    x="50" 
+                    y="50" 
+                    textAnchor="middle" 
+                    dy=".3em" 
+                    className="text-xl font-bold fill-white"
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 1.1 }}
+                  >
+                    <motion.tspan
+                      initial={{ opacity: 0 }}
+                      whileInView={{ opacity: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.5, delay: 1.1 }}
+                    >
+                      <AnimatedNumber value={50} />%
+                    </motion.tspan>
+                  </motion.text>
                 </svg>
               </div>
               <h3 className="text-base font-semibold text-white mb-1">Manual Effort</h3>
@@ -808,7 +901,7 @@ export default function IllustrativeOne() {
               <div className="lg:w-3/5 relative">
                 {/* Grid Container for 2 rows of 4 tiles each */}
                 <div className="grid grid-cols-4 gap-6 max-w-2xl mx-auto">
-                  {industries.slice(0, 8).map((industry, idx) => {
+                  {frontIndustries.map((industry, idx) => {
                     // New color palette - exact colors specified
                     const colors = [
                       { bg: '#1be7ff', text: '#111226' }, // Cyan
@@ -837,7 +930,7 @@ export default function IllustrativeOne() {
                             color: `bg-[${color.bg}] text-[${color.text}]`
                           }}
                           delay={idx * 0.1}
-                          allIndustries={industries}
+                          backIndustry={backIndustries[idx]}
                         />
                       </div>
                     );

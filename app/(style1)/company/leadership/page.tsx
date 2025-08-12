@@ -3,26 +3,49 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Facebook, Twitter, Instagram, Linkedin, Mail, ArrowRight } from 'lucide-react';
+import { Facebook, Twitter, Instagram, Linkedin, Mail, ArrowRight, ChevronDown } from 'lucide-react';
 
 export default function Leadership() {
   return (
     <div className="min-h-screen bg-white">
-      {/* Banner Space */}
-      <div className="h-32"></div>
-
-      {/* Meet The Team Header */}
-      <div className="bg-green-500 rounded-b-3xl py-16 px-6 text-center">
-        <div className="max-w-4xl mx-auto">
-          <h1 className="text-5xl md:text-6xl font-bold text-white mb-4">Meet The Team</h1>
-          <p className="text-white/80 text-lg">Image by Freepik</p>
+      {/* Hero Banner with Image and Overlaid Text */}
+      <div className="relative w-full">
+        {/* Background Image */}
+        <Image
+          src="/Leadership.jpg"
+          alt="IBSFINtech Leadership Team"
+          width={1920}
+          height={1080}
+          className="w-full h-auto object-contain"
+          priority
+        />
+        
+        {/* Overlaid Text at Bottom of Banner */}
+        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/60 to-transparent p-8 md:p-12">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-white text-base md:text-lg lg:text-xl leading-relaxed space-y-4 text-center">
+              <p className="max-w-5xl mx-auto">
+                From envisioning a smarter future for corporate treasury to driving a global wave in TreasuryTech, CM Grover has charted a path of digital transformation that reaches far beyond borders. As Managing Director & CEO, he has brought together every facet of treasury — Cash, Liquidity, Risk, Trade Finance, Commodity, Investment and Supply Chain Finance — into a unified, intelligent system trusted by industries worldwide.
+              </p>
+              <p className="max-w-5xl mx-auto">
+                With decades in public sector banking, he developed a deep understanding of treasury's challenges and turned that knowledge into action, inspiring CFOs, boards, and financial leaders globally to embrace digitization. His leadership carries the conviction that technology built in India can serve the world — and in doing so, he has positioned IBSFINtech on the map as a global player in TreasuryTech.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
 
       {/* Board of Directors Section */}
-      <section className="py-20 px-6">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl font-bold text-gray-900 text-center mb-16">Board of Directors</h2>
+      <section className="relative py-20 px-6">
+        {/* Theme Color Banner Background */}
+        <div className="bg-[#241F5D] rounded-b-3xl py-16 px-6 text-center relative">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-5xl md:text-6xl font-bold text-white mb-4">Board of Directors</h2>
+          </div>
+        </div>
+        
+        {/* White Team Member Cards - Positioned to overlap the theme color banner */}
+        <div className="max-w-7xl mx-auto px-6 -mt-20 relative z-10">
           <div className="grid md:grid-cols-3 gap-8">
             {/* Director 1 */}
             <div className="bg-white rounded-3xl shadow-lg p-8 text-center hover:shadow-xl transition-shadow duration-300">
@@ -123,96 +146,17 @@ export default function Leadership() {
         </div>
       </section>
 
-      {/* Management Team Section */}
-      <section className="py-20 px-6 bg-gray-50">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl font-bold text-gray-900 text-center mb-16">Management Team</h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            {/* CEO */}
-            <div className="bg-white rounded-3xl shadow-lg p-8 text-center hover:shadow-xl transition-shadow duration-300">
-              <div className="w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden bg-gray-200">
-                <Image
-                  src="/leadership/ceo.jpg"
-                  alt="C.M. Grover"
-                  width={128}
-                  height={128}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2 uppercase">C.M. Grover</h3>
-              <p className="text-gray-600 mb-4">Founder & CEO</p>
-              <p className="text-gray-500 text-sm mb-6 text-left leading-relaxed">
-                Visionary leader driving IBSFINtech's global expansion and technological innovation.
-              </p>
-              <div className="flex justify-center space-x-4">
-                <Link href="/company/leadership#cm-grover" className="text-green-500 hover:text-green-600 transition-colors">
-                  <Linkedin className="w-5 h-5" />
-                </Link>
-                <Link href="/company/leadership#cm-grover" className="text-green-500 hover:text-green-600 transition-colors">
-                  <Mail className="w-5 h-5" />
-                </Link>
-              </div>
-            </div>
-
-            {/* CTO */}
-            <div className="bg-white rounded-3xl shadow-lg p-8 text-center hover:shadow-xl transition-shadow duration-300">
-              <div className="w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden bg-gray-200">
-                <Image
-                  src="/leadership/cto.jpg"
-                  alt="Pramod Agrawal"
-                  width={128}
-                  height={128}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2 uppercase">Pramod Agrawal</h3>
-              <p className="text-gray-600 mb-4">Chief Technology Officer</p>
-              <p className="text-gray-500 text-sm mb-6 text-left leading-relaxed">
-                Ex-Oracle leader driving cutting-edge technology solutions and platform architecture.
-              </p>
-              <div className="flex justify-center space-x-4">
-                <Link href="/company/leadership#pramod-agrawal" className="text-green-500 hover:text-green-600 transition-colors">
-                  <Linkedin className="w-5 h-5" />
-                </Link>
-                <Link href="/company/leadership#pramod-agrawal" className="text-green-500 hover:text-green-600 transition-colors">
-                  <Mail className="w-5 h-5" />
-                </Link>
-              </div>
-            </div>
-
-            {/* CFO */}
-            <div className="bg-white rounded-3xl shadow-lg p-8 text-center hover:shadow-xl transition-shadow duration-300">
-              <div className="w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden bg-gray-200">
-                <Image
-                  src="/leadership/cfo.jpg"
-                  alt="CFO"
-                  width={128}
-                  height={128}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2 uppercase">Financial Leader</h3>
-              <p className="text-gray-600 mb-4">Chief Financial Officer</p>
-              <p className="text-gray-500 text-sm mb-6 text-left leading-relaxed">
-                Strategic financial management and global expansion planning expertise.
-              </p>
-              <div className="flex justify-center space-x-4">
-                <Link href="/company/leadership#cfo" className="text-green-500 hover:text-green-600 transition-colors">
-                  <Linkedin className="w-5 h-5" />
-                </Link>
-                <Link href="/company/leadership#cfo" className="text-green-500 hover:text-green-600 transition-colors">
-                  <Mail className="w-5 h-5" />
-                </Link>
-              </div>
-            </div>
+      {/* Advisory Board Section */}
+      <section className="relative py-20 px-6">
+        {/* Theme Color Banner Background */}
+        <div className="bg-[#241F5D] rounded-b-3xl py-16 px-6 text-center relative">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-5xl md:text-6xl font-bold text-white mb-4">Advisory Board</h2>
           </div>
         </div>
-      </section>
-
-      {/* Advisory Board Section */}
-      <section className="py-20 px-6">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl font-bold text-gray-900 text-center mb-16">Advisory Board</h2>
+        
+        {/* White Team Member Cards - Positioned to overlap the theme color banner */}
+        <div className="max-w-7xl mx-auto px-6 -mt-20 relative z-10">
           <div className="grid md:grid-cols-3 gap-8">
             {/* Advisor 1 */}
             <div className="bg-white rounded-3xl shadow-lg p-8 text-center hover:shadow-xl transition-shadow duration-300">
@@ -296,9 +240,16 @@ export default function Leadership() {
       </section>
 
       {/* Tech and Functional Board Section */}
-      <section className="py-20 px-6 bg-gray-50">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl font-bold text-gray-900 text-center mb-16">Tech and Functional Board</h2>
+      <section className="relative py-20 px-6">
+        {/* Theme Color Banner Background */}
+        <div className="bg-[#241F5D] rounded-b-3xl py-16 px-6 text-center relative">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-5xl md:text-6xl font-bold text-white mb-4">Tech and Functional Board</h2>
+          </div>
+        </div>
+        
+        {/* White Team Member Cards - Positioned to overlap the theme color banner */}
+        <div className="max-w-7xl mx-auto px-6 -mt-20 relative z-10">
           <div className="grid md:grid-cols-3 gap-8">
             {/* Tech Lead 1 */}
             <div className="bg-white rounded-3xl shadow-lg p-8 text-center hover:shadow-xl transition-shadow duration-300">

@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { ArrowRight, BarChart2, TrendingUp, DollarSign, FileText, Shield, Bell, PieChart } from 'lucide-react';
@@ -16,36 +17,46 @@ const InvestmentWealthTechPage = () => {
       {/* Mega Navigation Menu */}
 
 
-      {/* Hero Section with Full Width Banner */}
-      <section className="relative w-screen h-[600px] -mt-20 left-1/2 right-1/2 -mx-[50vw]">
-        <div className="absolute inset-0 w-screen">
+      {/* Full Width Banner Section */}
+      <section className="relative h-[400px] w-full overflow-hidden">
+        <div className="absolute inset-0 w-full h-full">
           <Image
-            src="/Inner pages/Products/IBSFINtech_Investment_Management_optimized.png"
+            src="/Inner pages/Products/IBSFINtech_Investment_Management_optimized.svg"
             alt="Investment & WealthTech Management"
             fill
-            className="object-cover w-full"
+            className="object-cover"
             priority
-            style={{ objectPosition: 'center', opacity: 0.4 }}
+            style={{ objectPosition: 'center' }}
           />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-r from-[#241F5D]/80 to-[#3A3480]/60">
-          <div className="container mx-auto h-full flex items-center px-6 lg:px-8 max-w-7xl">
-            <div className="max-w-2xl text-white">
-              <div className="flex items-center mb-6">
-                <TrendingUp className="text-white mr-3" size={40} />
-                <h1 className="text-4xl md:text-5xl font-bold text-white">Investment & WealthTech Management</h1>
-              </div>
-              <p className="text-xl text-white/90 mb-8">
-                Transform your investment operations with our comprehensive solution for simplified management, enhanced compliance, and data-driven decision-making.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <a href="/request-demo" className="bg-red-500 hover:bg-red-600 text-white font-semibold py-3 px-8 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center">
-                  Request a Demo
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </a>
-                <a href="/contact" className="bg-transparent border-2 border-white text-white hover:bg-white/10 font-medium py-3 px-8 rounded-lg transition-colors text-center">
-                  Contact Sales
-                </a>
+        <div className="absolute inset-0 bg-black/20">
+          <div className="h-full flex items-center">
+            <div className="w-full max-w-7xl mx-auto px-6 lg:px-8">
+              <div className="max-w-2xl">
+                <div className="flex items-center mb-4">
+                  <TrendingUp className="text-white mr-3 flex-shrink-0" size={40} />
+                  <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight">Investment & WealthTech Management</h1>
+                </div>
+                <p className="text-lg md:text-xl text-white/90 mb-6 md:mb-8 max-w-3xl">
+                  Transform your investment operations with our comprehensive solution for simplified management, enhanced compliance, and data-driven decision-making.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <Link 
+                    href="/request-demo" 
+                    className="bg-red-500 hover:bg-red-600 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center"
+                  >
+                    Request Demo
+                    <svg className="ml-2 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                  </Link>
+                  <Link 
+                    href="/contact" 
+                    className="bg-transparent border-2 border-white text-white hover:bg-white/10 font-medium py-3 px-6 rounded-lg transition-colors text-center"
+                  >
+                    Contact Sales
+                  </Link>
+                </div>
               </div>
             </div>
           </div>

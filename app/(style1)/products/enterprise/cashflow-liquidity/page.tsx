@@ -8,39 +8,49 @@ import Link from 'next/link';
 
 export default function CashflowLiquidity() {
   return (
-    <div className="min-h-screen overflow-x-hidden relative bg-white">
+    <div className="min-h-screen bg-white">
       {/* Full Width Banner Section */}
-      <section className="relative w-screen h-[600px] -mt-20 left-1/2 right-1/2 -mx-[50vw]">
-        <div className="absolute inset-0 w-screen">
+      <section className="relative h-[400px] w-full overflow-hidden">
+        <div className="absolute inset-0 w-full h-full">
           <Image
-            src="/Inner pages/Products/Cash_position_50.jpg"
+            src="/Inner pages/Products/Cash_position_50.svg"
             alt="Comprehensive Cash Management"
             fill
-            className="object-cover w-full"
+            className="object-cover"
             priority
             style={{ objectPosition: 'center' }}
           />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-900/80 to-blue-600/60">
-          <div className="container mx-auto h-full flex items-center px-6 lg:px-8 max-w-7xl">
-            <div className="max-w-2xl text-white">
-              <div className="flex items-center mb-6">
-                <BarChart2 className="text-white mr-3" size={40} />
-                <h1 className="text-4xl md:text-5xl font-bold text-white">Cashflow & Liquidity Management</h1>
-              </div>
-              <p className="text-xl text-white/90 mb-8">
-                Transform your cash flow management and liquidity oversight with our comprehensive module, designed to enhance visibility, streamline operations, and maximize financial efficiency.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Link href="/request-demo" className="bg-red-500 hover:bg-red-600 text-white font-semibold py-3 px-8 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center">
-                  Request Demo
-                  <svg className="ml-2 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                  </svg>
-                </Link>
-                <Link href="/contact" className="bg-transparent border-2 border-white text-white hover:bg-white/10 font-medium py-3 px-8 rounded-lg transition-colors text-center">
-                  Contact Sales
-                </Link>
+        <div className="absolute inset-0 bg-black/20">
+          <div className="h-full flex items-center">
+            <div className="w-full max-w-7xl mx-auto px-6 lg:px-8">
+              <div className="max-w-2xl">
+                <div className="flex items-center mb-4">
+                  <BarChart2 className="text-white mr-3 flex-shrink-0" size={40} />
+                  <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight">
+                    Cashflow & Liquidity Management
+                  </h1>
+                </div>
+                <p className="text-lg md:text-xl text-white/90 mb-6 md:mb-8 max-w-3xl">
+                  Transform your cash flow management and liquidity oversight with our comprehensive module, designed to enhance visibility, streamline operations, and maximize financial efficiency.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <Link 
+                    href="/request-demo" 
+                    className="bg-red-500 hover:bg-red-600 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center"
+                  >
+                    Request Demo
+                    <svg className="ml-2 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                  </Link>
+                  <Link 
+                    href="/contact" 
+                    className="bg-transparent border-2 border-white text-white hover:bg-white/10 font-medium py-3 px-6 rounded-lg transition-colors text-center"
+                  >
+                    Contact Sales
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
@@ -48,11 +58,11 @@ export default function CashflowLiquidity() {
       </section>
 
       {/* Main Content */}
-      <main className="relative z-10 px-6 pb-12 -mt-20">
-        <div className="max-w-6xl mx-auto">
+      <div className="relative z-10 bg-white">
+        <div className="max-w-6xl mx-auto px-6 pb-12 pt-8">
           {/* Features Section */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
-            <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-12 px-4 sm:px-6 lg:px-8">
+            <div className="bg-white rounded-xl p-8 shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-300">
               <h2 className="text-2xl font-semibold text-gray-900 mb-4">Comprehensive Cash Management</h2>
               <ul className="space-y-3">
                 <li className="flex items-start">
@@ -136,7 +146,7 @@ export default function CashflowLiquidity() {
           </div>
 
           {/* Additional Features Section */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 px-4 sm:px-6 lg:px-8">
             <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
               <div className="bg-blue-100 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
                 <svg className="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -167,7 +177,7 @@ export default function CashflowLiquidity() {
           </div>
 
           {/* CTA Section */}
-          <div className="bg-gradient-to-r from-blue-600 to-blue-800 rounded-xl p-12 text-center text-white mb-12">
+          <div className="bg-[#241F5D] rounded-xl p-12 text-center text-white mb-12">
             <h2 className="text-3xl font-bold mb-4">Ready to Transform Your Cash Management?</h2>
             <p className="text-lg text-blue-100 mb-8 max-w-3xl mx-auto">
               Unlock the full potential of your cash flow and liquidity management with our advanced module. Schedule a personalized demo today.
@@ -182,7 +192,7 @@ export default function CashflowLiquidity() {
             </div>
           </div>
         </div>
-      </main>
+      </div>
     </div>
   );
 }

@@ -14,75 +14,17 @@ interface Milestone {
 
 const milestones: Milestone[] = [
   {
-    year: '2006-16',
-    displayYear: '2006',
-    title: 'Foundation & Industry Recognition',
-    photoCaption: "IBSFINtech's first major industry recognition — Express IT Award 2015, presented by Shri Ravi Shankar Prasad to Mr. C M Grover",
+    year: '2025',
+    displayYear: '2025',
+    title: 'Global Expansion & Innovation',
+    photoCaption: "Deloitte CEO (SA) inaugurates IBSFINtech's new office — marking a new chapter of growth and innovation.",
     achievements: [
-      'First Client: The Times of India – Marked a strong beginning with India\'s leading media house.',
-      'Global Recognition: Winner of Thomson Reuters Fintech Challenge'
+      'Southeast Asia Expansion: Marked a key step in IBSFINtech\'s global growth journey.',
+      'Bloomberg Partnership: Enhanced market data capabilities through strategic collaboration.',
+      'Office Inauguration: Romal Shetty inaugurates IBSFINtech\'s new corporate office'
     ],
-    image: '/timeline1.jpg',
-  },
-  {
-    year: '2017',
-    displayYear: '2017',
-    title: 'Client Expansion & Growth',
-    photoCaption: "Acquired 8 new prestigious clients: Olam Agro India Ltd, Himatsingka Seide Ltd, Mahindra & Mahindra, Sonalika Tractors, Maruti Suzuki India Ltd, HCL Corp (Family Office), JSW Steel, Sai Life Sciences Ltd",
-    achievements: [
-      'Acquired 8 new clients in 2017',
-      'Diversified portfolio across automotive, agriculture, textile, and pharmaceutical sectors'
-    ],
-    image: '/bg_6.jpg'
-  },
-  {
-    year: '2018-20',
-    displayYear: '2018',
-    title: 'Global Expansion & Leadership',
-    photoCaption: "Shailesh Haribhakti joins in as Chairman",
-    achievements: [
-      'Global Entry: Expanded into Europe & Southeast Asia with IMR Metallurgical & JSW International.',
-      'Advisory Boost: Aakash Moondhra (ex-Global CFO, PayU) joins the board.',
-      'Global Recognition: Ranked among the Top 8 TMS globally.'
-    ],
-    image: '/bg_10.jpg'
-  },
-  {
-    year: '2021',
-    displayYear: '2021',
-    title: 'Product Innovation & Recognition',
-    photoCaption: "IBSFINtech partners with London Stock Exchange Group (LSEG) — advancing data-driven treasury transformation",
-    achievements: [
-      'Product Milestone: Launched InTReaX® – IBSFINtech\'s SaaS-based Treasury Management System',
-      'Global Recognition: Named Software Provider of the Year – APAC at the Corporate Treasurer Awards 2021 (Singapore)'
-    ],
-    image: '/p1.png',
-    partnerLogo: '/Partners/IBSFINtech-Partner-LSEG.svg'
-  },
-  {
-    year: '2022',
-    displayYear: '2022',
-    title: 'Strategic Partnerships',
-    photoCaption: "IBSFINtech partners with Oracle to redefine the future of intelligent treasury ecosystems. Further strengthening this vision through strategic collaborations with YES Bank and KPMG — uniting financial expertise, innovation, and scale.",
-    achievements: [
-      'Global Partnership: Oracle, Yes Bank & KPMG',
-      'Embarked on global journey – Singapore, Dubai & Japan',
-      'IBSFINtech appoints Ex-Oracle, Automation Anywhere Senior leader Pramod Agrawal as the new Chief Technology Officer'
-    ],
-    image: '/p2.png',
-    partnerLogo: '/Partners/IBSFINtech-Partner-ORACLE.svg'
-  },
-  {
-    year: '2023',
-    displayYear: '2023',
-    title: 'Market Leadership & US Expansion',
-    photoCaption: "Padma Shri T.V. Mohandas Pai inaugurates IBSFINtech's New, State-of-the-Art Development Centre in Bengaluru, India to fuel the TreasuryTech company's global expansion plans",
-    achievements: [
-      'IDC Recognition: Named a Major Player in IDC MarketScape for SaaS & Cloud Treasury solutions.',
-      'Global Expansion: Entered the US market, scaling TreasuryTech globally.',
-      'Advisory Boost: Manoj Kohli joins the advisory board.'
-    ],
-    image: '/bg_15.jpeg'
+    image: '/bg_18.jpg',
+    partnerLogo: '/Partners/IBSFINtech-Partner-Bloomberg.svg'
   },
   {
     year: '2024',
@@ -99,17 +41,75 @@ const milestones: Milestone[] = [
     image: '/timeline2.png',
   },
   {
-    year: '2025',
-    displayYear: '2025',
-    title: 'Global Expansion & Innovation',
-    photoCaption: "Deloitte CEO (SA) inaugurates IBSFINtech's new office — marking a new chapter of growth and innovation.",
+    year: '2023',
+    displayYear: '2023',
+    title: 'Market Leadership & US Expansion',
+    photoCaption: "Padma Shri T.V. Mohandas Pai inaugurates IBSFINtech's New, State-of-the-Art Development Centre in Bengaluru, India to fuel the TreasuryTech company's global expansion plans",
     achievements: [
-      'Southeast Asia Expansion: Marked a key step in IBSFINtech\'s global growth journey.',
-      'Bloomberg Partnership: Enhanced market data capabilities through strategic collaboration.',
-      'Office Inauguration: Romal Shetty inaugurates IBSFINtech\'s new corporate office'
+      'IDC Recognition: Named a Major Player in IDC MarketScape for SaaS & Cloud Treasury solutions.',
+      'Global Expansion: Entered the US market, scaling TreasuryTech globally.',
+      'Advisory Boost: Manoj Kohli joins the advisory board.'
     ],
-    image: '/bg_18.jpg',
-    partnerLogo: '/Partners/IBSFINtech-Partner-Bloomberg.svg'
+    image: '/bg_15.jpeg'
+  },
+  {
+    year: '2022',
+    displayYear: '2022',
+    title: 'Strategic Partnerships',
+    photoCaption: "IBSFINtech partners with Oracle to redefine the future of intelligent treasury ecosystems. Further strengthening this vision through strategic collaborations with YES Bank and KPMG — uniting financial expertise, innovation, and scale.",
+    achievements: [
+      'Global Partnership: Oracle, Yes Bank & KPMG',
+      'Embarked on global journey – Singapore, Dubai & Japan',
+      'IBSFINtech appoints Ex-Oracle, Automation Anywhere Senior leader Pramod Agrawal as the new Chief Technology Officer'
+    ],
+    image: '/p2.png',
+    partnerLogo: '/Partners/IBSFINtech-Partner-ORACLE.svg'
+  },
+  {
+    year: '2021',
+    displayYear: '2021',
+    title: 'Product Innovation & Recognition',
+    photoCaption: "IBSFINtech partners with London Stock Exchange Group (LSEG) — advancing data-driven treasury transformation",
+    achievements: [
+      'Product Milestone: Launched InTReaX® – IBSFINtech\'s SaaS-based Treasury Management System',
+      'Global Recognition: Named Software Provider of the Year – APAC at the Corporate Treasurer Awards 2021 (Singapore)'
+    ],
+    image: '/p1.png',
+    partnerLogo: '/Partners/IBSFINtech-Partner-LSEG.svg'
+  },
+  {
+    year: '2018-20',
+    displayYear: '2018',
+    title: 'Global Expansion & Leadership',
+    photoCaption: "Shailesh Haribhakti joins in as Chairman",
+    achievements: [
+      'Global Entry: Expanded into Europe & Southeast Asia with IMR Metallurgical & JSW International.',
+      'Advisory Boost: Aakash Moondhra (ex-Global CFO, PayU) joins the board.',
+      'Global Recognition: Ranked among the Top 8 TMS globally.'
+    ],
+    image: '/About_Us_TImeline/shailesh_haribhakti_profile.png'
+  },
+  {
+    year: '2017',
+    displayYear: '2017',
+    title: 'Client Expansion & Growth',
+    photoCaption: "Acquired 8 new prestigious clients: Olam Agro India Ltd, Himatsingka Seide Ltd, Mahindra & Mahindra, Sonalika Tractors, Maruti Suzuki India Ltd, HCL Corp (Family Office), JSW Steel, Sai Life Sciences Ltd",
+    achievements: [
+      'Acquired 8 new clients in 2017',
+      'Diversified portfolio across automotive, agriculture, textile, and pharmaceutical sectors'
+    ],
+    image: '/bg_6.jpg'
+  },
+  {
+    year: '2006-16',
+    displayYear: '2006',
+    title: 'Foundation & Industry Recognition',
+    photoCaption: "IBSFINtech's first major industry recognition — Express IT Award 2015, presented by Shri Ravi Shankar Prasad to Mr. C M Grover",
+    achievements: [
+      'First Client: The Times of India – Marked a strong beginning with India\'s leading media house.',
+      'Global Recognition: Winner of Thomson Reuters Fintech Challenge'
+    ],
+    image: '/timeline1.jpg',
   }
 ];
 
