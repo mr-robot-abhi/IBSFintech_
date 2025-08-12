@@ -16,54 +16,69 @@ const TradeFinancePage = () => {
       {/* Mega Navigation Menu */}
 
 
-      {/* Hero Section with Full Width Banner */}
-      <section className="relative w-screen h-[600px] -mt-20 left-1/2 right-1/2 -mx-[50vw]">
-        <div className="absolute inset-0 w-screen">
+      {/* Full Width Banner Section */}
+      <section className="relative h-[400px] w-full overflow-hidden">
+        <div className="absolute inset-0 w-full h-full">
           <Image
-            src="/Inner pages/Products/trade_finance_management.jpeg"
+            src="/Inner pages/Products/trade_finance_management.svg"
             alt="Trade Finance Management"
             fill
-            className="object-cover w-full"
+            className="object-cover"
             priority
             style={{ objectPosition: 'center' }}
           />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-r from-[#241F5D]/90 to-[#3A3480]/80">
-          <div className="container mx-auto h-full flex items-center px-6 lg:px-8 max-w-7xl">
-            <div className="max-w-2xl text-white">
-              <motion.h1 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight"
-              >
-                Trade Finance Management
-              </motion.h1>
-              <motion.p 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.1 }}
-                className="text-lg md:text-xl text-blue-100 mb-8"
-              >
-                Streamline your global trade operations with our end-to-end trade finance solution
-              </motion.p>
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-              >
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <a href="/request-demo" className="bg-red-500 hover:bg-red-600 text-white font-semibold py-3 px-8 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center">
-                    Request a Demo
-                    <ArrowRight className="ml-2 h-5 w-5" />
-                  </a>
-                  <a href="/contact" className="bg-transparent border-2 border-white text-white hover:bg-white/10 font-medium py-3 px-8 rounded-lg transition-colors text-center flex items-center justify-center">
-                    Contact Sales
-                  </a>
-                </div>
-              </motion.div>
+        <div className="absolute inset-0 bg-black/20">
+          <div className="h-full flex items-center">
+            <div className="w-full max-w-7xl mx-auto px-6 lg:px-8">
+              <div className="max-w-3xl">
+                <motion.div 
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6 }}
+                  className="flex flex-col space-y-4"
+                >
+                  <div className="flex items-center space-x-3">
+                    <Package className="text-white h-10 w-10 md:h-12 md:w-12" />
+                    <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight">
+                      Trade Finance Management
+                    </h1>
+                  </div>
+                </motion.div>
+                <motion.p 
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.1 }}
+                  className="text-lg md:text-xl text-white/90 mb-6 md:mb-8 max-w-3xl mt-4"
+                >
+                  Streamline your global trade operations with our end-to-end trade finance solution
+                </motion.p>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                >
+                  <div className="flex flex-col sm:flex-row gap-4">
+                    <a 
+                      href="/request-demo" 
+                      className="bg-red-500 hover:bg-red-600 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center"
+                    >
+                      Request Demo
+                      <svg className="ml-2 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                      </svg>
+                    </a>
+                    <a 
+                      href="/contact" 
+                      className="bg-transparent border-2 border-white text-white hover:bg-white/10 font-medium py-3 px-6 rounded-lg transition-colors text-center"
+                    >
+                      Contact Sales
+                    </a>
+                  </div>
+                </motion.div>
             </div>
           </div>
+        </div>
         </div>
       </section>
 

@@ -33,14 +33,19 @@ const CurrencyFXRiskPage = () => {
           <div className="h-full flex items-center">
             <div className="w-full max-w-7xl mx-auto px-6 lg:px-8">
               <div className="max-w-3xl">
-                <motion.h1 
+                <motion.div 
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6 }}
-                  className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-4"
+                  className="flex flex-col space-y-4"
                 >
-                  Revolutionise FX Workflows with Advanced Currency Risk Management
-                </motion.h1>
+                  <div className="flex items-center space-x-3">
+                    <Globe className="text-white h-10 w-10 md:h-12 md:w-12" />
+                    <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight">
+                      Revolutionise FX Workflows with Advanced Currency Risk Management
+                    </h1>
+                  </div>
+                </motion.div>
                 <motion.p 
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}

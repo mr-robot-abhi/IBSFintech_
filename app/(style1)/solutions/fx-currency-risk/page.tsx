@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { BarChart2, Target, Eye, Zap, Clock, Globe, Layers, TrendingUp, CheckCircle, Shield, FileText, PieChart, LineChart, ArrowRight } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
@@ -96,50 +97,73 @@ const FXCurrencyRiskPage = () => {
 
 
       {/* Hero Section */}
-      <section className="relative w-full min-h-[400px] flex items-center bg-gradient-to-r from-[#241F5D] to-[#3A3480] text-white overflow-hidden">
-        {/* Background Image with Overlay */}
+      <section className="relative h-[400px] w-full overflow-hidden">
+        {/* Background Image */}
         <div className="absolute inset-0 w-full h-full">
           <Image
             src="/Inner Pages/Solutions/Fx_Risk_Management_Solution_50.jpg"
             alt="FX Risk Management Solution"
             fill
-            className="object-cover opacity-60"
+            className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#241F5D]/50 via-[#241F5D]/40 to-[#3A3480]/50"></div>
+          {/* Subtle dark overlay */}
+          <div className="absolute inset-0 bg-black/20"></div>
         </div>
         
-        <div className="container mx-auto px-4 relative z-10 py-16">
-          <div className="max-w-4xl mx-auto text-center">
-            <motion.h1 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="text-4xl md:text-5xl font-bold mb-6 leading-tight"
-            >
-              Navigate Foreign Exchange Risk with Confidence
-            </motion.h1>
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-xl text-blue-100 mb-8 max-w-3xl mx-auto"
-            >
-              Comprehensive FX risk management solution to protect your bottom line from currency volatility
-            </motion.p>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="flex flex-col sm:flex-row justify-center gap-4"
-            >
-              <Button size="lg" className="bg-white text-[#241F5D] hover:bg-blue-50 font-medium">
-                Request a Demo <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-              <Button size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white/10">
-                Learn More
-              </Button>
-            </motion.div>
+        <div className="relative h-full flex items-center">
+          <div className="w-full max-w-7xl mx-auto px-6 lg:px-8">
+            <div className="max-w-2xl">
+              <motion.h1 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                className="text-4xl md:text-5xl font-bold text-white mb-6 relative"
+              >
+                <div className="flex items-center">
+                  <BarChart2 className="h-10 w-10 mr-3 text-blue-300" />
+                  <span>FX & Currency Risk</span>
+                </div>
+                <svg 
+                  className="absolute -bottom-2 left-0 w-full h-2 text-blue-300" 
+                  viewBox="0 0 400 10" 
+                  preserveAspectRatio="none"
+                >
+                  <path 
+                    d="M0,5 Q200,10 400,5" 
+                    stroke="currentColor" 
+                    fill="none" 
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                  />
+                </svg>
+              </motion.h1>
+              <motion.p 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="text-lg text-blue-100 mb-8 max-w-2xl"
+              >
+                Comprehensive FX risk management solution to protect your bottom line from currency volatility
+              </motion.p>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+                className="flex flex-wrap gap-4"
+              >
+                <Link href="/contact?demo=request">
+                  <Button size="lg" className="bg-red-500 hover:bg-red-600 text-white font-medium transition-all duration-300 shadow-lg shadow-red-500/30 hover:shadow-red-600/40">
+                    Request Demo
+                  </Button>
+                </Link>
+                <Link href="/contact?source=fx-currency-risk">
+                  <Button size="lg" variant="outline" className="bg-white/90 text-blue-600 border-blue-600 hover:bg-blue-50 hover:text-blue-700 hover:border-blue-700 transition-colors">
+                    Contact Sales
+                  </Button>
+                </Link>
+              </motion.div>
+            </div>
           </div>
         </div>
       </section>
@@ -251,21 +275,43 @@ const FXCurrencyRiskPage = () => {
           </div>
 
           {/* CTA Section */}
-          <div className="mt-16 bg-gradient-to-r from-[#241F5D] to-[#3A3480] rounded-2xl p-12 text-center text-white">
-            <h2 className="text-3xl font-bold mb-4">Ready to Transform Your FX Risk Management?</h2>
-            <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-              Discover how our solution can help you mitigate currency risks and protect your bottom line.
-            </p>
-            <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <Button size="lg" className="bg-white text-[#241F5D] hover:bg-blue-50 font-medium">
-                Request Demo
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-              <Button size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white/10">
-                Contact Sales
-              </Button>
+          <section className="py-16 bg-gradient-to-r from-[#241F5D] to-[#3A3480] text-white rounded-2xl">
+            <div className="container mx-auto px-4 text-center">
+              <motion.h2 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                className="text-3xl md:text-4xl font-bold mb-6"
+              >
+                Ready to Transform Your FX Risk Management?
+              </motion.h2>
+              <motion.p 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                className="text-lg text-blue-100 mb-8 max-w-3xl mx-auto"
+              >
+                Discover how our solution can help you mitigate currency risks and protect your bottom line.
+              </motion.p>
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="flex flex-wrap gap-4 justify-center"
+              >
+                <Link href="/contact?demo=request">
+                  <Button size="lg" className="bg-red-500 hover:bg-red-600 text-white font-medium transition-all duration-300 shadow-lg shadow-red-500/30 hover:shadow-red-600/40">
+                    Request Demo
+                  </Button>
+                </Link>
+                <Link href="/contact?source=fx-currency-risk">
+                  <Button size="lg" variant="outline" className="bg-white/90 text-blue-600 border-blue-600 hover:bg-blue-50 hover:text-blue-700 hover:border-blue-700 transition-colors">
+                    Contact Sales
+                  </Button>
+                </Link>
+              </motion.div>
             </div>
-          </div>
+          </section>
         </div>
       </section>
     </div>

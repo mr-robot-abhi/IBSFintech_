@@ -167,7 +167,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Leadership Team */}
+      {/* Board of Directors */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <motion.div
@@ -177,35 +177,30 @@ export default function AboutPage() {
             viewport={{ once: true }}
             className="text-center max-w-3xl mx-auto mb-12"
           >
-            <h2 className="text-3xl font-bold mb-6 text-gray-800">Leadership Team</h2>
+            <h2 className="text-3xl font-bold mb-6 text-gray-800">Board of Directors</h2>
             <p className="text-lg text-gray-600">
-              Meet the experts guiding our vision and strategy
+              Meet the visionary leaders guiding our strategic direction
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
-                name: "Rajesh Kumar",
-                title: "CEO & Founder",
-                image: "https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                name: "Shailesh Haribhakti",
+                title: "Chairman",
+                image: "/Leadership/shailesh_haribhakti_profile.png"
               },
               {
-                name: "Priya Sharma",
-                title: "Chief Technology Officer",
-                image: "https://images.pexels.com/photos/2381069/pexels-photo-2381069.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                name: "Nitin Bakshi",
+                title: "Director",
+                image: "/Leadership/NitinBakshi.jpg"
               },
               {
-                name: "Anil Patel",
-                title: "Chief Financial Officer",
-                image: "https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-              },
-              {
-                name: "Sarah Johnson",
-                title: "Chief Operating Officer",
-                image: "https://images.pexels.com/photos/1587009/pexels-photo-1587009.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                name: "Sharmila Grover",
+                title: "Director",
+                image: "/Leadership/SharmilaGrover_BoardOfDirectors.jpg"
               }
-            ].map((leader, index) => (
+            ].map((director, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
@@ -214,16 +209,25 @@ export default function AboutPage() {
                 viewport={{ once: true }}
                 className="text-center"
               >
-                <div className="relative w-48 h-48 mx-auto mb-4 rounded-full overflow-hidden shadow-md">
+                <div className="relative w-48 h-48 mx-auto mb-4 rounded-full overflow-hidden shadow-md bg-gray-200">
                   <Image
-                    src={leader.image}
+                    src={director.image}
                     fill
-                    alt={leader.name}
+                    alt={director.name}
                     className="object-cover"
+                    onError={(e) => {
+                      console.error(`Failed to load image: ${director.image}`);
+                      const target = e.target as HTMLImageElement;
+                      target.style.display = 'none';
+                    }}
                   />
+                  {/* Debug info - remove this after fixing */}
+                  <div className="absolute inset-0 flex items-center justify-center text-xs text-gray-500 opacity-50">
+                    {director.image}
+                  </div>
                 </div>
-                <h3 className="text-xl font-bold text-gray-800">{leader.name}</h3>
-                <p className="text-gray-600">{leader.title}</p>
+                <h3 className="text-xl font-bold text-gray-800">{director.name}</h3>
+                <p className="text-gray-600">{director.title}</p>
               </motion.div>
             ))}
           </div>

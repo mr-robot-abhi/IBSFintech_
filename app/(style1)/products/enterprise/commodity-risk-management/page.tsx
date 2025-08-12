@@ -16,66 +16,68 @@ const CommodityRiskPage = () => {
       {/* Mega Navigation Menu */}
 
 
-      {/* Hero Section */}
-      <section className="relative w-full min-h-[400px] flex items-center bg-gradient-to-r from-[#241F5D] to-[#3A3480] text-white">
-        {/* Background Image */}
-        <div className="absolute inset-0 w-full h-full overflow-hidden">
+      {/* Full Width Banner Section */}
+      <section className="relative h-[400px] w-full overflow-hidden">
+        <div className="absolute inset-0 w-full h-full">
           <Image
-            src="/Inner pages/Products/Commodity_Risk_Management_IBSFINtech_50.jpg"
+            src="/Inner pages/Products/Commodity_Risk_Management_IBSFINtech_50.svg"
             alt="Commodity Risk Management"
             fill
-            className="object-cover object-center"
-            quality={100}
+            className="object-cover"
             priority
-            sizes="100vw"
-            style={{
-              objectFit: 'cover',
-              opacity: 0.2,
-              width: '100%',
-              height: '100%'
-            }}
-          />
-          <div 
-            className="absolute inset-0 bg-gradient-to-r from-[#241F5D]/40 to-[#3A3480]/40"
-            aria-hidden="true"
+            style={{ objectPosition: 'center' }}
           />
         </div>
-        <div className="container mx-auto px-4 relative z-10 py-8 md:py-10">
-          <div className="max-w-4xl mx-auto">
-            <motion.h1 
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-30px" }}
-              transition={{ duration: 0.4 }}
-              className="text-2xl md:text-3xl lg:text-4xl font-bold mb-2 leading-tight"
-            >
-              Managing Commodity Price Risk for Corporates
-            </motion.h1>
-            <motion.p 
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-30px" }}
-              transition={{ duration: 0.4, delay: 0.1 }}
-              className="text-base md:text-lg text-blue-100 mb-6 max-w-2xl"
-            >
-              Effective strategies for corporates to mitigate the impact of volatile commodity prices through proactive risk management and strategic hedging
-            </motion.p>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-            >
-              <div className="flex flex-col sm:flex-row gap-4">
-                <a href="/request-demo" className="bg-red-500 hover:bg-red-600 text-white font-semibold py-3 px-8 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center">
-                  Request a Demo
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </a>
-                <a href="/contact" className="bg-transparent border-2 border-white text-white hover:bg-white/10 font-medium py-3 px-8 rounded-lg transition-colors text-center">
-                  Contact Sales
-                </a>
+        <div className="absolute inset-0 bg-black/20">
+          <div className="h-full flex items-center">
+            <div className="w-full max-w-7xl mx-auto px-6 lg:px-8">
+              <div className="max-w-3xl">
+                <motion.div 
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6 }}
+                  className="flex flex-col space-y-4"
+                >
+                  <div className="flex items-center space-x-3">
+                    <BarChart className="text-white h-10 w-10 md:h-12 md:w-12" />
+                    <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight">
+                      Managing Commodity Price Risk for Corporates
+                    </h1>
+                  </div>
+                </motion.div>
+                <motion.p 
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.1 }}
+                  className="text-lg md:text-xl text-white/90 mb-6 md:mb-8 max-w-3xl mt-4"
+                >
+                  Effective strategies for corporates to mitigate the impact of volatile commodity prices through proactive risk management and strategic hedging
+                </motion.p>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                >
+                  <div className="flex flex-col sm:flex-row gap-4">
+                    <a 
+                      href="/request-demo" 
+                      className="bg-red-500 hover:bg-red-600 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center"
+                    >
+                      Request Demo
+                      <svg className="ml-2 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                      </svg>
+                    </a>
+                    <a 
+                      href="/contact" 
+                      className="bg-transparent border-2 border-white text-white hover:bg-white/10 font-medium py-3 px-6 rounded-lg transition-colors text-center"
+                    >
+                      Contact Sales
+                    </a>
+                  </div>
+                </motion.div>
               </div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>

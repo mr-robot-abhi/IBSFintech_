@@ -4,6 +4,7 @@ import React from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { BarChart2, Target, Eye, Zap, Clock, Globe, Layers, TrendingUp, CheckCircle } from 'lucide-react';
+import Link from 'next/link';
 
 
 const CashVisibilityForecastingPage = () => {
@@ -94,62 +95,68 @@ const CashVisibilityForecastingPage = () => {
     <div className="min-h-screen overflow-x-hidden relative bg-white">
       {/* Modern Mega Menu */}
       <main className="relative z-10">
-        {/* Compact Hero Section with Enhanced Visibility */}
-        <div className="relative w-full h-[400px] bg-gray-900">
-          {/* Background Image with Lighter Overlay */}
+        {/* Hero Section with Banner */}
+        <section className="relative h-[400px] w-full overflow-hidden">
           <div className="absolute inset-0 w-full h-full">
             <Image
-              src="/Inner pages/Solutions/cash_visibility.jpeg"
+              src="/Inner pages/Solutions/cash_visibility.jpg"
               alt="Cash Visibility and Forecasting"
               fill
-              className="object-cover object-center"
+              className="object-cover"
               priority
-              quality={100}
+              style={{ objectPosition: 'center' }}
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#241F5D]/80 to-[#3A3480]/70"></div>
           </div>
-          
-          {/* Content */}
-          <div className="container mx-auto px-4 h-full flex items-center relative z-10">
-            <div className="max-w-2xl bg-white/90 backdrop-blur-sm p-8 rounded-xl shadow-2xl">
-              <motion.h1 
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4 }}
-                className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 leading-tight"
-              >
-                Cash Visibility and Forecasting
-              </motion.h1>
-              <motion.p 
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: 0.1 }}
-                className="text-gray-700 mb-6 max-w-lg"
-              >
-                Comprehensive cashflow management and liquidity planning integrated with Banks, ERP systems, and third-party solutions.
-              </motion.p>
-              <motion.div 
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: 0.2 }}
-                className="flex flex-wrap gap-3"
-              >
-                <button className="bg-[#241F5D] hover:bg-[#3A3480] text-white font-medium py-2.5 px-6 rounded-lg transition-all duration-200 flex items-center text-sm">
-                  Request Demo
-                  <svg className="ml-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                  </svg>
-                </button>
-                <button className="bg-white border border-gray-300 hover:bg-gray-50 text-gray-700 font-medium py-2.5 px-6 rounded-lg transition-all duration-200 flex items-center text-sm">
-                  Learn More
-                  <svg className="ml-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                </button>
-              </motion.div>
+          <div className="absolute inset-0 bg-black/20">
+            <div className="h-full flex items-center">
+              <div className="w-full max-w-7xl mx-auto px-6 lg:px-8">
+                <div className="max-w-2xl">
+                  <div className="flex items-center mb-4">
+                    <BarChart2 className="text-white mr-3 flex-shrink-0" size={40} />
+                    <motion.h1 
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.4 }}
+                      className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight"
+                    >
+                      Cash Visibility and Forecasting
+                    </motion.h1>
+                  </div>
+                  <motion.p 
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.4, delay: 0.1 }}
+                    className="text-lg md:text-xl text-white/90 mb-6 md:mb-8 max-w-3xl"
+                  >
+                    Comprehensive cashflow management and liquidity planning integrated with Banks, ERP systems, and third-party solutions.
+                  </motion.p>
+                  <motion.div 
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.4, delay: 0.2 }}
+                    className="flex flex-col sm:flex-row gap-4"
+                  >
+                    <Link 
+                      href="/request-demo" 
+                      className="bg-red-500 hover:bg-red-600 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center"
+                    >
+                      Request Demo
+                      <svg className="ml-2 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                      </svg>
+                    </Link>
+                    <Link 
+                      href="/contact" 
+                      className="bg-transparent border-2 border-white text-white hover:bg-white/10 font-medium py-3 px-6 rounded-lg transition-colors text-center"
+                    >
+                      Contact Sales
+                    </Link>
+                  </motion.div>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
+        </section>
 
         {/* Combined Challenges and Solutions Section */}
         <div className="container mx-auto px-4 py-16">
@@ -175,41 +182,34 @@ const CashVisibilityForecastingPage = () => {
               ))}
             </div>
 
-            {/* Solutions Section - Compact Layout */}
-            <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
-              <div className="grid grid-cols-1 lg:grid-cols-3">
-                {/* Left Column - Main Solution */}
-                <div className="lg:col-span-2 p-6 md:p-8">
-                  <div className="relative h-72 w-full rounded-lg overflow-hidden">
-                    <Image
-                      src="/Interal Page 5.png"
-                      alt="Cash Forecasting Dashboard"
-                      fill
-                      className="object-cover"
-                      priority
-                    />
-                  </div>
+            {/* Solutions Section - Enhanced Layout */}
+            <div className="relative py-16 bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl shadow-inner overflow-hidden">
+              <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-5"></div>
+              <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
+                <div className="text-center max-w-4xl mx-auto mb-12">
+                  <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Comprehensive Cash Management</h3>
+                  <p className="text-lg text-gray-600">
+                    Gain complete control over your cash position with real-time visibility and powerful forecasting tools. Our solution provides end-to-end cash management capabilities to optimize your financial operations.
+                  </p>
                 </div>
                 
-                {/* Right Column - Solution Cards */}
-                <div className="bg-gray-50 p-6 md:p-8 border-t lg:border-t-0 lg:border-l border-gray-100">
-                  <div className="h-full flex flex-col">
-                    <div className="mb-6">
-                      <h3 className="text-2xl font-semibold text-gray-900 mb-2">Comprehensive Cash Management</h3>
-                      <p className="text-gray-600 text-sm">
-                        Gain complete control over your cash position with real-time visibility and powerful forecasting tools.
-                      </p>
-                    </div>
-                    
-                    <div className="space-y-4 flex-1 overflow-y-auto max-h-[400px] pr-2">
-                      {solutions.map((solution, index) => (
-                        <div key={index} className="bg-white p-4 rounded-lg border border-gray-100 shadow-xs">
-                          <h4 className="font-medium text-gray-900 mb-1">{solution.title}</h4>
-                          <p className="text-sm text-gray-600 leading-relaxed">{solution.description}</p>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                  {solutions.map((solution, index) => (
+                    <motion.div 
+                      key={index} 
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.3, delay: index * 0.1 }}
+                      className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100"
+                    >
+                      <div className="h-12 w-12 rounded-lg bg-blue-50 flex items-center justify-center mb-4">
+                        <BarChart2 className="h-6 w-6 text-blue-600" />
+                      </div>
+                      <h4 className="text-lg font-semibold text-gray-900 mb-3">{solution.title}</h4>
+                      <p className="text-gray-600 text-sm leading-relaxed">{solution.description}</p>
+                    </motion.div>
+                  ))}
                 </div>
               </div>
             </div>

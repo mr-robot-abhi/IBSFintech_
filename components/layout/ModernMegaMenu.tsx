@@ -392,16 +392,16 @@ export default function ModernMegaMenu() {
                           ) : item.label === "Company" ? (
                             // Company dropdown with compact layout
                             <div className="w-full">
-                              <div className="grid grid-cols-2 gap-6">
-                                <div className="col-span-1">
-                                  <div className="grid grid-cols-1 gap-1 px-2">
-                                    {item.groups && item.groups[0]?.items.slice(0, 4).map((sub, index) => {
+                              <div className="grid grid-cols-3 gap-4">
+                                <div className="col-span-2">
+                                  <div className="flex flex-wrap gap-2 px-2">
+                                    {item.groups && item.groups[0]?.items.map((sub, index) => {
                                       const Icon = sub.icon || FileText;
                                       return (
                                         <Link 
                                           key={sub.label} 
                                           href={sub.href} 
-                                          className="flex items-center gap-2 px-2 py-1.5 rounded-lg hover:bg-blue-50 text-gray-800 hover:text-blue-700 transition-all duration-150 ease-out text-sm font-medium"
+                                          className="flex items-center gap-2 px-2 py-1.5 rounded-lg hover:bg-blue-50 text-gray-800 hover:text-blue-700 transition-all duration-150 ease-out text-sm font-medium whitespace-nowrap"
                                         >
                                           <Icon className="w-4 h-4 text-blue-600 flex-shrink-0" />
                                           <span className="leading-tight">{sub.label}</span>
@@ -411,35 +411,12 @@ export default function ModernMegaMenu() {
                                   </div>
                                 </div>
                                 <div className="col-span-1">
-                                  <div className="grid grid-cols-1 gap-1 px-2">
-                                    {item.groups && item.groups[0]?.items.slice(4).map((sub, index) => {
-                                      const Icon = sub.icon || FileText;
-                                      return (
-                                        <Link 
-                                          key={sub.label} 
-                                          href={sub.href} 
-                                          className="flex items-center gap-2 px-2 py-1.5 rounded-lg hover:bg-blue-50 text-gray-800 hover:text-blue-700 transition-all duration-150 ease-out text-sm font-medium"
-                                        >
-                                          <Icon className="w-4 h-4 text-blue-600 flex-shrink-0" />
-                                          <span className="leading-tight">{sub.label}</span>
-                                        </Link>
-                                      );
-                                    })}
-                                  </div>
-                                </div>
-                              </div>
-                              <div className="mt-3 px-2">
-                                <div className="bg-blue-50 rounded-lg p-3">
-                                  <div className="flex items-center gap-3">
-                                    <Image src="/bg_6.jpg" alt="Company" width={60} height={40} className="rounded-md object-cover" />
-                                    <div className="flex-1">
-                                      <h5 className='text-blue-900 font-bold text-sm mb-1'>About Us</h5>
+                                  <Link href="/company/about-us" className="block">
+                                    <div className="bg-blue-50 rounded-lg p-3 hover:bg-blue-100 transition-colors duration-150">
+                                      <Image src="/bg_6.jpg" alt="Company" width={80} height={60} className="rounded-md object-cover mb-2" />
                                       <p className="text-blue-700 text-xs leading-tight">Discover our mission, values, and commitment to transforming treasury management.</p>
                                     </div>
-                                    <Link href="/company" className='text-blue-700 font-semibold text-sm flex items-center gap-1 hover:underline transition-colors duration-150 ease-out'>
-                                      Learn More <ArrowRight size={14} />
-                                    </Link>
-                                  </div>
+                                  </Link>
                                 </div>
                               </div>
                             </div>

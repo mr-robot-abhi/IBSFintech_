@@ -3,6 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { ArrowRight, PieChart, Shield, AlertCircle, RefreshCw, BarChart2, CheckCircle, Zap } from 'lucide-react';
+import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
 
@@ -101,50 +102,73 @@ const InvestmentMoneyMarketPage = () => {
       <div className="fixed inset-0 -z-10 w-full h-full bg-[#241F5D] opacity-5"></div>
 
       {/* Hero Section */}
-      <section className="relative w-full min-h-[400px] flex items-center bg-gradient-to-r from-[#241F5D] to-[#3A3480] text-white overflow-hidden">
-        {/* Background Image with Overlay */}
+      <section className="relative h-[400px] w-full overflow-hidden">
+        {/* Background Image */}
         <div className="absolute inset-0 w-full h-full">
           <Image
-            src="/Inner Pages/Solutions/endtoend_trade_finance_lifecycle_automation_61.jpeg"
+            src="/Inner Pages/Solutions/endtoend_trade_finance_lifecycle_automation_61.jpg"
             alt="Investment Money Market Solution"
             fill
-            className="object-cover opacity-60"
+            className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#241F5D]/60 via-[#241F5D]/50 to-[#3A3480]/60"></div>
+          {/* Subtle dark overlay */}
+          <div className="absolute inset-0 bg-black/20"></div>
         </div>
         
-        <div className="container mx-auto px-4 relative z-10 py-12">
-          <div className="max-w-4xl">
-            <motion.h1 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 leading-tight"
-            >
-              Transform Your Investment Strategy with Advanced Financial Software
-            </motion.h1>
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-lg md:text-xl text-blue-100 mb-8 max-w-3xl"
-            >
-              Streamline investment operations with comprehensive solutions for managing financial instruments, ensuring compliance and efficiency.
-            </motion.p>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="flex flex-col sm:flex-row gap-4"
-            >
-              <Button size="lg" className="bg-white text-[#241F5D] hover:bg-blue-50 font-medium">
-                Request a Demo <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-              <Button size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white/10">
-                Learn More
-              </Button>
-            </motion.div>
+        <div className="relative h-full flex items-center">
+          <div className="w-full max-w-7xl mx-auto px-6 lg:px-8">
+            <div className="max-w-2xl">
+              <motion.h1 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                className="text-4xl md:text-5xl font-bold text-white mb-6 relative"
+              >
+                <div className="flex items-center">
+                  <BarChart2 className="h-10 w-10 mr-3 text-blue-300" />
+                  <span>Investment Money Market</span>
+                </div>
+                <svg 
+                  className="absolute -bottom-2 left-0 w-full h-2 text-blue-300" 
+                  viewBox="0 0 400 10" 
+                  preserveAspectRatio="none"
+                >
+                  <path 
+                    d="M0,5 Q200,10 400,5" 
+                    stroke="currentColor" 
+                    fill="none" 
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                  />
+                </svg>
+              </motion.h1>
+              <motion.p 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="text-lg text-blue-100 mb-8 max-w-2xl"
+              >
+                Streamline investment operations with comprehensive solutions for managing financial instruments, ensuring compliance and efficiency.
+              </motion.p>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+                className="flex flex-wrap gap-4"
+              >
+                <Link href="/contact?demo=request">
+                  <Button size="lg" className="bg-red-500 hover:bg-red-600 text-white font-medium transition-all duration-300 shadow-lg shadow-red-500/30 hover:shadow-red-600/40">
+                    Request Demo
+                  </Button>
+                </Link>
+                <Link href="/contact?source=investment-money-market">
+                  <Button size="lg" variant="outline" className="bg-white/90 text-blue-600 border-blue-600 hover:bg-blue-50 hover:text-blue-700 hover:border-blue-700 transition-colors">
+                    Contact Sales
+                  </Button>
+                </Link>
+              </motion.div>
+            </div>
           </div>
         </div>
       </section>

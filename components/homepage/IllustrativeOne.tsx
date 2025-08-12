@@ -961,7 +961,7 @@ export default function IllustrativeOne() {
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
                 Innovate. Automate. Accelerate
               </h2>
-              <p className="text-base text-gray-300 mb-6 max-w-6xl mx-auto leading-relaxed">
+              <p className="text-base text-gray-300 mb-6 max-w-6xl mx-auto leading-relaxed align-left">
                 <span className="block text-lg">Go beyond traditional treasury. Driven by deep domain expertise, IBSFINtech Treasury Management System simplifies treasury complexity and delivers seamless digitisation across Cashflow & Liquidity, Currency Risk, Commodity Risk, Investment,</span>
                 <span className="block text-lg">Debt Management, Trade Finance and Supply chain Finance — enabling a seamless shift from manual to smart treasury operations</span>
               </p>
@@ -992,7 +992,7 @@ export default function IllustrativeOne() {
                 transition={{ duration: 0.6 }}
                 className="text-center mb-6"
               >
-                <h2 className="text-3xl font-bold text-white mb-2">The Latest</h2>
+                <h2 className="text-3xl font-bold text-white mb-2">Whats New At IBSFINtech</h2>
                 <p className="text-gray-300 text-sm">
                   Stay updated with the latest news and updates from our team.
                 </p>

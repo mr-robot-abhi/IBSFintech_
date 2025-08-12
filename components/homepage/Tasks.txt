@@ -76,4 +76,4 @@ For the blogs page...Create a small section on the right hand side..It should di
 2022 : Oracle 
 
 
-Great now to the same thing for : /products/enterprise/debt-borrowings page....same length banner. No overlay. Consistency, Production ready 
+Add vector to heading. Remove blue overlay, .same length banner as previous pages. No overlay. Consistency, Production ready Including CTA sections. Request a demo and contact sales buttons
