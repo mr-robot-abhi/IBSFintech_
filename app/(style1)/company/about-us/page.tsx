@@ -56,7 +56,7 @@ export default function AboutUs() {
             </div>
           </div>
           
-          {/* Circle 3 - Bottom Center */}
+          {/* Circle 3 - Bottom Center - Fixed transform classes */}
           <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2 group">
             <div className="w-4 h-4 bg-purple-500 rounded-full border-2 border-white shadow-lg cursor-pointer pointer-events-auto transition-all duration-300 group-hover:scale-125 group-hover:bg-purple-600"></div>
             <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 translate-y-2 group-hover:translate-y-0 bg-white rounded-lg shadow-xl p-3 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-auto min-w-48">
@@ -92,7 +92,7 @@ export default function AboutUs() {
               
               {/* Interactive Map Points */}
               <div className="absolute inset-0 pointer-events-none">
-                {/* Europe Point */}
+                {/* Europe Point - Fixed transform classes */}
                 <div className="absolute top-20 left-1/4 group">
                   <div className="w-3 h-3 bg-blue-500 rounded-full border-2 border-white shadow-lg cursor-pointer pointer-events-auto transition-all duration-300 group-hover:scale-150 group-hover:bg-blue-600"></div>
                   <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 translate-y-2 group-hover:translate-y-0 bg-white rounded-lg shadow-xl p-3 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-auto min-w-40">
@@ -102,7 +102,7 @@ export default function AboutUs() {
                   </div>
                 </div>
                 
-                {/* Asia Pacific Point */}
+                {/* Asia Pacific Point - Fixed transform classes */}
                 <div className="absolute top-32 right-1/3 group">
                   <div className="w-3 h-3 bg-green-500 rounded-full border-2 border-white shadow-lg cursor-pointer pointer-events-auto transition-all duration-300 group-hover:scale-150 group-hover:bg-green-600"></div>
                   <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 translate-y-2 group-hover:translate-y-0 bg-white rounded-lg shadow-xl p-3 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-auto min-w-40">
