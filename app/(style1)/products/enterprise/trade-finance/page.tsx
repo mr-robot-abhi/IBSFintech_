@@ -20,7 +20,7 @@ const TradeFinancePage = () => {
       <section className="relative h-[400px] w-full overflow-hidden">
         <div className="absolute inset-0 w-full h-full">
           <Image
-            src="/Inner pages/Products/trade_finance_management.svg"
+            src="/Inner pages/Products/trade_finance_management.jpg"
             alt="Trade Finance Management"
             fill
             className="object-cover"

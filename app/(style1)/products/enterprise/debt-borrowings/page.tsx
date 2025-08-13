@@ -34,7 +34,7 @@ const DebtBorrowingsPage = () => {
       <section className="relative h-[400px] w-full overflow-hidden">
         <div className="absolute inset-0 w-full h-full">
           <Image
-            src="/Inner pages/Products/multi_instrument_debt_management_50.svg"
+            src="/Inner pages/Products/multi_instrument_debt_management_50.jpg"
             alt="Debt & Borrowings Management Solution"
             fill
             className="object-cover"

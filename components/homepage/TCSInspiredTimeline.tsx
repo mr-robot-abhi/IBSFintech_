@@ -23,8 +23,7 @@ const milestones: Milestone[] = [
       'Bloomberg Partnership: Enhanced market data capabilities through strategic collaboration.',
       'Office Inauguration: Romal Shetty inaugurates IBSFINtech\'s new corporate office'
     ],
-    image: '/bg_18.jpg',
-    partnerLogo: '/Partners/IBSFINtech-Partner-Bloomberg.svg'
+    image: '/Timeline Images/Deloitte CEO (SA) inaugurates IBSFINtech\'s new office.jpg',
   },
   {
     year: '2024',
@@ -50,7 +49,7 @@ const milestones: Milestone[] = [
       'Global Expansion: Entered the US market, scaling TreasuryTech globally.',
       'Advisory Boost: Manoj Kohli joins the advisory board.'
     ],
-    image: '/bg_15.jpeg'
+    image: '/Timeline Images/Padma Shri T.V. Mohandas Pai inaugurates IBSFINtech New office.jpg'
   },
   {
     year: '2022',
@@ -62,8 +61,7 @@ const milestones: Milestone[] = [
       'Embarked on global journey – Singapore, Dubai & Japan',
       'IBSFINtech appoints Ex-Oracle, Automation Anywhere Senior leader Pramod Agrawal as the new Chief Technology Officer'
     ],
-    image: '/p2.png',
-    partnerLogo: '/Partners/IBSFINtech-Partner-ORACLE.svg'
+    image: '/Timeline Images/IBSFINtech partners with Oracle.jpg',
   },
   {
     year: '2021',
@@ -74,8 +72,7 @@ const milestones: Milestone[] = [
       'Product Milestone: Launched InTReaX® – IBSFINtech\'s SaaS-based Treasury Management System',
       'Global Recognition: Named Software Provider of the Year – APAC at the Corporate Treasurer Awards 2021 (Singapore)'
     ],
-    image: '/p1.png',
-    partnerLogo: '/Partners/IBSFINtech-Partner-LSEG.svg'
+    image: '/Timeline Images/IBSFINtech partners with LSEG.jpg',
   },
   {
     year: '2018-20',
@@ -87,7 +84,7 @@ const milestones: Milestone[] = [
       'Advisory Boost: Aakash Moondhra (ex-Global CFO, PayU) joins the board.',
       'Global Recognition: Ranked among the Top 8 TMS globally.'
     ],
-    image: '/About_Us_TImeline/shailesh_haribhakti_profile.png'
+    image: '/Timeline Images/Shailesh Haribhakti joins in as Chairman.jpg'
   },
   {
     year: '2017',
@@ -98,7 +95,7 @@ const milestones: Milestone[] = [
       'Acquired 8 new clients in 2017',
       'Diversified portfolio across automotive, agriculture, textile, and pharmaceutical sectors'
     ],
-    image: '/bg_6.jpg'
+    image: '/Timeline Images/Acquired 8 new prestigious clients.jpg'
   },
   {
     year: '2006-16',
@@ -109,7 +106,7 @@ const milestones: Milestone[] = [
       'First Client: The Times of India – Marked a strong beginning with India\'s leading media house.',
       'Global Recognition: Winner of Thomson Reuters Fintech Challenge'
     ],
-    image: '/timeline1.jpg',
+    image: '/Timeline Images/IBSFINtech\'s first major industry recognition — Express IT Award 2015.jpg',
   }
 ];
 

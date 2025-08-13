@@ -21,7 +21,7 @@ const InvestmentWealthTechPage = () => {
       <section className="relative h-[400px] w-full overflow-hidden">
         <div className="absolute inset-0 w-full h-full">
           <Image
-            src="/Inner pages/Products/IBSFINtech_Investment_Management_optimized.svg"
+            src="/Inner pages/Products/Investments.jpg"
             alt="Investment & WealthTech Management"
             fill
             className="object-cover"

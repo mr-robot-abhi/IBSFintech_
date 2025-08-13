@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Calendar, User, Tag, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowRight, Calendar, User, Tag, ChevronDown } from "lucide-react";
 import { NewsArticle } from "@/lib/news";
 import { useState } from "react";
 
@@ -12,29 +12,15 @@ interface NewsClientProps {
 }
 
 export default function NewsClient({ newsArticles }: NewsClientProps) {
-  const [currentPage, setCurrentPage] = useState(1);
+  const [displayedCount, setDisplayedCount] = useState(6);
   const itemsPerPage = 6;
-  const totalPages = Math.ceil(newsArticles.length / itemsPerPage);
+  const totalArticles = newsArticles.length;
   
-  const startIndex = (currentPage - 1) * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
-  const currentArticles = newsArticles.slice(startIndex, endIndex);
+  const currentArticles = newsArticles.slice(0, displayedCount);
+  const hasMoreArticles = displayedCount < totalArticles;
 
-  const goToPage = (page: number) => {
-    setCurrentPage(page);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
-  const goToPreviousPage = () => {
-    if (currentPage > 1) {
-      goToPage(currentPage - 1);
-    }
-  };
-
-  const goToNextPage = () => {
-    if (currentPage < totalPages) {
-      goToPage(currentPage + 1);
-    }
+  const loadMore = () => {
+    setDisplayedCount(prev => Math.min(prev + itemsPerPage, totalArticles));
   };
 
   return (
@@ -62,20 +48,6 @@ export default function NewsClient({ newsArticles }: NewsClientProps) {
       {/* News Grid */}
       <section className="py-16">
         <div className="container mx-auto px-4 max-w-7xl">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="mb-12"
-          >
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4 text-center">
-              Recent Updates
-            </h2>
-            <p className="text-gray-600 dark:text-gray-300 text-center max-w-2xl mx-auto">
-              Discover the latest news, announcements, and insights from IBSFINtech
-            </p>
-          </motion.div>
-
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {currentArticles.map((article, index) => (
               <motion.div
@@ -153,54 +125,20 @@ export default function NewsClient({ newsArticles }: NewsClientProps) {
             ))}
           </div>
 
-          {/* Pagination */}
-          {totalPages > 1 && (
+          {/* Load More Button */}
+          {hasMoreArticles && (
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="mt-12 flex justify-center items-center space-x-4"
+              className="mt-12 flex justify-center"
             >
               <button
-                onClick={goToPreviousPage}
-                disabled={currentPage === 1}
-                className={`flex items-center px-4 py-2 rounded-lg font-medium transition-colors ${
-                  currentPage === 1
-                    ? "text-gray-400 cursor-not-allowed"
-                    : "text-[#241F5D] hover:text-[#3B3486] hover:bg-[#241F5D]/10"
-                }`}
+                onClick={loadMore}
+                className="flex items-center px-8 py-3 bg-[#241F5D] text-white rounded-lg font-semibold hover:bg-[#3B3486] transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
               >
-                <ChevronLeft className="h-4 w-4 mr-1" />
-                Previous
-              </button>
-
-              <div className="flex items-center space-x-2">
-                {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-                  <button
-                    key={page}
-                    onClick={() => goToPage(page)}
-                    className={`px-3 py-2 rounded-lg font-medium transition-colors ${
-                      currentPage === page
-                        ? "bg-[#241F5D] text-white"
-                        : "text-gray-600 hover:text-[#241F5D] hover:bg-[#241F5D]/10"
-                    }`}
-                  >
-                    {page}
-                  </button>
-                ))}
-              </div>
-
-              <button
-                onClick={goToNextPage}
-                disabled={currentPage === totalPages}
-                className={`flex items-center px-4 py-2 rounded-lg font-medium transition-colors ${
-                  currentPage === totalPages
-                    ? "text-gray-400 cursor-not-allowed"
-                    : "text-[#241F5D] hover:text-[#3B3486] hover:bg-[#241F5D]/10"
-                }`}
-              >
-                Next
-                <ChevronRight className="h-4 w-4 ml-1" />
+                Load More
+                <ChevronDown className="ml-2 h-5 w-5" />
               </button>
             </motion.div>
           )}

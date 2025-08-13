@@ -59,7 +59,7 @@ export default function AboutUs() {
           {/* Circle 3 - Bottom Center */}
           <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2 group">
             <div className="w-4 h-4 bg-purple-500 rounded-full border-2 border-white shadow-lg cursor-pointer pointer-events-auto transition-all duration-300 group-hover:scale-125 group-hover:bg-purple-600"></div>
-            <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 bg-white rounded-lg shadow-xl p-3 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-auto min-w-48 transform translate-y-2 group-hover:translate-y-0">
+            <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 translate-y-2 group-hover:translate-y-0 bg-white rounded-lg shadow-xl p-3 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-auto min-w-48">
               <div className="text-sm font-semibold text-gray-800 mb-1">Industry Recognition</div>
               <div className="text-xs text-gray-600">Winner of multiple awards including Corporate Treasurer Awards 2021 and IDC MarketScape recognition</div>
               <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1 w-2 h-2 bg-white rotate-45"></div>
@@ -95,7 +95,7 @@ export default function AboutUs() {
                 {/* Europe Point */}
                 <div className="absolute top-20 left-1/4 group">
                   <div className="w-3 h-3 bg-blue-500 rounded-full border-2 border-white shadow-lg cursor-pointer pointer-events-auto transition-all duration-300 group-hover:scale-150 group-hover:bg-blue-600"></div>
-                  <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 bg-white rounded-lg shadow-xl p-3 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-auto min-w-40 transform translate-y-2 group-hover:translate-y-0">
+                  <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 translate-y-2 group-hover:translate-y-0 bg-white rounded-lg shadow-xl p-3 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-auto min-w-40">
                     <div className="text-sm font-semibold text-gray-800 mb-1">Europe</div>
                     <div className="text-xs text-gray-600">Expanding presence with strategic partnerships and local expertise</div>
                     <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1 w-2 h-2 bg-white rotate-45"></div>
@@ -105,7 +105,7 @@ export default function AboutUs() {
                 {/* Asia Pacific Point */}
                 <div className="absolute top-32 right-1/3 group">
                   <div className="w-3 h-3 bg-green-500 rounded-full border-2 border-white shadow-lg cursor-pointer pointer-events-auto transition-all duration-300 group-hover:scale-150 group-hover:bg-green-600"></div>
-                  <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 bg-white rounded-lg shadow-xl p-3 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-auto min-w-40 transform translate-y-2 group-hover:translate-y-0">
+                  <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 translate-y-2 group-hover:translate-y-0 bg-white rounded-lg shadow-xl p-3 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-auto min-w-40">
                     <div className="text-sm font-semibold text-gray-800 mb-1">Asia Pacific</div>
                     <div className="text-xs text-gray-600">Strong foothold in Singapore, Japan, and emerging markets</div>
                     <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1 w-2 h-2 bg-white rotate-45"></div>
@@ -115,7 +115,7 @@ export default function AboutUs() {
                 {/* North America Point */}
                 <div className="absolute top-16 left-1/2 group">
                   <div className="w-3 h-3 bg-purple-500 rounded-full border-2 border-white shadow-lg cursor-pointer pointer-events-auto transition-all duration-300 group-hover:scale-150 group-hover:bg-purple-600"></div>
-                  <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 bg-white rounded-lg shadow-xl p-3 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-auto min-w-40 transform translate-y-2 group-hover:translate-y-0">
+                  <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 translate-y-2 group-hover:translate-y-0 bg-white rounded-lg shadow-xl p-3 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-auto min-w-40">
                     <div className="text-sm font-semibold text-gray-800 mb-1">North America</div>
                     <div className="text-xs text-gray-600">Entered US market with state-of-the-art development center</div>
                     <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1 w-2 h-2 bg-white rotate-45"></div>

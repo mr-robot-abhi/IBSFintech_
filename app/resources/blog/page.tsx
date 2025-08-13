@@ -4,12 +4,12 @@ import React, { useState, useMemo } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { ArrowRight, Calendar, User, Tag, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ArrowRight, Calendar, User, Tag, ChevronDown } from 'lucide-react';
 import { blogPosts } from '@/lib/blog';
 import BlogSidebar from '@/components/blog/BlogSidebar';
 
 const BlogPage = () => {
-  const [currentPage, setCurrentPage] = useState(1);
+  const [displayedCount, setDisplayedCount] = useState(6);
   const [searchQuery, setSearchQuery] = useState('');
   const itemsPerPage = 6;
 
@@ -30,31 +30,17 @@ const BlogPage = () => {
     );
   }, [searchQuery]);
 
-  const totalPages = Math.ceil(filteredPosts.length / itemsPerPage);
-  const startIndex = (currentPage - 1) * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
-  const currentPosts = filteredPosts.slice(startIndex, endIndex);
+  const totalPosts = filteredPosts.length;
+  const currentPosts = filteredPosts.slice(0, displayedCount);
+  const hasMorePosts = displayedCount < totalPosts;
 
   const handleSearch = (query: string) => {
     setSearchQuery(query);
-    setCurrentPage(1); // Reset to first page when searching
+    setDisplayedCount(6); // Reset to first 6 posts when searching
   };
 
-  const goToPage = (page: number) => {
-    setCurrentPage(page);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
-  const goToPreviousPage = () => {
-    if (currentPage > 1) {
-      goToPage(currentPage - 1);
-    }
-  };
-
-  const goToNextPage = () => {
-    if (currentPage < totalPages) {
-      goToPage(currentPage + 1);
-    }
+  const loadMore = () => {
+    setDisplayedCount(prev => Math.min(prev + itemsPerPage, totalPosts));
   };
 
   return (
@@ -200,54 +186,20 @@ const BlogPage = () => {
                 </motion.div>
               )}
 
-              {/* Pagination */}
-              {totalPages > 1 && (
+              {/* Load More Button */}
+              {hasMorePosts && (
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.4 }}
-                  className="mt-12 flex justify-center items-center space-x-4"
+                  className="mt-12 flex justify-center"
                 >
                   <button
-                    onClick={goToPreviousPage}
-                    disabled={currentPage === 1}
-                    className={`flex items-center px-4 py-2 rounded-lg font-medium transition-colors ${
-                      currentPage === 1
-                        ? "text-gray-400 cursor-not-allowed"
-                        : "text-[#241F5D] hover:text-[#3B3486] hover:bg-[#241F5D]/10"
-                    }`}
+                    onClick={loadMore}
+                    className="flex items-center px-8 py-3 bg-[#241F5D] text-white rounded-lg font-semibold hover:bg-[#3B3486] transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
                   >
-                    <ChevronLeft className="h-4 w-4 mr-1" />
-                    Previous
-                  </button>
-
-                  <div className="flex items-center space-x-2">
-                    {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-                      <button
-                        key={page}
-                        onClick={() => goToPage(page)}
-                        className={`px-3 py-2 rounded-lg font-medium transition-colors ${
-                          currentPage === page
-                            ? "bg-[#241F5D] text-white"
-                            : "text-gray-600 hover:text-[#241F5D] hover:bg-[#241F5D]/10"
-                        }`}
-                      >
-                        {page}
-                      </button>
-                    ))}
-                  </div>
-
-                  <button
-                    onClick={goToNextPage}
-                    disabled={currentPage === totalPages}
-                    className={`flex items-center px-4 py-2 rounded-lg font-medium transition-colors ${
-                      currentPage === totalPages
-                        ? "text-gray-400 cursor-not-allowed"
-                        : "text-[#241F5D] hover:text-[#3B3486] hover:bg-[#241F5D]/10"
-                    }`}
-                  >
-                    Next
-                    <ChevronRight className="ml-1 h-4 w-4" />
+                    Load More
+                    <ChevronDown className="ml-2 h-5 w-5" />
                   </button>
                 </motion.div>
               )}

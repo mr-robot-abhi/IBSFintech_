@@ -21,7 +21,7 @@ const PaymentsPage = () => {
       <section className="relative h-[400px] w-full overflow-hidden">
         <div className="absolute inset-0 w-full h-full">
           <Image
-            src="/Inner pages/Products/IBSFINtech Treasury Management System Module.svg"
+            src="/Inner pages/Products/trade_finance_management.jpg"
             alt="Enterprise Payments Management"
             fill
             className="object-cover"

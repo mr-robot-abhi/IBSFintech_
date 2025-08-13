@@ -78,6 +78,10 @@ const config: Config = {
           '5': 'hsl(var(--chart-5))',
         },
       },
+      spacing: {
+        '100': '400px',
+        '64': '256px',
+      },
       keyframes: {
         'accordion-down': {
           from: {

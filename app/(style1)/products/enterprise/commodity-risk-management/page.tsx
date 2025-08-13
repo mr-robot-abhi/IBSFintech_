@@ -20,7 +20,7 @@ const CommodityRiskPage = () => {
       <section className="relative h-[400px] w-full overflow-hidden">
         <div className="absolute inset-0 w-full h-full">
           <Image
-            src="/Inner pages/Products/Commodity_Risk_Management_IBSFINtech_50.svg"
+            src="/Inner pages/Products/Commodity_Risk_Management_IBSFINtech_50.jpg"
             alt="Commodity Risk Management"
             fill
             className="object-cover"

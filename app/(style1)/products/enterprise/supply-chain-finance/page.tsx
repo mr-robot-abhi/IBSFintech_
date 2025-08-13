@@ -20,7 +20,7 @@ const SupplyChainFinancePage = () => {
       <section className="relative h-[400px] w-full overflow-hidden">
         <div className="absolute inset-0 w-full h-full">
           <Image
-            src="/Inner pages/Products/LC_BG_Management_System_50.svg"
+            src="/Inner pages/Products/LC_BG_Management_System_50.jpg"
             alt="Supply Chain Finance"
             fill
             className="object-cover"

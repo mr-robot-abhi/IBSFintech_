@@ -13,7 +13,7 @@ export default function CashflowLiquidity() {
       <section className="relative h-[400px] w-full overflow-hidden">
         <div className="absolute inset-0 w-full h-full">
           <Image
-            src="/Inner pages/Products/Cash_position_50.svg"
+            src="/Inner pages/Products/Cash_position_50.jpg"
             alt="Comprehensive Cash Management"
             fill
             className="object-cover"
