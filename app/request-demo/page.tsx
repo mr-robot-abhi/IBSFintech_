@@ -101,7 +101,7 @@ export default function RequestDemoPage() {
         interestedSolutions: selectedSolutions,
       };
 
-      const response = await fetch('/api/demo-request', {
+      const response = await fetch('/.netlify/functions/demo-request', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

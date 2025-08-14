@@ -100,8 +100,8 @@ export default function Chatbot() {
     setShowSuggestedActions(false);
 
     try {
-      // Call our API endpoint
-      const response = await fetch('/api/chatbot', {
+      // Call our Netlify Function
+      const response = await fetch('/.netlify/functions/chatbot', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
