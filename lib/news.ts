@@ -42,7 +42,7 @@ export const newsArticles: NewsArticle[] = [
     category: "Partnership",
     author: "IBSFINtech Team",
     image: "/IBSFINtech-Client Logos/IBSFINtech-Client-Microsoft.png",
-    backgroundImage: "/Currencies-Banner.png",
+    backgroundImage: "/NEWS/IBSFINtech-TMS-available-in-Microsoft-Azure-Marketplace.jpg",
     featured: true,
     tags: ["Microsoft Azure", "Partnership", "TMS", "Cloud", "Marketplace"]
   },
@@ -74,7 +74,7 @@ export const newsArticles: NewsArticle[] = [
     category: "Implementation",
     author: "IBSFINtech Team",
     image: "/IBSFINtech-Client Logos/IBSFINtech-Client-Patanjali.png",
-    backgroundImage: "/Banner.png",
+    backgroundImage: "/NEWS/Patanjali-goes-live-with-IBSFINtech.jpg",
     featured: true,
     tags: ["Patanjali", "FMCG", "Digital Transformation", "TMS", "Implementation"]
   },
@@ -116,7 +116,7 @@ export const newsArticles: NewsArticle[] = [
     category: "Events",
     author: "IBSFINtech Team",
     image: "/IBSFINtech-Client Logos/IBSFINtech-Client-ACT.png",
-    backgroundImage: "/Home Page Banner 4.png",
+    backgroundImage: "/NEWS/IBSFINtech-sponsors-ACT-Middle-East-Treasury-Summit-2024.jpg",
     featured: false,
     tags: ["ACT Middle East", "Events", "CFO", "Treasury", "Middle East"]
   },
@@ -148,7 +148,7 @@ export const newsArticles: NewsArticle[] = [
     category: "Expansion",
     author: "IBSFINtech Team",
     image: "/IBSFINtech-Client Logos/IBSFINtech-Client-Dubai.png",
-    backgroundImage: "/Home Page Banner 2.png",
+    backgroundImage: "/NEWS/IBSFINtech-forays-into-SME-segment.jpg",
     featured: false,
     tags: ["Dubai", "MENA", "Expansion", "Global Presence", "Regional Office"]
   },
@@ -188,7 +188,7 @@ export const newsArticles: NewsArticle[] = [
     category: "Innovation",
     author: "IBSFINtech Team",
     image: "/IBSFINtech-Client Logos/IBSFINtech-Client-AI.png",
-    backgroundImage: "/Home Page Banner 3.png",
+    backgroundImage: "/NEWS/IBSFINtech-gets-certified.jpg",
     featured: true,
     tags: ["AI", "Analytics", "Innovation", "Machine Learning", "Predictive Analytics"]
   },
@@ -230,7 +230,7 @@ export const newsArticles: NewsArticle[] = [
     category: "Awards",
     author: "IBSFINtech Team",
     image: "/IBSFINtech-Client Logos/IBSFINtech-Client-Award.png",
-    backgroundImage: "/Home Page Banner 5.png",
+    backgroundImage: "/NEWS/IBSFINtech-raises-USD-1.5Mn.jpg",
     featured: false,
     tags: ["Awards", "Recognition", "TMS", "Industry Leadership", "Customer Satisfaction"]
   },
@@ -272,7 +272,7 @@ export const newsArticles: NewsArticle[] = [
     category: "Partnership",
     author: "IBSFINtech Team",
     image: "/IBSFINtech-Client Logos/IBSFINtech-Client-Banking.png",
-    backgroundImage: "/Home Page Banner 6.png",
+    backgroundImage: "/NEWS/IBSFINtech-announces-strategic-partnerships.jpg",
     featured: false,
     tags: ["Banking Partnerships", "Digital Treasury", "API Integration", "Automation", "Corporate Banking"]
   },
@@ -314,7 +314,7 @@ export const newsArticles: NewsArticle[] = [
     category: "Innovation",
     author: "IBSFINtech Team",
     image: "/IBSFINtech-Client Logos/IBSFINtech-Client-Mobile.png",
-    backgroundImage: "/Home Page Banner 7.png",
+    backgroundImage: "/NEWS/IBSFINtech-announces-Atul-Punj-CEO-IBSFINtech-USA-Inc..jpg",
     featured: true,
     tags: ["Mobile App", "Executive Dashboard", "Mobile Treasury", "Innovation", "Real-time Access"]
   },
@@ -356,7 +356,7 @@ export const newsArticles: NewsArticle[] = [
     category: "Security",
     author: "IBSFINtech Team",
     image: "/IBSFINtech-Client Logos/IBSFINtech-Client-Security.png",
-    backgroundImage: "/Integration Capability - Banner.png",
+    backgroundImage: "/NEWS/Manoj-Kohli-joins-Advisory-Board-IBSFINtech.jpg",
     featured: false,
     tags: ["ISO 27001", "Security Certification", "Data Protection", "Information Security", "Compliance"]
   },
@@ -398,7 +398,7 @@ export const newsArticles: NewsArticle[] = [
     category: "Events",
     author: "IBSFINtech Team",
     image: "/IBSFINtech-Client Logos/IBSFINtech-Client-Conference.png",
-    backgroundImage: "/Interal Page 3.png",
+    backgroundImage: "/NEWS/IBSFINtech-named-Major-Player-IDC-MarketScape.jpg",
     featured: false,
     tags: ["Conference", "Treasury Management", "Events", "Thought Leadership", "Networking"]
   },
@@ -440,7 +440,7 @@ export const newsArticles: NewsArticle[] = [
     category: "Research",
     author: "IBSFINtech Team",
     image: "/IBSFINtech-Client Logos/IBSFINtech-Client-Research.png",
-    backgroundImage: "/Interal Page 4.png",
+    backgroundImage: "/NEWS/Mohandas-Pai-inaugurates-IBSFINtech-New-Office.jpg",
     featured: false,
     tags: ["Research Report", "Treasury Insights", "Market Analysis", "Trends", "Best Practices"]
   },
@@ -482,66 +482,33 @@ export const newsArticles: NewsArticle[] = [
     category: "Company",
     author: "IBSFINtech Team",
     image: "/IBSFINtech-Client Logos/IBSFINtech-Client-Anniversary.png",
-    backgroundImage: "/Interal Page 5.png",
+    backgroundImage: "/NEWS/KPMG-&-IBSFINtech-collaborate.jpg",
     featured: true,
     tags: ["15th Anniversary", "Company Milestone", "Innovation", "Growth", "Success"]
   },
+
   {
     id: "13",
-    slug: "ibsfintech-appoints-pramod-agrawal-cto",
-    title: "IBSFINtech appoints Ex-Oracle, Automation Anywhere Senior Leader Pramod Agrawal as CTO",
-    excerpt: "Pramod Agrawal, ex-Oracle and Automation Anywhere, joins IBSFINtech as CTO to drive technical innovation.",
-    content: `
-      <p>IBSFINtech is pleased to announce the appointment of Pramod Agrawal as Chief Technology Officer (CTO). With extensive experience from Oracle and Automation Anywhere, Pramod brings deep technical expertise and innovation leadership to drive IBSFINtech's technology strategy forward.</p>
-      
-      <p>Pramod's appointment represents a significant milestone in IBSFINtech's commitment to technological excellence and innovation in treasury management solutions.</p>
-    `,
-    date: "August 27, 2022",
-    category: "Leadership",
-    author: "IBSFINtech Team",
-    image: "/IBSFINtech-Client Logos/IBSFINtech-Client-CTO.png",
-    backgroundImage: "/Internal Page 1.png",
-    featured: false,
-    tags: ["CTO", "Leadership", "Technology", "Innovation", "Oracle"]
-  },
-  {
-    id: "14",
-    slug: "yes-bank-ibsfintech-partnership",
-    title: "YES BANK and IBSFINtech tie up to provide enhanced digital services",
-    excerpt: "YES BANK and IBSFINtech announce partnership for enhanced digital treasury services for corporate clients.",
-    content: `
-      <p>YES BANK and IBSFINtech have announced a strategic partnership to provide enhanced digital treasury services for corporate clients. This collaboration combines YES BANK's banking expertise with IBSFINtech's treasury technology solutions.</p>
-      
-      <p>The partnership aims to deliver comprehensive digital treasury solutions that streamline corporate financial operations and enhance banking connectivity.</p>
-    `,
-    date: "August 9, 2022",
-    category: "Partnership",
-    author: "IBSFINtech Team",
-    image: "/IBSFINtech-Client Logos/IBSFINtech-Client-YesBank.png",
-    backgroundImage: "/Internal Page 2.png",
-    featured: false,
-    tags: ["YES BANK", "Partnership", "Digital Services", "Banking", "Corporate"]
-  },
-  {
-    id: "15",
     slug: "ibsfintech-intreax-oracle-cloud",
     title: "IBSFINtech SaaS TMS, InTReaX™ is Powered by Oracle Cloud and Now Available",
     excerpt: "IBSFINtech releases its SaaS Treasury Management Solution InTReaX™, now powered by Oracle Cloud.",
     content: `
-      <p>IBSFINtech has successfully launched its SaaS Treasury Management Solution InTReaX™, now powered by Oracle Cloud. This cloud-native solution provides organizations with scalable, secure, and efficient treasury management capabilities.</p>
-      
-      <p>The Oracle Cloud-powered InTReaX™ platform offers enterprise-grade security, performance, and reliability for modern treasury operations.</p>
+      <p>Mumbai, May 31 2022: IBSFINtech, the Enterprise TreasuryTech company, a leading provider of solutions for end-to-end digitization of Cash, Liquidity, Treasury, Risk, Trade Finance, and Supply Chain Finance functions of corporations and a member of Oracle Partner Network (OPN) , today announced that its SaaS Treasury Management Solution, InTReaX® has achieved Powered by Oracle Cloud Expertise and is now available on Oracle Cloud Marketplace offering added value to Oracle Cloud customers. The SaaS TMS InTReaX® delivers the benefits of Oracle Cloud Infrastructure's (OCI) deep and broad platform of public cloud service capabilities. OCI enables IBSFINtech to build and run a wide range of applications in a scalable, secure, highly available, and high-performance environment.
+SaaS TMS InTReaX® is a SaaS offering for Cash & Liquidity, Currency Risk, and Hedge Accounting, integrated with Refinitiv's suite of risk and financial data solutions. The solution is hosted on one of the most secure, flexible, and scalable cloud infrastructure, OCI. The SaaS TMS enables the treasury teams to do more with less and facilitates critical decision-making with access to real-time and accurate information.
+Oracle Cloud Marketplace is a one-stop shop for Oracle customers seeking trusted business applications offering unique business solutions, including ones that extend Oracle Cloud Applications. Oracle Cloud is an enterprise cloud that delivers massive, non-variable performance and next generation security across a comprehensive portfolio of services including SaaS, application development, application hosting, and business analytics. Customers get access to leading compute, storage, data management, security, integration, HPC, artificial intelligence (AI), and Blockchain services to augment and modernize their critical workloads. Oracle Cloud runs Oracle Autonomous Database, the industry's first and only self-driving database.
+"It has been our constant endeavor to offer future-ready solutions to our customers, and we do this with a thorough understanding of their changing needs. Treasury automation is a critical focus area for CXOs today. Having been mandated by boards, corporations globally are augmenting their corporate finance functions with robust treasury automation solutions. Our association with Oracle Cloud is a step forward in offering customers cloud-native solutions to support their business transformation journeys," said CM Grover, MD & CEO, IBSFINtech India Pvt Ltd. "IBSFINtech's participation in Oracle Partner Network with the Powered by Oracle Cloud Expertise further extends our commitment to the Oracle community and enables customers to easily reap the benefits of IBSFINtech SaaS TMS InTReaX®. We look forward to leveraging the power of Oracle Cloud to help us achieve our business goals." "The cloud represents a huge opportunity for our partner community," said David Hicks, vice-president, Worldwide ISV Cloud Business Development, Oracle. "IBSFINtech's commitment to innovation with the Oracle Cloud and quality execution helps our mutual customers receive cloud-enabled Treasury Management solutions ready to meet critical business needs." Powered by Oracle Cloud Expertise recognizes OPN members with solutions that run on Oracle Cloud. For partners earning the Powered by Oracle Cloud Expertise, this achievement offers customers confidence that the partner's application is supported by the Oracle Cloud Infrastructure SLA, enabling full access and control over their cloud infrastructure services as well as consistent performance.
+Leading dailies covered the feature: CRN | IBS Intelligence | The NFA Post | IT Voice | News Patrolling | The Tech Street Now | Express Computer</p>
     `,
     date: "May 31, 2022",
     category: "Product Launch",
     author: "IBSFINtech Team",
     image: "/IBSFINtech-Client Logos/IBSFINtech-Client-Oracle.png",
-    backgroundImage: "/LifeAtIBSFINtech.jpg",
+    backgroundImage: "/NEWS/IBSFINtech-SaaS-TMS-InTReaX.jpg",
     featured: true,
     tags: ["InTReaX", "Oracle Cloud", "SaaS", "TMS", "Cloud"]
   },
   {
-    id: "16",
+    id: "14",
     slug: "ibsfintech-oracle-digital-transformation",
     title: "IBSFINtech and Oracle to enable digital transformation for customers",
     excerpt: "IBSFINtech and Oracle partner to accelerate digital transformation for enterprise treasury operations.",
@@ -554,12 +521,12 @@ export const newsArticles: NewsArticle[] = [
     category: "Partnership",
     author: "IBSFINtech Team",
     image: "/IBSFINtech-Client Logos/IBSFINtech-Client-Oracle-Partnership.png",
-    backgroundImage: "/Outing.jpg",
+    backgroundImage: "/NEWS/IBSFINtech-Oracle -enable-digital-transformation-for-customers.jpg",
     featured: false,
     tags: ["Oracle", "Digital Transformation", "Partnership", "Cloud", "Enterprise"]
   },
   {
-    id: "17",
+    id: "15",
     slug: "ibsfintech-vndzy-supply-chain-finance",
     title: "IBSFINtech launches VNDZY® – AI-powered SaaS solution for Supply Chain Finance",
     excerpt: "IBSFINtech launches VNDZY®, an AI-powered SaaS platform to optimize supply chain finance.",
@@ -572,12 +539,12 @@ export const newsArticles: NewsArticle[] = [
     category: "Product Launch",
     author: "IBSFINtech Team",
     image: "/IBSFINtech-Client Logos/IBSFINtech-Client-VNDZY.png",
-    backgroundImage: "/bg_17.jpg",
+    backgroundImage: "/NEWS/IBSFINtech-launches-VNDZY.jpg",
     featured: true,
     tags: ["VNDZY", "AI", "Supply Chain Finance", "SaaS", "Innovation"]
   },
   {
-    id: "18",
+    id: "16",
     slug: "ibsfintech-et-now-feature",
     title: "IBSFINtech is doing a phenomenal job: N. Jayakumar on ET NOW",
     excerpt: "N. Jayakumar praises IBSFINtech's performance in a special feature on ET NOW.",
@@ -590,7 +557,7 @@ export const newsArticles: NewsArticle[] = [
     category: "Media",
     author: "IBSFINtech Team",
     image: "/IBSFINtech-Client Logos/IBSFINtech-Client-ETNow.png",
-    backgroundImage: "/map.jpg",
+    backgroundImage: "/NEWS/IBSFINtech-doing -phenomenal-job.jpg",
     featured: false,
     tags: ["ET NOW", "Media", "Recognition", "N. Jayakumar", "Industry"]
   }

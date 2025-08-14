@@ -301,7 +301,7 @@ export default function ModernMegaMenu() {
                   >
                     <div className={`rounded-xl shadow-2xl border border-white/10 bg-white overflow-hidden`}>
                       {item.mega ? (
-                        <div className={`p-4 ${item.label === 'Products' ? 'w-[650px]' : item.label === 'Solutions' ? 'w-[900px]' : item.label === 'Resources' ? 'w-[600px]' : 'w-[500px]'}`}>
+                        <div className={`p-4 ${item.label === 'Products' ? 'w-[650px]' : item.label === 'Solutions' ? 'w-[900px]' : item.label === 'Resources' ? 'w-[600px]' : item.label === 'Company' ? 'w-[450px]' : 'w-[500px]'}`}>
                           {item.label === "Solutions" ? (
                             // Enhanced Solutions dropdown with descriptions in 2 columns
                             <div className="w-full">
@@ -390,33 +390,38 @@ export default function ModernMegaMenu() {
                               </div>
                             </div>
                           ) : item.label === "Company" ? (
-                            // Company dropdown with compact layout
+                            // Company dropdown with professional 2-column layout
                             <div className="w-full">
-                              <div className="grid grid-cols-3 gap-4">
-                                <div className="col-span-2">
-                                  <div className="flex flex-wrap gap-2 px-2">
-                                    {item.groups && item.groups[0]?.items.map((sub, index) => {
-                                      const Icon = sub.icon || FileText;
-                                      return (
-                                        <Link 
-                                          key={sub.label} 
-                                          href={sub.href} 
-                                          className="flex items-center gap-2 px-2 py-1.5 rounded-lg hover:bg-blue-50 text-gray-800 hover:text-blue-700 transition-all duration-150 ease-out text-sm font-medium whitespace-nowrap"
-                                        >
-                                          <Icon className="w-4 h-4 text-blue-600 flex-shrink-0" />
-                                          <span className="leading-tight">{sub.label}</span>
-                                        </Link>
-                                      );
-                                    })}
-                                  </div>
+                              <div className="grid grid-cols-2 gap-6">
+                                <div className="space-y-2">
+                                  {item.groups && item.groups[0]?.items.slice(0, 4).map((sub, index) => {
+                                    const Icon = sub.icon || FileText;
+                                    return (
+                                      <Link 
+                                        key={sub.label} 
+                                        href={sub.href} 
+                                        className="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-blue-50 text-gray-800 hover:text-blue-700 transition-all duration-150 ease-out text-sm font-medium"
+                                      >
+                                        <Icon className="w-4 h-4 text-blue-600 flex-shrink-0" />
+                                        <span className="leading-tight whitespace-nowrap">{sub.label}</span>
+                                      </Link>
+                                    );
+                                  })}
                                 </div>
-                                <div className="col-span-1">
-                                  <Link href="/company/about-us" className="block">
-                                    <div className="bg-blue-50 rounded-lg p-3 hover:bg-blue-100 transition-colors duration-150">
-                                      <Image src="/bg_6.jpg" alt="Company" width={80} height={60} className="rounded-md object-cover mb-2" />
-                                      <p className="text-blue-700 text-xs leading-tight">Discover our mission, values, and commitment to transforming treasury management.</p>
-                                    </div>
-                                  </Link>
+                                <div className="space-y-2">
+                                  {item.groups && item.groups[0]?.items.slice(4, 8).map((sub, index) => {
+                                    const Icon = sub.icon || FileText;
+                                    return (
+                                      <Link 
+                                        key={sub.label} 
+                                        href={sub.href} 
+                                        className="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-blue-50 text-gray-800 hover:text-blue-700 transition-all duration-150 ease-out text-sm font-medium"
+                                      >
+                                        <Icon className="w-4 h-4 text-blue-600 flex-shrink-0" />
+                                        <span className="leading-tight whitespace-nowrap">{sub.label}</span>
+                                      </Link>
+                                    );
+                                  })}
                                 </div>
                               </div>
                             </div>

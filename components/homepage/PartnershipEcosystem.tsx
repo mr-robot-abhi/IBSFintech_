@@ -5,11 +5,11 @@ import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 
 const partners = [
-  { logo: 'Partners/IBSFINtech-Partner-Bloomberg.svg', alt: 'Bloomberg' },
+  { logo: 'Partners/IBSFINtech-Partner-ORACLE.svg', alt: 'Oracle' },
   { logo: 'Partners/IBSFINtech-Partner-Deloitte.svg', alt: 'Deloitte' },
-  { logo: 'Partners/IBSFINtech-Partner-KPMG.svg', alt: 'KPMG' },
+  { logo: 'Partners/IBSFINtech-Partner-Bloomberg.svg', alt: 'Bloomberg' },
   { logo: 'Partners/IBSFINtech-Partner-LSEG.svg', alt: 'LSEG' },
-  { logo: 'Partners/IBSFINtech-Partner-ORACLE.svg', alt: 'Oracle' }
+  { logo: 'Partners/IBSFINtech-Partner-KPMG.svg', alt: 'KPMG' }
 ];
 
 type PartnershipEcosystemProps = {
