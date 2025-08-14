@@ -139,14 +139,14 @@ const TestimonialsPage = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <div className="bg-gradient-to-br from-blue-700 to-blue-900 text-white py-20 px-4 sm:px-6 lg:px-8">
+      <div className="bg-[#241F5D] text-white py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto text-center">
           <div className="inline-flex items-center justify-center px-4 py-2 mb-6 bg-blue-600 rounded-full text-sm font-medium">
             <Award className="h-5 w-5 mr-2" />
             Award-Winning Solutions
           </div>
           <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
-            Success Stories
+            What our Clients say about us
           </h1>
           <p className="mt-6 text-xl text-blue-100 max-w-4xl mx-auto">
             Discover how industry leaders are transforming their treasury and trade finance operations with IBSFINtech's innovative solutions

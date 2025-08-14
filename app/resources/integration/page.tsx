@@ -54,17 +54,21 @@ export default function IntegrationPage() {
         <div className="absolute inset-0 flex items-center">
           <div className="max-w-7xl w-full pl-8 sm:pl-12 lg:pl-16">
             <div className="max-w-2xl">
-              <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 text-left">IBSFINtech's Integration Capabilities</h1>
+              <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 text-left whitespace-nowrap">IBSFINtech's Integration Capabilities</h1>
               <p className="text-xl text-gray-200 mb-4 text-left">
                 Seamless Connectivity Across Your Treasury Ecosystem
               </p>
-              <p className="text-xl font-semibold text-gray-200 text-left">Automate, Integrate & Optimize</p>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
+        {/* Subheading */}
+        <div className="text-center mb-8">
+          <p className="text-3xl font-semibold text-gray-800">Automate, Integrate & Optimize</p>
+        </div>
+        
         {/* Introduction */}
         <div className="mb-16 text-center">
           <p className="text-lg text-gray-700 max-w-5xl mx-auto">

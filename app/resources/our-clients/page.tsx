@@ -76,7 +76,6 @@ const allClientLogos = [
   'IBSFINtech-Client-Blue-Star.png',
   'IBSFINtech-Client-Botanic.png',
   'IBSFINtech-Client-Cairn.png',
-  'IBSFINtech-Client-Copra.png',
   'IBSFINtech-Client-Credit-Saison-India.png',
   'IBSFINtech-Client-Dabur.png',
   'IBSFINtech-Client-ESL-Steel-Limited.png',
@@ -139,7 +138,6 @@ export default function OurClientsPage() {
     'Blue Star': 'Premier air conditioning company streamlining financial processes',
     'Botanic': 'Innovative solutions for sustainable financial management',
     'Cairn': 'Energy leader with optimized treasury operations',
-    'Copra': 'Transforming financial workflows with digital solutions',
     'Credit Saison India': 'Financial services innovator in partnership with IBSFINtech',
     'Dabur': 'FMCG giant with streamlined financial operations',
     'ESL Steel Limited': 'Steel manufacturer with efficient treasury management',
@@ -244,7 +242,7 @@ export default function OurClientsPage() {
   
 
         {/* CTA Section */}
-        <div className="mt-20 bg-gradient-to-r from-blue-700 to-blue-800 rounded-xl overflow-hidden">
+        <div className="mt-20 rounded-xl overflow-hidden" style={{ backgroundColor: '#241F5D' }}>
           <div className="px-6 py-12 sm:px-12 text-center">
             <h2 className="text-2xl font-bold text-white mb-4">Become Our Next Success Story</h2>
             <p className="text-blue-100 max-w-2xl mx-auto mb-8">

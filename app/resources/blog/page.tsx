@@ -111,9 +111,9 @@ const BlogPage = () => {
                       className="group"
                     >
                       <Link href={`/resources/blog/${post.slug}`}>
-                        <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group-hover:-translate-y-2">
+                        <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group-hover:-translate-y-2 h-[420px] flex flex-col">
                           {/* Image */}
-                          <div className="relative h-48 overflow-hidden">
+                          <div className="relative h-48 overflow-hidden flex-shrink-0">
                             <Image
                               src={post.image}
                               alt={post.title}
@@ -123,37 +123,17 @@ const BlogPage = () => {
                             <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                           </div>
 
-                          <div className="p-6">
-                            <div className="flex items-center text-sm text-gray-500 dark:text-gray-400 mb-3">
-                              <Calendar className="h-4 w-4 mr-2" />
-                              {post.date}
-                              <span className="mx-2">•</span>
-                              <User className="h-4 w-4 mr-2" />
-                              {post.author}
-                            </div>
-                            
+                          <div className="p-6 flex-1 flex flex-col">
                             <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3 line-clamp-2 group-hover:text-[#241F5D] transition-colors">
                               {post.title}
                             </h3>
                             
-                            <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3">
+                            <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3 flex-1">
                               {post.excerpt}
                             </p>
 
-                            {/* Tags */}
-                            <div className="flex flex-wrap gap-2 mb-4">
-                              {post.tags.slice(0, 3).map((tag, tagIndex) => (
-                                <span
-                                  key={tagIndex}
-                                  className="bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 px-2 py-1 rounded-full text-xs"
-                                >
-                                  {tag}
-                                </span>
-                              ))}
-                            </div>
-
                             {/* Read More */}
-                            <div className="flex items-center text-[#241F5D] font-medium group-hover:text-[#3B3486] transition-colors">
+                            <div className="flex items-center text-[#241F5D] font-medium group-hover:text-[#3B3486] transition-colors mt-auto">
                               Read More
                               <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
                             </div>

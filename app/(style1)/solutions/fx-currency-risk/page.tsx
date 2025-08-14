@@ -97,16 +97,25 @@ const FXCurrencyRiskPage = () => {
 
 
       {/* Hero Section */}
-      <section className="relative h-[400px] w-full overflow-hidden">
+      <section className="relative w-full min-h-[500px] flex items-center justify-center overflow-hidden">
         {/* Background Image */}
-        <div className="absolute inset-0 w-full h-full">
-          <Image
-            src="/Inner Pages/Solutions/Fx_Risk_Management_Solution_50.jpg"
-            alt="FX Risk Management Solution"
-            fill
-            className="object-cover"
-            priority
-          />
+        <div className="absolute inset-0 w-full h-full flex items-center justify-center">
+          <div className="relative w-full h-full">
+            <Image
+              src="/Inner Pages/Solutions/Fx_Risk_Management_Solution_50.jpg"
+              alt="FX Risk Management Solution"
+              width={1920}
+              height={1080}
+              className="w-full h-full object-contain"
+              priority
+              style={{
+                maxHeight: '100vh',
+                width: '100%',
+                height: 'auto',
+                objectPosition: 'center'
+              }}
+            />
+          </div>
           {/* Subtle dark overlay */}
           <div className="absolute inset-0 bg-black/20"></div>
         </div>

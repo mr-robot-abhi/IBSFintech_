@@ -109,13 +109,6 @@ export default function BlogClient({ blogPosts }: BlogClientProps) {
                     </div>
                   </div>
 
-                  {/* Category */}
-                  <div className="mb-3">
-                    <span className="inline-block bg-blue-100 text-[#241F5D] px-3 py-1 rounded-full text-xs font-semibold">
-                      {post.category}
-                    </span>
-                  </div>
-
                   {/* Title */}
                   <h3 className="text-xl font-bold text-gray-900 mb-3 line-clamp-2 group-hover:text-[#241F5D] transition-colors">
                     {post.title}
@@ -130,18 +123,6 @@ export default function BlogClient({ blogPosts }: BlogClientProps) {
                   <div className="flex items-center gap-2 text-sm text-gray-500 mb-4">
                     <User className="w-4 h-4" />
                     <span>{post.author}</span>
-                  </div>
-
-                  {/* Tags */}
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {post.tags.slice(0, 3).map((tag) => (
-                      <span
-                        key={tag}
-                        className="inline-block bg-gray-100 text-gray-600 px-2 py-1 rounded text-xs"
-                      >
-                        {tag}
-                      </span>
-                    ))}
                   </div>
 
                   {/* Read More Link */}

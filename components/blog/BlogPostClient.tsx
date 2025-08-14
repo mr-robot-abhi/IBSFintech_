@@ -28,17 +28,6 @@ export default function BlogPostClient({ post }: BlogPostClientProps) {
               Back to Blog
             </Link>
             
-            <div className="flex items-center text-white/80 text-sm mb-4">
-              <Calendar className="h-4 w-4 mr-2" />
-              {post.date}
-              <span className="mx-2">•</span>
-              <User className="h-4 w-4 mr-2" />
-              {post.author}
-              <span className="mx-2">•</span>
-              <Clock className="h-4 w-4 mr-2" />
-              {post.readTime}
-            </div>
-
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
               {post.title}
             </h1>
@@ -47,6 +36,7 @@ export default function BlogPostClient({ post }: BlogPostClientProps) {
               {post.excerpt}
             </p>
 
+            {/* Tags */}
             <div className="flex flex-wrap gap-2">
               {post.tags.map((tag, index) => (
                 <span
@@ -86,6 +76,21 @@ export default function BlogPostClient({ post }: BlogPostClientProps) {
                 className="prose prose-lg max-w-none dark:prose-invert"
                 dangerouslySetInnerHTML={{ __html: post.content }}
               />
+              
+              {/* Tags Section */}
+              <div className="mt-8 pt-6 border-t border-gray-200 dark:border-gray-700">
+                <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Tags</h4>
+                <div className="flex flex-wrap gap-2">
+                  {post.tags.map((tag, index) => (
+                    <span
+                      key={index}
+                      className="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1 rounded-full text-sm font-medium"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
             </div>
 
             {/* Share Section */}

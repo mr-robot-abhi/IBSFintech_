@@ -297,7 +297,7 @@ export default function ModernMegaMenu() {
                     initial="initial"
                     animate="animate"
                     exit="exit"
-                    className={`absolute top-full mt-2 z-40 ${item.label === 'Solutions' ? '-left-48' : item.label === 'Resources' ? '-left-24' : item.label === 'Company' ? 'right-0' : 'left-0'}`}
+                    className={`absolute top-full mt-2 z-40 ${item.label === 'Solutions' ? '-left-64' : item.label === 'Resources' ? '-left-24' : item.label === 'Company' ? 'right-0' : 'left-0'}`}
                   >
                     <div className={`rounded-xl shadow-2xl border border-white/10 bg-white overflow-hidden`}>
                       {item.mega ? (

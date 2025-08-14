@@ -31,15 +31,15 @@ const DebtBorrowingsPage = () => {
 
 
       {/* Full Width Banner Section */}
-      <section className="relative h-[400px] w-full overflow-hidden">
-        <div className="absolute inset-0 w-full h-full">
+      <section className="relative w-full overflow-hidden">
+        <div className="w-full h-auto">
           <Image
             src="/Inner pages/Products/multi_instrument_debt_management_50.jpg"
             alt="Debt & Borrowings Management Solution"
-            fill
-            className="object-cover"
+            width={1920}
+            height={1080}
+            className="w-full h-auto"
             priority
-            style={{ objectPosition: 'center' }}
           />
         </div>
         <div className="absolute inset-0 bg-black/20">

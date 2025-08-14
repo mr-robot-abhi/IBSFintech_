@@ -740,19 +740,24 @@ const VideosPage = () => {
 
         {/* Video Modal */}
         {isModalOpen && selectedVideo && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80">
-            <div className="relative w-full max-w-4xl bg-white rounded-xl overflow-hidden">
-              <div className="flex items-center justify-between p-4 border-b border-gray-200">
-                <h3 className="text-lg font-semibold text-gray-900">{selectedVideo.title}</h3>
-                <button
-                  onClick={closeVideo}
-                  className="p-2 hover:bg-gray-100 rounded-lg transition-colors duration-200"
-                >
-                  <X className="h-5 w-5 text-gray-500" />
-                </button>
-              </div>
+          <div 
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
+            onClick={closeVideo}
+          >
+            <div 
+              className="relative w-full max-w-4xl bg-white rounded-xl overflow-hidden shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Close Button */}
+              <button
+                onClick={closeVideo}
+                className="absolute top-2 right-2 z-10 bg-white/90 rounded-full p-1.5 shadow-md hover:bg-gray-100 transition-colors duration-200"
+                aria-label="Close video"
+              >
+                <X className="h-4 w-4 text-gray-600" />
+              </button>
               
-              <div className="aspect-video">
+              <div className="aspect-video relative">
                 <iframe
                   className="w-full h-full"
                   src={`https://www.youtube.com/embed/${selectedVideo.videoId}?autoplay=1&rel=0&modestbranding=1`}
@@ -763,12 +768,23 @@ const VideosPage = () => {
                 />
               </div>
               
-              <div className="p-4 border-t border-gray-200">
-                <p className="text-gray-600 mb-3">{selectedVideo.description}</p>
-                <div className="flex items-center justify-between text-sm text-gray-500">
-                  <span>Duration: {selectedVideo.duration}</span>
-                  <span>Category: {selectedVideo.category}</span>
-                  {selectedVideo.views && <span>Views: {selectedVideo.views}</span>}
+              <div className="p-6">
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">{selectedVideo.title}</h3>
+                <p className="text-gray-600 mb-4">{selectedVideo.description}</p>
+                <div className="flex flex-wrap items-center gap-4 text-sm text-gray-500 pt-3 border-t border-gray-100">
+                  <span className="flex items-center">
+                    <Clock className="h-4 w-4 mr-1.5" />
+                    {selectedVideo.duration}
+                  </span>
+                  <span className="flex items-center">
+                    <span className="capitalize">{selectedVideo.category}</span>
+                  </span>
+                  {selectedVideo.views && (
+                    <span className="flex items-center">
+                      <Eye className="h-4 w-4 mr-1.5" />
+                      {selectedVideo.views} views
+                    </span>
+                  )}
                 </div>
               </div>
             </div>
