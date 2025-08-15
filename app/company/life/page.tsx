@@ -70,16 +70,16 @@ const LifeAtIBSFINtech = () => {
       <div className="relative bg-gradient-to-r from-blue-700 to-blue-800 overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="/Outing.jpg"
+            src="/Banner & Tile Images for Resources & Company page/Life-at-IBSFINtech.jpg"
             alt="Life at IBSFINtech"
             fill
-            className="object-cover opacity-35"
+            className="object-cover"
           />
         </div>
         <div className="max-w-7xl mx-auto">
           <div className="relative z-10 pb-8 sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32">
             <main className="mt-6 mx-auto max-w-7xl px-4 sm:mt-8 sm:px-6 lg:mt-10 lg:px-8 xl:mt-12">
-              <div className="sm:text-center lg:text-left">
+              <div className="sm:text-left lg:text-left">
                 <div className="backdrop-blur-md bg-white/10 rounded-xl p-4 border border-white/20 shadow-2xl max-w-md ml-0">
                   <h1 className="text-2xl tracking-tight font-extrabold text-white sm:text-3xl">
                     <span className="block">Life at</span>
@@ -88,7 +88,7 @@ const LifeAtIBSFINtech = () => {
                   <p className="mt-2 text-sm text-blue-100 sm:mt-3 sm:text-base">
                     Where innovation meets passion, and every team member contributes to our success story.
                   </p>
-                  <div className="mt-4 sm:flex sm:justify-center lg:justify-start">
+                  <div className="mt-4 sm:flex sm:justify-start lg:justify-start">
                     <div className="rounded-md shadow">
                       <a
                         href="/company/careers"
@@ -183,6 +183,26 @@ const LifeAtIBSFINtech = () => {
             <p className="mt-4 max-w-3xl text-xl text-gray-600 mx-auto">
               Excellent work environment. The positive can-do environment at IBSFINtech encourages me to take joy in my work and also provide support to others. Everyday is a learning process here and a new experience to take home.
             </p>
+          </div>
+          
+          {/* Gallery Section */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="relative h-80 rounded-xl overflow-hidden">
+              <Image
+                src="/Banner & Tile Images for Resources & Company page/Vibrant-culture-IBSFINtech.jpg"
+                alt="Vibrant Culture at IBSFINtech"
+                fill
+                className="object-cover"
+              />
+            </div>
+            <div className="relative h-80 rounded-xl overflow-hidden">
+              <Image
+                src="/LifeAtIBSFINtech.jpg"
+                alt="Life at IBSFINtech"
+                fill
+                className="object-cover"
+              />
+            </div>
           </div>
         </div>
       </div>

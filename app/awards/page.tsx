@@ -17,14 +17,24 @@ export default function AwardsPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      <div className="bg-gradient-to-r from-blue-900 to-blue-800 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          <div className="text-center">
-            <h1 className="text-4xl font-bold mb-4">Awards & Recognition</h1>
-            <p className="text-xl text-blue-100 max-w-3xl mx-auto">
-              IBSFINtech has been recognised globally with Awards & Appreciations for the Comprehensive Treasury, risk, trade finance, cashflow & liquidity and supply chain finance solution.
-            </p>
+      {/* Hero Banner */}
+      <div className="relative h-[500px] w-full overflow-hidden">
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: 'linear-gradient(90deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 100%), url(/Banner%20&%20Tile%20Images%20for%20Resources%20&%20Company%20page/IBSFINtech-Awards-Recognitions.jpg)'
+          }}
+        />
+        <div className="absolute inset-0 flex items-center">
+          <div className="max-w-7xl w-full px-8 sm:px-12 lg:px-16">
+            <div className="max-w-2xl text-left">
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-white mb-6 leading-tight">
+                Awards & Recognition
+              </h1>
+              <p className="text-xl text-white max-w-2xl">
+                IBSFINtech has been recognised globally with Awards & Appreciations for the Comprehensive Treasury, risk, trade finance, cashflow & liquidity and supply chain finance solution.
+              </p>
+            </div>
           </div>
         </div>
       </div>

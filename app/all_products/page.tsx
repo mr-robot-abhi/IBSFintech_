@@ -96,28 +96,34 @@ const ProductsPage = () => {
         />
       </div>
 
-
-
-      {/* Hero section */}
-      <section className="relative w-full h-[60vh] min-h-[500px] flex items-center justify-center">
-        <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-black/30"></div>
-        <div className="container mx-auto px-4 relative z-10 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="max-w-4xl mx-auto"
-          >
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white">Our Products</h1>
-            <p className="text-xl text-gray-200 mb-8 max-w-3xl mx-auto">
-              Comprehensive treasury management solutions designed for enterprises and SMEs
-            </p>
-            <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white">
-              Request a Demo
-            </Button>
-          </motion.div>
+      {/* Hero Banner */}
+      <div className="relative h-96 w-full overflow-hidden">
+        <div 
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage: 'url(/Banner & Tile Images for Resources & Company page/IBSFINtech-Greatest-Strength.jpg)'
+          }}
+        />
+        <div className="absolute inset-0 flex items-center">
+          <div className="max-w-7xl w-full pl-8 sm:pl-12 lg:pl-16">
+            <div className="max-w-2xl">
+              <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">Our Products</h1>
+              <p className="text-xl text-white max-w-3xl">
+                Comprehensive treasury management solutions for enterprises and SMEs
+              </p>
+            </div>
+          </div>
         </div>
-      </section>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <h1 className="text-4xl font-bold text-gray-900 mb-4">Our Products</h1>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            Comprehensive treasury management solutions for enterprises and SMEs
+          </p>
+        </div>
 
       {/* Enterprise TMS Section */}
       <section className="py-16 relative z-10">

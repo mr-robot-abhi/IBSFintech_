@@ -115,6 +115,30 @@ export default function USLeadershipPage() {
 
   return (
     <div className="min-h-screen pt-20 px-4 sm:px-6 lg:px-8 bg-white">
+      {/* Hero Banner */}
+      <div className="relative h-96 w-full overflow-hidden">
+        <div 
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage: 'url(/Banner & Tile Images for Resources & Company page/IBSFINtech-US-Leadership-team.jpg)'
+          }}
+        />
+        <div className="absolute inset-0 flex items-center">
+          <div className="max-w-7xl w-full pl-8 sm:pl-12 lg:pl-16">
+            <div className="max-w-2xl">
+              <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">US Leadership Team</h1>
+              <div className="flex items-center text-white mb-2">
+                <MapPin className="h-5 w-5 mr-2" />
+                <span>United States</span>
+              </div>
+              <p className="text-xl text-white max-w-3xl">
+                Meet the leaders driving our growth and success in the Americas
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div className="max-w-7xl mx-auto py-12">
         {/* Header */}
         <div className="text-center mb-16">

@@ -150,21 +150,22 @@ export default function CareersPage() {
     <div className="min-h-screen bg-white">
       {/* Hero Banner Section */}
       <div className="relative h-80 bg-gradient-to-r from-blue-900 via-blue-800 to-blue-700 overflow-hidden">
-        {/* Random banner image from public folder */}
         <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20"
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: `url('/LifeAtIBSFINtech.jpg')`
+            backgroundImage: `url('/Banner & Tile Images for Resources & Company page/IBSFINtech-Careers.jpg')`
           }}
         />
-        <div className="relative z-10 flex items-center justify-center h-full">
-          <div className="text-center text-white px-4">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              Welcome to the World of Innovation
-            </h1>
-            <p className="text-xl md:text-2xl text-blue-100 max-w-4xl mx-auto leading-relaxed">
-              Come join the indigenous company revolutionizing the Treasury, Risk & Trade Finance Management® (TRTFM®) space on the global canvas.
-            </p>
+        <div className="absolute inset-0 flex items-center">
+          <div className="max-w-7xl w-full pl-8 sm:pl-12 lg:pl-16">
+            <div className="max-w-2xl">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+                Welcome to the World of Innovation
+              </h1>
+              <p className="text-xl md:text-2xl text-white max-w-4xl leading-relaxed">
+                Come join the indigenous company revolutionizing the Treasury, Risk & Trade Finance Management® (TRTFM®) space on the global canvas.
+              </p>
+            </div>
           </div>
         </div>
       </div>

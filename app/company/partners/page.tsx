@@ -148,15 +148,14 @@ export default function PartnersPage() {
         <div className="text-center mb-8 relative overflow-hidden rounded-2xl">
           <div className="absolute inset-0">
             <img 
-              src="/bg_18.jpg" 
+              src="/Banner & Tile Images for Resources & Company page/IBSFINtech-Global-Partners.jpg" 
               alt="Partnership Background" 
               className="w-full h-full object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-900/80 to-purple-900/80"></div>
           </div>
           <div className="relative z-10 py-12 px-8">
             <h1 className="text-4xl font-bold text-white mb-4">Industry Associations</h1>
-            <p className="text-xl text-blue-100 max-w-4xl mx-auto">
+            <p className="text-xl text-white max-w-4xl mx-auto">
               IBSFINtech has established a diverse partner ecosystem across the Industry to drive more value for the entire value chain.
             </p>
           </div>

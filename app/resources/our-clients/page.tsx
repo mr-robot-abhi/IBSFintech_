@@ -179,24 +179,26 @@ export default function OurClientsPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Banner */}
-      <div className="relative h-96 w-full overflow-hidden bg-gray-900">
+      <div className="relative w-full h-96 overflow-hidden bg-gray-900">
+        {/* Background Image */}
+        <div className="absolute inset-0 w-full h-full">
+          <img 
+            src="/Banner & Tile Images for Resources & Company page/IBSFINtech-Valued-Clients.jpg"
+            alt="Our Valued Clients"
+            className="w-full h-full object-cover object-center"
+          />
+          <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+        </div>
+        
+        {/* Content */}
         <div className="container mx-auto h-full flex items-center relative z-10">
           <div className="w-full lg:w-1/2 px-4 lg:px-8">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">Our Valued Clients</h1>
-            <p className="text-xl text-gray-200">
+            <p className="text-xl text-white">
               IBSFINtech's clientele is spread across industries and geographies. Representing the leading corporates in respective industry verticals, our clientele are mid to very large organizations with global Treasury & Trade Finance operations.
             </p>
           </div>
-          <div className="hidden lg:block lg:w-1/2 h-full">
-            <div 
-              className="h-full w-full bg-cover bg-center"
-              style={{
-                backgroundImage: 'url(/bg_14.jpeg)',
-              }}
-            />
-          </div>
         </div>
-        <div className="absolute inset-0 bg-black bg-opacity-50 lg:bg-opacity-70 lg:bg-gradient-to-r lg:from-black lg:to-transparent" />
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">

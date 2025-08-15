@@ -4,7 +4,15 @@ import { useParams } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowLeft, Calendar, Award as AwardIcon, Users, Building } from 'lucide-react';
-import { getAwardBySlug } from '../data';
+import { getAwardBySlug, getAllAwards } from '../data';
+
+// Generate static params for all award slugs
+export async function generateStaticParams() {
+  const awards = getAllAwards();
+  return awards.map((award) => ({
+    slug: award.slug,
+  }));
+}
 
 export default function AwardDetailPage() {
   const params = useParams();

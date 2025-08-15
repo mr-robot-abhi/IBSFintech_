@@ -40,19 +40,28 @@ export default function WhyChooseUsPage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Banner */}
-      <div className="relative h-96 w-full overflow-hidden">
+      <div className="relative h-[500px] w-full overflow-hidden">
         <div 
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: 'url(/Home%20Page%20Banner%202.png)'
+            backgroundImage: 'url(/IBSFINtech-Why-Choose-US.jpg)',
+            backgroundPosition: 'center center',
+            backgroundSize: 'cover'
           }}
-        >
-          <div className="absolute inset-0 bg-black/40 flex items-center">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center w-full">
-              <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">Our Differentiator</h1>
-              <p className="text-xl text-gray-200 max-w-4xl mx-auto">
-                IBSFINtech is at the forefront, leading the transformation of Cash & liquidity, Treasury, Risk and Trade Finance functions of the corporate. Today's Board & CxOs needs an intelligent decision support system to ensure business continuity.
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent"></div>
+        <div className="relative max-w-7xl mx-auto h-full flex items-center">
+          <div className="w-full px-8 sm:px-12 lg:px-16">
+            <div className="max-w-2xl">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+                Our Differentiator
+              </h1>
+              <p className="text-xl text-white/90 max-w-3xl leading-relaxed mb-8">
+                IBSFINtech is at the forefront, leading the transformation of Cash & Liquidity, Treasury, Risk and Trade Finance functions for modern enterprises. Today's Board & CxOs need an intelligent decision support system to ensure business continuity and drive strategic growth.
               </p>
+              <button className="px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-md transition-colors duration-300 transform hover:scale-105">
+                Discover More
+              </button>
             </div>
           </div>
         </div>

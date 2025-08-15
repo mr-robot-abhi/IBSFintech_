@@ -126,22 +126,35 @@ export default function RequestDemoPage() {
   };
 
   return (
-    <div className={`min-h-screen pt-20 pb-16 px-4 sm:px-6 lg:px-8 ${theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-gray-50 text-gray-900'}`}>
-      <div className="max-w-7xl mx-auto">
-        {/* Header Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12"
-        >
-          <h1 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-            Get Connected
-          </h1>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            Start your Digital Transformation Journey with IBSFINtech. Talk to our experts today!
+    <div className="min-h-screen bg-gray-50">
+      {/* Hero Banner */}
+      <div className="relative h-96 w-full overflow-hidden">
+        <div 
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage: 'url(/Banner & Tile Images for Resources & Company page/IBSFINtech-Greatest-Strength.jpg)'
+          }}
+        />
+        <div className="absolute inset-0 flex items-center">
+          <div className="max-w-7xl w-full pl-8 sm:pl-12 lg:pl-16">
+            <div className="max-w-2xl">
+              <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">Request a Demo</h1>
+              <p className="text-xl text-white max-w-3xl">
+                Experience the power of IBSFINtech's treasury management solutions firsthand
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <h1 className="text-4xl font-bold text-gray-900 mb-4">Request a Demo</h1>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            Experience the power of IBSFINtech's treasury management solutions firsthand
           </p>
-        </motion.div>
+        </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Content Section - Left Side */}

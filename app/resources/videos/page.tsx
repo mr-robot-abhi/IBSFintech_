@@ -26,15 +26,6 @@ const VideosPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [sortBy, setSortBy] = useState<'date' | 'title' | 'duration'>('date');
 
-  const categories = [
-    { id: 'all', name: 'All Videos', count: 0, icon: '🎬' },
-    { id: 'overview', name: 'Solution Overview', count: 0, icon: '🔍' },
-    { id: 'products', name: 'Product Videos', count: 0, icon: '💼' },
-    { id: 'testimonials', name: 'Client Testimonials', count: 0, icon: '💬' },
-    { id: 'interviews', name: 'Interviews', count: 0, icon: '🎤' },
-    { id: 'company', name: 'Company Events', count: 0, icon: '🏢' },
-    { id: 'webinars', name: 'Webinars', count: 0, icon: '📚' },
-  ];
 
   const videos: Video[] = [
     // IBSFINtech Videos
@@ -385,16 +376,16 @@ const VideosPage = () => {
     }
   ];
 
-  // Update category counts
-  useEffect(() => {
-    categories.forEach(cat => {
-      if (cat.id === 'all') {
-        cat.count = videos.length;
-      } else {
-        cat.count = videos.filter(video => video.category === cat.id).length;
-      }
-    });
-  }, []);
+  // Calculate category counts directly
+  const categories = [
+    { id: 'all', name: 'All Videos', count: videos.length, icon: '🎬' },
+    { id: 'overview', name: 'Solution Overview', count: videos.filter(v => v.category === 'overview').length, icon: '🔍' },
+    { id: 'products', name: 'Product Videos', count: videos.filter(v => v.category === 'products').length, icon: '💼' },
+    { id: 'testimonials', name: 'Client Testimonials', count: videos.filter(v => v.category === 'testimonials').length, icon: '💬' },
+    { id: 'interviews', name: 'Interviews', count: videos.filter(v => v.category === 'interviews').length, icon: '🎤' },
+    { id: 'company', name: 'Company Events', count: videos.filter(v => v.category === 'company').length, icon: '🏢' },
+    { id: 'webinars', name: 'Webinars', count: videos.filter(v => v.category === 'webinars').length, icon: '📚' },
+  ];
 
   // Enhanced search and filtering
   const filteredVideos = useMemo(() => {
@@ -617,13 +608,33 @@ const VideosPage = () => {
   );
 
   return (
-    <div className="min-h-screen pt-20 px-4 sm:px-6 lg:px-8 bg-gray-50">
-      <div className="max-w-7xl mx-auto py-12">
+    <div className="min-h-screen bg-gray-50">
+      {/* Hero Banner */}
+      <div className="relative h-96 w-full overflow-hidden">
+        <div 
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage: 'url(/Banner & Tile Images for Resources & Company page/IBSFINtech-Greatest-Strength.jpg)'
+          }}
+        />
+        <div className="absolute inset-0 flex items-center">
+          <div className="max-w-7xl w-full pl-8 sm:pl-12 lg:pl-16">
+            <div className="max-w-2xl">
+              <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">Video Library</h1>
+              <p className="text-xl text-white max-w-3xl">
+                Explore our comprehensive collection of videos covering treasury management, product demos, and industry insights
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         {/* Header */}
         <div className="text-center mb-16">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">Videos & Webinars</h1>
+          <h1 className="text-4xl font-bold text-gray-900 mb-4">Video Library</h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Explore our comprehensive collection of videos, product demos, client testimonials, and expert webinars
+            Explore our comprehensive collection of videos covering treasury management, product demos, and industry insights
           </p>
         </div>
 

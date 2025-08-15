@@ -98,24 +98,14 @@ const TestimonialsPage = () => {
     },
     {
       id: 10,
-      name: 'Anil Jena',
-      role: 'Head – Treasury',
-      company: 'Olam Agri India Ltd.',
-      content: 'After analysing multiple alternatives in the market for our treasury front-office operations, we at OLAM India finally selected IBSFINtech which can be integrated at real-time. We perform extensive hedging activities and getting live market data has become a straightforward job.',
+      name: 'Rajesh Agarwal',
+      role: 'Chief Financial Officer',
+      company: 'Raymond Ltd.',
+      content: 'IBSFINtech has transformed our treasury operations with their comprehensive solution. The platform provides real-time visibility and control over our financial operations.',
       rating: 5,
-      industry: 'Agri-business',
-      results: 'Added $1M to trading portfolio in one year'
-    },
-    {
-      id: 11,
-      name: 'Santhosh Kumar U',
-      role: 'GM',
-      company: 'Coromandel',
-      content: 'Our overall experience with IBSFINtech on Treasury & Trade Finance project has been positive. They took time to understand our business and philosophy enabling practical solutions for the desired outcome.',
-      rating: 5,
-      industry: 'Fertilizers',
-      results: 'Practical solutions with excellent implementation'
-    },
+      industry: 'Textiles',
+      results: 'Enhanced financial control and visibility'
+    }
   ];
 
   const industryStats = [
@@ -137,19 +127,33 @@ const TestimonialsPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Hero Section */}
-      <div className="bg-[#241F5D] text-white py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto text-center">
-          <div className="inline-flex items-center justify-center px-4 py-2 mb-6 bg-blue-600 rounded-full text-sm font-medium">
-            <Award className="h-5 w-5 mr-2" />
-            Award-Winning Solutions
+    <div className="min-h-screen bg-white">
+      {/* Hero Banner */}
+      <div className="relative h-96 w-full overflow-hidden">
+        <div 
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage: 'url(/Banner & Tile Images for Resources & Company page/IBSFINtech-Valued-Clients.jpg)'
+          }}
+        />
+        <div className="absolute inset-0 flex items-center">
+          <div className="max-w-7xl w-full pl-8 sm:pl-12 lg:pl-16">
+            <div className="max-w-2xl">
+              <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">Client Testimonials</h1>
+              <p className="text-xl text-white max-w-3xl">
+                Hear from our valued clients about how IBSFINtech has transformed their treasury operations
+              </p>
+            </div>
           </div>
-          <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
-            What our Clients say about us
-          </h1>
-          <p className="mt-6 text-xl text-blue-100 max-w-4xl mx-auto">
-            Discover how industry leaders are transforming their treasury and trade finance operations with IBSFINtech's innovative solutions
+        </div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <h1 className="text-4xl font-bold text-gray-900 mb-4">Client Testimonials</h1>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            Hear from our valued clients about how IBSFINtech has transformed their treasury operations
           </p>
         </div>
       </div>

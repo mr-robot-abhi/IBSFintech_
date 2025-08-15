@@ -42,19 +42,21 @@ export default function SecurityPage() {
       <div className="relative bg-gray-900">
         <div className="absolute inset-0">
           <Image
-            src="/Home Page Banner 4.png"
+            src="/Banner & Tile Images for Resources & Company page/IBSFINtech-Security.jpg"
             alt="Security"
             fill
-            className="w-full h-full object-cover opacity-20"
+            className="w-full h-full object-cover"
           />
         </div>
-        <div className="relative max-w-7xl mx-auto px-4 py-24 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">
-            Prioritizing Security, Prioritizing You
-          </h1>
-          <p className="mt-6 text-xl text-gray-300 max-w-4xl mx-auto">
-            IBSFINtech is an ISO/IEC 27001:2013 certified company, demonstrating our commitment to maintaining robust security measures aligned with international standards.
-          </p>
+        <div className="relative max-w-7xl mx-auto px-4 py-24 sm:px-6 lg:px-8">
+          <div className="max-w-2xl">
+            <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">
+              Prioritizing Security, Prioritizing You
+            </h1>
+            <p className="mt-6 text-xl text-white max-w-4xl">
+              IBSFINtech is an ISO/IEC 27001:2013 certified company, demonstrating our commitment to maintaining robust security measures aligned with international standards.
+            </p>
+          </div>
         </div>
       </div>
 

@@ -198,12 +198,33 @@ export default function CaseStudiesPage() {
   const regularCaseStudies = filteredCaseStudies.filter(study => !study.featured);
 
   return (
-    <div className="min-h-screen pt-20 px-4 sm:px-6 lg:px-8 bg-gray-50">
-      <div className="max-w-7xl mx-auto py-12">
+    <div className="min-h-screen bg-white">
+      {/* Hero Banner */}
+      <div className="relative h-96 w-full overflow-hidden">
+        <div 
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage: 'url(/Banner & Tile Images for Resources & Company page/IBSFINtech-Valued-Clients.jpg)'
+          }}
+        />
+        <div className="absolute inset-0 flex items-center">
+          <div className="max-w-7xl w-full pl-8 sm:pl-12 lg:pl-16">
+            <div className="max-w-2xl">
+              <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">Case Studies</h1>
+              <p className="text-xl text-white max-w-3xl">
+                Real-world success stories from organizations that have transformed their treasury operations with IBSFINtech
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        {/* Header */}
         <div className="text-center mb-16">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">Client Success Stories</h1>
+          <h1 className="text-4xl font-bold text-gray-900 mb-4">Case Studies</h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Discover how leading enterprises are transforming their treasury and financial operations with IBSFINtech
+            Real-world success stories from organizations that have transformed their treasury operations with IBSFINtech
           </p>
         </div>
 
